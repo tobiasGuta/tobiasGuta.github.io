@@ -1,11 +1,12 @@
 /* === Global Layout + Base Theme === */
 html, body {
   height: 100%;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: #0a0a0a; /* near black */
-  color: #e6e6e6;           /* soft white */
+  overflow-x: hidden;  /* changed */
+  overflow-y: auto;    /* changed */
+  background-color: #0a0a0a;
+  color: #e6e6e6;
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url('/static/mickeycursormedium.png') 16 16, auto;
 }
@@ -17,17 +18,8 @@ button:hover,
 }
 
 main.container {
-  flex: 1 0 auto;
+  flex-grow: 1; /* THIS pushes footer down */
 }
-
-footer {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  margin: 0;
-  padding: 1rem 0;
-}
-
 
 
 /* === Homepage Background Styles === */
@@ -383,3 +375,18 @@ body.homepage > * {
 .code-block-container {
   position: relative;
 }
+
+/* leaf */
+
+.leaf {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background-image: url('https://www.freeiconspng.com/thumbs/leaf-icon-png/leaf-icon-png-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 9999; /* make sure leaves float above content */
+}
+
