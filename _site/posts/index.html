@@ -65,7 +65,12 @@
 
     <main class="container py-5">
       <section class="posts-list max-w-4xl mx-auto px-4 py-8 text-gray-100">
-  <h1 class="text-4xl font-bold mb-8 text-white tracking-wide">Blog Posts</h1>
+  <h1 class="text-4xl font-bold mb-8 text-white tracking-wide flex items-center gap-2">
+    <svg class="blog-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2h6a2 2 0 012 2v14a2 2 0 01-2 2z" />
+    </svg>
+    Blog Posts
+  </h1>
   <div class="cards-container">
     
     <article class="post-card">
@@ -92,6 +97,7 @@
 
     <!-- Typing animation script (put this in a separate JS file or inline) -->
     <script>
+      // Typing animation script
       const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
       const typedText = document.getElementById("typed-text");
       const cursor = document.getElementById("cursor");
@@ -107,6 +113,18 @@
 
       document.addEventListener("DOMContentLoaded", type);
     </script>
-
+    <script>
+      // Copy code button script
+      function copyCode(btn) {
+        const code = btn.parentElement.querySelector('code');
+        if (code) {
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.title = "Copied!";
+            setTimeout(() => btn.title = "Copy code", 1200);
+          });
+        }
+      }
+    </script>
   </body>
 </html>

