@@ -1,6 +1,8 @@
 const NUM_LEAVES = 25;
 const leaves = [];
 
+const leafContainer = document.getElementById('leaf-container');
+
 for (let i = 0; i < NUM_LEAVES; i++) {
   const leaf = document.createElement('div');
   leaf.className = 'leaf';
@@ -16,7 +18,7 @@ for (let i = 0; i < NUM_LEAVES; i++) {
   const spinSpeed = 0.5 + Math.random();
   const phase = Math.random() * 2 * Math.PI;
 
-  document.body.appendChild(leaf);
+  leafContainer.appendChild(leaf);
 
   leaves.push({
     el: leaf,
