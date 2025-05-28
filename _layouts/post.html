@@ -2,8 +2,31 @@
 layout: default
 ---
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
-  <p><small>{{ page.date | date: "%B %d, %Y" }}</small></p>
-  {{ content }}
+<article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+  <header class="mb-4 border-b border-green-500 pb-3">
+    <h1 class="text-3xl font-bold text-green-400">{{ page.title }}</h1>
+    <p class="text-sm text-green-300">
+      {{ page.date | date: "%B %-d, %Y" }} &mdash; 
+      Categories: 
+      {% for category in page.categories %}
+        <a href="/categories/{{ category }}" class="text-green-300 hover:text-green-500">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
+      {% endfor %}
+    </p>
+    {% if page.tags %}
+      <p class="mt-1 text-sm text-green-300">
+        Tags: 
+        {% for tag in page.tags %}
+          <a href="/tags/{{ tag }}" class="text-green-300 hover:text-green-500">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
+  </header>
+
+  <section class="post-content prose prose-invert max-w-none">
+    {{ content }}
+  </section>
+
+  <footer class="mt-8 text-sm text-green-400">
+    <a href="/posts" class="hover:text-green-600">← Back to blog</a>
+  </footer>
 </article>

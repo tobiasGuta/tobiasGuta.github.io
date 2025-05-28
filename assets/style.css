@@ -4,8 +4,8 @@ html, body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: #041820;
-  color: #f1f5f9;
+  background-color: #0a0a0a; /* near black */
+  color: #e6e6e6;           /* soft white */
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url('/static/mickeycursormedium.png') 16 16, auto;
 }
@@ -22,13 +22,36 @@ main.container {
 
 footer {
   flex-shrink: 0;
-  background-color: #011018;
-  border-top: 1px solid #4ade80;
+  background-color: #111111;
+  border-top: 1px solid #555555;
   font-size: 0.9rem;
   padding: 1rem 0;
 }
 
-/* === Profile Pic with Glitch Animation === */
+
+/* === Homepage Background Styles === */
+body.homepage {
+  background: url('/assets/Share.png') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  color: #f1f5f9; /* white text */
+  min-height: 100vh;
+}
+
+body.homepage::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+body.homepage > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === Profile Pic with Subtle Glow === */
 .profile-pic {
   position: relative;
   width: 128px;
@@ -36,10 +59,10 @@ footer {
   border-radius: 50%;
   overflow: hidden;
   display: inline-block;
-  border: 3px solid #4ade80;
-  box-shadow: 0 0 12px #4ade80, 0 0 20px;
-  animation: glitchPulse 2s infinite alternate;
-  filter: drop-shadow(0 0 3px #4ade80);
+  border: 3px solid #888888;
+  box-shadow: 0 0 10px #888888, 0 0 15px;
+  animation: subtleGlow 2s infinite alternate;
+  filter: drop-shadow(0 0 3px #888888);
 }
 
 .profile-pic img {
@@ -49,19 +72,19 @@ footer {
   transform: translateX(4px);
 }
 
-@keyframes glitchPulse {
+@keyframes subtleGlow {
   0% {
-    box-shadow: 0 0 12px #4ade80, 0 0 20px;
+    box-shadow: 0 0 10px #888888, 0 0 15px;
     transform: scale(1);
     filter: hue-rotate(0deg);
   }
   50% {
-    box-shadow: 0 0 25px #4ade80, 0 0 35px;
+    box-shadow: 0 0 18px #bbb, 0 0 25px;
     transform: scale(1.07);
-    filter: hue-rotate(20deg);
+    filter: hue-rotate(0deg);
   }
   100% {
-    box-shadow: 0 0 12px #4ade80, 0 0 20px;
+    box-shadow: 0 0 10px #888888, 0 0 15px;
     transform: scale(1);
     filter: hue-rotate(0deg);
   }
@@ -70,7 +93,7 @@ footer {
 /* === Typing Text + Cursor Blink === */
 .typing-text {
   font-family: monospace;
-  color: #4ade80;
+  color: #e6e6e6;
   font-size: 1.1rem;
   max-width: 700px;
   margin: 0 auto;
@@ -84,7 +107,7 @@ footer {
   display: inline;
   margin-left: 1px;
   animation: blink 1s infinite;
-  color: #4ade80;
+  color: #e6e6e6;
 }
 
 @keyframes blink {
@@ -92,64 +115,137 @@ footer {
   50% { opacity: 0; }
 }
 
-.navbar-custom .nav-item {
-  margin: 0 0.25rem;
+/* === Navbar Styles === */
+
+/* Navbar base */
+.navbar-custom {
+  background-color: #121212;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Consolas', 'Courier New', monospace;
 }
 
+/* Nav links */
 .navbar-custom .nav-link {
-  padding: 0.5rem 0.75rem;
-  display: inline-block;
+  color: #ddd;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: color 0.25s ease, transform 0.2s ease;
+  position: relative;
+}
+
+/* Hover effect */
+.navbar-custom .nav-link:hover {
+  color: #fff !important;
+  transform: translateY(-3px);
+  text-shadow: 0 0 8px #bbb;
+}
+
+/* Active link */
+.navbar-custom .nav-link.active {
+  color: #fff !important;
+  text-shadow: none;
+  transform: none;
+  z-index: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  /* Navbar toggler styles */
+  .navbar-toggler {
+    border: none;
+    color: #4ade80;
+    font-size: 1.3rem;
+  }
+
+  .navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Collapse menu background */
+  .navbar-collapse {
+    background-color: #121212;
+    padding: 1rem 0;
+  }
+
+  /* Center nav items on mobile */
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* === Post Cards === */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.post-card {
+  background: #121212; /* deep black */
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  color: #ddd;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px #222;
   position: relative;
   overflow: hidden;
-  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: default; /* no pointer */
+  font-family: 'Consolas', 'Courier New', monospace;
+  transition: none; /* no animation */
+}
+
+.post-card:hover {
   transform: none;
-  color: #f1f5f9;
-  font-weight: 500;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px #222;
+  z-index: auto;
+  cursor: default;
 }
 
-.navbar-custom .nav-link:hover {
-  color: #4ade80 !important;
-  transform: translateY(-2px);
-  text-shadow: 0 0 8px #4ade80aa;
+.post-title {
+  color: #f9f9f9;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+  transition: none; /* no color changes */
 }
 
-/* Active link styles */
-.navbar-custom .nav-link.active {
-  color: #4ade80 !important;
-  transform: none;           /* no bounce on active */
-  text-shadow: none;         /* no glow on active */
-  border-bottom: 2px solid #22c55e; /* subtle static underline */
-  z-index: 1; /* keep it above pseudo-elements */
+.post-title:hover {
+  color: #f9f9f9;
+  text-shadow: none;
 }
 
-/* Pulsing underline animation */
-.nav-link-pulse::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #4ade80, #22c55e);
-  box-shadow: 0 0 6px #4ade80aa;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease-in-out, opacity 0.3s ease;
-  border-radius: 2px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 1;
+.post-date {
+  display: block;
+  margin: 0.35rem 0 1.1rem;
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
 }
 
-/* Animate on hover */
-.nav-link-pulse:hover::after {
-  transform: scaleX(1);
-  opacity: 1;
+.post-excerpt {
+  font-size: 1.05rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Hide animated underline on active */
-.navbar-custom .nav-link.active::after {
-  opacity: 0 !important;
-  transform: scaleX(0) !important;
-  pointer-events: none;
+.read-more {
+  display: none; /* gone */
 }
