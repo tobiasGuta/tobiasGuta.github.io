@@ -282,7 +282,6 @@ body.homepage > * {
   margin-bottom: 1rem;
   font-weight: 700;
   color: gold;
-  background: linear-gradient(to right, #111, #1a1a1a);
 }
 
 /* Paragraphs */
