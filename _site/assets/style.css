@@ -262,6 +262,16 @@ body.homepage > * {
   overflow-wrap: break-word;
 }
 
+.post-content img {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto; /* center and vertical spacing */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15); /* optional subtle glow */
+}
+
 /* Headings */
 .post-content h2,
 .post-content h3,
@@ -323,8 +333,42 @@ body.homepage > * {
   background-color: #161616;
 }
 
+/* ========== Responsive Tweaks ========== */
 
-/* ...Single Blog Post... */
+/* Tablets & small desktops (up to 992px wide) */
+@media (max-width: 992px) {
+  .post-content {
+    padding: 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  .post-content pre {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile phones & very small devices (up to 576px wide) */
+@media (max-width: 576px) {
+  .post-content {
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+  .post-content pre {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+  .post-content h2,
+  .post-content h3,
+  .post-content h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+  }
+}
+
+
+/* ...Single title Blog Post... */
 
 .post-page h1 {
   color: #FFD700 !important;
