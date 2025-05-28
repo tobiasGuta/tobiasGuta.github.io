@@ -1,0 +1,61 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body vibe */
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #121212;
+  color: #e0e0e0;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  line-height: 1.6;
+}
+
+/* Links that pop */
+a {
+  color: #4FD1C5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #38B2AC;
+}
+
+/* Nav bar */
+nav {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+nav a {
+  margin-right: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main content */
+main {
+  background-color: #1E1E1E;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #0f766e99;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #4FD1C5;
+  margin-bottom: 1rem;
+}
+
+/* Posts */
+.post {
+  border-bottom: 1px solid #333;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
