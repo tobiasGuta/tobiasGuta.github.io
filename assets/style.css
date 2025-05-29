@@ -534,3 +534,29 @@ body.homepage > * {
   z-index: 9999; /* make sure leaves float above content */
 }
 
+/* feed icon */
+.rss-feed-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5em;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+  background: transparent;
+  border: 2px solid transparent;
+  vertical-align: middle;
+}
+.rss-feed-icon svg {
+  fill: #FFD700;
+  transition: fill 0.2s;
+}
+.rss-feed-icon:hover {
+  background: #222;
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 8px #FFD70055;
+}
+.rss-feed-icon:hover svg {
+  fill: #fff;
+}
