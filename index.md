@@ -8,13 +8,16 @@ title: Home
   <!-- Profile Image -->
   <div class="profile-pic mx-auto mb-4 animated-border">
     <div class="border-circle">
-      <img src="/assets/profile.png" alt="Profile" />
+      <img src="/assets/profile.png" alt="Profile" class="main-pic" />
+      <img src="/assets/skeleton.jpg" alt="Glitch Profile" class="glitch-pic" />
     </div>
   </div>
 
   <!-- Glitch Heading -->
-  <h1 class="glitch display-4 fw-bold mb-4" data-text="Hey, I'm Tobias Are">
+  <h1 class="glitch" data-text="Hey, I'm Tobias Are">
+    <span aria-hidden="true">Hey, I'm Tobias Are</span>
     Hey, I'm Tobias Are
+    <span aria-hidden="true">Hey, I'm Tobias Are</span>
   </h1>
 
   <!-- Typing Bio Section -->
@@ -24,19 +27,4 @@ title: Home
 
 </div>
 
-<script>
-  const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
-  const typedText = document.getElementById("typed-text");
-  const cursor = document.getElementById("cursor");
-  let i = 0;
 
-  function type() {
-    if (i < text.length) {
-      typedText.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, 25);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", type);
-</script>

@@ -21,6 +21,76 @@ main.container {
   flex-grow: 1; /* THIS pushes footer down */
 }
 
+/* Ninja Vanish Glitch: Pure Black & White Style */
+.glitch {
+  margin-top: 25px; /* Adjust as needed */
+  position: relative;
+  color: #fff;
+  font-family: 'Consolas', 'monospace', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: ninja-glitch-main 3s infinite steps(1, end);
+  filter: blur(0.3px);
+  opacity: 0.95;
+}
+
+.glitch span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: difference;
+}
+
+.glitch span:first-child {
+  left: 1px;
+  color: #000;
+  text-shadow: 1px 0 #fff;
+  animation: ninja-glitch-left 3s infinite steps(1, end);
+}
+
+.glitch span:last-child {
+  left: -1px;
+  color: #fff;
+  text-shadow: -1px 0 #000;
+  animation: ninja-glitch-right 3s infinite steps(1, end);
+}
+
+/* Main glitch flicker (ninja-style vanish rhythm) */
+@keyframes ninja-glitch-main {
+  0%, 6%, 100% { opacity: 1; filter: blur(0.3px); }
+  8%, 10%     { opacity: 0; filter: blur(4px); }
+  14%, 16%    { opacity: 0.4; filter: blur(2px); }
+  20%, 22%    { opacity: 0; filter: blur(3px); }
+  28%, 30%    { opacity: 1; filter: blur(0px); }
+  35%, 36%    { opacity: 0.2; filter: blur(2px); }
+  50%, 52%    { opacity: 1; filter: blur(0.3px); }
+  70%, 72%    { opacity: 0; filter: blur(4px); }
+  90%, 95%    { opacity: 1; filter: blur(0.3px); }
+}
+
+/* Left clone glitch flicker */
+@keyframes ninja-glitch-left {
+  0%, 100%    { opacity: 0.6; filter: blur(0.5px); }
+  10%, 12%    { opacity: 0; filter: blur(3px); }
+  18%, 20%    { opacity: 0.3; filter: blur(1.5px); }
+  30%, 32%    { opacity: 0; filter: blur(3px); }
+  50%, 52%    { opacity: 0.6; filter: blur(0.5px); }
+  60%, 61%    { opacity: 0.1; filter: blur(2px); }
+}
+
+/* Right clone glitch flicker */
+@keyframes ninja-glitch-right {
+  0%, 100%    { opacity: 0.6; filter: blur(0.5px); }
+  8%, 9%      { opacity: 0; filter: blur(3px); }
+  16%, 18%    { opacity: 0.3; filter: blur(1.5px); }
+  22%, 24%    { opacity: 0; filter: blur(3px); }
+  40%, 42%    { opacity: 0.1; filter: blur(2px); }
+  55%, 57%    { opacity: 0.6; filter: blur(0.5px); }
+}
+
 
 /* === Homepage Background Styles === */
 body.homepage {
@@ -44,7 +114,6 @@ body.homepage > * {
   z-index: 1;
 }
 
-/* === Profile Pic with Subtle Glow === */
 .profile-pic {
   position: relative;
   width: 128px;
@@ -58,11 +127,32 @@ body.homepage > * {
   filter: drop-shadow(0 0 3px #888888);
 }
 
-.profile-pic img {
+.border-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.border-circle img {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: translateX(4px);
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+  transform: translateX(4px); /* 👈 Shift to the right */
+}
+
+.main-pic {
+  z-index: 1;
+  opacity: 1;
+}
+
+.glitch-pic {
+  z-index: 2;
+  opacity: 0;
 }
 
 @keyframes subtleGlow {
@@ -83,24 +173,35 @@ body.homepage > * {
   }
 }
 
+
 /* === Typing Text + Cursor Blink === */
 .typing-text {
-  font-family: monospace;
-  color: #e6e6e6;
-  font-size: 1.1rem;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  color: white;
+  font-size: 1.22rem;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 3.5rem auto 0 auto;
+  text-align: center;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  letter-spacing: 0.03em;
 }
 
-#typed-text {
-  display: inline;
+.typing-text {
+  font-size: 1.18rem;
 }
 
 #cursor {
   display: inline;
-  margin-left: 1px;
+  margin-left: 2px;
   animation: blink 1s infinite;
-  color: #e6e6e6;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.15em;
+  text-shadow: 0 0 6px #FFD700;
 }
 
 @keyframes blink {

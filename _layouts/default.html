@@ -98,6 +98,27 @@
     {% if page.url == '/' %}
       <script src="/assets/js/leaves.js"></script>
     {% endif %}
+
+    {% if page.url == '/' %}
+<script>
+  setInterval(() => {
+    if (Math.random() < 0.1) {
+      const glitch = document.querySelector('.glitch-pic');
+      const main = document.querySelector('.main-pic');
+
+      if (glitch && main) {
+        glitch.style.opacity = 1;
+        main.style.opacity = 0;
+
+        setTimeout(() => {
+          glitch.style.opacity = 0;
+          main.style.opacity = 1;
+        }, 200);
+      }
+    }
+  }, 2000);
+</script>
+{% endif %}
     
   </body>
 </html>
