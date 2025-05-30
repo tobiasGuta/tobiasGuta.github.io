@@ -602,6 +602,29 @@ body.homepage > * {
   }
 }
 
+@media (orientation: landscape) and (max-width: 1024px) {
+  .zoomable-img.zoomed {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 96vw !important;
+    max-height: 55vh !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: 0 0 40px 8px #000a;
+    cursor: zoom-out;
+    z-index: 9999;
+    background: none;
+    border-radius: 10px;
+    display: block;
+    margin: 0;
+    transition:
+      transform 0.4s cubic-bezier(.2,1,.22,1),
+      box-shadow 0.4s cubic-bezier(.2,1,.22,1);
+  }
+}
+
 body.zoom-active::before {
   content: "";
   position: fixed;
