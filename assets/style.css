@@ -560,3 +560,29 @@ body.homepage > * {
 .rss-feed-icon:hover svg {
   fill: #fff;
 }
+
+/* Image zoom*/
+
+.zoomable-img {
+  transition: transform 0.35s cubic-bezier(.2,1,.22,1), box-shadow 0.35s;
+  cursor: zoom-in;
+  z-index: 10;
+}
+
+.zoomable-img.zoomed {
+  transform: scale(2.1) translateY(-10px);
+  box-shadow: 0 0 40px 8px #000a;
+  cursor: zoom-out;
+  z-index: 9999;
+  position: relative;
+}
+
+body.zoom-active::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 9998;
+  pointer-events: none;
+  transition: background 0.40s;
+}
