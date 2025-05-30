@@ -624,3 +624,19 @@ body.zoom-active::before {
   pointer-events: none;
   transition: background 0.40s;
 }
+
+/* Make collapsed navbar background transparent */
+.navbar-collapse {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Or use a custom color (example: dark semi-transparent) */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: rgba(20, 20, 20, 0.3) !important; /* 0.3 = 30% opaque, 70% transparent */
+    border-radius: 12px;
+    margin: 0.5em;
+    box-shadow: 0 4px 24px #0003;
+  }
+}
