@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-30T16:15:54-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Logic Flaw Authentication</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/29/intro.html" rel="alternate" type="text/html" title="Logic Flaw Authentication" /><published>2025-05-29T00:00:00-04:00</published><updated>2025-05-29T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/29/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/29/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*u1J7s9AdH1lj5KFe" alt="wallpaper" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-30T18:01:17-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Logic Flaw Authentication</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/29/intro.html" rel="alternate" type="text/html" title="Logic Flaw Authentication" /><published>2025-05-29T00:00:00-04:00</published><updated>2025-05-29T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/29/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/29/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*u1J7s9AdH1lj5KFe" alt="wallpaper" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="the-password-reset-token-leak">The Password Reset Token Leak</h2>
 
@@ -98,7 +98,8 @@ Enter your email:</p>
 
 <p>This is a classic example of how insecure password reset mechanisms can be abused to escalate privileges. Always check how tokens are generated and validated. Weak flows like this can be your golden ticket.</p>
 
-<h2 id="jwt-vulnerability-bypassing-role-based-access">JWT Vulnerability: Bypassing Role-Based Access</h2>
+<h1 id="jwt-vulnerability-bypassing-role-based-access">JWT Vulnerability: Bypassing Role-Based Access</h1>
+<hr />
 
 <p>In this example, we’re dealing with a login interface that looks pretty normal on the surface but has a nasty misconfig behind the scenes.</p>
 
@@ -196,7 +197,69 @@ You are not an admin.
 
 <h3 id="why-this-matters">Why This Matters</h3>
 
-<p>This is a <strong>real-world vulnerability</strong>. A lot of devs incorrectly implement JWTs and allow <code class="language-plaintext highlighter-rouge">alg: none</code>, thinking the payload is safe. But if you don’t validate the signature, you’re literally letting anyone forge roles, identities full takeover.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*1qYApM8pnZUqDjWT" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>This is a <strong>real-world vulnerability</strong>. A lot of devs incorrectly implement JWTs and allow <code class="language-plaintext highlighter-rouge">alg: none</code>, thinking the payload is safe. But if you don’t validate the signature, you’re literally letting anyone forge roles, identities full takeover.</p>
+
+<h1 id="bypassing-2fa-how-i-sneaked-past-otp-with-a-simple-bug">Bypassing 2FA: How I Sneaked Past OTP with a Simple Bug</h1>
+
+<p>Alright, so imagine this: we already cracked the admin password classic <code class="language-plaintext highlighter-rouge">admin:adminpass</code>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*HwUdnPXEPW-_bxHCdXidVA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>But boom! There’s a 2FA in place, and it’s asking for an OTP code. For this demo, I simplified it to a 3-digit OTP just to keep things chill. I’m running a Python debug script that simulates the OTP being sent to the admin’s email, so I can spy on the code before it hits their inbox.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:592/format:webp/1*w_ro61zOgMbORiaL6yI4xA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Next up, the login page asks for the OTP and gives you an option: “Remember this device,” so next time, no OTP hassle.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Jh3JHVEJhQ14gCUI2PnulA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Now, after some failed OTP tries, it says:</p>
+
+<blockquote>
+  <p><em>Too many OTP attempts. Try again in 60 seconds.</em></p>
+</blockquote>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:580/format:webp/1*4yi2-LvuS57rgIEgml0tdQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*gFQnUcTaObZnnwPWZWTloA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Classic rate limiting. But let’s peek <strong>under the hood</strong> using Burp Suite to see what’s really going on with the requests.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*SI2corcFafrlQTjdat0KQg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Notice the parameter:
+<code class="language-plaintext highlighter-rouge">remember_device=on</code>
+This tells the server to remember your device and skip OTP in the future.</p>
+
+<p>Here’s the trick: what if we send the param but empty? Like:
+<code class="language-plaintext highlighter-rouge">remember_device=</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5yfbJfSb4kBcy2sXXGRozA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>When I do that, no more rate limiting. The server isn’t blocking attempts anymore.</p>
+
+<p>On the debug side, the OTP code is logged like this:
+<code class="language-plaintext highlighter-rouge">[DEBUG] OTP for admin: 382</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DQHX-P2rOIJZIcJUhnr5Xg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Since it’s only 3 digits, I scripted a quick brute force from <code class="language-plaintext highlighter-rouge">300</code> to <code class="language-plaintext highlighter-rouge">400</code> keeping it tight to avoid long waits.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ECdU6AugWZTFZMeN8mc0Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ThZXqJ_0WFZS1AI5mUFXFw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>With this, I eventually hit the right OTP: <code class="language-plaintext highlighter-rouge">382</code>. After the correct OTP, the session key updates, and now I’m fully logged in.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3Y-w2el4BZWa-lHAQ1Jzbg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h3 id="why-this-matters-1">Why this matters:</h3>
+
+<ul>
+  <li><strong>Rate limiting bypass</strong>: The bug with <code class="language-plaintext highlighter-rouge">remember_device</code> lets us spam OTP attempts without waiting.</li>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*1qYApM8pnZUqDjWT" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="why-this-is-important">Why This Is Important</h2>
 

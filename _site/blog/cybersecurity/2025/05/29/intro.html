@@ -223,7 +223,8 @@ Enter your email:</p>
 
 <p>This is a classic example of how insecure password reset mechanisms can be abused to escalate privileges. Always check how tokens are generated and validated. Weak flows like this can be your golden ticket.</p>
 
-<h2 id="jwt-vulnerability-bypassing-role-based-access">JWT Vulnerability: Bypassing Role-Based Access</h2>
+<h1 id="jwt-vulnerability-bypassing-role-based-access">JWT Vulnerability: Bypassing Role-Based Access</h1>
+<hr />
 
 <p>In this example, we’re dealing with a login interface that looks pretty normal on the surface but has a nasty misconfig behind the scenes.</p>
 
@@ -322,6 +323,68 @@ You are not an admin.
 <h3 id="why-this-matters">Why This Matters</h3>
 
 <p>This is a <strong>real-world vulnerability</strong>. A lot of devs incorrectly implement JWTs and allow <code class="language-plaintext highlighter-rouge">alg: none</code>, thinking the payload is safe. But if you don’t validate the signature, you’re literally letting anyone forge roles, identities full takeover.</p>
+
+<h1 id="bypassing-2fa-how-i-sneaked-past-otp-with-a-simple-bug">Bypassing 2FA: How I Sneaked Past OTP with a Simple Bug</h1>
+
+<p>Alright, so imagine this: we already cracked the admin password classic <code class="language-plaintext highlighter-rouge">admin:adminpass</code>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*HwUdnPXEPW-_bxHCdXidVA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>But boom! There’s a 2FA in place, and it’s asking for an OTP code. For this demo, I simplified it to a 3-digit OTP just to keep things chill. I’m running a Python debug script that simulates the OTP being sent to the admin’s email, so I can spy on the code before it hits their inbox.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:592/format:webp/1*w_ro61zOgMbORiaL6yI4xA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Next up, the login page asks for the OTP and gives you an option: “Remember this device,” so next time, no OTP hassle.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Jh3JHVEJhQ14gCUI2PnulA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Now, after some failed OTP tries, it says:</p>
+
+<blockquote>
+  <p><em>Too many OTP attempts. Try again in 60 seconds.</em></p>
+</blockquote>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:580/format:webp/1*4yi2-LvuS57rgIEgml0tdQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*gFQnUcTaObZnnwPWZWTloA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Classic rate limiting. But let’s peek <strong>under the hood</strong> using Burp Suite to see what’s really going on with the requests.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*SI2corcFafrlQTjdat0KQg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Notice the parameter:
+<code class="language-plaintext highlighter-rouge">remember_device=on</code>
+This tells the server to remember your device and skip OTP in the future.</p>
+
+<p>Here’s the trick: what if we send the param but empty? Like:
+<code class="language-plaintext highlighter-rouge">remember_device=</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*5yfbJfSb4kBcy2sXXGRozA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>When I do that, no more rate limiting. The server isn’t blocking attempts anymore.</p>
+
+<p>On the debug side, the OTP code is logged like this:
+<code class="language-plaintext highlighter-rouge">[DEBUG] OTP for admin: 382</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DQHX-P2rOIJZIcJUhnr5Xg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>Since it’s only 3 digits, I scripted a quick brute force from <code class="language-plaintext highlighter-rouge">300</code> to <code class="language-plaintext highlighter-rouge">400</code> keeping it tight to avoid long waits.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ECdU6AugWZTFZMeN8mc0Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ThZXqJ_0WFZS1AI5mUFXFw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<p>With this, I eventually hit the right OTP: <code class="language-plaintext highlighter-rouge">382</code>. After the correct OTP, the session key updates, and now I’m fully logged in.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3Y-w2el4BZWa-lHAQ1Jzbg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: 720px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h3 id="why-this-matters-1">Why this matters:</h3>
+
+<ul>
+  <li><strong>Rate limiting bypass</strong>: The bug with <code class="language-plaintext highlighter-rouge">remember_device</code> lets us spam OTP attempts without waiting.</li>
+</ul>
 
     </section>
 
