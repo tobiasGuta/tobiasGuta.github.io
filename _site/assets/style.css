@@ -8,13 +8,6 @@ html, body {
   background-color: #0a0a0a;
   color: #e6e6e6;
   transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: url('/static/mickeycursormedium.png') 16 16, auto;
-}
-
-a:hover,
-button:hover,
-.clickable {
-  cursor: url('/static/mickeymousepointermedium.png') 16 16, pointer;
 }
 
 main.container {
@@ -770,6 +763,8 @@ body.zoom-active::before {
 .code-block-container code {
   color: #FFD700 !important;   /* gold text */
   background: none !important; /* transparent background for code */
+  padding-top: 3.5rem; 
+  
 }
 
 .terminal-prompt {

