@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T16:37:47-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="https://www.vaadata.com/blog/wp-content/uploads/2025/03/active-directory-security.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T16:59:38-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="https://www.vaadata.com/blog/wp-content/uploads/2025/03/active-directory-security.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
@@ -565,14 +565,14 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p>Thanks for reading</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Breaking Boundaries with IDOR</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/idor.html" rel="alternate" type="text/html" title="Breaking Boundaries with IDOR" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/idor</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/idor.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*9aCiK1gtvafOl9y-" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
-<h2 id="hey-folks">Hey folks!</h2>
+<h3 id="hey-folks">Hey folks!</h3>
 <p>If you’re just dipping your toes into web security or bug bounties, <strong>IDOR</strong> is one of those bugs you <em>definitely</em> wanna keep an eye out for. It’s simple, it’s sneaky, and best of all it <em>pops up everywhere</em>. Let’s break it down like we’re chilling in a dorm room, whiteboarding bug bounty tactics over some cold coffee.</p>
 
 <hr />
 
 <h2 id="what-is-idor">What is IDOR?</h2>
 
-<p><strong>IDOR</strong> stands for <strong>Insecure Direct Object Reference</strong>.</p>
+<h4 id="idor-stands-for-insecure-direct-object-reference"><strong>IDOR</strong> stands for <strong>Insecure Direct Object Reference</strong>.</h4>
 
 <p>In plain English, it’s when a web app exposes a way for users to <strong>access data they shouldn’t</strong> just by tweaking something like a URL parameter, form data, or an API request.</p>
 
@@ -580,7 +580,7 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
   <p>Basically: the app “trusts” the user a little too much.</p>
 </blockquote>
 
-<h3 id="now-what-about-encoded-ids">Now, what about <strong>Encoded IDs?</strong></h3>
+<h4 id="now-what-about-encoded-ids">Now, what about <strong>Encoded IDs?</strong></h4>
 
 <p>People often try to “hide” or “protect” those IDs by encoding them. Common ways:</p>
 
@@ -640,9 +640,66 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <hr />
 
-<h3 id="why-is-this-bad">Why is this bad?</h3>
+<h4 id="why-is-this-bad">Why is this bad?</h4>
 
-<p>Because the app blindly trusts the client-provided encoded ID, anyone can tamper with it and impersonate other users no authentication needed. Classic insecure access control.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Blame Game (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html" rel="alternate" type="text/html" title="Blame Game (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*p0U9Ynq6xoerzcrMvSEvFw.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>Because the app blindly trusts the client-provided encoded ID, anyone can tamper with it and impersonate other users no authentication needed. Classic insecure access control.</p>
+
+<h1 id="whats-the-deal-with-hashed-ids-and-idor">What’s the deal with Hashed IDs and IDOR?</h1>
+
+<p>Apps try to level up their game by <strong>hashing IDs</strong> instead of sending raw, sequential IDs in URLs or API requests. The idea? Make it harder for attackers to guess or manipulate those IDs and access unauthorized data.</p>
+
+<p>But here’s the catch <strong>hashing alone ain’t security.</strong> If the backend doesn’t check user permissions or if the hashing method is weak or reversible, IDOR still slaps hard.</p>
+
+<h4 id="why-hashed-ids-can-still-be-broken-and-abused">Why hashed IDs can still be broken and abused:</h4>
+
+<ol>
+  <li>
+    <p><strong>Deterministic Hashing:</strong>
+Most hashes (MD5, SHA1, SHA256) are deterministic. Same input = same output. If you know or guess the input space (like user IDs from 1 to 10,000), you can generate a full rainbow table or brute force hashes offline.</p>
+  </li>
+  <li>
+    <p><strong>No Salting or Secret Keys:</strong>
+If the hash is just <code class="language-plaintext highlighter-rouge">hash(ID)</code> with no salt or secret, it’s an open invitation for brute force. Attackers can precompute hashes and reverse map.</p>
+  </li>
+  <li>
+    <p><strong>Lack of Backend Authorization:</strong>
+Even if the hash is strong, if the server just decodes the hash and fetches the object without verifying <em>who</em> owns it or if the requester has rights, boom IDOR.</p>
+  </li>
+  <li>
+    <p><strong>Weak Hash Algorithms:</strong>
+MD5 and SHA1 are outdated and cracked. Using these for hashing IDs is like locking your door with a plastic key.</p>
+  </li>
+</ol>
+
+<h4 id="breaking-down-an-idor-vulnerability-using-md5-hashes">Breaking Down an IDOR Vulnerability Using MD5 Hashes</h4>
+
+<p>In this scenario, we’ve got an <strong>IDOR (Insecure Direct Object Reference)</strong> vulnerability that’s relying on an MD5 hash as an identifier.</p>
+
+<p>Here’s the URL pattern we’re looking at:</p>
+
+<p><code class="language-plaintext highlighter-rouge">/profile/202cb962ac59075b964b07152d234b70</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*WTgH86wT2tPv5hUUFWjFww.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This is an MD5 hash. If we crack it using something like <a href="https://crackstation.net">CrackStation</a>, it reveals the original value:</p>
+
+<p><code class="language-plaintext highlighter-rouge">123</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*A1vbrri-0wHjjsI5nAeQZg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Now, if we generate the MD5 hash for the value <code class="language-plaintext highlighter-rouge">1</code>, we get:</p>
+
+<p><code class="language-plaintext highlighter-rouge">c4ca4238a0b923820dcc509a6f75849b</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*L57KCP_43Pd6AD_ZErczbA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>If we substitute that hash into the URL:</p>
+
+<p><code class="language-plaintext highlighter-rouge">/profile/c4ca4238a0b923820dcc509a6f75849b</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DP_ulUgtDrvnPRztn4x6kw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>we gain access to an admin profile!</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Blame Game (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html" rel="alternate" type="text/html" title="Blame Game (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*p0U9Ynq6xoerzcrMvSEvFw.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="description">Description</h2>
 
