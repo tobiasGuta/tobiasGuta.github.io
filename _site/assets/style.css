@@ -127,16 +127,6 @@ body.homepage > * {
   filter: drop-shadow(0 0 3px #888888);
 }
 
-
-.profile-pic img {
-  filter: grayscale(0.7);
-  transition: filter 0.2s;
-}
-
-.profile-pic img:hover {
-  filter: grayscale(0);
-}
-
 .border-circle {
   position: relative;
   width: 100%;
