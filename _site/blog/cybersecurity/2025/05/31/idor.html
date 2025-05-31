@@ -269,6 +269,65 @@ MD5 and SHA1 are outdated and cracked. Using these for hashing IDs is like locki
 
 <p>we gain access to an admin profile!</p>
 
+<h2 id="cracking-idor-with-unpredictable-ids-a-tale-of-two-accounts">Cracking IDOR with Unpredictable IDs A Tale of Two Accounts</h2>
+
+<p>So picture this: I’m chilling in my dorm, knocking out some bug bounty recon between classes and ramen breaks. I’m poking around this web app nothing too crazy when I notice that the resource URLs use these <em>wild</em>, unpredictable ID strings. I’m talking UUIDs like <code class="language-plaintext highlighter-rouge">95a1c0f4-d3ff-11ed-afa1-0242ac120002</code> instead of classic <code class="language-plaintext highlighter-rouge">?id=123</code>.</p>
+
+<p>At first glance? Looked locked down. Couldn’t enumerate. Brute-forcing? Dead on arrival.</p>
+
+<p>But here’s where it gets spicy.</p>
+
+<hr />
+
+<h4 id="create-two-accounts">Create Two Accounts</h4>
+
+<p>Let’s say we’re testing a web app where each user has a unique UUID assigned to their profile or data page. We set up <strong>two accounts</strong>:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">StudentA</code> our real account</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">StudentB</code> a test dummy</p>
+  </li>
+</ul>
+
+<p>When we visit each profile’s “view” page, the URL looks like this:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Oc_jMR-1gsOIFAfaAAJCEA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>StudentA:</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">/view/f2ffe812-4c39-4fb8-bda9-fca481a077d4</code></p>
+
+<p><strong>StudentB:</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">/view/2013bc6e-93b7-43a7-8ca3-27e18fedae7f</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*O-FinvzrIuYZYpZZ830rJA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Now here’s the test:</p>
+
+<p>While logged in as <code class="language-plaintext highlighter-rouge">StudentA</code>, we manually change the URL to:</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">/view/2013bc6e-93b7-43a7-8ca3-27e18fedae7f</code></p>
+</blockquote>
+
+<p>we can now access <strong>StudentB’s content</strong>, even though it’s a different account.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aTO8BnaL4QySDxEKDYUaig.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CrlUUVyISaaMoeQv1pnWdA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h3 id="why-this-is-bad">Why This Is Bad</h3>
+
+<p>This is a classic <strong>IDOR (Insecure Direct Object Reference)</strong> vuln. Even though the IDs are UUIDs (long, random, hard to guess), the backend <strong>doesn’t check</strong> if <code class="language-plaintext highlighter-rouge">StudentA</code> actually owns or has permission to view that UUID.</p>
+
+<p>The server sees a valid ID, retrieves the data, and serves it <strong>no access control check</strong>.</p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
