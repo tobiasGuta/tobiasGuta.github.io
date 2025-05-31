@@ -1,4 +1,488 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T14:33:18-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DSmBoEWa8L36cCY8PEBX4g.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-31T14:41:30-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="https://www.vaadata.com/blog/wp-content/uploads/2025/03/active-directory-security.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<p><strong>What is Active Directory?</strong>
+Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
+
+<hr />
+
+<p><strong>How does it work?</strong>
+AD uses something called a <strong>domain</strong>, which is basically a group of users and devices under one roof. The main controller of the domain is the <strong>Domain Controller (DC)</strong> it’s the brain that verifies users when they log in and gives out permissions like “yeah, you can access this file” or “nah, you’re blocked.”</p>
+
+<hr />
+
+<p><strong>Why is it important?</strong>
+In big organizations, you can’t manually manage thousands of users or computers. Active Directory automates this. Admins can set rules (called <strong>Group Policies</strong>) that apply to entire groups of users. So you could, for example, block access to USB drives for all interns with just a few clicks.</p>
+
+<hr />
+
+<p><strong>What’s stored in it?</strong>
+Everything in AD is an <strong>object</strong> users, computers, printers, groups all are objects. Each object has attributes like names, emails, passwords, etc. These are organized in a hierarchy like folders inside folders, called the <strong>Directory Information Tree</strong>.</p>
+
+<hr />
+
+<p><strong>Security side of it</strong>
+AD also handles <strong>authentication</strong> (proving you are who you say you are) and <strong>authorization</strong> (deciding what you’re allowed to do). It uses protocols like <strong>Kerberos</strong> and <strong>LDAP</strong> to do that. Hackers love targeting AD because if you pop the Domain Controller, you basically own the whole network.</p>
+
+<h3 id="-users">🧑‍💻 Users</h3>
+
+<p>In Active Directory, users are basically individual accounts that represent people or services. If you’re an employee at a company, you’d have a user account to log into the network, access your email, shared drives, printers, etc.</p>
+
+<p>Now here’s the catch users aren’t just for humans. Some <strong>services</strong> like a web server (IIS) or a database (MSSQL) also need user accounts to run. These are special “service users” that only have permissions to do one specific job, like serving web pages or handling database queries. They aren’t logging in like us, they’re just quietly doing their thing in the background.</p>
+
+<p>Also, users are called <strong>security principals</strong> that means they can be authenticated (checked if they’re legit) and authorized (given permissions) by the domain.</p>
+
+<hr />
+
+<h3 id="-machines">💻 Machines</h3>
+
+<p>Yup, even computers get their own accounts in AD. When a PC or server joins the domain, AD creates a machine account for it. These machine accounts are also security principals, just like user accounts, and they have their own passwords (that are like 100+ characters and auto-change over time).</p>
+
+<p>Machine accounts usually aren’t touched by humans. They’re used internally by the OS so the domain can trust and communicate with that computer securely. But if someone gets that machine’s password (rare, but doable), they can technically use it to log in and do recon or escalate privileges.</p>
+
+<p>Also, machine accounts usually have names like <code class="language-plaintext highlighter-rouge">COMPUTERNAME$</code>. That dollar sign at the end makes it clear it’s a machine, not a human.</p>
+
+<hr />
+
+<h3 id="-security-groups">👥 Security Groups</h3>
+
+<p>Security groups are just a way to organize users (and machines) so you don’t have to assign permissions one by one. Instead of saying “give Bob, Alice, and John access to this folder,” you just toss them in a group and give the group access. Easy peasy.</p>
+
+<p>Groups can also be nested meaning you can have groups inside other groups, like a Russian doll of permissions.</p>
+
+<p>Some groups are made automatically when a domain is created, and each has a specific role. Here are some popular ones:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Security Group</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Domain Admins</strong></td>
+      <td>The big bosses full control over the entire network.</td>
+    </tr>
+    <tr>
+      <td><strong>Backup Operators</strong></td>
+      <td>Can read any file, even restricted ones great for running backups.</td>
+    </tr>
+    <tr>
+      <td><strong>Account Operators</strong></td>
+      <td>Allowed to create and modify user accounts.</td>
+    </tr>
+    <tr>
+      <td><strong>Domain Users</strong></td>
+      <td>Default group for all user accounts in the domain.</td>
+    </tr>
+    <tr>
+      <td><strong>Domain Computers</strong></td>
+      <td>Contains all machine (computer) accounts in the domain.</td>
+    </tr>
+    <tr>
+      <td><strong>Domain Controllers</strong></td>
+      <td>Includes all Domain Controllers (DCs) in the network.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Security groups make admin life way easier and help keep access control clean and organized.</p>
+
+<p>Let’s log into the <strong>Domain Controller</strong> that’s basically the main server running Active Directory. Once you’re in, you’ll see a window that shows the whole structure of the domain: users, computers, and groups all organized in a tree view. It’s kinda like looking at folders on your computer, but for network objects.</p>
+
+<p>These objects are grouped into <strong>Organizational Units</strong>, or <strong>OUs</strong>. Think of OUs like labeled folders they help you organize stuff, like putting all IT users in one OU, all HR people in another, etc. But it’s not just for looks you can also apply different rules or policies (like password rules or access restrictions) to each OU.</p>
+
+<p>Now let’s create a new OU called <strong>Hospital</strong> this could be for organizing all the machines and users working in a hospital department. That way, we can manage them separately and apply hospital-specific rules when needed.</p>
+
+<p>So once you’re in the <strong>Active Directory Users and Computers</strong> window, look for your domain name in my case, it’s <code class="language-plaintext highlighter-rouge">homelab.local</code>.</p>
+
+<p>Now do this:</p>
+
+<ul>
+  <li>Right-click on <code class="language-plaintext highlighter-rouge">homelab.local</code></li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*yJpGAholpnkiZczayYVC8Q.png" alt="" /></p>
+
+<ul>
+  <li>
+    <p>Hover over ”New”</p>
+  </li>
+  <li>
+    <p>Click on ”Organizational Unit”</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*_GxFLYcG4_rxDJBPm9NqFg.png" alt="" /></p>
+
+<ul>
+  <li>For the name, type Hospital</li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:429/1*wY11g2KAvFVcx8btRDS-FA.png" alt="" /></p>
+
+<ul>
+  <li>Then hit OK</li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:510/1*qeT_pqu1CWeeEPDc28ze5w.png" alt="" /></p>
+
+<p>Boom, now you’ve got an OU named <em>Hospital</em> set up. You can start dropping users, computers, or even other OUs into it. That’s how you keep your domain nice and organized, especially when you’re managing different departments or teams.</p>
+
+<p>I decided to create sub-OUs (mini folders inside the Hospital OU).</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:601/1*a7TKet7lASx2cDVTkHQ_pA.png" alt="" /></p>
+
+<p><strong>Now let’s create some users for the IT OU.</strong></p>
+
+<p>We’ll start with:</p>
+
+<ul>
+  <li>
+    <p><strong>First Name:</strong> Sarah</p>
+  </li>
+  <li>
+    <p><strong>Last Name:</strong> Patel</p>
+  </li>
+  <li>
+    <p><strong>Username:</strong> s.patel</p>
+  </li>
+</ul>
+
+<p>To create the user:</p>
+
+<p>1.  <strong>Right-click on the IT OU</strong></p>
+
+<p>2.  Select <strong>New &gt; User</strong></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:567/1*e3yiyYwLoiYxXfnx4zonHw.png" alt="" /></p>
+
+<p>3.  <strong>Fill in the user details</strong> (first name, last name, and username)</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:431/1*2mHbbo-N5w4nllzLzDh_9g.png" alt="" /></p>
+
+<p>4.  <strong>Set a temporary password</strong></p>
+
+<p>5.  Check the box <strong>“User must change password at next logon”</strong></p>
+
+<p>6.  Click <strong>Next</strong>, then <strong>Finish</strong></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:429/1*3I5PhpeZFgEn6a1r6Dp-zg.png" alt="" /></p>
+
+<p>Done.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:569/1*cKSu_RlYUTTBlF-4dWW1qQ.png" alt="" /></p>
+
+<h3 id="️-what-is-delegation-in-ad">🏷️ What is Delegation in AD?</h3>
+
+<p>Delegation in Active Directory is basically letting someone else do admin stuff <em>without</em> giving them full-blown god-mode access.</p>
+
+<p>Think of it like this: You’re the sysadmin, and you don’t want to be bothered every time someone needs a password reset or a new user added. So you <strong>delegate</strong> those tasks to another user or group like your IT helpdesk team but only those specific permissions, not full admin rights.</p>
+
+<p>🧑‍⚕️ Let’s give Sarah permission to reset passwords for doctors
+Alright, so Sarah’s in IT, and we want her to help out when doctors forget their passwords (which happens a lot, let’s be real).</p>
+
+<p>Instead of giving her full admin rights, we’ll delegate control to her so she can only reset passwords for users in the Doctors OU.</p>
+
+<p>1)   <strong>Right-click on the Doctors OU</strong> → choose <strong>“Delegate Control…“</strong></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:361/1*TgaTcdTNPKyKZzB5ztepow.png" alt="" /></p>
+
+<p>2)     The <strong>Delegation of Control Wizard</strong> will pop up.
+Click <strong>Next</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:486/1*ZQI_NDSk7s0T06avMD7Q2Q.png" alt="" /></p>
+
+<p>3) To avoid mistyping the user’s name, write “phillip” and click the <strong>Check Names</strong> button. Windows will autocomplete the user for you.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:490/1*BcuOBhHFH29k4d1JOd7JVQ.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:487/1*r5ZU_tl8S6WnStEtbgR63w.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:491/1*5irizhzT4mPVC2NjsgKzIQ.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:488/1*ozHjOA-61FcKtLofALExwA.png" alt="" /></p>
+
+<p>4) Select <strong>“Reset user passwords and force password change at next logon”</strong>
+This gives her the ability to help if any doctor forgets their login.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:489/1*KYdiU2Spv7GTbyZ9X0z5mQ.png" alt="" /></p>
+
+<p>5) Click <strong>Next</strong>, then <strong>Finish</strong></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:489/1*okhIf3NiCGsMPe3_oLYkWw.png" alt="" /></p>
+
+<p>Now let’s log in as user s.patel and test their privileges.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*nLt1QK_hxZ_WYRGY851x_w.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*63zMWyq9Fbpa54jnMQ7tUA.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*mZzxRdfeT5LhxgfH8F4NWA.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:546/1*AINPq98u3v9Jj8ZsrgnmIA.png" alt="" /></p>
+
+<p>Now we’re gonna use PowerShell to handle this:</p>
+
+<h3 id="-scenario">🩺 Scenario:</h3>
+
+<p>Let’s say we have a user in the <strong>Doctors OU</strong> named <strong>Doctor John</strong>, with the username <code class="language-plaintext highlighter-rouge">d.joe</code>. He forgot his password and reached out to IT for help.</p>
+
+<p>Since we already <strong>delegated password reset permissions</strong> on the <strong>Doctors OU</strong> to <strong>Sarah</strong> (who’s part of the IT team in the IT OU), she can now reset John’s password <strong>without needing full domain admin rights</strong>.</p>
+
+<p>From <strong>Sarah’s account</strong>, we can run this PowerShell command to reset <code class="language-plaintext highlighter-rouge">d.joe</code>’s password:</p>
+
+<p>powershell</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+<span class="terminal-prompt">PS C:\Users\tobiasare&gt;</span> Set-ADAccountPassword d.joe -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*RpC6t-R4wRxr5TW5nE_SNg.png" alt="" /></p>
+
+<hr />
+
+<p>Now that we’ve reset his password, we <strong>don’t want John to keep using the one we just set</strong> (since Sarah knows it). So we’ll force him to change it at next login with this command:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+<span class="terminal-prompt">PS C:\Users\tobiasare&gt;</span> Set-ADUser -ChangePasswordAtLogon $true -Identity d.joe -Verbose
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*whU13oaR5IbdDYS5ozF_iQ.png" alt="" /></p>
+
+<h3 id="-final-step">🔐 Final Step:</h3>
+
+<p>John can now log in with the new temporary password. As soon as he logs in, Windows will <strong>prompt him to set a new one</strong> something only he knows.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:665/1*exWBZY2xueEwEKdNEX1-mw.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:553/1*RAHSVZ5LMv-zuhiXbAZQWw.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:560/1*xS3LUbxTcwrrQ3s6dnwSnA.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:518/1*KkPo1AltsOLOe20MgSinrw.png" alt="" /></p>
+
+<h3 id="️-1-workstations">🖥️ 1. Workstations</h3>
+
+<p>These are the desktops or laptops your users log into every day. They’re your frontline devices the ones people use to write papers, check emails, Slack off (we know), or get actual work done.</p>
+
+<p>🔐 <strong>Pro tip:</strong>
+Never (like, ever) log in to these with privileged or admin accounts. If one gets compromised (phishing, malware, you name it), and it’s tied to a high-privilege account? Boom. That’s how entire networks get pwned.</p>
+
+<p>👉 <strong>Think of it like this:</strong>
+Workstations are the student laptops in a university lab. They’re everywhere, and everyone touches them. Keep them locked down.</p>
+
+<hr />
+
+<h3 id="️-2-servers">🗄️ 2. Servers</h3>
+
+<p>These bad boys are the backbone of your network. They’re not for browsing Reddit or playing Valorant they exist to <em>serve</em> (literally). Whether it’s hosting websites, databases, or internal apps, they handle the heavy lifting.</p>
+
+<p>🔁 <strong>They usually interact with other servers or respond to users</strong>, but they shouldn’t be used like workstations. Treat ‘em like dedicated, no-nonsense machines that stay clean and focused.</p>
+
+<p>👉 <strong>Example:</strong>
+A web server hosting your school’s blog site or a file server storing your class materials.</p>
+
+<hr />
+
+<h3 id="-3-domain-controllers-dcs">🧠 3. Domain Controllers (DCs)</h3>
+
+<p>Okay, now we’re at the <strong>top-tier, god-mode</strong>  devices in AD: Domain Controllers. These are the ones running the show managing users, devices, logins, policies, and more.</p>
+
+<p>⚠️ <strong>These are super sensitive</strong>. Why? Because they store <strong>hashed passwords for everyone</strong>  in the domain. If an attacker gains access to a DC, it’s basically game over.</p>
+
+<p>💡 <strong>Best practice:</strong>
+Lock these down harder than your finals study notes. Limited access, serious logging, no unnecessary software. Only admins should touch these and only for legit reasons.</p>
+
+<h3 id="️-group-policies-101-why-ous-actually-matter">🛡️ Group Policies 101: Why OUs Actually Matter</h3>
+
+<p>So, you’ve split your users and computers into <strong>Organizational Units (OUs)</strong> cool. But if you’re thinking <em>“this is just for show,”</em>  nah. There’s <strong>real power</strong>  behind that setup.</p>
+
+<p>The real reason we organize things into OUs is to unlock <strong>custom control</strong>  with something called <strong>Group Policy Objects (GPOs)</strong>.</p>
+
+<hr />
+
+<h3 id="️-whats-a-gpo">🎛️ What’s a GPO?</h3>
+
+<p><strong>GPO = Group Policy Object</strong>
+It’s basically a bundle of rules and settings you can apply to users or computers inside an OU. Think of it like this:</p>
+
+<blockquote> "Hey, Marketing team? You get this wallpaper, these password settings, and you can't install random apps. But IT? You get admin tools, different lock screen timeouts, and no drive restrictions."</blockquote>
+
+<p>Boom. That’s the vibe of GPOs.</p>
+
+<hr />
+
+<h3 id="-users-vs-computers">🧩 Users vs. Computers</h3>
+
+<p>GPOs can target either:</p>
+
+<ul>
+  <li>
+    <p>👤 <strong>Users</strong> Think logon restrictions, desktop settings, password rules, etc.</p>
+  </li>
+  <li>
+    <p>💻 <strong>Computers</strong> Think firewall rules, software installations, update settings, etc.</p>
+  </li>
+</ul>
+
+<p>The cool part? One GPO can contain policies for both, or you can split them up depending on how granular you wanna get.</p>
+
+<h3 id="-example-real-gpos-on-your-machine">🧠 Example: Real GPOs on Your Machine</h3>
+
+<p>If you crack open <code class="language-plaintext highlighter-rouge">gpmc.msc</code>, you’ll probably already see some preloaded GPOs like:</p>
+
+<ul>
+  <li>
+    <p><strong>Default Domain Policy</strong> baseline stuff applied to everyone.</p>
+  </li>
+  <li>
+    <p><strong>Default Domain Controllers Policy</strong> applied specifically to DCs.</p>
+  </li>
+</ul>
+
+<p>These are <strong>global policies</strong>, but the real fun starts when you build your own.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*E_I0IVbP6imemcnISdTCUw.png" alt="" /></p>
+
+<h3 id="-why-its-dope">✨ Why It’s Dope</h3>
+
+<p>This setup lets you:</p>
+
+<ul>
+  <li>
+    <p>Push security configs to different departments</p>
+  </li>
+  <li>
+    <p>Lock down public machines without restricting devs</p>
+  </li>
+  <li>
+    <p>Control USB access, RDP, or software installs per team</p>
+  </li>
+  <li>
+    <p>Make your AD environment <strong>scalable and secure</strong></p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="-inheritance-gpos-flow-downstream">🧬 Inheritance: GPOs Flow Downstream</h3>
+
+<p>Here’s something a lot of beginners miss, but it’s <strong>super important</strong>:</p>
+
+<blockquote>📢 Any GPO linked to an OU will also apply to its sub-OUs.</blockquote>
+
+<p>Let’s break that down real quick.</p>
+
+<p>Imagine you’ve got this structure:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+Domain.com
+
+└── Staff
+
+    └── Doctors
+</code></pre>
+</div>
+
+<p>If you apply a GPO to <code class="language-plaintext highlighter-rouge">Staff</code>, guess what? It <strong>automatically</strong>  affects <code class="language-plaintext highlighter-rouge">Doctors</code>  too. That’s called <strong>inheritance</strong>, and it can be a blessing… or a headache, if you’re not paying attention.</p>
+
+<p>So yeah, even though you might only link the <strong>Default Domain Policy</strong>  at the top level, it’ll still reach <strong>everyone below it</strong>, unless you tell it not to.</p>
+
+<h3 id="-want-to-stop-that">🔒 Want to Stop That?</h3>
+
+<p>You’ve got two main options if inheritance is messing with your plans:</p>
+
+<ol>
+  <li>
+    <p><strong>Block Inheritance</strong> (on the sub-OU)
+This tells the OU: <em>“Yo, I’m independent. No upstream GPOs for me.”</em>
+Use it sparingly though it can make things messy to troubleshoot.</p>
+  </li>
+  <li>
+    <p><strong>Enforce</strong> (on the GPO itself)
+This overrides any Block Inheritance. Basically says: <em>“No matter what, I run this.”</em>  Use this for high-priority GPOs like security baselines.</p>
+  </li>
+</ol>
+
+<p>Let’s take a closer look at the <strong>Default Domain Policy</strong>  to understand what a GPO actually contains.</p>
+
+<p>When you click on a GPO, the first tab you’ll land on is called <strong>Scope</strong>. This tab shows you <strong>where</strong>  in Active Directory the GPO is linked. In the case of the Default Domain Policy, you’ll see it’s linked to the entire <code class="language-plaintext highlighter-rouge">homelab.local</code>  domain.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*xkq79Zmg7FQlHrQdMBs55w.png" alt="" /></p>
+
+<hr />
+
+<p>Now, check out the <strong>Security Filtering</strong>  section. This controls <strong>who the GPO actually applies to</strong>  within that linked location. By default, it’s set to <strong>Authenticated Users</strong>, which means <strong>every user and computer</strong>  that’s logged into the domain.</p>
+
+<p>But here’s the trick: you can customize this filtering. If you only want the GPO to affect certain users or machines even if they’re in the same OU you can change the Security Filtering to target a specific group or object.</p>
+
+<p>So even though a GPO is linked to a whole domain or OU, Security Filtering gives you finer control over <strong>who really gets hit</strong>  by the policy.</p>
+
+<p>When you open the <strong>Settings</strong>  tab on a GPO, you’ll see the <strong>specific configurations</strong>  it applies. Remember, GPOs can have settings that target either <strong>computers</strong>  or <strong>users</strong>. In the case of the <strong>Default Domain Policy</strong>, it only contains <strong>Computer Configuration</strong>  settings.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*oF1QxGuauIFPl38T_mM_Pw.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*mCjphcpqdEivnkf9hk-Q4g.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*3f0MvYq1cnIN0buiDlphPQ.png" alt="" /></p>
+
+<p>These are super basic, foundational settings that most domains should have. Things like <strong>password policies</strong>  and <strong>account lockout rules</strong>. Since this GPO is linked to the entire domain, any changes made here will apply to <strong>all computers</strong>  in the domain.</p>
+
+<p>Let’s say we want to change the <strong>minimum password age</strong>  to <strong>31 days</strong>. Here’s how you’d do it:</p>
+
+<ol>
+  <li>Right-click the <strong>Default Domain Policy</strong>  and hit <strong>Edit</strong>.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:446/1*b3bCUeow_Ol_OmQqAyo2FQ.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>A new window pops up with all the settings.</p>
+  </li>
+  <li>
+    <p>Navigate to:
+<code class="language-plaintext highlighter-rouge">Computer Configuration -&amp;gt; Policies -&amp;gt; Windows Settings -&amp;gt; Security Settings -&amp;gt; Account Policies -&amp;gt; Password Policy</code></p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:700/1*nKOUoC2Z9eoafZ9Jh6Gyeg.png" alt="" /></p>
+
+<ol>
+  <li>Find <strong>Minimum password age</strong>  and set it to <strong>31 days</strong>.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:409/1*XXo8oyNNkXSkWPll8QJgmQ.png" alt="" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:629/1*Q6OgJ0MOywXt94DR9euiQQ.png" alt="" /></p>
+
+<p>Some of the settings are pretty self-explanatory. But if you’re unsure what something does, just <strong>double-click it</strong>  and go to the <strong>Explain</strong>  tab. It breaks down what the setting does and how it affects the system.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:408/1*-f4A6SKvl50JXlTaezoT1Q.png" alt="" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DSmBoEWa8L36cCY8PEBX4g.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h2 id="description">Description</h2>
 
@@ -58,7 +542,7 @@
 
 <p>Using this image, we can test the site to see which templates we are working on.</p>
 
-<p>from <code class="language-plaintext highlighter-rouge">${7*7}</code> didn’t work, <code class="language-plaintext highlighter-rouge">{{7*7}}</code> works—→ <code class="language-plaintext highlighter-rouge">{{7*'7'}}</code> works —→ <code class="language-plaintext highlighter-rouge">jinja2</code> or <code class="language-plaintext highlighter-rouge">twig</code></p>
+<p>from <code class="language-plaintext highlighter-rouge">${7*7}</code> didn’t work, <code class="language-plaintext highlighter-rouge">{{7*7}}</code> works → <code class="language-plaintext highlighter-rouge">{{7*'7'}}</code> works → <code class="language-plaintext highlighter-rouge">jinja2</code> or <code class="language-plaintext highlighter-rouge">twig</code></p>
 
 <p>Based on this post, we have different payloads to be able to bypass this with <a href="https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/">Jinja2</a></p>
 
