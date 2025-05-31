@@ -677,3 +677,16 @@ body.zoom-active::before {
   transition: fill 0.2s;
 }
 
+/* FLying bat */
+
+.bat {
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0.85;
+  transition: filter 0.2s;
+  filter: drop-shadow(0 2px 6px #0008);
+}
+
+.bat.white-outline {
+  filter: drop-shadow(0 0 8px #fff) drop-shadow(0 2px 6px #0008);
+}
