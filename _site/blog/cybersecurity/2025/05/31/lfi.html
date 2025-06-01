@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blame Game (PicoCTF)</title>
+    <title>Breaking Down Local File Inclusion (LFI)</title>
 
     <!-- Toast UI Editor CSS -->
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
@@ -99,7 +99,7 @@
       <div class="post-page">
   <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
     <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold text-white">Blame Game (PicoCTF)</h1>
+      <h1 class="text-3xl font-bold text-white">Breaking Down Local File Inclusion (LFI)</h1>
       
       <p class="text-sm text-gray-400">
         May 31, 2025
@@ -122,6 +122,8 @@
           
             <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
           
+            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
+          
             <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
           
         </p>
@@ -129,93 +131,17 @@
     </header>
 
     <section class="post-content prose prose-invert max-w-none text-gray-300">
-      <p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*p0U9Ynq6xoerzcrMvSEvFw.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+      <p><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsolidwp.com%2Fwp-content%2Fuploads%2F2023%2F03%2FFile-Inclusion-Attack-540x283.png&amp;f=1&amp;nofb=1&amp;ipt=f6aea650adfdaee4400a4c1066a815b0c57ea247d0e438978c98ed0f23493e38" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
-<h2 id="description">Description</h2>
+<h3 id="yo-whats-up-hackers-and-learners"><strong>Yo</strong> what’s up hackers and learners</h3>
 
-<blockquote>Someone's commits seems to be preventing the program from working. Who is it?</blockquote>
+<p>Today, I wanna break down a classic web vuln that I recently got my head around: <strong>Local File Inclusion</strong>, aka <strong>LFI</strong>. If you’re diving into bug bounties, CTFs, or web pentesting just like me, this one’s a must-know. And trust me, once it clicks, it’s kinda beautiful in a terrifying way 😅.</p>
 
-<p>They provided us with a zip file, let’s download it.</p>
+<hr />
 
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> wget http://example.com/challenge.zip
-</code></pre>
-</div>
+<h4 id="-what-even-is-lfi">🧠 What Even Is LFI?</h4>
 
-<p>Unzip this file and you got a lot of content</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-
-  <pre><code class="language-bash">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> unzip challenge.zipcode&gt;&lt;/pre&gt;
-Archive:  challenge.zip
-   creating: drop-in/
- extracting: drop-in/message.py
-   creating: drop-in/.git/
-   creating: drop-in/.git/branches/
-  inflating: drop-in/.git/description
-   creating: drop-in/.git/hooks/
-  inflating: drop-in/.git/hooks/applypatch-msg.sample
-  inflating: drop-in/.git/hooks/commit-msg.sample
-  inflating: drop-in/.git/hooks/fsmonitor-watchman.sample
-  inflating: drop-in/.git/hooks/post-update.sample
-  inflating: drop-in/.git/hooks/pre-applypatch.sample
-  inflating: drop-in/.git/hooks/pre-commit.sample
-  inflating: drop-in/.git/hooks/pre-merge-commit.sample
-  inflating: drop-in/.git/hooks/pre-push.sample
-  inflating: drop-in/.git/hooks/pre-rebase.sample
-  inflating: drop-in/.git/hooks/pre-receive.sample
-  inflating: drop-in/.git/hooks/prepare-commit-msg.sample
-  inflating: drop-in/.git/hooks/update.sample
-   creating: drop-in/.git/info/
-  inflating: drop-in/.git/info/exclude
-   creating: drop-in/.git/refs/
-   creating: drop-in/.git/refs/heads/
- extracting: drop-in/.git/refs/heads/master
-   creating: drop-in/.git/refs/tags/
- extracting: drop-in/.git/HEAD
-  inflating: drop-in/.git/config
-   creating: drop-in/.git/objects/
-   creating: drop-in/.git/objects/pack/
-   creating: drop-in/.git/objects/info/
-   creating: drop-in/.git/objects/7d/
- extracting: drop-in/.git/objects/7d/f869a15e76c28afb609fa4dbc059144ad70161
- extracting: drop-in/.git/objects/7d/0613c54635917946d70e0b2e9ca42136c18ee4
- extracting: drop-in/.git/objects/7d/1ca8dc38f8bc18eb35b2571d2b550673f2b415
-   creating: drop-in/.git/objects/a5/
- extracting: drop-in/.git/objects/a5/6b2529881119591fce34630170f5630f4b096c
-   creating: drop-in/.git/objects/f3/
- extracting: drop-in/.git/objects/f3/cec26cf7f80f91b5c3d1972f14dd4e9f97ec83
- extracting: drop-in/.git/objects/f3/cb1c88e58063947d16d222c68e04e62c23649e
- extracting: drop-in/.git/objects/f3/7406b0cab000c4af56ca105f0d194608e9402e
-   creating: drop-in/.git/objects/32/
- extracting: drop-in/.git/objects/32/6544a21bf75fa38f486891c58119c236a7dbbf
- extracting: drop-in/.git/objects/32/a8c7430819aa9f2ca0a731f992c6cb8b09793c
- extracting: drop-in/.git/objects/32/ede878fe116a9ea9b2753fcf11543472e45035
- extracting: drop-in/.git/objects/32/a8b421e4870c094e436e3df403a243c9f61b19
- extracting: drop-in/.git/objects/32/223a970ba9986bd9caabcae02cb014381e5b42
-   creating: drop-in/.git/objects/28/
- extracting: drop-in/.git/objects/28/9871add646b411282a84ff33f37abfd976ca59
- extracting: drop-in/.git/objects/28/c9a9686078224264c931276d433fd4eec66f7b
-   creating: drop-in/.git/objects/9a/
- extracting: drop-in/.git/objects/9a/e3e1bc67ad0143c611c5f65399b79850d20983
-   creating: drop-in/.git/objects/ce/
-[SNIP]
-  </code></pre>
-</div>
+<p>Local File Inclusion is a vulnerability where a web app lets a user include files on the <strong>server</strong>, either for viewing or execution. It’s often caused by <strong>improper input sanitization</strong> when user-controlled data is used in file path functions like:</p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -225,12 +151,21 @@ Archive:  challenge.zip
     </svg>
   </button>
   <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cat drop-inmessage.py
-print("Hello, World!"
+&lt;?php
+  include($_GET['page']);
+?&gt;
 </code></pre>
 </div>
 
-<p>Nothing here.</p>
+<p>Yup. That innocent <code class="language-plaintext highlighter-rouge">?page=about.php</code> can become something way more spicy.</p>
+
+<h2 id="exploiting-lfi">Exploiting LFI</h2>
+
+<p>So, we have this vulnerable web app with pages like <strong>home</strong>, <strong>about</strong>, and <strong>contact</strong>. When you look at the URLs, you’ll notice stuff like:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GVcbe5osI3RMtpW5x6pwlw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7tHOCR6_h8B2gsfOtUSxDQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -240,48 +175,15 @@ print("Hello, World!"
     </svg>
   </button>
   <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git log
-commit 8cc3930896bb01ae046bc08c382bd30772918ff5 (HEAD -&gt; master)
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 6dbd8d326a2f0c9fe7f0011c8e60448b9accc6ff
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 2e8970529c41058a68aae8bc04ef7a2d53ce0d8a
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 135020e8b96565248b604cb42ae54e256e8fc48a
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit a95fbac033f190b3fb1066727ea01d7d4be362b5
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit e6b8b174bf1ce6361ff29096579d2752616cb6f2
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-[SNIP]
+/page.php?page=pages/home.php
+/page.php?page=pages/about.php
+/page.php?page=pages/contact.php
 </code></pre>
 </div>
 
-<p>Nothing here either.</p>
+<p>Here’s the catch: the <code class="language-plaintext highlighter-rouge">page</code> parameter is vulnerable to <strong>Local File Inclusion (LFI)</strong>.</p>
+
+<p>What that means is instead of just loading those normal pages, you can mess with the input and try stuff like:</p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -291,34 +193,15 @@ Date:   Sat Mar 9 21:09:06 2024 +0000
     </svg>
   </button>
   <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git reflog
-8cc3930 (HEAD -&gt; master) HEAD@{0}: commit: important business work
-6dbd8d3 HEAD@{1}: commit: important business work
-2e89705 HEAD@{2}: commit: important business work
-135020e HEAD@{3}: commit: important business work
-a95fbac HEAD@{4}: commit: important business work
-e6b8b17 HEAD@{5}: commit: important business work
-5118475 HEAD@{6}: commit: important business work
-8f3c43e HEAD@{7}: commit: important business work
-6701b97 HEAD@{8}: commit: important business work
-8c96635 HEAD@{9}: commit: important business work
-44d5213 HEAD@{10}: commit: important business work
-8be10be HEAD@{11}: commit: important business work
-85e253b HEAD@{12}: commit: important business work
-81e3422 HEAD@{13}: commit: important business work
-53ca048 HEAD@{14}: commit: important business work
-1de3614 HEAD@{15}: commit: important business work
-f45b2d3 HEAD@{16}: commit: important business work
-0e9857c HEAD@{17}: commit: important business work
-32223a9 HEAD@{18}: commit: important business work
-d683b18 HEAD@{19}: commit: important business work
-2c8a227 HEAD@{20}: commit: important business work
-88d99c0 HEAD@{21}: commit: important business work
-[SNIP]
+/page.php?page=../../../../../../../etc/passwd
 </code></pre>
 </div>
 
-<p>Nope.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7GsC3N8zbCSit16vX30yVg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>you just read the server’s <strong>/etc/passwd</strong> file (if it’s a Linux box), which is a classic LFI move to prove the vulnerability exists.</p>
+
+<p>If you’re on Windows, try:</p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -328,12 +211,11 @@ d683b18 HEAD@{19}: commit: important business work
     </svg>
   </button>
   <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> ls
-message.py
+/page.php?page=../../../../windows/win.ini
 </code></pre>
 </div>
 
-<p>Let’s use log</p>
+<p>Also, a sneaky trick is to check:</p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -343,24 +225,11 @@ message.py
     </svg>
   </button>
   <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git log message.py
-commit 9ae3e1bc67ad0143c611c5f65399b79850d20983
-Author: picoCTF{@sk_th3_1nt3rn_yupyuyp} &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:01 2024 +0000
-
-    optimize file size of prod code
-
-commit f3cec26cf7f80f91b5c3d1972f14dd4e9f97ec83
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:01 2024 +0000
-
-    create top secret project
+/proc/self/environ
 </code></pre>
 </div>
 
-<p>The intern………</p>
-
-<p>Thank you for reading.</p>
+<p>Sometimes that leaks environment variables, and those can be <em>juicy</em> for further attacks.</p>
 
     </section>
 

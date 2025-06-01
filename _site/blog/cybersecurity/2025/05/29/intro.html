@@ -447,24 +447,55 @@ This tells the server to remember your device and skip OTP in the future.</p>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.zoomable-img').forEach(function(img) {
     img.addEventListener('click', function(e) {
-      e.stopPropagation(); // Prevent document click from firing
+      e.stopPropagation(); // Prevent bubbling
       if (img.classList.contains('zoomed')) {
         img.classList.remove('zoomed');
         document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
       } else {
         document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
           other.classList.remove('zoomed');
         });
         img.classList.add('zoomed');
         document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
       }
     });
   });
+
   document.addEventListener('click', function(e) {
     document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
       img.classList.remove('zoomed');
     });
     document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
   });
 });
 </script>
