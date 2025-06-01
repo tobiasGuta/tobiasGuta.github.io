@@ -771,3 +771,65 @@ body.zoom-active::before {
   color: white;
   font-weight: bold;
 }
+
+/* --- Blog Post Table Styling --- */
+.post-content table,
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 1em;
+  background: #181818;
+  color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #0002;
+}
+
+.post-content th,
+.markdown-body th {
+  background: #222;
+  color: #FFD700;
+  font-weight: bold;
+  padding: 0.7em 1em;
+  border-bottom: 2px solid #FFD70055;
+  text-align: left;
+}
+
+.post-content td,
+.markdown-body td {
+  padding: 0.7em 1em;
+  border-bottom: 1px solid #333;
+}
+
+.post-content tr:last-child td,
+.markdown-body tr:last-child td {
+  border-bottom: none;
+}
+
+.post-content tr:nth-child(even),
+.markdown-body tr:nth-child(even) {
+  background: #232323;
+}
+
+/* Responsive tables for small screens */
+@media (max-width: 700px) {
+  .post-content table,
+  .markdown-body table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+  .post-content thead,
+  .markdown-body thead,
+  .post-content tbody,
+  .markdown-body tbody,
+  .post-content tr,
+  .markdown-body tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+}
