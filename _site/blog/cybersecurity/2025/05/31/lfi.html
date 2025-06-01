@@ -141,7 +141,7 @@
 
 <h4 id="-what-even-is-lfi">🧠 What Even Is LFI?</h4>
 
-<p>Local File Inclusion is a vulnerability where a web app lets a user include files on the <strong>server</strong>, either for viewing or execution. It’s often caused by <strong>improper input sanitization</strong> when user-controlled data is used in file path functions like:</p>
+<p>Local File Inclusion is a vulnerability where a web app lets a user include files on the <strong>server</strong>, either for viewing or execution. It’s often caused by PHP that are <strong>poorly</strong> written and implemented , <strong>improper input sanitization</strong> when user-controlled data is used in file path functions like:</p>
 
 <div class="code-block-container">
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -230,6 +230,91 @@
 </div>
 
 <p>Sometimes that leaks environment variables, and those can be <em>juicy</em> for further attacks.</p>
+
+<h3 id="what-is-the-risk-of-file-inclusion">What is the Risk of File Inclusion?</h3>
+
+<p>File inclusion vulnerabilities such as <strong>Local File Inclusion (LFI)</strong> and <strong>Remote File Inclusion (RFI)</strong> can pose serious risks to a web application. At their core, they allow attackers to force the application to load and execute files they shouldn’t have access to.</p>
+
+<h4 id="heres-why-its-dangerous">Here’s why it’s dangerous:</h4>
+
+<ol>
+  <li>
+    <p><strong>Sensitive File Disclosure</strong>:
+Attackers can read files on the server like:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">/etc/passwd</code> (Linux user info)</p>
+      </li>
+      <li>
+        <p>Application source code</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">.env</code> or config files (with API keys, DB creds, etc.)</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Chaining to RCE</strong>:
+If the attacker can upload a file (e.g., via file upload or log injection), they might include that file via LFI to <strong>execute arbitrary code</strong> turning LFI into <strong>Remote Code Execution (RCE)</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Server-Side Enumeration</strong>:
+File inclusion can also allow attackers to discover internal server paths or services by brute-forcing or fuzzing local paths.</p>
+  </li>
+  <li>
+    <p><strong>Privilege Escalation &amp; Pivoting</strong>:
+In some setups, included files might inherit privileges of the web server or expose credentials that can be used to move laterally or escalate access.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="real-world-example">Real-World Example:</h3>
+
+<p>Imagine a PHP app with this line:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+include($_GET["page"]);
+</code></pre>
+</div>
+
+<p>If there’s no proper validation, an attacker can do:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://target.com/index.php?page=../../../../etc/passwd
+</code></pre>
+</div>
+
+<p>or</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://target.com/index.php?page=/uploads/shell.php
+</code></pre>
+</div>
+
+<p>Unauthorized file access + potential RCE = major compromise</p>
 
     </section>
 
