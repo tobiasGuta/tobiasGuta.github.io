@@ -917,6 +917,42 @@ The server runs whatever PHP is in, it could be a full PHP web shell (<code clas
 
 <p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CUic41Xg4tJ3uV-29tGv4A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
+<h3 id="staying-sharp-defending-against-file-inclusion-vulnerabilities">staying Sharp: Defending Against File Inclusion Vulnerabilities</h3>
+
+<p>Web apps are dope, but if you’re not securing them right, you’re just leaving the door wide open for attackers. One of the most common issues? <strong>File Inclusion Vulnerabilities</strong> (think LFI, RFI). They’re sneaky, dangerous, and way too common in misconfigured PHP setups.</p>
+
+<h4 id="why-you-should-care">Why You Should Care</h4>
+
+<p>Understanding how these bugs work and how to prevent them is key to building (or hacking) safely. Whether you’re a dev, hacker, or just security-curious, here’s the lowdown on protecting your app from getting wrecked.</p>
+
+<hr />
+
+<h3 id="prevention-checklist">Prevention Checklist</h3>
+
+<p><strong>1. Keep everything updated.</strong>
+Your PHP version, CMS, frameworks, plugins if it runs code, it needs updates. Old versions = old vulnerabilities.</p>
+
+<p><strong>2. Hide your errors.</strong>
+Turn off PHP error reporting in production (<code class="language-plaintext highlighter-rouge">display_errors = Off</code>). You don’t wanna leak your file paths or internal structure to attackers.</p>
+
+<p><strong>3. Use a WAF.</strong><br />
+Web Application Firewalls can filter out sketchy requests before they reach your app. Tools like Cloudflare or ModSecurity can be lifesavers.</p>
+
+<p><strong>4. Lock down dangerous PHP features.</strong>
+If your app doesn’t use remote file access, disable these in <code class="language-plaintext highlighter-rouge">php.ini</code>:</p>
+
+<p><code class="language-plaintext highlighter-rouge">allow_url_fopen = Off
+allow_url_include = Off</code></p>
+
+<p><strong>5. Control input protocols.</strong>
+Limit the types of wrappers (e.g., <code class="language-plaintext highlighter-rouge">php://</code>, <code class="language-plaintext highlighter-rouge">data://</code>, <code class="language-plaintext highlighter-rouge">zip://</code>) your app can handle. Analyze what you <em>really</em> need and block the rest.</p>
+
+<p><strong>6. Sanitize &amp; validate all user input.</strong>
+Never trust user input. Use strict input validation. Assume attackers will try <code class="language-plaintext highlighter-rouge">....//</code>, null bytes, encoded payloads and block ‘em.</p>
+
+<p><strong>7. Whitelist &gt; Blacklist.</strong>
+Define exactly what files can be included, and from where. Don’t rely on just blacklisting risky strings like <code class="language-plaintext highlighter-rouge">../</code> it’s bypassable.</p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
