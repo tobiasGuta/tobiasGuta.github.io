@@ -498,7 +498,7 @@ pagebypassnulbyte.php?lang=hello
 
 <p>You get this error message:</p>
 
-<div class="alert-warning">
+<div class="alert-error">
 <strong>Warning:</strong> include(languages/hello.php): failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassnulbyte.php on line 97
 </div>
 
@@ -535,7 +535,7 @@ pagebypassnulbyte.php?lang=../../../../../etc/passwd
 
 <p>But we get another error:</p>
 
-<div class="alert-warning">
+<div class="alert-error">
 <strong>Warning:</strong> include(languages/../../../../../etc/passwd.php): failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassnulbyte.php on line 97
 </div>
 
@@ -591,10 +591,8 @@ include("languages/../../../../../etc/passwd");
 
 <p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8ngaBwCBAy_qh4XmDeIKBg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<h4 id="important-note">Important Note:</h4>
-
-<div class="alert-error">
-<strong>Error:</strong> The Null Byte injection technique was fixed in PHP 5.3.4 and later versions. So, on modern PHP versions, `%00` won't work anymore.
+<div class="alert-warning">
+<strong>Important Note:</strong> The Null Byte injection technique was fixed in PHP 5.3.4 and later versions. So, on modern PHP versions, %00 won't work anymore.
 </div>
 
 
