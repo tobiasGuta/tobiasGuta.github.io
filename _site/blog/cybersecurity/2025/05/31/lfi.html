@@ -595,6 +595,95 @@ include("languages/../../../../../etc/passwd");
 <strong>Important Note:</strong> The Null Byte injection technique was fixed in PHP 5.3.4 and later versions. So, on modern PHP versions, %00 won't work anymore.
 </div>
 
+<h2 id="bypassing--filters-in-lfi">Bypassing <code class="language-plaintext highlighter-rouge">../</code> Filters in LFI</h2>
+
+<p>In our initial setup, the app lets us change the language using a <code class="language-plaintext highlighter-rouge">lang</code> parameter switching between English and Spanish:</p>
+
+<p><code class="language-plaintext highlighter-rouge">?lang=en.php
+?lang=es.php</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0NvWuC7mRFuZ77tpqJLiqw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Cy_0X6KLS3d1WY_9TlC8OQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But now the dev got a lil paranoid and added some basic input filtering specifically, they’re trying to block directory traversal by stripping <code class="language-plaintext highlighter-rouge">../</code> from the input.</p>
+
+<p>Let’s test this filter by trying to read a classic LFI target:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+lang=../../../../../../etc/passwd
+</code></pre>
+</div>
+
+<p>And we get the following PHP warning:</p>
+
+<div class="alert-error">
+<strong>Warning:</strong> include(languages/etc/passwd): Failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassslash.php on line 76
+</div>
+
+<div class="alert-error">
+<strong>Warning:</strong> include(): Failed opening 'languages/etc/passwd' for inclusion (include_path='.:/usr/share/php') in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassslash.php on line 76
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*owh85fQqNwGykARL0gpTDA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>If you look closely at the first line, you’ll notice that instead of including <code class="language-plaintext highlighter-rouge">../../etc/passwd</code>, PHP is trying to include:<br />
+<strong><code class="language-plaintext highlighter-rouge">languages/etc/passwd</code></strong></p>
+
+<p>So clearly, the app is <strong>stripping all <code class="language-plaintext highlighter-rouge">../</code> instances</strong> from the input via <code class="language-plaintext highlighter-rouge">str_replace('../', '', $_GET['lang'])</code>.</p>
+
+<hr />
+
+<h2 id="bypass-payload">Bypass Payload:</h2>
+
+<p>Try this sneaky payload instead:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+?lang=....//....//....//....//....//....//etc/passwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*AYk1OB7xb0pSH-8cxXli2w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>And it works.</p>
+
+<hr />
+
+<h3 id="why-does-this-bypass-work">Why does this bypass work?</h3>
+
+<p>Because the filter only removes exact matches of <code class="language-plaintext highlighter-rouge">../</code>. It doesn’t normalize paths or do recursive cleanup. That means:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">....//</code> ≠ <code class="language-plaintext highlighter-rouge">../</code></p>
+  </li>
+  <li>
+    <p>So <code class="language-plaintext highlighter-rouge">str_replace('../', '', '....//etc/passwd')</code> leaves it untouched</p>
+  </li>
+  <li>
+    <p>The PHP engine still resolves <code class="language-plaintext highlighter-rouge">....//</code> to <code class="language-plaintext highlighter-rouge">../</code> under the hood during path resolution</p>
+  </li>
+</ul>
+
+<p>Here’s a visual to make it even clearer:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtlXgty6DiQ8WWU6qMLCBw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-14zTekZ8H-LCLHLiBh5BQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
     </section>
 
