@@ -142,6 +142,72 @@ That’s the threat behind <strong>Command Injection</strong> one of the most da
 
 <p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>
 
+<h1 id="breaking-down-rce-through-a-simple-invoice-app">Breaking Down RCE Through a Simple Invoice App</h1>
+
+<p>Imagine you log into an app and click <strong>Generate Invoice</strong>. Looks all normal, right? Here’s what happens:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*jzNx0nUYgsmHFZJZG2qccA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>You hit the button, and it shows <strong>Invoice #001</strong> with client info and total amount. Nothing sketchy.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pRgY0fG5l8m_zkZDdPXuAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>But check the URL closely:</li>
+</ol>
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<ol>
+  <li>That <code class="language-plaintext highlighter-rouge">file</code> parameter? It’s the weak link. When we start messing with it like running <code class="language-plaintext highlighter-rouge">pwd</code> (print working directory in Linux) the server blindly executes it. Remote Code Execution (RCE).</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; pwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JjOPZfh85Lzuj3o_h7E-Ng.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>Next, we try <code class="language-plaintext highlighter-rouge">ls</code> to list directories. The server spits back the contents.</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; ls
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dwZAx8GLOe-oEzPqeKBUlg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>What this means:</strong>
+Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">

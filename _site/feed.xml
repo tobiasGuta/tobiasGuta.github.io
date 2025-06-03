@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-02T20:57:07-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-03T12:06:01-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
 That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
@@ -7,7 +7,73 @@ That’s the threat behind <strong>Command Injection</strong> one of the most da
 
 <p><strong>Remote Command Injection</strong> (RCI) raises the stakes. It’s the same flaw, but now it’s exposed over a network. An attacker can be miles or continents away, injecting commands into a server, IoT device, or web app, turning an external input point into an internal compromise.</p>
 
-<p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>
+
+<h1 id="breaking-down-rce-through-a-simple-invoice-app">Breaking Down RCE Through a Simple Invoice App</h1>
+
+<p>Imagine you log into an app and click <strong>Generate Invoice</strong>. Looks all normal, right? Here’s what happens:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*jzNx0nUYgsmHFZJZG2qccA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>You hit the button, and it shows <strong>Invoice #001</strong> with client info and total amount. Nothing sketchy.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pRgY0fG5l8m_zkZDdPXuAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>But check the URL closely:</li>
+</ol>
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<ol>
+  <li>That <code class="language-plaintext highlighter-rouge">file</code> parameter? It’s the weak link. When we start messing with it like running <code class="language-plaintext highlighter-rouge">pwd</code> (print working directory in Linux) the server blindly executes it. Remote Code Execution (RCE).</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; pwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JjOPZfh85Lzuj3o_h7E-Ng.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>Next, we try <code class="language-plaintext highlighter-rouge">ls</code> to list directories. The server spits back the contents.</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; ls
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dwZAx8GLOe-oEzPqeKBUlg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>What this means:</strong>
+Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
