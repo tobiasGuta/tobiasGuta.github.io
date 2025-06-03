@@ -532,28 +532,43 @@ body.homepage > * {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 0.0em;
-  border-radius: 70%;
-  width: 2em;
-  height: 2em;
-  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+  width: 1.3em;
+  height: 1.3em;
   background: transparent;
-  border: 2px solid transparent;
-  color: #DC143C;
+  color: #fff;
+  border-radius: 50%;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
   vertical-align: middle;
+  padding: 0;
+  border: none;
 }
+
 .rss-feed-icon svg {
-  fill: #DC143C;
-  transition: fill 0.2s;
   fill: currentColor;
+  width: 1em;
+  height: 1em;
+  transition: fill 0.18s;
 }
+
 .rss-feed-icon:hover {
-  background: #222;
-  border: 2px solid #DC143C;
-  box-shadow: 0 0 8px #FFD70055;
+  background: #fff;
+  color: #111;
 }
+
 .rss-feed-icon:hover svg {
-  fill: #fff;
+  animation: rss-bounce-spin 0.7s cubic-bezier(.22,1.5,.36,1) both;
+  fill: #111;
+}
+
+/* Improved bounce + spin animation */
+@keyframes rss-bounce-spin {
+  0%   { transform: scale(1) rotate(0deg) translateY(0); }
+  20%  { transform: scale(1.18, 0.85) rotate(0deg) translateY(-0.5em);}
+  40%  { transform: scale(0.95, 1.12) rotate(180deg) translateY(0.1em);}
+  60%  { transform: scale(1.08, 0.92) rotate(360deg) translateY(-0.2em);}
+  80%  { transform: scale(0.98, 1.05) rotate(380deg) translateY(0.05em);}
+  100% { transform: scale(1) rotate(360deg) translateY(0);}
 }
 
 /* Image zoom*/
@@ -637,34 +652,26 @@ body.zoom-active::before {
 }
 
 /* --- Share Buttons --- */
-.share-buttons {
-  display: flex;
-  gap: 1.1em; /* Increased gap for more space */
-  align-items: center;
-}
-
 .twitter-icon svg,
 .linkedin-icon svg {
-  color: inherit;
-  width: 32px;   /* Bigger icons */
+  color: white; /* black by default */
+  width: 32px;
   height: 32px;
   vertical-align: middle;
-  transition: color 0.2s, transform 0.2s;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s, transform 0.2s;
 }
 
-.twitter-icon svg {
-  color: #1da1f2;
-}
+/* Twitter: show blue on hover */
 .twitter-icon:hover svg {
-  color: #0d8ddb;
+  color: #1da1f2;      /* Twitter blue */
   transform: scale(1.15);
 }
 
-.linkedin-icon svg {
-  color: #0077b5;
-}
+/* LinkedIn: show blue on hover */
 .linkedin-icon:hover svg {
-  color: #005983;
+  color: #0077b5;      /* LinkedIn blue */
+  background: #fff;    /* keep white background */
   transform: scale(1.15);
 }
 
