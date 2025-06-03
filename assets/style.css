@@ -305,7 +305,7 @@ body.homepage > * {
 .post-card:hover {
   transform: translateX(12px);
   box-shadow: 0 14px 35px rgba(255, 255, 255, 0.25);
-  border-left: 4px solid #FFD700; /* Gold accent */
+  border-left: 4px solid #DC143C /* Gold accent */
 }
 
 
@@ -320,8 +320,8 @@ body.homepage > * {
 }
 
 .post-title:hover {
-  color: #FFD700;
-  text-shadow: 0 0 10px #FFD700
+  color: #DC143C;
+  text-shadow: 0 0 10px #DC143C
 }
 
 .post-date {
@@ -370,12 +370,12 @@ body.homepage > * {
 .post-content h2,
 .post-content h3,
 .post-content h4 {
-  border-left: 4px solid gold;
+  border-left: 4px solid #ff5f56;
   padding-left: 0.75rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: gold;
+  color: #B0C4DE;
 }
 
 /* Paragraphs */
@@ -389,7 +389,7 @@ body.homepage > * {
 .post-content pre {
   font-family: 'Fira Code', 'Courier New', monospace;
   background: #1a1a1a;
-  color: #ffd700; /* golden yellow */
+  color: #B22222; 
   padding: 0.3rem 0.6rem;
   border-radius: 5px;
   font-size: 0.95rem;
@@ -403,7 +403,7 @@ body.homepage > * {
 
 /* Links */
 .post-content a {
-  color: #ffd700; /* gold */
+  color: #B22222;
   text-decoration: underline;
   transition: all 0.3s ease;
 }
@@ -418,7 +418,7 @@ body.homepage > * {
 
 /* Optional blockquote for stylish quotes */
 .post-content blockquote {
-  border-left: 4px solid gold;
+  border-left: 4px solid #ff5f56;
   padding-left: 1rem;
   margin: 1.5rem 0;
   color: #bbb;
@@ -464,13 +464,13 @@ body.homepage > * {
 /* ...Single title Blog Post... */
 
 .post-page h1 {
-  color: #FFD700 !important;
+  color: #778899 !important;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .post-page a {
-  color: #FFD700;
+  color: #778899;
   text-decoration: underline;
 }
 
@@ -486,7 +486,7 @@ body.homepage > * {
   height: 1.5em;
   vertical-align: middle;
   margin-right: 0.3em;
-  color: #FFD700; /* Tailwind blue-400 */
+  color: white; 
   stroke: currentColor;
 }
 
@@ -539,15 +539,17 @@ body.homepage > * {
   transition: background 0.2s, box-shadow 0.2s, border 0.2s;
   background: transparent;
   border: 2px solid transparent;
+  color: #DC143C;
   vertical-align: middle;
 }
 .rss-feed-icon svg {
-  fill: #FFD700;
+  fill: #DC143C;
   transition: fill 0.2s;
+  fill: currentColor;
 }
 .rss-feed-icon:hover {
   background: #222;
-  border: 2px solid #FFD700;
+  border: 2px solid #DC143C;
   box-shadow: 0 0 8px #FFD70055;
 }
 .rss-feed-icon:hover svg {
@@ -637,37 +639,33 @@ body.zoom-active::before {
 /* --- Share Buttons --- */
 .share-buttons {
   display: flex;
-  gap: 0.7em;
-  margin-top: 0.5em;
-}
-
-.share-buttons a {
-  display: inline-flex;
+  gap: 1.1em; /* Increased gap for more space */
   align-items: center;
-  justify-content: center;
-  background: #181818;
-  border: 2px solid #FFD700;
-  border-radius: 50%;
-  width: 2.2em;
-  height: 2.2em;
-  color: #FFD700;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
-  box-shadow: 0 2px 8px #FFD70022;
-  font-size: 1.1em;
 }
 
-.share-buttons a:hover {
-  background: #FFD700;
-  color: #181818;
-  border-color: #fff;
-  box-shadow: 0 0 12px #FFD70088;
+.twitter-icon svg,
+.linkedin-icon svg {
+  color: inherit;
+  width: 32px;   /* Bigger icons */
+  height: 32px;
+  vertical-align: middle;
+  transition: color 0.2s, transform 0.2s;
 }
 
-.share-buttons svg {
-  width: 1.3em;
-  height: 1.3em;
-  fill: currentColor;
-  transition: fill 0.2s;
+.twitter-icon svg {
+  color: #1da1f2;
+}
+.twitter-icon:hover svg {
+  color: #0d8ddb;
+  transform: scale(1.15);
+}
+
+.linkedin-icon svg {
+  color: #0077b5;
+}
+.linkedin-icon:hover svg {
+  color: #005983;
+  transform: scale(1.15);
 }
 
 /* FLying bat */
@@ -693,7 +691,7 @@ body.zoom-active::before {
   padding: 1.1rem 1rem 1rem 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 16px 0 rgba(255,215,0,0.08);
-  border: 2px solid #FFD700;
+  border: 2px solid #B0C4DE;
   position: relative;
   overflow-x: auto;
   margin-bottom: 2rem;
@@ -704,7 +702,7 @@ body.zoom-active::before {
   display: block;
   height: 55px;
   background: #181818;
-  border-bottom: 1px solid #FFD700;
+  border-bottom: 1px solid #B0C4DE;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   position: absolute;
@@ -722,7 +720,7 @@ body.zoom-active::before {
   height: 14px;
   background: #ff5f56;
   border-radius: 50%;
-  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  box-shadow: 20px 0 0 #DC143C, 40px 0 0 #27c93f;
   z-index: 10;
 }
 
@@ -742,8 +740,8 @@ body.zoom-active::before {
   top: 7px;
   right: 14px;
   background: #181818;
-  color: #FFD700;
-  border: 1px solid #FFD700;
+  color: white;
+  border: 1px solid white;
   padding: 4px 8px;
   border-radius: 5px;
   cursor: pointer;
@@ -754,14 +752,14 @@ body.zoom-active::before {
   box-shadow: 0 1px 4px #FFD70044;
 }
 .copy-btn:hover {
-  background: #FFD700;
-  color: #181818;
+  background: #B0C4DE;
+  color: black;
   opacity: 1;
 }
 
 .code-block-container pre,
 .code-block-container code {
-  color: #FFD700 !important;   /* gold text */
+  color: #FF0000 !important;   
   background: none !important; /* transparent background for code */
   padding-top: 3.5rem; 
   
@@ -789,7 +787,7 @@ body.zoom-active::before {
 .post-content th,
 .markdown-body th {
   background: #222;
-  color: #FFD700;
+  color: #B0C4DE;
   font-weight: bold;
   padding: 0.7em 1em;
   border-bottom: 2px solid #FFD70055;
