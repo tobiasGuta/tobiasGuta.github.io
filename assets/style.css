@@ -859,3 +859,25 @@ body.zoom-active::before {
   border-radius: 6px;
   font-size: 1em;
 }
+
+/* --- Terminal tags --- */
+/* --- Terminal tags --- */
+.code-lang-tag {
+  position: absolute;
+  top: 0.7em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: White;
+  font-size: 0.85em;
+  font-family: monospace;
+  padding: 0.1em 0.7em;
+  border-radius: 6px 6px 6px 6px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.95;
+  letter-spacing: 0.04em;
+}
+.code-block-container {
+  position: relative;
+}

