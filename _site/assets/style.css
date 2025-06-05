@@ -861,7 +861,6 @@ body.zoom-active::before {
 }
 
 /* --- Terminal tags --- */
-/* --- Terminal tags --- */
 .code-lang-tag {
   position: absolute;
   top: 0.7em;
@@ -880,4 +879,89 @@ body.zoom-active::before {
 }
 .code-block-container {
   position: relative;
+}
+
+/* Certificate styles */
+.cert-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  margin-top: 2em;
+  justify-content: flex-start;
+}
+
+.cert-card {
+  background: #181818;
+  border: 1.5px solid #333;
+  border-radius: 10px;
+  padding: 1.2em 1em;
+  display: flex;
+  flex-direction: column;    /* stack items vertically */
+  align-items: center;       /* center horizontally */
+  min-width: 270px;
+  max-width: 350px;
+  box-shadow: 0 2px 12px #0002;
+  gap: 1em;
+}
+
+.cert-img {
+  width: 380px;         /* or your preferred size */
+  height: 380px;
+  object-fit: contain;  /* keeps the whole image visible, may add whitespace */
+  border-radius: 8px;
+  margin: 0 0 0.7em 0;
+  background: #fff;
+  border: 1px solid #eee;
+  display: block;
+}
+
+.cert-org {
+  color: #FFD700;
+  font-size: 0.95em;
+}
+
+.cert-date {
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+/* Responsive certificate grid for tablets and phones */
+@media (max-width: 1024px) {
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    width: 100%; /* Full width of its parent */
+    max-width: 100%; /* Remove width cap */
+    margin: 0 auto;
+  }
+
+  .cert-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .cert-img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* For small screens and phones */
+@media (max-width: 700px) {
+  .cert-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cert-card {
+    max-width: 98vw;
+    min-width: 0;
+  }
+  .cert-img {
+    width: 220px;
+    height: 220px;
+  }
 }
