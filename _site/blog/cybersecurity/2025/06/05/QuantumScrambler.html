@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quantum Scrambler (PicoCTF)</title>
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      #leaf-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Falling leaves animation container -->
+    <div id="leaf-container"></div>
+
+    <main class="container py-5">
+      <div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Quantum Scrambler (PicoCTF)</h1>
+      
+      <p class="text-sm text-gray-400">
+        June 5, 2025
+      </p>
+      
+      <p class="text-sm text-gray-400">
+        Categories: 
+        
+          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
+        
+          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
+        
+      </p>
+      
+      
+        <p class="mt-1 text-sm text-gray-400">
+          Tags: 
+          
+            <a href="/tags/red team" class="text-gray-400 hover:text-white">red team</a>, 
+          
+            <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
+          
+            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
+          
+            <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>, 
+          
+            <a href="/tags/Reverse Engineering" class="text-gray-400 hover:text-white">Reverse Engineering</a>
+          
+        </p>
+      
+    </header>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In this challenge, we’re handed a Python script that scrambles a flag using a bizarre in-place list mutation with nested references making direct decoding tricky.</p>
+
+<p>Our mission: understand the scramble, decode the nested structure, and extract the original flag.</p>
+
+<hr />
+
+<h4 id="description">Description</h4>
+<p>We invented a new cypher that uses “quantum entanglement” to encode the flag. Do you have what it takes to decode it?</p>
+
+<h2 id="the-challenge-code">The Challenge Code</h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import sys
+
+def exit():
+  sys.exit(0)
+
+def scramble(L):
+  A = L
+  i = 2
+  while (i &lt; len(A)):
+    A[i-2] += A.pop(i-1)
+    A[i-1].append(A[:i-2])
+    i += 1
+    
+  return L
+
+def get_flag():
+  flag = open('flag.txt', 'r').read()
+  flag = flag.strip()
+  hex_flag = []
+  for c in flag:
+    hex_flag.append([str(hex(ord(c)))])
+
+  return hex_flag
+
+def main():
+  flag = get_flag()
+  cypher = scramble(flag)
+  print(cypher)
+
+if __name__ == '__main__':
+  main()
+</code></pre>
+</div>
+
+<p>Here’s the core part:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def scramble(L):
+    A = L
+    i = 2
+    while (i &lt; len(A)):
+        A[i-2] += A.pop(i-1)
+        A[i-1].append(A[:i-2])
+        i += 1
+    return L
+
+def get_flag():
+    flag = open('flag.txt', 'r').read().strip()
+    hex_flag = [[hex(ord(c))] for c in flag]
+    return hex_flag
+
+def main():
+    flag = get_flag()
+    cypher = scramble(flag)
+    print(cypher)
+
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="whats-happening-here">What’s happening here?</h2>
+
+<h3 id="step-1-preparing-the-flag">Step 1: Preparing the flag</h3>
+
+<ul>
+  <li>
+    <p>The flag is read from <code class="language-plaintext highlighter-rouge">flag.txt</code>.</p>
+  </li>
+  <li>
+    <p>Each character is converted to its hexadecimal ASCII code string, wrapped in a list.</p>
+
+    <ul>
+      <li>Example: <code class="language-plaintext highlighter-rouge">'p'</code> → <code class="language-plaintext highlighter-rouge">['0x70']</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>So the flag becomes a list of lists:<br />
+<code class="language-plaintext highlighter-rouge">[['0x70'], ['0x69'], ['0x63'], ['0x6f'], ...]</code></p>
+  </li>
+</ul>
+
+<h3 id="step-2-the-scramble-function--the-chaos-begins">Step 2: The scramble function — the chaos begins</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def scramble(L):
+    A = L
+    i = 2
+    while (i &lt; len(A)):
+        A[i-2] += A.pop(i-1)
+        A[i-1].append(A[:i-2])
+        i += 1
+    return L
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">A</code> is a reference to the original list <code class="language-plaintext highlighter-rouge">L</code> (no copy).</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">i</code> starts at 2, loops while less than length of <code class="language-plaintext highlighter-rouge">A</code>.</p>
+  </li>
+  <li>
+    <p>Each iteration:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">A.pop(i-1)</code> removes the element at index <code class="language-plaintext highlighter-rouge">i-1</code> and returns it.</p>
+      </li>
+      <li>
+        <p>The popped element (a list like <code class="language-plaintext highlighter-rouge">['0x69']</code>) is <strong>concatenated (<code class="language-plaintext highlighter-rouge">+=</code>) to <code class="language-plaintext highlighter-rouge">A[i-2]</code></strong> — so two lists merge.</p>
+      </li>
+      <li>
+        <p>Then, a <strong>slice of the list <code class="language-plaintext highlighter-rouge">A[:i-2]</code></strong> (everything before <code class="language-plaintext highlighter-rouge">i-2</code>) is appended as a nested list inside <code class="language-plaintext highlighter-rouge">A[i-1]</code>.</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">i</code> increments by 1.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>The list shrinks by one each iteration because of <code class="language-plaintext highlighter-rouge">.pop()</code>.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="what-does-this-scrambling-actually-do">What does this scrambling actually do?</h2>
+
+<ol>
+  <li>
+    <p>It merges adjacent elements, combining the hex codes into growing lists.</p>
+  </li>
+  <li>
+    <p>It appends nested slices of earlier parts of the list as <em>recursive references</em> inside other list elements.</p>
+  </li>
+  <li>
+    <p>The nested slices are <strong>not flat copies</strong>, but <em>references</em> to parts of the list.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="why-does-this-matter">Why does this matter?</h2>
+
+<ul>
+  <li>
+    <p>The final structure is a <strong>deeply nested recursive list</strong>, with references to earlier parts of itself.</p>
+  </li>
+  <li>
+    <p>This creates a complex graph-like structure, <strong>not a simple list of hex strings</strong>.</p>
+  </li>
+  <li>
+    <p>Naively flattening or recursively joining all elements will <strong>repeat parts multiple times</strong> or enter infinite loops.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="how-to-decode-it">How to decode it?</h2>
+
+<h3 id="step-1-read-the-scrambled-output-a-python-list-from-a-file">Step 1: Read the scrambled output (a Python list) from a file:</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import ast
+
+with open('scrambled_output.txt') as f:
+    scrambled_data = f.read()
+
+data = ast.literal_eval(scrambled_data)
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ast.literal_eval</code> safely evaluates the string to a nested Python list.</li>
+</ul>
+
+<h3 id="step-2-decode-hex-strings-to-ascii-but-skip-nested-references">Step 2: Decode hex strings to ASCII but <strong>skip nested references</strong></h3>
+
+<p>You want to:</p>
+
+<ul>
+  <li>
+    <p>Decode only <strong>direct hex string elements</strong> on the top level of each list.</p>
+  </li>
+  <li>
+    <p><strong>Ignore nested lists inside each list</strong> because those are recursive references to previous parts they’ll cause duplicates.</p>
+  </li>
+</ul>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+def decode_node(node, visited=None):
+    if visited is None:
+        visited = set()
+
+    if isinstance(node, list):
+        node_id = id(node)
+        if node_id in visited:
+            return ''
+        visited.add(node_id)
+
+        result = ''
+        for el in node:
+            if isinstance(el, list):
+                continue  # skip nested refs
+            elif isinstance(el, str) and el.startswith('0x'):
+                result += chr(int(el, 16))
+        return result
+
+    elif isinstance(node, str) and node.startswith('0x'):
+        return chr(int(node, 16))
+
+    return ''
+</code></pre>
+</div>
+
+<h3 id="step-3-rebuild-the-flag-linearly-by-decoding-each-top-level-element">Step 3: Rebuild the flag linearly by decoding each top-level element:</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+flag = ""
+for item in data:
+    flag += decode_node(item)
+
+print(flag)
+</code></pre>
+</div>
+
+<p>Full code:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+import ast
+
+def decode_node(node, visited=None):
+    if visited is None:
+        visited = set()
+
+    # If this node is a list
+    if isinstance(node, list):
+        # To avoid cycles or repeat processing the same slice multiple times,
+        # we use id() of the node list object to track visits.
+        node_id = id(node)
+        if node_id in visited:
+            return ''  # already decoded, skip to avoid duplicates or infinite loops
+        visited.add(node_id)
+
+        # Decode each element in list sequentially
+        result = ''
+        for el in node:
+            # If el is a list inside the node, it usually is a recursive reference slice,
+            # so skip it to avoid duplication.
+            if isinstance(el, list):
+                continue
+            # If string with hex prefix, decode to char
+            elif isinstance(el, str) and el.startswith('0x'):
+                result += chr(int(el, 16))
+        return result
+
+    # If node is a string hex
+    elif isinstance(node, str) and node.startswith('0x'):
+        return chr(int(node, 16))
+
+    # Otherwise, ignore
+    return ''
+
+# Read scrambled data from file
+with open('scrambled_output.txt') as f:
+    scrambled_data = f.read()
+
+data = ast.literal_eval(scrambled_data)
+
+flag = ""
+for item in data:
+    flag += decode_node(item)
+
+print(flag)
+</code></pre>
+</div>
+
+<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>
+
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
+</div>
+
+
+      
+        <!-- Giscus comments -->
+        <div id="comments"></div>
+        <script src="https://giscus.app/client.js"
+                data-repo="tobiasGuta/tobiasGuta.github.io"
+                data-repo-id="R_kgDOOxswYQ"
+                data-category="General"
+                data-category-id="DIC_kwDOOxswYc4CrEhp"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(btn) {
+        const code = btn.parentElement.querySelector('code');
+        if (code) {
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.title = "Copied!";
+            setTimeout(() => btn.title = "Copy code", 1200);
+          });
+        }
+      }
+    </script>
+
+    
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>
