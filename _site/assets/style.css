@@ -883,85 +883,83 @@ body.zoom-active::before {
 
 /* Certificate styles */
 .cert-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5em;
-  margin-top: 2em;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2em;
+  padding: 1em;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cert-card {
   background: #181818;
   border: 1.5px solid #333;
   border-radius: 10px;
-  padding: 1.2em 1em;
+  padding: 1em;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;    /* stack items vertically */
-  align-items: center;       /* center horizontally */
-  min-width: 270px;
-  max-width: 350px;
-  box-shadow: 0 2px 12px #0002;
-  gap: 1em;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .cert-img {
-  width: 380px;         /* or your preferred size */
-  height: 380px;
-  object-fit: contain;  /* keeps the whole image visible, may add whitespace */
+  width: 100%;
+  height: auto;
+  max-width: 240px;
+  object-fit: contain;
   border-radius: 8px;
-  margin: 0 0 0.7em 0;
   background: #fff;
   border: 1px solid #eee;
   display: block;
+  margin-bottom: 0.7em;
 }
 
-.cert-org {
-  color: #FFD700;
-  font-size: 0.95em;
-}
-
-.cert-date {
-  color: #aaa;
-  font-size: 0.9em;
-}
-
-/* Responsive certificate grid for tablets and phones */
+/* Tablet layout — switch to grid */
 @media (max-width: 1024px) {
   .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    width: 100%; /* Full width of its parent */
-    max-width: 100%; /* Remove width cap */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2em;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
   }
 
   .cert-card {
-    min-width: 0;
     width: 100%;
+    max-width: unset;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .cert-img {
     width: 100%;
-    max-width: 120px;
+    max-width: 100%;
     height: auto;
-    margin: 0 auto;
     display: block;
+    object-fit: contain;
   }
 }
 
-/* For small screens and phones */
+/* Phone layout — single column */
 @media (max-width: 700px) {
   .cert-grid {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .cert-card {
-    max-width: 98vw;
-    min-width: 0;
+    max-width: 95vw;
   }
+
   .cert-img {
-    width: 220px;
-    height: 220px;
+    max-width: 220px;
+    height: auto;
   }
 }
