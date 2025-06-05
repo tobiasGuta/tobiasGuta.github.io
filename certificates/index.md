@@ -46,6 +46,24 @@ permalink: /certificates/
     </div>
   </div>
 
+  <div class="cert-card">
+    <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*8ko9Yu18gr3JlQjolmerdw.jpeg" alt="codepath" class="cert-img">
+    <div>
+      <strong>National Cyber Scholarship </strong><br>
+      <span class="cert-org">NCS </span><br>
+    </div>
+  </div>
+
+  <div class="cert-card">
+    <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1Td1vSVnGTAAzWVutgdYWg.png" alt="mastercard" class="cert-img">
+    <div>
+      <strong>Cyber Job Simulation</strong><br>
+      <span class="cert-org">NCS </span><br>
+      <span class="cert-date">Issued: july 13, 2024</span><br>
+      <a href="https://nyc.responsibledisclosure.com/hc/en-us/articles/20413464091155-Acknowledgements" target="_blank">View Certificate</a>
+    </div>
+  </div>
+
   <!-- Add more cards as needed -->
 
 </div>
