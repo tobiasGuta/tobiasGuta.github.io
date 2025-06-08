@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T12:49:57-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-08T12:36:15-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -2061,7 +2061,188 @@ admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(password, 1, 11) =
   <li>
     <p>Use of functions like <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>, <code class="language-plaintext highlighter-rouge">database()</code>, <code class="language-plaintext highlighter-rouge">information_schema</code></p>
   </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+</ul>
+
+<h1 id="understanding-second-order-sql-injection-the-silent-threat">Understanding Second-Order SQL Injection: The Silent Threat</h1>
+
+<p>When we think about SQL injection (SQLi), the classic image is of attackers injecting malicious SQL commands directly into input fields causing immediate havoc like data leaks or corruption. But not all SQL injections flash their danger right away. Enter <strong>Second-Order SQL Injection</strong> a stealthier, more insidious cousin in the SQLi family.</p>
+
+<h2 id="what-is-second-order-sql-injection">What is Second-Order SQL Injection?</h2>
+
+<p>Second-Order SQL Injection (sometimes called stored SQLi) happens when malicious user input is saved in the database <strong>without causing any immediate SQL errors or suspicious behavior</strong>. The attack payload remains dormant harmless at first glance because the data isn’t directly executed as SQL during initial insertion.</p>
+
+<p>The real danger emerges <strong>later</strong>, when this stored data is retrieved and used in another SQL query <strong>without proper sanitization</strong> or escaping. This delayed injection point is what makes second-order SQLi tricky to detect and remediate.</p>
+
+<p>In short:</p>
+
+<ul>
+  <li>
+    <p>The attacker injects <strong>malicious SQL code into the database via one part of the app.</strong></p>
+  </li>
+  <li>
+    <p>The injected payload is stored as normal data.</p>
+  </li>
+  <li>
+    <p>Later, when the app uses this stored data in another SQL query (the “second order”), <strong>the malicious payload executes</strong>, enabling attacks like privilege escalation, data tampering, or data leakage.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="why-is-this-attack-hard-to-catch">Why Is This Attack Hard to Catch?</h2>
+
+<p>Standard input validation or sanitization techniques often focus on preventing immediate SQLi input that breaks queries right away. But second-order SQLi bypasses this because the initial input looks harmless, causing no errors during insertion.</p>
+
+<p>Detection systems monitoring input fields may see nothing wrong, and code reviewers might miss vulnerabilities in seemingly “safe” retrieval queries, assuming data in the database is clean.</p>
+
+<h2 id="real-world-scenario-our-vulnerable-web-app">Real-World Scenario: Our Vulnerable Web App</h2>
+
+<p>Let’s ground this in a practical example using the vulnerable PHP web app we built for training:</p>
+
+<p>In our scenario, we’re dealing with a vulnerable PHP web application that lets users log in and update their username.</p>
+
+<p>Let’s walk through the steps an attacker might take:</p>
+
+<hr />
+
+<h4 id="step-1-log-in-as-a-normal-user">Step 1: Log in as a Normal User</h4>
+
+<p>We start by logging in as a regular user in this case, <strong><code class="language-plaintext highlighter-rouge">user1</code></strong>.</p>
+
+<p>After logging in, we’re taken to the home page, which lists all users. We can also visit each user’s profile page including our own and the <strong>admin’s</strong>. So far, everything looks normal.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Qf8ebr7i6c42SNywAoFfYw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*1_TXGfi0PRmEbkpWTNZS9w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h4 id="step-2-change-our-own-username">Step 2: Change Our Own Username</h4>
+
+<p>The app allows users to change <em>their own</em> usernames from the profile page. Let’s test this feature by updating <code class="language-plaintext highlighter-rouge">user1</code> to <code class="language-plaintext highlighter-rouge">user2</code>. We enter the new name in the input field and submit the form.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*v0YzSQ1ZrmAfsADKQyzZ5A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*M-hUg0PE9dBIcv6sdLsbjw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kFlt6r6rGD1R6YZxDXcaKw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+UPDATE users SET username='user2' WHERE username='user1'
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ElV09tGe2iKTz0hFYmScQQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eGct-GvoAioYjHONtsyGVQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This query runs successfully because we are <code class="language-plaintext highlighter-rouge">user1</code> and we’re updating our own username. No issues here functionality works as expected.</p>
+
+<hr />
+
+<h4 id="step-3-what-happens-if-we-inject-sql">Step 3: What Happens if We Inject SQL?</h4>
+
+<p>Now, let’s try to abuse the update functionality by injecting raw SQL instead of a clean new username.</p>
+
+<p>We change our input to the following payload:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+hacked_admin' WHERE username='admin' -- - 
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*e1gXV3LqrIzfHo1Nch3o0Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lIekUW0jDjwBpDe5zPQUXg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Let’s break it down:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+UPDATE users SET username='hacked_admin' WHERE username='admin' -- -'
+</code></pre>
+</div>
+
+<p>Here’s what this does:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">'hacked_admin'</code> is the <strong>new username</strong> we want to assign.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">WHERE username='admin'</code> <strong>overrides the default condition</strong> (<code class="language-plaintext highlighter-rouge">WHERE username='user1'</code>) that restricts updates to the currently logged-in user.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-- -</code> is a SQL comment that tells the database to <strong>ignore the rest of the query</strong>, including any part added by the app logic (like the real username check).</p>
+  </li>
+</ul>
+
+<p>So instead of updating our own account, the query updates <strong>admin’s username</strong>, even though we shouldn’t have permission to do that.</p>
+
+<hr />
+
+<h4 id="step-4-check-the-results">Step 4: Check the Results</h4>
+
+<p>After submitting the payload, we return to the home page.</p>
+
+<p>Now, instead of <code class="language-plaintext highlighter-rouge">admin</code>, we see a user named <strong><code class="language-plaintext highlighter-rouge">hacked_admin</code></strong> in the user list. That’s confirmation the SQL injection worked we just used our own profile update form to silently overwrite the admin’s username.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*b02wTuQ94Ad9eYuZPCy0dQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*XDeQAC5_7YScC1D8CtSb5Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This is the perfect example of a <strong>second-order SQL injection</strong>:</p>
+
+<ul>
+  <li>
+    <p>The injection payload was stored as seemingly harmless input.</p>
+  </li>
+  <li>
+    <p>Later, it was executed as part of an SQL command, causing <strong>unexpected behavior</strong> and a <strong>privilege bypass</strong>.</p>
+  </li>
+</ul>
+
+<p>Now, if we want to demonstrate a proof of concept (PoC), we don’t actually want to change anyone’s username unless you’ve created a separate test account, modifying existing users would be out of scope. To safely showcase the vulnerability without affecting any data, we can use a payload that triggers a delay, such as:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+user1', username = 'user1' WHERE '1'='1' AND SLEEP(5) -- - 
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*q1xPV8WoWXbQSP_KQ230cw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This payload executes the <code class="language-plaintext highlighter-rouge">SLEEP(5)</code> function to delay the response, confirming the SQL injection vulnerability without modifying any user data.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
