@@ -966,8 +966,7 @@ body.zoom-active::before {
   }
 }
 
-/* update */
-
+/* update blog card*/
 .updated-label {
   position: absolute;
   top: 4px;
@@ -980,8 +979,11 @@ body.zoom-active::before {
   font-size: 1.18rem;
   padding: 12px 0;
   border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
   border: 2px solid #f7c948;
+  box-shadow: 
+    0 0 0 2px #f7c948, 
+    0 0 12px 4px #ffd700aa,
+    0 0 24px 8px #ffe06688;
   letter-spacing: 0.14em;
   text-shadow: 0 1px 0 #fff8;
   transform: rotate(32deg);
@@ -990,27 +992,48 @@ body.zoom-active::before {
   opacity: 0.98;
   pointer-events: none;
   overflow: visible;
+  isolation: isolate;
 }
 
-/* Create the "under the card" effect at both ends */
-.updated-label::before,
-.updated-label::after {
+/* Major glowing border effect */
+.updated-label::before {
   content: "";
   position: absolute;
-  top: 50%;
-  width: 32px;
-  height: 32px;
-  background: #111; /* Match your .post-card background */
+  inset: -6px;
   z-index: -1;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px #0005;
-  transform: translateY(-50%) rotate(-32deg);
+  border-radius: 16px;
+  background: radial-gradient(circle, #ffe06688 0%, #ffd70055 50%, transparent 100%);
+  filter: blur(6px);
+  animation: updated-glow 2.4s infinite ease-in-out alternate;
+  pointer-events: none;
 }
 
-.updated-label::before {
-  left: -18px;
-}
-
+/* Optional: Remove these if you want cleaner ends */
 .updated-label::after {
-  right: -18px;
+  display: none;
+}
+
+/* Pulse animation */
+@keyframes updated-glow {
+  0% {
+    opacity: 0.6;
+    filter: blur(4px);
+    box-shadow:
+      0 0 10px 2px #ffe06655,
+      0 0 18px 6px #ffd70044;
+  }
+  50% {
+    opacity: 1;
+    filter: blur(6px);
+    box-shadow:
+      0 0 20px 5px #ffd700aa,
+      0 0 30px 12px #ffe06677;
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(4px);
+    box-shadow:
+      0 0 10px 2px #ffe06655,
+      0 0 18px 6px #ffd70044;
+  }
 }
