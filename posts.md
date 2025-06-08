@@ -20,6 +20,13 @@ permalink: /posts/
   <div class="cards-container">
     {% for post in site.posts %}
     <article class="post-card">
+      {% assign last_modified = post.last_modified_at | date: "%s" %}
+      {% assign published = post.date | date: "%s" %}
+      {% assign now = 'now' | date: "%s" %}
+      {% assign days_since_update = now | minus: last_modified | divided_by: 86400 %}
+      {% if post.last_modified_at and last_modified > published and days_since_update <= 5 %}
+        <span class="updated-label">Updated</span>
+      {% endif %}
       <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
       <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
         {{ post.date | date: "%B %-d, %Y" }}

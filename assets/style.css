@@ -293,6 +293,7 @@ body.homepage > * {
 .post-card {
   background: #111; /* very dark grey, not full black for subtle depth */
   border-left: 6px solid #fff; /* white accent */
+  position: relative;
   padding: 1.8rem 2.4rem;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
@@ -300,6 +301,7 @@ body.homepage > * {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .post-card:hover {
@@ -962,4 +964,53 @@ body.zoom-active::before {
     max-width: 220px;
     height: auto;
   }
+}
+
+/* update */
+
+.updated-label {
+  position: absolute;
+  top: 4px;
+  right: -54px;
+  width: 200px;
+  text-align: center;
+  background: linear-gradient(105deg, #fffbe6 0%, #ffe066 60%, #ffd700 100%);
+  color: #222;
+  font-weight: 900;
+  font-size: 1.18rem;
+  padding: 12px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  border: 2px solid #f7c948;
+  letter-spacing: 0.14em;
+  text-shadow: 0 1px 0 #fff8;
+  transform: rotate(32deg);
+  z-index: 10;
+  box-sizing: border-box;
+  opacity: 0.98;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Create the "under the card" effect at both ends */
+.updated-label::before,
+.updated-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  background: #111; /* Match your .post-card background */
+  z-index: -1;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #0005;
+  transform: translateY(-50%) rotate(-32deg);
+}
+
+.updated-label::before {
+  left: -18px;
+}
+
+.updated-label::after {
+  right: -18px;
 }
