@@ -2096,7 +2096,7 @@ foreach ($filters as $filter) {
     </svg>
   </button>
   <pre><code class="language-sqli">
-1'%0A||%0A1=1%0A--%27+
+1'%0A||%0A1=1%0A--%27
 </code></pre>
 </div>
 
@@ -2149,6 +2149,85 @@ SELECT username, password FROM users WHERE username = '1' || 1=1 --';
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4k-WTEUjdbt4Z6RTzI42Gg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
 <p>The result? The WHERE clause always passes, granting unauthorized access.</p>
+
+<h1 id="bypassing-wafs-and-filters-in-sql-injection-a-tactical-breakdown">Bypassing WAFs and Filters in SQL Injection: A Tactical Breakdown</h1>
+
+<p>When dealing with Web Application Firewalls (WAFs) or filter-based defenses, <strong>no single SQL injection technique is guaranteed to work across all environments</strong>. Filters are often tailored to block known attack patterns but they’re not perfect. Understanding their weaknesses and employing a flexible, adaptive mindset is key to bypassing them.</p>
+
+<p>Below is a curated list of common filtering scenarios, along with practical evasion techniques and real-world examples:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Scenario</strong></th>
+      <th><strong>Description</strong></th>
+      <th><strong>Bypass Example</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
+      <td>WAFs may block exact keyword matches. Bypass by changing case or inserting inline comments.</td>
+      <td><code>SElEcT * FrOm users</code> or <code>SE/**/LECT * FROM/**/users</code></td>
+    </tr>
+    <tr>
+      <td><strong>Spaces are filtered</strong></td>
+      <td>Spaces are removed or blocked. Use alternative whitespace (e.g., <code class="language-plaintext highlighter-rouge">%0A</code>, <code class="language-plaintext highlighter-rouge">%09</code>) or inline comments.</td>
+      <td><code>SELECT%0A*%0AFROM%0Ausers</code> or <code>SELECT/**/username/**/FROM/**/users</code></td>
+    </tr>
+    <tr>
+      <td><strong>Logical operators like <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code> are banned</strong></td>
+      <td>Filters block logical operators. Use alternatives like <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, or encoded logic.</td>
+      <td><code>username = 'admin' &amp;&amp; password = 'pass'</code> or <code>username = 'admin'%0A</code></td>
+    </tr>
+    <tr>
+      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">UNION</code>, <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
+      <td>Filters block keywords. Encode with <code class="language-plaintext highlighter-rouge">CHAR()</code>, Unicode, or hex to evade.</td>
+      <td><code>SELECT * FROM users WHERE username = CHAR(0x61,0x64,0x6D,0x69,0x6E)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Deep keyword filtering (<code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">UNION</code>)</strong></td>
+      <td>Multiple keywords are filtered. Combine obfuscation: string functions, comments, concatenation.</td>
+      <td><code>SELECT * FROM users WHERE username = CONCAT('a','d','m','i','n')</code> or <code>SElEcT/**/username/**/FROM/**/users</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="adapting-to-the-unknown-patience-and-precision">Adapting to the Unknown: Patience and Precision</h3>
+
+<p>In real-world engagements, <strong>you won’t always have clear feedback</strong> on what’s being filtered or blocked. WAFs may silently drop requests, sanitize payloads, or serve generic error pages making your job harder. That’s why <strong>SQLi is often trial-and-error based</strong>, especially under heavy defenses.</p>
+
+<p>Each target environment is unique:</p>
+
+<ul>
+  <li>
+    <p>Some filter payloads at the frontend.</p>
+  </li>
+  <li>
+    <p>Others rely on backend input sanitization.</p>
+  </li>
+  <li>
+    <p>Many use both layered defenses.</p>
+  </li>
+</ul>
+
+<p>To break through:</p>
+
+<ul>
+  <li>
+    <p><strong>Start small</strong> test with basic payloads.</p>
+  </li>
+  <li>
+    <p><strong>Probe with variations</strong> change syntax, encoding, and structure.</p>
+  </li>
+  <li>
+    <p><strong>Log everything</strong> track responses, delays, and subtle changes.</p>
+  </li>
+</ul>
+
+<p>It’s a chess match, not a sprint. <strong>WAFs can be defeated but only if you stay unpredictable.</strong></p>
 
     </section>
 

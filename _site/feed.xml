@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-09T14:10:27-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-09T14:27:12-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -2758,7 +2758,7 @@ foreach ($filters as $filter) {
     </svg>
   </button>
   <pre><code class="language-sqli">
-1'%0A||%0A1=1%0A--%27+
+1'%0A||%0A1=1%0A--%27
 </code></pre>
 </div>
 
@@ -2810,7 +2810,86 @@ SELECT username, password FROM users WHERE username = '1' || 1=1 --';
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4k-WTEUjdbt4Z6RTzI42Gg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>The result? The WHERE clause always passes, granting unauthorized access.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>The result? The WHERE clause always passes, granting unauthorized access.</p>
+
+<h1 id="bypassing-wafs-and-filters-in-sql-injection-a-tactical-breakdown">Bypassing WAFs and Filters in SQL Injection: A Tactical Breakdown</h1>
+
+<p>When dealing with Web Application Firewalls (WAFs) or filter-based defenses, <strong>no single SQL injection technique is guaranteed to work across all environments</strong>. Filters are often tailored to block known attack patterns but they’re not perfect. Understanding their weaknesses and employing a flexible, adaptive mindset is key to bypassing them.</p>
+
+<p>Below is a curated list of common filtering scenarios, along with practical evasion techniques and real-world examples:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Scenario</strong></th>
+      <th><strong>Description</strong></th>
+      <th><strong>Bypass Example</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
+      <td>WAFs may block exact keyword matches. Bypass by changing case or inserting inline comments.</td>
+      <td><code>SElEcT * FrOm users</code> or <code>SE/**/LECT * FROM/**/users</code></td>
+    </tr>
+    <tr>
+      <td><strong>Spaces are filtered</strong></td>
+      <td>Spaces are removed or blocked. Use alternative whitespace (e.g., <code class="language-plaintext highlighter-rouge">%0A</code>, <code class="language-plaintext highlighter-rouge">%09</code>) or inline comments.</td>
+      <td><code>SELECT%0A*%0AFROM%0Ausers</code> or <code>SELECT/**/username/**/FROM/**/users</code></td>
+    </tr>
+    <tr>
+      <td><strong>Logical operators like <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code> are banned</strong></td>
+      <td>Filters block logical operators. Use alternatives like <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, or encoded logic.</td>
+      <td><code>username = 'admin' &amp;&amp; password = 'pass'</code> or <code>username = 'admin'%0A</code></td>
+    </tr>
+    <tr>
+      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">UNION</code>, <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
+      <td>Filters block keywords. Encode with <code class="language-plaintext highlighter-rouge">CHAR()</code>, Unicode, or hex to evade.</td>
+      <td><code>SELECT * FROM users WHERE username = CHAR(0x61,0x64,0x6D,0x69,0x6E)</code></td>
+    </tr>
+    <tr>
+      <td><strong>Deep keyword filtering (<code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">UNION</code>)</strong></td>
+      <td>Multiple keywords are filtered. Combine obfuscation: string functions, comments, concatenation.</td>
+      <td><code>SELECT * FROM users WHERE username = CONCAT('a','d','m','i','n')</code> or <code>SElEcT/**/username/**/FROM/**/users</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="adapting-to-the-unknown-patience-and-precision">Adapting to the Unknown: Patience and Precision</h3>
+
+<p>In real-world engagements, <strong>you won’t always have clear feedback</strong> on what’s being filtered or blocked. WAFs may silently drop requests, sanitize payloads, or serve generic error pages making your job harder. That’s why <strong>SQLi is often trial-and-error based</strong>, especially under heavy defenses.</p>
+
+<p>Each target environment is unique:</p>
+
+<ul>
+  <li>
+    <p>Some filter payloads at the frontend.</p>
+  </li>
+  <li>
+    <p>Others rely on backend input sanitization.</p>
+  </li>
+  <li>
+    <p>Many use both layered defenses.</p>
+  </li>
+</ul>
+
+<p>To break through:</p>
+
+<ul>
+  <li>
+    <p><strong>Start small</strong> test with basic payloads.</p>
+  </li>
+  <li>
+    <p><strong>Probe with variations</strong> change syntax, encoding, and structure.</p>
+  </li>
+  <li>
+    <p><strong>Log everything</strong> track responses, delays, and subtle changes.</p>
+  </li>
+</ul>
+
+<p>It’s a chess match, not a sprint. <strong>WAFs can be defeated but only if you stay unpredictable.</strong></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
