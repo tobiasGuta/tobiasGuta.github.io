@@ -5,18 +5,38 @@ permalink: /posts/
 ---
 
 <section class="posts-list max-w-4xl mx-auto px-4 py-8 text-gray-100">
-  <h1 class="text-4xl font-bold mb-8 text-white tracking-wide flex items-center gap-2">
+  <h1 class="text-4xl font-bold mb-8 text-white tracking-wide flex items-center gap-2 relative">
     <svg class="blog-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2h6a2 2 0 012 2v14a2 2 0 01-2 2z" />
     </svg>
     Blog Posts
-    <a href="http://whoistob1as.me/feed.xml" target="_blank" rel="noopener" title="RSS Feed" class="rss-feed-icon">
+    <a href="http://whoistob1as.me/feed.xml" target="_blank" rel="noopener" title="RSS Feed" class="rss-feed-icon ml-2">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
         <circle cx="6.18" cy="17.82" r="2.18" fill="currentColor"/>
         <path d="M4 11v3a8 8 0 0 1 8 8h3c0-6.08-4.92-11-11-11zm0-4v3c9.39 0 17 7.61 17 17h3c0-11.05-8.95-20-20-20z" fill="currentColor"/>
       </svg>
     </a>
   </h1>
+
+  <!-- Dropdown Button and Menu BELOW the heading -->
+  <div style="margin-bottom: 1.2em;">
+    <button id="tagDropdownBtn" aria-expanded="false">
+      Filter Tags
+      <svg style="margin-left:0.4em;" width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+        <path d="M6 8l4 4 4-4" stroke="#ff4d4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <ul id="tagDropdownMenu">
+      {% assign tags_list = site.tags | sort %}
+      {% for tag in tags_list %}
+        <li>
+          <a href="/tags/{{ tag[0] | slugify }}/">{{ tag[0] }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
   <div class="cards-container">
     {% for post in site.posts %}
     <article class="post-card">
@@ -48,3 +68,24 @@ permalink: /posts/
     {% endfor %}
   </div>
 </section>
+
+<!-- Dropdown Toggle Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownBtn = document.getElementById("tagDropdownBtn");
+    const dropdownMenu = document.getElementById("tagDropdownMenu");
+
+    dropdownBtn.addEventListener("click", () => {
+      const isOpen = dropdownMenu.classList.contains("show");
+      dropdownMenu.classList.toggle("show");
+      dropdownBtn.setAttribute("aria-expanded", !isOpen);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.remove("show");
+        dropdownBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>

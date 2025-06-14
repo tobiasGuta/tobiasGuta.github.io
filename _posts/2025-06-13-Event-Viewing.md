@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Event-Viewing (PicoCTF)"
+title: "Event Viewing (PicoCTF)"
 date: 2025-06-13
 categories: [blog, cybersecurity]
-tags: [red team, pentesting, bug bounty, ctf]
+tags: [Redteam, pentesting, bugbounty, ctf]
 ---
 
 <img 

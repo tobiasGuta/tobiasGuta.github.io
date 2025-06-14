@@ -1037,3 +1037,91 @@ body.zoom-active::before {
       0 0 18px 6px #ffd70044;
   }
 }
+
+/* Dropdown Menu: Pushes content down, not absolute */
+#tagDropdownMenu {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  background: #111;
+  border-left: 6px solid #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(255,255,255,0.10);
+  padding: 1.1em 1.6em 1.1em 1.2em;
+  margin: 0.6em 0 2em 0;
+  animation: fadeIn 0.18s;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1em;
+}
+#tagDropdownMenu.show {
+  display: flex;
+}
+#tagDropdownMenu li {
+  display: inline-block;
+  margin: 0 0.18em 0.35em 0;
+  background: #181818;
+  border-radius: 0.18em;
+  border: 1.5px solid #232323;   /* subtle dark border */
+  transition: 
+    background 0.15s, 
+    box-shadow 0.15s,
+    border-color 0.15s;
+  padding: 0;
+  box-shadow: 0 2px 8px #0004;
+}
+#tagDropdownMenu li:hover {
+  background: #222;
+  border-color: #ff4d4f;         /* bold red border on hover */
+  box-shadow: 0 4px 16px #0006;
+}
+#tagDropdownMenu a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  padding: 0.32em 1.1em;
+  border-radius: 0.18em;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+}
+#tagDropdownMenu a:hover {
+  color: #ff4d4f;
+  background: transparent;
+}
+
+#tagDropdownBtn {
+  background-color: #181818;
+  color: #fff;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  border: 2px solid #232323;
+  border-radius: 0.4em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: 
+    background 0.2s ease, 
+    border-color 0.2s ease, 
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#tagDropdownBtn:hover {
+  background-color: #222;
+  border-color: #ff4d4f;
+  box-shadow: 0 6px 16px rgba(255, 77, 79, 0.25);
+}
+
+#tagDropdownBtn svg {
+  transition: transform 0.2s ease;
+}
+
+#tagDropdownBtn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
