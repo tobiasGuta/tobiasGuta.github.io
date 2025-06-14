@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "READ (PicoCTF)"
-date: 2025-06-02
+date: 2025-06-12
 categories: [blog, cybersecurity]
 tags: [red team, pentesting, bug bounty, ctf]
 ---

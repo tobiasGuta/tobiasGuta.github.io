@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Event-Viewing (PicoCTF)</title>
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      #leaf-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Falling leaves animation container -->
+    <div id="leaf-container"></div>
+
+    <main class="container py-5">
+      <div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Event-Viewing (PicoCTF)</h1>
+      
+      <p class="text-sm text-gray-400">
+        June 13, 2025
+      </p>
+      
+      <p class="text-sm text-gray-400">
+        Categories: 
+        
+          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
+        
+          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
+        
+      </p>
+      
+      
+        <p class="mt-1 text-sm text-gray-400">
+          Tags: 
+          
+            <a href="/tags/red team" class="text-gray-400 hover:text-white">red team</a>, 
+          
+            <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
+          
+            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
+          
+            <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
+          
+        </p>
+      
+    </header>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    Challenge: Event-Viewing (PicoCTF)
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>Description:</strong><br />
+    One of the employees at your company has their computer infected by malware! Turns out every time they try to switch on the computer, it shuts down right after they log in. The story given by the employee is as follows:
+They installed software using an installer they downloaded online
+They ran the installed software but it seemed to do nothing
+Now every time they bootup and login to their computer, a black command prompt screen quickly opens and closes and their computer shuts down instantly.
+See if you can find evidence for the each of these events and retrieve the flag (split into 3 pieces) from the correct logs!<br />
+  </div>
+  <a href="https://challenge-files.picoctf.net/c_verbal_sleep/123d9b79cadb6b44ab6ae912f25bf9cc18498e8addee851e7d349416c7ffc1e1/Windows_Logs.evtx" style="color: #ffb86c; text-decoration: underline; font-weight: bold;">
+    &#128190; Download the Windows Log file: Windows_Logs.evtx
+  </a>
+</div>
+
+<p>Before diving in, it’s important to note that there are two main ways to analyze Windows event logs:</p>
+<ol>
+  <li><strong>Event Viewer GUI</strong> the built-in graphical tool in Windows, which is user-friendly if you’re comfortable navigating through its menus.</li>
+  <li><strong>PowerShell scripts</strong> a more flexible and powerful option, especially for filtering and searching large log files.</li>
+</ol>
+
+<p>For this challenge, I’ll be using PowerShell, as it allows for precise searching and automation perfect for CTF scenarios where speed and accuracy matter. If you’re new to PowerShell, don’t worry! I’ll walk through the exact script I used below:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Powershell</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Learning-Powershell">
+$events = Get-WinEvent -Path &quot;C:\Users\users\Downloads\Windows_Logs.evtx&quot;
+
+$filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
+
+$parsed = $filteredEvents | ForEach-Object {
+    [xml]$xml = $_.ToXml()
+
+    $stringBuilder = New-Object System.Text.StringBuilder
+    $xmlWriterSettings = New-Object System.Xml.XmlWriterSettings
+    $xmlWriterSettings.Indent = $true
+    $xmlWriterSettings.OmitXmlDeclaration = $true
+    $xmlWriter = [System.Xml.XmlWriter]::Create($stringBuilder, $xmlWriterSettings)
+    $xml.WriteTo($xmlWriter)
+    $xmlWriter.Flush()
+    $prettyXml = $stringBuilder.ToString()
+
+    # Setup namespace manager for XPath
+    $nsMgr = New-Object System.Xml.XmlNamespaceManager($xml.NameTable)
+    $nsMgr.AddNamespace(&quot;e&quot;, &quot;http://schemas.microsoft.com/win/2004/08/events/event&quot;)
+
+    # Extract nodes with namespace-aware XPath
+    $dataNodes = $xml.SelectNodes(&quot;//e:EventData/e:Data&quot;, $nsMgr)
+    $dataFields = foreach ($node in $dataNodes) {
+        $name = if ($node.Attributes[&quot;Name&quot;]) { $node.Attributes[&quot;Name&quot;].Value } else { &quot;Unknown&quot; }
+        $val = if ($node.'#text') { $node.'#text' } else { &quot;null&quot; }
+        [PSCustomObject]@{
+            Name  = $name
+            Value = $val
+        }
+    }
+
+    # System nodes extraction with safety
+    $system = $xml.SelectSingleNode(&quot;//e:System&quot;, $nsMgr)
+
+    $providerName   = $system.SelectSingleNode(&quot;e:Provider&quot;, $nsMgr).GetAttribute(&quot;Name&quot;)
+    $eventRecordID  = $system.SelectSingleNode(&quot;e:EventRecordID&quot;, $nsMgr).InnerText
+    $execution      = $system.SelectSingleNode(&quot;e:Execution&quot;, $nsMgr)
+    $processID      = $execution.GetAttribute(&quot;ProcessID&quot;)
+    $threadID       = $execution.GetAttribute(&quot;ThreadID&quot;)
+    $channel        = $system.SelectSingleNode(&quot;e:Channel&quot;, $nsMgr).InnerText
+    $computer       = $system.SelectSingleNode(&quot;e:Computer&quot;, $nsMgr).InnerText
+    $security       = $system.SelectSingleNode(&quot;e:Security&quot;, $nsMgr)
+    $userID         = if ($security) { $security.GetAttribute(&quot;UserID&quot;) } else { &quot;Unknown&quot; }
+    $version        = $system.SelectSingleNode(&quot;e:Version&quot;, $nsMgr).InnerText
+    $level          = $system.SelectSingleNode(&quot;e:Level&quot;, $nsMgr).InnerText
+    $task           = $system.SelectSingleNode(&quot;e:Task&quot;, $nsMgr).InnerText
+    $opcode         = $system.SelectSingleNode(&quot;e:Opcode&quot;, $nsMgr).InnerText
+
+    # Build PSCustomObject with full info
+    [PSCustomObject]@{
+        TimeCreated    = $_.TimeCreated
+        EventID        = $_.Id
+        EventRecordID  = $eventRecordID
+        ProviderName   = $providerName
+        Version        = $version
+        Level          = $level
+        Task           = $task
+        Opcode         = $opcode
+        ProcessID      = $processID
+        ThreadID       = $threadID
+        Channel        = $channel
+        Computer       = $computer
+        UserID         = $userID
+        DataValues     = $dataFields
+        PrettyXml      = $prettyXml
+    }
+}
+
+# Output: With colors and flagged suspicious data
+foreach ($entry in $parsed) {
+    Write-Host &quot;─────────────── EVENT ───────────────&quot; -ForegroundColor Cyan
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;TimeCreated&quot;,    $entry.TimeCreated)    -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;EventID&quot;,        $entry.EventID)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;EventRecordID&quot;,  $entry.EventRecordID)  -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ProviderName&quot;,   $entry.ProviderName)   -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Version&quot;,        $entry.Version)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Level&quot;,          $entry.Level)          -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Task&quot;,           $entry.Task)           -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Opcode&quot;,         $entry.Opcode)         -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ProcessID&quot;,      $entry.ProcessID)      -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ThreadID&quot;,       $entry.ThreadID)       -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Channel&quot;,        $entry.Channel)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Computer&quot;,       $entry.Computer)       -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;UserID&quot;,         $entry.UserID)         -ForegroundColor Yellow
+    Write-Host &quot;DataValues     :&quot; -ForegroundColor Green
+
+    foreach ($field in $entry.DataValues) {
+        $highlight = $false
+        $val = $field.Value
+
+        # Flag suspicious patterns (encoded payloads, shutdowns, .exe, etc.)
+        if ($val -match &quot;shutdown|.exe|MXNfYV|[A-Za-z0-9+/=]{16,}&quot;) {
+            $highlight = $true
+        }
+
+        if ($highlight) {
+            Write-Host (&quot;  - {0,-20} : {1}&quot; -f $field.Name, $val) -ForegroundColor Red
+        } else {
+            Write-Host (&quot;  - {0,-20} : {1}&quot; -f $field.Name, $val) -ForegroundColor Green
+        }
+    }
+
+    Write-Host &quot;─────────────────────────────────────`n&quot;
+}
+</code></pre>
+</div>
+
+<p>The part of the script you’ll want to focus on is this line:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Powershell</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-powershell">
+$filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
+</code></pre>
+</div>
+
+<p>This line filters the event logs to only show events with a specific Event ID in this case, <code class="language-plaintext highlighter-rouge">1074</code>. If you want to investigate different types of events, simply change the number to the Event ID you’re interested in. For example, you could use <code class="language-plaintext highlighter-rouge">4624</code> for logon events or <code class="language-plaintext highlighter-rouge">4688</code> for process creation events. This makes it easy to adapt the script to whatever evidence you need to find for the challenge.</p>
+
+<p>To decide which Event IDs to search for, let’s break down the employee’s story step by step:</p>
+
+<ol>
+  <li>They installed software using an installer they downloaded online.</li>
+  <li>They ran the installed software, but it seemed to do nothing.</li>
+  <li>Now, every time they boot up and log in to their computer, a black command prompt screen quickly opens and closes, and the computer shuts down instantly.</li>
+</ol>
+
+<p>By mapping each part of the story to relevant Windows event types, we can choose the right Event IDs to investigate and uncover evidence for each stage of the incident.</p>
+
+<p>To identify the correct Event IDs for each step, I searched online for which Windows Event IDs correspond to software installation, program execution, and shutdown events. This helps ensure we’re filtering the logs for the most relevant evidence at each stage of the incident.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*R32VrWy1wvjCBUXvJWQyRw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Remeber: change the number to the Event ID you’re interested in.</p>
+
+<div class="alert-error">
+<strong>Remeber:</strong> change the number to the Event ID you're interested in.
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*01v3KXk4mhBvM_Op-Cp-RA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the first part of the flag.</p>
+
+<p>To get the second part of the flag, I tried checking for new services, startup events, and other common indicators, but couldn’t find anything obvious. So, I moved on to the third part of the story. Since it mentions that “every time they boot up and log in, a black command prompt screen quickly opens and closes, and the computer shuts down instantly,” I suspected there might be a scheduled task or a registry modification causing this behavior. That led me to focus my search on registry key modifications in the event logs.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*niUt1eJcBfp4OT7UPb7MiA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8DF0p5h86egqzsPwH0zWxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the second part of the flag.</p>
+
+<p>For the last part, I initially tried searching for crash events or the name of the suspicious .exe file, but didn’t find any useful results. Eventually, I discovered that looking for the shutdown event ID led me to the evidence I needed.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ObYdNR_PjBSuoawNkpH3Qg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eyfFqniB6kbk4JHDh9YWAA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
+</div>
+
+
+      
+        <!-- Giscus comments -->
+        <div id="comments"></div>
+        <script src="https://giscus.app/client.js"
+                data-repo="tobiasGuta/tobiasGuta.github.io"
+                data-repo-id="R_kgDOOxswYQ"
+                data-category="General"
+                data-category-id="DIC_kwDOOxswYc4CrEhp"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(btn) {
+        const code = btn.parentElement.querySelector('code');
+        if (code) {
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.title = "Copied!";
+            setTimeout(() => btn.title = "Copy code", 1200);
+          });
+        }
+      }
+    </script>
+
+    
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>

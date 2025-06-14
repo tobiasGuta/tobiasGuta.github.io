@@ -1,4 +1,286 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-12T18:59:06-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-13T22:12:07-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event-Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event-Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    Challenge: Event-Viewing (PicoCTF)
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>Description:</strong><br />
+    One of the employees at your company has their computer infected by malware! Turns out every time they try to switch on the computer, it shuts down right after they log in. The story given by the employee is as follows:
+They installed software using an installer they downloaded online
+They ran the installed software but it seemed to do nothing
+Now every time they bootup and login to their computer, a black command prompt screen quickly opens and closes and their computer shuts down instantly.
+See if you can find evidence for the each of these events and retrieve the flag (split into 3 pieces) from the correct logs!<br />
+  </div>
+  <a href="https://challenge-files.picoctf.net/c_verbal_sleep/123d9b79cadb6b44ab6ae912f25bf9cc18498e8addee851e7d349416c7ffc1e1/Windows_Logs.evtx" style="color: #ffb86c; text-decoration: underline; font-weight: bold;">
+    &#128190; Download the Windows Log file: Windows_Logs.evtx
+  </a>
+</div>
+
+<p>Before diving in, it’s important to note that there are two main ways to analyze Windows event logs:</p>
+<ol>
+  <li><strong>Event Viewer GUI</strong> the built-in graphical tool in Windows, which is user-friendly if you’re comfortable navigating through its menus.</li>
+  <li><strong>PowerShell scripts</strong> a more flexible and powerful option, especially for filtering and searching large log files.</li>
+</ol>
+
+<p>For this challenge, I’ll be using PowerShell, as it allows for precise searching and automation perfect for CTF scenarios where speed and accuracy matter. If you’re new to PowerShell, don’t worry! I’ll walk through the exact script I used below:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Powershell</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Learning-Powershell">
+$events = Get-WinEvent -Path &quot;C:\Users\users\Downloads\Windows_Logs.evtx&quot;
+
+$filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
+
+$parsed = $filteredEvents | ForEach-Object {
+    [xml]$xml = $_.ToXml()
+
+    $stringBuilder = New-Object System.Text.StringBuilder
+    $xmlWriterSettings = New-Object System.Xml.XmlWriterSettings
+    $xmlWriterSettings.Indent = $true
+    $xmlWriterSettings.OmitXmlDeclaration = $true
+    $xmlWriter = [System.Xml.XmlWriter]::Create($stringBuilder, $xmlWriterSettings)
+    $xml.WriteTo($xmlWriter)
+    $xmlWriter.Flush()
+    $prettyXml = $stringBuilder.ToString()
+
+    # Setup namespace manager for XPath
+    $nsMgr = New-Object System.Xml.XmlNamespaceManager($xml.NameTable)
+    $nsMgr.AddNamespace(&quot;e&quot;, &quot;http://schemas.microsoft.com/win/2004/08/events/event&quot;)
+
+    # Extract nodes with namespace-aware XPath
+    $dataNodes = $xml.SelectNodes(&quot;//e:EventData/e:Data&quot;, $nsMgr)
+    $dataFields = foreach ($node in $dataNodes) {
+        $name = if ($node.Attributes[&quot;Name&quot;]) { $node.Attributes[&quot;Name&quot;].Value } else { &quot;Unknown&quot; }
+        $val = if ($node.'#text') { $node.'#text' } else { &quot;null&quot; }
+        [PSCustomObject]@{
+            Name  = $name
+            Value = $val
+        }
+    }
+
+    # System nodes extraction with safety
+    $system = $xml.SelectSingleNode(&quot;//e:System&quot;, $nsMgr)
+
+    $providerName   = $system.SelectSingleNode(&quot;e:Provider&quot;, $nsMgr).GetAttribute(&quot;Name&quot;)
+    $eventRecordID  = $system.SelectSingleNode(&quot;e:EventRecordID&quot;, $nsMgr).InnerText
+    $execution      = $system.SelectSingleNode(&quot;e:Execution&quot;, $nsMgr)
+    $processID      = $execution.GetAttribute(&quot;ProcessID&quot;)
+    $threadID       = $execution.GetAttribute(&quot;ThreadID&quot;)
+    $channel        = $system.SelectSingleNode(&quot;e:Channel&quot;, $nsMgr).InnerText
+    $computer       = $system.SelectSingleNode(&quot;e:Computer&quot;, $nsMgr).InnerText
+    $security       = $system.SelectSingleNode(&quot;e:Security&quot;, $nsMgr)
+    $userID         = if ($security) { $security.GetAttribute(&quot;UserID&quot;) } else { &quot;Unknown&quot; }
+    $version        = $system.SelectSingleNode(&quot;e:Version&quot;, $nsMgr).InnerText
+    $level          = $system.SelectSingleNode(&quot;e:Level&quot;, $nsMgr).InnerText
+    $task           = $system.SelectSingleNode(&quot;e:Task&quot;, $nsMgr).InnerText
+    $opcode         = $system.SelectSingleNode(&quot;e:Opcode&quot;, $nsMgr).InnerText
+
+    # Build PSCustomObject with full info
+    [PSCustomObject]@{
+        TimeCreated    = $_.TimeCreated
+        EventID        = $_.Id
+        EventRecordID  = $eventRecordID
+        ProviderName   = $providerName
+        Version        = $version
+        Level          = $level
+        Task           = $task
+        Opcode         = $opcode
+        ProcessID      = $processID
+        ThreadID       = $threadID
+        Channel        = $channel
+        Computer       = $computer
+        UserID         = $userID
+        DataValues     = $dataFields
+        PrettyXml      = $prettyXml
+    }
+}
+
+# Output: With colors and flagged suspicious data
+foreach ($entry in $parsed) {
+    Write-Host &quot;─────────────── EVENT ───────────────&quot; -ForegroundColor Cyan
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;TimeCreated&quot;,    $entry.TimeCreated)    -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;EventID&quot;,        $entry.EventID)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;EventRecordID&quot;,  $entry.EventRecordID)  -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ProviderName&quot;,   $entry.ProviderName)   -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Version&quot;,        $entry.Version)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Level&quot;,          $entry.Level)          -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Task&quot;,           $entry.Task)           -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Opcode&quot;,         $entry.Opcode)         -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ProcessID&quot;,      $entry.ProcessID)      -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;ThreadID&quot;,       $entry.ThreadID)       -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Channel&quot;,        $entry.Channel)        -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;Computer&quot;,       $entry.Computer)       -ForegroundColor Yellow
+    Write-Host (&quot;{0,-15}: {1}&quot; -f &quot;UserID&quot;,         $entry.UserID)         -ForegroundColor Yellow
+    Write-Host &quot;DataValues     :&quot; -ForegroundColor Green
+
+    foreach ($field in $entry.DataValues) {
+        $highlight = $false
+        $val = $field.Value
+
+        # Flag suspicious patterns (encoded payloads, shutdowns, .exe, etc.)
+        if ($val -match &quot;shutdown|.exe|MXNfYV|[A-Za-z0-9+/=]{16,}&quot;) {
+            $highlight = $true
+        }
+
+        if ($highlight) {
+            Write-Host (&quot;  - {0,-20} : {1}&quot; -f $field.Name, $val) -ForegroundColor Red
+        } else {
+            Write-Host (&quot;  - {0,-20} : {1}&quot; -f $field.Name, $val) -ForegroundColor Green
+        }
+    }
+
+    Write-Host &quot;─────────────────────────────────────`n&quot;
+}
+</code></pre>
+</div>
+
+<p>The part of the script you’ll want to focus on is this line:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Powershell</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-powershell">
+$filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
+</code></pre>
+</div>
+
+<p>This line filters the event logs to only show events with a specific Event ID in this case, <code class="language-plaintext highlighter-rouge">1074</code>. If you want to investigate different types of events, simply change the number to the Event ID you’re interested in. For example, you could use <code class="language-plaintext highlighter-rouge">4624</code> for logon events or <code class="language-plaintext highlighter-rouge">4688</code> for process creation events. This makes it easy to adapt the script to whatever evidence you need to find for the challenge.</p>
+
+<p>To decide which Event IDs to search for, let’s break down the employee’s story step by step:</p>
+
+<ol>
+  <li>They installed software using an installer they downloaded online.</li>
+  <li>They ran the installed software, but it seemed to do nothing.</li>
+  <li>Now, every time they boot up and log in to their computer, a black command prompt screen quickly opens and closes, and the computer shuts down instantly.</li>
+</ol>
+
+<p>By mapping each part of the story to relevant Windows event types, we can choose the right Event IDs to investigate and uncover evidence for each stage of the incident.</p>
+
+<p>To identify the correct Event IDs for each step, I searched online for which Windows Event IDs correspond to software installation, program execution, and shutdown events. This helps ensure we’re filtering the logs for the most relevant evidence at each stage of the incident.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*R32VrWy1wvjCBUXvJWQyRw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Remeber: change the number to the Event ID you’re interested in.</p>
+
+<div class="alert-error">
+<strong>Remeber:</strong> change the number to the Event ID you're interested in.
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*01v3KXk4mhBvM_Op-Cp-RA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the first part of the flag.</p>
+
+<p>To get the second part of the flag, I tried checking for new services, startup events, and other common indicators, but couldn’t find anything obvious. So, I moved on to the third part of the story. Since it mentions that “every time they boot up and log in, a black command prompt screen quickly opens and closes, and the computer shuts down instantly,” I suspected there might be a scheduled task or a registry modification causing this behavior. That led me to focus my search on registry key modifications in the event logs.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*niUt1eJcBfp4OT7UPb7MiA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8DF0p5h86egqzsPwH0zWxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the second part of the flag.</p>
+
+<p>For the last part, I initially tried searching for crash events or the name of the suspicious .exe file, but didn’t find any useful results. Eventually, I discovered that looking for the shutdown event ID led me to the evidence I needed.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ObYdNR_PjBSuoawNkpH3Qg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eyfFqniB6kbk4JHDh9YWAA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-12T00:00:00-04:00</published><updated>2025-06-12T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    Challenge: RED (PicoCTF)
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>Description:</strong><br />
+    RED, RED, RED, RED<br />
+  </div>
+  <a href="https://challenge-files.picoctf.net/c_verbal_sleep/831307718b34193b288dde31e557484876fb84978b5818e2627e453a54aa9ba6/red.png" style="color: #ffb86c; text-decoration: underline; font-weight: bold;">
+    &#128190; Download: red.png
+  </a>
+</div>
+
+<h2 id="solution-walkthrough">Solution Walkthrough</h2>
+
+<ol>
+  <li><strong>Initial Inspection</strong><br />
+After downloading and opening the image, I noticed a red square. To gather more information, I used <code class="language-plaintext highlighter-rouge">exiftool</code> to check the image metadata.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7NkoszjlLKQpeKZ3rPcpsg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:4000/format:webp/1*0JBicI9I0KxKKiEEBNEisQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Finding the Hidden Poem</strong><br />
+In the metadata, I found a poem:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+   Crimson heart, vibrant and bold,
+   .Hearts flutter at your sight
+   ..Evenings glow softly red,
+   .Cherries burst with sweet life..
+   Kisses linger with your warmth..
+   Love deep as merlot..
+   Scarlet leaves falling softly,
+   .Bold in every stroke.
+</code></pre>
+</div>
+<p>By aligning the lines after each dot, the first letter of each line spells out: <strong>CHECKLSB</strong>.</p>
+
+<ol>
+  <li><strong>Researching LSB</strong><br />
+I wasn’t sure what “LSB” meant, so I searched online and learned about <strong>Least Significant Bit (LSB) steganography</strong> a technique for hiding data in images by modifying the least significant bits of pixel values.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*_lyuWmT_Axwuqc-MiFA74g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Understanding LSB Steganography</strong>
+    <ul>
+      <li>The LSB is the rightmost bit in a binary number (e.g., in <code class="language-plaintext highlighter-rouge">10010010</code>, the last <code class="language-plaintext highlighter-rouge">0</code> is the LSB).</li>
+      <li>LSB steganography hides information by replacing these bits in the image’s color channels.</li>
+      <li>This method is popular because it doesn’t noticeably change the image.</li>
+    </ul>
+  </li>
+  <li><strong>Choosing the Right Tool</strong><br />
+I first considered <code class="language-plaintext highlighter-rouge">steghide</code>, but it doesn’t support PNG files. After some research, I found <a href="https://github.com/zed-0xff/zsteg"><code class="language-plaintext highlighter-rouge">zsteg</code></a>, a tool designed for detecting steganography in PNG and BMP images.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FeH_SHuuA2QeDLxE3GX6Qg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Extracting the Hidden Data</strong><br />
+I installed <code class="language-plaintext highlighter-rouge">zsteg</code> (since it’s not pre-installed on Kali Linux) and ran it on the image. The tool revealed a message encoded in base64, multiple times.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:3000/format:webp/1*TBm2PkEUVhEuNQ72ezillg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Decoding the Message</strong><br />
+After decoding the base64 string several times, I finally obtained the flag!</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
@@ -3472,91 +3754,7 @@ Click any image to view it in full screen.
 
 <ul>
   <li><a href="https://www.bellingcat.com/resources/how-tos/2019/12/26/guide-to-using-reverse-image-search-for-investigations/">Guide to Using Reverse Image Search for Investigations (Bellingcat)</a></li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
-  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
-    Challenge: RED (PicoCTF)
-  </div>
-  <div style="margin-bottom: 12px;">
-    <strong>Description:</strong><br />
-    RED, RED, RED, RED<br />
-  </div>
-  <a href="https://challenge-files.picoctf.net/c_verbal_sleep/831307718b34193b288dde31e557484876fb84978b5818e2627e453a54aa9ba6/red.png" style="color: #ffb86c; text-decoration: underline; font-weight: bold;">
-    &#128190; Download: red.png
-  </a>
-</div>
-
-<h2 id="solution-walkthrough">Solution Walkthrough</h2>
-
-<ol>
-  <li><strong>Initial Inspection</strong><br />
-After downloading and opening the image, I noticed a red square. To gather more information, I used <code class="language-plaintext highlighter-rouge">exiftool</code> to check the image metadata.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7NkoszjlLKQpeKZ3rPcpsg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:4000/format:webp/1*0JBicI9I0KxKKiEEBNEisQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li><strong>Finding the Hidden Poem</strong><br />
-In the metadata, I found a poem:</li>
-</ol>
-<div class="code-block-container">
-  <span class="code-lang-tag">Terminal</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="terminal">
-   Crimson heart, vibrant and bold,
-   .Hearts flutter at your sight
-   ..Evenings glow softly red,
-   .Cherries burst with sweet life..
-   Kisses linger with your warmth..
-   Love deep as merlot..
-   Scarlet leaves falling softly,
-   .Bold in every stroke.
-</code></pre>
-</div>
-<p>By aligning the lines after each dot, the first letter of each line spells out: <strong>CHECKLSB</strong>.</p>
-
-<ol>
-  <li><strong>Researching LSB</strong><br />
-I wasn’t sure what “LSB” meant, so I searched online and learned about <strong>Least Significant Bit (LSB) steganography</strong> a technique for hiding data in images by modifying the least significant bits of pixel values.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*_lyuWmT_Axwuqc-MiFA74g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li><strong>Understanding LSB Steganography</strong>
-    <ul>
-      <li>The LSB is the rightmost bit in a binary number (e.g., in <code class="language-plaintext highlighter-rouge">10010010</code>, the last <code class="language-plaintext highlighter-rouge">0</code> is the LSB).</li>
-      <li>LSB steganography hides information by replacing these bits in the image’s color channels.</li>
-      <li>This method is popular because it doesn’t noticeably change the image.</li>
-    </ul>
-  </li>
-  <li><strong>Choosing the Right Tool</strong><br />
-I first considered <code class="language-plaintext highlighter-rouge">steghide</code>, but it doesn’t support PNG files. After some research, I found <a href="https://github.com/zed-0xff/zsteg"><code class="language-plaintext highlighter-rouge">zsteg</code></a>, a tool designed for detecting steganography in PNG and BMP images.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FeH_SHuuA2QeDLxE3GX6Qg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li><strong>Extracting the Hidden Data</strong><br />
-I installed <code class="language-plaintext highlighter-rouge">zsteg</code> (since it’s not pre-installed on Kali Linux) and ran it on the image. The tool revealed a message encoded in base64, multiple times.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:3000/format:webp/1*TBm2PkEUVhEuNQ72ezillg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li><strong>Decoding the Message</strong><br />
-After decoding the base64 string several times, I finally obtained the flag!</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
@@ -4316,235 +4514,4 @@ MD5 and SHA1 are outdated and cracked. Using these for hashing IDs is like locki
 
 <p>This is a classic <strong>IDOR (Insecure Direct Object Reference)</strong> vuln. Even though the IDs are UUIDs (long, random, hard to guess), the backend <strong>doesn’t check</strong> if <code class="language-plaintext highlighter-rouge">StudentA</code> actually owns or has permission to view that UUID.</p>
 
-<p>The server sees a valid ID, retrieves the data, and serves it <strong>no access control check</strong>.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Blame Game (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html" rel="alternate" type="text/html" title="Blame Game (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/intro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/intro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_angry_grizzly_bear_ascii_art_vhs_russian_underground_co_3d023849-0f23-4c2b-b670-ac5ba43f8eb1.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h2 id="description">Description</h2>
-
-<blockquote>Someone's commits seems to be preventing the program from working. Who is it?</blockquote>
-
-<p>They provided us with a zip file, let’s download it.</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> wget http://example.com/challenge.zip
-</code></pre>
-</div>
-
-<p>Unzip this file and you got a lot of content</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-
-  <pre><code class="language-bash">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> unzip challenge.zipcode&gt;&lt;/pre&gt;
-Archive:  challenge.zip
-   creating: drop-in/
- extracting: drop-in/message.py
-   creating: drop-in/.git/
-   creating: drop-in/.git/branches/
-  inflating: drop-in/.git/description
-   creating: drop-in/.git/hooks/
-  inflating: drop-in/.git/hooks/applypatch-msg.sample
-  inflating: drop-in/.git/hooks/commit-msg.sample
-  inflating: drop-in/.git/hooks/fsmonitor-watchman.sample
-  inflating: drop-in/.git/hooks/post-update.sample
-  inflating: drop-in/.git/hooks/pre-applypatch.sample
-  inflating: drop-in/.git/hooks/pre-commit.sample
-  inflating: drop-in/.git/hooks/pre-merge-commit.sample
-  inflating: drop-in/.git/hooks/pre-push.sample
-  inflating: drop-in/.git/hooks/pre-rebase.sample
-  inflating: drop-in/.git/hooks/pre-receive.sample
-  inflating: drop-in/.git/hooks/prepare-commit-msg.sample
-  inflating: drop-in/.git/hooks/update.sample
-   creating: drop-in/.git/info/
-  inflating: drop-in/.git/info/exclude
-   creating: drop-in/.git/refs/
-   creating: drop-in/.git/refs/heads/
- extracting: drop-in/.git/refs/heads/master
-   creating: drop-in/.git/refs/tags/
- extracting: drop-in/.git/HEAD
-  inflating: drop-in/.git/config
-   creating: drop-in/.git/objects/
-   creating: drop-in/.git/objects/pack/
-   creating: drop-in/.git/objects/info/
-   creating: drop-in/.git/objects/7d/
- extracting: drop-in/.git/objects/7d/f869a15e76c28afb609fa4dbc059144ad70161
- extracting: drop-in/.git/objects/7d/0613c54635917946d70e0b2e9ca42136c18ee4
- extracting: drop-in/.git/objects/7d/1ca8dc38f8bc18eb35b2571d2b550673f2b415
-   creating: drop-in/.git/objects/a5/
- extracting: drop-in/.git/objects/a5/6b2529881119591fce34630170f5630f4b096c
-   creating: drop-in/.git/objects/f3/
- extracting: drop-in/.git/objects/f3/cec26cf7f80f91b5c3d1972f14dd4e9f97ec83
- extracting: drop-in/.git/objects/f3/cb1c88e58063947d16d222c68e04e62c23649e
- extracting: drop-in/.git/objects/f3/7406b0cab000c4af56ca105f0d194608e9402e
-   creating: drop-in/.git/objects/32/
- extracting: drop-in/.git/objects/32/6544a21bf75fa38f486891c58119c236a7dbbf
- extracting: drop-in/.git/objects/32/a8c7430819aa9f2ca0a731f992c6cb8b09793c
- extracting: drop-in/.git/objects/32/ede878fe116a9ea9b2753fcf11543472e45035
- extracting: drop-in/.git/objects/32/a8b421e4870c094e436e3df403a243c9f61b19
- extracting: drop-in/.git/objects/32/223a970ba9986bd9caabcae02cb014381e5b42
-   creating: drop-in/.git/objects/28/
- extracting: drop-in/.git/objects/28/9871add646b411282a84ff33f37abfd976ca59
- extracting: drop-in/.git/objects/28/c9a9686078224264c931276d433fd4eec66f7b
-   creating: drop-in/.git/objects/9a/
- extracting: drop-in/.git/objects/9a/e3e1bc67ad0143c611c5f65399b79850d20983
-   creating: drop-in/.git/objects/ce/
-[SNIP]
-  </code></pre>
-</div>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> cat drop-inmessage.py
-print("Hello, World!"
-</code></pre>
-</div>
-
-<p>Nothing here.</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git log
-commit 8cc3930896bb01ae046bc08c382bd30772918ff5 (HEAD -&gt; master)
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 6dbd8d326a2f0c9fe7f0011c8e60448b9accc6ff
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 2e8970529c41058a68aae8bc04ef7a2d53ce0d8a
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit 135020e8b96565248b604cb42ae54e256e8fc48a
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit a95fbac033f190b3fb1066727ea01d7d4be362b5
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-commit e6b8b174bf1ce6361ff29096579d2752616cb6f2
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:06 2024 +0000
-
-    important business work
-
-[SNIP]
-</code></pre>
-</div>
-
-<p>Nothing here either.</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git reflog
-8cc3930 (HEAD -&gt; master) HEAD@{0}: commit: important business work
-6dbd8d3 HEAD@{1}: commit: important business work
-2e89705 HEAD@{2}: commit: important business work
-135020e HEAD@{3}: commit: important business work
-a95fbac HEAD@{4}: commit: important business work
-e6b8b17 HEAD@{5}: commit: important business work
-5118475 HEAD@{6}: commit: important business work
-8f3c43e HEAD@{7}: commit: important business work
-6701b97 HEAD@{8}: commit: important business work
-8c96635 HEAD@{9}: commit: important business work
-44d5213 HEAD@{10}: commit: important business work
-8be10be HEAD@{11}: commit: important business work
-85e253b HEAD@{12}: commit: important business work
-81e3422 HEAD@{13}: commit: important business work
-53ca048 HEAD@{14}: commit: important business work
-1de3614 HEAD@{15}: commit: important business work
-f45b2d3 HEAD@{16}: commit: important business work
-0e9857c HEAD@{17}: commit: important business work
-32223a9 HEAD@{18}: commit: important business work
-d683b18 HEAD@{19}: commit: important business work
-2c8a227 HEAD@{20}: commit: important business work
-88d99c0 HEAD@{21}: commit: important business work
-[SNIP]
-</code></pre>
-</div>
-
-<p>Nope.</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> ls
-message.py
-</code></pre>
-</div>
-
-<p>Let’s use log</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-<span class="terminal-prompt">tobiasare@hacktheplanet:~$</span> git log message.py
-commit 9ae3e1bc67ad0143c611c5f65399b79850d20983
-Author: picoCTF{@sk_th3_1nt3rn_yupyuyp} &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:01 2024 +0000
-
-    optimize file size of prod code
-
-commit f3cec26cf7f80f91b5c3d1972f14dd4e9f97ec83
-Author: picoCTF &lt;ops@picoctf.com&gt;
-Date:   Sat Mar 9 21:09:01 2024 +0000
-
-    create top secret project
-</code></pre>
-</div>
-
-<p>The intern………</p>
-
-<p>Thank you for reading.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>The server sees a valid ID, retrieves the data, and serves it <strong>no access control check</strong>.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
