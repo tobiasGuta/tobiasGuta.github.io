@@ -548,11 +548,20 @@
       dropdownBtn.setAttribute("aria-expanded", !isOpen);
     });
 
+    // Close dropdown when clicking outside
     document.addEventListener("click", (event) => {
       if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.classList.remove("show");
         dropdownBtn.setAttribute("aria-expanded", "false");
       }
+    });
+
+    // Close dropdown when clicking a tag link
+    dropdownMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        dropdownMenu.classList.remove("show");
+        dropdownBtn.setAttribute("aria-expanded", "false");
+      });
     });
   });
 </script>
