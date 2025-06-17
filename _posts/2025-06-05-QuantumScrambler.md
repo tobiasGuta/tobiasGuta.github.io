@@ -6,23 +6,6 @@ categories: [blog, cybersecurity]
 tags: [red team, pentesting, bug bounty, ctf, Reverse Engineering]
 ---
 
-<img 
-  src="https://art.vx-underground.org/art/pancak3_spider_humanoid_in_the_style_of_retro-futuris_fb89e2a2-e804-46ab-90c7-d8fd55328bc8.png" 
-  alt="Set up Listener" 
-  width="600" 
-  style="
-    display: block;
-    margin: 50px auto 40px;
-    border-radius: 18px;
-    border: 2.5px solid #111; /* crisp black border */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  "
-  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';"
-  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';"
-/>
-
 Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown
 ================================================================================
 

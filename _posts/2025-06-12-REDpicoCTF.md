@@ -6,23 +6,6 @@ categories: [blog, cybersecurity]
 tags: [red team, pentesting, bug bounty, ctf]
 ---
 
-<img 
-  src="https://art.vx-underground.org/art/pancak3_giant_all-seeing_eye_glowing_neon_red_cables_retro_cybe_ea231a51-2642-42ce-b800-7f860e1f6a66.png" 
-  alt="Set up Listener" 
-  width="600" 
-  style="
-    display: block;
-    margin: 50px auto 40px;
-    border-radius: 18px;
-    border: 2.5px solid #111; /* crisp black border */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft black shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  "
-  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.25)';"
-  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.12)';"
-/>
-
 <div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: RED (PicoCTF)
