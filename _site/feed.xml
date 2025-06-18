@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-17T20:58:05-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-18T12:44:58-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Event Viewing (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html" rel="alternate" type="text/html" title="Event Viewing (PicoCTF)" /><published>2025-06-13T00:00:00-04:00</published><updated>2025-06-13T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/13/Event-Viewing.html"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: Event-Viewing (PicoCTF)
   </div>
@@ -245,7 +245,103 @@ $filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
 
 <hr />
 
-<h2 id="conversion-cheat-sheet-hex--binary">Conversion Cheat Sheet: Hex ↔ Binary</h2>
+<h2 id="conversion-cheat-sheet-hex--decimal--binary">Conversion Cheat Sheet: Hex ↔ Decimal ↔ Binary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hex</th>
+      <th>Dec</th>
+      <th>Binary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0001</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>0010</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>0011</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>4</td>
+      <td>0100</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>5</td>
+      <td>0101</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>6</td>
+      <td>0110</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>7</td>
+      <td>0111</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>8</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>9</td>
+      <td>1001</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>10</td>
+      <td>1010</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>11</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>12</td>
+      <td>1100</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>13</td>
+      <td>1101</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>14</td>
+      <td>1110</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>15</td>
+      <td>1111</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="multi-digit-hex--binary-examples-1-byte-only">Multi-Digit Hex → Binary Examples (1 Byte Only)</h3>
 
 <table>
   <thead>
@@ -256,68 +352,76 @@ $filteredEvents = $events | Where-Object { $_.Id -eq 1074 }
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
-      <td>0000</td>
+      <td>00</td>
+      <td>0000 0000</td>
     </tr>
     <tr>
-      <td>1</td>
-      <td>0001</td>
+      <td>01</td>
+      <td>0000 0001</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>0010</td>
+      <td>0F</td>
+      <td>0000 1111</td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>0011</td>
+      <td>1C</td>
+      <td>0001 1100</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>0100</td>
+      <td>2A</td>
+      <td>0010 1010</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>0101</td>
+      <td>3C</td>
+      <td>0011 1100</td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>0110</td>
+      <td>4D</td>
+      <td>0100 1101</td>
     </tr>
     <tr>
-      <td>7</td>
-      <td>0111</td>
+      <td>5E</td>
+      <td>0101 1110</td>
     </tr>
     <tr>
-      <td>8</td>
-      <td>1000</td>
+      <td>6B</td>
+      <td>0110 1011</td>
     </tr>
     <tr>
-      <td>9</td>
-      <td>1001</td>
+      <td>7F</td>
+      <td>0111 1111</td>
     </tr>
     <tr>
-      <td>A</td>
-      <td>1010</td>
+      <td>80</td>
+      <td>1000 0000</td>
     </tr>
     <tr>
-      <td>B</td>
-      <td>1011</td>
+      <td>91</td>
+      <td>1001 0001</td>
     </tr>
     <tr>
-      <td>C</td>
-      <td>1100</td>
+      <td>A5</td>
+      <td>1010 0101</td>
     </tr>
     <tr>
-      <td>D</td>
-      <td>1101</td>
+      <td>B6</td>
+      <td>1011 0110</td>
     </tr>
     <tr>
-      <td>E</td>
-      <td>1110</td>
+      <td>C3</td>
+      <td>1100 0011</td>
     </tr>
     <tr>
-      <td>F</td>
-      <td>1111</td>
+      <td>D4</td>
+      <td>1101 0100</td>
+    </tr>
+    <tr>
+      <td>E8</td>
+      <td>1110 1000</td>
+    </tr>
+    <tr>
+      <td>FF</td>
+      <td>1111 1111</td>
     </tr>
   </tbody>
 </table>
