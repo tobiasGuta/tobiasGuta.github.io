@@ -40,6 +40,11 @@ permalink: /posts/
   <div class="cards-container">
     {% for post in site.posts %}
     <article class="post-card">
+      {% if post.image %}
+        <div class="post-card-image">
+          <img src="{{ post.image }}" alt="{{ post.title }} cover image" />
+        </div>
+      {% endif %}
       {% assign last_modified = post.last_modified_at | date: "%s" %}
       {% assign published = post.date | date: "%s" %}
       {% assign now = 'now' | date: "%s" %}

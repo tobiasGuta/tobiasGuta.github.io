@@ -28,6 +28,12 @@ layout: default
       {% endif %}
     </header>
 
+    {% if page.image %}
+      <div class="post-header-image">
+        <img src="{{ page.image }}" alt="{{ page.title }} cover image" />
+      </div>
+    {% endif %}
+
     <section class="post-content prose prose-invert max-w-none text-gray-300">
       {{ content }}
     </section>
