@@ -373,6 +373,31 @@ body.homepage > * {
   object-fit: cover;
 }
 
+@media (max-width: 700px) {
+  .post-card-image {
+    display: none !important;
+    position: static !important;
+    left: unset !important;
+    top: unset !important;
+    transform: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 160px !important;
+    margin: 0.7rem 0 1rem 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #0005;
+    z-index: 1;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: #222;
+  }
+  .post-card:hover .post-card-image,
+  .post-card:active .post-card-image,
+  .post-card:focus .post-card-image {
+    display: block !important;
+  }
+}
+
 /* === Post content === */
 
 .post-content {
