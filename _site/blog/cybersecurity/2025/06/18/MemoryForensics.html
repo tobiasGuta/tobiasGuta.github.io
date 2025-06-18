@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Memory Forensics</title>
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      #leaf-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Falling leaves animation container -->
+    <div id="leaf-container"></div>
+
+    <main class="container py-5">
+      <div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Memory Forensics</h1>
+      
+      <p class="text-sm text-gray-400">
+        June 18, 2025
+      </p>
+      
+      <p class="text-sm text-gray-400">
+        Categories: 
+        
+          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
+        
+          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
+        
+      </p>
+      
+      
+        <p class="mt-1 text-sm text-gray-400">
+          Tags: 
+          
+            <a href="/tags/Redteam" class="text-gray-400 hover:text-white">Redteam</a>, 
+          
+            <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
+          
+            <a href="/tags/bugbounty" class="text-gray-400 hover:text-white">bugbounty</a>, 
+          
+            <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
+          
+        </p>
+      
+    </header>
+
+    
+      <div class="post-header-image">
+        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*NhMg-i3CUBJosC48m0k_sw.png" alt="Memory Forensics cover image" />
+      </div>
+    
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <h2 id="memory-forensics-finding-the-flags">Memory Forensics: Finding the Flags</h2>
+
+<p>The forensic investigator provided us with a memory dump from John’s computer. We’ll be using the <strong>Volatility</strong> framework to analyze it.</p>
+
+<h3 id="installing-volatility-2">Installing Volatility 2</h3>
+
+<p>Refer to this guide for installation: <a href="https://letsdefend.io/blog/how-to-install-volatility-2-and-volatility-3-on-linux">How to Install Volatility 2 and Volatility 3 on Linux</a></p>
+
+<h4 id="troubleshooting-dependencies-on-kali-linux">Troubleshooting Dependencies on Kali Linux</h4>
+
+<p>For Volatility 2, if you encounter any problems while installing the dependencies on Kali Linux:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+pip2 install distorm3 yara-python pycrypto
+</code></pre>
+</div>
+
+<p>This happens because you’re using Python 2.7, which is completely EOL (end-of-life), and pip support for it is gone.</p>
+
+<h4 id="solution">Solution</h4>
+
+<ol>
+  <li>Download <code class="language-plaintext highlighter-rouge">get-pip.py</code> for Python 2.7:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+</code></pre>
+</div>
+
+<ol>
+  <li>Install pip for Python 2:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+python2 get-pip.py
+</code></pre>
+</div>
+
+<ol>
+  <li>Upgrade setuptools:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+python2 -m pip install --upgrade setuptools
+</code></pre>
+</div>
+
+<ol>
+  <li>Now, install the required packages:</li>
+</ol>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+pip2 install distorm3 yara-python pycrypto
+</code></pre>
+</div>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    We’ve been given the following file:
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>File:</strong><br />
+    Snapshot6_1609157562389.vmem<br />
+  </div>
+</div>
+
+<p>From the .vmem extension, we can tell this is a VMware virtual machine memory file. Volatility supports this format, so we’ll proceed with analyzing it using the appropriate profile.</p>
+
+<p>We’ll start by running the imageinfo plugin. This plugin analyzes the memory dump and provides a list of suggested operating system profiles that most closely match the memory image.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_1609157562389.vmem imageinfo
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/bigbrooklyn/Desktop/vola2/volatility/Snapshot6_1609157562389.vmem)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf80002c4a0a0L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff80002c4bd00L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2020-12-27 06:20:05 UTC+0000
+     Image local date and time : 2020-12-26 22:20:05 -0800
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0vYZkrL7JsIyr9Am2AOGGQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This is a windows operating system</p>
+
+<p>Goal: Find John’s Password</p>
+
+<p>To uncover John’s password, we’ll need to extract the password hashes from the memory image. Specifically, we’ll dump the SAM and SYSTEM registry hives, which store encrypted user credentials.</p>
+
+<p>hivelist = Lists the registry hives present in a particular memory image.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_1609157562389.vmem hivelist --profile=Win7SP1x64
+Volatility Foundation Volatility Framework 2.6.1
+Virtual            Physical           Name
+------------------ ------------------ ----
+0xfffff8a001453010 0x000000003b039010 \??\C:\Users\John\AppData\Local\Microsoft\Windows\UsrClass.dat
+0xfffff8a00000f010 0x0000000027324010 [no name]
+0xfffff8a000024010 0x00000000271af010 \REGISTRY\MACHINE\SYSTEM
+0xfffff8a000061010 0x00000000272ee010 \REGISTRY\MACHINE\HARDWARE
+0xfffff8a000790010 0x00000000211b5010 \Device\HarddiskVolume1\Boot\BCD
+0xfffff8a0007f1010 0x0000000021368010 \SystemRoot\System32\Config\SOFTWARE
+0xfffff8a000a8e010 0x000000001b1e8010 \SystemRoot\System32\Config\DEFAULT
+0xfffff8a000cce010 0x00000000172b1010 \SystemRoot\System32\Config\SECURITY
+0xfffff8a000cf8010 0x0000000016ce6010 \SystemRoot\System32\Config\SAM
+0xfffff8a000d81010 0x00000000162d5010 \??\C:\Windows\ServiceProfiles\NetworkService\NTUSER.DAT
+0xfffff8a000e0e010 0x0000000016073010 \??\C:\Windows\ServiceProfiles\LocalService\NTUSER.DAT
+0xfffff8a0013ee010 0x000000003bc0d010 \??\C:\Users\John\ntuser.dat
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NwJdju3yXAfoxa6PbwTFJw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>let’s use this information to extract the password hashes</p>
+
+<p>For that, we need the memory locations of the “SAM” and “SYSTEM”</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_1609157562389.vmem hashdump --profile=Win7SP1x64 -y 0xfffff8a000024010 -s 0xfffff8a000cf8010 &gt; hashs.txt
+Volatility Foundation Volatility Framework 2.6.1
+</code></pre>
+</div>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">-y</code> for the SYSTEM hash and <code class="language-plaintext highlighter-rouge">-s</code> for the SAM hash.</li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*-hWl_hNWIBkcULnE5Ys2Zw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>hashdump = Dumps user hashes from memory</p>
+
+<p>This is the hash dump file</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*l7421F9H-a8t5OpjQUuRCA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Time to bring in my favorite tool Hashcat to crack John’s hash.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*D0L-yX9kjd_pZ4HoPC6zpA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Question 1 =✅</p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    We’ve been given the following file:
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>File:</strong><br />
+    Snapshot19_1609159453792.vmem<br />
+  </div>
+</div>
+
+<p>Goal :</p>
+
+<ol>
+  <li>When was the machine last shutdown?</li>
+  <li>What did John write?
+If we check the command using <code class="language-plaintext highlighter-rouge">python2 vol.py -h</code>,
+we can see this plugin: Print ShutdownTime of the machine from the registry.</li>
+</ol>
+
+<div class="alert-warning">
+<strong>Note</strong>: Always remember to use **--profile=** first.
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot19_1609159453792.vmem --profile=Win7SP1x64 shutdowntime 
+Volatility Foundation Volatility Framework 2.6.1
+Registry: SYSTEM
+Key Path: ControlSet001\Control\Windows
+Key Last updated: 2020-12-27 22:50:12 UTC+0000
+Value Name: ShutdownTime
+Value: 2020-12-27 22:50:12 UTC+0000
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*OUXPeAIDouCEBwsJceNJEQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Same process, if you’re new to using this tool like me, you’ll need to use the manual with -h.</p>
+
+<p>For this, we need to use the plugin cmdscan, which extracts command history by scanning for <strong>_COMMAND_HISTORY</strong>.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot19_1609159453792.vmem --profile=Win7SP1x64 cmdscan      
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+CommandProcess: conhost.exe Pid: 2488
+CommandHistory: 0x21e9c0 Application: cmd.exe Flags: Allocated, Reset
+CommandCount: 7 LastAdded: 6 LastDisplayed: 6
+FirstCommand: 0 CommandCountMax: 50
+ProcessHandle: 0x60
+Cmd #0 @ 0x1fe3a0: cd /
+Cmd #1 @ 0x1f78b0: echo THM{You_found_me} &gt; test.txt
+Cmd #2 @ 0x21dcf0: cls
+Cmd #3 @ 0x1fe3c0: cd /Users
+Cmd #4 @ 0x1fe3e0: cd /John
+Cmd #5 @ 0x21db30: dir
+Cmd #6 @ 0x1fe400: cd John
+Cmd #15 @ 0x1e0158: "
+Cmd #16 @ 0x21db30: dir
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0sYklnx3GJdRqxER5kdLww.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Question 2 =✅</p>
+
+<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    We’ve been given the following file:
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>File:</strong><br />
+    Snapshot14_1609164553061.vmem<br />
+  </div>
+</div>
+
+<p>Goal:</p>
+
+<ol>
+  <li>What is the TrueCrypt passphrase?
+If we check the command using python2 vol.py -h</li>
+</ol>
+
+<p>we can see this plugin truecryptpassphrase = TrueCrypt Cached Passphrase Finder</p>
+
+<div class="alert-warning">
+<strong>Note</strong>: Always remember to use --profile= first.
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot14_1609164553061.vmem --profile=Win7SP1x64 truecryptpassphrase 
+Volatility Foundation Volatility Framework 2.6.1
+Found at 0xfffff8800512bee4 length 11: forgetmenot
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xAsSGAUfHBoRv1HDBHR_eg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Question 3 =✅</p>
+
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
+</div>
+
+<script>
+function filterPosts(tag) {
+  const posts = document.querySelectorAll('#posts-list li');
+  posts.forEach(post => {
+    const tags = post.getAttribute('data-tags').split(' ');
+    if (tag === 'all' || tags.includes(tag)) {
+      post.style.display = '';
+    } else {
+      post.style.display = 'none';
+    }
+  });
+}
+</script>
+
+
+      
+        <!-- Giscus comments -->
+        <div id="comments"></div>
+        <script src="https://giscus.app/client.js"
+                data-repo="tobiasGuta/tobiasGuta.github.io"
+                data-repo-id="R_kgDOOxswYQ"
+                data-category="General"
+                data-category-id="DIC_kwDOOxswYc4CrEhp"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(btn) {
+        const code = btn.parentElement.querySelector('code');
+        if (code) {
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.title = "Copied!";
+            setTimeout(() => btn.title = "Copy code", 1200);
+          });
+        }
+      }
+    </script>
+
+    
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>
