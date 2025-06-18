@@ -4,6 +4,7 @@ title: "Quantum Scrambler (PicoCTF)"
 date: 2025-06-05
 categories: [blog, cybersecurity]
 tags: [red team, pentesting, bug bounty, ctf, Reverse Engineering]
+image: https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg
 ---
 
 Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown

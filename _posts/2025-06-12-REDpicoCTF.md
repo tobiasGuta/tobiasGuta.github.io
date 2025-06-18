@@ -4,6 +4,7 @@ title: "READ (PicoCTF)"
 date: 2025-06-12
 categories: [blog, cybersecurity]
 tags: [red team, pentesting, bug bounty, ctf]
+image: https://e1.pxfuel.com/desktop-wallpaper/346/328/desktop-wallpaper-grim-reaper-backgrounds-grim-reaper.jpg
 ---
 
 <div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
