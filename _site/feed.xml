@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-19T15:27:34-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics.html" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics.html"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-19T17:19:20-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics.html" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/18/MemoryForensics.html"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
 <hr />
 
 <p>Volatility is a powerful open source framework for memory forensics. It allows investigators to analyze memory dumps and uncover evidence of system activity, malware behavior, and user actions. The framework is cross platform, modular, and designed for extensibility, making it a staple tool in incident response and forensic investigations.</p>
@@ -286,7 +286,7 @@ Oracle VirtualBox creates <code class="language-plaintext highlighter-rouge">.sa
 
 <p>Below are some of the most commonly used and essential plugins across different operating systems:</p>
 
-<h3 id="cross-platform-plugins">Cross-Platform Plugins</h3>
+<h4 id="cross-platform-plugins">Cross-Platform Plugins</h4>
 
 <ul>
   <li>
@@ -301,7 +301,7 @@ Provides a hierarchical view of running processes, showing parent-child relation
 
 <hr />
 
-<h3 id="windows-specific-plugins">Windows-Specific Plugins</h3>
+<h4 id="windows-specific-plugins">Windows-Specific Plugins</h4>
 
 <ul>
   <li>
@@ -316,7 +316,7 @@ Similar to the generic <code class="language-plaintext highlighter-rouge">pslist
 
 <hr />
 
-<h3 id="linux-specific-plugins">Linux-Specific Plugins</h3>
+<h4 id="linux-specific-plugins">Linux-Specific Plugins</h4>
 
 <ul>
   <li>
@@ -328,6 +328,159 @@ Outputs system-level metadata for Linux memory images, including kernel version,
 Enumerates running processes on a Linux system. It is often the first plugin run when analyzing Linux memory, as it provides a snapshot of what was executing at the time of capture.</p>
   </li>
 </ul>
+
+<h4 id="active-process-enumeration">Active Process Enumeration</h4>
+
+<p>The simplest method for listing processes is using <code class="language-plaintext highlighter-rouge">pslist</code>. This tool enumerates active processes by traversing the doubly linked list in memory that tracks all running processes essentially the same list that the Task Manager uses.</p>
+
+<p>The output from <code class="language-plaintext highlighter-rouge">pslist</code> includes both currently active processes and those that have recently terminated, along with their respective exit times. This makes it a straightforward way to get an overview of the system’s process activity.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.pslist
+</code></pre>
+</div>
+
+<h4 id="hidden-process-enumeration">Hidden Process Enumeration</h4>
+
+<p>Certain types of malware, especially rootkits, attempt to conceal their presence by unlinking their processes from the standard process list. When this happens, tools like <code class="language-plaintext highlighter-rouge">pslist</code> fail to display these hidden processes because they rely on traversing the active process list.</p>
+
+<p>To detect these stealthy processes, security professionals use <code class="language-plaintext highlighter-rouge">psscan</code>. Unlike <code class="language-plaintext highlighter-rouge">pslist</code>, <code class="language-plaintext highlighter-rouge">psscan</code> locates processes by scanning memory for data structures that match the <code class="language-plaintext highlighter-rouge">_EPROCESS</code> signature, rather than relying on the linked list of active processes. This approach allows it to identify processes that have been unlinked and are otherwise invisible.</p>
+
+<p>While <code class="language-plaintext highlighter-rouge">psscan</code> is a powerful countermeasure against process hiding, it is important to be aware that it may produce false positives. Some data structures found in memory may resemble <code class="language-plaintext highlighter-rouge">_EPROCESS</code> but do not correspond to active or malicious processes. Therefore, analysts must carefully validate the results to avoid misinterpretation.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.psscan
+</code></pre>
+</div>
+
+<h3 id="process-hierarchy-enumeration">Process Hierarchy Enumeration</h3>
+
+<p>The pstree plugin does not employ specialized evasion detection techniques like pslist or psscan. Instead, it lists processes based on their parent process IDs, using the same underlying method as pslist.</p>
+
+<p>This hierarchical view provides valuable context by showing the relationship between processes, helping analysts reconstruct the sequence of events and understand what was happening on the system at the time of extraction.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.pstree
+</code></pre>
+</div>
+
+<h4 id="file-registry-and-thread-enumeration">File, Registry, and Thread Enumeration</h4>
+
+<p>In addition to processes, enumerating files, registry keys, and threads is critical for comprehensive system analysis.</p>
+
+<ul>
+  <li>
+    <p><strong>File Enumeration</strong> involves scanning the system for open file handles, which can reveal hidden or malicious files in use by running processes. Identifying these files helps uncover malware that attempts to blend into the filesystem.</p>
+  </li>
+  <li>
+    <p><strong>Registry Enumeration</strong> focuses on extracting and examining registry keys and values. Since malware often persists by modifying registry entries, analyzing the registry can expose startup persistence mechanisms, configuration data, or other malicious modifications.</p>
+  </li>
+  <li>
+    <p><strong>Thread Enumeration</strong> lists the individual threads running within processes. Analyzing threads provides insight into a process’s behavior and execution context, which can help detect suspicious activity such as injected or malicious threads.</p>
+  </li>
+</ul>
+
+<p>To dive deeper into file and thread details, we can use the <code class="language-plaintext highlighter-rouge">handles</code> plugin. This tool provides a granular view of the handles open on the host, helping analysts trace resource usage and uncover hidden or unauthorized activity.</p>
+
+<p>Together, these enumeration techniques complement process analysis by providing a fuller picture of system activity, aiding in uncovering stealthy malware and indicators of compromise.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.handles
+</code></pre>
+</div>
+
+<h4 id="network-connection-enumeration">Network Connection Enumeration</h4>
+
+<p>Understanding active network connections is essential for detecting malicious communication and lateral movement within a compromised system.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">netstat</code> plugin scans memory to identify all network connection structures currently in use. By examining these memory artifacts, it reveals active TCP and UDP connections, listening ports, and associated process information.</p>
+
+<p>This memory-based enumeration can uncover stealthy network activity that traditional tools might miss, especially when malware manipulates standard system calls to hide its connections.</p>
+
+<p>However, it’s important to note that in the current state of Volatility 3, the netstat plugin can be unstable especially when analyzing older Windows builds. To work around this limitation, analysts often turn to complementary tools like <a href="https://www.kali.org/tools/bulk-extractor/">bulk_extractor</a>, which can extract PCAP files directly from memory dumps. This approach sometimes provides clearer insight into network activity that Volatility alone fails to reveal.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.netstat
+</code></pre>
+</div>
+
+<h4 id="tcp-and-udp-socket-enumeration">TCP and UDP Socket Enumeration</h4>
+
+<p>Network sockets and their associated processes can be identified directly from a memory image. The <code class="language-plaintext highlighter-rouge">netscan</code> plugin performs this by scanning memory pools to recover both active and closed TCP and UDP connections.</p>
+
+<p>This plugin provides details such as process IDs, local and remote IP addresses, and port numbers. By correlating sockets with processes, analysts gain critical visibility into network communications, helping to detect unauthorized connections and suspicious activity.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.netscan
+</code></pre>
+</div>
+
+<h4 id="dll-enumeration">DLL Enumeration</h4>
+
+<p>The final plugin to cover is <code class="language-plaintext highlighter-rouge">dlllist</code>. This tool enumerates all DLLs loaded by processes at the time of memory capture.</p>
+
+<p>DLL enumeration is especially valuable after deeper analysis, as it allows you to filter for specific DLLs that may indicate the presence of particular malware families or suspicious code injections. Tracking loaded DLLs can reveal hidden or unauthorized modules running within legitimate processes.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="terminal">
+<span class="terminal-prompt">root@hacktheword:~$</span> python2 vol.py -f Snapshot6_example.vmem windows.dlllist
+</code></pre>
+</div>
 
 <div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
