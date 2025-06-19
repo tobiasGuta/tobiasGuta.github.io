@@ -8,7 +8,6 @@ image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*NhMg-i3CUBJosC48m
 permalink: /blog/memory-forensics/
 ---
 
-
 # What Is Volatility
 ------------------
 
