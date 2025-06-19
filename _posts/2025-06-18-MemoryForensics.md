@@ -5,7 +5,9 @@ date: 2025-06-18
 categories: [blog, cybersecurity]
 tags: [Redteam, pentesting, bugbounty, ctf]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*NhMg-i3CUBJosC48m0k_sw.png
+permalink: /blog/memory-forensics/
 ---
+
 
 # What Is Volatility
 ------------------
