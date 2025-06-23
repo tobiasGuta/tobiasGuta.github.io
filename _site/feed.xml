@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T08:30:21-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T08:36:03-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
 <hr />
 
 <p>In JavaScript, variables are used to store and manage data. There are three main ways to declare a variable: <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>.</p>
@@ -135,7 +135,7 @@ if (temperature &gt; 30) {
 </div>
 
 <div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=SKnXS6zVGHw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/SKnXS6zVGHw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
 
 <h4 id="whats-happening-here">What’s happening here?</h4>
