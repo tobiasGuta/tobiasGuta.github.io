@@ -206,6 +206,12 @@ switch (day) {
 </code></pre>
 </div>
 
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/1uY_bzC4oDk" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+
 ### What's going on here?
 
 -   `switch` checks the value of `day`
@@ -243,12 +249,18 @@ This is the classic way of defining a function.
   </button>
   <pre><code class="Javascript">
 function sayHello(name) {
-  return "Hello, " + name;
+  return "Hello, " + name +  "!";
 }
 
 let message = sayHello("Trinity");
-console.log(message); // Output: Hello, Trinity
+console.log(message);
 </code></pre>
+</div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/0sX_1o4I0TY" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
 </div>
 
 ### ES5: Function Expression
