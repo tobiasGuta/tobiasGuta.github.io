@@ -492,6 +492,12 @@ for (let i = 0; i < 5; i++) {
 </code></pre>
 </div>
 
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/yjLjsp_q_S0" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+
 This runs the block five times, from `i = 0` up to `i < 5`.
 
 **How it works:**
@@ -523,6 +529,13 @@ while (count < 3) {
 }
 </code></pre>
 </div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IKI1GVMZt0I" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+
 If count never hits 3, the loop keeps going which is why you need to be careful to avoid infinite loops.
 
 ### The `do...while` Loop
@@ -547,7 +560,32 @@ do {
 </code></pre>
 </div>
 
-Even though `num` is already greater than 5, the code still runs once before checking the condition.
+**Breaking Down the `do...while` Example**
+
+This code demonstrates a `do...while` loop, which executes code **at least once** before checking its condition.
+
+**Step-by-step breakdown:**
+
+1. **Variable initialization**: `num` starts at `10`
+2. **Loop execution**: The `do` block runs first, regardless of the condition
+3. **Inside the loop**:
+   - Prints "Running at least once" to console
+   - Increments `num` by 1 (making it `11`)
+4. **Condition check**: After execution, it checks `num < 5`
+
+**Key insight**: Since `num` starts at `10` and becomes `11` after incrementing, the condition `num < 5` is **false from the beginning**. 
+
+- In a regular `while` loop -> code would **never execute**
+- In a `do...while` loop -> code runs **once before** checking the condition
+
+**Result**: "Running at least once" prints exactly **one time**, then the loop terminates because `11` is not less than `5`.
+
+### When to Use `do...while`
+
+This pattern is perfect for:
+- **Input validation** - Ask for input first, then validate
+- **Menu systems** - Show menu once, then check if user wants to continue
+- **Any scenario** where you need something to happen before deciding whether to repeat it
 
 * * * * *
 
@@ -587,6 +625,23 @@ for (let color of colors) {
 </code></pre>
 </div>
 
+Output:
+
+<div class="code-block-container">
+  <span class="code-lang-tag">OUTPUT</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="OUTPUT">
+red
+green
+blue
+</code></pre>
+</div>
+
 Clean, simple, and readable. You don’t need to mess with `colors[i]` or worry about index bounds.
 
 ### `for...in`
@@ -613,6 +668,24 @@ for (let key in user) {
 }
 </code></pre>
 </div>
+
+OUTPUT:
+
+<div class="code-block-container">
+  <span class="code-lang-tag">OUTPUT</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="OUTPUT">
+name: Neo
+age: 30
+role: The One
+</code></pre>
+</div>
+
 Use for...in for plain objects. If you try to use it on arrays, it can give unexpected results because it loops over all enumerable properties, not just the values.
 
 ### `.forEach()`
@@ -652,6 +725,12 @@ numbers.forEach(num => console.log(num * 2));
 </div>
 
 `.forEach()` is useful when you don’t need to break out of the loop early it just runs for every item in the array.
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/EIE13d8m0_4" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
 
 ### Remember
 
