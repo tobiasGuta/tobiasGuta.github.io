@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T12:35:45-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T17:00:46-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
 <hr />
 
 <p>In JavaScript, variables are used to store and manage data. There are three main ways to declare a variable: <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>.</p>
@@ -774,7 +774,39 @@ numbers.forEach(num =&gt; console.log(num * 2));
   </li>
 </ul>
 
-<p>These modern methods make your code easier to read and maintain and they’re everywhere in frameworks like React, Node.js, and frontend scripts.</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
+<p>These modern methods make your code easier to read and maintain and they’re everywhere in frameworks like React, Node.js, and frontend scripts.</p>
+
+<h1 id="additional-resources-">Additional Resources 📚</h1>
+
+<p>Want to dive deeper into JavaScript? Here are some excellent resources to continue your learning journey:</p>
+
+<h3 id="official-documentation">Official Documentation</h3>
+<ul>
+  <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN Web Docs - JavaScript</a></strong> - The gold standard for JavaScript documentation. Comprehensive, accurate, and regularly updated.</li>
+</ul>
+
+<h3 id="interactive-learning">Interactive Learning</h3>
+<ul>
+  <li><strong><a href="https://www.w3schools.com/js/default.asp">W3Schools JavaScript Tutorial</a></strong> - Great for beginners with interactive examples and exercises.</li>
+</ul>
+
+<h3 id="recommended-next-steps">Recommended Next Steps</h3>
+<ul>
+  <li><strong><a href="https://javascript.info/">JavaScript.info</a></strong> - Modern JavaScript tutorial covering everything from basics to advanced topics</li>
+  <li><strong><a href="https://eloquentjavascript.net/">Eloquent JavaScript</a></strong> - Free online book that dives deep into JavaScript concepts</li>
+  <li><strong><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/">freeCodeCamp JavaScript Course</a></strong> - Hands-on coding challenges and projects</li>
+</ul>
+
+<h3 id="practice-platforms">Practice Platforms</h3>
+<ul>
+  <li><strong><a href="https://www.codewars.com/">Codewars</a></strong> - Coding challenges to sharpen your skills</li>
+  <li><strong><a href="https://www.hackerrank.com/domains/tutorials/30-days-of-code">HackerRank</a></strong> - Algorithm and data structure practice</li>
+  <li><strong><a href="https://leetcode.com/">LeetCode</a></strong> - Problem-solving for technical interviews</li>
+</ul>
+
+<hr />
+
+<p><em>Happy coding! Remember: the best way to learn JavaScript is by building projects and practicing regularly.</em></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
 <hr />
 
 <p>Volatility is a powerful open source framework for memory forensics. It allows investigators to analyze memory dumps and uncover evidence of system activity, malware behavior, and user actions. The framework is cross platform, modular, and designed for extensibility, making it a staple tool in incident response and forensic investigations.</p>

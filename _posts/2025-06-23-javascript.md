@@ -741,3 +741,28 @@ numbers.forEach(num => console.log(num * 2));
 -   Use `.forEach()` for clean, functional looping through arrays
 
 These modern methods make your code easier to read and maintain and they're everywhere in frameworks like React, Node.js, and frontend scripts.
+
+# Additional Resources 📚
+
+Want to dive deeper into JavaScript? Here are some excellent resources to continue your learning journey:
+
+### Official Documentation
+- **[MDN Web Docs - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)** - The gold standard for JavaScript documentation. Comprehensive, accurate, and regularly updated.
+
+### Interactive Learning
+- **[W3Schools JavaScript Tutorial](https://www.w3schools.com/js/default.asp)** - Great for beginners with interactive examples and exercises.
+
+### Recommended Next Steps
+- **[JavaScript.info](https://javascript.info/)** - Modern JavaScript tutorial covering everything from basics to advanced topics
+- **[Eloquent JavaScript](https://eloquentjavascript.net/)** - Free online book that dives deep into JavaScript concepts
+- **[freeCodeCamp JavaScript Course](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)** - Hands-on coding challenges and projects
+
+### Practice Platforms
+- **[Codewars](https://www.codewars.com/)** - Coding challenges to sharpen your skills
+- **[HackerRank](https://www.hackerrank.com/domains/tutorials/30-days-of-code)** - Algorithm and data structure practice
+- **[LeetCode](https://leetcode.com/)** - Problem-solving for technical interviews
+
+---
+
+*Happy coding! Remember: the best way to learn JavaScript is by building projects and practicing regularly.* 
+
