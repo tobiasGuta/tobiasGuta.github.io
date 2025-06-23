@@ -277,11 +277,17 @@ In ES5, you could also assign a function to a variable. This is called a functio
   </button>
   <pre><code class="Javascript">
 var greet = function(name) {
-  return "Hi, " + name;
+  return "Hi, " + name + "!";
 };
 
-console.log(greet("Morpheus")); // Output: Hi, Morpheus
+console.log(greet("Morpheus"));
 </code></pre>
+</div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/OviHyV8GF3o" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
 </div>
 
 Notice how the function doesn’t have a name it’s anonymous, and it gets stored inside the greet variable.
@@ -340,6 +346,4 @@ const greet = name => "Hi, " + name;
 
 -   Use **arrow functions** for cleaner code in callbacks, array methods (`map`, `filter`, etc.), and when you don't need a dynamic `this`.
 
-
-
-
+The `=>` symbol in JavaScript is called an arrow function (also known as a fat arrow). It's a shorter way to write functions that was introduced in ES6 (2015).

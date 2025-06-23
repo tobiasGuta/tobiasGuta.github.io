@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T08:47:26-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T11:26:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
 <hr />
 
 <p>In JavaScript, variables are used to store and manage data. There are three main ways to declare a variable: <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>.</p>
@@ -280,11 +280,15 @@ console.log(message);
   </button>
   <pre><code class="Javascript">
 var greet = function(name) {
-  return "Hi, " + name;
+  return "Hi, " + name + "!";
 };
 
-console.log(greet("Morpheus")); // Output: Hi, Morpheus
+console.log(greet("Morpheus"));
 </code></pre>
+</div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/OviHyV8GF3o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
 
 <p>Notice how the function doesn’t have a name it’s anonymous, and it gets stored inside the greet variable.</p>
@@ -352,7 +356,9 @@ Regular function declarations (like in ES5) are hoisted, meaning you can call th
   <li>
     <p>Use <strong>arrow functions</strong> for cleaner code in callbacks, array methods (<code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>, etc.), and when you don’t need a dynamic <code class="language-plaintext highlighter-rouge">this</code>.</p>
   </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">=&gt;</code> symbol in JavaScript is called an arrow function (also known as a fat arrow). It’s a shorter way to write functions that was introduced in ES6 (2015).</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
 <hr />
 
 <p>Volatility is a powerful open source framework for memory forensics. It allows investigators to analyze memory dumps and uncover evidence of system activity, malware behavior, and user actions. The framework is cross platform, modular, and designed for extensibility, making it a staple tool in incident response and forensic investigations.</p>
