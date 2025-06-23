@@ -145,6 +145,12 @@ if (temperature > 30) {
 </code></pre>
 </div>
 
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=SKnXS6zVGHw" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+
 #### What's happening here?
 
 -   If the `temperature` is greater than 30, it prints "It's hot outside."
