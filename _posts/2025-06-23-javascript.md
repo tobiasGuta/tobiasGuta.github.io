@@ -466,3 +466,199 @@ That’s when things get powerful when arrays hold objects, and objects contain 
           allowfullscreen></iframe>
 </div>
 
+# Loops
+-------------------
+
+Loops are used when you want to run the same block of code multiple times. Whether you're processing a list, repeating a calculation, or iterating over data loops get the job done.
+
+There are a few types of loops in JavaScript: `for`, `while`, and `do...while`. Each one is useful in different situations.
+
+### The `for` Loop
+
+The `for` loop is the most commonly used. It's great when you know exactly how many times you want the code to run.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+for (let i = 0; i < 5; i++) {
+  console.log("Count:", i);
+}
+</code></pre>
+</div>
+
+This runs the block five times, from `i = 0` up to `i < 5`.
+
+**How it works:**
+
+-   `let i = 0` initializes the counter
+
+-   `i < 5` is the condition the loop runs while this is true
+
+-   `i++` increases the counter each time through
+
+### The `while` Loop
+
+The `while` loop runs as long as the condition stays true. It's better when you don't know ahead of time how many times you'll need to loop.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let count = 0;
+
+while (count < 3) {
+  console.log("Number:", count);
+  count++;
+}
+</code></pre>
+</div>
+If count never hits 3, the loop keeps going which is why you need to be careful to avoid infinite loops.
+
+### The `do...while` Loop
+
+This is like a `while` loop, except it runs **at least once**, even if the condition is false.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let num = 10;
+
+do {
+  console.log("Running at least once");
+  num++;
+} while (num < 5);
+</code></pre>
+</div>
+
+Even though `num` is already greater than 5, the code still runs once before checking the condition.
+
+* * * * *
+
+### Which Loop Should You Use?
+
+-   Use `for` when you know how many times you need to loop
+
+-   Use `while` when you don't know in advance how long to loop
+
+-   Use `do...while` if the code needs to run at least once before checking the condition
+
+You'll also run into modern looping methods like `for...of`, `for...in`, and array methods like `.forEach()`.
+
+# Modern Looping in JavaScript: `for...of`, `for...in`, and `.forEach()`
+----------------------------------------------------------------------
+
+Once you've got the basics of `for` and `while`, it's time to look at newer, cleaner ways to loop through **arrays** and **objects**.
+
+### `for...of`
+
+This loop is made for arrays, strings, or anything that's iterable. It gives you the value directly, not the index.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let colors = ["red", "green", "blue"];
+
+for (let color of colors) {
+  console.log(color);
+}
+</code></pre>
+</div>
+
+Clean, simple, and readable. You don’t need to mess with `colors[i]` or worry about index bounds.
+
+### `for...in`
+
+This loop is used for **objects**. It loops over the **keys** (property names), not the values directly.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let user = {
+  name: "Neo",
+  age: 30,
+  role: "The One"
+};
+
+for (let key in user) {
+  console.log(key + ": " + user[key]);
+}
+</code></pre>
+</div>
+Use for...in for plain objects. If you try to use it on arrays, it can give unexpected results because it loops over all enumerable properties, not just the values.
+
+### `.forEach()`
+
+This is an **array method** that lets you run a function on each element of an array. It's super common in modern JavaScript.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let numbers = [10, 20, 30];
+
+numbers.forEach(function(num) {
+  console.log(num * 2);
+});
+</code></pre>
+</div>
+
+Or with an arrow function:
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+numbers.forEach(num => console.log(num * 2));
+</code></pre>
+</div>
+
+`.forEach()` is useful when you don’t need to break out of the loop early it just runs for every item in the array.
+
+### Remember
+
+-   Use `for...of` for looping through values in arrays or strings
+
+-   Use `for...in` for looping through keys in objects
+
+-   Use `.forEach()` for clean, functional looping through arrays
+
+These modern methods make your code easier to read and maintain and they're everywhere in frameworks like React, Node.js, and frontend scripts.

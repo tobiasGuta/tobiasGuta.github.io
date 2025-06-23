@@ -622,6 +622,220 @@ console.log(users[1].role); // Output: Operator
   <iframe width="560" height="315" src="https://www.youtube.com/embed/IQV4Y5PjZ1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
 
+<h1 id="loops">Loops</h1>
+<hr />
+
+<p>Loops are used when you want to run the same block of code multiple times. Whether you’re processing a list, repeating a calculation, or iterating over data loops get the job done.</p>
+
+<p>There are a few types of loops in JavaScript: <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, and <code class="language-plaintext highlighter-rouge">do...while</code>. Each one is useful in different situations.</p>
+
+<h3 id="the-for-loop">The <code class="language-plaintext highlighter-rouge">for</code> Loop</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">for</code> loop is the most commonly used. It’s great when you know exactly how many times you want the code to run.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+for (let i = 0; i &lt; 5; i++) {
+  console.log("Count:", i);
+}
+</code></pre>
+</div>
+
+<p>This runs the block five times, from <code class="language-plaintext highlighter-rouge">i = 0</code> up to <code class="language-plaintext highlighter-rouge">i &lt; 5</code>.</p>
+
+<p><strong>How it works:</strong></p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">let i = 0</code> initializes the counter</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">i &lt; 5</code> is the condition the loop runs while this is true</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">i++</code> increases the counter each time through</p>
+  </li>
+</ul>
+
+<h3 id="the-while-loop">The <code class="language-plaintext highlighter-rouge">while</code> Loop</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">while</code> loop runs as long as the condition stays true. It’s better when you don’t know ahead of time how many times you’ll need to loop.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let count = 0;
+
+while (count &lt; 3) {
+  console.log("Number:", count);
+  count++;
+}
+</code></pre>
+</div>
+<p>If count never hits 3, the loop keeps going which is why you need to be careful to avoid infinite loops.</p>
+
+<h3 id="the-dowhile-loop">The <code class="language-plaintext highlighter-rouge">do...while</code> Loop</h3>
+
+<p>This is like a <code class="language-plaintext highlighter-rouge">while</code> loop, except it runs <strong>at least once</strong>, even if the condition is false.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let num = 10;
+
+do {
+  console.log("Running at least once");
+  num++;
+} while (num &lt; 5);
+</code></pre>
+</div>
+
+<p>Even though <code class="language-plaintext highlighter-rouge">num</code> is already greater than 5, the code still runs once before checking the condition.</p>
+
+<hr />
+
+<h3 id="which-loop-should-you-use">Which Loop Should You Use?</h3>
+
+<ul>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">for</code> when you know how many times you need to loop</p>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">while</code> when you don’t know in advance how long to loop</p>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">do...while</code> if the code needs to run at least once before checking the condition</p>
+  </li>
+</ul>
+
+<p>You’ll also run into modern looping methods like <code class="language-plaintext highlighter-rouge">for...of</code>, <code class="language-plaintext highlighter-rouge">for...in</code>, and array methods like <code class="language-plaintext highlighter-rouge">.forEach()</code>.</p>
+
+<h1 id="modern-looping-in-javascript-forof-forin-and-foreach">Modern Looping in JavaScript: <code class="language-plaintext highlighter-rouge">for...of</code>, <code class="language-plaintext highlighter-rouge">for...in</code>, and <code class="language-plaintext highlighter-rouge">.forEach()</code></h1>
+<hr />
+
+<p>Once you’ve got the basics of <code class="language-plaintext highlighter-rouge">for</code> and <code class="language-plaintext highlighter-rouge">while</code>, it’s time to look at newer, cleaner ways to loop through <strong>arrays</strong> and <strong>objects</strong>.</p>
+
+<h3 id="forof"><code class="language-plaintext highlighter-rouge">for...of</code></h3>
+
+<p>This loop is made for arrays, strings, or anything that’s iterable. It gives you the value directly, not the index.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let colors = ["red", "green", "blue"];
+
+for (let color of colors) {
+  console.log(color);
+}
+</code></pre>
+</div>
+
+<p>Clean, simple, and readable. You don’t need to mess with <code class="language-plaintext highlighter-rouge">colors[i]</code> or worry about index bounds.</p>
+
+<h3 id="forin"><code class="language-plaintext highlighter-rouge">for...in</code></h3>
+
+<p>This loop is used for <strong>objects</strong>. It loops over the <strong>keys</strong> (property names), not the values directly.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let user = {
+  name: "Neo",
+  age: 30,
+  role: "The One"
+};
+
+for (let key in user) {
+  console.log(key + ": " + user[key]);
+}
+</code></pre>
+</div>
+<p>Use for…in for plain objects. If you try to use it on arrays, it can give unexpected results because it loops over all enumerable properties, not just the values.</p>
+
+<h3 id="foreach"><code class="language-plaintext highlighter-rouge">.forEach()</code></h3>
+
+<p>This is an <strong>array method</strong> that lets you run a function on each element of an array. It’s super common in modern JavaScript.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let numbers = [10, 20, 30];
+
+numbers.forEach(function(num) {
+  console.log(num * 2);
+});
+</code></pre>
+</div>
+
+<p>Or with an arrow function:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+numbers.forEach(num =&gt; console.log(num * 2));
+</code></pre>
+</div>
+
+<p><code class="language-plaintext highlighter-rouge">.forEach()</code> is useful when you don’t need to break out of the loop early it just runs for every item in the array.</p>
+
+<h3 id="remember">Remember</h3>
+
+<ul>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">for...of</code> for looping through values in arrays or strings</p>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">for...in</code> for looping through keys in objects</p>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">.forEach()</code> for clean, functional looping through arrays</p>
+  </li>
+</ul>
+
+<p>These modern methods make your code easier to read and maintain and they’re everywhere in frameworks like React, Node.js, and frontend scripts.</p>
 
     </section>
 
