@@ -346,4 +346,123 @@ const greet = name => "Hi, " + name;
 
 -   Use **arrow functions** for cleaner code in callbacks, array methods (`map`, `filter`, etc.), and when you don't need a dynamic `this`.
 
-The `=>` symbol in JavaScript is called an arrow function (also known as a fat arrow). It's a shorter way to write functions that was introduced in ES6 (2015).
+The `=>` symbol in JavaScript is called an `arrow` function (also known as a fat arrow). It's a shorter way to write functions that was introduced in ES6 (2015).
+
+# Objects and Arrays in JavaScript
+--------------------------------
+
+When you're working with more complex data in JavaScript like lists of things or related properties variables alone aren't enough. That's where **arrays** and **objects** come in.
+
+These two data structures let you store and organize information in flexible, powerful ways.
+
+* * * * *
+
+### Arrays
+
+An **array** is a list of values stored in a single variable. It's ordered, and each value has an index starting at zero.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let fruits = ["apple", "banana", "cherry"];
+
+console.log(fruits[0]);
+console.log(fruits[2]);
+</code></pre>
+</div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/PcSAv8QMoQE" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+
+You can store any type of value in an array numbers, strings, booleans, even other arrays or objects.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let mixed = [42, "hello", true, null];
+</code></pre>
+</div>
+You can also update and add to arrays:
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+fruits.push("orange");
+fruits.unshift("grape");
+fruits[1] = "blueberry";
+</code></pre>
+</div>
+
+### Objects
+
+An **object** is a collection of **key-value pairs**. It's unordered, but the keys (also called properties) let you access values by name instead of position.
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+user.age = 30;
+user.city = "Zion";
+</code></pre>
+</div>
+
+### Arrays vs. Objects When to Use Each
+
+-   Use an **array** when the order matters or when you're just listing items.
+
+-   Use an **object** when you want to label each piece of data with a key and access it by name.
+
+Sometimes, you'll combine them:
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let users = [
+  { name: "Neo", role: "The One" },
+  { name: "Trinity", role: "Operator" }
+];
+
+console.log(users[1].role); // Output: Operator
+</code></pre>
+</div>
+
+That’s when things get powerful when arrays hold objects, and objects contain arrays.
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IQV4Y5PjZ1s" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+</div>
+

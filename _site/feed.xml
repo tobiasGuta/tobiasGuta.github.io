@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T11:26:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-23T11:46:22-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Javascript</title><link href="http://localhost:4000/blog/javascript/" rel="alternate" type="text/html" title="Javascript" /><published>2025-06-23T00:00:00-04:00</published><updated>2025-06-23T00:00:00-04:00</updated><id>http://localhost:4000/blog/javascript</id><content type="html" xml:base="http://localhost:4000/blog/javascript/"><![CDATA[<h1 id="javascript-variables">JavaScript Variables</h1>
 <hr />
 
 <p>In JavaScript, variables are used to store and manage data. There are three main ways to declare a variable: <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>.</p>
@@ -358,7 +358,126 @@ Regular function declarations (like in ES5) are hoisted, meaning you can call th
   </li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">=&gt;</code> symbol in JavaScript is called an arrow function (also known as a fat arrow). It’s a shorter way to write functions that was introduced in ES6 (2015).</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
+<p>The <code class="language-plaintext highlighter-rouge">=&gt;</code> symbol in JavaScript is called an <code class="language-plaintext highlighter-rouge">arrow</code> function (also known as a fat arrow). It’s a shorter way to write functions that was introduced in ES6 (2015).</p>
+
+<h1 id="objects-and-arrays-in-javascript">Objects and Arrays in JavaScript</h1>
+<hr />
+
+<p>When you’re working with more complex data in JavaScript like lists of things or related properties variables alone aren’t enough. That’s where <strong>arrays</strong> and <strong>objects</strong> come in.</p>
+
+<p>These two data structures let you store and organize information in flexible, powerful ways.</p>
+
+<hr />
+
+<h3 id="arrays">Arrays</h3>
+
+<p>An <strong>array</strong> is a list of values stored in a single variable. It’s ordered, and each value has an index starting at zero.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let fruits = ["apple", "banana", "cherry"];
+
+console.log(fruits[0]);
+console.log(fruits[2]);
+</code></pre>
+</div>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/PcSAv8QMoQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>You can store any type of value in an array numbers, strings, booleans, even other arrays or objects.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let mixed = [42, "hello", true, null];
+</code></pre>
+</div>
+<p>You can also update and add to arrays:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+fruits.push("orange");
+fruits.unshift("grape");
+fruits[1] = "blueberry";
+</code></pre>
+</div>
+
+<h3 id="objects">Objects</h3>
+
+<p>An <strong>object</strong> is a collection of <strong>key-value pairs</strong>. It’s unordered, but the keys (also called properties) let you access values by name instead of position.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+user.age = 30;
+user.city = "Zion";
+</code></pre>
+</div>
+
+<h3 id="arrays-vs-objects-when-to-use-each">Arrays vs. Objects When to Use Each</h3>
+
+<ul>
+  <li>
+    <p>Use an <strong>array</strong> when the order matters or when you’re just listing items.</p>
+  </li>
+  <li>
+    <p>Use an <strong>object</strong> when you want to label each piece of data with a key and access it by name.</p>
+  </li>
+</ul>
+
+<p>Sometimes, you’ll combine them:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Javascript">
+let users = [
+  { name: "Neo", role: "The One" },
+  { name: "Trinity", role: "Operator" }
+];
+
+console.log(users[1].role); // Output: Operator
+</code></pre>
+</div>
+
+<p>That’s when things get powerful when arrays hold objects, and objects contain arrays.</p>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IQV4Y5PjZ1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[JavaScript Variables]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" /><media:content medium="image" url="https://wallpapers.com/images/hd/java-script-coffee-mug-space-background-dw830xztu7jr07hu.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Memory Forensics</title><link href="http://localhost:4000/blog/memory-forensics/" rel="alternate" type="text/html" title="Memory Forensics" /><published>2025-06-18T00:00:00-04:00</published><updated>2025-06-18T00:00:00-04:00</updated><id>http://localhost:4000/blog/MemoryForensics</id><content type="html" xml:base="http://localhost:4000/blog/memory-forensics/"><![CDATA[<h1 id="what-is-volatility">What Is Volatility</h1>
 <hr />
 
 <p>Volatility is a powerful open source framework for memory forensics. It allows investigators to analyze memory dumps and uncover evidence of system activity, malware behavior, and user actions. The framework is cross platform, modular, and designed for extensibility, making it a staple tool in incident response and forensic investigations.</p>
