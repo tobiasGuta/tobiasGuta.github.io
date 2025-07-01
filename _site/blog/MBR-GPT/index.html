@@ -466,6 +466,24 @@ Offset    |  Hex Bytes (Our Focus)     |  ASCII
 
 <p>The hexadecimal bytes in the middle column tell the complete story of the MBR’s structure, boot instructions, and partition layout - making them our primary focus for security analysis.</p>
 
+<h3 id="mbr-structure-breakdown">MBR Structure Breakdown</h3>
+
+<p>The <strong>512-byte MBR</strong> is organized into three distinct sections, each serving a specific purpose in the boot process. The following screenshot illustrates these three critical components with color-coded highlighting:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*r9tIIN9HFpYRS6CQ3jI81w.png" alt="MBR Structure Breakdown" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://www.blackhillsinfosec.com/wp-content/uploads/2023/02/Picture3-500x236.png" alt="MBR Structure Breakdown" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>The Three MBR Components:</strong></p>
+
+<ol>
+  <li><strong>Boot Loader Code</strong> (Bytes 0-445): 446 bytes of executable instructions</li>
+  <li><strong>Partition Table</strong> (Bytes 446-509): 64 bytes containing partition information</li>
+  <li><strong>Boot Signature</strong> (Bytes 510-511): 2-byte validation marker (55 AA)</li>
+</ol>
+
+<p>Each section plays a crucial role in system functionality and represents different attack surfaces for malicious actors.</p>
+
 <h3 id="security-analysis-indicators">Security Analysis Indicators</h3>
 
 <p>When analyzing MBR for security purposes, look for:</p>

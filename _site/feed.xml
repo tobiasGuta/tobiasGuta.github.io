@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-01T14:56:36-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">MBR and GPT</title><link href="http://localhost:4000/blog/MBR-GPT/" rel="alternate" type="text/html" title="MBR and GPT" /><published>2025-07-01T00:00:00-04:00</published><updated>2025-07-01T00:00:00-04:00</updated><id>http://localhost:4000/blog/MBR-GPT</id><content type="html" xml:base="http://localhost:4000/blog/MBR-GPT/"><![CDATA[<h1 id="understanding-mbr-and-gpt-the-foundation-of-disk-partitioning">Understanding MBR and GPT: The Foundation of Disk Partitioning</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-01T15:05:30-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">MBR and GPT</title><link href="http://localhost:4000/blog/MBR-GPT/" rel="alternate" type="text/html" title="MBR and GPT" /><published>2025-07-01T00:00:00-04:00</published><updated>2025-07-01T00:00:00-04:00</updated><id>http://localhost:4000/blog/MBR-GPT</id><content type="html" xml:base="http://localhost:4000/blog/MBR-GPT/"><![CDATA[<h1 id="understanding-mbr-and-gpt-the-foundation-of-disk-partitioning">Understanding MBR and GPT: The Foundation of Disk Partitioning</h1>
 
 <p>When it comes to data storage and system boot processes, two fundamental partition schemes dominate the landscape: <strong>Master Boot Record (MBR)</strong> and <strong>GUID Partition Table (GPT)</strong>. These critical components reside in the very first sector of a disk and contain essential information about the disk’s structure, partitions, and organization. Beyond simple data management, they play a pivotal role in the system boot process, making them both essential for legitimate operations and attractive targets for malicious actors.</p>
 
@@ -316,6 +316,24 @@ Offset    |  Hex Bytes (Our Focus)     |  ASCII
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kmMkvi7izPK7ojHoqoLnpw.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
 <p>The hexadecimal bytes in the middle column tell the complete story of the MBR’s structure, boot instructions, and partition layout - making them our primary focus for security analysis.</p>
+
+<h3 id="mbr-structure-breakdown">MBR Structure Breakdown</h3>
+
+<p>The <strong>512-byte MBR</strong> is organized into three distinct sections, each serving a specific purpose in the boot process. The following screenshot illustrates these three critical components with color-coded highlighting:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*r9tIIN9HFpYRS6CQ3jI81w.png" alt="MBR Structure Breakdown" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://www.blackhillsinfosec.com/wp-content/uploads/2023/02/Picture3-500x236.png" alt="MBR Structure Breakdown" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>The Three MBR Components:</strong></p>
+
+<ol>
+  <li><strong>Boot Loader Code</strong> (Bytes 0-445): 446 bytes of executable instructions</li>
+  <li><strong>Partition Table</strong> (Bytes 446-509): 64 bytes containing partition information</li>
+  <li><strong>Boot Signature</strong> (Bytes 510-511): 2-byte validation marker (55 AA)</li>
+</ol>
+
+<p>Each section plays a crucial role in system functionality and represents different attack surfaces for malicious actors.</p>
 
 <h3 id="security-analysis-indicators">Security Analysis Indicators</h3>
 
