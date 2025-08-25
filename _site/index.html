@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      #leaf-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+
+      .tryhackme-hover:hover .thm-badge {
+        display: block !important;
+      }
+    </style>
+  </head>
+  <body class="homepage">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Falling leaves animation container -->
+    <div id="leaf-container"></div>
+
+    <main class="container py-5">
+      <div class="home-container text-center px-4">
+
+  <!-- Profile Image -->
+  <div class="profile-pic mx-auto mb-4 animated-border">
+    <div class="border-circle">
+      <img src="/assets/profile.png" alt="Profile" class="main-pic" />
+      <img src="/assets/skeleton.jpg" alt="Glitch Profile" class="glitch-pic" />
+    </div>
+  </div>
+
+  <!-- Glitch Heading -->
+  <h1 class="glitch" data-text="Hey, I'm Tobias Are">
+    <span aria-hidden="true">Hey, I'm Tobias Are</span>
+    Hey, I'm Tobias Are
+    <span aria-hidden="true">Hey, I'm Tobias Are</span>
+  </h1>
+
+  <!-- Typing Bio Section -->
+  <div class="typing-text">
+    <span id="typed-text"></span><span id="cursor">|</span>
+  </div>
+
+</div>
+
+
+
+      
+    </main>
+
+    
+      <!-- Social Media Icons -->
+      <div class="social-icons d-flex justify-content-center gap-3 my-4">
+        <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" target="_blank" aria-label="LinkedIn" class="fs-4" style="color: black;">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/tobiasGuta" target="_blank" aria-label="GitHub" class="fs-4" style="color: #fff;">
+          <i class="bi bi-github"></i>
+        </a>
+        <!-- TryHackMe Icon with Badge on Hover -->
+        <span class="tryhackme-hover position-relative" style="display: inline-block;">
+          <a href="https://tryhackme.com/p/tobiasGuta" target="_blank" aria-label="TryHackMe" class="fs-4">
+            <img src="https://tryhackme.com/favicon.svg" alt="TryHackMe"
+                style="width: 1.5em; height: 1.5em; vertical-align: middle; filter: grayscale(100%) brightness(200%);" />
+          </a>
+          <span class="thm-badge" style="position: absolute; left: 50%; bottom: 110%; transform: translateX(-50%); display: none; z-index: 10;">
+            <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4229768"
+        style="border:none; height: 90px; width: 200px; background: transparent;"
+        title="TryHackMe Badge"></iframe>
+          </span>
+        </span>
+      </div>
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(btn) {
+        const code = btn.parentElement.querySelector('code');
+        if (code) {
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.title = "Copied!";
+            setTimeout(() => btn.title = "Copy code", 1200);
+          });
+        }
+      }
+    </script>
+
+    
+      <script src="/assets/js/leaves.js"></script>
+      <script src="/assets/js/bats.js"></script>
+    
+
+    
+<script>
+  setInterval(() => {
+    if (Math.random() < 0.1) {
+      const glitch = document.querySelector('.glitch-pic');
+      const main = document.querySelector('.main-pic');
+
+      if (glitch && main) {
+        glitch.style.opacity = 1;
+        main.style.opacity = 0;
+
+        setTimeout(() => {
+          glitch.style.opacity = 0;
+          main.style.opacity = 1;
+        }, 200);
+      }
+    }
+  }, 2000);
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>

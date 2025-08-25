@@ -1,0 +1,13 @@
+title: Big Brooklyn
+description: Cybersecurity Blog + Portfolio
+url: "https://tobiasGuta.github.io"
+baseurl: ""  # leave blank for GitHub Pages with username repo
+
+theme: minima
+
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title.html
+
+author:
+  name: Tobias Arevalo
+  email: heyyou@protonmail.com
