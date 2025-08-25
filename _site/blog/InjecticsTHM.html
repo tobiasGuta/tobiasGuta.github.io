@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog</title>
+    <title>Injectics</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -106,45 +106,53 @@
     <div id="leaf-container"></div>
 
     <main class="container py-5">
-      <!-- Tag filter bar and post list (move this here) -->
-<div class="mt-12">
-  <div id="tag-filter" class="mb-6 flex flex-wrap gap-2">
-    <button class="px-3 py-1 rounded bg-blue-700 text-white text-sm font-semibold" onclick="filterPosts('all')">All</button>
-    
-    
-  </div>
+      <div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Injectics</h1>
+      
+      <p class="text-sm text-gray-400">
+        August 24, 2025
+      </p>
+    </header>
 
-  <ul id="posts-list">
     
-      <li data-tags="">
-        <a href="/blog/InjecticsTHM">Injectics</a>
-        <span class="text-gray-400 text-xs">(2025-08-24)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
+      <div class="post-header-image">
+        <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/62a7685ca6e7ce005d3f3afe-1721743931067.png" alt="Injectics cover image" />
+      </div>
     
-      <li data-tags="">
-        <a href="/blog/NYC-D0WN">I Didn't Hack nyc.gov Their Confirmation System Did</a>
-        <span class="text-gray-400 text-xs">(2025-07-26)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-  </ul>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
+  </article>
 </div>
 
-<script>
-function filterPosts(tag) {
-  const posts = document.querySelectorAll('#posts-list li');
-  posts.forEach(post => {
-    const tags = post.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || tags.includes(tag)) {
-      post.style.display = '';
-    } else {
-      post.style.display = 'none';
-    }
-  });
-}
-</script>
 
+      
+        <!-- Giscus comments -->
+        <div id="comments"></div>
+        <script src="https://giscus.app/client.js"
+                data-repo="tobiasGuta/tobiasGuta.github.io"
+                data-repo-id="R_kgDOOxswYQ"
+                data-category="General"
+                data-category-id="DIC_kwDOOxswYc4CrEhp"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
       
     </main>
 
