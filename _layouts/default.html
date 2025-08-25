@@ -63,10 +63,6 @@
       .zoom-active {
         overflow: hidden;
       }
-
-      .tryhackme-hover:hover .thm-badge {
-        display: block !important;
-      }
     </style>
   </head>
   <body class="{% if page.url == '/' %}homepage{% endif %}">
@@ -112,18 +108,9 @@
         <a href="https://github.com/tobiasGuta" target="_blank" aria-label="GitHub" class="fs-4" style="color: #fff;">
           <i class="bi bi-github"></i>
         </a>
-        <!-- TryHackMe Icon with Badge on Hover -->
-        <span class="tryhackme-hover position-relative" style="display: inline-block;">
-          <a href="https://tryhackme.com/p/tobiasGuta" target="_blank" aria-label="TryHackMe" class="fs-4">
-            <img src="https://tryhackme.com/favicon.svg" alt="TryHackMe"
-                style="width: 1.5em; height: 1.5em; vertical-align: middle; filter: grayscale(100%) brightness(200%);" />
-          </a>
-          <span class="thm-badge" style="position: absolute; left: 50%; bottom: 110%; transform: translateX(-50%); display: none; z-index: 10;">
-            <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=4229768"
-        style="border:none; height: 90px; width: 200px; background: transparent;"
-        title="TryHackMe Badge"></iframe>
-          </span>
-        </span>
+        <a href="https://hackerone.com/tobiasare?type=user" target="_blank" aria-label="HackerOne" class="fs-4" style="color: #fff;">
+          <img src="https://hackerone.com/favicon.ico" alt="HackerOne" style="width: 1em; height: 0.9 vertical-align: middle; filter: brightness(0) invert(1);" />
+        </a>
       </div>
     {% endif %}
 
