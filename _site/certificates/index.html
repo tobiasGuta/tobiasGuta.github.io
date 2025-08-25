@@ -206,15 +206,40 @@
 
     <!-- Copy code button script -->
     <script>
-      function copyCode(btn) {
-        const code = btn.parentElement.querySelector('code');
-        if (code) {
-          const text = code.innerText;
-          navigator.clipboard.writeText(text).then(() => {
-            btn.title = "Copied!";
-            setTimeout(() => btn.title = "Copy code", 1200);
-          });
-        }
+      function copyCode(button) {
+        const codeBlock = button.parentElement.querySelector('pre code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          // Store original content
+          const originalHTML = button.innerHTML;
+          
+          // Add copied class for styling
+          button.classList.add('copied');
+          
+          // Change to checkmark icon
+          button.innerHTML = `
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          `;
+          
+          // Reset after 1.5 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Show error state
+          const originalHTML = button.innerHTML;
+          button.style.background = '#ef4444';
+          button.innerHTML = '✗';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+          }, 1000);
+        });
       }
     </script>
 

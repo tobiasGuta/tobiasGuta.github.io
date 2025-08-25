@@ -103,172 +103,1017 @@
 
     <main class="container py-5">
       
-<!-- Locked post view -->
-<div class="locked-post-container">
-  <article class="locked-post">
-    <div class="locked-content text-center">
-      <div class="lock-icon mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="80" height="80" class="mx-auto">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      </div>
+<!-- Normal post view -->
+<div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold text-white">Injectics</h1>
       
-      <h1 class="locked-title">Injectics</h1>
-      <p class="locked-description">This post is currently in draft and will be available soon...</p>
-      
-      <div class="status-info">
-        <span class="status-badge">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-          Draft Content
-        </span>
+      <p class="text-sm text-gray-400">
+        August 24, 2025
+      </p>
+    </header>
+
+    
+      <div class="post-header-image">
+        <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/62a7685ca6e7ce005d3f3afe-1721743931067.png" alt="Injectics cover image" />
       </div>
-      
-      <div class="navigation-buttons">
-        <a href="/posts/" class="btn btn-back">
-          ← Back to Blog
-        </a>
-        <a href="/" class="btn btn-home">
-          Home
-        </a>
-      </div>
+    
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300">
+      <div style="border-left: 4px solid #00d4aa; background: #0f172a; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+  <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+    <img src="https://assets.tryhackme.com/img/favicon.png" width="48" height="48" alt="TryHackMe" style="border: none; outline: none; box-shadow: none;" />
+  </div>
+  
+  <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; justify-content: center;">
+    <h3 style="margin: 0; color: #f1f5f9;">Injectics</h3>
+    <div style="display: flex; align-items: center; gap: 5px;">
+      <span style="color: #ff8c00; font-weight: bold;">▁▃▅</span>
+      <span style="background: #ff8c00; color: white; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold;">MEDIUM</span>
     </div>
+  </div>
+  
+  <p style="margin: 10px 0; color: #cbd5e1;">
+    <strong>Objective:</strong> Use your injection skills to take control of a web app.
+  </p>
+  
+  <div style="display: flex; gap: 20px; margin-top: 15px;">
+    <span style="color: white; padding: 8px 16px; font-weight: bold;">Web Exploitation</span>
+    <a href="https://tryhackme.com/room/injectics" target="_blank" style="background: #dc2626; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">🔗 Start Challenge →</a>
+  </div>
+</div>
+
+<hr />
+
+<h1 id="part-1">Part 1</h1>
+
+<p>I accessed the website using its IP address without specifying any port. Once we accessed the website, we found something like this:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4MvvvVg9rNgOzFzy_Y4CDg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>I interacted with every possible endpoint on this site, but most of the buttons are just for display and do not have any interaction. Only the login button works, which takes you to this site:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NjTmtDr8K43SohwFOBqxMA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>It shows two endpoints: login.php and adminLogin007.php</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*tL81y38dZbGVOwn0ZtCJHA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Let’s review the source code on login.php first. We encounter a script.js file, let’s check it out to see what’s in there</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*kRMSE1o9o8haIX0rgHt0gQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*vcp8T0-bUp5rIRqW_MwVBA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h2 id="analyzing-the-javascript-code">Analyzing the JavaScript Code</h2>
+
+<p>Looking at the script.js file, we can see the login form handler code. Let’s break down what this code does and identify its vulnerabilities:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+$("#login-form").on("submit", function(e) {
+    e.preventDefault();
+    var username = $("#email").val();
+    var password = $("#pwd").val();
+
+    const invalidKeywords = ['or', 'and', 'union', 'select', '"', "'"];
+    for (let keyword of invalidKeywords) {
+        if (username.includes(keyword)) {
+            alert('Invalid keywords detected');
+            return false;
+        }
+    }
+
+    $.ajax({
+        url: 'functions.php',
+        type: 'POST',
+        data: {
+            username: username,
+            password: password,
+            function: "login"
+        },
+        dataType: 'json',
+        success: function(data) {
+            if (data.status == "success") {
+                if (data.auth_type == 0){
+                    window.location = 'dashboard.php';
+                }else{
+                    window.location = 'dashboard.php';
+                }
+            } else {
+                $("#messagess").html('&lt;div class="alert alert-danger" role="alert"&gt;' + data.message + '&lt;/div&gt;');
+            }
+        }
+    });
+});
+</code></pre>
+</div>
+
+<h4 id="what-the-code-does">What the code does:</h4>
+<ol>
+  <li><strong>Intercepts form submission</strong> and prevents the default action</li>
+  <li><strong>Extracts username and password</strong> from input fields</li>
+  <li><strong>Implements a basic keyword filter</strong> checking for SQL injection keywords</li>
+  <li><strong>Sends an AJAX request</strong> to <code class="language-plaintext highlighter-rouge">functions.php</code> with the credentials</li>
+  <li><strong>Handles the response</strong> by redirecting or showing error messages</li>
+</ol>
+
+<h3 id="critical-vulnerabilities-identified">Critical Vulnerabilities Identified:</h3>
+
+<h4 id="1-client-side-security-major-flaw">1. <strong>Client-Side Security (Major Flaw)</strong></h4>
+<p>The biggest vulnerability here is that the security filtering is happening entirely on the client-side. This means:</p>
+<ul>
+  <li><strong>Attackers can disable JavaScript</strong> and bypass all filtering</li>
+  <li><strong>Direct requests to functions.php</strong> can be made without any validation</li>
+  <li><strong>Browser developer tools</strong> can be used to modify or remove the filtering code</li>
+</ul>
+
+<h4 id="2-incomplete-keyword-blacklist">2. <strong>Incomplete Keyword Blacklist</strong></h4>
+<p>The filter only checks for a limited set of keywords:</p>
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+const invalidKeywords = ['or', 'and', 'union', 'select', '"', "'"];
+</code></pre>
+</div>
+
+<p>This blacklist is easily bypassed because:</p>
+<ul>
+  <li><strong>Case sensitivity</strong>: <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">And</code>, <code class="language-plaintext highlighter-rouge">UNION</code> would pass through</li>
+  <li><strong>Missing keywords</strong>: No protection against <code class="language-plaintext highlighter-rouge">/*</code>, <code class="language-plaintext highlighter-rouge">--</code>, <code class="language-plaintext highlighter-rouge">;</code>, <code class="language-plaintext highlighter-rouge">drop</code>, <code class="language-plaintext highlighter-rouge">insert</code>, etc.</li>
+  <li><strong>Alternative operators</strong>: <code class="language-plaintext highlighter-rouge">||</code> instead of <code class="language-plaintext highlighter-rouge">or</code>, <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> instead of <code class="language-plaintext highlighter-rouge">and</code></li>
+</ul>
+
+<h4 id="3-password-field-unprotected">3. <strong>Password Field Unprotected</strong></h4>
+<p>Notice that the filtering only applies to the <code class="language-plaintext highlighter-rouge">username</code> field, the <code class="language-plaintext highlighter-rouge">password</code> field has no validation whatsoever, making it a prime target for SQL injection.</p>
+
+<h4 id="4-weak-string-matching">4. <strong>Weak String Matching</strong></h4>
+<p>The <code class="language-plaintext highlighter-rouge">includes()</code> method can be bypassed using:</p>
+<ul>
+  <li><strong>String concatenation</strong>: <code class="language-plaintext highlighter-rouge">'o'+'r'</code></li>
+  <li><strong>Comments</strong>: <code class="language-plaintext highlighter-rouge">o/**/r</code></li>
+  <li><strong>Encoding</strong>: URL or hex encoding</li>
+</ul>
+
+<p>This client-side filtering gives a false sense of security while being completely ineffective against determined attackers. The real vulnerability lies in the backend <code class="language-plaintext highlighter-rouge">functions.php</code> file, which likely lacks proper input sanitization.</p>
+
+<h2 id="demostration-of-false-sense-of-security">Demostration of false sense of security</h2>
+
+<p>This section demonstrates how relying on a weak filter can create a false sense of security. For example, if you send a simple input like anything’ –, the filter might not trigger any alerts or block the request. However, this does not mean the application is secure. Using tools like Burp Suite, you can modify and resend the request to try different payloads, potentially bypassing the filter and exposing vulnerabilities.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FJFQbyMMY_DAzVUPNw7P0g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Burp Suite:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*jS7M1_iX7g31br-103Bytg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We can easily circumvent this <strong>false sense of security</strong> created by the client-side filter. The filter creates an illusion of protection while being fundamentally flawed and easily bypassed.</p>
+
+<p>This demonstrates why <strong>client-side security measures alone are insufficient</strong> and why proper server-side validation is crucial.</p>
+
+<h3 id="alternative-approach-information-gathering">Alternative Approach: Information Gathering</h3>
+
+<p>After attempting various methods to bypass the login mechanism, I decided to take a step back and conduct more thorough reconnaissance. During this process, I discovered something crucial that I had initially overlooked there was a hidden comment in the homepage source code containing valuable information:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*tTiVeR1qLJj5zxvkDuQz5Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h2 id="discovery-hidden-email-log">Discovery: Hidden Email Log</h2>
+
+<p>The comment revealed a reference to <code class="language-plaintext highlighter-rouge">mail.log</code> let’s investigate this file further:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a4mT7d_-NZ1RVcXWJB3b3Q.png" alt="Mail log discovery" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="critical-information-leaked">Critical Information Leaked</h3>
+
+<p>Inside the mail.log file, we discovered an internal email containing sensitive information:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">email</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+From: dev@injectics.thm
+To: superadmin@injectics.thm
+Subject: Update before holidays
+
+Hey,
+
+Before heading off on holidays, I wanted to update you on the latest changes to the website. I have implemented several enhancements and enabled a special service called Injectics. This service continuously monitors the database to ensure it remains in a stable state.
+
+To add an extra layer of safety, I have configured the service to automatically insert default credentials into the `users` table if it is ever deleted or becomes corrupted. This ensures that we always have a way to access the system and perform necessary maintenance. I have scheduled the service to run every minute.
+
+Here are the default credentials that will be added:
+
+| Email                     | Password                |
+|---------------------------|-------------------------|
+| superadmin@injectics.thm  | superSecurePasswd101    |
+| dev@injectics.thm         | devPasswd123            |
+
+Please let me know if there are any further updates or changes needed.
+
+Best regards,
+Dev Team
+</code></pre>
+</div>
+
+<h3 id="key-intelligence-gathered">Key Intelligence Gathered</h3>
+
+<p>This email reveals several critical pieces of information:</p>
+
+<ol>
+  <li><strong>Default Credentials</strong>: Two sets of login credentials are automatically inserted into the database</li>
+  <li><strong>Automated Service</strong>: A service runs every minute to restore default credentials</li>
+  <li><strong>Database Behavior</strong>: If the <code class="language-plaintext highlighter-rouge">users</code> table is deleted or corrupted, it gets automatically restored</li>
+  <li><strong>Potential Attack Vector</strong>: We could potentially trigger this restoration process</li>
+</ol>
+
+<p>This discovery completely changes our approach instead of trying to bypass the login filter, we now have legitimate credentials to test!</p>
+
+<h2 id="testing-the-discovered-credentials">Testing the Discovered Credentials</h2>
+
+<p>I attempted to log in using both sets:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">superadmin@injectics.thm : superSecurePasswd101</code></li>
+  <li><code class="language-plaintext highlighter-rouge">dev@injectics.thm : devPasswd123</code></li>
+</ul>
+
+<p>However, <strong>the login attempts failed</strong>. This led me to a crucial realization about the email’s content.</p>
+
+<h3 id="understanding-the-restoration-mechanism">Understanding the Restoration Mechanism</h3>
+
+<p>Re-reading the email more carefully, I noticed a key detail: these credentials are <strong>only automatically inserted when the <code class="language-plaintext highlighter-rouge">users</code> table is deleted or corrupted</strong>. The email states:</p>
+
+<blockquote>
+  <p><em>“I have configured the service to automatically insert default credentials into the <code class="language-plaintext highlighter-rouge">users</code> table if it is ever deleted or becomes corrupted.”</em></p>
+</blockquote>
+
+<p>This means the credentials aren’t currently in the database they’re only added as a failsafe mechanism.</p>
+
+<h3 id="new-attack-strategy-table-manipulation">New Attack Strategy: Table Manipulation</h3>
+
+<p>My approach now shifted to finding a way to <strong>trigger this restoration process</strong> by:</p>
+
+<ol>
+  <li><strong>Dropping the <code class="language-plaintext highlighter-rouge">users</code> table</strong> through SQL injection</li>
+  <li><strong>Waiting for the automated service</strong> to restore the table with default credentials</li>
+  <li><strong>Using the newly inserted credentials</strong> to gain access</li>
+</ol>
+
+<p>The challenge is to find an injection point that allows us to execute a <code class="language-plaintext highlighter-rouge">DROP TABLE users</code> command, which would activate the credential restoration service that runs every minute.</p>
+
+<h3 id="testing-a-different-approach-sql-injection-with-known-username">Testing a Different Approach: SQL Injection with Known Username</h3>
+
+<p>Before attempting to drop the table, I decided to test if I could leverage the discovered username in a SQL injection attack. Since we know <code class="language-plaintext highlighter-rouge">superadmin@injectics.thm</code> is a valid username, I tried using it with a SQL comment to bypass authentication:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">http</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+POST /functions.php HTTP/1.1
+Host: 10.201.41.246
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Content-Length: 75
+Origin: http://10.201.41.246
+Connection: keep-alive
+Referer: http://10.201.41.246/login.php
+Cookie: PHPSESSID=teb8gsf0dv5u6bkj9gshuhjki3
+X-PwnFox-Color: green
+Priority: u=0
+
+username=superadmin@injectics.thm%27%20--%20&amp;password=eqweqw&amp;function=login
+</code></pre>
+</div>
+
+<p><strong>Payload Breakdown:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">superadmin@injectics.thm'</code> - Valid username with SQL injection</li>
+  <li><code class="language-plaintext highlighter-rouge">%27</code> - URL encoded single quote (<code class="language-plaintext highlighter-rouge">'</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">%20--%20</code> - URL encoded SQL comment (<code class="language-plaintext highlighter-rouge">-- </code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">password=anything</code> - Any password (will be ignored due to comment)</li>
+</ul>
+
+<p><strong>How it works:</strong>
+The SQL query likely becomes:</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">username</span><span class="o">=</span><span class="s1">'superadmin@injectics.thm'</span> <span class="c1">--' AND password='anything'</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">--</code> comments out the password check, allowing authentication with just the username!</p>
+
+<h3 id="success">Success!</h3>
+
+<p><strong>And we’re in!</strong></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*McT_6gu1BRiT-l2ksfoADA.png" alt="Mail log discovery" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This demonstrates that the backend is indeed vulnerable to SQL injection, and we successfully bypassed authentication without needing the actual password or triggering the table restoration mechanism.</p>
+
+<h3 id="analyzing-the-response-an-interesting-contradiction">Analyzing the Response: An Interesting Contradiction</h3>
+
+<p>However, examining the server response reveals something peculiar:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">json</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+{
+  "status": "success",
+  "message": "Login successful", 
+  "is_admin": "true",
+  "first_name": "admin",
+  "last_name": null,
+  "redirect_link": "dashboard.php?isadmin=false"
+}
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*hBFTlMpY0B7j5OSWu6rKxA.png" alt="Mail log discovery" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="the-contradiction">The Contradiction</h3>
+
+<p>Notice the <strong>inconsistency</strong> in the response:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"is_admin": "true"</code> - Server says we’re an admin</li>
+  <li><code class="language-plaintext highlighter-rouge">"first_name": "admin"</code>  - Username suggests admin privileges</li>
+  <li><code class="language-plaintext highlighter-rouge">"redirect_link": "dashboard.php?isadmin=false"</code> - But the redirect URL says <code class="language-plaintext highlighter-rouge">isadmin=false</code></li>
+</ul>
+
+<p>This contradiction suggests:</p>
+<ol>
+  <li><strong>Backend Logic Flaw</strong>: The authentication system has inconsistent admin privilege handling</li>
+  <li><strong>Potential Privilege Escalation</strong>: We might be able to manipulate the <code class="language-plaintext highlighter-rouge">isadmin</code> parameter</li>
+  <li><strong>Database Inconsistency</strong>: The user record might have conflicting privilege flags</li>
+</ol>
+
+<h3 id="attempting-parameter-manipulation">Attempting Parameter Manipulation</h3>
+
+<p>Given the contradictory response, I attempted to manipulate the <code class="language-plaintext highlighter-rouge">isadmin</code> parameter by changing it from <code class="language-plaintext highlighter-rouge">false</code> to <code class="language-plaintext highlighter-rouge">true</code> in the URL:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dashboard.php?isadmin=true
+</code></pre></div></div>
+
+<p>However, <strong>this parameter manipulation had no effect</strong> on the actual functionality, as demonstrated below:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*w6-Hr51sB1j2h7-jh6qxig.png" alt="Parameter manipulation attempt showing no change in functionality" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="analysis-client-side-vs-server-side-authorization">Analysis: Client-Side vs Server-Side Authorization</h3>
+
+<p>This reveals another important security concept:</p>
+
+<p><strong>Key Observation</strong>: The <code class="language-plaintext highlighter-rouge">isadmin</code> parameter in the URL appears to be purely cosmetic or client-side, while the actual authorization logic is handled server-side based on the database record.</p>
+
+<p><strong>What this tells us:</strong></p>
+<ul>
+  <li>The server relies on session data or database records for actual privilege verification</li>
+  <li>URL parameter manipulation alone is insufficient for privilege escalation</li>
+  <li>The contradiction in the JSON response suggests the backend has inconsistent privilege handling</li>
+  <li>We need to find a different approach to gain actual administrative access</li>
+</ul>
+
+<p>This demonstrates that <strong>true privilege escalation requires more than simple parameter manipulation</strong> we need to either modify the database directly or find other vulnerabilities in the authorization system.</p>
+
+<h2 id="exploring-the-dashboard-finding-new-attack-vectors">Exploring the Dashboard: Finding New Attack Vectors</h2>
+
+<p>With access to the dashboard, I began exploring the available functionality to find additional vulnerabilities. During this exploration, I discovered that we could edit leaderboard entries for different countries.</p>
+
+<h3 id="discovering-the-edit-functionality">Discovering the Edit Functionality</h3>
+
+<p>When clicking on the “Edit US” button, I was redirected to a new endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit_leaderboard.php?rank=1&amp;country=USA
+</code></pre></div></div>
+
+<p>This endpoint allows modification of medal counts (gold, silver, bronze) for different countries, revealing another potential attack surface.</p>
+
+<h3 id="testing-parameter-manipulation">Testing Parameter Manipulation</h3>
+
+<p>I intercepted the edit request to analyze how the application handles leaderboard updates:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">http</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+POST /edit_leaderboard.php HTTP/1.1
+Host: 10.201.41.246
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:142.0) Gecko/20100101 Firefox/142.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 46
+Cookie: PHPSESSID=teb8gsf0dv5u6bkj9gshuhjki3
+
+rank=1&amp;country=&amp;gold=22&amp;silver=21&amp;bronze=12345
+</code></pre>
+</div>
+
+<h3 id="successful-data-modification">Successful Data Modification</h3>
+
+<p>As demonstrated below, the application successfully processed our modified values, updating the bronze medal count to an arbitrary value (12345):</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*bYkd5unSMt5-rKzpGuiq_A.png" alt="Successful leaderboard modification showing arbitrary bronze medal count" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="key-observations">Key Observations</h3>
+
+<p>This functionality reveals several important findings:</p>
+
+<ol>
+  <li><strong>Unrestricted Data Modification</strong>: The application allows arbitrary modification of leaderboard data</li>
+  <li><strong>Direct Database Updates</strong>: Changes are immediately reflected, suggesting direct database interaction</li>
+  <li><strong>Potential SQL Injection Point</strong>: The parameters (<code class="language-plaintext highlighter-rouge">rank</code>, <code class="language-plaintext highlighter-rouge">country</code>, <code class="language-plaintext highlighter-rouge">gold</code>, <code class="language-plaintext highlighter-rouge">silver</code>, <code class="language-plaintext highlighter-rouge">bronze</code>) may be vulnerable to SQL injection</li>
+  <li><strong>Lack of Input Validation</strong>: No apparent restrictions on the values that can be submitted</li>
+</ol>
+
+<p>This new endpoint provides us with another potential attack vector for SQL injection, particularly since we have multiple parameters to test and the application appears to directly process our input without proper sanitization.</p>
+
+<h2 id="testing-for-sql-injection-vulnerabilities">Testing for SQL Injection Vulnerabilities</h2>
+
+<p>With multiple parameters available for testing, I systematically tested each field by adding semicolons (<code class="language-plaintext highlighter-rouge">;</code>) to detect potential SQL injection points and understand how the application processes different inputs.</p>
+
+<h3 id="baseline-test-normal-parameter-modification">Baseline Test: Normal Parameter Modification</h3>
+
+<p>First, I tested normal parameter modification by changing the gold value from 22 to 24:</p>
+
+<p><strong>Request:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=24&amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+
+<p><strong>Result:</strong> Only the US team (rank 1) was updated, as expected:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dAg_RnSXab6TLpzo62nrlQ.png" alt="Normal parameter modification affecting only US team" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This confirms that under normal circumstances, the application correctly targets only the specified country record.</p>
+
+<h3 id="sql-injection-discovery-semicolon-test">SQL Injection Discovery: Semicolon Test</h3>
+
+<p>However, when I added a semicolon (<code class="language-plaintext highlighter-rouge">;</code>) to the gold parameter to test for SQL injection:</p>
+
+<p><strong>Malicious Request:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=25;&amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+
+<p><strong>Unexpected Result:</strong> ALL teams’ gold medal counts were changed to 25:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Ox0f58Gl_9DK1JWdHu-Ovw.png" alt="SQL injection affecting all teams globally" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="critical-vulnerability-analysis">Critical Vulnerability Analysis</h3>
+
+<p>This behavior reveals a <strong>critical SQL injection vulnerability</strong>. Here’s what likely happened:</p>
+
+<p><strong>Normal Query (Expected):</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">leaderboard</span> <span class="k">SET</span> <span class="n">gold</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">silver</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">bronze</span><span class="o">=</span><span class="mi">12345</span> <span class="k">WHERE</span> <span class="n">rank</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">country</span><span class="o">=</span><span class="s1">'USA'</span>
+</code></pre></div></div>
+
+<p><strong>Injected Query (Actual):</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">leaderboard</span> <span class="k">SET</span> <span class="n">gold</span><span class="o">=</span><span class="mi">25</span><span class="p">;</span> <span class="n">silver</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">bronze</span><span class="o">=</span><span class="mi">12345</span> <span class="k">WHERE</span> <span class="n">rank</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">country</span><span class="o">=</span><span class="s1">'USA'</span>
+</code></pre></div></div>
+
+<p>The semicolon (<code class="language-plaintext highlighter-rouge">;</code>) <strong>terminates the SQL statement early</strong>, causing:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">UPDATE leaderboard SET gold=25;</code> - Updates ALL records in the table</li>
+  <li>The remaining parameters become invalid SQL syntax but don’t prevent execution</li>
+</ol>
+
+<h3 id="key-implications">Key Implications</h3>
+
+<p>This discovery means:</p>
+
+<ol>
+  <li><strong>SQL Injection Confirmed</strong>: The application is vulnerable to SQL injection through parameter manipulation</li>
+  <li><strong>Global Impact</strong>: Injection can affect the entire database, not just targeted records</li>
+  <li><strong>Multiple Injection Points</strong>: All parameters (<code class="language-plaintext highlighter-rouge">rank</code>, <code class="language-plaintext highlighter-rouge">country</code>, <code class="language-plaintext highlighter-rouge">gold</code>, <code class="language-plaintext highlighter-rouge">silver</code>, <code class="language-plaintext highlighter-rouge">bronze</code>) are potentially vulnerable</li>
+  <li><strong>Database Control</strong>: We can potentially execute arbitrary SQL commands</li>
+</ol>
+
+<p>This represents a <strong>critical security flaw</strong> that could allow us to:</p>
+<ul>
+  <li>Extract sensitive data from other tables</li>
+  <li>Modify or delete database records</li>
+  <li>Potentially escalate privileges or access admin functionality</li>
+</ul>
+
+<h3 id="connecting-the-dots-exploiting-the-restoration-mechanism">Connecting the Dots: Exploiting the Restoration Mechanism</h3>
+
+<p><strong>The key insight:</strong> Remember what we discovered in the <code class="language-plaintext highlighter-rouge">mail.log</code> file? If we <strong>delete the <code class="language-plaintext highlighter-rouge">users</code> table</strong>, the automated service will restore it with the default credentials we found!</p>
+
+<p>This SQL injection vulnerability gives us the perfect opportunity to:</p>
+
+<ol>
+  <li><strong>Execute a <code class="language-plaintext highlighter-rouge">DROP TABLE users</code> command</strong> through parameter injection</li>
+  <li><strong>Wait for the automated restoration service</strong> (runs every minute)</li>
+  <li><strong>Use the restored default credentials</strong> to gain legitimate admin access</li>
+</ol>
+
+<h3 id="strategy-weaponizing-the-sql-injection">Strategy: Weaponizing the SQL Injection</h3>
+
+<p>Instead of just modifying leaderboard data, we can leverage this vulnerability to:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">;</span> <span class="c1">-- This will trigger the credential restoration mechanism</span>
+</code></pre></div></div>
+
+<p>Once the <code class="language-plaintext highlighter-rouge">users</code> table is dropped, the automated service will recreate it with:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">superadmin@injectics.thm : superSecurePasswd101</code></li>
+  <li><code class="language-plaintext highlighter-rouge">dev@injectics.thm : devPasswd123</code></li>
+</ul>
+
+<p>Let’s find a way to inject this <code class="language-plaintext highlighter-rouge">DROP TABLE</code> command through one of the vulnerable parameters in the leaderboard edit functionality.</p>
+
+<h2 id="executing-the-drop-table-attack">Executing the DROP TABLE Attack</h2>
+
+<p>With the SQL injection vulnerability confirmed, it was time to attempt dropping the <code class="language-plaintext highlighter-rouge">users</code> table to trigger the credential restoration mechanism. This required careful payload crafting and testing.</p>
+
+<h3 id="initial-attempts-testing-different-syntax">Initial Attempts: Testing Different Syntax</h3>
+
+<p>I started with basic <code class="language-plaintext highlighter-rouge">DROP TABLE</code> syntax variations:</p>
+
+<p><strong>Attempt 1 - Basic Syntax:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=25; DROP TABLE USERS; &amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+<p><strong>Result:</strong> Failed - No effect observed</p>
+
+<p><strong>Attempt 2 - Without Trailing Semicolon:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=25; DROP TABLE USERS &amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+<p><strong>Result:</strong> Failed - Still no effect</p>
+
+<h3 id="refining-the-attack-sql-comments">Refining the Attack: SQL Comments</h3>
+
+<p>Recognizing that the remaining parameters might be causing SQL syntax errors, I added SQL comments to ignore everything after the DROP command:</p>
+
+<p><strong>Attempt 3 - Adding SQL Comments:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=25; DROP TABLE USERS -- &amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+<p><strong>Result:</strong> Failed - Command still not executing</p>
+
+<h3 id="successful-payload-case-sensitivity-and-url-encoding">Successful Payload: Case Sensitivity and URL Encoding</h3>
+
+<p>The breakthrough came when I considered two critical factors:</p>
+<ol>
+  <li><strong>Case sensitivity</strong> - Many SQL databases treat uppercase differently</li>
+  <li><strong>URL encoding</strong> - Special characters need proper encoding for HTTP transmission</li>
+</ol>
+
+<p><strong>Final Successful Payload:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rank=1&amp;country=&amp;gold=25;%20drop%20table%20users%20--%20&amp;silver=21&amp;bronze=12345
+</code></pre></div></div>
+
+<p><strong>Payload Breakdown:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">25;</code> - Terminates the initial SET statement</li>
+  <li><code class="language-plaintext highlighter-rouge">%20</code> - URL encoded space character</li>
+  <li><code class="language-plaintext highlighter-rouge">drop%20table%20users</code> - Lowercase DROP TABLE command with encoded spaces</li>
+  <li><code class="language-plaintext highlighter-rouge">%20--%20</code> - URL encoded SQL comment to ignore remaining parameters</li>
+</ul>
+
+<h3 id="success-table-dropped">Success: Table Dropped!</h3>
+
+<p>The attack was successful! Evidence of the dropped table can be seen below:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Y1RxkXVu_Rzu1sERvihJnA.png" alt="Successful DROP TABLE execution showing users table deleted" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="key-lessons-from-payload-development">Key Lessons from Payload Development</h3>
+
+<p>This successful attack highlighted several important factors:</p>
+
+<ol>
+  <li><strong>Case Sensitivity Matters</strong>: Lowercase <code class="language-plaintext highlighter-rouge">drop table users</code> worked where <code class="language-plaintext highlighter-rouge">DROP TABLE USERS</code> failed</li>
+  <li><strong>URL Encoding is Critical</strong>: Special characters and spaces must be properly encoded</li>
+  <li><strong>SQL Comments are Essential</strong>: Using <code class="language-plaintext highlighter-rouge">--</code> to comment out trailing parameters prevents syntax errors</li>
+  <li><strong>Iterative Testing</strong>: Multiple attempts were necessary to find the correct syntax combination</li>
+</ol>
+
+<p>With the <code class="language-plaintext highlighter-rouge">users</code> table successfully dropped, the automated restoration service should recreate it with the default credentials within one minute, allowing us to gain legitimate administrative access to the system.</p>
+
+<h2 id="gaining-administrative-access">Gaining Administrative Access</h2>
+
+<p>After waiting approximately one minute for the automated restoration service to run, I attempted to log in using the default credentials from the mail.log file.</p>
+
+<h3 id="successful-admin-login">Successful Admin Login</h3>
+
+<p>Using the credentials <code class="language-plaintext highlighter-rouge">superadmin@injectics.thm : superSecurePasswd101</code>, I was able to successfully authenticate and gain administrative access to the system:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*x8QgFDiuau0LXtXBoSJ6CA.png" alt="Successful admin login showing administrative dashboard" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="first-flag-retrieved">First Flag Retrieved</h3>
+
+<p>With administrative privileges confirmed, I was able to access the first flag on the admin dashboard:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7M8orVrfnpGT9fZpckZY4g.png" alt="First flag displayed on admin dashboard" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="mission-accomplished---phase-1">Mission Accomplished - Phase 1</h3>
+
+<p>This successful exploitation demonstrates a complete attack chain:</p>
+
+<ol>
+  <li><strong>Information Disclosure</strong> - Discovered sensitive credentials in mail.log</li>
+  <li><strong>SQL Injection Exploitation</strong> - Used leaderboard parameter injection to drop the users table</li>
+  <li><strong>Service Manipulation</strong> - Leveraged the automated restoration mechanism</li>
+  <li><strong>Privilege Escalation</strong> - Gained legitimate administrative access</li>
+  <li><strong>Flag Capture</strong> - Successfully retrieved the first flag</li>
+</ol>
+
+<p>The restoration mechanism worked exactly as described in the email, automatically recreating the users table with the default administrative credentials and allowing us to complete the first phase of this challenge.</p>
+
+<h1 id="part-2">Part 2</h1>
+
+<p>With the first flag captured, our next objective is to locate the second flag. Based on the challenge description, this flag is a text file hidden within a <code class="language-plaintext highlighter-rouge">flags</code> folder somewhere on the system.</p>
+
+<h2 id="initial-reconnaissance-attempts">Initial Reconnaissance Attempts</h2>
+
+<p>I began by attempting directory enumeration using ffuf to discover the hidden <code class="language-plaintext highlighter-rouge">flags</code> folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffuf <span class="nt">-w</span> /usr/share/wordlists/dirb/common.txt <span class="nt">-u</span> http://10.201.41.246/FUZZ
+</code></pre></div></div>
+
+<p>However, this approach yielded no results. The flags directory was either well-hidden or protected from common enumeration techniques.</p>
+
+<h2 id="exploring-new-administrative-features">Exploring New Administrative Features</h2>
+
+<p>Taking a closer look at the admin dashboard, I noticed a new endpoint that wasn’t available to regular users - the <strong>Profile</strong> section:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7M8orVrfnpGT9fZpckZY4g.png" alt="Admin dashboard showing profile endpoint" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="investigating-the-profile-functionality">Investigating the Profile Functionality</h3>
+
+<p>Navigating to the profile section revealed a form with multiple input fields for user information:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xBvsB6_KqDtvhmpdxDuA9A.png" alt="Profile page with multiple input fields" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>The profile form contains three main input fields:</p>
+<ul>
+  <li><strong>Email Address</strong></li>
+  <li><strong>First Name</strong></li>
+  <li><strong>Last Name</strong></li>
+</ul>
+
+<h2 id="testing-input-reflection-and-potential-vulnerabilities">Testing Input Reflection and Potential Vulnerabilities</h2>
+
+<p>To understand how the application processes user input, I tested each field with different values to see where and how the data gets reflected in the interface.</p>
+
+<h3 id="first-name-reflection-discovery">First Name Reflection Discovery</h3>
+
+<p>After submitting the form with “hacker” as the first name, I observed that this value was immediately reflected on the dashboard:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*2noOkWL-cp1BjfrEg95-Mw.png" alt="Dashboard showing reflected first name value" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Key Observation:</strong> The dashboard now displays “Welcome, hacker!” indicating that:</p>
+
+<ol>
+  <li><strong>Direct Input Reflection</strong>: The first name field is directly displayed on the dashboard</li>
+  <li><strong>Real-time Updates</strong>: Changes are immediately visible without requiring re-authentication</li>
+  <li><strong>Potential Attack Vector</strong>: This reflection point could be vulnerable to various injection attacks</li>
+</ol>
+
+<h3 id="security-implications">Security Implications</h3>
+
+<p>This input reflection behavior suggests several potential vulnerabilities:</p>
+
+<ul>
+  <li><strong>Cross-Site Scripting (XSS)</strong>: If input isn’t properly sanitized, we could inject JavaScript</li>
+  <li><strong>Template Injection</strong>: The reflection mechanism might be vulnerable to template injection</li>
+  <li><strong>SQL Injection</strong>: The backend might be vulnerable when storing/retrieving profile data</li>
+  <li><strong>Path Traversal</strong>: Input fields might allow directory traversal attacks</li>
+</ul>
+
+<p>With this new attack surface discovered, we now have additional vectors to explore for finding the second flag or potentially exploiting the system further.</p>
+
+<h2 id="vulnerability-assessment-and-attack-vector-selection">Vulnerability Assessment and Attack Vector Selection</h2>
+
+<p>Based on the reflection behavior observed, I evaluated the potential attack vectors. <strong>Cross-Site Scripting (XSS) seemed unlikely to be effective</strong> for our current objective of finding hidden files or escalating privileges further.</p>
+
+<h3 id="focusing-on-server-side-template-injection-ssti">Focusing on Server-Side Template Injection (SSTI)</h3>
+
+<p>The most promising attack vector appeared to be <strong>Server-Side Template Injection (SSTI)</strong>. This vulnerability occurs when user input is embedded into server-side templates without proper sanitization, potentially allowing attackers to:</p>
+
+<ul>
+  <li>Execute arbitrary code on the server</li>
+  <li>Access filesystem and internal application data</li>
+  <li>Read sensitive files (including our target flag)</li>
+  <li>Gain deeper system access</li>
+</ul>
+
+<h3 id="ssti-detection-methodology">SSTI Detection Methodology</h3>
+
+<p>To systematically test for SSTI vulnerabilities, I followed the <strong>decision tree approach</strong> outlined in PortSwigger’s comprehensive research on Server-Side Template Injection:</p>
+
+<p><strong>Reference:</strong> <a href="https://portswigger.net/research/server-side-template-injection">Server-Side Template Injection - PortSwigger Research</a></p>
+
+<p>This methodology involves:</p>
+
+<ol>
+  <li><strong>Detection Phase</strong>: Using language-agnostic payloads to trigger template engine errors</li>
+  <li><strong>Identification Phase</strong>: Determining the specific template engine in use</li>
+  <li><strong>Exploitation Phase</strong>: Crafting targeted payloads for the identified engine</li>
+</ol>
+
+<h3 id="initial-ssti-detection-payloads">Initial SSTI Detection Payloads</h3>
+
+<p>I began testing with basic mathematical expressions that are commonly processed by template engines:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SSTI</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+&#123;&#123;7*7&#125;&#125;       # Jinja2, Twig
+&#36;&#123;7*7&#125;        # JSP, Thymeleaf
+&lt;%= 7*7 %&gt;    # ERB (Ruby)
+&#123;7*7&#125;         # Smarty
+#&#123;7*7&#125;        # Freemarker
+</code></pre>
+</div>
+
+<p><strong>Strategy:</strong> If any of these payloads return <code class="language-plaintext highlighter-rouge">49</code> instead of the literal string, it would confirm SSTI vulnerability and help identify the template engine being used.</p>
+
+<p>This systematic approach allows us to both detect the vulnerability and determine the specific technology stack, enabling us to craft more targeted exploitation payloads for accessing the hidden flag file.</p>
+
+<h2 id="ssti-vulnerability-confirmation">SSTI Vulnerability Confirmation</h2>
+
+<p>Now let’s test for Server-Side Template Injection by submitting a mathematical expression payload in the first name field.</p>
+
+<h3 id="testing-the-jinja2twig-payload">Testing the Jinja2/Twig Payload</h3>
+
+<p>I submitted the payload {{7*7}} in the first name field of the profile form:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*XtjDBc3oLZaA_gquvgA2ww.png" alt="Profile form with SSTI payload submitted" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="ssti-vulnerability-confirmed">SSTI Vulnerability Confirmed!</h3>
+
+<p>Upon navigating to the dashboard, the application displayed <strong>“Welcome, 49!”</strong> instead of the literal string:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*1aPSCxhjS_7ODNsFEvfWiQ.png" alt="Dashboard showing mathematical evaluation result proving SSTI" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="critical-discovery-analysis">Critical Discovery Analysis</h3>
+
+<p>This result proves several important findings:</p>
+
+<ol>
+  <li><strong>SSTI Vulnerability Confirmed</strong>: The application evaluates {{7*7}} as <code class="language-plaintext highlighter-rouge">49</code>, confirming template injection</li>
+  <li><strong>Template Engine Identified</strong>: The {{}} syntax suggests <strong>Jinja2 or Twig</strong> template engine</li>
+  <li><strong>Server-Side Execution</strong>: Mathematical operations are processed on the server, not client-side</li>
+  <li><strong>Code Execution Potential</strong>: We can potentially execute arbitrary code through template injection</li>
+</ol>
+
+<h3 id="template-engine-analysis">Template Engine Analysis</h3>
+
+<p>The successful execution of {{7*7}} indicates we’re dealing with either:</p>
+<ul>
+  <li><strong>Jinja2</strong> (Python-based template engine)</li>
+  <li><strong>Twig</strong> (PHP-based template engine)</li>
+</ul>
+
+<h3 id="technology-stack-identification">Technology Stack Identification</h3>
+
+<p>To determine which template engine we’re working with, we can use technology detection tools. Using <strong>Wappalyzer</strong> (a web technology profiler), we can identify that the website is running <strong>PHP</strong>:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*M-d_fuJzPVpndRrDAV8uNw.png" alt="Wappalyzer showing PHP technology stack" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="confirmed-twig-template-engine">Confirmed: Twig Template Engine</h3>
+
+<p>Since the application is running PHP and responds to {{}} syntax, we can confidently conclude that we’re dealing with the <strong>Twig template engine</strong>. This is significant because:</p>
+
+<ol>
+  <li><strong>Twig is PHP’s primary templating engine</strong> - Widely used in Symfony and other PHP frameworks</li>
+  <li><strong>Different exploitation techniques</strong> - Twig has specific objects and methods for file system access</li>
+  <li><strong>PHP-specific payloads</strong> - We can leverage PHP functions and classes through Twig</li>
+</ol>
+
+<h3 id="twig-specific-attack-vectors">Twig-Specific Attack Vectors</h3>
+
+<p>Now that we’ve identified Twig, we can focus on Twig-specific exploitation techniques:</p>
+
+<ul>
+  <li><strong>Global objects access</strong>: <code class="language-plaintext highlighter-rouge">_self</code>, <code class="language-plaintext highlighter-rouge">app</code>, <code class="language-plaintext highlighter-rouge">_context</code></li>
+  <li><strong>File system functions</strong>: Reading files through PHP functions</li>
+  <li><strong>Object introspection</strong>: Exploring available classes and methods</li>
+  <li><strong>Filter exploitation</strong>: Using Twig filters for code execution</li>
+</ul>
+
+<h3 id="attack-strategy-evolution">Attack Strategy Evolution</h3>
+
+<p>With Twig confirmed, our approach now shifts to:</p>
+
+<ol>
+  <li><strong>Explore Twig’s global objects</strong> to understand the available context</li>
+  <li><strong>Test file reading capabilities</strong> using Twig syntax</li>
+  <li><strong>Craft payloads for directory traversal</strong> to locate the hidden flag</li>
+  <li><strong>Attempt to read the flag file</strong> directly through Twig template injection</li>
+</ol>
+
+<p>This technology identification significantly narrows our focus and allows us to use Twig-specific exploitation techniques to interact with the server’s file system and access the hidden <code class="language-plaintext highlighter-rouge">flags</code> directory.</p>
+
+<h2 id="twig-code-execution-attempts">Twig Code Execution Attempts</h2>
+
+<p>With Twig template engine confirmed, I needed to find a way to execute system commands to locate the hidden flag file. I referenced the comprehensive Twig exploitation techniques from PayloadsAllTheThings repository.</p>
+
+<h3 id="consulting-payloadsallthethings-for-twig-exploitation">Consulting PayloadsAllTheThings for Twig Exploitation</h3>
+
+<p>Following the excellent resource at <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/PHP.md#twig---code-execution">PayloadsAllTheThings - Twig Code Execution</a>, I found several code execution payloads specifically designed for Twig template engines.</p>
+
+<h3 id="testing-standard-code-execution-payloads">Testing Standard Code Execution Payloads</h3>
+
+<p>I began testing with the recommended payload for system command execution:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">twig</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+&#123;&#123;['id',1]|sort('system')|join&#125;&#125;
+</code></pre>
+</div>
+
+<p><strong>Expected Result:</strong> This should execute the <code class="language-plaintext highlighter-rouge">id</code> command and display user information.</p>
+
+<h3 id="initial-failure-system-function-blocked">Initial Failure: System Function Blocked</h3>
+
+<p>However, when I submitted this payload, the dashboard showed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome, id1!
+</code></pre></div></div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xPhIzp3vJ8YnRblxe-icxg.png" alt="Failed system command execution showing literal output" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Analysis:</strong> The literal string “id1” indicates that:</p>
+<ul>
+  <li>The Twig template processed the payload syntactically</li>
+  <li>The <code class="language-plaintext highlighter-rouge">system()</code> function was not executed</li>
+  <li>The server likely has <code class="language-plaintext highlighter-rouge">system()</code> function disabled or restricted</li>
+</ul>
+
+<h3 id="iterative-payload-testing">Iterative Payload Testing</h3>
+
+<p>Recognizing that the <code class="language-plaintext highlighter-rouge">system()</code> function might be disabled, I began testing alternative PHP execution functions. After several attempts with different payloads, I decided to try the <code class="language-plaintext highlighter-rouge">passthru()</code> function instead:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">twig</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code>
+&#123;&#123;['id',1]|sort('passthru')|join&#125;&#125;
+</code></pre>
+</div>
+
+<h3 id="breakthrough-code-execution-achieved">Breakthrough: Code Execution Achieved!</h3>
+
+<p>This time, the payload was successful! The dashboard displayed actual command output:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*WOrzOodmCZ-y-Q7zbJe9xw.png" alt="Successful code execution showing command output" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="understanding-the-successful-payload">Understanding the Successful Payload</h3>
+
+<p><strong>How the payload works:</strong></p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">['id',1]</code> - Creates an array with command and parameter</li>
+  <li><code class="language-plaintext highlighter-rouge">|sort('passthru')</code> - Uses the <code class="language-plaintext highlighter-rouge">sort</code> filter with <code class="language-plaintext highlighter-rouge">passthru</code> as callback function</li>
+  <li><code class="language-plaintext highlighter-rouge">|join</code> - Joins the array elements</li>
+  <li><strong>Result:</strong> <code class="language-plaintext highlighter-rouge">passthru()</code> executes the <code class="language-plaintext highlighter-rouge">id</code> command, displaying user information</li>
+</ol>
+
+<h3 id="key-security-insights">Key Security Insights</h3>
+
+<p>This successful exploitation reveals:</p>
+
+<ol>
+  <li><strong>Function Restrictions</strong>: <code class="language-plaintext highlighter-rouge">system()</code> was disabled but <code class="language-plaintext highlighter-rouge">passthru()</code> was available</li>
+  <li><strong>Filter Abuse</strong>: Twig filters can be exploited to call arbitrary PHP functions</li>
+  <li><strong>Command Execution</strong>: We now have the ability to execute system commands</li>
+  <li><strong>Reconnaissance Capability</strong>: We can explore the file system to locate the hidden flag</li>
+</ol>
+
+<h3 id="next-steps-flag-discovery">Next Steps: Flag Discovery</h3>
+
+<p>With command execution capabilities established, I can now explore the file system to locate the hidden <code class="language-plaintext highlighter-rouge">flags</code> directory mentioned in the challenge description.</p>
+
+<h2 id="directory-exploration-finding-the-flags-folder">Directory Exploration: Finding the Flags Folder</h2>
+
+<h3 id="step-1-listing-root-directory-contents">Step 1: Listing Root Directory Contents</h3>
+
+<p>First, I executed the <code class="language-plaintext highlighter-rouge">ls</code> command to see the current directory structure and confirm if the <code class="language-plaintext highlighter-rouge">flags</code> directory exists:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*KjQRtxlL1o6P3y7TuDnBNA.png" alt="Directory listing showing flags folder exists" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Success!</strong> The output confirms that the <code class="language-plaintext highlighter-rouge">flags</code> directory exists in the current directory, validating our target location.</p>
+
+<h3 id="step-2-exploring-the-flags-directory">Step 2: Exploring the Flags Directory</h3>
+
+<p>Next, I investigated the contents of the <code class="language-plaintext highlighter-rouge">flags</code> directory to locate the specific flag file:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*19ubpHIIrqDMKPpXf3VTXw.png" alt="Contents of flags directory showing flag.txt file" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Perfect!</strong> The directory listing reveals a <code class="language-plaintext highlighter-rouge">flag.txt</code> file within the <code class="language-plaintext highlighter-rouge">flags</code> directory - exactly what we’re looking for.</p>
+
+<h3 id="step-3-reading-the-second-flag">Step 3: Reading the Second Flag</h3>
+
+<p>Finally, I used the <code class="language-plaintext highlighter-rouge">cat</code> command to read the contents of the flag file:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*aStKbHDv6n3EYRo1bgZpaA.png" alt="Second flag contents displayed through cat command" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Phase 1 - 2 Complete!</p>
+
+<h3 id="complete-attack-chain-summary">Complete Attack Chain Summary</h3>
+
+<p>This challenge demonstrated a comprehensive exploitation methodology involving:</p>
+
+<p><strong>Phase 1: Initial Access &amp; Privilege Escalation</strong></p>
+<ol>
+  <li><strong>Reconnaissance</strong> - Source code analysis and information gathering</li>
+  <li><strong>Client-Side Bypass</strong> - Circumventing JavaScript-based security filters</li>
+  <li><strong>SQL Injection</strong> - Exploiting authentication bypass through comment injection</li>
+  <li><strong>Service Manipulation</strong> - Leveraging automated restoration mechanisms</li>
+  <li><strong>Administrative Access</strong> - Gaining legitimate admin credentials</li>
+</ol>
+
+<p><strong>Phase 2: Advanced Exploitation &amp; Flag Discovery</strong></p>
+<ol>
+  <li><strong>Attack Surface Expansion</strong> - Discovering profile functionality in admin panel</li>
+  <li><strong>SSTI Detection</strong> - Identifying Server-Side Template Injection vulnerability</li>
+  <li><strong>Technology Stack Analysis</strong> - Confirming Twig template engine through reconnaissance</li>
+  <li><strong>Code Execution</strong> - Achieving RCE through Twig filter exploitation</li>
+  <li><strong>File System Access</strong> - Using command execution to locate and read hidden flags</li>
+</ol>
+
+<p>Both flags have been successfully captured through systematic exploitation of multiple vulnerabilities, demonstrating the importance of comprehensive security testing and proper input validation across all application components.</p>
+
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400">
+      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    </footer>
   </article>
 </div>
 
-<style>
-.locked-post-container {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-}
-
-.locked-post {
-  max-width: 600px;
-  width: 100%;
-  background: rgba(30, 30, 30, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 3rem 2rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.lock-icon {
-  color: #fbbf24;
-  animation: pulse 2s infinite;
-  margin-bottom: 1.5rem;
-}
-
-.locked-title {
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.locked-description {
-  color: #d1d5db;
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.status-info {
-  margin-bottom: 2.5rem;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.navigation-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-back {
-  background: #3b82f6;
-  color: white;
-}
-
-.btn-back:hover {
-  background: #2563eb;
-  color: white;
-  transform: translateY(-1px);
-}
-
-.btn-home {
-  background: #6b7280;
-  color: white;
-}
-
-.btn-home:hover {
-  background: #4b5563;
-  color: white;
-  transform: translateY(-1px);
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .locked-post {
-    padding: 2rem 1.5rem;
-  }
-  
-  .locked-title {
-    font-size: 2rem;
-  }
-  
-  .navigation-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn {
-    width: 200px;
-    justify-content: center;
-  }
-}
-</style>
-
-
 
 
       
+        
+          <!-- Giscus comments - Only show for unlocked posts -->
+          <div id="comments"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="tobiasGuta/tobiasGuta.github.io"
+                  data-repo-id="R_kgDOOxswYQ"
+                  data-category="General"
+                  data-category-id="DIC_kwDOOxswYc4CrEhp"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="transparent_dark"
+                  data-lang="en"
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async>
+          </script>
         
       
     </main>
@@ -298,15 +1143,40 @@
 
     <!-- Copy code button script -->
     <script>
-      function copyCode(btn) {
-        const code = btn.parentElement.querySelector('code');
-        if (code) {
-          const text = code.innerText;
-          navigator.clipboard.writeText(text).then(() => {
-            btn.title = "Copied!";
-            setTimeout(() => btn.title = "Copy code", 1200);
-          });
-        }
+      function copyCode(button) {
+        const codeBlock = button.parentElement.querySelector('pre code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          // Store original content
+          const originalHTML = button.innerHTML;
+          
+          // Add copied class for styling
+          button.classList.add('copied');
+          
+          // Change to checkmark icon
+          button.innerHTML = `
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          `;
+          
+          // Reset after 1.5 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Show error state
+          const originalHTML = button.innerHTML;
+          button.style.background = '#ef4444';
+          button.innerHTML = '✗';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+          }, 1000);
+        });
       }
     </script>
 
