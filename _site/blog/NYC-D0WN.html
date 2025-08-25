@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog</title>
+    <title>I Didn't Hack nyc.gov Their Confirmation System Did</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -106,45 +106,174 @@
     <div id="leaf-container"></div>
 
     <main class="container py-5">
-      <!-- Tag filter bar and post list (move this here) -->
-<div class="mt-12">
-  <div id="tag-filter" class="mb-6 flex flex-wrap gap-2">
-    <button class="px-3 py-1 rounded bg-blue-700 text-white text-sm font-semibold" onclick="filterPosts('all')">All</button>
-    
-    
-  </div>
-
-  <ul id="posts-list">
-    
-      <li data-tags="">
-        <a href="/blog/InjecticsTHM">Injectics</a>
-        <span class="text-gray-400 text-xs">(2025-08-24)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/NYC-D0WN">I Didn't Hack nyc.gov Their Confirmation System Did</a>
-        <span class="text-gray-400 text-xs">(2025-07-26)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-  </ul>
+      
+<!-- Locked post view -->
+<div class="locked-post-container">
+  <article class="locked-post">
+    <div class="locked-content text-center">
+      <div class="lock-icon mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="80" height="80" class="mx-auto">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+      
+      <h1 class="locked-title">I Didn't Hack nyc.gov Their Confirmation System Did</h1>
+      <p class="locked-description">This post is currently locked and will be available soon...</p>
+      
+      <div class="status-info">
+        <span class="status-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Locked Content
+        </span>
+      </div>
+      
+      <div class="navigation-buttons">
+        <a href="/posts/" class="btn btn-back">
+          ← Back to Blog
+        </a>
+        <a href="/" class="btn btn-home">
+          Home
+        </a>
+      </div>
+    </div>
+  </article>
 </div>
 
-<script>
-function filterPosts(tag) {
-  const posts = document.querySelectorAll('#posts-list li');
-  posts.forEach(post => {
-    const tags = post.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || tags.includes(tag)) {
-      post.style.display = '';
-    } else {
-      post.style.display = 'none';
-    }
-  });
+<style>
+.locked-post-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
-</script>
 
+.locked-post {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.lock-icon {
+  color: #fbbf24;
+  animation: pulse 2s infinite;
+  margin-bottom: 1.5rem;
+}
+
+.locked-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.locked-description {
+  color: #d1d5db;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.status-info {
+  margin-bottom: 2.5rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-back {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-back:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-home {
+  background: #6b7280;
+  color: white;
+}
+
+.btn-home:hover {
+  background: #4b5563;
+  color: white;
+  transform: translateY(-1px);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .locked-post {
+    padding: 2rem 1.5rem;
+  }
+  
+  .locked-title {
+    font-size: 2rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
+</style>
+
+
+
+
+      
+        
       
     </main>
 
