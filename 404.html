@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - You're Not Alone</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Orbitron', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .alien-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            z-index: 5;
+            transition: opacity 0.1s ease;
+        }
+
+        .alien {
+            width: 100%;
+            height: 100%;
+            background: url('/assets/ali.png') no-repeat center center;
+            background-size: cover;
+            filter: drop-shadow(0 0 50px rgba(0, 255, 0, 0.4)) 
+                    drop-shadow(0 0 20px rgba(0, 255, 0, 0.6));
+        }
+
+        .light-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 255, 0, 0.1) 0%, rgba(0, 0, 0, 0.9) 70%);
+            opacity: 0;
+            z-index: 8;
+            pointer-events: none;
+        }
+
+        .flicker {
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% { opacity: 0; }
+            5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { opacity: 1; }
+        }
+
+        .error-text {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00,
+                0 0 40px #00ff00;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        .error-text::before {
+            color: #00ff00;
+            z-index: -1;
+            animation: glitch-green 2s infinite;
+        }
+
+        .error-text::after {
+            color: #00ffaa;
+            z-index: -2;
+            animation: glitch-cyan 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-2px, 2px); }
+            20% { transform: translate(2px, -2px); }
+            30% { transform: translate(-2px, -2px); }
+            40% { transform: translate(2px, 2px); }
+            50% { transform: translate(-1px, 1px); }
+            60% { transform: translate(1px, -1px); }
+            70% { transform: translate(-1px, -1px); }
+            80% { transform: translate(1px, 1px); }
+        }
+
+        @keyframes glitch-red {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(2px, 0); }
+            20% { transform: translate(-2px, 0); }
+            30% { transform: translate(2px, 0); }
+            40% { transform: translate(-2px, 0); }
+            50% { transform: translate(1px, 0); }
+            60% { transform: translate(-1px, 0); }
+            70% { transform: translate(1px, 0); }
+            80% { transform: translate(-1px, 0); }
+        }
+
+        @keyframes glitch-green {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-1px, 1px); }
+            20% { transform: translate(1px, -1px); }
+            30% { transform: translate(-1px, -1px); }
+            40% { transform: translate(1px, 1px); }
+            50% { transform: translate(-2px, 0); }
+            60% { transform: translate(2px, 0); }
+            70% { transform: translate(-2px, 0); }
+            80% { transform: translate(2px, 0); }
+        }
+
+        @keyframes glitch-cyan {
+            0%, 90%, 100% { transform: translate(0); }
+            10% { transform: translate(-1px, -1px); }
+            20% { transform: translate(1px, 1px); }
+            30% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, -1px); }
+            50% { transform: translate(-2px, 0); }
+            60% { transform: translate(2px, 0); }
+            70% { transform: translate(-2px, 0); }
+            80% { transform: translate(2px, 0); }
+        }
+
+        .home-link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: transparent;
+        }
+
+        .home-link:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .static-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+            animation: static 0.1s infinite;
+        }
+
+        @keyframes static {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-1px, 1px); }
+            20% { transform: translate(1px, -1px); }
+            30% { transform: translate(-1px, -1px); }
+            40% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, 0); }
+            60% { transform: translate(1px, 0); }
+            70% { transform: translate(0, -1px); }
+            80% { transform: translate(0, 1px); }
+            90% { transform: translate(-1px, 1px); }
+        }
+
+        @media (max-width: 768px) {
+            .error-text {
+                font-size: 2.5rem;
+            }
+            
+            .home-link {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="static-noise"></div>
+    <div class="light-overlay" id="lightOverlay"></div>
+    <div class="alien-container" id="alienContainer">
+        <div class="alien"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="error-text">404 — You're Not Alone</h1>
+        <a href="/" class="home-link">Go Back Home</a>
+    </div>
+
+    <script>
+        function randomFlicker() {
+            const alien = document.getElementById('alienContainer');
+            const light = document.getElementById('lightOverlay');
+            
+            // Random interval between 2-8 seconds
+            const interval = Math.random() * 6000 + 2000;
+            
+            setTimeout(() => {
+                // Show alien and light for a brief moment
+                const flickerDuration = Math.random() * 300 + 100; // 100-400ms
+                
+                alien.style.opacity = '1';
+                light.style.opacity = '1';
+                light.classList.add('flicker');
+                
+                setTimeout(() => {
+                    alien.style.opacity = '0';
+                    light.style.opacity = '0';
+                    light.classList.remove('flicker');
+                    randomFlicker(); // Schedule next flicker
+                }, flickerDuration);
+                
+            }, interval);
+        }
+
+        // Add some random brief flickers
+        function briefFlicker() {
+            const alien = document.getElementById('alienContainer');
+            const light = document.getElementById('lightOverlay');
+            
+            alien.style.opacity = '1';
+            light.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                alien.style.opacity = '0';
+                light.style.opacity = '0';
+            }, 50);
+        }
+
+        // Start the flickering effect
+        randomFlicker();
+        
+        // Add occasional brief flickers
+        setInterval(() => {
+            if (Math.random() < 0.3) { // 30% chance every 500ms
+                briefFlicker();
+            }
+        }, 500);
+
+        // Add eerie sound effect trigger (optional)
+        document.addEventListener('click', () => {
+            // Could add audio here if desired
+        });
+    </script>
+</body>
+</html>
