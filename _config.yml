@@ -11,3 +11,5 @@ permalink: /:categories/:year/:month/:day/:title.html
 author:
   name: Tobias Arevalo
   email: heyyou@protonmail.com
+
+show_drafts: false
