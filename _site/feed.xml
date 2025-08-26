@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-08-25T02:54:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Injectics</title><link href="/blog/InjecticsTHM" rel="alternate" type="text/html" title="Injectics" /><published>2025-08-24T00:00:00-04:00</published><updated>2025-08-24T00:00:00-04:00</updated><id>http://localhost:4000/blog/CTFInjectics</id><content type="html" xml:base="/blog/InjecticsTHM"><![CDATA[<div style="border-left: 4px solid #00d4aa; background: #0f172a; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-08-25T21:28:13-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">TryHackMe Injectics Walkthrough - SQL Injection &amp; SSTI Exploitation</title><link href="/blog/InjecticsTHM" rel="alternate" type="text/html" title="TryHackMe Injectics Walkthrough - SQL Injection &amp; SSTI Exploitation" /><published>2025-08-24T00:00:00-04:00</published><updated>2025-08-24T00:00:00-04:00</updated><id>http://localhost:4000/blog/CTFInjectics</id><content type="html" xml:base="/blog/InjecticsTHM"><![CDATA[<div style="border-left: 4px solid #00d4aa; background: #0f172a; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
   <div style="display: flex; justify-content: center; margin-bottom: 15px;">
     <img src="https://assets.tryhackme.com/img/favicon.png" width="48" height="48" alt="TryHackMe" style="border: none; outline: none; box-shadow: none;" />
   </div>
@@ -242,7 +242,7 @@ Dev Team
   <p><em>“I have configured the service to automatically insert default credentials into the <code class="language-plaintext highlighter-rouge">users</code> table if it is ever deleted or becomes corrupted.”</em></p>
 </blockquote>
 
-<p>This means the credentials aren’t currently in the database they’re only added as a failsafe mechanism.</p>
+<p>This means the credentials aren’t currently in the database-they’re only added as a failsafe mechanism.</p>
 
 <h3 id="new-attack-strategy-table-manipulation">New Attack Strategy: Table Manipulation</h3>
 
@@ -513,21 +513,8 @@ rank=1&amp;country=&amp;gold=22&amp;silver=21&amp;bronze=12345
 <ol>
   <li><strong>Execute a <code class="language-plaintext highlighter-rouge">DROP TABLE users</code> command</strong> through parameter injection</li>
   <li><strong>Wait for the automated restoration service</strong> (runs every minute)</li>
-  <li><strong>Use the restored default credentials</strong> to gain legitimate admin access</li>
+  <li><strong>Use the restored default credentials</strong> to gain access</li>
 </ol>
-
-<h3 id="strategy-weaponizing-the-sql-injection">Strategy: Weaponizing the SQL Injection</h3>
-
-<p>Instead of just modifying leaderboard data, we can leverage this vulnerability to:</p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">users</span><span class="p">;</span> <span class="c1">-- This will trigger the credential restoration mechanism</span>
-</code></pre></div></div>
-
-<p>Once the <code class="language-plaintext highlighter-rouge">users</code> table is dropped, the automated service will recreate it with:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">superadmin@injectics.thm : superSecurePasswd101</code></li>
-  <li><code class="language-plaintext highlighter-rouge">dev@injectics.thm : devPasswd123</code></li>
-</ul>
 
 <p>Let’s find a way to inject this <code class="language-plaintext highlighter-rouge">DROP TABLE</code> command through one of the vulnerable parameters in the leaderboard edit functionality.</p>
 
@@ -692,7 +679,7 @@ rank=1&amp;country=&amp;gold=22&amp;silver=21&amp;bronze=12345
 
 <h2 id="vulnerability-assessment-and-attack-vector-selection">Vulnerability Assessment and Attack Vector Selection</h2>
 
-<p>Based on the reflection behavior observed, I evaluated the potential attack vectors. <strong>Cross-Site Scripting (XSS) seemed unlikely to be effective</strong> for our current objective of finding hidden files or escalating privileges further.</p>
+<p>Based on the reflection behavior observed, I evaluated the potential attack vectors. <strong>Cross-Site Scripting (XSS)</strong> seemed unlikely to be effective for our current objective of finding hidden files or escalating privileges further.</p>
 
 <h3 id="focusing-on-server-side-template-injection-ssti">Focusing on Server-Side Template Injection (SSTI)</h3>
 
@@ -903,7 +890,7 @@ rank=1&amp;country=&amp;gold=22&amp;silver=21&amp;bronze=12345
   <li><strong>Function Restrictions</strong>: <code class="language-plaintext highlighter-rouge">system()</code> was disabled but <code class="language-plaintext highlighter-rouge">passthru()</code> was available</li>
   <li><strong>Filter Abuse</strong>: Twig filters can be exploited to call arbitrary PHP functions</li>
   <li><strong>Command Execution</strong>: We now have the ability to execute system commands</li>
-  <li><strong>Reconnaissance Capability</strong>: We can explore the file system to locate the hidden flag</li>
+  <li><strong>Reconnaissance Capability</strong>: We can explore the file system to locate and read hidden flags</li>
 </ol>
 
 <h3 id="next-steps-flag-discovery">Next Steps: Flag Discovery</h3>
@@ -960,7 +947,7 @@ rank=1&amp;country=&amp;gold=22&amp;silver=21&amp;bronze=12345
 
 <p>Both flags have been successfully captured through systematic exploitation of multiple vulnerabilities, demonstrating the importance of comprehensive security testing and proper input validation across all application components.</p>
 
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="ctf" /><summary type="html"><![CDATA[<div style="border-left: 4px solid #00d4aa; background: #0f172a; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="ctf" /><category term="tryhackme" /><category term="walkthrough" /><summary type="html"><![CDATA[<div style="border-left: 4px solid #00d4aa; background: #0f172a; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
   <div style="display: flex; justify-content: center; margin-bottom: 15px;">
     <img src="https://assets.tryhackme.com/img/favicon.png" width="48" height="48" alt="TryHackMe" style="border: none; outline: none; box-shadow: none;" />
   </div>

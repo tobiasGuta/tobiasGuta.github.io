@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Injectics"
+title: "TryHackMe Injectics Walkthrough - SQL Injection & SSTI Exploitation"
 date: 2025-08-24
-categories: [ctf]
+categories: [ctf, tryhackme, walkthrough]
 image: https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/62a7685ca6e7ce005d3f3afe-1721743931067.png
 permalink: /blog/InjecticsTHM
 locked: false
@@ -283,7 +283,7 @@ Re-reading the email more carefully, I noticed a key detail: these credentials a
 
 > *"I have configured the service to automatically insert default credentials into the `users` table if it is ever deleted or becomes corrupted."*
 
-This means the credentials aren't currently in the database they're only added as a failsafe mechanism.
+This means the credentials aren't currently in the database-they're only added as a failsafe mechanism.
 
 ### New Attack Strategy: Table Manipulation
 
@@ -574,19 +574,7 @@ This SQL injection vulnerability gives us the perfect opportunity to:
 
 1. **Execute a `DROP TABLE users` command** through parameter injection
 2. **Wait for the automated restoration service** (runs every minute)
-3. **Use the restored default credentials** to gain legitimate admin access
-
-### Strategy: Weaponizing the SQL Injection
-
-Instead of just modifying leaderboard data, we can leverage this vulnerability to:
-
-```sql
-DROP TABLE users; -- This will trigger the credential restoration mechanism
-```
-
-Once the `users` table is dropped, the automated service will recreate it with:
-- `superadmin@injectics.thm : superSecurePasswd101`
-- `dev@injectics.thm : devPasswd123`
+3. **Use the restored default credentials** to gain access
 
 Let's find a way to inject this `DROP TABLE` command through one of the vulnerable parameters in the leaderboard edit functionality.
 
@@ -772,7 +760,7 @@ With this new attack surface discovered, we now have additional vectors to explo
 
 ## Vulnerability Assessment and Attack Vector Selection
 
-Based on the reflection behavior observed, I evaluated the potential attack vectors. **Cross-Site Scripting (XSS) seemed unlikely to be effective** for our current objective of finding hidden files or escalating privileges further.
+Based on the reflection behavior observed, I evaluated the potential attack vectors. **Cross-Site Scripting (XSS)** seemed unlikely to be effective for our current objective of finding hidden files or escalating privileges further.
 
 ### Focusing on Server-Side Template Injection (SSTI)
 
@@ -990,7 +978,7 @@ This successful exploitation reveals:
 1. **Function Restrictions**: `system()` was disabled but `passthru()` was available
 2. **Filter Abuse**: Twig filters can be exploited to call arbitrary PHP functions
 3. **Command Execution**: We now have the ability to execute system commands
-4. **Reconnaissance Capability**: We can explore the file system to locate the hidden flag
+4. **Reconnaissance Capability**: We can explore the file system to locate and read hidden flags
 
 ### Next Steps: Flag Discovery
 

@@ -175,6 +175,17 @@ layout: default
       <p class="text-sm text-gray-400">
         {{ page.date | date: "%B %-d, %Y" }}
       </p>
+
+      {% if page.categories.size > 0 %}
+        <div class="categories mt-3 mb-2">
+          <span class="text-gray-400 text-sm font-medium">Categories: </span>
+          {% for category in page.categories %}
+            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm">
+              {{ category | capitalize }}
+            </span>
+          {% endfor %}
+        </div>
+      {% endif %}
     </header>
 
     {% if page.image %}
