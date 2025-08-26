@@ -1,7 +1,7 @@
 title: Big Brooklyn
 description: Cybersecurity Blog + Portfolio
-url: "https://tobiasGuta.github.io"
-baseurl: ""  # leave blank for GitHub Pages with username repo
+url: "https://whoistob1as.me"
+baseurl: ""
 
 theme: minima
 
@@ -13,3 +13,8 @@ author:
   email: heyyou@protonmail.com
 
 show_drafts: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
