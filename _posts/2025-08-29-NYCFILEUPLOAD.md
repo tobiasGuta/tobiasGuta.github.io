@@ -17,6 +17,7 @@ While searching for jobs on a New York City job portal, I decided to create an a
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
+
 As I interacted with the site, I started to notice some interesting behaviors in the file upload functionality. The platform only allowed certain file types specifically PDF and TXT files. Any attempt to upload other or potentially malicious files was blocked.
 
 When uploading a file, you would see a request similar to this:
@@ -147,7 +148,7 @@ Below is a demonstration of replicating this vulnerability on a test environment
 **Thank you for reading!** If you found this post helpful or interesting, stay tuned for more cybersecurity stories and insights. See you
 
 <img 
-  src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TEgAP1FqQNaH7JkeQaumFw.jpeg"
+  src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*83hlWRWOv-NhKdltd1awtg.png"
   alt="No Detection"
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
