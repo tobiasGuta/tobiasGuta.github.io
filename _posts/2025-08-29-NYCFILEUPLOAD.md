@@ -3,10 +3,16 @@ layout: post
 title: "Null-Byte File Upload Bypass: PoC on a NYC Portal"
 date: 2025-08-29
 categories: [bug-bounty]
-image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg
 permalink: /blog/NYC-DOWN-FUV
 locked: false
 ---
+
+<div class="post-header-image">
+  <img 
+    src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg"
+    alt="Banner"
+  />
+</div>
 
 While searching for jobs on a New York City job portal, I decided to create an account and explore the platform’s features. One of the first things I did was update my profile and upload my resume, just like any typical job seeker would. The profile page looked something like this:
 
@@ -23,7 +29,7 @@ As I interacted with the site, I started to notice some interesting behaviors in
 When uploading a file, you would see a request similar to this:
 
 <div class="code-block-container">
-  <span class="code-lang-tag">burp suite request</span>
+  <span class="code-lang-tag">burp suite</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
@@ -63,7 +69,7 @@ However, if we modify the upload request and change the filename to include a nu
 Here’s how the modified request would look:
 
 <div class="code-block-container">
-  <span class="code-lang-tag">burp suite request (null byte bypass)</span>
+  <span class="code-lang-tag">burp suite</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>

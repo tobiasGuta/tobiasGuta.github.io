@@ -126,13 +126,13 @@
     </header>
 
     
-      <div class="post-header-image">
-        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg" alt="Null-Byte File Upload Bypass: PoC on a NYC Portal cover image" />
-      </div>
-    
 
     <section class="post-content prose prose-invert max-w-none text-gray-300">
-      <p>While searching for jobs on a New York City job portal, I decided to create an account and explore the platform’s features. One of the first things I did was update my profile and upload my resume, just like any typical job seeker would. The profile page looked something like this:</p>
+      <div class="post-header-image">
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg" alt="Banner" />
+</div>
+
+<p>While searching for jobs on a New York City job portal, I decided to create an account and explore the platform’s features. One of the first things I did was update my profile and upload my resume, just like any typical job seeker would. The profile page looked something like this:</p>
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*LfMseQB6u9eC7ER5irMVAA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
@@ -141,7 +141,7 @@
 <p>When uploading a file, you would see a request similar to this:</p>
 
 <div class="code-block-container">
-  <span class="code-lang-tag">burp suite request</span>
+  <span class="code-lang-tag">burp suite</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
@@ -181,7 +181,7 @@ stream.....
 <p>Here’s how the modified request would look:</p>
 
 <div class="code-block-container">
-  <span class="code-lang-tag">burp suite request (null byte bypass)</span>
+  <span class="code-lang-tag">burp suite</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />

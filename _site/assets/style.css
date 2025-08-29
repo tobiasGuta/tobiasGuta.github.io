@@ -535,6 +535,12 @@ body.homepage > * {
     transform 0.35s cubic-bezier(.22,1,.22,1);
 }
 
+@media (max-width: 700px) {
+  .post-header-image img {
+    max-width: 100%;
+  }
+}
+
 @keyframes floating-img {
   0%   { transform: translateY(-3px); }
   50%  { transform: translateY(3px); }
@@ -929,6 +935,8 @@ body.zoom-active::before {
   font-weight: bold;
 }
 
+
+
 /* --- Blog Post Table Styling --- */
 .post-content table,
 .markdown-body table {
@@ -1018,7 +1026,8 @@ body.zoom-active::before {
   top: 0.7em;
   left: 50%;
   transform: translateX(-50%);
-  background: #222;
+  /* background: #222; */   /* Remove or comment out this line */
+  background: none;         /* Add this line */
   color: White;
   font-size: 0.85em;
   font-family: monospace;
@@ -1029,6 +1038,7 @@ body.zoom-active::before {
   opacity: 0.95;
   letter-spacing: 0.04em;
 }
+
 .code-block-container {
   position: relative;
 }
