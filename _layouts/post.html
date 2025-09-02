@@ -27,7 +27,7 @@ layout: default
       
       <div class="navigation-buttons">
         <a href="/posts/" class="btn btn-back">
-          ← Back to Blog
+          <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
         </a>
         <a href="/" class="btn btn-home">
           Home
@@ -117,14 +117,53 @@ layout: default
 }
 
 .btn-back {
-  background: #3b82f6;
-  color: white;
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px #0002;
+  border: none;
+  outline: none;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-size: 1.1em;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-back-bottom {
+  background: linear-gradient(90deg, #fffbe6 0%, #ffe0b2 100%);
+  color: #222;
+  border: 3px solid #fbbf24;
+  box-shadow: 0 6px 24px #fbbf2433, 0 1.5px 6px #0002;
+  font-size: 1.15em;
+  margin-top: 1.5em;
+  border-radius: 1.8em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  padding: 0.9em 2.2em;
+  transition: 
+    background 0.2s, 
+    color 0.2s, 
+    border-color 0.2s, 
+    box-shadow 0.2s, 
+    transform 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-back-bottom:hover {
+  background: linear-gradient(90deg, #fbbf24 0%, #ffe0b2 100%);
+  color: #111;
+  border-color: #f59e42;
+  box-shadow: 0 8px 32px #fbbf2466, 0 2px 12px #0003;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .btn-back:hover {
-  background: #2563eb;
-  color: white;
-  transform: translateY(-1px);
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px #0003;
 }
 
 .btn-home {
@@ -170,7 +209,7 @@ layout: default
 <div class="post-page">
   <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
     <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold text-white">{{ page.title }}</h1>
+      <h1 class="text-3xl font-bold">{{ page.title }}</h1>
       
       <p class="text-sm text-gray-400">
         {{ page.date | date: "%B %-d, %Y" }}
@@ -198,8 +237,10 @@ layout: default
       {{ content }}
     </section>
 
-    <footer class="mt-8 text-sm text-gray-400">
-      <a href="/posts" class="hover:text-white">← Back to blog</a>
+    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
+      <a href="/posts" class="btn btn-back btn-back-bottom">
+        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+      </a>
     </footer>
   </article>
 </div>
