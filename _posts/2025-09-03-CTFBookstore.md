@@ -44,7 +44,7 @@ I accessed the website using its IP address without specifying any port. Once we
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-I interacted with every possible endpoint on this site. There were different interaction points, such as home.html and login.html, but login.html didn’t do anything.
+I interacted with every possible endpoint on this site. There were different interaction points, such as home.html and books.html, but login.html didn’t do anything.
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*RL1nSp0JsykNSXR2OVc45w.png"
