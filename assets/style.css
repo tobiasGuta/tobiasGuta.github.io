@@ -1362,3 +1362,91 @@ a.btn.btn-back.btn-back-bottom {
   text-align: center;
 }
 
+/* === Sleek Contact Form Styles === */
+.contact-form-container {
+  background: #141414;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0008;
+  padding: 2.2rem 1.5rem;
+  max-width: 420px;
+  margin: 3rem auto 2rem auto;
+  color: #e6e6e6;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  border: 1.5px solid #232323;
+}
+
+.contact-form-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  margin-bottom: 2rem;
+  color: #e6e6e6;
+  text-shadow: 0 2px 12px #000a;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #b0b0b0;
+  letter-spacing: 0.03em;
+  font-size: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: #181818;
+  color: #f1f1f1;
+  border: 1.5px solid #444;
+  border-radius: 8px;
+  padding: 0.85rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #0003;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #DC143C;
+  outline: none;
+  box-shadow: 0 0 10px #DC143C33;
+}
+
+.contact-form button[type="submit"] {
+  background: #222;
+  color: #e6e6e6;
+  font-weight: bold;
+  border: 1.5px solid #DC143C;
+  border-radius: 8px;
+  padding: 0.85rem 2rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0003;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.18s;
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+}
+
+.contact-form button[type="submit"]:hover {
+  background: #DC143C;
+  color: #181818;
+  border-color: #222;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 600px) {
+  .contact-form-container {
+    padding: 1rem 0.3rem;
+    max-width: 98vw;
+  }
+  .contact-form button[type="submit"] {
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+}

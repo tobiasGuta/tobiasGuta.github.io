@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog</title>
+    <title>Contact Me</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -107,55 +107,33 @@
     <div id="leaf-container"></div>
 
     <main class="container py-5">
-      <!-- Tag filter bar and post list (move this here) -->
-<div class="mt-12">
-  <div id="tag-filter" class="mb-6 flex flex-wrap gap-2">
-    <button class="px-3 py-1 rounded bg-blue-700 text-white text-sm font-semibold" onclick="filterPosts('all')">All</button>
-    
-    
-  </div>
+      <div class="contact-form-container">
+  <h1>Contact Me</h1>
+  <p id="privacy-note" style="display:none; text-align:center; color:#b0b0b0; font-size:1rem; margin-bottom:1.2rem;">
+    Please do not send personal information.<br>
+    Only provide your name, email, and message so I can reach out.
+  </p>
+  <form class="contact-form" action="https://formspree.io/f/mvgbdevj" method="POST">
+    <label for="name">Your Name:</label>
+    <input type="text" name="name" id="name" required>
 
-  <ul id="posts-list">
-    
-      <li data-tags="">
-        <a href="/blog/BookStore-Tryhackme">Tryhackme BookStore Walkthrough - API & Reverse Engineering</a>
-        <span class="text-gray-400 text-xs">(2025-09-03)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/NYC-DOWN-FUV">Null-Byte File Upload Bypass: PoC on a NYC Portal</a>
-        <span class="text-gray-400 text-xs">(2025-08-29)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/InjecticsTHM">TryHackMe Injectics Walkthrough - SQL Injection & SSTI Exploitation</a>
-        <span class="text-gray-400 text-xs">(2025-08-24)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/NYC-D0WN">I Didn't Hack nyc.gov Their Confirmation System Did</a>
-        <span class="text-gray-400 text-xs">(2025-07-26)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-  </ul>
+    <label for="email">Your Email:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="message">Message:</label>
+    <textarea name="message" id="message" required></textarea>
+
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <button type="submit">Send</button>
+  </form>
 </div>
-
 <script>
-function filterPosts(tag) {
-  const posts = document.querySelectorAll('#posts-list li');
-  posts.forEach(post => {
-    const tags = post.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || tags.includes(tag)) {
-      post.style.display = '';
-    } else {
-      post.style.display = 'none';
-    }
+  // Show privacy note when user types in any input or textarea
+  document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(function(el) {
+    el.addEventListener('input', function() {
+      document.getElementById('privacy-note').style.display = 'block';
+    }, { once: true });
   });
-}
 </script>
 
       
