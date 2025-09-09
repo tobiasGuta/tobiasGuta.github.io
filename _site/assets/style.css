@@ -810,8 +810,23 @@ body.zoom-active::before {
 /* LinkedIn: show blue on hover */
 .linkedin-icon:hover svg {
   color: #0077b5;      /* LinkedIn blue */
-  background: #fff;    /* keep white background */
   transform: scale(1.15);
+}
+
+.linkedin-icon,
+.linkedin-icon svg {
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.linkedin-icon:focus,
+.linkedin-icon:active,
+.linkedin-icon svg:focus,
+.linkedin-icon svg:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* FLying bat */
@@ -1449,4 +1464,27 @@ a.btn.btn-back.btn-back-bottom {
     padding: 1rem 0;
     font-size: 1rem;
   }
+}
+
+/* === Mastodon Icon Styles === */
+.mastodon-icon svg {
+  color: white;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s, transform 0.2s;
+  background: transparent;
+}
+
+.mastodon-icon:hover svg {
+  color: #6364ff; /* Mastodon purple */
+  transform: scale(1.15);
+}
+
+.mastodon-icon,
+.mastodon-icon svg {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
