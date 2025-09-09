@@ -63,6 +63,57 @@
       .zoom-active {
         overflow: hidden;
       }
+
+      /* Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* Align icons to baseline */
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .social-icons a {
+        font-size: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #000 !important;
+        background: none;
+        border-radius: 0;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 1em;
+        height: 1em;
+      }
+
+      .social-icons a:hover {
+        color: #6364ff !important;
+      }
+
+      .social-icons i,
+      .social-icons img {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .social-icons img {
+        display: inline-block;
+        position: relative;
+        top: 0.12em; /* Move HackerOne and Mastodon icons down slightly */
+      }
+
+      /* Exception for HackerOne and Mastodon (icons should be white) */
+      .social-icons a[aria-label="HackerOne"] img,
+      .social-icons a[aria-label="Mastodon"] img {
+        filter: invert(1);
+      }
+
+      .social-icons i {
+        margin-top: -0.15em; /* Move LinkedIn and GitHub icons up just a little */
+      }
     </style>
   </head>
   <body class="">

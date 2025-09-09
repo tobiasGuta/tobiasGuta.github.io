@@ -63,6 +63,57 @@
       .zoom-active {
         overflow: hidden;
       }
+
+      /* Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* Align icons to baseline */
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .social-icons a {
+        font-size: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #000 !important;
+        background: none;
+        border-radius: 0;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 1em;
+        height: 1em;
+      }
+
+      .social-icons a:hover {
+        color: #6364ff !important;
+      }
+
+      .social-icons i,
+      .social-icons img {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .social-icons img {
+        display: inline-block;
+        position: relative;
+        top: 0.12em; /* Move HackerOne and Mastodon icons down slightly */
+      }
+
+      /* Exception for HackerOne and Mastodon (icons should be white) */
+      .social-icons a[aria-label="HackerOne"] img,
+      .social-icons a[aria-label="Mastodon"] img {
+        filter: invert(1);
+      }
+
+      .social-icons i {
+        margin-top: -0.15em; /* Move LinkedIn and GitHub icons up just a little */
+      }
     </style>
   </head>
   <body class="homepage">
@@ -139,14 +190,17 @@
     
       <!-- Social Media Icons -->
       <div class="social-icons d-flex justify-content-center gap-3 my-4">
-        <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" target="_blank" aria-label="LinkedIn" class="fs-4" style="color: black;">
+        <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" target="_blank" aria-label="LinkedIn" class="fs-4">
           <i class="bi bi-linkedin"></i>
         </a>
-        <a href="https://github.com/tobiasGuta" target="_blank" aria-label="GitHub" class="fs-4" style="color: #fff;">
+        <a href="https://github.com/tobiasGuta" target="_blank" aria-label="GitHub" class="fs-4">
           <i class="bi bi-github"></i>
         </a>
-        <a href="https://hackerone.com/tobiasare?type=user" target="_blank" aria-label="HackerOne" class="fs-4" style="color: #fff;">
-          <img src="https://hackerone.com/favicon.ico" alt="HackerOne" style="width: 1em; height: 0.9 vertical-align: middle; filter: brightness(0) invert(1);" />
+        <a href="https://hackerone.com/tobiasare?type=user" target="_blank" aria-label="HackerOne" class="fs-4">
+          <img src="https://hackerone.com/favicon.ico" alt="HackerOne" />
+        </a>
+        <a href="https://infosec.exchange/@Tobiasare" target="_blank" aria-label="Mastodon" class="fs-4">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mastodon.svg" alt="Mastodon" />
         </a>
       </div>
     
