@@ -87,8 +87,9 @@
         height: 1em;
       }
 
-      .social-icons a:hover {
-        color: #6364ff !important;
+      .social-icons a:hover img {
+        /* This filter makes the icon blue on hover */
+        filter: invert(33%) sepia(98%) saturate(7496%) hue-rotate(222deg) brightness(97%) contrast(101%);
       }
 
       .social-icons i,
@@ -197,7 +198,7 @@
           <i class="bi bi-github"></i>
         </a>
         <a href="https://hackerone.com/tobiasare?type=user" target="_blank" aria-label="HackerOne" class="fs-4">
-          <img src="https://hackerone.com/favicon.ico" alt="HackerOne" />
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hackerone.svg" alt="HackerOne" />
         </a>
         <a href="https://infosec.exchange/@Tobiasare" target="_blank" aria-label="Mastodon" class="fs-4">
           <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mastodon.svg" alt="Mastodon" />
