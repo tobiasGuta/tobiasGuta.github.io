@@ -19,6 +19,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link {% if page.url != '/' and page.url.startswith('/security-feed') %}active{% endif %}" href="/security-feed">
+            <i class="bi bi-shield-lock-fill"></i> Security Feed
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link {% if page.url != '/' and page.url.startswith('/certificates') %}active{% endif %}" href="/certificates">
             <i class="bi bi-award-fill"></i> Certificates
           </a>
