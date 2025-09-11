@@ -24,6 +24,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link {% if page.url != '/' and page.url.startswith('/projects') %}active{% endif %}" href="/projects">
+            <i class="bi bi-kanban-fill"></i> Projects
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link {% if page.url != '/' and page.url.startswith('/certificates') %}active{% endif %}" href="/certificates">
             <i class="bi bi-award-fill"></i> Certificates
           </a>
