@@ -202,6 +202,266 @@ layout: default
     justify-content: center;
   }
 }
+
+/* Post theme toggle styles - NUCLEAR OVERRIDE */
+.post-page {
+  background-color: #0a0a0a !important;
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+/* LIGHT THEME - CONTAINER ONLY */
+.post-container.light-theme {
+  background-color: #f1f3f4 !important;
+  color: #1f2937 !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+}
+
+.post-container.light-theme * {
+  color: #1f2937 !important;
+  background-color: transparent !important;
+}
+
+/* Override any inherited dark backgrounds */
+.post-container.light-theme *:not(code):not(pre) {
+  background-color: transparent !important;
+}
+
+/* Override the prose classes for light theme */
+.post-container.light-theme .prose-invert {
+  color: #1f2937 !important;
+}
+
+.post-container.light-theme .prose {
+  color: #1f2937 !important;
+}
+
+.post-page .post-container {
+  color: #e6e6e6;
+  transition: all 0.3s ease;
+}
+
+.post-container.light-theme h1,
+.post-container.light-theme .text-3xl {
+  color: #1f2937 !important;
+}
+
+.post-container.light-theme .text-gray-100 {
+  color: #1f2937 !important;
+}
+
+.post-container.light-theme .text-gray-300 {
+  color: #374151 !important;
+}
+
+.post-container.light-theme .text-gray-400,
+.post-container.light-theme .text-sm {
+  color: #6b7280 !important;
+}
+
+.post-container.light-theme .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+.theme-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-toggle-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 2px solid #374151 !important;
+  background-color: #1f2937 !important;
+  color: #fbbf24 !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  overflow: hidden !important;
+}
+
+.theme-toggle-btn i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  border-color: #fbbf24;
+  border-radius: 50% !important;
+  outline: none !important;
+}
+
+.theme-toggle-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3) !important;
+  border-radius: 50% !important;
+}
+
+.post-container.light-theme .theme-toggle-btn {
+  background-color: #1f2937 !important;
+  color: #fbbf24 !important;
+  border: 2px solid #374151 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.post-container.light-theme .theme-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  background-color: #111827 !important;
+  color: #ffffff !important;
+  border-color: #fbbf24 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 50% !important;
+}
+
+/* Post content styling - override prose classes */
+.post-page .post-content.prose {
+  color: #d1d5db !important;
+}
+
+.post-container.light-theme .post-content.prose {
+  color: #1f2937 !important;
+}
+
+.post-page .post-content.prose-invert {
+  color: #d1d5db !important;
+}
+
+.post-container.light-theme .post-content.prose-invert {
+  color: #1f2937 !important;
+}
+
+.post-page .post-content {
+  color: #d1d5db !important;
+}
+
+.post-container.light-theme .post-content {
+  color: #1f2937 !important;
+}
+
+/* Override all prose content in light theme */
+.post-container.light-theme .post-content * {
+  color: #1f2937 !important;
+}
+
+.post-page .post-content h1, 
+.post-page .post-content h2, 
+.post-page .post-content h3, 
+.post-page .post-content h4, 
+.post-page .post-content h5, 
+.post-page .post-content h6 {
+  color: #e6e6e6 !important;
+}
+
+.post-container.light-theme .post-content h1, 
+.post-container.light-theme .post-content h2, 
+.post-container.light-theme .post-content h3, 
+.post-container.light-theme .post-content h4, 
+.post-container.light-theme .post-content h5, 
+.post-container.light-theme .post-content h6 {
+  color: #1f2937 !important;
+}
+
+.post-page .post-content p {
+  color: #d1d5db !important;
+}
+
+.post-container.light-theme .post-content p {
+  color: #374151 !important;
+}
+
+.post-page .post-content code {
+  background-color: #1f2937 !important;
+  color: #e6e6e6 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.post-container.light-theme .post-content code {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.post-page .post-content pre {
+  background-color: #1f2937 !important;
+  color: #e6e6e6 !important;
+  border: 1px solid #374151 !important;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.post-container.light-theme .post-content pre {
+  background-color: #e8eaed !important;
+  color: #1f2937 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.post-page .post-content a {
+  color: #60a5fa !important;
+}
+
+.post-container.light-theme .post-content a {
+  color: #2563eb !important;
+}
+
+.post-page .post-content blockquote {
+  border-left: 4px solid #374151;
+  background-color: #1f2937;
+  color: #d1d5db !important;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.post-container.light-theme .post-content blockquote {
+  border-left: 4px solid #d1d5db;
+  background-color: #e8eaed;
+  color: #374151 !important;
+}
+
+/* Force override all text colors in light theme */
+.post-container.light-theme .post-content.text-gray-300,
+.post-container.light-theme .post-content .text-gray-300,
+.post-container.light-theme .post-content p,
+.post-container.light-theme .post-content div,
+.post-container.light-theme .post-content span,
+.post-container.light-theme .post-content li,
+.post-container.light-theme .post-content strong,
+.post-container.light-theme .post-content em {
+  color: #1f2937 !important;
+}
+
+/* Override the specific inline style that's being applied */
+.post-container.light-theme .post-content[style*="color"] {
+  color: #1f2937 !important;
+}
 </style>
 
 {% else %}
@@ -227,6 +487,13 @@ layout: default
       {% endif %}
     </header>
 
+    <!-- Theme toggle button for post content -->
+    <div class="theme-toggle-container mb-4">
+      <button id="theme-toggle" class="theme-toggle-btn" onclick="togglePostTheme()" title="Toggle theme">
+        <i id="theme-icon" class="bi bi-sun-fill"></i>
+      </button>
+    </div>
+
     {% if page.image %}
       <div class="post-header-image">
         <img src="{{ page.image }}" alt="{{ page.title }} cover image" />
@@ -244,4 +511,229 @@ layout: default
     </footer>
   </article>
 </div>
+
+<script>
+function togglePostTheme() {
+  console.log('Toggle theme function called');
+  const postContainer = document.querySelector('.post-container');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeButton = document.getElementById('theme-toggle');
+  
+  console.log('Post container element:', postContainer);
+  console.log('Current classes:', postContainer ? postContainer.className : 'null');
+  
+  if (postContainer && postContainer.classList.contains('light-theme')) {
+    // Switch to dark theme
+    postContainer.classList.remove('light-theme');
+    if (themeIcon) themeIcon.className = 'bi bi-sun-fill';
+    if (themeButton) themeButton.title = 'Switch to light mode';
+    localStorage.setItem('postTheme', 'dark');
+    console.log('Switched to dark theme');
+  } else if (postContainer) {
+    // Switch to light theme
+    postContainer.classList.add('light-theme');
+    if (themeIcon) themeIcon.className = 'bi bi-moon-fill';
+    if (themeButton) themeButton.title = 'Switch to dark mode';
+    localStorage.setItem('postTheme', 'light');
+    console.log('Switched to light theme');
+  } else {
+    console.error('Could not find .post-container element');
+  }
+}
+
+// Load saved theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, checking for saved theme');
+  const savedTheme = localStorage.getItem('postTheme');
+  const postContainer = document.querySelector('.post-container');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeButton = document.getElementById('theme-toggle');
+  
+  console.log('Saved theme:', savedTheme);
+  console.log('Post container found:', !!postContainer);
+  
+  if (savedTheme === 'light' && postContainer) {
+    postContainer.classList.add('light-theme');
+    if (themeIcon) themeIcon.className = 'bi bi-moon-fill';
+    if (themeButton) themeButton.title = 'Switch to dark mode';
+    console.log('Applied saved light theme');
+  }
+});
+</script>
+
+<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
+<style>
+/* PROPER LIGHT THEME CSS - CONTAINER ONLY */
+.post-container.light-theme {
+  background-color: #f1f3f4 !important;
+  color: #1f2937 !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.post-container.light-theme * {
+  color: #1f2937 !important;
+  background-color: transparent !important;
+}
+
+/* Ensure all content elements have light backgrounds */
+.post-container.light-theme,
+.post-container.light-theme .post-content,
+.post-container.light-theme header,
+.post-container.light-theme footer,
+.post-container.light-theme section,
+.post-container.light-theme div,
+.post-container.light-theme p,
+.post-container.light-theme h1,
+.post-container.light-theme h2,
+.post-container.light-theme h3,
+.post-container.light-theme h4,
+.post-container.light-theme h5,
+.post-container.light-theme h6 {
+  background-color: transparent !important;
+}
+
+/* Special overrides for specific elements */
+.post-container.light-theme .post-content code {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid #d1d5db !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+.post-container.light-theme .post-content pre {
+  background-color: #e8eaed !important;
+  color: #1f2937 !important;
+  border: 1px solid #d1d5db !important;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.post-container.light-theme .post-content a {
+  color: #2563eb !important;
+}
+
+.post-container.light-theme .post-content blockquote {
+  border-left: 4px solid #d1d5db !important;
+  background-color: #e8eaed !important;
+  color: #374151 !important;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+/* Override theme toggle button colors for light theme */
+.post-container.light-theme .theme-toggle-btn {
+  background-color: #1f2937 !important;
+  color: #fbbf24 !important;
+  border: 2px solid #374151 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Override header and navigation elements */
+.post-container.light-theme .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.post-container.light-theme .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+/* Force white/transparent backgrounds for all light theme elements */
+.post-container.light-theme .prose,
+.post-container.light-theme .prose-invert,
+.post-container.light-theme .text-gray-100,
+.post-container.light-theme .text-gray-300,
+.post-container.light-theme .text-gray-400,
+.post-container.light-theme .categories,
+.post-container.light-theme .theme-toggle-container {
+  background-color: transparent !important;
+}
+
+/* Ensure no dark backgrounds leak through */
+.post-container.light-theme * {
+  background-color: transparent !important;
+}
+
+/* But keep specific styled elements with their light backgrounds */
+.post-container.light-theme {
+  background-color: #f1f3f4 !important;
+}
+
+/* SUPER AGGRESSIVE BUTTON OVERRIDE - FORCE CIRCULAR SHAPE */
+button.theme-toggle-btn,
+#theme-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 2px solid #374151 !important;
+  background-color: #1f2937 !important;
+  background-image: none !important;
+  color: #fbbf24 !important;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  cursor: pointer !important;
+  outline: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  font-size: 18px !important;
+  transition: all 0.3s ease !important;
+}
+
+button.theme-toggle-btn:hover,
+#theme-toggle:hover {
+  transform: translateY(-2px) scale(1.1) !important;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+}
+
+.post-container.light-theme button.theme-toggle-btn,
+.post-container.light-theme #theme-toggle {
+  background-color: #1f2937 !important;
+  background-image: none !important;
+  color: #fbbf24 !important;
+  border: 2px solid #374151 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+}
+
+/* ULTRA SPECIFIC OVERRIDE FOR MOON ICON COLOR */
+.post-container.light-theme button.theme-toggle-btn i,
+.post-container.light-theme #theme-toggle i,
+.post-container.light-theme .theme-toggle-btn .bi,
+.post-container.light-theme #theme-toggle .bi,
+.post-container.light-theme .theme-toggle-btn .bi-moon-fill,
+.post-container.light-theme #theme-toggle .bi-moon-fill {
+  color: #fbbf24 !important;
+}
+</style>
+
 {% endif %}
