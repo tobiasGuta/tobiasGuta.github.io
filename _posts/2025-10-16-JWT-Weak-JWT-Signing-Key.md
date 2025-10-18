@@ -10,7 +10,7 @@ locked: false
 
 This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We'll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.
 
-The goal here is educational: to show how this class of bug appears in an Express app, to demonstrate detection and safe verification techniques, and to provide concrete mitigation guidance. I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem, reproduce it in a controlled lab, and fix it.
+The goal here is educational: to show how this class of bug appears in an Express app, I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem.
 
 Summary of the vulnerable setup:
 

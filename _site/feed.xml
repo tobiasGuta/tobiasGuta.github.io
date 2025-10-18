@@ -1,6 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-16T19:06:19-04:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Weak JWT Secrets: How ‘secret’ Breaks Your Auth</title><link href="/blog/Weak-JWT-Secret" rel="alternate" type="text/html" title="Weak JWT Secrets: How ‘secret’ Breaks Your Auth" /><published>2025-10-16T00:00:00-04:00</published><updated>2025-10-16T00:00:00-04:00</updated><id>http://0.0.0.0:4000/blog/JWT-Weak-JWT-Signing-Key</id><content type="html" xml:base="/blog/Weak-JWT-Secret"><![CDATA[<p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-18T18:25:16-04:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">When Input Becomes Injection</title><link href="/blog/Input-sql-Injection" rel="alternate" type="text/html" title="When Input Becomes Injection" /><published>2025-10-18T00:00:00-04:00</published><updated>2025-10-18T00:00:00-04:00</updated><id>http://0.0.0.0:4000/blog/SQLI-User-Input</id><content type="html" xml:base="/blog/Input-sql-Injection"><![CDATA[<p>Developers should never trust user input. Even when you think you’ve sanitized everything and even when you’re using the familiar ? placeholder in Node.js MySQL libraries mistakes and wrong assumptions can still leave your app vulnerable.</p>
 
-<p>The goal here is educational: to show how this class of bug appears in an Express app, to demonstrate detection and safe verification techniques, and to provide concrete mitigation guidance. I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem, reproduce it in a controlled lab, and fix it.</p>
+<p>A few essential points:</p>
+<ul>
+  <li>? placeholders protect values, not SQL structure. They safely substitute data values, but they do not and cannot be used for identifiers, SQL keywords, or fragments you build by string concatenation. If you concatenate table names, column names, ORDER BY clauses, or entire SQL snippets with user input, a placeholder won’t help.</li>
+  <li>Misusing escaping, trusting client-side validation, or doing shallow sanitization (like stripping a few characters) can be bypassed. There are second‑order injections (stored malicious input executed later), encoding tricks, and edge cases with JSON and binary data.</li>
+  <li>The typical Node.js + MySQL pitfalls: building queries with template strings, using unvalidated inputs for identifiers, relying on naive input filters, or assuming middleware has already made the input safe.</li>
+</ul>
+
+<h1 id="endpoints">Endpoints</h1>
+
+<ul>
+  <li>api/v1/users/filter?name=</li>
+  <li>api/v1/blogs/filter</li>
+  <li>api/v1/blogs/filter?author=</li>
+</ul>
+
+<h1 id="walkthrough">Walkthrough</h1>
+
+<p>We are logged in as Alice.</p>
+
+<p>If we visit this endpoint <code class="language-plaintext highlighter-rouge">api/v1/blogs/filter</code>:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*uM1aaR5nAaYZVRDaDdoO4g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>If we use something like <code class="language-plaintext highlighter-rouge">api/v1/blogs/filter?author=</code> from any author for example <code class="language-plaintext highlighter-rouge">Alice</code> or <code class="language-plaintext highlighter-rouge">Bob</code> we make a request like:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*MTciSW3EYcb9t_Kz8uEpxg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*6gX220WzN39JzKvsAged5A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But let’s say we have another endpoint <code class="language-plaintext highlighter-rouge">api/v1/users/filter?name=</code>. Remember we are logged in as Alice, so our request would be:</p>
+
+<p><code class="language-plaintext highlighter-rouge">api/v1/users/filter?name=Alice</code> as shown below</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*MPqXu-D6n5xzQN-LDPvVYg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Our SQL request would look like this :</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*poI5wofBAtxklzkFPFRa4Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>What if we try to access Bob’s information?</p>
+
+<p>We can’t, we get <code class="language-plaintext highlighter-rouge">Unauthorized</code>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*5cFnvj_tbv2uiM9Bi6qj8A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>What if we change the <code class="language-plaintext highlighter-rouge">name</code> parameter to something different, for example: <code class="language-plaintext highlighter-rouge">api/v1/users/filter?foo=bar</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Aie8ldbkzioHPkWkdupF7A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+</code></pre>
+  
+</div>
+
+<p>We were able to modify the query as you can see above. That means there is a potential for SQL injection for example, to make a condition always true one common payload is <code class="language-plaintext highlighter-rouge">OR 1=1</code>. First, let’s explore more: what if we sent something like <code class="language-plaintext highlighter-rouge">api/v1/users/filter?name%20bar=bar</code></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name bar=? Data: [ 'bar' ]
+</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*QiCtNtqdXA8qWK9EOhSWFg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>We fully controlled the query, which means if we sent something like <code class="language-plaintext highlighter-rouge">OR 1=1</code> it could return true and dump information:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name bar=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name OR 1=? Data: [ '1' ]
+</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*2VBZH3qBIWy84CnSYSCZ2A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9_j_ru2wAij9w4kqY5obwQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h1 id="quick-mitigations-and-takeaways">Quick mitigations and takeaways</h1>
+
+<ul>
+  <li>Always use parameterized queries / prepared statements for data values.</li>
+  <li>Never inject user input into SQL structure (identifiers, keywords, clause fragments). If you must vary structure, use strict whitelists or server-side mappings.</li>
+  <li>Validate and coerce types server-side (numbers, enums, ranges) instead of relying on shallow string sanitization or client-side checks.</li>
+  <li>Apply least privilege for database accounts and avoid exposing powerful permissions to the application user.</li>
+  <li>Log unexpected input and monitor query patterns to detect abuse or probing.</li>
+  <li>Defense in depth: input validation, prepared statements, minimal DB permissions, and runtime monitoring.</li>
+</ul>
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="bug bounty" /><summary type="html"><![CDATA[<p>Developers should never trust user input. Even when you think you’ve sanitized everything and even when you’re using the familiar ? placeholder in Node.js MySQL libraries mistakes and wrong assumptions can still leave your app vulnerable.</p>
+
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Weak JWT Secrets: How ‘secret’ Breaks Your Auth</title><link href="/blog/Weak-JWT-Secret" rel="alternate" type="text/html" title="Weak JWT Secrets: How ‘secret’ Breaks Your Auth" /><published>2025-10-16T00:00:00-04:00</published><updated>2025-10-16T00:00:00-04:00</updated><id>http://0.0.0.0:4000/blog/JWT-Weak-JWT-Signing-Key</id><content type="html" xml:base="/blog/Weak-JWT-Secret"><![CDATA[<p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
+
+<p>The goal here is educational: to show how this class of bug appears in an Express app, I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem.</p>
 
 <p>Summary of the vulnerable setup:</p>
 

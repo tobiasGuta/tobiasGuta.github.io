@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Weak JWT Secrets: How ‘secret’ Breaks Your Auth</title>
+    <title>When Input Becomes Injection</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -179,10 +179,10 @@
 <div class="post-page">
   <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
     <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Weak JWT Secrets: How ‘secret’ Breaks Your Auth</h1>
+      <h1 class="text-3xl font-bold" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">When Input Becomes Injection</h1>
       
       <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
-        October 16, 2025
+        October 18, 2025
       </p>
 
       
@@ -206,44 +206,52 @@
 
     
       <div class="post-header-image">
-        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" alt="Weak JWT Secrets: How ‘secret’ Breaks Your Auth cover image" />
+        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" alt="When Input Becomes Injection cover image" />
       </div>
     
 
     <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Press Start 2P', monospace; line-height: 1.6; font-size: 14px;">
-      <p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
+      <p>Developers should never trust user input. Even when you think you’ve sanitized everything and even when you’re using the familiar ? placeholder in Node.js MySQL libraries mistakes and wrong assumptions can still leave your app vulnerable.</p>
 
-<p>The goal here is educational: to show how this class of bug appears in an Express app, I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem.</p>
-
-<p>Summary of the vulnerable setup:</p>
-
+<p>A few essential points:</p>
 <ul>
-  <li>A Node.js server built with Express issues JWTs using the HS256 algorithm.</li>
-  <li>The server stores the signing key as a short or common string (for example, “secret”, “1234”, or an English word).</li>
-  <li>Because the secret is weak, an attacker who can guess it can sign arbitrary tokens (for example, upgrading their user to admin) and the server will accept them.</li>
+  <li>? placeholders protect values, not SQL structure. They safely substitute data values, but they do not and cannot be used for identifiers, SQL keywords, or fragments you build by string concatenation. If you concatenate table names, column names, ORDER BY clauses, or entire SQL snippets with user input, a placeholder won’t help.</li>
+  <li>Misusing escaping, trusting client-side validation, or doing shallow sanitization (like stripping a few characters) can be bypassed. There are second‑order injections (stored malicious input executed later), encoding tricks, and edge cases with JSON and binary data.</li>
+  <li>The typical Node.js + MySQL pitfalls: building queries with template strings, using unvalidated inputs for identifiers, relying on naive input filters, or assuming middleware has already made the input safe.</li>
 </ul>
-
-<p>What you’ll learn in this post:</p>
-
-<ul>
-  <li>How to spot weak JWT secrets in code and runtime configuration.</li>
-</ul>
-
-<p>If you want to follow along locally, create a tiny Express app and never expose test secrets to the public internet. Treat any reproduction data as lab-only, and rotate secrets after testing.</p>
 
 <h1 id="endpoints">Endpoints</h1>
 
 <ul>
-  <li>/login</li>
-  <li>/admin</li>
+  <li>api/v1/users/filter?name=</li>
+  <li>api/v1/blogs/filter</li>
+  <li>api/v1/blogs/filter?author=</li>
 </ul>
 
 <h1 id="walkthrough">Walkthrough</h1>
 
-<p>We have these credentials:</p>
+<p>We are logged in as Alice.</p>
+
+<p>If we visit this endpoint <code class="language-plaintext highlighter-rouge">api/v1/blogs/filter</code>:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*uM1aaR5nAaYZVRDaDdoO4g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>If we use something like <code class="language-plaintext highlighter-rouge">api/v1/blogs/filter?author=</code> from any author for example <code class="language-plaintext highlighter-rouge">Alice</code> or <code class="language-plaintext highlighter-rouge">Bob</code> we make a request like:</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*MTciSW3EYcb9t_Kz8uEpxg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*6gX220WzN39JzKvsAged5A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>But let’s say we have another endpoint <code class="language-plaintext highlighter-rouge">api/v1/users/filter?name=</code>. Remember we are logged in as Alice, so our request would be:</p>
+
+<p><code class="language-plaintext highlighter-rouge">api/v1/users/filter?name=Alice</code> as shown below</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*MPqXu-D6n5xzQN-LDPvVYg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Our SQL request would look like this :</p>
 
 <div class="code-block-container">
-  <span class="code-lang-tag">Node.js</span>
+  <span class="code-lang-tag">SQL</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
@@ -252,45 +260,97 @@
   </button>
   
   <pre><code class="Terminal">
-const users = [
-  { id: 1, username: 'alice', password: 'alicepw', role: 'user' },
-  { id: 2, username: 'bob', password: 'bobpw', role: 'admin' }
-];
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
 </code></pre>
   
 </div>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*W4uuTeSh19BpKiXWpCM_Og.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*poI5wofBAtxklzkFPFRa4Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>If we try to access <code class="language-plaintext highlighter-rouge">/admin</code>, we get something like:</p>
+<p>What if we try to access Bob’s information?</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lKgINRctNUElgqcrlkViTA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p>We can’t, we get <code class="language-plaintext highlighter-rouge">Unauthorized</code>.</p>
 
-<p>If we use this site: <a href="https://supertokens.com/jwt-encoder-decoder">SuperTokens JWT Decoder</a>, we can decode the JWT.</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*5cFnvj_tbv2uiM9Bi6qj8A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FHA3j2RQVeeSkmI5sH22Mg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p>What if we change the <code class="language-plaintext highlighter-rouge">name</code> parameter to something different, for example: <code class="language-plaintext highlighter-rouge">api/v1/users/filter?foo=bar</code></p>
 
-<p>If we change the role from user to admin to see if we can access the <code class="language-plaintext highlighter-rouge">/login</code> endpoint, we get this:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Aie8ldbkzioHPkWkdupF7A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dyZ7ji7c73Rk1S5gVAI4sA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+</code></pre>
+  
+</div>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dhE9RAXWpHqDFCoAUpGNrw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p>We were able to modify the query as you can see above. That means there is a potential for SQL injection for example, to make a condition always true one common payload is <code class="language-plaintext highlighter-rouge">OR 1=1</code>. First, let’s explore more: what if we sent something like <code class="language-plaintext highlighter-rouge">api/v1/users/filter?name%20bar=bar</code></p>
 
-<h1 id="brute-force">Brute-Force</h1>
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name bar=? Data: [ 'bar' ]
+</code></pre>
+  
+</div>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*THD_HPjG4eXnFeSA2U0QFQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*QiCtNtqdXA8qWK9EOhSWFg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p>Let’s use hashcat to brute-force the JWT</p>
+<p>We fully controlled the query, which means if we sent something like <code class="language-plaintext highlighter-rouge">OR 1=1</code> it could return true and dump information:</p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7TpkpAfBwrmQed_Sz3jXzQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<div class="code-block-container">
+  <span class="code-lang-tag">SQL</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+Server running on port 3000
+Built users query: SELECT * FROM users WHERE name=? Data: [ 'Alice' ]
+Built users query: SELECT * FROM users WHERE foo=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name bar=? Data: [ 'bar' ]
+Built users query: SELECT * FROM users WHERE name OR 1=? Data: [ '1' ]
+</code></pre>
+  
+</div>
 
-<p><code class="language-plaintext highlighter-rouge">secret</code></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*2VBZH3qBIWy84CnSYSCZ2A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3gMgc6GAOQVJR_JQN7BDYQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9_j_ru2wAij9w4kqY5obwQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
-<h1 id="welcome-admin-alice">Welcome, admin Alice</h1>
+<h1 id="quick-mitigations-and-takeaways">Quick mitigations and takeaways</h1>
 
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8I9piVg6oNt1BxnCWZaQKA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+<ul>
+  <li>Always use parameterized queries / prepared statements for data values.</li>
+  <li>Never inject user input into SQL structure (identifiers, keywords, clause fragments). If you must vary structure, use strict whitelists or server-side mappings.</li>
+  <li>Validate and coerce types server-side (numbers, enums, ranges) instead of relying on shallow string sanitization or client-side checks.</li>
+  <li>Apply least privilege for database accounts and avoid exposing powerful permissions to the application user.</li>
+  <li>Log unexpected input and monitor query patterns to detect abuse or probing.</li>
+  <li>Defense in depth: input validation, prepared statements, minimal DB permissions, and runtime monitoring.</li>
+</ul>
 
     </section>
 
