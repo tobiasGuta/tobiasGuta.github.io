@@ -2,7 +2,7 @@
 layout: post
 title: "Weak JWT Secrets: How ‘secret’ Breaks Your Auth"
 date: 2025-10-16
-categories: [bug bounty]
+categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png
 permalink: /blog/Weak-JWT-Secret
 locked: false

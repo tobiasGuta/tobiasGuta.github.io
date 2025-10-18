@@ -2,7 +2,7 @@
 layout: post
 title: "When Input Becomes Injection"
 date: 2025-10-18
-categories: [bug bounty]
+categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg
 permalink: /blog/Input-sql-Injection
 locked: false
