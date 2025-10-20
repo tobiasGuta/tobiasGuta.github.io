@@ -144,17 +144,43 @@ permalink: /posts/
 }
 
 .tab-container {
-  display: inline-flex;
+  display: flex;
   gap: 0.75rem;
-  justify-content: center;
+  justify-content: flex-start; /* allow scroll, don't force wrapping */
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+  scroll-snap-type: x proximity;
+  /* make sure first/last tabs aren't flush to the edges */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* ensure there's a little extra space after the last button so it can fully scroll into view */
+.tab-container::after {
+  content: "";
+  flex: 0 0 0.75rem;
+}
+
+/* hide default ugly scrollbar but keep it usable */
+.tab-container::-webkit-scrollbar {
+  height: 8px;
+}
+.tab-container::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+}
+.tab-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
 }
 
 .tab-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.2rem; /* slightly tighter by default */
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
@@ -164,6 +190,9 @@ permalink: /posts/
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
+  flex: 0 0 auto; /* prevent buttons from stretching — keep them scrollable */
+  scroll-snap-align: start;
+  min-width: max-content;
 }
 
 .tab-button:hover {
@@ -246,11 +275,27 @@ permalink: /posts/
 @media (max-width: 640px) {
   .tab-container {
     gap: 0.5rem;
+    justify-content: flex-start;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    /* allow wrapping into multiple rows on small screens */
+    flex-wrap: wrap;
+    overflow-x: visible;
   }
   
   .tab-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.45rem 0.7rem; /* denser buttons on small screens */
+    font-size: 0.78rem;
+    /* three buttons per row */
+    flex: 1 1 calc(33.333% - 0.5rem);
+    min-width: 0;
+  }
+
+  /* force "My Research" onto its own row below the first three */
+  .tab-button[data-category="my-research"] {
+    flex: 1 1 100%;
+    justify-content: center;
+    margin-top: 0.25rem;
   }
 }
 </style>
