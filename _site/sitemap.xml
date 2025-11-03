@@ -58,7 +58,4 @@
 <url>
 <loc>http://0.0.0.0:4000/projects</loc>
 </url>
-<url>
-<loc>http://0.0.0.0:4000/security-feed/</loc>
-</url>
 </urlset>
