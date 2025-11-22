@@ -29,6 +29,14 @@ body {
   color: var(--dracula-fg);
   font-family: 'Fira Code', monospace; /* Enforce terminal font */
   transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* Custom Cursor - Sci-Fi Arrow */
+  cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L12 28L16 16L28 12L2 2Z" fill="%23282a36" stroke="%238be9fd" stroke-width="2"/></svg>') 2 2, auto;
+}
+
+/* Interactive Cursor - Target Reticle */
+a, button, .btn, input, textarea, select, .post-card, .nav-link, .clickable, .tab-button {
+  cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="10" stroke="%23ff79c6" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="%23ff79c6"/></svg>') 16 16, pointer !important;
 }
 
 /* Selection color */
@@ -129,9 +137,6 @@ body.homepage {
 
 body.homepage::before {
   content: none;
-}
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
 }
 
 body.homepage > * {
@@ -901,7 +906,7 @@ body.zoom-active::before {
 
 .code-block-container pre {
   margin: 0;
-  padding-top: 2.1rem;
+  padding-top: 3.5rem;
   background: none;
   color: inherit;
   font-size: 1rem;
@@ -912,12 +917,12 @@ body.zoom-active::before {
 
 .copy-btn {
   position: absolute;
-  top: 7px;
+  top: 2px;
   right: 14px;
   background: var(--dracula-current-line);
   color: var(--dracula-fg);
   border: 1px solid var(--dracula-comment);
-  padding: 4px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
   cursor: pointer;
   z-index: 20;
@@ -936,8 +941,6 @@ body.zoom-active::before {
 .code-block-container code {
   color: var(--dracula-pink) !important;   
   background: none !important; /* transparent background for code */
-  padding-top: 1.5rem; 
-  
 }
 
 .terminal-prompt {
@@ -1501,3 +1504,78 @@ a.btn.btn-back.btn-back-bottom {
   border: none !important;
   box-shadow: none !important;
 }
+
+/* === Post Meta Footer (Tags & Link) === */
+.post-meta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(98, 114, 164, 0.2);
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.terminal-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--dracula-cyan);
+  background: rgba(139, 233, 253, 0.1);
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(139, 233, 253, 0.2);
+  transition: all 0.2s ease;
+}
+
+.terminal-tag:hover {
+  background: rgba(139, 233, 253, 0.2);
+  box-shadow: 0 0 5px rgba(139, 233, 253, 0.4);
+}
+
+.read-more-link {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: var(--dracula-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.read-more-link:hover {
+  color: var(--dracula-fg);
+  text-shadow: 0 0 8px var(--dracula-green);
+  transform: translateX(3px);
+}
+
+.read-more-link .cmd-prompt::before {
+  content: "./";
+  opacity: 0.6;
+}
+
+.read-more-link .cmd-prompt::after {
+  content: "_";
+  animation: blink 1s infinite;
+  opacity: 0;
+}
+
+.read-more-link:hover .cmd-prompt::after {
+  opacity: 1;
+}
+
+/* Add prompt to title */
+.post-title::before {
+  content: "> ";
+  color: var(--dracula-pink);
+  margin-right: 0.3rem;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+/* === Post content === */

@@ -111,6 +111,20 @@ permalink: /posts/
           {{ post.date | date: "%B %-d, %Y" }}
         </time>
         <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
+        
+        <div class="post-meta-footer">
+          {% if post.tags.size > 0 %}
+          <div class="post-tags">
+            {% for tag in post.tags %}
+            <span class="terminal-tag">[{{ tag }}]</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          
+          <a href="{{ post.url }}" class="read-more-link">
+            <span class="cmd-prompt">./read_post.sh</span>
+          </a>
+        </div>
       {% endif %}
       
       {% unless post.locked or post.draft %}
