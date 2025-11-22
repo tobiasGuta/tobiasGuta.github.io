@@ -45,19 +45,30 @@
     }
   }
 
+  // ...existing code...
+(function() {
+  const isMobile = window.innerWidth < 768;
+  const overlay = document.getElementById('lightning-overlay');
+  if (!overlay) return;
+// ...existing code...
   function strike() {
     // sometimes strong strike with bolts, sometimes just a flash
-    const strong = Math.random() < 0.5;
+    // On mobile, reduce chance of strong strikes to save resources
+    const strongChance = isMobile ? 0.2 : 0.5;
+    const strong = Math.random() < strongChance;
+    
     if (strong) {
       // multiple quick flashes + one or two bolts
       flashPulse(2 + Math.floor(Math.random() * 3), 60);
       setTimeout(() => createBolt(), 40 + Math.random() * 120);
-      if (Math.random() < 0.5) setTimeout(() => createBolt(), 120 + Math.random() * 200);
+      // Reduce double bolts on mobile
+      if (!isMobile && Math.random() < 0.5) setTimeout(() => createBolt(), 120 + Math.random() * 200);
     } else {
       flashPulse(1);
       if (Math.random() < 0.4) setTimeout(() => createBolt(), 50 + Math.random() * 200);
     }
   }
+// ...existing code...
 
   // Random strikes spaced between min and max seconds (non-uniform)
   function scheduleNext() {

@@ -1,8 +1,11 @@
 // ...new file...
+// ...existing code...
 (function() {
-  const NUM_DROPS = 120;
+  const isMobile = window.innerWidth < 768;
+  const NUM_DROPS = isMobile ? 30 : 120;
   const drops = [];
   const container = document.getElementById('rain-container');
+// ...existing code...
   if (!container) return;
 
   function makeDrop() {

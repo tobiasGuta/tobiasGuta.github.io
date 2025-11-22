@@ -1,4 +1,5 @@
-const NUM_BATS = 12;
+const isMobile = window.innerWidth < 768;
+const NUM_BATS = isMobile ? 4 : 12;
 const bats = [];
 
 const batContainer = document.getElementById('leaf-container'); // reuse or create a new container

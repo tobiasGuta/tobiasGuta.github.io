@@ -1,4 +1,5 @@
-const NUM_LEAVES = 25;
+const isMobile = window.innerWidth < 768;
+const NUM_LEAVES = isMobile ? 8 : 25;
 const leaves = [];
 
 const leafContainer = document.getElementById('leaf-container');
