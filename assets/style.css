@@ -1,30 +1,64 @@
 /* === Global Layout + Base Theme === */
-html, body {
+:root {
+  --dracula-bg: #282A36;
+  --dracula-current-line: #44475A;
+  --dracula-selection: #44475A;
+  --dracula-fg: #F8F8F2;
+  --dracula-comment: #6272A4;
+  --dracula-cyan: #8BE9FD;
+  --dracula-green: #50FA7B;
+  --dracula-orange: #FFB86C;
+  --dracula-pink: #FF79C6;
+  --dracula-purple: #BD93F9;
+  --dracula-red: #FF5555;
+  --dracula-yellow: #F1FA8C;
+}
+
+html {
+  height: 100%;
+  background-color: var(--dracula-bg);
+}
+
+body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;  /* changed */
-  overflow-y: auto;    /* changed */
-  background-color: #0a0a0a;
-  color: #e6e6e6;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: transparent;
+  color: var(--dracula-fg);
+  font-family: 'Fira Code', monospace; /* Enforce terminal font */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Selection color */
+::selection {
+  background: var(--dracula-purple);
+  color: var(--dracula-bg);
 }
 
 main.container {
   flex-grow: 1; /* THIS pushes footer down */
 }
 
-/* Ninja Vanish Glitch: Pure Black & White Style */
+/* Ensure header/navbar is above canvas */
+header, nav, .navbar-custom {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ninja Vanish Glitch: Dracula Style */
 .glitch {
   margin-top: 25px; /* Adjust as needed */
   position: relative;
-  color: #fff;
-  font-family: 'Consolas', 'monospace', sans-serif;
+  color: var(--dracula-pink);
+  font-family: 'Fira Code', monospace;
   letter-spacing: 2px;
   text-transform: uppercase;
   animation: ninja-glitch-main 3s infinite steps(1, end);
   filter: blur(0.3px);
   opacity: 0.95;
+  text-shadow: 2px 2px var(--dracula-current-line);
 }
 
 .glitch span {
@@ -39,15 +73,15 @@ main.container {
 
 .glitch span:first-child {
   left: 1px;
-  color: #000;
-  text-shadow: 1px 0 #fff;
+  color: var(--dracula-cyan);
+  text-shadow: 1px 0 var(--dracula-purple);
   animation: ninja-glitch-left 3s infinite steps(1, end);
 }
 
 .glitch span:last-child {
   left: -1px;
-  color: #fff;
-  text-shadow: -1px 0 #000;
+  color: var(--dracula-green);
+  text-shadow: -1px 0 var(--dracula-red);
   animation: ninja-glitch-right 3s infinite steps(1, end);
 }
 
@@ -87,17 +121,15 @@ main.container {
 
 /* === Homepage Background Styles === */
 body.homepage {
-  background: url('/assets/blackandwhite.png') no-repeat center center fixed;
-  background-size: cover;
+  background-color: transparent;
   position: relative;
-  color: #f1f5f9; /* white text */
+  color: var(--dracula-fg);
   min-height: 100vh;
 }
 
 body.homepage::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  content: none;
+}
   background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
@@ -169,8 +201,8 @@ body.homepage > * {
 
 /* === Typing Text + Cursor Blink === */
 .typing-text {
-  font-family: 'Fira Mono', 'Consolas', monospace;
-  color: white;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  color: var(--dracula-fg);
   font-size: 1.22rem;
   max-width: 700px;
   margin: 3.5rem auto 0 auto;
@@ -191,10 +223,10 @@ body.homepage > * {
   display: inline;
   margin-left: 2px;
   animation: blink 1s infinite;
-  color: #fff;
+  color: var(--dracula-pink);
   font-weight: bold;
   font-size: 1.15em;
-  text-shadow: 0 0 6px #FFD700;
+  text-shadow: 0 0 6px var(--dracula-purple);
 }
 
 @keyframes blink {
@@ -206,14 +238,16 @@ body.homepage > * {
 
 /* Navbar base */
 .navbar-custom {
-  
   padding: 0.75rem 1.5rem;
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  background-color: rgba(40, 42, 54, 0.85); /* Semi-transparent Dracula BG */
+  border-bottom: none; /* Removed the separator line */
+  backdrop-filter: blur(8px); /* Nice glass effect */
 }
 
 /* Nav links */
 .navbar-custom .nav-link {
-  color: #ddd;
+  color: var(--dracula-comment);
   font-weight: 600;
   padding: 0.5rem 1rem;
   transition: color 0.25s ease, transform 0.2s ease;
@@ -222,17 +256,18 @@ body.homepage > * {
 
 /* Hover effect */
 .navbar-custom .nav-link:hover {
-  color: #fff !important;
+  color: var(--dracula-cyan) !important;
   transform: translateY(-3px);
-  text-shadow: 0 0 8px #bbb;
+  text-shadow: 0 0 8px var(--dracula-purple);
 }
 
 /* Active link */
 .navbar-custom .nav-link.active {
-  color: #fff !important;
-  text-shadow: none;
+  color: var(--dracula-fg) !important; /* White */
+  text-shadow: 0 0 10px var(--dracula-comment); /* Subtle glow */
   transform: none;
   z-index: 1;
+  border-bottom: 2px solid var(--dracula-pink); /* Underline indicator */
 }
 
 /* Responsive tweaks */
@@ -240,7 +275,7 @@ body.homepage > * {
   /* Navbar toggler styles */
   .navbar-toggler {
     border: none;
-    color: #4ade80;
+    color: var(--dracula-green);
     font-size: 1.3rem;
   }
 
@@ -251,8 +286,9 @@ body.homepage > * {
 
   /* Collapse menu background */
   .navbar-collapse {
-    background-color: #121212;
+    background-color: var(--dracula-bg);
     padding: 1rem 0;
+    border-top: 1px solid var(--dracula-current-line);
   }
 
   /* Center nav items on mobile */
@@ -273,15 +309,18 @@ body.homepage > * {
   border-radius: 16px;
   max-width: 900px;
   margin: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff; /* pure white text by default */
+  font-family: 'Fira Code', monospace;
+  color: var(--dracula-fg);
 }
 
 .posts-list > h1 {
   margin-bottom: 3rem; /* adds gap below the h1 */
-  color: #fff;
+  color: var(--dracula-purple);
   font-weight: 900;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--dracula-comment);
+  padding-bottom: 1rem;
 }
 
 .cards-container {
@@ -291,12 +330,12 @@ body.homepage > * {
 }
 
 .post-card {
-  background: #111;
-  border-left: 6px solid #fff;
+  background: var(--dracula-current-line);
+  border-left: 6px solid var(--dracula-comment);
   position: relative;
   padding: 1.8rem 2.4rem;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+  border-radius: 4px; /* More blocky for terminal feel */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s;
   cursor: pointer;
   display: flex;
@@ -307,27 +346,27 @@ body.homepage > * {
 
 .post-card:hover {
   transform: translateX(12px);
-  box-shadow: 0 14px 35px rgba(255, 255, 255, 0.25);
-  border-left: 4px solid #DC143C; /* Gold accent */
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5);
+  border-left: 6px solid var(--dracula-pink);
 }
 
 .post-title {
   font-size: 1.9rem;
-  color: #fff;
+  color: var(--dracula-cyan);
   font-weight: 900;
   letter-spacing: 0.07em;
-  text-decoration: underline;
+  text-decoration: none;
   margin-bottom: 0.4rem;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
 .post-title:hover {
-  color: #DC143C;
-  text-shadow: 0 0 10px #DC143C;
+  color: var(--dracula-pink);
+  text-shadow: 0 0 10px var(--dracula-purple);
 }
 
 .post-date {
-  color: #bbb;
+  color: var(--dracula-comment);
   font-style: normal;
   font-size: 0.9rem;
   margin-bottom: 0.9rem;
@@ -336,7 +375,7 @@ body.homepage > * {
 }
 
 .post-excerpt {
-  color: #eee;
+  color: var(--dracula-fg);
   font-size: 1.15rem;
   line-height: 1.6;
   flex-grow: 1;
@@ -347,18 +386,19 @@ body.homepage > * {
   width: 300px;           /* much bigger */
   min-width: 300px;
   height: 180px;          /* much bigger */
-  border-radius: 18px;
+  border-radius: 4px;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  background: #222;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  background: var(--dracula-bg);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
   position: absolute;
   left: -320px;           /* -width - some gap (20px) */
   top: 50%;
   transform: translateY(-50%) translateX(-40px);
   transition: opacity 0.3s, transform 0.3s;
   z-index: 2;
+  border: 1px solid var(--dracula-purple);
 }
 
 .post-card:hover .post-card-image {
@@ -426,53 +466,54 @@ body.homepage > * {
 /* === Post content === */
 
 .post-content {
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  font-family: 'Fira Code', monospace;
   font-size: 1.1rem;
   line-height: 1.75;
-  color: #f0f0f0; /* brighter soft white for contrast */
-  background-color: #0d0d0d; /* deeper black for sleekness */
+  color: var(--dracula-fg);
+  background-color: var(--dracula-bg);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.08); /* subtle golden glow */
+  border-radius: 4px;
+  box-shadow: none;
   overflow-wrap: break-word;
+  border: 1px solid var(--dracula-current-line);
 }
 
 .post-content img {
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  border: 2px solid var(--dracula-comment);
+  border-radius: 4px;
   max-width: 100%;
   height: auto;
   display: block;
   margin: 1.5rem auto; /* center and vertical spacing */
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15); /* optional subtle glow */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Headings */
 .post-content h2,
 .post-content h3,
 .post-content h4 {
-  border-left: 4px solid #ff5f56;
+  border-left: 4px solid var(--dracula-pink);
   padding-left: 0.75rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: #B0C4DE;
+  color: var(--dracula-purple);
 }
 
 /* Paragraphs */
 .post-content p {
   margin-bottom: 1.5rem;
-  color: #d6d6d6;
+  color: var(--dracula-fg);
 }
 
 /* Code blocks and inline code */
 .post-content code,
 .post-content pre {
   font-family: 'Fira Code', 'Courier New', monospace;
-  background: #1a1a1a;
-  color: #B22222; 
+  background: var(--dracula-current-line);
+  color: var(--dracula-green); 
   padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 0.95rem;
   overflow-x: auto;
 }
@@ -480,31 +521,32 @@ body.homepage > * {
 .post-content pre {
   padding: 1rem;
   margin-bottom: 2rem;
+  border: 1px solid var(--dracula-comment);
 }
 
 /* Links */
 .post-content a {
-  color: #B22222;
+  color: var(--dracula-cyan);
   text-decoration: underline;
   transition: all 0.3s ease;
 }
 
 .post-content a:hover {
-  color: #fff;
+  color: var(--dracula-pink);
   text-decoration: none;
-  background-color: rgba(255, 215, 0, 0.1);
+  background-color: rgba(255, 121, 198, 0.1);
   border-radius: 3px;
   padding: 0 2px;
 }
 
 /* Optional blockquote for stylish quotes */
 .post-content blockquote {
-  border-left: 4px solid #ff5f56;
+  border-left: 4px solid var(--dracula-yellow);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #bbb;
+  color: var(--dracula-comment);
   font-style: italic;
-  background-color: #161616;
+  background-color: var(--dracula-current-line);
 }
 
 /* Post header image */
@@ -519,15 +561,15 @@ body.homepage > * {
   max-width: 55%;
   margin: 0 auto;
   display: block;
-  border-radius: 18px;
-  border: 4px solid #e0e0e0;
-  outline: 2.5px solid #fff;
+  border-radius: 4px;
+  border: 4px solid var(--dracula-comment);
+  outline: 2.5px solid var(--dracula-current-line);
   outline-offset: 4px;
-  background: #181818;
+  background: var(--dracula-bg);
   box-shadow:
-    0 8px 32px 0 #bbb8,
+    0 8px 32px 0 rgba(0,0,0,0.5),
     0 2px 18px rgba(0,0,0,0.18);
-  filter: drop-shadow(0 4px 18px #bbb6);
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,0.5));
   animation: floating-img 3.2s ease-in-out infinite alternate;
   transition:
     box-shadow 0.35s cubic-bezier(.22,1,.22,1),
@@ -650,20 +692,6 @@ body.homepage > * {
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-/* leaf */
-
-.leaf {
-  position: fixed;
-  width: 30px;
-  height: 30px;
-  background-image: url('https://www.freeiconspng.com/thumbs/leaf-icon-png/leaf-icon-png-1.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  will-change: transform;
-  pointer-events: none;
-  z-index: 9999; /* make sure leaves float above content */
 }
 
 /* feed icon */
@@ -829,30 +857,16 @@ body.zoom-active::before {
   box-shadow: none !important;
 }
 
-/* FLying bat */
-
-.bat {
-  pointer-events: none;
-  z-index: 10000;
-  opacity: 0.85;
-  transition: filter 0.2s;
-  filter: drop-shadow(0 2px 6px #0008);
-}
-
-.bat.white-outline {
-  filter: drop-shadow(0 0 8px #fff) drop-shadow(0 2px 6px #0008);
-}
-
 /* Terminal style - improved */
 
 .code-block-container {
-  background: #101010;
-  color: #fff;
+  background: var(--dracula-bg);
+  color: var(--dracula-fg);
   font-family: 'Fira Code', monospace;
   padding: 1.1rem 1rem 1rem 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 16px 0 rgba(255,215,0,0.08);
-  border: 2px solid #B0C4DE;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border: 1px solid var(--dracula-purple);
   position: relative;
   overflow-x: auto;
   margin-bottom: 2rem;
@@ -861,11 +875,11 @@ body.zoom-active::before {
 .code-block-container::before {
   content: '';
   display: block;
-  height: 55px;
-  background: #181818;
-  border-bottom: 1px solid #B0C4DE;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  height: 40px;
+  background: var(--dracula-current-line);
+  border-bottom: 1px solid var(--dracula-purple);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   position: absolute;
   top: 0;
   left: 0;
@@ -875,13 +889,13 @@ body.zoom-active::before {
 .code-block-container::after {
   content: '';
   position: absolute;
-  top: 10px;
-  left: 18px;
-  width: 14px;
-  height: 14px;
-  background: #ff5f56;
+  top: 12px;
+  left: 15px;
+  width: 12px;
+  height: 12px;
+  background: var(--dracula-red);
   border-radius: 50%;
-  box-shadow: 20px 0 0 #DC143C, 40px 0 0 #27c93f;
+  box-shadow: 20px 0 0 var(--dracula-yellow), 40px 0 0 var(--dracula-green);
   z-index: 10;
 }
 
@@ -900,34 +914,34 @@ body.zoom-active::before {
   position: absolute;
   top: 7px;
   right: 14px;
-  background: #181818;
-  color: white;
-  border: 1px solid white;
+  background: var(--dracula-current-line);
+  color: var(--dracula-fg);
+  border: 1px solid var(--dracula-comment);
   padding: 4px 8px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   z-index: 20;
-  font-size: 1em;
+  font-size: 0.9em;
   opacity: 0.85;
   transition: background 0.2s, color 0.2s, opacity 0.2s;
-  box-shadow: 0 1px 4px #FFD70044;
+  box-shadow: none;
 }
 .copy-btn:hover {
-  background: #B0C4DE;
-  color: black;
+  background: var(--dracula-purple);
+  color: var(--dracula-bg);
   opacity: 1;
 }
 
 .code-block-container pre,
 .code-block-container code {
-  color: #FF0000 !important;   
+  color: var(--dracula-pink) !important;   
   background: none !important; /* transparent background for code */
-  padding-top: 3.5rem; 
+  padding-top: 1.5rem; 
   
 }
 
 .terminal-prompt {
-  color: white;
+  color: var(--dracula-green);
   font-weight: bold;
 }
 
@@ -997,9 +1011,9 @@ body.zoom-active::before {
 
 /* Alert styles for warnings and errors */
 .alert-warning {
-  background: #fffbe6;
-  color: #856404;
-  border-left: 5px solid #ffe066;
+  background: var(--dracula-current-line);
+  color: var(--dracula-yellow);
+  border-left: 5px solid var(--dracula-orange);
   padding: 1em 1.2em;
   margin: 1.2em 0;
   border-radius: 6px;
@@ -1007,9 +1021,9 @@ body.zoom-active::before {
 }
 
 .alert-error {
-  background: #ffeaea;
-  color: #a71d2a;
-  border-left: 5px solid #ff4d4f;
+  background: var(--dracula-current-line);
+  color: var(--dracula-red);
+  border-left: 5px solid var(--dracula-red);
   padding: 1em 1.2em;
   margin: 1.2em 0;
   border-radius: 6px;
@@ -1022,9 +1036,8 @@ body.zoom-active::before {
   top: 0.7em;
   left: 50%;
   transform: translateX(-50%);
-  /* background: #222; */   /* Remove or comment out this line */
-  background: none;         /* Add this line */
-  color: White;
+  background: none;
+  color: var(--dracula-fg);
   font-size: 0.85em;
   font-family: monospace;
   padding: 0.1em 0.7em;
@@ -1052,8 +1065,8 @@ body.zoom-active::before {
 }
 
 .cert-card {
-  background: #181818;
-  border: 1.5px solid #333;
+  background: var(--dracula-current-line);
+  border: 1.5px solid var(--dracula-comment);
   border-radius: 10px;
   padding: 1em;
   box-sizing: border-box;
@@ -1070,8 +1083,8 @@ body.zoom-active::before {
   max-width: 240px;
   object-fit: contain;
   border-radius: 8px;
-  background: #fff;
-  border: 1px solid #eee;
+  background: var(--dracula-bg);
+  border: 1px solid var(--dracula-comment);
   display: block;
   margin-bottom: 0.7em;
 }
@@ -1129,19 +1142,19 @@ body.zoom-active::before {
   right: -54px;
   width: 200px;
   text-align: center;
-  background: linear-gradient(105deg, #fffbe6 0%, #ffe066 60%, #ffd700 100%);
-  color: #222;
+  background: linear-gradient(105deg, var(--dracula-yellow) 0%, var(--dracula-orange) 100%);
+  color: var(--dracula-bg);
   font-weight: 900;
   font-size: 1.18rem;
   padding: 12px 0;
   border-radius: 10px;
-  border: 2px solid #f7c948;
+  border: 2px solid var(--dracula-yellow);
   box-shadow: 
-    0 0 0 2px #f7c948, 
-    0 0 12px 4px #ffd700aa,
-    0 0 24px 8px #ffe06688;
+    0 0 0 2px var(--dracula-yellow), 
+    0 0 12px 4px rgba(241, 250, 140, 0.5),
+    0 0 24px 8px rgba(255, 184, 108, 0.5);
   letter-spacing: 0.14em;
-  text-shadow: 0 1px 0 #fff8;
+  text-shadow: none;
   transform: rotate(32deg);
   z-index: 10;
   box-sizing: border-box;
@@ -1158,7 +1171,7 @@ body.zoom-active::before {
   inset: -6px;
   z-index: -1;
   border-radius: 16px;
-  background: radial-gradient(circle, #ffe06688 0%, #ffd70055 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 184, 108, 0.5) 0%, transparent 100%);
   filter: blur(6px);
   animation: updated-glow 2.4s infinite ease-in-out alternate;
   pointer-events: none;
@@ -1175,22 +1188,22 @@ body.zoom-active::before {
     opacity: 0.6;
     filter: blur(4px);
     box-shadow:
-      0 0 10px 2px #ffe06655,
-      0 0 18px 6px #ffd70044;
+      0 0 10px 2px rgba(255, 184, 108, 0.3),
+      0 0 18px 6px rgba(241, 250, 140, 0.3);
   }
   50% {
     opacity: 1;
     filter: blur(6px);
     box-shadow:
-      0 0 20px 5px #ffd700aa,
-      0 0 30px 12px #ffe06677;
+      0 0 20px 5px rgba(241, 250, 140, 0.6),
+      0 0 30px 12px rgba(255, 184, 108, 0.4);
   }
   100% {
     opacity: 0.6;
     filter: blur(4px);
     box-shadow:
-      0 0 10px 2px #ffe06655,
-      0 0 18px 6px #ffd70044;
+      0 0 10px 2px rgba(255, 184, 108, 0.3),
+      0 0 18px 6px rgba(241, 250, 140, 0.3);
   }
 }
 
@@ -1199,10 +1212,10 @@ body.zoom-active::before {
   display: none;
   width: 100%;
   max-width: 700px;
-  background: #111;
-  border-left: 6px solid #fff;
+  background: var(--dracula-bg);
+  border-left: 6px solid var(--dracula-purple);
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(255,255,255,0.10);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
   padding: 1.1em 1.6em 1.1em 1.2em;
   margin: 0.6em 0 2em 0;
   animation: fadeIn 0.18s;
@@ -1218,9 +1231,9 @@ body.zoom-active::before {
 #tagDropdownMenu li {
   display: inline-block;
   margin: 0 0.18em 0.35em 0;
-  background: #181818;
+  background: var(--dracula-current-line);
   border-radius: 0.18em;
-  border: 1.5px solid #232323;   /* subtle dark border */
+  border: 1.5px solid var(--dracula-comment);   /* subtle dark border */
   transition: 
     background 0.15s, 
     box-shadow 0.15s,
@@ -1229,12 +1242,12 @@ body.zoom-active::before {
   box-shadow: 0 2px 8px #0004;
 }
 #tagDropdownMenu li:hover {
-  background: #222;
-  border-color: #ff4d4f;         /* bold red border on hover */
+  background: var(--dracula-comment);
+  border-color: var(--dracula-pink);         /* bold red border on hover */
   box-shadow: 0 4px 16px #0006;
 }
 #tagDropdownMenu a {
-  color: #fff;
+  color: var(--dracula-fg);
   font-weight: 600;
   text-decoration: none;
   display: block;
@@ -1246,17 +1259,17 @@ body.zoom-active::before {
   letter-spacing: 0.02em;
 }
 #tagDropdownMenu a:hover {
-  color: #ff4d4f;
+  color: var(--dracula-pink);
   background: transparent;
 }
 
 #tagDropdownBtn {
-  background-color: #181818;
-  color: #fff;
+  background-color: var(--dracula-current-line);
+  color: var(--dracula-fg);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 600;
-  border: 2px solid #232323;
+  border: 2px solid var(--dracula-comment);
   border-radius: 0.4em;
   cursor: pointer;
   display: inline-flex;
@@ -1269,9 +1282,9 @@ body.zoom-active::before {
 }
 
 #tagDropdownBtn:hover {
-  background-color: #222;
-  border-color: #ff4d4f;
-  box-shadow: 0 6px 16px rgba(255, 77, 79, 0.25);
+  background-color: var(--dracula-comment);
+  border-color: var(--dracula-pink);
+  box-shadow: 0 6px 16px rgba(255, 121, 198, 0.25);
 }
 
 #tagDropdownBtn svg {
@@ -1321,10 +1334,10 @@ body.zoom-active::before {
 /* Back Bottom */
 
 a.btn.btn-back.btn-back-bottom {
-  background: #fff;
-  color: #DC143C;
-  border: 2px solid #DC143C;
-  box-shadow: 0 2px 8px #DC143C22;
+  background: var(--dracula-bg);
+  color: var(--dracula-pink);
+  border: 2px solid var(--dracula-pink);
+  box-shadow: 0 2px 8px rgba(255, 121, 198, 0.2);
   font-size: 1em;
   margin-top: 1em;
   border-radius: 1.2em;
@@ -1343,10 +1356,10 @@ a.btn.btn-back.btn-back-bottom {
 }
 
 a.btn.btn-back.btn-back-bottom:hover {
-  background: #DC143C;
-  color: #fff;
-  border-color: #fff;
-  box-shadow: 0 4px 16px #DC143C44;
+  background: var(--dracula-pink);
+  color: var(--dracula-bg);
+  border-color: var(--dracula-fg);
+  box-shadow: 0 4px 16px rgba(255, 121, 198, 0.4);
   transform: translateY(-1px) scale(1.03);
 }
 
@@ -1359,17 +1372,17 @@ a.btn.btn-back.btn-back-bottom {
 .post-page h1,
 .post-header-image + h1,
 .post-container h1 {
-  background: linear-gradient(90deg, #DC143C 0%, #fff 100%);
+  background: linear-gradient(90deg, var(--dracula-pink) 0%, var(--dracula-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #DC143C;
+  color: var(--dracula-pink);
   font-size: 2.5rem;
-  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-family: 'Fira Code', 'Consolas', monospace;
   font-weight: 900;
   letter-spacing: 0.04em;
   margin-bottom: 1.2rem;
   text-transform: uppercase;
-  text-shadow: 0 2px 16px #DC143C88, 0 1px 2px #000a;
+  text-shadow: 0 2px 16px rgba(255, 121, 198, 0.5), 0 1px 2px rgba(0,0,0,0.5);
   display: inline-block;
 }
 
@@ -1379,15 +1392,15 @@ a.btn.btn-back.btn-back-bottom {
 
 /* === Sleek Contact Form Styles === */
 .contact-form-container {
-  background: #141414;
+  background: var(--dracula-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 24px #0008;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
   padding: 2.2rem 1.5rem;
   max-width: 420px;
   margin: 3rem auto 2rem auto;
-  color: #e6e6e6;
-  font-family: 'Fira Mono', 'Consolas', monospace;
-  border: 1.5px solid #232323;
+  color: var(--dracula-fg);
+  font-family: 'Fira Code', 'Consolas', monospace;
+  border: 1.5px solid var(--dracula-comment);
 }
 
 .contact-form-container h1 {
@@ -1396,15 +1409,15 @@ a.btn.btn-back.btn-back-bottom {
   font-weight: 900;
   letter-spacing: 0.07em;
   margin-bottom: 2rem;
-  color: #e6e6e6;
-  text-shadow: 0 2px 12px #000a;
+  color: var(--dracula-fg);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 .contact-form label {
   display: block;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #b0b0b0;
+  color: var(--dracula-comment);
   letter-spacing: 0.03em;
   font-size: 1rem;
 }
@@ -1412,44 +1425,44 @@ a.btn.btn-back.btn-back-bottom {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  background: #181818;
-  color: #f1f1f1;
-  border: 1.5px solid #444;
+  background: var(--dracula-current-line);
+  color: var(--dracula-fg);
+  border: 1.5px solid var(--dracula-comment);
   border-radius: 8px;
   padding: 0.85rem;
   margin-bottom: 1.2rem;
   font-size: 1.05rem;
   font-family: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #0003;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #DC143C;
+  border-color: var(--dracula-pink);
   outline: none;
-  box-shadow: 0 0 10px #DC143C33;
+  box-shadow: 0 0 10px rgba(255, 121, 198, 0.3);
 }
 
 .contact-form button[type="submit"] {
-  background: #222;
-  color: #e6e6e6;
+  background: var(--dracula-current-line);
+  color: var(--dracula-fg);
   font-weight: bold;
-  border: 1.5px solid #DC143C;
+  border: 1.5px solid var(--dracula-pink);
   border-radius: 8px;
   padding: 0.85rem 2rem;
   font-size: 1.08rem;
   cursor: pointer;
-  box-shadow: 0 2px 12px #0003;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.18s;
   letter-spacing: 0.04em;
   margin-top: 0.5rem;
 }
 
 .contact-form button[type="submit"]:hover {
-  background: #DC143C;
-  color: #181818;
-  border-color: #222;
+  background: var(--dracula-pink);
+  color: var(--dracula-bg);
+  border-color: var(--dracula-fg);
   transform: translateY(-2px) scale(1.04);
 }
 

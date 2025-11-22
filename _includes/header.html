@@ -14,22 +14,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page.url != '/' and page.url.startswith('/posts') %}active{% endif %}" href="/posts">
+          <a class="nav-link {% if page.url contains '/posts' or page.url contains '/blog' %}active{% endif %}" href="/posts">
             <i class="bi bi-journal-text"></i> Blog
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page.url != '/' and page.url.startswith('/projects') %}active{% endif %}" href="/projects">
+          <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}" href="/projects">
             <i class="bi bi-kanban-fill"></i> Projects
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page.url != '/' and page.url.startswith('/certificates') %}active{% endif %}" href="/certificates">
+          <a class="nav-link {% if page.url contains '/certificates' %}active{% endif %}" href="/certificates">
             <i class="bi bi-award-fill"></i> Certificates
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page.url != '/' and page.url.startswith('/contact') %}active{% endif %}" href="/contact">
+          <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" href="/contact">
             <i class="bi bi-envelope-fill"></i> Contact Me
           </a>
         </li>
