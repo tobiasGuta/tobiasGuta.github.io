@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog</title>
+    <title>You'll Be Replaced, If You Don't Learn to Use AI</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -155,105 +155,186 @@
 
 
     <main class="container py-5">
-      <!-- Tag filter bar and post list (move this here) -->
-<div class="mt-12">
-  <div id="tag-filter" class="mb-6 flex flex-wrap gap-2">
-    <button class="px-3 py-1 rounded bg-blue-700 text-white text-sm font-semibold" onclick="filterPosts('all')">All</button>
-    
-    
-  </div>
+      
+<!-- Normal post view -->
+<div id="scroll-progress-container">
+  <div id="scroll-progress-bar"></div>
+</div>
+<div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold glitch-header" data-value="You'll Be Replaced, If You Don't Learn to Use AI" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">You'll Be Replaced, If You Don't Learn to Use AI</h1>
+      
+      <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
+        September 16, 2025
+      </p>
 
-  <ul id="posts-list">
+      
+        <div class="categories mt-3 mb-2">
+          <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
+          
+            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
+              My-research
+            </span>
+          
+        </div>
+      
+    </header>
+
     
-      <li data-tags="">
-        <a href="/blog/byp4ss3d_PicoCTF">byp4ss3d PicoCTF</a>
-        <span class="text-gray-400 text-xs">(2025-11-19)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
+      <div class="post-header-image">
+        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k2UUA5hSmJqVTPG3T2o7Cg.png" alt="You'll Be Replaced, If You Don't Learn to Use AI cover image" />
+      </div>
     
-      <li data-tags="">
-        <a href="/blog/Input-sql-Injection">When Input Becomes Injection</a>
-        <span class="text-gray-400 text-xs">(2025-10-18)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/Weak-JWT-Secret">Weak JWT Secrets: How ‘secret’ Breaks Your Auth</a>
-        <span class="text-gray-400 text-xs">(2025-10-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/DASTGemini">You'll Be Replaced, If You Don't Learn to Use AI</a>
-        <span class="text-gray-400 text-xs">(2025-09-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/WebSockFishPicoCtf">WebSockFish PicoCTF</a>
-        <span class="text-gray-400 text-xs">(2025-09-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/SSTI2PicoCTF">SSTI2 PicoCTF</a>
-        <span class="text-gray-400 text-xs">(2025-09-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/JawtPicoCtf">JaWT Scratchpad PicoCTF</a>
-        <span class="text-gray-400 text-xs">(2025-09-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/SSTI1PicoCTF">SSTI1 PicoCTF</a>
-        <span class="text-gray-400 text-xs">(2025-09-16)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/BookStore-Tryhackme">Tryhackme BookStore Walkthrough - API & Reverse Engineering</a>
-        <span class="text-gray-400 text-xs">(2025-09-03)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/NYC-DOWN-FUV">Null-Byte File Upload Bypass: PoC on a NYC Portal</a>
-        <span class="text-gray-400 text-xs">(2025-08-29)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/InjecticsTHM">TryHackMe Injectics Walkthrough - SQL Injection & SSTI Exploitation</a>
-        <span class="text-gray-400 text-xs">(2025-08-24)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-      <li data-tags="">
-        <a href="/blog/NYC-D0WN">I Didn't Hack nyc.gov Their Confirmation System Did</a>
-        <span class="text-gray-400 text-xs">(2025-07-26)</span>
-        <span class="text-gray-400 text-xs">[]</span>
-      </li>
-    
-  </ul>
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
+      <h2 id="why-this-project">Why this project</h2>
+
+<p>Hunting for bugs in web applications generates many raw findings. Manually triaging and prioritizing them is slow. By feeding structured findings into an LLM (here: Gemini-2.0-flash as an example), we can:</p>
+<ul>
+  <li>classify issues (risk / false positive / true positive),</li>
+  <li>generate concise reproduction steps,</li>
+</ul>
+
+<h2 id="mistake-made-by-dast--gemini-20-flash">Mistake made by DAST + Gemini-2.0-flash</h2>
+
+<p>Gemini-2.0-flash scan identifies a ROT13-encoded string in the page source. It detects the ROT13 but, when converted to human-readable text, it makes a mistake, as shown in the video below. I believe this is due to limitations of the model.</p>
+
+<h2 id="watch-the-video-below">Watch the video below:</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/TCo8PZ_1SRQ" frameborder="0" allowfullscreen="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
+  </iframe>
 </div>
 
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
+      <a href="/posts" class="btn btn-back btn-back-bottom">
+        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+      </a>
+    </footer>
+  </article>
+</div>
+
+<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
+<style>
+/* === IMPRESSIVE FEATURES CSS === */
+
+/* 1. Scroll Progress Bar */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 9999;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  background: var(--dracula-pink);
+  width: 0%;
+  box-shadow: 0 0 10px var(--dracula-pink), 0 0 20px var(--dracula-purple);
+  transition: width 0.1s;
+}
+
+/* 3. Glitch Header Effect */
+.glitch-header {
+  position: relative;
+}
+
+.glitch-header:hover {
+  color: var(--dracula-cyan);
+  text-shadow: 2px 0 var(--dracula-pink), -2px 0 var(--dracula-green);
+}
+</style>
+
 <script>
-function filterPosts(tag) {
-  const posts = document.querySelectorAll('#posts-list li');
-  posts.forEach(post => {
-    const tags = post.getAttribute('data-tags').split(' ');
-    if (tag === 'all' || tags.includes(tag)) {
-      post.style.display = '';
-    } else {
-      post.style.display = 'none';
+/* === IMPRESSIVE FEATURES JS === */
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. Scroll Progress Bar Logic
+  window.addEventListener('scroll', function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    if(progressBar) {
+      progressBar.style.width = scrolled + "%";
     }
   });
-}
+
+  // 2. Hacker Text Scramble Effect for Title
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*";
+  const header = document.querySelector(".glitch-header");
+  
+  if(header) {
+    let interval = null;
+    
+    // Run once on load
+    scrambleText(header);
+    
+    // Run on hover
+    header.onmouseover = event => {  
+      scrambleText(event.target);
+    };
+    
+    function scrambleText(target) {
+      let iteration = 0;
+      clearInterval(interval);
+      
+      const originalText = target.dataset.value;
+      
+      interval = setInterval(() => {
+        target.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return originalText[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+        
+        if(iteration >= originalText.length) { 
+          clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    }
+  }
+
+});
 </script>
 
+
+
+
+      
+        
+          <!-- Giscus comments - Only show for unlocked posts -->
+          <div id="comments"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="tobiasGuta/tobiasGuta.github.io"
+                  data-repo-id="R_kgDOOxswYQ"
+                  data-category="General"
+                  data-category-id="DIC_kwDOOxswYc4CrEhp"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="transparent_dark"
+                  data-lang="en"
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        
       
     </main>
 
