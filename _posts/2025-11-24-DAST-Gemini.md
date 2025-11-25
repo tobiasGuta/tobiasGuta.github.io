@@ -1,13 +1,11 @@
 ---
 layout: post
 title: "You'll Be Replaced, If You Don't Learn to Use AI"
-date: 2025-09-16
+date: 2025-11-25
 categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k2UUA5hSmJqVTPG3T2o7Cg.png
 permalink: /blog/DASTGemini
 ---
-
-## Why this project
 
 Hunting for bugs in web applications generates many raw findings. Manually triaging and prioritizing them is slow. By feeding structured findings into an LLM (here: Gemini-2.0-flash as an example), we can:
 - classify issues (risk / false positive / true positive),
