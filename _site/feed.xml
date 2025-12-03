@@ -1,26 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-25T10:49:43-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">You&apos;ll Be Replaced, If You Don&apos;t Learn to Use AI</title><link href="/blog/DASTGemini" rel="alternate" type="text/html" title="You&apos;ll Be Replaced, If You Don&apos;t Learn to Use AI" /><published>2025-11-25T00:00:00-05:00</published><updated>2025-11-25T00:00:00-05:00</updated><id>http://localhost:4000/blog/DAST-Gemini</id><content type="html" xml:base="/blog/DASTGemini"><![CDATA[<p>Hunting for bugs in web applications generates many raw findings. Manually triaging and prioritizing them is slow. By feeding structured findings into an LLM (here: Gemini-2.0-flash as an example), we can:</p>
-<ul>
-  <li>classify issues (risk / false positive / true positive),</li>
-  <li>generate concise reproduction steps,</li>
-</ul>
-
-<h2 id="mistake-made-by-dast--gemini-20-flash">Mistake made by DAST + Gemini-2.0-flash</h2>
-
-<p>Gemini-2.0-flash scan identifies a ROT13-encoded string in the page source. It detects the ROT13 but, when converted to human-readable text, it makes a mistake, as shown in the video below. I believe this is due to limitations of the model.</p>
-
-<h2 id="watch-the-video-below">Watch the video below:</h2>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/TCo8PZ_1SRQ" frameborder="0" allowfullscreen="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
-  </iframe>
-</div>
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>Hunting for bugs in web applications generates many raw findings. Manually triaging and prioritizing them is slow. By feeding structured findings into an LLM (here: Gemini-2.0-flash as an example), we can:</p>
-<ul>
-  <li>classify issues (risk / false positive / true positive),</li>
-  <li>generate concise reproduction steps,</li>
-</ul>
-
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k2UUA5hSmJqVTPG3T2o7Cg.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k2UUA5hSmJqVTPG3T2o7Cg.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">byp4ss3d PicoCTF</title><link href="/blog/byp4ss3d_PicoCTF" rel="alternate" type="text/html" title="byp4ss3d PicoCTF" /><published>2025-11-19T00:00:00-05:00</published><updated>2025-11-19T00:00:00-05:00</updated><id>http://localhost:4000/blog/Apache-backdoor-upload</id><content type="html" xml:base="/blog/byp4ss3d_PicoCTF"><![CDATA[<p>A university’s online registration portal asks students to upload their ID cards for verification. The developer put some filters in place to ensure only image files are uploaded, but are they enough? Take a look at how the upload is implemented. Maybe there’s a way to slip past the checks and interact with the server in ways you shouldn’t.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-12-02T19:20:14-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">byp4ss3d PicoCTF</title><link href="/blog/byp4ss3d_PicoCTF" rel="alternate" type="text/html" title="byp4ss3d PicoCTF" /><published>2025-11-19T00:00:00-05:00</published><updated>2025-11-19T00:00:00-05:00</updated><id>http://localhost:4000/blog/Apache-backdoor-upload</id><content type="html" xml:base="/blog/byp4ss3d_PicoCTF"><![CDATA[<p>A university’s online registration portal asks students to upload their ID cards for verification. The developer put some filters in place to ensure only image files are uploaded, but are they enough? Take a look at how the upload is implemented. Maybe there’s a way to slip past the checks and interact with the server in ways you shouldn’t.</p>
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Iqyhe_q1VlnX15qTt9sjwg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>You'll Be Replaced, If You Don't Learn to Use AI</title>
+    <title>Getting Started - (Forensics)</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -156,182 +156,278 @@
 
     <main class="container py-5">
       
-<!-- Normal post view -->
-<div id="scroll-progress-container">
-  <div id="scroll-progress-bar"></div>
-</div>
-<div class="post-page">
-  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
-    <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold glitch-header" data-value="You'll Be Replaced, If You Don't Learn to Use AI" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">You'll Be Replaced, If You Don't Learn to Use AI</h1>
-      
-      <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
-        November 25, 2025
-      </p>
-
-      
-        <div class="categories mt-3 mb-2">
-          <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
-          
-            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
-              My-research
-            </span>
-          
-        </div>
-      
-    </header>
-
-    
-      <div class="post-header-image">
-        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k2UUA5hSmJqVTPG3T2o7Cg.png" alt="You'll Be Replaced, If You Don't Learn to Use AI cover image" />
+<!-- Locked post view -->
+<div class="locked-post-container">
+  <article class="locked-post">
+    <div class="locked-content text-center">
+      <div class="lock-icon mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="80" height="80" class="mx-auto">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
       </div>
-    
-
-    <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
-      <p>Hunting for bugs in web applications generates many raw findings. Manually triaging and prioritizing them is slow. By feeding structured findings into an LLM (here: Gemini-2.0-flash as an example), we can:</p>
-<ul>
-  <li>classify issues (risk / false positive / true positive),</li>
-  <li>generate concise reproduction steps,</li>
-</ul>
-
-<h2 id="mistake-made-by-dast--gemini-20-flash">Mistake made by DAST + Gemini-2.0-flash</h2>
-
-<p>Gemini-2.0-flash scan identifies a ROT13-encoded string in the page source. It detects the ROT13 but, when converted to human-readable text, it makes a mistake, as shown in the video below. I believe this is due to limitations of the model.</p>
-
-<h2 id="watch-the-video-below">Watch the video below:</h2>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/TCo8PZ_1SRQ" frameborder="0" allowfullscreen="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
-  </iframe>
-</div>
-
-    </section>
-
-    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
-      <a href="/posts" class="btn btn-back btn-back-bottom">
-        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
-      </a>
-    </footer>
+      
+      <h1 class="locked-title">Getting Started - (Forensics)</h1>
+      <p class="locked-description">This post is currently locked and will be available soon...</p>
+      
+      <div class="status-info">
+        <span class="status-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Locked Content
+        </span>
+      </div>
+      
+      <div class="navigation-buttons">
+        <a href="/posts/" class="btn btn-back">
+          <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+        </a>
+        <a href="/" class="btn btn-home">
+          Home
+        </a>
+      </div>
+    </div>
   </article>
 </div>
 
-<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
 <style>
-/* === IMPRESSIVE FEATURES CSS === */
+.locked-post-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
 
-/* 1. Scroll Progress Bar */
-#scroll-progress-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+.locked-post {
+  max-width: 600px;
   width: 100%;
-  height: 4px;
-  background: transparent;
-  z-index: 9999;
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
 }
 
-#scroll-progress-bar {
-  height: 100%;
-  background: var(--dracula-pink);
-  width: 0%;
-  box-shadow: 0 0 10px var(--dracula-pink), 0 0 20px var(--dracula-purple);
-  transition: width 0.1s;
+.lock-icon {
+  color: #fbbf24;
+  animation: pulse 2s infinite;
+  margin-bottom: 1.5rem;
 }
 
-/* 3. Glitch Header Effect */
-.glitch-header {
+.locked-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.locked-description {
+  color: #d1d5db;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.status-info {
+  margin-bottom: 2.5rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-back {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px #0002;
+  border: none;
+  outline: none;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-size: 1.1em;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-back-bottom {
+  background: linear-gradient(90deg, #fffbe6 0%, #ffe0b2 100%);
+  color: #222;
+  border: 3px solid #fbbf24;
+  box-shadow: 0 6px 24px #fbbf2433, 0 1.5px 6px #0002;
+  font-size: 1.15em;
+  margin-top: 1.5em;
+  border-radius: 1.8em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  padding: 0.9em 2.2em;
+  transition: 
+    background 0.2s, 
+    color 0.2s, 
+    border-color 0.2s, 
+    box-shadow 0.2s, 
+    transform 0.18s;
   position: relative;
+  overflow: hidden;
 }
 
-.glitch-header:hover {
-  color: var(--dracula-cyan);
-  text-shadow: 2px 0 var(--dracula-pink), -2px 0 var(--dracula-green);
+.btn-back-bottom:hover {
+  background: linear-gradient(90deg, #fbbf24 0%, #ffe0b2 100%);
+  color: #111;
+  border-color: #f59e42;
+  box-shadow: 0 8px 32px #fbbf2466, 0 2px 12px #0003;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-back:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px #0003;
+}
+
+.btn-home {
+  background: #6b7280;
+  color: white;
+}
+
+.btn-home:hover {
+  background: #4b5563;
+  color: white;
+  transform: translateY(-1px);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .locked-post {
+    padding: 2rem 1.5rem;
+  }
+  
+  .locked-title {
+    font-size: 2rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
+
+/* Post theme toggle styles - NUCLEAR OVERRIDE */
+.post-page {
+  background-color: #0a0a0a !important;
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.post-page .post-container {
+  color: #e6e6e6;
+  transition: all 0.3s ease;
+}
+
+/* Post content styling - override prose classes */
+.post-page .post-content.prose {
+  color: #d1d5db !important;
+}
+
+.post-page .post-content.prose-invert {
+  color: #d1d5db !important;
+}
+
+.post-page .post-content {
+  color: #d1d5db !important;
+}
+
+.post-page .post-content h1, 
+.post-page .post-content h2, 
+.post-page .post-content h3, 
+.post-page .post-content h4, 
+.post-page .post-content h5, 
+.post-page .post-content h6 {
+  color: #e6e6e6 !important;
+}
+
+.post-page .post-content p {
+  color: #d1d5db !important;
+}
+
+.post-page .post-content code {
+  background-color: #1f2937 !important;
+  color: #e6e6e6 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.post-page .post-content pre {
+  background-color: #1f2937 !important;
+  color: #e6e6e6 !important;
+  border: 1px solid #374151 !important;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.post-page .post-content a {
+  color: #60a5fa !important;
+}
+
+.post-page .post-content blockquote {
+  border-left: 4px solid #374151;
+  background-color: #1f2937;
+  color: #d1d5db !important;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
 }
 </style>
 
-<script>
-/* === IMPRESSIVE FEATURES JS === */
-
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // 1. Scroll Progress Bar Logic
-  window.addEventListener('scroll', function() {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    const progressBar = document.getElementById("scroll-progress-bar");
-    if(progressBar) {
-      progressBar.style.width = scrolled + "%";
-    }
-  });
-
-  // 2. Hacker Text Scramble Effect for Title
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*";
-  const header = document.querySelector(".glitch-header");
-  
-  if(header) {
-    let interval = null;
-    
-    // Run once on load
-    scrambleText(header);
-    
-    // Run on hover
-    header.onmouseover = event => {  
-      scrambleText(event.target);
-    };
-    
-    function scrambleText(target) {
-      let iteration = 0;
-      clearInterval(interval);
-      
-      const originalText = target.dataset.value;
-      
-      interval = setInterval(() => {
-        target.innerText = originalText
-          .split("")
-          .map((letter, index) => {
-            if(index < iteration) {
-              return originalText[index];
-            }
-            return letters[Math.floor(Math.random() * 26)];
-          })
-          .join("");
-        
-        if(iteration >= originalText.length) { 
-          clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-      }, 30);
-    }
-  }
-
-});
-</script>
-
 
 
 
       
-        
-          <!-- Giscus comments - Only show for unlocked posts -->
-          <div id="comments"></div>
-          <script src="https://giscus.app/client.js"
-                  data-repo="tobiasGuta/tobiasGuta.github.io"
-                  data-repo-id="R_kgDOOxswYQ"
-                  data-category="General"
-                  data-category-id="DIC_kwDOOxswYc4CrEhp"
-                  data-mapping="pathname"
-                  data-strict="0"
-                  data-reactions-enabled="1"
-                  data-emit-metadata="0"
-                  data-input-position="bottom"
-                  data-theme="transparent_dark"
-                  data-lang="en"
-                  data-loading="lazy"
-                  crossorigin="anonymous"
-                  async>
-          </script>
         
       
     </main>
