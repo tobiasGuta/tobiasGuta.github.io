@@ -40,6 +40,12 @@ permalink: /posts/
         </svg>
         CTF
       </button>
+      <button class="tab-button" data-category="pentesting">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M12 1l3 2 4 1v5c0 5-3.58 9.74-8 11-4.42-1.26-8-6-8-11V4l4-1 3-2zM11 7h2v6h-2V7z"/>
+        </svg>
+        Pentesting
+      </button>
       <button class="tab-button" data-category="my-research">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
           <!-- bug icon -->
