@@ -479,3 +479,72 @@ function togglePerspective(e, container) {
 </script>
 
 > `NOTE`: If you don’t want data to be transmitted in cleartext, you can set up HTTPS using SSL keys stored on a server.
+
+### ICMP Data Exfiltration
+
+the ICMP packet's structure contains a Data section that can include strings or copies of other information, such as the IPv4 header, used for error messages.
+
+ As an attacker, we can use the ICMP structure to include our data within the Data section and send it via ICMP packet to another machine. The other machine must capture the network traffic with the ICMP packets to receive the data.
+
+ <img 
+  src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eOmcrBE1r92MdyDZ4K8Eug.jpeg"
+  alt="Website initial view"
+  class="zoomable-img"
+  style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
+/>
+
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+  
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Xi5bPFcZVwTAl_HT9s5-xw.png" 
+       data-label="Attacker" 
+       data-color="#50fa7b" 
+       data-align="left"
+       style="width: 100%; display: block;">
+
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*N_cqwYMmQQL2ZMkQ2JLArg.png" 
+       data-label="Victim" 
+       data-color="#ff5555" 
+       data-align="right"
+       style="width: 100%; display: none;">
+  
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Ncr6LiVxKJfCYa21_ddeYQ.png" 
+       data-label="Attacker" 
+       data-color="#50fa7b" 
+       data-align="left"
+       style="width: 100%; display: none;">
+
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*e4r1sUcg2jYD2Zm0aqqhaQ.png" 
+       data-label="Attacker" 
+       data-color="#50fa7b" 
+       data-align="left"
+       style="width: 100%; display: none;">
+
+  <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #50fa7b; text-align: left; transition: all 0.3s;">
+    Attacker <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+  </div>
+
+</div>
+
+<script>
+function togglePerspective(e, container) {
+  e.stopPropagation();
+  var images = container.querySelectorAll('img');
+  var label = container.querySelector('.perspective-label');
+  var current = -1;
+
+  for (var i = 0; i < images.length; i++) {
+    if (images[i].style.display !== 'none') {
+      current = i;
+      images[i].style.display = 'none';
+      break;
+    }
+  }
+
+  var next = (current + 1) % images.length;
+  images[next].style.display = 'block';
+
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.style.color = images[next].getAttribute('data-color');
+  label.style.textAlign = images[next].getAttribute('data-align');
+}
+</script>
