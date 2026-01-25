@@ -355,3 +355,127 @@ You don't always need to install new software; the tools already on the system a
 </div>
 
 
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+  
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*pcT4c33k3tlrP36L6agadg.png" 
+       data-label="Victim (Sender)" 
+       data-color="#ff5555" 
+       data-align="left"
+       style="width: 100%; display: block;">
+
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Inyk7UvYkJt30c_RytchdQ.png" 
+       data-label="attacker" 
+       data-color="#50fa7b" 
+       data-align="right"
+       style="width: 100%; display: none;">
+
+  <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+  </div>
+
+</div>
+
+<script>
+function togglePerspective(e, container) {
+  e.stopPropagation();
+  var images = container.querySelectorAll('img');
+  var label = container.querySelector('.perspective-label');
+  var current = -1;
+
+  for (var i = 0; i < images.length; i++) {
+    if (images[i].style.display !== 'none') {
+      current = i;
+      images[i].style.display = 'none';
+      break;
+    }
+  }
+
+  var next = (current + 1) % images.length;
+  images[next].style.display = 'block';
+
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.style.color = images[next].getAttribute('data-color');
+  label.style.textAlign = images[next].getAttribute('data-align');
+}
+</script>
+
+### HTTP Exfiltration #2
+
+In many environments, outbound web traffic (HTTP/S) is the most likely protocol to be allowed through a firewall. By using a simple PHP "listener" on your server, you can turn a standard web request into a data mule.
+
+<img 
+  src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*y---MTXbxTAubMVhsA-YjQ.png"
+  alt="Website initial view"
+  class="zoomable-img"
+  style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
+/>
+
+we prepared a webserver with a data handler
+
+<div class="code-block-container" markdown="0">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+
+  {% raw %}
+  <pre><code class="language-php">
+&lt;?php
+if (isset($_POST['file'])) {
+    $file = fopen("/tmp/http.bs64","w");
+    fwrite($file, $_POST['file']);
+    fclose($file);
+}
+?&gt;
+  </code></pre>
+  {% endraw %}
+</div>
+
+<div onclick="togglePerspective(event,this)" style="cursor: pointer; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; margin: 20px 0;">
+  
+  <img src="https://miro.medium.com/v2/resize:fit:20000/format:webp/1*OntxvXeZbyxjXuqgGtBQfw.png" 
+       data-label="Victim (Sender)" 
+       data-color="#ff5555" 
+       data-align="left"
+       style="width: 100%; display: block;">
+
+  <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a8-UMeRzW62Ev8X_V7agkA.png" 
+       data-label="attacker" 
+       data-color="#50fa7b" 
+       data-align="right"
+       style="width: 100%; display: none;">
+
+  <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+  </div>
+
+</div>
+
+<script>
+function togglePerspective(e, container) {
+  e.stopPropagation();
+  var images = container.querySelectorAll('img');
+  var label = container.querySelector('.perspective-label');
+  var current = -1;
+
+  for (var i = 0; i < images.length; i++) {
+    if (images[i].style.display !== 'none') {
+      current = i;
+      images[i].style.display = 'none';
+      break;
+    }
+  }
+
+  var next = (current + 1) % images.length;
+  images[next].style.display = 'block';
+
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.style.color = images[next].getAttribute('data-color');
+  label.style.textAlign = images[next].getAttribute('data-align');
+}
+</script>
+
+> `NOTE`: If you don’t want data to be transmitted in cleartext, you can set up HTTPS using SSL keys stored on a server.
