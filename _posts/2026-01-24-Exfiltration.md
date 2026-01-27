@@ -548,3 +548,7 @@ function togglePerspective(e, container) {
   label.style.textAlign = images[next].getAttribute('data-align');
 }
 </script>
+
+### DNS Exfiltration
+
+To perform exfiltration via the DNS protocol, you need to control a domain name and set up DNS records, including NS, A, or TXT.
