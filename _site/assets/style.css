@@ -1579,3 +1579,57 @@ a.btn.btn-back.btn-back-bottom {
 }
 
 /* === Post content === */
+/* === Certificate Filters === */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--dracula-current-line);
+  color: var(--dracula-fg);
+  border: 1px solid var(--dracula-purple);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+  background: var(--dracula-purple);
+  color: var(--dracula-bg);
+  box-shadow: 0 0 10px var(--dracula-purple);
+}
+
+.filter-btn.active {
+  background: var(--dracula-green);
+  color: var(--dracula-bg);
+  border-color: var(--dracula-green);
+  box-shadow: 0 0 10px var(--dracula-green);
+}
+
+/* .cert-card display handled by original styles */
+
+.cert-card.hide {
+  display: none;
+}
+
+.cert-card.show {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
