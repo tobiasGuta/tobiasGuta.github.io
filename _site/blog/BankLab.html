@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simulating a Banking Security Infrastructure Part 1</title>
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+
+      /* Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* Align icons to baseline */
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .social-icons a {
+        font-size: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #000 !important;
+        background: none;
+        border-radius: 0;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 1em;
+        height: 1em;
+      }
+
+      .social-icons a:hover img {
+        /* This filter makes the icon blue on hover */
+        filter: invert(33%) sepia(98%) saturate(7496%) hue-rotate(222deg) brightness(97%) contrast(101%);
+      }
+
+      .social-icons i,
+      .social-icons img {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .social-icons img {
+        display: inline-block;
+        position: relative;
+        top: 0.12em; /* Move HackerOne and Mastodon icons down slightly */
+      }
+
+      /* Exception for HackerOne and Mastodon (icons should be white) */
+      .social-icons a[aria-label="HackerOne"] img,
+      .social-icons a[aria-label="Mastodon"] img {
+        filter: invert(1);
+      }
+
+      .social-icons i {
+        margin-top: -0.15em; /* Move LinkedIn and GitHub icons up just a little */
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/projects">
+            <i class="bi bi-kanban-fill"></i> Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/contact">
+            <i class="bi bi-envelope-fill"></i> Contact Me
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <main class="container py-5">
+      
+<!-- Normal post view -->
+<div id="scroll-progress-container">
+  <div id="scroll-progress-bar"></div>
+</div>
+<div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold glitch-header" data-value="Simulating a Banking Security Infrastructure Part 1" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Simulating a Banking Security Infrastructure Part 1</h1>
+      
+      <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
+        February 6, 2026
+      </p>
+
+      
+        <div class="categories mt-3 mb-2">
+          <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
+          
+            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
+              Walkthrough
+            </span>
+          
+        </div>
+      
+    </header>
+
+    
+      <div class="post-header-image">
+        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*JXgOF-w_gIDA7L2EAXP7iw.png" alt="Simulating a Banking Security Infrastructure Part 1 cover image" />
+      </div>
+    
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
+      <p>For my latest home lab project, I am building a Two-Tier Public Key Infrastructure (PKI) to simulate a high-security banking environment.</p>
+
+<p>Today, I established the “Trust Anchor” of the entire network: the Standalone Offline Root CA.</p>
+
+<h4 id="the-architecture-strategy">The Architecture Strategy</h4>
+
+<p>I designed this Root CA with specific security constraints:</p>
+
+<ul>
+  <li>
+    <p><strong>Offline Status:</strong> It is not joined to the domain. In a real production environment, this server would be physically unplugged (air-gapped) to protect the private keys from network attacks.</p>
+  </li>
+  <li>
+    <p><strong>Standalone Mode:</strong> Since it has no AD dependency, it acts purely as the source of truth for the hierarchy.</p>
+  </li>
+</ul>
+
+<h4 id="installing-the-core-role">Installing the Core Role</h4>
+
+<p>I started with a fresh installation of Windows Server 2025 (Server Core is preferred for production, but I used Desktop Experience to visualize the management tools).</p>
+
+<p>Using Server Manager, I deployed the Active Directory Certificate Services (AD CS) role. At this stage, the server is just waiting to be told what kind of Authority it will be.</p>
+
+<h4 id="configuration-install-the-role-software">Configuration Install the Role Software</h4>
+
+<p>We will use Server Manager for this so you can see exactly what is happening.</p>
+
+<ul>
+  <li>
+    <p>Open <strong>Server Manager</strong>.</p>
+
+    <ul>
+      <li>
+        <p>Click <strong>Manage</strong> (top right) &gt; <strong>Add Roles and Features</strong>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong> until you reach <strong>Server Roles</strong>.</p>
+      </li>
+      <li>
+        <p>Check the box for <strong>Active Directory Certificate Services</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*_DObGN7LEyfK7aaEJSOKyg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>
+        <p><em>Click “Add Features” when the popup appears.</em></p>
+
+        <ul>
+          <li>Click <strong>Next</strong> through the rest of the wizard.</li>
+        </ul>
+      </li>
+      <li>
+        <p>On the <strong>Role Services</strong> screen, ensure only <strong>Certification Authority</strong> is checked.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Ar2UKyM0qNXCSGerxmTSMg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>Click <strong>Install</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*GB9PGKrAiufM3kbkD0C7Rw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Once the installation bar finishes, you will see a **Yellow Flag ** notification at the top of Server Manager.</p>
+
+<ol>
+  <li>
+    <p>Click the <strong>Yellow Flag</strong>.</p>
+  </li>
+  <li>
+    <p>Click the blue link: <strong>“Configure Active Directory Certificate Services on the destination server”</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Md9_ismxk6-GIH_OdNNpZA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>follow this “Bank Security” configuration profile exactly:</p>
+
+<ol>
+  <li>
+    <p><strong>Credentials:</strong> Just click <strong>Next</strong> (using local Administrator).</p>
+  </li>
+  <li>
+    <p><strong>Role Services:</strong> Check <strong>Certification Authority</strong> &gt; <strong>Next</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*bAlibbB13v8koy1McEdmTQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>
+    <p><strong>Setup Type:</strong></p>
+
+    <ul>
+      <li>
+        <p>Select <strong>Standalone CA</strong>.</p>
+      </li>
+      <li>
+        <p><em>Why?</em> Because this server is NOT in the domain. It is an offline island.</p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a_bz1RCNH9b8l2fz2ygdLA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>CA Type:</strong> Select <strong>Root CA</strong> &gt; <strong>Next</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Private Key:</strong> Select <strong>Create a new private key</strong> &gt; <strong>Next</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Cryptography:</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>Key length:</strong> Change <code class="language-plaintext highlighter-rouge">2048</code> to <strong><code class="language-plaintext highlighter-rouge">4096</code></strong>. (We want this key to be unbreakable).</p>
+      </li>
+      <li>
+        <p><strong>Hash algorithm:</strong> SHA256 (Standard).</p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*I7qfMqS5WXzcSNie4odQHA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>CA Name:</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>Common name:</strong> Change this to <strong><code class="language-plaintext highlighter-rouge">Bank Root CA</code></strong>.</p>
+      </li>
+      <li>
+        <p><em>This is the name users will see in their certificates.</em></p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8s9WaZmYwNganzp4R5dHUw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>Validity Period:</strong></p>
+
+    <ul>
+      <li>
+        <p>Change <code class="language-plaintext highlighter-rouge">5 Years</code> to <strong><code class="language-plaintext highlighter-rouge">20 Years</code></strong>.</p>
+      </li>
+      <li>
+        <p><em>Why?</em> Root CAs are a pain to replace. You want this to last a long time.</p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Database:</strong> Leave defaults &gt; <strong>Next</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Confirmation:</strong> Click <strong>Configure</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dUV3bQmOu9Y3FZynQLzv8w.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>To verify your new Root CA is alive:</p>
+
+<ol>
+  <li>
+    <p>Click <strong>Tools</strong> (top right of Server Manager).</p>
+  </li>
+  <li>
+    <p>Select <strong>Certification Authority</strong>.</p>
+  </li>
+  <li>
+    <p>You should see a green checkmark next to <strong>Bank Root CA</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*XJVK4wDSyH0j0aMLLrPP0Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*jUZfGCTEGrv18NW-YthlJQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="configure-cdp-and-aia-extensions">Configure CDP and AIA Extensions</h4>
+
+<p><strong> Open Properties</strong></p>
+
+<ul>
+  <li>
+    <p>Right-click <strong>Bank Root CA</strong> (in the Certification Authority console).</p>
+  </li>
+  <li>
+    <p>Select <strong>Properties</strong>.</p>
+  </li>
+  <li>
+    <p>Click the <strong>Extensions</strong> tab.</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Aur__CQd3tXX-Tg7lIuV2A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="configure-cdp-crl-distribution-point">Configure CDP (CRL Distribution Point)</h4>
+
+<p><em>Ensure <code class="language-plaintext highlighter-rouge">Select extension:</code> is set to <strong>CRL Distribution Point (CDP)</strong>.</em></p>
+
+<ol>
+  <li>
+    <p><strong>Clean up:</strong> Remove all the existing entries <strong>EXCEPT</strong> the one that starts with <code class="language-plaintext highlighter-rouge">C:\Windows\System32...</code>. (Keep that one it’s where the file is created locally).</p>
+
+    <ul>
+      <li><em>Select an entry -&gt; Click Remove -&gt; Yes.</em></li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*BUWH1JD0z1KhMT-OZtvJhA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ul>
+  <li>
+    <p><strong>Add the “Future” Web Path:</strong></p>
+
+    <ul>
+      <li>
+        <p>Click <strong>Add…</strong></p>
+      </li>
+      <li>
+        <p>In the bottom box, type this <strong>exact</strong> URL (Case sensitive!): <code class="language-plaintext highlighter-rouge">http://pki.bank.lab/CertEnroll/&lt;CaName&gt;&lt;CRLNameSuffix&gt;&lt;DeltaCRLAllowed&gt;.crl</code></p>
+      </li>
+      <li>
+        <blockquote>
+          <p><em>Tip: You can type the <code class="language-plaintext highlighter-rouge">http://...</code> part and then use the “Insert” button to add the <code class="language-plaintext highlighter-rouge">&lt;variables&gt;</code>. Or just copy-paste carefully.</em></p>
+        </blockquote>
+      </li>
+      <li>
+        <p>Click <strong>OK</strong>.</p>
+
+        <ul>
+          <li><strong>Set Permissions (Crucial):</strong></li>
+        </ul>
+      </li>
+      <li>
+        <p>Highlight the new HTTP URL you just added.</p>
+      </li>
+      <li>
+        <p>Check these two boxes at the bottom:</p>
+
+        <ul>
+          <li>
+            <p><strong>Include in the CDP extension of issued certificates</strong></p>
+          </li>
+          <li>
+            <p><strong>Include in CRLs. Clients use this to find Delta CRL locations</strong></p>
+          </li>
+        </ul>
+      </li>
+      <li><em>Uncheck everything else for this HTTP path.</em></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*hvBeVpGuizXCoBXBO71YFQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="configure-aia-authority-information-access">Configure AIA (Authority Information Access)</h4>
+
+<p><em>Change <code class="language-plaintext highlighter-rouge">Select extension:</code> to <strong>Authority Information Access (AIA)</strong>.</em></p>
+
+<ol>
+  <li><strong>Clean up:</strong> Remove all entries <strong>EXCEPT</strong> the <code class="language-plaintext highlighter-rouge">C:\Windows\System32...</code> one.</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ZUDsAzq0APrh6ZBtOrycJg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>
+    <p><strong>Add the Web Path:</strong></p>
+
+    <ul>
+      <li>
+        <p>Click <strong>Add…</strong></p>
+      </li>
+      <li>
+        <p>Type this exact URL: <code class="language-plaintext highlighter-rouge">http://pki.bank.lab/CertEnroll/&lt;ServerDNSName&gt;_&lt;CaName&gt;&lt;CertificateName&gt;.crt</code></p>
+      </li>
+      <li>
+        <p>Click <strong>OK</strong>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Set Permissions:</strong></p>
+
+    <ul>
+      <li>
+        <p>Highlight the new HTTP URL.</p>
+      </li>
+      <li>
+        <p>Check this box:</p>
+
+        <ul>
+          <li><strong>Include in the AIA extension of issued certificates</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*6GLM_2I3096No514xYlpWQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="publish-the-first-crl">Publish the First CRL</h4>
+
+<p>Now that the configuration knows where to send people, we need to generate the “Blacklist” file (CRL) that contains these new instructions.</p>
+
+<ul>
+  <li>
+    <p>In the console, expand <strong>Bank Root CA</strong>.</p>
+
+    <ul>
+      <li>
+        <p>Right-click the folder <strong>Revoked Certificates</strong>.</p>
+      </li>
+      <li>
+        <p>Select <strong>All Tasks</strong> &gt; <strong>Publish</strong>.</p>
+      </li>
+      <li>
+        <p>Select <strong>New CRL</strong> &gt; <strong>OK</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*X7az0fbd1HDI8oYldTnwPQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7bWm9Gk_7aQElmx2AKOOvA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Go to file explorer <code class="language-plaintext highlighter-rouge">C:\Windows\System32\CertSrv\CertEnroll</code>. You should see two files:</p>
+
+<ol>
+  <li>
+    <p>A <code class="language-plaintext highlighter-rouge">.crl</code> file (The revocation list).</p>
+  </li>
+  <li>
+    <p>A <code class="language-plaintext highlighter-rouge">.crt</code> file (The root certificate itself).</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*4D5ziHYMu0SnDsEaGl4K-A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>Now we have to transport those two files (.crt and .crl) from your isolated Root CA to the Domain Controller (DC01) so the rest of the network can trust them.</p>
+
+<p>In a real bank, you would copy these to a rigorously scanned USB drive. In our lab, since the cable is still “plugged in” (virtually), we will use the network for a quick transfer before we sever the connection forever.</p>
+
+<h4 id="transferring-files">Transferring Files</h4>
+
+<p><strong>Prepare the Destination (On DC01)</strong></p>
+
+<ul>
+  <li>
+    <p>Switch to your <strong>DC01</strong> virtual machine.</p>
+  </li>
+  <li>
+    <p>Log in as <strong><code class="language-plaintext highlighter-rouge">BANK\Administrator</code></strong>.</p>
+  </li>
+  <li>
+    <p>Open <strong>File Explorer</strong> and go to <strong>This PC</strong> &gt; <strong>Local Disk (C:)</strong>.</p>
+  </li>
+  <li>
+    <p>Right-click in the empty space &gt; <strong>New</strong> &gt; <strong>Folder</strong>.</p>
+  </li>
+  <li>
+    <p>Name it: <strong><code class="language-plaintext highlighter-rouge">PKI</code></strong>.</p>
+
+    <ul>
+      <li><em>(This will be our staging folder for all certificate files).</em></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9fOzKp1SEVgKLNoHZGeJiQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Copy the Files (From ROOTCA01)</strong></p>
+
+<ul>
+  <li>
+    <p>Switch back to <strong>ROOTCA01</strong>.</p>
+  </li>
+  <li>
+    <p>Make sure you are looking at the folder with the 2 files (<code class="language-plaintext highlighter-rouge">C:\Windows\System32\CertSrv\CertEnroll</code>).</p>
+  </li>
+  <li>
+    <p>In the file explorer address bar at the top, type this path and press <strong>Enter</strong>: <code class="language-plaintext highlighter-rouge">\\192.168.10.10\c$</code></p>
+
+    <ul>
+      <li><em>(This tells the Root CA to talk to the DC’s C: drive).</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Authentication:</strong> It will ask for a username/password.</p>
+
+    <ul>
+      <li>
+        <p>Username: <strong><code class="language-plaintext highlighter-rouge">BANK\Administrator</code></strong></p>
+      </li>
+      <li>
+        <p>Password: <strong><code class="language-plaintext highlighter-rouge">BankLab1!</code></strong></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Open the <strong><code class="language-plaintext highlighter-rouge">PKI</code></strong> folder you just created.</p>
+  </li>
+  <li>
+    <p><strong>Copy/Paste:</strong> Drag and drop the <code class="language-plaintext highlighter-rouge">.crt</code> (Certificate) and <code class="language-plaintext highlighter-rouge">.crl</code> (Revocation List) files from the ROOTCA01 folder into this PKI folder.</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eaoQ0DEDcRhZkyX8eIZQPQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="go-offline-the-air-gap">Go Offline (The “Air Gap”)</h4>
+
+<p>Now that the files are safely on the Domain Controller, ROOTCA01 has finished its job for now.</p>
+
+<p>It’s time to simulate the security procedure of taking it offline.</p>
+
+<ul>
+  <li>
+    <p>On <strong>ROOTCA01</strong>, close all windows.</p>
+
+    <ul>
+      <li>
+        <p>Click <strong>Start</strong> &gt; <strong>Power</strong> &gt; <strong>Shut Down</strong>.</p>
+      </li>
+      <li>
+        <p>Select <strong>Other (Planned)</strong> and click <strong>Continue</strong>.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The Root CA is now <code class="language-plaintext highlighter-rouge">Offline.</code> It will remain powered down and disconnected from the network until it is specifically needed to sign the Subordinate CA’s certificate request. This ensures that the master private keys are physically inaccessible to online attackers.</p>
+
+<h4 id="trust-test">Trust Test</h4>
+
+<p>We are going to verify if your server trusts the certificate yet.</p>
+
+<p><strong>1. The “Before” Check (The Error Screenshot)</strong></p>
+
+<ul>
+  <li>
+    <p>Go to your folder <code class="language-plaintext highlighter-rouge">C:\PKI</code>.</p>
+  </li>
+  <li>
+    <p>Double-click on <strong><code class="language-plaintext highlighter-rouge">Bank Root CA.crt</code></strong>.</p>
+  </li>
+  <li>
+    <p>Look at the <strong>General</strong> tab.</p>
+  </li>
+  <li>
+    <p>You will likely see a <strong>Red Cross</strong> and a message saying:</p>
+
+    <blockquote>
+      <p><em>“This CA Root certificate is not trusted. To enable trust, install this certificate in the Trusted Root Certification Authorities store.”</em></p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*-q8uA95fRIe8XZAebSfxVQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="publish-the-trust-to-active-directory">Publish the Trust to Active Directory</h4>
+
+<p>Perform these steps on DC01 (logged in as BANK\Administrator).</p>
+
+<p><strong>1. Open PowerShell (Admin)</strong></p>
+
+<ul>
+  <li>Right-click <strong>Start</strong> &gt; <strong>Windows PowerShell (Admin)</strong>.</li>
+</ul>
+
+<p><strong>2. Navigate to your PKI folder</strong> Type this command and press <strong>Enter</strong>:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+cd C:\PKI
+</code></pre>
+</div>
+
+<p><strong>3. Check the filenames</strong> Type <code class="language-plaintext highlighter-rouge">ls</code> or <code class="language-plaintext highlighter-rouge">dir</code> to see exactly what your files are named. They are likely something like <code class="language-plaintext highlighter-rouge">Bank Root CA.crt</code> and <code class="language-plaintext highlighter-rouge">Bank Root CA.crl</code>. <em>(If they are named differently, update the commands below to match exactly).</em></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*koMeGQBckk41nB_QygbKUg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>4. Publish the Root Certificate</strong> we have to manually tell Active Directory which server this belongs to. We do this by adding the Server Name (ROOTCA01) to the end of the command.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+certutil -dspublish -f "Bank Root CA.crl" ROOTCA01
+</code></pre>
+</div>
+
+<blockquote>
+  <p>Note the ROOTCA01 at the end. This tells AD: “Put this in the container for the server named ROOTCA01”.)</p>
+</blockquote>
+
+<h4 id="publish-the-root-certificate">Publish the Root Certificate</h4>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+certutil -dspublish -f "ROOTCA01_Bank Root CA.crt" RootCA
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*nxuY-1WGIU_wmeutWXoT-A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="install-the-web-server-iis">Install the Web Server (IIS)</h4>
+
+<p>Now we need to turn DC01 into a web server so it can host the files for the URLs we configured (http://pki.bank.lab/…).</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+Install-WindowsFeature Web-Server -IncludeManagementTools
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*5l8KjVE4vUEwrVh4Yr1loQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>It might take a minute.</p>
+
+<h4 id="create-the-certenroll-folder">Create the “CertEnroll” Folder</h4>
+
+<p>Once IIS is installed, we need to create the specific folder where the certificates will live and copy your files into it.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+New-Item -ItemType Directory -Path "C:\inetpub\wwwroot\CertEnroll"
+</code></pre>
+</div>
+
+<p>Copy the files</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+Copy-Item -Path "C:\PKI\*.*" -Destination "C:\inetpub\wwwroot\CertEnroll"
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dZoDG5HNEO8Ls-KBcO1dTQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="create-the-dns-record-on-dc01">Create the DNS Record (On DC01)</h4>
+
+<ul>
+  <li>
+    <p>Open <strong>Server Manager</strong>.</p>
+
+    <ul>
+      <li>
+        <p>Click <strong>Tools</strong> &gt; <strong>DNS</strong>.</p>
+      </li>
+      <li>
+        <p>Expand <strong>DC01</strong> &gt; <strong>Forward Lookup Zones</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*iYVgYXG22hg7VYwrYKdjhg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>
+        <p>Click on the folder <strong><code class="language-plaintext highlighter-rouge">bank.lab</code></strong>.</p>
+      </li>
+      <li>
+        <p>Right-click in the empty white space on the right &gt; <strong>New Host (A or AAAA)…</strong></p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*skCKKfLi3l9R41GGk1ZVMA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>
+        <p><strong>Name:</strong> Type <code class="language-plaintext highlighter-rouge">pki</code>.</p>
+      </li>
+      <li>
+        <p><em>(Notice the “Fully qualified domain name” box automatically fills in <code class="language-plaintext highlighter-rouge">pki.bank.lab</code>).</em></p>
+
+        <ul>
+          <li><strong>IP address:</strong> Type <code class="language-plaintext highlighter-rouge">192.168.10.10</code>.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Click <strong>Add Host</strong>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*zRoJRo2PT8NB_UN3-0stLg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>
+        <p><em>You should see a message: “The host record pki.bank.lab was successfully created.”</em></p>
+
+        <ul>
+          <li>Click <strong>OK</strong> and then <strong>Done</strong>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Now that DNS works and AD is updated, let’s see if your Domain Controller finally trusts the Root CA.</p>
+
+<p><strong>Force Update:</strong> Open PowerShell and run:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">javascript</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="learning-javascript">
+gpupdate /force
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*A2Y0AQVtCSGqtSggBjhgrA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>Check the Certificate:</strong></p>
+
+<ul>
+  <li>
+    <p>Go to <code class="language-plaintext highlighter-rouge">C:\PKI</code>.</p>
+  </li>
+  <li>
+    <p>Open <strong><code class="language-plaintext highlighter-rouge">ROOTCA01_Bank Root CA.crt</code></strong>.</p>
+  </li>
+  <li>
+    <p><strong>Look at the General Tab.</strong></p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*egx6rOhD5HHyMlQcjUc0vw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="final-verification">(Final Verification)</h4>
+
+<p>You configured the Root CA to tell computers: “Go to http://pki.bank.lab/… to check if I am valid.” Let’s make sure that link actually works.</p>
+
+<p>On DC01, open the Microsoft Edge browser.</p>
+
+<p>The Result:</p>
+
+<blockquote>
+  <p>If it downloads a file (or asks to save the ‘Bank Root CA.crl’ file), we are all set.</p>
+</blockquote>
+
+<p>This proves that DNS resolved pki.bank.lab -&gt; IIS received the request -&gt; and served the file correctly.</p>
+
+<p>that successful download actually proves:</p>
+
+<ul>
+  <li>
+    <p><strong>DNS is working:</strong> Your computer asked for <code class="language-plaintext highlighter-rouge">pki</code> and found the Domain Controller.</p>
+
+    <ul>
+      <li>
+        <p><strong>IIS is working:</strong> The web server received the request and knew exactly where the file was.</p>
+      </li>
+      <li>
+        <p><strong>Permissions are correct:</strong> The server allowed you to take the file.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ngbsLyT5lwk6JDn0p7xlZw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h3 id="whats-next-part-2">What’s Next: Part 2</h3>
+
+<p>With the “Trust Anchor” (Root CA) firmly established and secured offline, the foundation is laid. However, a Root CA should never issue certificates directly to end-users.</p>
+
+<p>In <strong>Part 2</strong>, I will build the operational layer of this infrastructure: the <strong>Enterprise Subordinate CA (<code class="language-plaintext highlighter-rouge">SUBCA01</code>)</strong>.</p>
+
+<ul>
+  <li>
+    <p><strong>Domain Integration:</strong> Unlike the Root, this server will join the <code class="language-plaintext highlighter-rouge">bank.lab</code> domain.</p>
+  </li>
+  <li>
+    <p><strong>The Signing Ceremony:</strong> I will bring the Root CA back online temporarily to sign the Subordinate’s certificate request.</p>
+  </li>
+  <li>
+    <p><strong>Issuance:</strong> We will configure this new server to automatically issue certificates to users and computers.</p>
+  </li>
+</ul>
+
+<p>Stay tuned as we turn this “Chain of Trust” into a fully functional banking security service.</p>
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
+      <a href="/posts" class="btn btn-back btn-back-bottom">
+        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+      </a>
+    </footer>
+  </article>
+</div>
+
+<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
+<style>
+/* === IMPRESSIVE FEATURES CSS === */
+
+/* 1. Scroll Progress Bar */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 9999;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  background: var(--dracula-pink);
+  width: 0%;
+  box-shadow: 0 0 10px var(--dracula-pink), 0 0 20px var(--dracula-purple);
+  transition: width 0.1s;
+}
+
+/* 3. Glitch Header Effect */
+.glitch-header {
+  position: relative;
+}
+
+.glitch-header:hover {
+  color: var(--dracula-cyan);
+  text-shadow: 2px 0 var(--dracula-pink), -2px 0 var(--dracula-green);
+}
+</style>
+
+<script>
+/* === IMPRESSIVE FEATURES JS === */
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. Scroll Progress Bar Logic
+  window.addEventListener('scroll', function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    if(progressBar) {
+      progressBar.style.width = scrolled + "%";
+    }
+  });
+
+  // 2. Hacker Text Scramble Effect for Title
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*";
+  const header = document.querySelector(".glitch-header");
+  
+  if(header) {
+    let interval = null;
+    
+    // Run once on load
+    scrambleText(header);
+    
+    // Run on hover
+    header.onmouseover = event => {  
+      scrambleText(event.target);
+    };
+    
+    function scrambleText(target) {
+      let iteration = 0;
+      clearInterval(interval);
+      
+      const originalText = target.dataset.value;
+      
+      interval = setInterval(() => {
+        target.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return originalText[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+        
+        if(iteration >= originalText.length) { 
+          clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    }
+  }
+
+});
+</script>
+
+
+
+
+      
+        
+          <!-- Giscus comments - Only show for unlocked posts -->
+          <div id="comments"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="tobiasGuta/tobiasGuta.github.io"
+                  data-repo-id="R_kgDOOxswYQ"
+                  data-category="General"
+                  data-category-id="DIC_kwDOOxswYc4CrEhp"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="transparent_dark"
+                  data-lang="en"
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I’m a cybersecurity student and bug bounty hunter focused on penetration testing, web exploitation, and offensive security. Passionate about AI’s role in threat detection, I thrive on solving complex security challenges and staying ahead of emerging threats. I'm actively seeking internships, research roles, and opportunities to grow within the cybersecurity community.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.querySelector('pre code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          // Store original content
+          const originalHTML = button.innerHTML;
+          
+          // Add copied class for styling
+          button.classList.add('copied');
+          
+          // Change to checkmark icon
+          button.innerHTML = `
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          `;
+          
+          // Reset after 1.5 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Show error state
+          const originalHTML = button.innerHTML;
+          button.style.background = '#ef4444';
+          button.innerHTML = '✗';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+          }, 1000);
+        });
+      }
+    </script>
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>
