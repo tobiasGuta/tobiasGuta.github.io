@@ -81,6 +81,16 @@ permalink: /certificates/
     </div>
   </div>
 
+  <div class="cert-card" data-category="lab">
+    <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*j8Kkol1tgSN6q5nYnZ_KeA.png" alt="mastercard" class="cert-img">
+    <div>
+      <strong>Implement and manage Active Directory Certificate Services</strong><br>
+      <span class="cert-org">microsoft </span><br>
+      <span class="cert-date">Issued: Feb 06, 2026</span><br>
+      <a href="https://learn.microsoft.com/en-us/users/tobiasare-1489/achievements/nmt3tccf?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank">View Lab</a>
+    </div>
+  </div>
+
 </div>
 
 <script>
