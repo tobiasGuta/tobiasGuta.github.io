@@ -1,4 +1,450 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-06T19:58:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Simulating a Banking Security Infrastructure Part 1</title><link href="/blog/BankLab" rel="alternate" type="text/html" title="Simulating a Banking Security Infrastructure Part 1" /><published>2026-02-06T00:00:00-05:00</published><updated>2026-02-06T00:00:00-05:00</updated><id>http://localhost:4000/blog/BankLab</id><content type="html" xml:base="/blog/BankLab"><![CDATA[<p>For my latest home lab project, I am building a Two-Tier Public Key Infrastructure (PKI) to simulate a high-security banking environment.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-07T13:14:13-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Simulating a Banking Security Infrastructure Part 2 The Subordinate (Issuing) CA</title><link href="/blog/BankLab" rel="alternate" type="text/html" title="Simulating a Banking Security Infrastructure Part 2 The Subordinate (Issuing) CA" /><published>2026-02-06T00:00:00-05:00</published><updated>2026-02-06T00:00:00-05:00</updated><id>http://localhost:4000/blog/BankLab2</id><content type="html" xml:base="/blog/BankLab"><![CDATA[<p>This server, <code class="language-plaintext highlighter-rouge">SUBCA01</code>, is the “worker bee.” It will stay online, join the domain, and issue certificates to every user and computer in my bank.</p>
+
+<p>This server <strong>must</strong> be able to talk to <code class="language-plaintext highlighter-rouge">DC01</code> to join the domain.</p>
+
+<p><strong>1. Rename the Server</strong></p>
+
+<ul>
+  <li>
+    <p>Rename to: <strong><code class="language-plaintext highlighter-rouge">SUBCA01</code></strong></p>
+  </li>
+  <li>
+    <p><em>Restart required.</em></p>
+  </li>
+</ul>
+
+<p><strong>2. Configure Static IP</strong></p>
+
+<ul>
+  <li>
+    <p><strong>IP Address:</strong> <code class="language-plaintext highlighter-rouge">192.168.10.20</code></p>
+  </li>
+  <li>
+    <p><strong>Subnet Mask:</strong> <code class="language-plaintext highlighter-rouge">255.255.255.0</code></p>
+  </li>
+  <li>
+    <p><strong>Default Gateway:</strong> <code class="language-plaintext highlighter-rouge">192.168.10.1</code></p>
+  </li>
+  <li>
+    <p><strong>Preferred DNS:</strong> <code class="language-plaintext highlighter-rouge">192.168.10.10</code></p>
+  </li>
+</ul>
+
+<h4 id="join-the-domain">Join the Domain</h4>
+
+<p>Once the IP is set, let’s connect it to the bank network.</p>
+
+<ol>
+  <li>
+    <p>Right-click <strong>Start</strong> &gt; <strong>System</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Rename this PC (advanced)</strong>.</p>
+  </li>
+  <li>
+    <p>Click <strong>Change…</strong></p>
+  </li>
+  <li>
+    <p><strong>Member of Domain:</strong> <code class="language-plaintext highlighter-rouge">bank.lab</code></p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*m2TRPUE6KX2ycMTe_esacw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>
+    <p><strong>Credentials:</strong></p>
+
+    <ul>
+      <li>
+        <p>User: <code class="language-plaintext highlighter-rouge">Administrator</code></p>
+      </li>
+      <li>
+        <p>Pass: <code class="language-plaintext highlighter-rouge">BankLab1!</code></p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*op73yHPJVdsdMUoASEG7zQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Success:</strong> You should see “Welcome to the bank.lab domain.”</li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*rSQI9Wsb1rb87ITyhUmCyQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li><strong>Restart</strong> the server.</li>
+</ol>
+
+<h4 id="install-the-role-software">Install the Role Software</h4>
+
+<ul>
+  <li>
+    <p>Log into <strong>SUBCA01</strong> as <strong><code class="language-plaintext highlighter-rouge">BANK\Administrator</code></strong>.</p>
+
+    <ul>
+      <li>
+        <p>Open <strong>Server Manager</strong>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Manage</strong> &gt; <strong>Add Roles and Features</strong>.</p>
+      </li>
+      <li>
+        <p>Click <strong>Next</strong> until you reach <strong>Server Roles</strong>.</p>
+      </li>
+      <li>
+        <p>Check <strong>Active Directory Certificate Services</strong>. (Click “Add Features” when prompted).</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*uDrk6Br8yIj6otjldKzxdg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+    <ul>
+      <li>
+        <p>On the <strong>Role Services</strong> screen, check <strong>two</strong> boxes this time:</p>
+      </li>
+      <li>
+        <p><strong>Certification Authority</strong></p>
+      </li>
+      <li>
+        <p><strong>Certification Authority Web Enrollment</strong> (This allows users to request certificates via a web browser later).
+<img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*jiUZf6B_ei8PDH90i1y7jw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+        <ul>
+          <li>Click <strong>Next</strong> through the rest and then <strong>Install</strong>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*OWXHAUMsLs3MGnAFVDa3rw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="configure-the-subordinate-ca">Configure the Subordinate CA</h4>
+
+<p>Once the install is done, click that <strong>Yellow Flag ** and click the **Configure</strong> link.</p>
+
+<ol>
+  <li>
+    <p><strong>Credentials:</strong> <code class="language-plaintext highlighter-rouge">BANK\Administrator</code> -&gt; <strong>Next</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Role Services:</strong> Check <strong>both</strong> boxes (CA and Web Enrollment) -&gt; <strong>Next</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*DFZiRCVIjmOsEBF0V2gHxQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<ol>
+  <li>
+    <p><strong>Setup Type:</strong></p>
+
+    <ul>
+      <li>
+        <p>Select <strong>Enterprise CA</strong>.</p>
+      </li>
+      <li>
+        <p><em>Why?</em> Because this server is part of the domain and will use Active Directory to manage certificates.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*IEdVhv2RDMwMwS-ZXtmBnA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>CA Type:</strong></p>
+
+    <ul>
+      <li>
+        <p>Select <strong>Subordinate CA</strong>.</p>
+      </li>
+      <li>
+        <p><em>Why?</em> Because <code class="language-plaintext highlighter-rouge">Bank Root CA</code> is the boss, and this server works for it.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*uYf1_Y8h1oA3NPjnwtRPRg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>Private Key:</strong> <strong>Create a new private key</strong> -&gt; <strong>Next</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Cryptography:</strong></p>
+
+    <ul>
+      <li>
+        <p><strong>Key Length:</strong> <code class="language-plaintext highlighter-rouge">2048</code>. (Subordinate CAs usually use 2048 while the Root uses 4096).</p>
+      </li>
+      <li>
+        <p><strong>Hash:</strong> <code class="language-plaintext highlighter-rouge">SHA256</code>.</p>
+      </li>
+    </ul>
+
+    <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*MPVTplkWunBWPh9gQtlI5Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  </li>
+  <li>
+    <p><strong>CA Name:</strong></p>
+
+    <ul>
+      <li><strong>Common Name:</strong> Change to <strong><code class="language-plaintext highlighter-rouge">Bank Issuing CA</code></strong>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Certificate Request:</strong></p>
+
+    <ul>
+      <li>
+        <p>Select <strong>Save a certificate request to a file on the target machine</strong>.</p>
+      </li>
+      <li>
+        <p>Note the location (usually <code class="language-plaintext highlighter-rouge">C:\</code>). This is the “ID Application” we have to take to the Root CA to get signed.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Confirmation:</strong> Click <strong>Configure</strong>.</p>
+  </li>
+</ol>
+
+<p>At the end, the wizard will say it succeeded, but it will also give you a warning: <code class="language-plaintext highlighter-rouge">The Certification Authority is not started because the certificate is not yet installed.</code></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*hH_o91Nj1bVTCTeXeMtwTw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>That message is exactly what we were expecting! It confirms that your Subordinate CA has successfully generated its “application” (the .req file) and is now waiting for the Root CA to approve it.</p>
+
+<p>As the message says, the installation is incomplete because it won’t start until it has a valid certificate from its parent.</p>
+
+<p><strong>1. Locate the Request File</strong></p>
+
+<ul>
+  <li>
+    <p>Go to the <strong>C: drive</strong> on <strong>SUBCA01</strong>.</p>
+  </li>
+  <li>
+    <p>You should see the file: <code class="language-plaintext highlighter-rouge">SUBCA01.bank.lab_bank-SUBCA01-CA.req</code>.</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*bJxScyL04CN3Hbsl5GkfQA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>2. Move it to the Staging Area</strong></p>
+
+<ul>
+  <li>
+    <p>Copy that <code class="language-plaintext highlighter-rouge">.req</code> file.</p>
+  </li>
+  <li>
+    <p>Paste it into the <code class="language-plaintext highlighter-rouge">C:\PKI</code> folder on your <strong>DC01</strong> (your “bridge” server).</p>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*C37ACyf_8-Q8CiV3V1d82g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>3. Bring the Root CA Online</strong></p>
+
+<ul>
+  <li>
+    <p>Power on your <strong>ROOTCA01</strong> VM.</p>
+  </li>
+  <li>
+    <p>Log in as the local <strong>Administrator</strong>.</p>
+  </li>
+</ul>
+
+<p><strong>4. Pull the Request onto the Root CA</strong></p>
+
+<ul>
+  <li>
+    <p>On <strong>ROOTCA01</strong>, open File Explorer.</p>
+  </li>
+  <li>
+    <p>In the address bar, type <code class="language-plaintext highlighter-rouge">\\192.168.10.10\c$\PKI</code> and press Enter.</p>
+  </li>
+  <li>
+    <p>Copy the <code class="language-plaintext highlighter-rouge">.req</code> file from the DC and paste it onto the <strong>Root CA’s local C: drive</strong>.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>“Note: In a real banking environment, you would use a USB drive to transfer these files. For this lab simulation, I temporarily connected the Root CA to the network.</p>
+</blockquote>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*9VhxS30ioTXYcyxhjVyiOA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><strong>5. Submit the Request</strong></p>
+
+<ul>
+  <li>
+    <p>Open the <strong>Certification Authority</strong> console on the Root CA.</p>
+  </li>
+  <li>
+    <p>Right-click the CA Name (Bank Root CA).</p>
+  </li>
+  <li>
+    <p>Select <strong>All Tasks</strong> &gt; <strong>Submit new request…</strong></p>
+  </li>
+  <li>
+    <p>Navigate to the <code class="language-plaintext highlighter-rouge">C:\</code> drive and select the <code class="language-plaintext highlighter-rouge">.req</code> file you just copied.</p>
+  </li>
+  <li>
+    <p><em>Now</em> the certificate will appear in the <strong>Issued Certificates</strong> folder.</p>
+  </li>
+</ul>
+
+<h4 id="export-the-issued-certificate-on-rootca01">Export the Issued Certificate (On ROOTCA01)</h4>
+
+<ul>
+  <li>
+    <p>Click on the <strong>Issued Certificates</strong> folder in the left pane.</p>
+
+    <ul>
+      <li>
+        <p>Double-click the certificate that was just created (it should say <strong>Bank Issuing CA</strong>).</p>
+      </li>
+      <li>
+        <p>Click the <strong>Details</strong> tab.</p>
+      </li>
+      <li>
+        <p>Click <strong>Copy to File…</strong></p>
+      </li>
+      <li>
+        <p>Follow the <strong>Certificate Export Wizard</strong>:</p>
+      </li>
+      <li>
+        <p><strong>Welcome:</strong> Click <strong>Next</strong>.</p>
+      </li>
+      <li>
+        <p><strong>Export File Format:</strong> Keep the default (<strong>DER encoded binary X.509 (.CER)</strong>). Click <strong>Next</strong>.</p>
+      </li>
+      <li>
+        <p><strong>File to Export:</strong> Save it to your <strong>C:</strong> drive as <code class="language-plaintext highlighter-rouge">BankIssuingCA.cer</code>.</p>
+      </li>
+      <li>
+        <p><strong>Completing:</strong> Click <strong>Finish</strong>.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*RvgASY7UOfsaTRZNEjFpqA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="final-handover">Final Handover</h4>
+
+<p>Now we move the file back across the “bridge” (the DC).</p>
+
+<ol>
+  <li>
+    <p>On <strong>ROOTCA01</strong>, open File Explorer.</p>
+  </li>
+  <li>
+    <p>Copy <code class="language-plaintext highlighter-rouge">C:\BankIssuingCA.cer</code>.</p>
+  </li>
+  <li>
+    <p>In the address bar, type <code class="language-plaintext highlighter-rouge">\\192.168.10.10\c$\PKI</code> and press <strong>Enter</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Paste</strong> the file into the PKI folder on the DC.</p>
+  </li>
+  <li>
+    <p><strong>Don’t Forget the CRL!</strong></p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>While on the Root CA, go to <code class="language-plaintext highlighter-rouge">C:\Windows\System32\CertSrv\CertEnroll</code>.</p>
+  </li>
+  <li>
+    <p>Copy the file ending in <code class="language-plaintext highlighter-rouge">.crl</code> (e.g., <code class="language-plaintext highlighter-rouge">Bank Root CA.crl</code>).</p>
+  </li>
+  <li>
+    <p>Paste this into the PKI folder on the DC along with the <code class="language-plaintext highlighter-rouge">.cer</code> file.</p>
+  </li>
+</ul>
+
+<ol>
+  <li><strong>Shutdown ROOTCA01</strong></li>
+</ol>
+
+<h4 id="install-the-certificate-on-subca01">Install the Certificate (On SUBCA01)</h4>
+
+<p>This is the moment where <strong>SUBCA01</strong> finally becomes active.</p>
+
+<ol>
+  <li>
+    <p>Log into <strong>SUBCA01</strong>.</p>
+  </li>
+  <li>
+    <p>Go to <code class="language-plaintext highlighter-rouge">\\192.168.10.10\c$\PKI</code> and copy <code class="language-plaintext highlighter-rouge">BankIssuingCA.cer</code> to your local <strong>C:</strong> drive.</p>
+  </li>
+  <li>
+    <p>Open the <strong>Certification Authority</strong> console (<strong>Tools</strong> &gt; <strong>Certification Authority</strong>).</p>
+  </li>
+  <li>
+    <p>Right-click <strong>Bank Issuing CA</strong> (it will currently have a red “stopped” icon).</p>
+  </li>
+  <li>
+    <p>Select <strong>All Tasks</strong> &gt; <strong>Install CA Certificate…</strong></p>
+  </li>
+  <li>
+    <p>Select the <code class="language-plaintext highlighter-rouge">C:\BankIssuingCA.cer</code> file and click <strong>Open</strong>.</p>
+  </li>
+</ol>
+
+<p><strong>Publish the Root CRL:</strong></p>
+
+<ul>
+  <li>
+    <p>On <strong>SUBCA01</strong>, copy the <code class="language-plaintext highlighter-rouge">.crl</code> file you brought over.</p>
+  </li>
+  <li>
+    <p>Open a Command Prompt as Administrator.</p>
+  </li>
+  <li>
+    <p>Run: <code class="language-plaintext highlighter-rouge">certutil -addstore -f Root "C:\Bank Root CA.crl"</code></p>
+  </li>
+  <li>
+    <p><em>(This manually teaches the Subordinate CA that the Root is valid, helping the service start).</em></p>
+  </li>
+</ul>
+
+<h4 id="start-the-service">Start the Service</h4>
+
+<ol>
+  <li>
+    <p>In the Certification Authority console, right-click <strong>Bank Issuing CA</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>All Tasks</strong> &gt; <strong>Start Service</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="resume">Resume:</h3>
+
+<p>With the Root CA secured offline, I shifted focus to the <strong>Issuing CA</strong> (<code class="language-plaintext highlighter-rouge">SUBCA01</code>). This is the server that remains online to handle day-to-day certificate requests from users and computers.</p>
+
+<p><strong>1. Domain Integration</strong> Unlike the Root, the Subordinate CA was joined to the <code class="language-plaintext highlighter-rouge">bank.lab</code> domain. This allows it to use <strong>Active Directory Certificate Services (AD CS)</strong> in <strong>Enterprise</strong> mode, enabling automated certificate enrollment for domain members.</p>
+
+<p><strong>2. The Installation &amp; Web Enrollment</strong> I installed the <strong>Certification Authority</strong> and <strong>Certification Authority Web Enrollment</strong> roles. Adding Web Enrollment provides a user-friendly interface for requesting certificates via a browser (e.g., <code class="language-plaintext highlighter-rouge">http://subca01.bank.lab/certsrv</code>).</p>
+
+<p><strong>3. The Signing Ceremony (The Handover)</strong> Because a Subordinate CA cannot trust itself, I had to generate a Certificate Request (<code class="language-plaintext highlighter-rouge">.req</code>) and perform a “Signing Ceremony”:</p>
+
+<ul>
+  <li>
+    <p><strong>Export:</strong> Transferred the request from the online Subordinate to the offline Root.</p>
+  </li>
+  <li>
+    <p><strong>Sign:</strong> Powered on the Root CA, submitted the request, and officially <strong>Issued</strong> the certificate.</p>
+  </li>
+  <li>
+    <p><strong>Import:</strong> Brought the signed certificate (<code class="language-plaintext highlighter-rouge">.cer</code>) back to the Subordinate CA.</p>
+  </li>
+</ul>
+
+<p><strong>4. Activation</strong> Upon importing the signed certificate, the <strong>Bank Issuing CA</strong> service was started. The transition from a “Stopped” state to a <strong>Green Checkmark</strong> verified that the chain of trust was successfully established from the Offline Root down to the Issuing CA.</p>
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="walkthrough" /><summary type="html"><![CDATA[<p>This server, <code class="language-plaintext highlighter-rouge">SUBCA01</code>, is the “worker bee.” It will stay online, join the domain, and issue certificates to every user and computer in my bank.</p>
+
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*JXgOF-w_gIDA7L2EAXP7iw.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*JXgOF-w_gIDA7L2EAXP7iw.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Simulating a Banking Security Infrastructure Part 1</title><link href="/blog/BankLab" rel="alternate" type="text/html" title="Simulating a Banking Security Infrastructure Part 1" /><published>2026-02-06T00:00:00-05:00</published><updated>2026-02-06T00:00:00-05:00</updated><id>http://localhost:4000/blog/BankLab</id><content type="html" xml:base="/blog/BankLab"><![CDATA[<p>For my latest home lab project, I am building a Two-Tier Public Key Infrastructure (PKI) to simulate a high-security banking environment.</p>
 
 <p>Today, I established the “Trust Anchor” of the entire network: the Standalone Offline Root CA.</p>
 
@@ -2121,52 +2567,4 @@ const users = [
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dPHJA_Rrnb9ORHvdFGlKbg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 ]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="ctf" /><category term="picoctf" /><category term="walkthrough" /><summary type="html"><![CDATA[<p>I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)</p>
 
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*d2R1OXU4u4xLDzO7teA1eA.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*d2R1OXU4u4xLDzO7teA1eA.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">JaWT Scratchpad PicoCTF</title><link href="/blog/JawtPicoCtf" rel="alternate" type="text/html" title="JaWT Scratchpad PicoCTF" /><published>2025-09-16T00:00:00-04:00</published><updated>2025-09-16T00:00:00-04:00</updated><id>http://localhost:4000/blog/Jawtscratchpad-picoctf</id><content type="html" xml:base="/blog/JawtPicoCtf"><![CDATA[<p>Check the admin scratchpad!</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*9GKvmZAQrrEmEXiaC-iPCQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>We can’t log in as admin, so let’s log in as Jose.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*GoZethjTId1XK8Q3yIJ9jA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now, let’s use Burp Suite for this.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*X67G8wjNyp0MEy232OHkdw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>At the end of the website, it shows something like this : “You can use your name as a log in, because that’s quick and easy to remember! If you don’t like your name, use a short and cool one like <a href="https://github.com/magnumripper/JohnTheRipper">John</a>!”</p>
-
-<p>As we know, John the Ripper is used to brute force, so that gives the idea that this should be a brute force challenge. In my case, I decided to use Hashcat.</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Terminal</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  <pre><code class="Terminal">
-hashcat -a 0 -m 16500 jwt wordlist
-</code></pre>
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*dXSFOD1ykNt_Wce45g9VvQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>secret: ilovepico</p>
-
-<p>I can use this secret password to create a new assigning key</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*Mh3rp9LE7726qtARV91z7w.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>After creating our new key, we changed the user from ‘jose’ to ‘admin’ and assigned the key we created.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*1XbjbbupiaT4D5lmB5lH-g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>After that, we send the request.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*kmTbUyqXJFnEvEB3-rcjvQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Hello admin!</p>
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="ctf" /><category term="picoctf" /><category term="walkthrough" /><summary type="html"><![CDATA[<p>Check the admin scratchpad!</p>
-
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*fcvxcEANcxQlqK--App_4A.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*fcvxcEANcxQlqK--App_4A.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*d2R1OXU4u4xLDzO7teA1eA.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*d2R1OXU4u4xLDzO7teA1eA.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
