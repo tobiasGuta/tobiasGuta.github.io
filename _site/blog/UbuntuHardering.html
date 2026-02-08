@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hardening</title>
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (adjust path as needed) -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+
+      /* Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* Align icons to baseline */
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .social-icons a {
+        font-size: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #000 !important;
+        background: none;
+        border-radius: 0;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 1em;
+        height: 1em;
+      }
+
+      .social-icons a:hover img {
+        /* This filter makes the icon blue on hover */
+        filter: invert(33%) sepia(98%) saturate(7496%) hue-rotate(222deg) brightness(97%) contrast(101%);
+      }
+
+      .social-icons i,
+      .social-icons img {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .social-icons img {
+        display: inline-block;
+        position: relative;
+        top: 0.12em; /* Move HackerOne and Mastodon icons down slightly */
+      }
+
+      /* Exception for HackerOne and Mastodon (icons should be white) */
+      .social-icons a[aria-label="HackerOne"] img,
+      .social-icons a[aria-label="Mastodon"] img {
+        filter: invert(1);
+      }
+
+      .social-icons i {
+        margin-top: -0.15em; /* Move LinkedIn and GitHub icons up just a little */
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/projects">
+            <i class="bi bi-kanban-fill"></i> Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/contact">
+            <i class="bi bi-envelope-fill"></i> Contact Me
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <main class="container py-5">
+      
+<!-- Normal post view -->
+<div id="scroll-progress-container">
+  <div id="scroll-progress-bar"></div>
+</div>
+<div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold glitch-header" data-value="Hardening" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Hardening</h1>
+      
+      <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
+        February 7, 2026
+      </p>
+
+      
+        <div class="categories mt-3 mb-2">
+          <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
+          
+            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
+              Walkthrough
+            </span>
+          
+        </div>
+      
+    </header>
+
+    
+      <div class="post-header-image">
+        <img src="https://miro.medium.com/v2/resize:fit:20000/format:webp/1*5pNCkdKAsZj7KLpM-snTOQ.png" alt="Hardening cover image" />
+      </div>
+    
+
+    <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
+      <p>We will explore the different ways to protect an Ubuntu Server.</p>
+
+<h4 id="disabling-root-access">Disabling Root Access</h4>
+
+<p>You can do this through several methods:</p>
+
+<ol>
+  <li>Disabling the root login shell</li>
+  <li>Disabling root SSH login</li>
+  <li>Disabling root using PAM (Password Authentication Module)</li>
+</ol>
+
+<blockquote>
+  <p>Before you continue with <code class="language-plaintext highlighter-rouge">/etc/passwd</code> i would recommmend to set a password for the root user.</p>
+</blockquote>
+
+<p>You need to edit the /etc/passwd file to be the following:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+root:x:0:0:root:/root:/usr/sbin/nologin
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*K1Zvu49Ltda0ZMafHWPbyg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>setting it to <code class="language-plaintext highlighter-rouge">/usr/sbin/nologin</code> will  reject the root login.</p>
+
+<p>If you try to log in as root, it would immediately kick you out.</p>
+
+<blockquote>
+  <p>If you don’t want any user even users in the sudo group to be able to execute <code class="language-plaintext highlighter-rouge">sudo -s</code>, before doing this make sure you have another user that can log in as root.</p>
+</blockquote>
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+sudo visudo -f /etc/sudoers.d/99-block-root-shells
+</code></pre>
+</div>
+
+<p>Put only this in the file:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+Cmnd_Alias ROOT_SHELLS = /bin/sh, /bin/bash, /usr/bin/bash, /usr/bin/dash, /usr/bin/zsh, /usr/bin/sh, /bin/su, /usr/bin/su
+%sudo ALL=(ALL:ALL) ALL, !ROOT_SHELLS
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*k18yvt1Tw6bfPS9iicvv_A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>This file is read after /etc/sudoers, so your deny wins.</p>
+
+<h4 id="locking-a-users-home-directory">Locking a User’s Home Directory</h4>
+
+<p>default configuration prioritizes collaboration and ease of access over strict privacy</p>
+
+<p>1) Viewing the Current Configuration</p>
+
+<p>You can verify the current setting without opening the full file by using grep:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+grep -i "^UMASK" /etc/login.defs
+
+UMASK           022
+</code></pre>
+</div>
+
+<p>2) Securing New Users</p>
+
+<p>To ensure that future users are created with restricted home directories (readable only by themselves), you would edit <code class="language-plaintext highlighter-rouge">/etc/login.defs</code> and change the UMASK value.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+Current: 022 (Results in 755 permissions: rwxr-xr-x)
+
+Secure: 077 (Results in 700 permissions: rwx------)
+</code></pre>
+</div>
+
+<blockquote>
+  <p>Note: This change only applies to users created after the edit.</p>
+</blockquote>
+
+<p>3) Securing Existing Users</p>
+
+<p>Changing the configuration file won’t retroactively fix users that already exist on the system. You must manually lock those down:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+chmod 700 /home/username
+</code></pre>
+</div>
+
+<h4 id="meet-pwquality">Meet pwquality,</h4>
+
+<p>Technically, it’s a PAM (Pluggable Authentication Module) plugin. Humanly, it’s a quality control inspector.</p>
+
+<p>In the old days, systems just checked simple boxes, Is it 8 characters? Yes/No. pwquality is smarter. It assigns every proposed password a score based on complexity, dictionary words, and patterns. If the score isn’t high enough, the password gets rejected.</p>
+
+<h4 id="credits">Credits</h4>
+
+<p>The configuration file is located at <code class="language-plaintext highlighter-rouge">/etc/security/pwquality.conf</code>.</p>
+
+<p>When you open it, you will see settings like dcredit, ucredit, lcredit, and ocredit. These control requirements for Digits, Uppercase, Lowercase, and Other symbols.</p>
+
+<p>The math here is weird, so let’s simplify it. The values can be positive or negative, and they mean totally different things</p>
+
+<ul>
+  <li>
+    <p><strong>Negative Numbers = Mandatory Rules.</strong> If you set <code class="language-plaintext highlighter-rouge">dcredit = -1</code>, it means: “You owe me at least 1 digit.” If the user doesn’t type a number, they can’t save the password. This is what most admins want.</p>
+
+    <ul>
+      <li><strong>Positive Numbers = Bonus Points.</strong> If you set <code class="language-plaintext highlighter-rouge">dcredit = 1</code>, it means: “If you use a digit, I will give you +1 credit toward your total score, potentially letting you use a shorter password.”</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>My advice? Stick to negative numbers. It’s easier to explain to your users: “You must have a number” is a clear rule.</p>
+</blockquote>
+
+<p>You want a setup that stops “password123” but allows “Correct-Horse-Battery-Staple”.</p>
+
+<p>Here is a balanced configuration block you can paste into /etc/security/pwquality.conf that is secure but fair:</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+# Length is the single most important factor in security.
+minlen = 12
+
+# The user MUST use at least one digit.
+dcredit = -1
+
+# The user MUST use at least one uppercase letter.
+ucredit = -1
+
+# The user MUST use at least one special character (!@#$).
+ocredit = -1
+
+# Check the user's input against a dictionary of common words, If they use "password" or "admin", it fails.
+dictcheck = 1
+
+# Don't allow the username inside the password.
+usercheck = 1
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*i6M71hX4Seb06QSWvqa4vA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<h4 id="the-lifecycle-of-a-password">The Lifecycle of a Password</h4>
+
+<p>If a password stays valid forever, the chance of it being compromised increases every single day. But if you force users to change them too often, they’ll hate you. :)</p>
+
+<p>1) Password Expiration</p>
+
+<p>By default, Ubuntu sets passwords to last for 99,999 days. That is roughly 273 years, that’s not great for security.</p>
+
+<p>We control this in <code class="language-plaintext highlighter-rouge">/etc/login.defs</code>.</p>
+
+<p>Open that file and scroll down to the <strong>Password aging controls</strong> section. Here are the three settings that matter:</p>
+
+<ul>
+  <li>
+    <p><strong>PASS_MAX_DAYS (The Limit):</strong> How long the password lives.</p>
+
+    <ul>
+      <li>
+        <p><em>Recommendation:</em> <strong>90</strong> to <strong>180</strong> days.</p>
+      </li>
+      <li>
+        <p><em>Why:</em> It limits the damage if a password is stolen. If an attacker gets a password on day 89, they only have access for 24 hours.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>PASS_MIN_DAYS (The “Cool Down”):</strong> How long a user <em>must</em> keep a password before changing it again.</p>
+
+    <ul>
+      <li>
+        <p><em>Recommendation:</em> <strong>1</strong>.</p>
+      </li>
+      <li>
+        <p><em>Why:</em> This prevents “rapid cycling” (we will explain this in the History section below).</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>PASS_WARN_AGE (The Courtesy):</strong> How many days before expiration the user gets a warning.</p>
+
+    <ul>
+      <li>
+        <p><em>Recommendation:</em> <strong>7</strong> or <strong>14</strong>.</p>
+      </li>
+      <li>
+        <p><em>Why:</em> Don’t surprise your users. Give them a week to think of a new phrase.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Pro Tip:</strong> Just like with the UMASK, changing <code class="language-plaintext highlighter-rouge">/etc/login.defs</code> only affects <strong>new</strong> users. To change expiration for an existing user (like yourself), use the <code class="language-plaintext highlighter-rouge">chage</code> command:</p>
+</blockquote>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+sudo chage -M 90 -m 1 -W 7 username
+</code></pre>
+</div>
+
+<p>2) Password History</p>
+
+<p>let’s be honest Users are creatures of habit. If you force them to change their password from Summer2023, their immediate instinct is to change it to Summer2023! and then change it right back to Summer2023 as soon as possible.</p>
+
+<p>Password History remembers previous passwords and blocks them.</p>
+
+<p>To configure this, we leave <code class="language-plaintext highlighter-rouge">/etc/login.defs</code> and head over to PAM: <code class="language-plaintext highlighter-rouge">/etc/pam.d/common-password</code></p>
+
+<p>Look for the line containing pam_unix.so. You simply add remember=10 to the end of that line.</p>
+
+<p><strong>It looks something like this:</strong></p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+password  [success=1 default=ignore]  pam_unix.so obscure use_authtok try_first_pass sha512 remember=10
+</code></pre>
+</div>
+
+<p>You might be wondering: Why did we set PASS_MIN_DAYS to 1 earlier?</p>
+
+<p>If you set <strong>History</strong> to 10, but Min Days is 0, a frustrated user can run a script to change their password 10 times in 5 seconds just to flush out the history buffer and get back to their original password.</p>
+
+<p><strong>By setting Min Days to 1:</strong></p>
+
+<ul>
+  <li>
+    <p>They change their password today.</p>
+  </li>
+  <li>
+    <p>They try to change it again immediately? <strong>Denied.</strong> “You must wait 1 day.”</p>
+  </li>
+  <li>
+    <p>To cycle through a history of 10 passwords, they would have to log in every day for 11 days straight just to change it.</p>
+  </li>
+</ul>
+
+<p>They will eventually just pick a new password, which is exactly what we want.</p>
+
+<h4 id="lxd-group">lxd Group</h4>
+
+<p>Ubuntu places users (unless otherwise specified) into the lxd group. This group is known to be a point of privilege escalation and should be removed from any user that is a part of it.</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+groups
+
+ubuntuserver adm cdrom sudo dip plugdev lxd
+</code></pre>
+</div>
+
+
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
+      <a href="/posts" class="btn btn-back btn-back-bottom">
+        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+      </a>
+    </footer>
+  </article>
+</div>
+
+<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
+<style>
+/* === IMPRESSIVE FEATURES CSS === */
+
+/* 1. Scroll Progress Bar */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 9999;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  background: var(--dracula-pink);
+  width: 0%;
+  box-shadow: 0 0 10px var(--dracula-pink), 0 0 20px var(--dracula-purple);
+  transition: width 0.1s;
+}
+
+/* 3. Glitch Header Effect */
+.glitch-header {
+  position: relative;
+}
+
+.glitch-header:hover {
+  color: var(--dracula-cyan);
+  text-shadow: 2px 0 var(--dracula-pink), -2px 0 var(--dracula-green);
+}
+</style>
+
+<script>
+/* === IMPRESSIVE FEATURES JS === */
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. Scroll Progress Bar Logic
+  window.addEventListener('scroll', function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    if(progressBar) {
+      progressBar.style.width = scrolled + "%";
+    }
+  });
+
+  // 2. Hacker Text Scramble Effect for Title
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*";
+  const header = document.querySelector(".glitch-header");
+  
+  if(header) {
+    let interval = null;
+    
+    // Run once on load
+    scrambleText(header);
+    
+    // Run on hover
+    header.onmouseover = event => {  
+      scrambleText(event.target);
+    };
+    
+    function scrambleText(target) {
+      let iteration = 0;
+      clearInterval(interval);
+      
+      const originalText = target.dataset.value;
+      
+      interval = setInterval(() => {
+        target.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return originalText[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+        
+        if(iteration >= originalText.length) { 
+          clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    }
+  }
+
+});
+</script>
+
+
+
+
+      
+        
+          <!-- Giscus comments - Only show for unlocked posts -->
+          <div id="comments"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="tobiasGuta/tobiasGuta.github.io"
+                  data-repo-id="R_kgDOOxswYQ"
+                  data-category="General"
+                  data-category-id="DIC_kwDOOxswYc4CrEhp"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="transparent_dark"
+                  data-lang="en"
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I am a firm believer that cybersecurity excellence is earned, not bought. By mastering offensive security through documentation, community research, and persistent trial-and-error, I’ve developed a level of resourcefulness that a classroom can't teach. I don't wait for a certification to tell me I'm ready, I prove it by breaking down complex systems and securing them.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.querySelector('pre code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          // Store original content
+          const originalHTML = button.innerHTML;
+          
+          // Add copied class for styling
+          button.classList.add('copied');
+          
+          // Change to checkmark icon
+          button.innerHTML = `
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          `;
+          
+          // Reset after 1.5 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Show error state
+          const originalHTML = button.innerHTML;
+          button.style.background = '#ef4444';
+          button.innerHTML = '✗';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+          }, 1000);
+        });
+      }
+    </script>
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>
