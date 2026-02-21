@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-07T19:28:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Hardening</title><link href="/blog/UbuntuHardering" rel="alternate" type="text/html" title="Hardening" /><published>2026-02-07T00:00:00-05:00</published><updated>2026-02-07T00:00:00-05:00</updated><id>http://localhost:4000/blog/UbuntuHardering</id><content type="html" xml:base="/blog/UbuntuHardering"><![CDATA[<p>We will explore the different ways to protect an Ubuntu Server.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-21T14:38:06-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Benign</title><link href="/blog/Benign" rel="alternate" type="text/html" title="Benign" /><published>2026-02-21T00:00:00-05:00</published><updated>2026-02-21T00:00:00-05:00</updated><id>http://localhost:4000/blog/Splunk</id><content type="html" xml:base="/blog/Benign"><![CDATA[<p>We will investigate host-centric logs in this challenge room to find suspicious process execution.</p>
+
+<blockquote>
+  <p>Challenge room to investigate a compromised host.</p>
+</blockquote>
+
+<p>About the Network Information</p>
+
+<p>The network is divided into three logical segments. It will help in the investigation.</p>
+
+<h4 id="it-department">IT Department</h4>
+
+<ul>
+  <li>James</li>
+  <li>Moin</li>
+  <li>Katrina</li>
+</ul>
+
+<h4 id="hr-department">HR department</h4>
+
+<ul>
+  <li>Haroon</li>
+  <li>Chris</li>
+  <li>Diana</li>
+</ul>
+
+<h4 id="marketing-department">Marketing department</h4>
+
+<ul>
+  <li>Bell</li>
+  <li>Amelia</li>
+  <li>Deepak</li>
+</ul>
+
+<p>1) How many logs are ingested from the month of March, 2022?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*s29R95CSVmBDoATZ1p4WYQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>2) Imposter Alert: There seems to be an imposter account observed in the logs, what is the name of that user?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*801PyYzaBGUNrJFtYvUlig.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>3) Which user from the HR department was observed to be running scheduled tasks</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*eMjNHmeaS67qdvYGYx-gxw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>4) Which user from the HR department executed a system process (LOLBIN) to download a payload from a file-sharing host.</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*LWTitkNSmCctKwApKbwbQA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>5) To bypass the security controls, which system process (lolbin) was used to download a payload from the internet?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Qp0IrhvGBCBAXC6tbpn9tg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>6) What was the date that this binary was executed by the infected host? format (YYYY-MM-DD)</p>
+
+<p>7) Which third-party site was accessed to download the malicious payload?</p>
+
+<p>8) What is the name of the file that was saved on the host machine from the C2 server during the post-exploitation phase?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*wl1p0UadmZ8lBx_GjLD-UA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="walkthrough" /><category term="tryhackme" /><summary type="html"><![CDATA[<p>We will investigate host-centric logs in this challenge room to find suspicious process execution.</p>
+
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dFGdbZMZCUyYAAu4kJbdFw.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dFGdbZMZCUyYAAu4kJbdFw.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hardening</title><link href="/blog/UbuntuHardering" rel="alternate" type="text/html" title="Hardening" /><published>2026-02-07T00:00:00-05:00</published><updated>2026-02-07T00:00:00-05:00</updated><id>http://localhost:4000/blog/UbuntuHardering</id><content type="html" xml:base="/blog/UbuntuHardering"><![CDATA[<p>We will explore the different ways to protect an Ubuntu Server.</p>
 
 <h4 id="disabling-root-access">Disabling Root Access</h4>
 
@@ -2823,51 +2886,4 @@ const users = [
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8I9piVg6oNt1BxnCWZaQKA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 ]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
 
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">WebSockFish PicoCTF</title><link href="/blog/WebSockFishPicoCtf" rel="alternate" type="text/html" title="WebSockFish PicoCTF" /><published>2025-09-16T00:00:00-04:00</published><updated>2025-09-16T00:00:00-04:00</updated><id>http://localhost:4000/blog/WebSockFish-picoctf</id><content type="html" xml:base="/blog/WebSockFishPicoCtf"><![CDATA[<p>When we accessed the website, we found this:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*4KmVEKucoc6ZP5RrNqeDOw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>It appears to be a normal chess game.</p>
-
-<p>Even though I don’t know much about how to play this game, I’m going to make some random moves</p>
-
-<p>Once I make the first move, in Burp Suite WebSocket history, we can see two requests made by me (the client) and the fish (the server).</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*lgl1MJRvjRj3WBEoA1LGpQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>I’m going to keep making more random moves until the fish wins, to see the whole process.</p>
-
-<p>After a few random moves, instead of sending <code class="language-plaintext highlighter-rouge">eval [number]</code>, it sent ‘mate 3’ to the server.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*U0wL9yrqL7C3AfilUWAs6A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>When I make more random moves, I reach the point where I can’t move anymore, and my last message to the server is ‘mate 1’.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*PraZf_AfyGn5PuJ9t1LrvQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Now it’s time to make a move using Repeater to see what we can do with it.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*ZyjWuYiSPuFCxrAMm0UmRw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Let’s send <code class="language-plaintext highlighter-rouge">mate 1</code>.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*NdMMzI5nh0JfetVQXRAShQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Nothing. What if we go below 0?</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*mq7LaTHx8LBODx2XXxSEhA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Interesting, we checkmated. We win?? But there’s no flag?</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*v1GYh32UR5xxB9zjmn92zg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Nothing. Let’s change it to <code class="language-plaintext highlighter-rouge">eval -9999</code> first, and then we can keep pushing forward.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*0xi8bsLqVYhDFF-wz3ynBQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>By adding another 9 to <code class="language-plaintext highlighter-rouge">eval -9999</code>, we got the flag.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/1*1HxCbmb-J_EmKFWqvyTk0Q.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="ctf" /><category term="picoctf" /><category term="walkthrough" /><summary type="html"><![CDATA[<p>When we accessed the website, we found this:</p>
-
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*uKuKNFiZss4ahdQvweK_Jw.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:720/format:webp/1*uKuKNFiZss4ahdQvweK_Jw.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
