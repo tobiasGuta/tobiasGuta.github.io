@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Benign</title>
+    <title>Splunk Investigation Lab</title>
 
     <!-- Favicon links -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
@@ -163,7 +163,7 @@
 <div class="post-page">
   <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
     <header class="mb-4 border-b border-gray-600 pb-3">
-      <h1 class="text-3xl font-bold glitch-header" data-value="Benign" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Benign</h1>
+      <h1 class="text-3xl font-bold glitch-header" data-value="Splunk Investigation Lab" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Splunk Investigation Lab</h1>
       
       <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
         February 21, 2026
@@ -187,15 +187,16 @@
 
     
       <div class="post-header-image">
-        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dFGdbZMZCUyYAAu4kJbdFw.png" alt="Benign cover image" />
+        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dFGdbZMZCUyYAAu4kJbdFw.png" alt="Splunk Investigation Lab cover image" />
       </div>
     
 
     <section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
-      <p>We will investigate host-centric logs in this challenge room to find suspicious process execution.</p>
+      <p>This blog documents my hands-on investigations using Splunk.
+I walk through real-world challenges step by step, explaining my thought process, search strategies, SPL queries, and how I uncover meaningful insights from logs and data.</p>
 
 <blockquote>
-  <p>Challenge room to investigate a compromised host.</p>
+  <p>Case #1</p>
 </blockquote>
 
 <p>About the Network Information</p>
@@ -253,6 +254,40 @@
 <p>8) What is the name of the file that was saved on the host machine from the C2 server during the post-exploitation phase?</p>
 
 <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*wl1p0UadmZ8lBx_GjLD-UA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<blockquote>
+  <p>Case #2</p>
+</blockquote>
+
+<p>1) On one of the infected hosts, the adversary was successful in creating a backdoor user. What is the new username?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*yP7YLf33FkjDTE4x2iTrkA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Mv5ceIKrDtFf9m9wM9V7_A.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>2) On the same host, a registry key was also updated regarding the new backdoor user. What is the full path of that registry key?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lHA0RuquHtkRHYF53w7gdA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Iy6mmj6KquwtsJ6AP-Vq4g.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>3) What is the command used to add a backdoor user from a remote computer?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Paa6qEDjEe8vhpBTW2SFdw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*olAkNZhk_WpUNhRVgcDsSA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>4) PowerShell logging is enabled on this device. How many events were logged for the malicious PowerShell execution?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TZLF0HWjcl58xj2tesfexg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*WOxI0O-muZaETHG0nU75sw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>5) An encoded Powershell script from the infected host initiated a web request. What is the full URL?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*WOxI0O-muZaETHG0nU75sw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*YvoL6L5fnuT5BoIORWv-VA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
 
     </section>
 
