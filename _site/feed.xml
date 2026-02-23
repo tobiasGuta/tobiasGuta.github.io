@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-21T20:07:14-05:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Splunk Investigation Lab</title><link href="/blog/Benign" rel="alternate" type="text/html" title="Splunk Investigation Lab" /><published>2026-02-21T00:00:00-05:00</published><updated>2026-02-21T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/Splunk</id><content type="html" xml:base="/blog/Benign"><![CDATA[<p>This blog documents my hands-on investigations using Splunk.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-23T09:37:06-05:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Big Brooklyn</title><subtitle>Cybersecurity Blog + Portfolio</subtitle><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><entry><title type="html">Digital Forensics Case B4DM755</title><link href="/blog/Case-B4DM755" rel="alternate" type="text/html" title="Digital Forensics Case B4DM755" /><published>2026-02-21T00:00:00-05:00</published><updated>2026-02-21T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/DigitalForensics-case-b4dm755</id><content type="html" xml:base="/blog/Case-B4DM755"><![CDATA[<p>As a Forensics Lab Analyst, you analyse the artefacts from crime scenes. Occasionally, the law enforcement agency you work for receives “intelligence reports” about different cases, and today is one such day. A trusted informant, who has connections to an international crime syndicate, contacted your supervisor about William S. McClean from Case #B4DM755.</p>
+
+<p>The informant provided information about the suspect’s whereabouts in Metro Manila, Philippines, which is currently at large, and a transaction that will happen today with a local gang member. They also knew the exact location of the meetup and that the suspect would have incriminating materials at the time.</p>
+
+<p>The law enforcement agency prepared for the operation by obtaining proper search authority and assigning a DFIR (Digital Forensics &amp; Incident Response) First Responder (i.e., you) to ensure the appropriate acquisition of digital artefacts and evidence for examination at the Forensics Lab, and eventually for use in litigation. The court issued a search warrant on the same day, allowing law enforcement officers to investigate the suspect and his place of residence based on the informant’s tip.</p>
+
+<p>1) What is the visible extension of the “hideout” file?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*OlQkAplFDV04ztH_uROdFA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>2) View the metadata of the “hideout” file. What is its actual extension?</p>
+
+<div class="code-block-container">
+  <span class="code-lang-tag">Terminal</span>
+  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  </button>
+  <pre><code class="Terminal">
+$targetDir = 'C:\Users\analyst\Desktop\artefacts\[root]\'
+
+Get-ChildItem -LiteralPath $targetDir -File -Recurse | ForEach-Object {
+    # Run ExifTool, redirect errors to $null
+    $rawOutput = C:\tools\exiftool-12.47\exiftool.exe -s3 -FileTypeExtension $_.FullName 2&gt;$null
+    
+    # Only proceed if ExifTool actually returned a value
+    if ($rawOutput) {
+        # By wrapping $rawOutput in double quotes, we safely force it into a string
+        $trueExt = "$rawOutput".Trim().ToLower()
+        $currentExt = $_.Extension.TrimStart('.').ToLower()
+        
+        # Check for a mismatch
+        if ($trueExt -ne $currentExt) {
+            [PSCustomObject]@{
+                FileName     = $_.Name
+                CurrentExt   = $currentExt
+                TrueExt      = $trueExt
+                FullPath     = $_.FullName
+            }
+        }
+    }
+} | Format-Table -AutoSize
+</code></pre>
+</div>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*L50M3H55LfU-hw-XmzWFMg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>3) A phone was used to photograph the “hideout”. What is the phone’s model?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*rbYeWqMIYSrv68nARgfPFg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>4) A phone was used to photograph the “warehouse”. What is the phone’s model?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000format:webp/1*bXAcrASk1AR5wbZOvezjjA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>5) Who was the point of contact of Mr William S. McClean in 2022?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*cTpgU6Tw34n4ItF_KN3amA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>6) A meetup occurred in 2022. What are the GPS coordinates during that time?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dZvMr9BDsHwwI75x8iQfRg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+<p>7) What is the password to extract the contents of pandorasbox.zip?</p>
+
+<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NVxkGlQJAx_MQOJ3j93RWw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="walkthrough" /><category term="tryhackme" /><summary type="html"><![CDATA[<p>As a Forensics Lab Analyst, you analyse the artefacts from crime scenes. Occasionally, the law enforcement agency you work for receives “intelligence reports” about different cases, and today is one such day. A trusted informant, who has connections to an international crime syndicate, contacted your supervisor about William S. McClean from Case #B4DM755.</p>
+
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0Ve6kSni0lba9WNzq6tPyg.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0Ve6kSni0lba9WNzq6tPyg.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Splunk Investigation Lab</title><link href="/blog/Benign" rel="alternate" type="text/html" title="Splunk Investigation Lab" /><published>2026-02-21T00:00:00-05:00</published><updated>2026-02-21T00:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/Splunk</id><content type="html" xml:base="/blog/Benign"><![CDATA[<p>This blog documents my hands-on investigations using Splunk.
 I walk through real-world challenges step by step, explaining my thought process, search strategies, SPL queries, and how I uncover meaningful insights from logs and data.</p>
 
 <blockquote>
@@ -2840,86 +2910,4 @@ Built users query: SELECT * FROM users WHERE name OR 1=? Data: [ '1' ]
 </ul>
 ]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>Developers should never trust user input. Even when you think you’ve sanitized everything and even when you’re using the familiar ? placeholder in Node.js MySQL libraries mistakes and wrong assumptions can still leave your app vulnerable.</p>
 
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Weak JWT Secrets: How ‘secret’ Breaks Your Auth</title><link href="/blog/Weak-JWT-Secret" rel="alternate" type="text/html" title="Weak JWT Secrets: How ‘secret’ Breaks Your Auth" /><published>2025-10-16T00:00:00-04:00</published><updated>2025-10-16T00:00:00-04:00</updated><id>http://0.0.0.0:4000/blog/JWT-Weak-JWT-Signing-Key</id><content type="html" xml:base="/blog/Weak-JWT-Secret"><![CDATA[<p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
-
-<p>The goal here is educational: to show how this class of bug appears in an Express app, I will not publish exploit scripts or wordlists; instead, this walkthrough focuses on how to find the problem.</p>
-
-<p>Summary of the vulnerable setup:</p>
-
-<ul>
-  <li>A Node.js server built with Express issues JWTs using the HS256 algorithm.</li>
-  <li>The server stores the signing key as a short or common string (for example, “secret”, “1234”, or an English word).</li>
-  <li>Because the secret is weak, an attacker who can guess it can sign arbitrary tokens (for example, upgrading their user to admin) and the server will accept them.</li>
-</ul>
-
-<p>What you’ll learn in this post:</p>
-
-<ul>
-  <li>How to spot weak JWT secrets in code and runtime configuration.</li>
-</ul>
-
-<p>If you want to follow along locally, create a tiny Express app and never expose test secrets to the public internet. Treat any reproduction data as lab-only, and rotate secrets after testing.</p>
-
-<h1 id="endpoints">Endpoints</h1>
-
-<ul>
-  <li>/login</li>
-  <li>/admin</li>
-</ul>
-
-<h1 id="walkthrough">Walkthrough</h1>
-
-<p>We have these credentials:</p>
-
-<div class="code-block-container">
-  <span class="code-lang-tag">Node.js</span>
-  <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  </button>
-  
-  <pre><code class="Terminal">
-const users = [
-  { id: 1, username: 'alice', password: 'alicepw', role: 'user' },
-  { id: 2, username: 'bob', password: 'bobpw', role: 'admin' }
-];
-</code></pre>
-  
-</div>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*W4uuTeSh19BpKiXWpCM_Og.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we try to access <code class="language-plaintext highlighter-rouge">/admin</code>, we get something like:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*lKgINRctNUElgqcrlkViTA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we use this site: <a href="https://supertokens.com/jwt-encoder-decoder">SuperTokens JWT Decoder</a>, we can decode the JWT.</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*FHA3j2RQVeeSkmI5sH22Mg.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>If we change the role from user to admin to see if we can access the <code class="language-plaintext highlighter-rouge">/login</code> endpoint, we get this:</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dyZ7ji7c73Rk1S5gVAI4sA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dhE9RAXWpHqDFCoAUpGNrw.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h1 id="brute-force">Brute-Force</h1>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*THD_HPjG4eXnFeSA2U0QFQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p>Let’s use hashcat to brute-force the JWT</p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7TpkpAfBwrmQed_Sz3jXzQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<p><code class="language-plaintext highlighter-rouge">secret</code></p>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3gMgc6GAOQVJR_JQN7BDYQ.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-
-<h1 id="welcome-admin-alice">Welcome, admin Alice</h1>
-
-<p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8I9piVg6oNt1BxnCWZaQKA.png" alt="Website initial view" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
-]]></content><author><name>Tobias Arevalo</name><email>heyyou@protonmail.com</email></author><category term="my-research" /><summary type="html"><![CDATA[<p>This post begins a short series about authentication mistakes I often see in Node.js/Express applications. We’ll look at a real-but-safe example where the server uses JSON Web Tokens (JWTs) for authentication, but the signing secret is weak and guessable. That weakness lets an attacker forge tokens that the server accepts.</p>
-
-]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" /><media:content medium="image" url="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
