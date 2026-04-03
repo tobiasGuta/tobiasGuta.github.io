@@ -99,17 +99,26 @@ main.container {
   50% { transform: translateY(-4px) rotate(5deg); }
 }
 
-/* Mobile Responsiveness - Center it at the bottom on small screens */
+/* Mobile Responsiveness - Move to bottom-left and show icon only */
 @media (max-width: 768px) {
   .artemis-tracker {
     bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
-    width: max-content;
+    left: 20px;
+    right: auto;
+    transform: none;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
   }
   
   .artemis-tracker:hover {
-    transform: translate(50%, -5px);
+    transform: translateY(-5px);
+  }
+
+  .tracker-text {
+    display: none;
   }
 }
 
