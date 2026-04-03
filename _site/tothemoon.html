@@ -867,7 +867,20 @@ function handleCanvasClick(e) {
         temp: '-130/120°C',
         fact: "Earth's only natural satellite"
       });
+    } else if (!validHit.userData.isMoon) {
+      // Check if it's a planet and bubble up through mesh hierarchy if needed to show its info
+      let current = validHit;
+      while(current) {
+        if (current.userData && current.userData.name && !current.userData.isMoon && !current.userData.isLiveBody) {
+          showInfo(current.userData);
+          break;
+        }
+        current = current.parent; 
+      }
     }
+  } else {
+    // Hide info panel if hitting empty space (useful for touchscreens)
+    document.getElementById('planet-info').classList.remove('visible');
   }
 }
 
