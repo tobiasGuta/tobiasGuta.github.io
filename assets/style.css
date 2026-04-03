@@ -49,6 +49,70 @@ main.container {
   flex-grow: 1; /* THIS pushes footer down */
 }
 
+/* Artemis II Floating Tracker Notification */
+.artemis-tracker {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.7); /* Dark semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 50px; /* Gives it the pill shape */
+  text-decoration: none;
+  color: #e2e8f0;
+  font-family: monospace; /* Fits perfectly with your typing/glitch theme */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 10px rgba(56, 189, 248, 0.1);
+  backdrop-filter: blur(10px); /* Modern frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 1000; /* Keeps it on top of other content */
+}
+
+/* Hover Effect - Adds a neon blue glow and lifts the button */
+.artemis-tracker:hover {
+  transform: translateY(-5px);
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+/* Make the rocket float automatically */
+.tracker-icon {
+  font-size: 1.4rem;
+  animation: floatRocket 3s ease-in-out infinite;
+}
+
+.tracker-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Keyframes for the rocket floating animation */
+@keyframes floatRocket {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(5deg); }
+}
+
+/* Mobile Responsiveness - Center it at the bottom on small screens */
+@media (max-width: 768px) {
+  .artemis-tracker {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: max-content;
+  }
+  
+  .artemis-tracker:hover {
+    transform: translate(50%, -5px);
+  }
+}
+
 /* Ensure header/navbar is above canvas */
 header, nav, .navbar-custom {
   position: relative;

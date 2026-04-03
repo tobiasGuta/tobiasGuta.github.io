@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar System Simulation - Live Artemis Telemetry</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    overflow: hidden;
+    font-family: 'Share Tech Mono', monospace;
+    color: #fff;
+  }
+
+  #canvas-container { width: 100vw; height: 100vh; }
+
+  #loading-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #05050d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    font-family: 'Orbitron', sans-serif;
+    color: #4ab0ff;
+    letter-spacing: 0.2em;
+    transition: opacity 0.8s ease-out;
+  }
+  
+  #loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid rgba(100,180,255,0.2);
+    border-top-color: #4ab0ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+
+  #ui {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  #title {
+    position: absolute;
+    top: 24px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(100,180,255,0.8), 0 0 40px rgba(100,180,255,0.4);
+  }
+
+  #controls {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    pointer-events: all;
+    background: rgba(0,10,30,0.7);
+    border: 1px solid rgba(100,180,255,0.2);
+    padding: 12px 24px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+  }
+
+  #controls label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(150,200,255,0.8);
+    text-transform: uppercase;
+  }
+
+  #speed-slider {
+    -webkit-appearance: none;
+    width: 130px;
+    height: 3px;
+    background: linear-gradient(to right, #1a4a8a, #4ab0ff);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  #speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #4ab0ff;
+    box-shadow: 0 0 8px #4ab0ff;
+    cursor: pointer;
+  }
+
+  .ctrl-btn {
+    background: rgba(100,180,255,0.1);
+    border: 1px solid rgba(100,180,255,0.3);
+    color: rgba(180,220,255,0.9);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .ctrl-btn:hover {
+    background: rgba(100,180,255,0.25);
+    border-color: rgba(100,180,255,0.6);
+    box-shadow: 0 0 12px rgba(100,180,255,0.3);
+  }
+  .ctrl-btn.special {
+    background: rgba(255,170,0,0.15);
+    border-color: rgba(255,170,0,0.4);
+    color: #ffaa00;
+  }
+  .ctrl-btn.special:hover {
+    background: rgba(255,170,0,0.3);
+    border-color: rgba(255,170,0,0.8);
+    box-shadow: 0 0 12px rgba(255,170,0,0.4);
+  }
+
+  #planet-info {
+    position: absolute;
+    top: 80px; right: 28px;
+    width: 220px;
+    background: rgba(0,8,25,0.85);
+    border: 1px solid rgba(100,180,255,0.25);
+    border-radius: 12px;
+    padding: 18px;
+    backdrop-filter: blur(12px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  #planet-info.visible { opacity: 1; }
+
+  #planet-info h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    color: #7dcfff;
+    text-shadow: 0 0 10px rgba(125,207,255,0.5);
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(100,180,255,0.08);
+  }
+  .info-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .info-label { color: rgba(130,180,255,0.6); }
+  .info-val { color: rgba(220,240,255,0.9); }
+
+  /* Artemis Status Panel */
+  #artemis-panel {
+    position: absolute;
+    top: 24px; left: 28px;
+    width: 280px;
+    background: rgba(20, 10, 0, 0.85);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    backdrop-filter: blur(12px);
+  }
+  #artemis-panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffaa00;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255, 170, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+  }
+  .live-dot {
+    width: 8px; height: 8px;
+    background: #ffaa00;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffaa00;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+  .artemis-row {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 220, 150, 0.8);
+  }
+  .artemis-val {
+    color: #fff;
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  /* Crew Popup Panel */
+  #crew-panel {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    background: rgba(10, 5, 0, 0.95);
+    border: 1px solid rgba(255, 170, 0, 0.6);
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 50;
+    box-shadow: 0 0 40px rgba(0,0,0,0.9), 0 0 15px rgba(255, 170, 0, 0.2);
+  }
+  #crew-panel.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #close-crew-btn {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none; border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 24px; font-family: sans-serif;
+    cursor: pointer; transition: color 0.2s;
+  }
+  #close-crew-btn:hover { color: #fff; }
+  #crew-panel h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px; color: #ffaa00;
+    margin-bottom: 18px; letter-spacing: 0.1em;
+  }
+  .crew-member {
+    font-size: 12px; margin-bottom: 10px;
+    color: rgba(255,255,255,0.9);
+    border-left: 2px solid rgba(255,170,0,0.5);
+    padding-left: 10px; line-height: 1.4;
+  }
+  .crew-role { color: rgba(255,220,150,0.7); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em;}
+  .crew-links {
+    margin-top: 24px; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+  }
+  .crew-links p { color: rgba(255,255,255,0.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.1em;}
+  .crew-links a {
+    color: #4ab0ff; text-decoration: none;
+    display: block; margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .crew-links a:hover { color: #ffaa00; }
+
+  #hint {
+    position: absolute;
+    bottom: 90px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(100,150,200,0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  #legend {
+    position: absolute;
+    top: 170px; left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(150,200,255,0.6);
+    cursor: pointer;
+    pointer-events: all;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+  .legend-item:hover { color: rgba(200,230,255,0.9); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  #asteroid-counter {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: rgba(100,150,200,0.5);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    #controls {
+      width: 95vw;
+      bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 12px;
+      border-radius: 24px;
+      gap: 10px;
+    }
+    .ctrl-btn {
+      font-size: 10px;
+      padding: 8px 12px;
+    }
+    #hint {
+      bottom: 120px;
+      white-space: normal;
+      text-align: center;
+      width: 90%;
+    }
+    #artemis-panel {
+      width: 90%;
+      left: 5%;
+      top: 60px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="spinner"></div>
+  <div id="loading-text">DOWNLOADING HI-RES TEXTURES...</div>
+</div>
+
+<div id="canvas-container"></div>
+<div id="ui">
+  <div id="title">☀ Solar System Simulation</div>
+
+  <div id="asteroid-counter">
+    PLANETARY DEFENSE MODE<br>
+    <span id="asteroid-count" style="color:rgba(255,180,80,0.7)">TRACKING: 0 OBJECTS</span>
+  </div>
+
+  <div id="artemis-panel">
+    <h3>ARTEMIS II TELEMETRY <div class="live-dot" id="live-indicator"></div></h3>
+    <div class="artemis-row"><span>PHASE:</span> <span class="artemis-val" id="art-phase">Connecting...</span></div>
+    <div class="artemis-row"><span>SPEED:</span> <span class="artemis-val" id="art-speed">-- km/s</span></div>
+    <div class="artemis-row"><span>DIST (EARTH):</span> <span class="artemis-val" id="art-dist-earth">-- km</span></div>
+    <div class="artemis-row"><span>DIST (MOON):</span> <span class="artemis-val" id="art-dist-moon">-- km</span></div>
+  </div>
+
+  <div id="crew-panel">
+    <button id="close-crew-btn">&times;</button>
+    <h2>ARTEMIS II CREW</h2>
+    <div class="crew-member"><strong>Reid Wiseman</strong><br><span class="crew-role">Commander (NASA)</span></div>
+    <div class="crew-member"><strong>Victor Glover</strong><br><span class="crew-role">Pilot (NASA)</span></div>
+    <div class="crew-member"><strong>Christina Koch</strong><br><span class="crew-role">Mission Specialist (NASA)</span></div>
+    <div class="crew-member"><strong>Jeremy Hansen</strong><br><span class="crew-role">Mission Specialist (CSA)</span></div>
+    <div class="crew-links">
+      <p>Mission Briefing:</p>
+      <a href="https://www.nasa.gov/missions/artemis/nasas-first-flight-with-crew-important-step-on-long-term-return-to-the-moon-missions-to-mars/" target="_blank">NASA: First Flight With Crew Overview</a>
+      <a href="https://svs.gsfc.nasa.gov/20412/" target="_blank">GSFC: Artemis II Trajectory Details</a>
+    </div>
+  </div>
+
+  <div id="legend"></div>
+
+  <div id="planet-info">
+    <h2 id="info-name">PLANET</h2>
+    <div class="info-row"><span class="info-label">TYPE</span><span class="info-val" id="info-type"></span></div>
+    <div class="info-row"><span class="info-label">DIAMETER</span><span class="info-val" id="info-diam"></span></div>
+    <div class="info-row"><span class="info-label">ORBIT</span><span class="info-val" id="info-orbit"></span></div>
+    <div class="info-row"><span class="info-label">MOONS</span><span class="info-val" id="info-moons"></span></div>
+    <div class="info-row"><span class="info-label">TEMP</span><span class="info-val" id="info-temp"></span></div>
+    <div class="info-row" id="info-fact-row"><span class="info-label">FACT</span><span class="info-val" id="info-fact" style="font-size:10px;text-align:right;max-width:130px"></span></div>
+  </div>
+
+  <div id="controls">
+    <label>SPEED</label>
+    <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1">
+    <button class="ctrl-btn" id="pause-btn">PAUSE</button>
+    <button class="ctrl-btn" id="orbits-btn">ORBITS OFF</button>
+    <button class="ctrl-btn" id="asteroid-btn">HIDE BELT</button>
+    <button class="ctrl-btn special" id="focus-artemis-btn">FOCUS ARTEMIS</button>
+  </div>
+
+  <div id="hint">CLICK SPACECRAFT FOR CREW DATA · DRAG TO ROTATE · SCROLL TO ZOOM</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const PLANETS = [
+  { name:'Mercury', texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/mercurymap.jpg', color:0x9E9E9E, size:0.38, orbit:5.8,  speed:4.74,  tilt:0.03, moons:0,  type:'Terrestrial', diam:'4,879 km',   temp:'-180 / 430°C', fact:'Smallest planet' },
+  { name:'Venus',   texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusmap.jpg', color:0xE8C77A, size:0.95, orbit:8.0,  speed:3.50,  tilt:177,  moons:0,  type:'Terrestrial', diam:'12,104 km',  temp:'465°C avg',    fact:'Hottest planet' },
+  { name:'Earth',   texture:'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg', color:0x4B9CD3, size:1.0,  orbit:11.0, speed:2.98,  tilt:23.5, moons:1,  type:'Terrestrial', diam:'12,742 km',  temp:'-88 / 58°C',   fact:'Only known life' },
+  { name:'Mars',    texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/marsmap1k.jpg', color:0xC1440E, size:0.53, orbit:15.0, speed:2.41,  tilt:25.2, moons:2,  type:'Terrestrial', diam:'6,779 km',   temp:'-153 / 20°C',  fact:'Has largest volcano' },
+  { name:'Jupiter', texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/jupitermap.jpg', color:0xC88B3A, size:3.5,  orbit:24.0, speed:1.31,  tilt:3.1,  moons:95, type:'Gas Giant',   diam:'139,820 km', temp:'-145°C cloud', fact:'Biggest planet' },
+  { name:'Saturn',  texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/saturnmap.jpg', color:0xE4D191, size:2.9,  orbit:34.0, speed:0.97,  tilt:26.7, moons:146,type:'Gas Giant',   diam:'116,460 km', temp:'-178°C avg',   fact:'Least dense planet' },
+  { name:'Uranus',  texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/uranusmap.jpg', color:0x7FFFD4, size:1.8,  orbit:44.0, speed:0.68,  tilt:97.8, moons:27, type:'Ice Giant',   diam:'50,724 km',  temp:'-224°C avg',   fact:'Rotates on its side' },
+  { name:'Neptune', texture:'https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/neptunemap.jpg', color:0x4169E1, size:1.7,  orbit:54.0, speed:0.54,  tilt:28.3, moons:16, type:'Ice Giant',   diam:'49,244 km',  temp:'-218°C avg',   fact:'Strongest winds' },
+];
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 3000);
+camera.position.set(0, 40, 90);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onLoad = () => {
+  const screen = document.getElementById('loading-screen');
+  screen.classList.add('hidden');
+  setTimeout(() => screen.style.display = 'none', 800);
+};
+loadingManager.onError = function(url) {
+  console.warn('There was an error loading ' + url + '. Proceeding anyway...');
+  const screen = document.getElementById('loading-screen');
+  screen.classList.add('hidden');
+  setTimeout(() => screen.style.display = 'none', 800);
+};
+
+const textureLoader = new THREE.TextureLoader(loadingManager);
+
+const ambientLight = new THREE.AmbientLight(0x111133, 1.5);
+scene.add(ambientLight);
+const sunLight = new THREE.PointLight(0xFFF4E0, 4.5, 500); 
+scene.add(sunLight);
+
+function createStarField() {
+  const geo = new THREE.BufferGeometry();
+  const count = 8000;
+  const pos = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    const r = 500 + Math.random() * 800;
+    pos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+    pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+    pos[i*3+2] = r * Math.cos(phi);
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const mat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.6, transparent: true, opacity: 0.9 });
+  return new THREE.Points(geo, mat);
+}
+scene.add(createStarField());
+
+const sunTex = textureLoader.load('https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/sunmap.jpg');
+const sunGeo = new THREE.SphereGeometry(3.5, 64, 64);
+const sunMat = new THREE.MeshBasicMaterial({ map: sunTex }); 
+const sun = new THREE.Mesh(sunGeo, sunMat);
+scene.add(sun);
+
+const planetMeshes = [];
+const orbitLines = [];
+let showOrbits = true;
+
+// Globals for Live Artemis Data tracking
+let orionMesh = null;
+let earthMoonMesh = null;
+let telemetryCurveMesh = null; 
+let earthMeshRef = null;
+
+const KM_TO_UNITS = 0.000004682; 
+
+PLANETS.forEach((pd, i) => {
+  const isGas = pd.type === 'Gas Giant';
+  const isIce = pd.type === 'Ice Giant';
+  
+  const geo = new THREE.SphereGeometry(pd.size * 0.9, 64, 64); 
+  const tex = textureLoader.load(pd.texture);
+  
+  const mat = new THREE.MeshStandardMaterial({ 
+    map: tex, 
+    roughness: (isGas || isIce) ? 0.4 : 0.8, 
+    metalness: 0.05 
+  });
+
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.userData = { ...pd, angle: Math.random() * Math.PI * 2, index: i };
+  mesh.rotation.z = pd.tilt * (Math.PI / 180);
+  
+  scene.add(mesh);
+  planetMeshes.push(mesh);
+
+  const oGeo = new THREE.RingGeometry(pd.orbit - 0.05, pd.orbit + 0.05, 128);
+  const oMat = new THREE.MeshBasicMaterial({ color: 0x334466, transparent: true, opacity: 0.35, side: THREE.DoubleSide });
+  const ring = new THREE.Mesh(oGeo, oMat);
+  ring.rotation.x = -Math.PI / 2;
+  // TAG: Ignore in Raycaster
+  ring.userData = { isOrbitRing: true };
+  scene.add(ring);
+  orbitLines.push(ring);
+
+  if (pd.name === 'Saturn') {
+    const rGeo = new THREE.RingGeometry(pd.size * 1.4, pd.size * 2.4, 80);
+    const rMat = new THREE.MeshBasicMaterial({ color: 0xC8B560, transparent: true, opacity: 0.65, side: THREE.DoubleSide });
+    const ringMesh = new THREE.Mesh(rGeo, rMat);
+    ringMesh.rotation.x = -Math.PI / 3;
+    ringMesh.userData = { isOrbitRing: true };
+    mesh.add(ringMesh);
+  }
+
+  if (pd.name === 'Earth') {
+    earthMeshRef = mesh; 
+
+    const moonTex = textureLoader.load('https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/moonmap1k.jpg');
+    const mGeo = new THREE.SphereGeometry(0.25, 32, 32);
+    const mMat = new THREE.MeshStandardMaterial({ map: moonTex, roughness: 0.9 });
+    earthMoonMesh = new THREE.Mesh(mGeo, mMat);
+    // TAG: Mark as Moon to prevent bubble-up to Earth
+    earthMoonMesh.userData = { isLiveBody: true, isMoon: true }; 
+    mesh.add(earthMoonMesh);
+
+    orionMesh = new THREE.Group();
+    orionMesh.scale.set(1.5, 1.5, 1.5);
+    
+    const cmGeo = new THREE.CylinderGeometry(0.015, 0.045, 0.05, 16);
+    const cmMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.3, roughness: 0.2 });
+    const commandModule = new THREE.Mesh(cmGeo, cmMat);
+    commandModule.position.y = 0.04;
+    orionMesh.add(commandModule);
+
+    const smGeo = new THREE.CylinderGeometry(0.045, 0.045, 0.06, 16);
+    const smMat = new THREE.MeshStandardMaterial({ color: 0x999999, metalness: 0.9, roughness: 0.4 });
+    const serviceModule = new THREE.Mesh(smGeo, smMat);
+    serviceModule.position.y = -0.015;
+    orionMesh.add(serviceModule);
+
+    const nozzleGeo = new THREE.CylinderGeometry(0.01, 0.025, 0.03, 16);
+    const nozzleMat = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 0.8 });
+    const nozzle = new THREE.Mesh(nozzleGeo, nozzleMat);
+    nozzle.position.y = -0.06;
+    orionMesh.add(nozzle);
+
+    const glowGeo = new THREE.SphereGeometry(0.015, 8, 8);
+    const glowMat = new THREE.MeshBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 0.8 });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.y = -0.075;
+    orionMesh.add(glow);
+
+    // Solar Arrays (4 panels angled back in an 'X' shape like the real Orion)
+    const panelGeo = new THREE.BoxGeometry(0.25, 0.002, 0.04);
+    const panelMat = new THREE.MeshStandardMaterial({ color: 0x0a2244, metalness: 0.5, roughness: 0.1, side: THREE.DoubleSide });
+    for(let w=0; w<4; w++) {
+      const panelGroup = new THREE.Group();
+      panelGroup.position.y = -0.015;
+      panelGroup.rotation.y = (Math.PI / 2) * w + (Math.PI / 4); // X-shape instead of + shape
+      
+      const panel = new THREE.Mesh(panelGeo, panelMat);
+      panel.position.x = 0.15; // Extend outwards
+      panel.rotation.z = Math.PI / 12; // Angle panels backward slightly
+      
+      panelGroup.add(panel);
+      orionMesh.add(panelGroup);
+    }
+    
+    // FIX: Add an invisible, oversized "Hitbox" sphere so Orion is easy to click!
+    const hitboxGeo = new THREE.SphereGeometry(0.3, 8, 8);
+    const hitboxMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 });
+    const hitbox = new THREE.Mesh(hitboxGeo, hitboxMat);
+    hitbox.userData = { isOrion: true };
+    orionMesh.add(hitbox);
+
+    orionMesh.userData = { isLiveBody: true, isOrion: true };
+    mesh.add(orionMesh);
+
+    const lineMat = new THREE.LineDashedMaterial({ color: 0xffaa00, dashSize: 0.08, gapSize: 0.04, opacity: 0.8, transparent: true });
+    telemetryCurveMesh = new THREE.Line(new THREE.BufferGeometry(), lineMat);
+    // TAG: Ignore in Raycaster
+    telemetryCurveMesh.userData = { isTrajectory: true };
+    mesh.add(telemetryCurveMesh);
+  }
+  
+  if (pd.name === 'Jupiter') {
+    [0.18, 0.22, 0.26, 0.2].forEach((ms, mi) => {
+      const mGeo = new THREE.SphereGeometry(ms, 12, 12);
+      const colors = [0xd4a860, 0xc89060, 0xa0a0a0, 0xe0c080];
+      const mMat = new THREE.MeshStandardMaterial({ color: colors[mi], roughness: 0.8 });
+      const moon = new THREE.Mesh(mGeo, mMat);
+      // TAG: Mark as Moon to prevent bubble-up to Planet
+      moon.userData = { isMoon: true, angle: mi * 1.5, orbitR: pd.size * 1.6 + mi * 0.7, speed: 2 + mi * 0.5 };
+      mesh.add(moon);
+    });
+  }
+});
+
+const legend = document.getElementById('legend');
+PLANETS.forEach(pd => {
+  const div = document.createElement('div');
+  div.className = 'legend-item';
+  div.innerHTML = `<div class="legend-dot" style="background:#${pd.color.toString(16).padStart(6,'0')}"></div>${pd.name}`;
+  div.addEventListener('click', () => focusPlanet(pd.name));
+  legend.appendChild(div);
+});
+
+async function fetchArtemisLive() {
+  try {
+    const res = await fetch(`https://api.issinfo.net/artemis/live?t=${new Date().getTime()}`);
+    const data = await res.json();
+
+    if (data.status === "active") {
+      updateLiveTelemetry(data);
+    }
+  } catch (err) {
+    console.error("Lost connection to deep space network.", err);
+    document.getElementById('art-phase').textContent = "SIGNAL LOST";
+  }
+}
+
+function updateLiveTelemetry(data) {
+  const indicator = document.getElementById('live-indicator');
+  indicator.style.background = '#00ffcc';
+  setTimeout(() => indicator.style.background = '#ffaa00', 300);
+
+  const currentPhase = data.mission.phases.reverse().find(p => p.start_day <= 1.486); 
+  document.getElementById('art-phase').textContent = currentPhase ? currentPhase.name : "Translunar Coast";
+  document.getElementById('art-speed').textContent = `${data.orion.speed_km_s.toFixed(2)} km/s`;
+  document.getElementById('art-dist-earth').textContent = `${Math.floor(data.orion.distance_earth_km).toLocaleString()} km`;
+  document.getElementById('art-dist-moon').textContent = `${Math.floor(data.orion.distance_moon_km).toLocaleString()} km`;
+
+  const ox = data.orion.x_km * KM_TO_UNITS;
+  const oy = data.orion.z_km * KM_TO_UNITS;
+  const oz = -data.orion.y_km * KM_TO_UNITS; 
+  
+  const mx = data.moon.x_km * KM_TO_UNITS;
+  const my = data.moon.z_km * KM_TO_UNITS;
+  const mz = -data.moon.y_km * KM_TO_UNITS;
+
+  if (orionMesh && earthMoonMesh) {
+    const shipPos = new THREE.Vector3(ox, oy, oz);
+    // Secure minimum orbit distance so it does NOT clip inside Earth's huge scaling mesh (Radius 0.9)
+    if (shipPos.length() < 0.95 && shipPos.length() > 0.001) {
+      shipPos.setLength(0.95);
+    } else if (shipPos.length() <= 0.001) {
+      shipPos.set(0.95, 0, 0); 
+    }
+    orionMesh.position.copy(shipPos);
+    
+    earthMoonMesh.position.set(mx, my, mz);
+
+    orionMesh.lookAt(shipPos.x * 2, shipPos.y * 2, shipPos.z * 2);
+    orionMesh.rotateX(Math.PI / 2);
+
+    const M = new THREE.Vector3(mx, my, mz);
+    const dist = M.length();
+    const u = M.clone().normalize();
+    
+    const up = new THREE.Vector3(0, 1, 0);
+    if (Math.abs(u.y) > 0.99) up.set(1, 0, 0); 
+    const v = new THREE.Vector3().crossVectors(u, up).normalize();
+
+    const rE = 0.95; 
+    const rM = 0.28; 
+
+    const p0 = u.clone().multiplyScalar(rE); 
+    const p1 = u.clone().multiplyScalar(dist * 0.4).add(v.clone().multiplyScalar(dist * 0.2)); 
+    const p2 = u.clone().multiplyScalar(dist * 0.8).add(v.clone().multiplyScalar(dist * 0.15));
+    const p3 = M.clone().add(u.clone().multiplyScalar(rM * 1.5)).add(v.clone().multiplyScalar(rM * 1.2)); 
+    const p4 = M.clone().add(u.clone().multiplyScalar(rM * 2.5)); 
+    const p5 = M.clone().add(u.clone().multiplyScalar(rM * 1.5)).sub(v.clone().multiplyScalar(rM * 1.2)); 
+    const p6 = u.clone().multiplyScalar(dist * 0.8).sub(v.clone().multiplyScalar(dist * 0.15)); 
+    const p7 = u.clone().multiplyScalar(dist * 0.4).sub(v.clone().multiplyScalar(dist * 0.2));
+    const p8 = u.clone().multiplyScalar(rE); 
+
+    const curve = new THREE.CatmullRomCurve3([p0, p1, p2, p3, p4, p5, p6, p7, p8]);
+    const points = curve.getPoints(100);
+    
+    telemetryCurveMesh.geometry.dispose();
+    telemetryCurveMesh.geometry = new THREE.BufferGeometry().setFromPoints(points);
+    telemetryCurveMesh.computeLineDistances();
+  }
+}
+
+fetchArtemisLive();
+setInterval(fetchArtemisLive, 5000);
+
+const asteroids = []; 
+let showAsteroids = true; 
+const asteroidGroup = new THREE.Group();
+scene.add(asteroidGroup);
+
+function createAsteroid() {
+  const geo = new THREE.SphereGeometry(Math.random()*0.15+0.05, 8, 8); 
+  const mat = new THREE.MeshStandardMaterial({ color: 0x888877, roughness: 0.9 });
+  const mesh = new THREE.Mesh(geo, mat);
+  const orbitR = 18 + Math.random() * 5;
+  const angle = Math.random() * Math.PI * 2;
+  const tilt = (Math.random()-0.5) * 0.4;
+  mesh.userData = { orbitR, angle, speed: 0.5 + Math.random()*1.5, tilt };
+  asteroidGroup.add(mesh);
+  asteroids.push(mesh);
+}
+for(let i=0; i<350; i++) createAsteroid();
+asteroidGroup.visible = true;
+
+document.getElementById('asteroid-btn').addEventListener('click', () => {
+  showAsteroids = !showAsteroids;
+  asteroidGroup.visible = showAsteroids;
+  document.getElementById('asteroid-btn').textContent = showAsteroids ? 'HIDE BELT' : 'ASTEROIDS';
+});
+document.getElementById('asteroid-count').textContent = `TRACKING: ${asteroids.length} OBJECTS`;
+
+let isDragging = false, lastMouse = {x:0,y:0}, mouseDownPos = {x:0,y:0};
+let spherical = { theta: 0.3, phi: Math.PI/3.5, r: 90 };
+let targetSpherical = { ...spherical };
+let paused = false;
+let speedMult = 1;
+
+const raycaster = new THREE.Raycaster();
+const mouse2d = new THREE.Vector2();
+
+// Track precise clicks to avoid triggering after dragging the camera
+renderer.domElement.addEventListener('mousedown', e => { 
+  isDragging = true; 
+  lastMouse = {x:e.clientX, y:e.clientY}; 
+  mouseDownPos = {x:e.clientX, y:e.clientY};
+});
+
+renderer.domElement.addEventListener('mouseup', e => { 
+  isDragging = false; 
+  // If the mouse didn't move much, treat it as a click
+  const dist = Math.hypot(e.clientX - mouseDownPos.x, e.clientY - mouseDownPos.y);
+  if (dist < 5) {
+    handleCanvasClick(e);
+  }
+});
+
+renderer.domElement.addEventListener('mousemove', e => {
+  if (isDragging) {
+    const dx = e.clientX - lastMouse.x;
+    const dy = e.clientY - lastMouse.y;
+    targetSpherical.theta -= dx * 0.006;
+    targetSpherical.phi = Math.max(0.15, Math.min(Math.PI/2.1, targetSpherical.phi + dy * 0.006));
+    lastMouse = {x:e.clientX, y:e.clientY};
+  }
+  checkHover(e);
+});
+
+renderer.domElement.addEventListener('wheel', e => {
+  targetSpherical.r = Math.max(2, Math.min(250, targetSpherical.r + e.deltaY * 0.08));
+  e.preventDefault();
+}, { passive: false });
+
+
+// FIX: Upgraded Click Handler with proper Filtering
+function handleCanvasClick(e) {
+  mouse2d.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse2d.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse2d, camera);
+  
+  // The 'true' parameter allows the raycaster to check children
+  const hits = raycaster.intersectObjects(planetMeshes, true);
+  
+  // Filter out the lines and rings
+  let validHit = null;
+  for (let i = 0; i < hits.length; i++) {
+    const obj = hits[i].object;
+    if (obj.userData.isOrbitRing || obj.userData.isTrajectory) continue;
+    validHit = obj;
+    break;
+  }
+
+  if (validHit) {
+    if (validHit.userData.isOrion || (validHit.parent && validHit.parent.userData && validHit.parent.userData.isOrion)) {
+      document.getElementById('crew-panel').classList.add('visible');
+    } else if (validHit.userData.isMoon && validHit.userData.isLiveBody) {
+      showInfo({
+        name: 'Moon',
+        type: 'Satellite',
+        diam: '3,474 km',
+        orbit: '384,000 km',
+        moons: 0,
+        temp: '-130/120°C',
+        fact: "Earth's only natural satellite"
+      });
+    }
+  }
+}
+
+document.getElementById('close-crew-btn').addEventListener('click', () => {
+  document.getElementById('crew-panel').classList.remove('visible');
+});
+
+// FIX: Upgraded Hover Handler to prevent bubble-up and ignore lines
+function checkHover(e) {
+  mouse2d.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse2d.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse2d, camera);
+  
+  const hits = raycaster.intersectObjects(planetMeshes, true);
+  const panel = document.getElementById('planet-info');
+  document.body.style.cursor = 'default';
+  panel.classList.remove('visible');
+
+  // Filter out the lines and rings
+  let validHit = null;
+  for (let i = 0; i < hits.length; i++) {
+    const obj = hits[i].object;
+    if (obj.userData.isOrbitRing || obj.userData.isTrajectory) continue;
+    validHit = obj;
+    break;
+  }
+
+  if (validHit) {
+    // 1. If Hovering Orion, show pointer and stop.
+    if (validHit.userData.isOrion || (validHit.parent && validHit.parent.userData && validHit.parent.userData.isOrion)) {
+      document.body.style.cursor = 'pointer';
+      return; 
+    }
+
+    // 2. If Hovering Earth's Moon, show its planet info and stop.
+    if (validHit.userData.isMoon && validHit.userData.isLiveBody) {
+      showInfo({
+        name: 'Moon',
+        type: 'Satellite',
+        diam: '3,474 km',
+        orbit: '384,000 km',
+        moons: 0,
+        temp: '-130/120°C',
+        fact: "Earth's only natural satellite"
+      });
+      document.body.style.cursor = 'pointer';
+      return; 
+    }
+
+    // 2.5 If Hovering another Planet's Moon, stop. Do NOT bubble up to the planet.
+    if (validHit.userData.isMoon) {
+      return; 
+    }
+
+    // 3. Otherwise, check if it's a planet (bubble up through mesh hierarchy if needed)
+    let current = validHit;
+    while(current) {
+      if (current.userData && current.userData.name && !current.userData.isMoon && !current.userData.isLiveBody) {
+        showInfo(current.userData);
+        document.body.style.cursor = 'pointer';
+        return;
+      }
+      current = current.parent; 
+    }
+  }
+}
+
+function showInfo(pd) {
+  document.getElementById('info-name').textContent = pd.name.toUpperCase();
+  document.getElementById('info-type').textContent = pd.type;
+  document.getElementById('info-diam').textContent = pd.diam;
+  document.getElementById('info-orbit').textContent = isNaN(pd.orbit) ? pd.orbit : (pd.orbit * 5 + 'M km');
+  document.getElementById('info-moons').textContent = pd.moons;
+  document.getElementById('info-temp').textContent = pd.temp;
+  document.getElementById('info-fact').textContent = pd.fact;
+  document.getElementById('planet-info').classList.add('visible');
+}
+
+document.getElementById('pause-btn').addEventListener('click', () => {
+  paused = !paused;
+  document.getElementById('pause-btn').textContent = paused ? 'RESUME' : 'PAUSE';
+});
+document.getElementById('speed-slider').addEventListener('input', e => {
+  speedMult = parseFloat(e.target.value);
+});
+document.getElementById('orbits-btn').addEventListener('click', () => {
+  showOrbits = !showOrbits;
+  orbitLines.forEach(o => o.visible = showOrbits);
+  document.getElementById('orbits-btn').textContent = showOrbits ? 'ORBITS OFF' : 'ORBITS ON';
+});
+
+function focusPlanet(name) {
+  const mesh = planetMeshes.find(m => m.userData.name === name);
+  if (mesh) {
+    const pd = mesh.userData;
+    targetSpherical.r = pd.orbit * 1.8;
+    targetSpherical.phi = Math.PI / 4;
+  }
+}
+
+document.getElementById('focus-artemis-btn').addEventListener('click', () => {
+  if (earthMeshRef) {
+    targetSpherical.r = earthMeshRef.userData.orbit * 1.08; 
+    targetSpherical.phi = Math.PI / 3;
+    targetSpherical.theta = earthMeshRef.userData.angle + 0.5;
+  }
+});
+
+let time = 0;
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = Math.min(clock.getDelta(), 0.05);
+  if (!paused) time += dt * speedMult;
+
+  spherical.theta += (targetSpherical.theta - spherical.theta) * 0.08;
+  spherical.phi   += (targetSpherical.phi   - spherical.phi)   * 0.08;
+  spherical.r     += (targetSpherical.r     - spherical.r)     * 0.08;
+  const sp = spherical;
+  camera.position.set(
+    sp.r * Math.sin(sp.phi) * Math.sin(sp.theta),
+    sp.r * Math.cos(sp.phi),
+    sp.r * Math.sin(sp.phi) * Math.cos(sp.theta)
+  );
+  camera.lookAt(0, 0, 0);
+
+  sun.rotation.y += 0.002;
+
+  planetMeshes.forEach(mesh => {
+    const pd = mesh.userData;
+    pd.angle += (pd.speed * 0.01) / pd.orbit * time * 0.0 + (pd.speed * 0.004 * (paused ? 0 : speedMult));
+    mesh.position.x = Math.cos(pd.angle) * pd.orbit;
+    mesh.position.z = Math.sin(pd.angle) * pd.orbit;
+    mesh.position.y = Math.sin(pd.angle * 0.3) * 0.3;
+    mesh.rotation.y += 0.01 * (paused ? 0 : speedMult);
+
+    mesh.children.forEach(child => {
+      if (child.userData.isMoon && !child.userData.isLiveBody) {
+        const spd = child.userData.speed || 3;
+        child.userData.angle += 0.02 * spd * (paused ? 0 : speedMult);
+        const r = child.userData.orbitR;
+        child.position.x = Math.cos(child.userData.angle) * r;
+        child.position.z = Math.sin(child.userData.angle) * r;
+        child.position.y = Math.sin(child.userData.angle * 0.5) * 0.3;
+      } 
+    });
+  });
+
+  if (showAsteroids) {
+    asteroids.forEach(a => {
+      a.userData.angle += 0.003 * a.userData.speed * (paused ? 0 : speedMult);
+      a.position.x = Math.cos(a.userData.angle) * a.userData.orbitR;
+      a.position.z = Math.sin(a.userData.angle) * a.userData.orbitR;
+      a.position.y = Math.sin(a.userData.angle) * a.userData.tilt * a.userData.orbitR * 0.15;
+    });
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
