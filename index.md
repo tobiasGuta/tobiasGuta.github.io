@@ -26,16 +26,3 @@ title: Home
   </div>
 
 </div>
-
-<!-- Artemis II Tracker Notification -->
-<div>
-  <a href="/tothemoon.html" class="artemis-tracker">
-    <span class="tracker-icon">
-      <img src="/assets/artemis-rocket.png" alt="Artemis Spacecraft" style="width: 24px; height: 24px; object-fit: contain; filter: drop-shadow(0 0 3px rgba(255,255,255,0.7));" />
-    </span>
-    <span class="tracker-text">Track Artemis II</span>
-  </a>
-</div>
-
-
-

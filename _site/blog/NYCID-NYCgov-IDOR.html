@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Critical IDOR in NYC.gov NYCID Appointment Scheduling (Fixed)</title>
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <!-- Toast UI Editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Your custom CSS (with cache buster) -->
+    <link rel="stylesheet" href="/assets/style.css?v=1775234769" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- GitHub Markdown CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css" />
+
+    <!-- Terminal styles -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+    
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      /* Zoomable image styles */
+      .zoomable-img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .zoomable-img.zoomed {
+        transform: scale(2);
+        z-index: 10000;
+      }
+
+      /* Optional: Style for body when zoomed */
+      .zoom-active {
+        overflow: hidden;
+      }
+
+      /* Social Media Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: baseline; /* Align icons to baseline */
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .social-icons a {
+        font-size: 2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #000 !important;
+        background: none;
+        border-radius: 0;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 1em;
+        height: 1em;
+      }
+
+      .social-icons a:hover img {
+        /* This filter makes the icon blue on hover */
+        filter: invert(33%) sepia(98%) saturate(7496%) hue-rotate(222deg) brightness(97%) contrast(101%);
+      }
+
+      .social-icons i,
+      .social-icons img {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+
+      .social-icons img {
+        display: inline-block;
+        position: relative;
+        top: 0.12em; /* Move HackerOne and Mastodon icons down slightly */
+      }
+
+      /* Exception for HackerOne and Mastodon (icons should be white) */
+      .social-icons a[aria-label="HackerOne"] img,
+      .social-icons a[aria-label="Mastodon"] img {
+        filter: invert(1);
+      }
+
+      .social-icons i {
+        margin-top: -0.15em; /* Move LinkedIn and GitHub icons up just a little */
+      }
+    </style>
+  </head>
+  <body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="bi bi-briefcase-fill" style="color:white; margin-right: 8px;"></i> Portfolio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " href="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/posts">
+            <i class="bi bi-journal-text"></i> Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/projects">
+            <i class="bi bi-kanban-fill"></i> Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/certificates">
+            <i class="bi bi-award-fill"></i> Certificates
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/contact">
+            <i class="bi bi-envelope-fill"></i> Contact Me
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <main class="container py-5">
+      
+<!-- Normal post view -->
+<div id="scroll-progress-container">
+  <div id="scroll-progress-bar"></div>
+</div>
+<div class="post-page">
+  <article class="post-container px-4 py-5 mx-auto max-w-4xl text-gray-100">
+    <header class="mb-4 border-b border-gray-600 pb-3">
+      <h1 class="text-3xl font-bold glitch-header" data-value="Critical IDOR in NYC.gov NYCID Appointment Scheduling (Fixed)" style="font-family: 'Press Start 2P', monospace; line-height: 1.4; font-size: 24px;">Critical IDOR in NYC.gov NYCID Appointment Scheduling (Fixed)</h1>
+      
+      <p class="text-sm text-gray-400" style="font-family: 'Press Start 2P', monospace; font-size: 10px; line-height: 1.5;">
+        May 20, 2026
+      </p>
+
+      
+        <div class="categories mt-3 mb-2">
+          <span class="text-gray-400 text-sm font-medium" style="font-family: 'Press Start 2P', monospace; font-size: 10px;">Categories: </span>
+          
+            <span class="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-2 mb-1 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 shadow-sm" style="font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 12px;">
+              Bug-bounty
+            </span>
+          
+        </div>
+      
+    </header>
+
+    
+      <div class="post-header-image">
+        <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*KUctB4qITZ3jOHAj3oqtBg.png" alt="Critical IDOR in NYC.gov NYCID Appointment Scheduling (Fixed) cover image" />
+      </div>
+    
+
+<section class="post-content prose prose-invert max-w-none text-gray-300" style="font-family: 'Fira Code', monospace; line-height: 1.8; font-size: 16px;">
+  <h2>Summary</h2>
+  <p>I discovered a <strong>critical Insecure Direct Object Reference (IDOR)</strong> issue in the NYC.gov appointment scheduling flow for <strong>NYCID</strong>.</p>
+  <p>The application allowed anyone to <strong>view, reschedule, or cancel an appointment</strong> by providing only an <strong>11-digit confirmation number</strong>, with <strong>no authentication or identity verification</strong>.</p>
+  <p>I also observed that confirmation numbers appeared <strong>predictable</strong> (sequential / incrementing patterns), which increases the likelihood of unauthorized access at scale.</p>
+  <blockquote>
+    <p><strong>Status:</strong> Fixed (the issue is no longer reproducible as of this post).</p>
+  </blockquote>
+
+  <h2>Fix implemented (what changed)</h2>
+  <p>The responsible agency implemented an improved fix for this issue. Their solution <strong>reduces the amount of exposed data</strong>, which is a strong approach to mitigating this IDOR vulnerability. Based on what I observed during retesting, the fix appears effective and significantly limits unnecessary data disclosure.</p>
+  <p>This is a well-designed mitigation: <strong>minimizing returned data</strong> helps prevent unauthorized access to sensitive information even if an endpoint is misused.</p>
+
+  <h2>Impact</h2>
+  <p>If abused, this would allow an unauthorized party to access <strong>personally identifiable information (PII)</strong> associated with appointments, including:</p>
+  <ul>
+    <li>Full name</li>
+    <li>Email address</li>
+    <li>Phone number</li>
+    <li>Appointment details (location, date, time)</li>
+  </ul>
+  <p>This represents a serious privacy and safety risk because the confirmation number effectively acted as the only “key” to sensitive user records.</p>
+
+  <h2>What I observed</h2>
+  <p>After completing an appointment booking, the system displayed an 11-digit confirmation number. While testing with <strong>appointments I created using my own information</strong>, I noticed the numbers followed a <strong>predictable pattern</strong> (small changes between valid values).</p>
+  <p>In the “View / Reschedule / Cancel” flow, entering only the confirmation number was sufficient to reach a page that revealed appointment details and associated PII—without any additional verification step.</p>
+
+  <h2>Validation steps (responsible)</h2>
+  <p>For responsible disclosure reasons, I kept testing strictly limited to <strong>my own appointments</strong> and did not attempt to access or enumerate other users’ data.</p>
+  <p>High-level validation flow:</p>
+  <ol>
+    <li>Create an appointment and note the confirmation number.</li>
+    <li>Create a second appointment and compare the confirmation number structure/pattern.</li>
+    <li>Use the site’s “View / Reschedule / Cancel” feature and enter each confirmation number.</li>
+    <li>Observe that sensitive information is displayed without authentication.</li>
+  </ol>
+  <p>Any screenshots I captured were <strong>redacted/blurred</strong> to remove PII.</p>
+
+  <h2>Evidence (redacted)</h2>
+  <p>PoC screenshots (PII redacted):</p>
+  <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ZALIdn76kGjVYtThARjjGg.png" alt="PoC screenshot (redacted)" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*n-NK0W4JW9RctFrdjC2TRg.png" alt="PoC screenshot (redacted)" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+  <p>Acceptance / validation response:</p>
+  <p><img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*7Ry-0IAuyWMF8fIFdudKaA.png" alt="Agency validation response (redacted)" class="zoomable-img" style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;" /></p>
+
+  <h2>Root cause (high-level)</h2>
+  <p>The system relied on a single, user-controlled identifier (the confirmation number) as the only gate to an appointment object.</p>
+  <p>When an identifier is the only requirement to access a record <em>and</em> it is guessable / low-entropy, it becomes an access-control problem, not just an “identifier” problem.</p>
+
+  <h2>Recommendations</h2>
+  <ul>
+    <li>Require authentication for appointment management, or add secondary verification (one-time link / code).</li>
+    <li>Use high-entropy, unguessable identifiers instead of predictable sequences.</li>
+    <li>Add rate limiting, anomaly detection, and monitoring on lookup endpoints.</li>
+    <li>Enforce server-side authorization checks before returning any PII.</li>
+  </ul>
+
+  <h2>Takeaway</h2>
+  <p>This was a good reminder that <strong>access control must be enforced server-side</strong> and that “confirmation numbers” can quickly become security tokens if they unlock privileged actions.</p>
+</section>
+
+    <footer class="mt-8 text-sm text-gray-400 flex justify-center">
+      <a href="/posts" class="btn btn-back btn-back-bottom">
+        <span style="font-size:1.2em; margin-right:0.5em;">&#8592;</span> Blog Home
+      </a>
+    </footer>
+  </article>
+</div>
+
+<!-- FINAL CSS OVERRIDE - LOADED LAST TO WIN SPECIFICITY WAR -->
+<style>
+/* === IMPRESSIVE FEATURES CSS === */
+
+/* 1. Scroll Progress Bar */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 9999;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  background: var(--dracula-pink);
+  width: 0%;
+  box-shadow: 0 0 10px var(--dracula-pink), 0 0 20px var(--dracula-purple);
+  transition: width 0.1s;
+}
+
+/* 3. Glitch Header Effect */
+.glitch-header {
+  position: relative;
+}
+
+.glitch-header:hover {
+  color: var(--dracula-cyan);
+  text-shadow: 2px 0 var(--dracula-pink), -2px 0 var(--dracula-green);
+}
+</style>
+
+<script>
+/* === IMPRESSIVE FEATURES JS === */
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. Scroll Progress Bar Logic
+  window.addEventListener('scroll', function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("scroll-progress-bar");
+    if(progressBar) {
+      progressBar.style.width = scrolled + "%";
+    }
+  });
+
+  // 2. Hacker Text Scramble Effect for Title
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*";
+  const header = document.querySelector(".glitch-header");
+  
+  if(header) {
+    let interval = null;
+    
+    // Run once on load
+    scrambleText(header);
+    
+    // Run on hover
+    header.onmouseover = event => {  
+      scrambleText(event.target);
+    };
+    
+    function scrambleText(target) {
+      let iteration = 0;
+      clearInterval(interval);
+      
+      const originalText = target.dataset.value;
+      
+      interval = setInterval(() => {
+        target.innerText = originalText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return originalText[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+        
+        if(iteration >= originalText.length) { 
+          clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+      }, 30);
+    }
+  }
+
+});
+</script>
+
+
+
+
+      
+        
+          <!-- Giscus comments - Only show for unlocked posts -->
+          <div id="comments"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="tobiasGuta/tobiasGuta.github.io"
+                  data-repo-id="R_kgDOOxswYQ"
+                  data-category="General"
+                  data-category-id="DIC_kwDOOxswYc4CrEhp"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="transparent_dark"
+                  data-lang="en"
+                  data-loading="lazy"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+        
+      
+    </main>
+
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Typing animation script -->
+    <script>
+      const text = "I am a firm believer that cybersecurity excellence is earned, not bought. By mastering offensive security through documentation, community research, and persistent trial-and-error, I’ve developed a level of resourcefulness that a classroom can't teach. I don't wait for a certification to tell me I'm ready, I prove it by breaking down complex systems and securing them.";
+      const typedText = document.getElementById("typed-text");
+      const cursor = document.getElementById("cursor");
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          typedText.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 25);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+
+    <!-- Copy code button script -->
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.querySelector('pre code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          // Store original content
+          const originalHTML = button.innerHTML;
+          
+          // Add copied class for styling
+          button.classList.add('copied');
+          
+          // Change to checkmark icon
+          button.innerHTML = `
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+              <polyline points="20,6 9,17 4,12"></polyline>
+            </svg>
+          `;
+          
+          // Reset after 1.5 seconds
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          // Show error state
+          const originalHTML = button.innerHTML;
+          button.style.background = '#ef4444';
+          button.innerHTML = '✗';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+          }, 1000);
+        });
+      }
+    </script>
+
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.zoomable-img').forEach(function(img) {
+    img.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling
+      if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+        document.body.classList.remove('zoom-active');
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      } else {
+        document.querySelectorAll('.zoomable-img.zoomed').forEach(function(other) {
+          other.classList.remove('zoomed');
+        });
+        img.classList.add('zoomed');
+        document.body.classList.add('zoom-active');
+
+        // Try to go fullscreen
+        if (img.requestFullscreen) {
+          img.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+          });
+        } else if (img.webkitRequestFullscreen) { // Safari
+          img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) { // IE11
+          img.msRequestFullscreen();
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+      img.classList.remove('zoomed');
+    });
+    document.body.classList.remove('zoom-active');
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  // Escape key exits zoom
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoomable-img.zoomed').forEach(function(img) {
+        img.classList.remove('zoomed');
+      });
+      document.body.classList.remove('zoom-active');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+    }
+  });
+});
+</script>
+    
+  </body>
+</html>
+
