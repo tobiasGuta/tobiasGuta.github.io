@@ -1,0 +1,8 @@
+title: Tobias Guta Portfolio
+description: Cybersecurity portfolio, projects, writeups, bug bounty notes, CTF walkthroughs, pentesting labs, and research.
+url: "https://whoistob1as.me"
+baseurl: ""
+
+markdown: kramdown
+future: false
+permalink: /blog/:title/

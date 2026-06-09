@@ -1,0 +1,100 @@
+name: Update project data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 8 * * *"
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - ".github/workflows/update-project-data.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update-project-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Fetch public repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: tobiasGuta
+        run: |
+          mkdir -p assets/data
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          owner = os.environ["GITHUB_OWNER"]
+          token = os.environ.get("GITHUB_TOKEN", "")
+          repos = []
+          page = 1
+
+          while True:
+              url = f"https://api.github.com/users/{owner}/repos?sort=updated&per_page=100&page={page}"
+              request = urllib.request.Request(url)
+              request.add_header("Accept", "application/vnd.github+json")
+              if token:
+                  request.add_header("Authorization", f"Bearer {token}")
+
+              with urllib.request.urlopen(request) as response:
+                  batch = json.load(response)
+
+              if not batch:
+                  break
+
+              repos.extend(batch)
+              page += 1
+
+          projects = []
+          for repo in repos:
+              if repo.get("fork") or repo.get("archived"):
+                  continue
+
+              projects.append({
+                  "name": repo.get("name"),
+                  "description": repo.get("description"),
+                  "html_url": repo.get("html_url"),
+                  "homepage": repo.get("homepage"),
+                  "language": repo.get("language"),
+                  "topics": repo.get("topics", []),
+                  "stargazers_count": repo.get("stargazers_count", 0),
+                  "forks_count": repo.get("forks_count", 0),
+                  "updated_at": repo.get("updated_at"),
+                  "fork": repo.get("fork", False),
+                  "archived": repo.get("archived", False),
+              })
+
+          projects.sort(key=lambda item: item.get("updated_at") or "", reverse=True)
+
+          output = {
+              "owner": owner,
+              "source": "github_api",
+              "projects": projects,
+          }
+
+          with open("assets/data/projects.json", "w", encoding="utf-8") as file:
+              json.dump(output, file, indent=2)
+              file.write("\n")
+          PY
+
+      - name: Commit updated project data
+        run: |
+          if git diff --quiet -- assets/data/projects.json; then
+            echo "Project data is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/projects.json
+          git commit -m "Update generated project data"
+          git push

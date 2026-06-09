@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~*~ Projects ~*~ Tobias Guta</title>
+  <!-- Shared visual design. Edit site styling in assets/css/main.css. -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-top">
+  <span>
+    ★ PROJECT ARCHIVE ★ &nbsp;&nbsp;|&nbsp;&nbsp;
+    PUBLIC GITHUB REPOSITORIES LOADED AUTOMATICALLY &nbsp;&nbsp;|&nbsp;&nbsp;
+    SECURITY TOOLS | CTF WORK | RECON PROJECTS &nbsp;&nbsp;|&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <h1 class="site-title">~*~ PROJECTS ~*~</h1>
+  <p class="site-subtitle">&gt;&gt;&gt; GITHUB REPOS &lt;&lt;&lt;</p>
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+</header>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">[ HOME ]</a>
+  <a href="projects.html">[ PROJECTS ]</a>
+  <a href="writeups.html">[ WRITEUPS ]</a>
+  <a href="contact.html">[ CONTACT ]</a>
+</nav>
+
+<!-- PROJECTS PAGE -->
+<main class="projects-page">
+  <section class="section-block projects-block">
+    <div class="section-header projects-header">
+      <span>⚡</span>
+      <h2 class="projects-title">AUTO PROJECT INDEX</h2>
+    </div>
+    <div class="section-content">
+      <div class="projects-toolbar">
+        <div>
+          <div class="projects-count" id="projects-count">Loading repositories...</div>
+          <div class="projects-source" id="projects-source">Trying generated project data first.</div>
+        </div>
+        <a class="project-link projects-profile-link" href="https://github.com/tobiasGuta">GitHub Profile</a>
+      </div>
+
+      <div class="projects-grid" id="projects-grid" aria-live="polite">
+        <div class="project-loading">Scanning public repositories...</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-divider">
+    ●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○
+  </div>
+  <p class="footer-heading">~*~ PROJECT DATA UPDATES FROM GITHUB ~*~</p>
+  <div class="footer-text">
+    <p>
+      Project cards are loaded from <span class="neon">assets/data/projects.json</span> when available, with a browser fallback to the GitHub API.
+    </p>
+  </div>
+</footer>
+
+<!-- Project list loader. Edit repository rendering in assets/js/projects.js. -->
+<script src="assets/js/projects.js"></script>
+
+</body>
+</html>

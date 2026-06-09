@@ -1,0 +1,19 @@
+{% assign post = include.post %}
+<article class="writeup-card">
+  {% if post.image %}
+    <a href="{{ post.url | relative_url }}" class="writeup-card-image-link">
+      <img class="writeup-card-image" src="{{ post.image }}" alt="{{ post.title }} cover image">
+    </a>
+  {% endif %}
+  <div class="writeup-card-body">
+    <div class="writeup-card-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 150 }}</p>
+    <div class="writeup-tags">
+      {% for category in post.categories limit: 4 %}
+        <span>{{ category }}</span>
+      {% endfor %}
+    </div>
+    <a class="writeup-read-link" href="{{ post.url | relative_url }}">Read Writeup</a>
+  </div>
+</article>

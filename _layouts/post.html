@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "Writeup" }} | Tobias Guta</title>
+  <!-- Shared site styling. Edit post visuals in assets/css/main.css under POST LAYOUT. -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-top">
+  <span>
+    ★ WRITEUP MODE ★ &nbsp;&nbsp;|&nbsp;&nbsp;
+    BUG BOUNTY | CTF | PENTESTING | RESEARCH &nbsp;&nbsp;|&nbsp;&nbsp;
+    NOTES FROM THE FIELD &nbsp;&nbsp;|&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <h1 class="site-title">~*~ WRITEUP ~*~</h1>
+  <p class="site-subtitle">&gt;&gt;&gt; {{ page.title }} &lt;&lt;&lt;</p>
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+</header>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="{{ '/index.html' | relative_url }}">[ HOME ]</a>
+  <a href="{{ '/projects.html' | relative_url }}">[ PROJECTS ]</a>
+  <a href="{{ '/writeups.html' | relative_url }}">[ WRITEUPS ]</a>
+  <a href="{{ '/contact.html' | relative_url }}">[ CONTACT ]</a>
+</nav>
+
+<main class="post-page">
+  <article class="post-shell">
+    <header class="post-hero">
+      {% if page.image %}
+        <img class="post-hero-image" src="{{ page.image }}" alt="{{ page.title }} cover image">
+      {% endif %}
+      <div class="post-hero-copy">
+        <div class="post-date">{{ page.date | date: "%B %-d, %Y" }}</div>
+        <h1>{{ page.title }}</h1>
+        {% if page.categories %}
+          <div class="post-tags">
+            {% for category in page.categories %}
+              <span>{{ category }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-divider">●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○</div>
+  <p class="footer-heading">~*~ END OF WRITEUP ~*~</p>
+  <div class="footer-text">
+    <p><a href="{{ '/writeups.html' | relative_url }}">Back to all writeups</a></p>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+</body>
+</html>
