@@ -1,0 +1,86 @@
+---
+layout: null
+title: Contact
+permalink: /contact.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>~*~ Contact ~*~ Tobias Guta</title>
+  <!-- Shared visual design. Edit contact styling in assets/css/main.css under CONTACT PAGE. -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-top">
+  <span>
+    ★ CONTACT TERMINAL ★ &nbsp;&nbsp;|&nbsp;&nbsp;
+    SECURITY QUESTIONS | PROJECTS | COLLABS | RESPONSIBLE DISCLOSURE &nbsp;&nbsp;|&nbsp;&nbsp;
+    FORM POWERED BY FORMSPREE &nbsp;&nbsp;|&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <h1 class="site-title">~*~ CONTACT ~*~</h1>
+  <p class="site-subtitle">&gt;&gt;&gt; SEND MESSAGE &lt;&lt;&lt;</p>
+  <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+</header>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="{{ '/index.html' | relative_url }}">[ HOME ]</a>
+  <a href="{{ '/projects.html' | relative_url }}">[ PROJECTS ]</a>
+  <a href="{{ '/writeups.html' | relative_url }}">[ WRITEUPS ]</a>
+  <a href="{{ '/contact.html' | relative_url }}">[ CONTACT ]</a>
+</nav>
+
+<main class="contact-page">
+  <section class="section-block projects-block contact-shell">
+    <div class="section-header projects-header">
+      <span>✉</span>
+      <h2 class="projects-title">CONTACT FORM</h2>
+    </div>
+    <div class="section-content contact-content">
+      <div class="terminal-box contact-terminal">
+        <div class="terminal-line"><span class="prompt">visitor@portfolio</span>:<span class="terminal-path">~</span>$ <span class="cmd">send_message --to TobiasGuta</span></div>
+        <div class="terminal-line"><span class="output">Status: Formspree relay online</span></div>
+        <div class="terminal-line"><span class="output">Use this form for project questions, security topics, or collaboration.</span></div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/mvgbdevj" method="POST">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="8" required></textarea>
+
+        <input type="hidden" name="_subject" value="New portfolio contact message">
+        <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="contact-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-divider">●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○</div>
+  <p class="footer-heading">~*~ MESSAGE ROUTED THROUGH FORMSPREE ~*~</p>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+</body>
+</html>

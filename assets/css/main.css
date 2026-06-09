@@ -1,0 +1,1148 @@
+/*
+  Main stylesheet for the portfolio homepage.
+  Sections are labeled so layout, sidebars, content cards, and responsive rules are easy to find.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000000;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,255,0,0.03) 2px,
+          rgba(0,255,0,0.03) 4px
+        );
+      color: #00FF00;
+      font-family: "Courier New", Courier, monospace;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext y='16' font-size='16'%3E💀%3C/text%3E%3C/svg%3E"), auto;
+      overflow-x: hidden;
+    }
+
+    /* ===== SCANLINE OVERLAY ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.15) 3px,
+        rgba(0,0,0,0.15) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ===== TOP MARQUEE ===== */
+    .marquee-top {
+      background: #FF00FF;
+      color: #000;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 4px 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .marquee-top span {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(100vw); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: linear-gradient(180deg, #000080 0%, #000000 100%);
+      border-bottom: 3px solid #FF00FF;
+      border-top: 3px solid #00FFFF;
+      padding: 16px 0 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    .site-title {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(14px, 3vw, 26px);
+      color: #FFFF00;
+      text-shadow:
+        3px 3px 0 #FF00FF,
+        -1px -1px 0 #00FFFF,
+        0 0 20px #FFFF00,
+        0 0 40px #FF00FF;
+      letter-spacing: 3px;
+      animation: flicker 4s infinite;
+      line-height: 1.6;
+    }
+    @keyframes flicker {
+      0%, 97%, 100% { opacity: 1; }
+      98% { opacity: 0.4; }
+      99% { opacity: 0.9; }
+    }
+
+    .site-subtitle {
+      font-family: "Comic Sans MS", cursive;
+      font-size: 13px;
+      color: #00FFFF;
+      margin-top: 6px;
+      letter-spacing: 2px;
+    }
+
+    .stars-row {
+      color: #FFFF00;
+      font-size: 18px;
+      margin: 6px 0;
+      animation: twinkle 1.5s step-end infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { color: #FFFF00; }
+      50% { color: #FF00FF; }
+    }
+
+    /* ===== NAV BAR ===== */
+    .navbar {
+      background: #000080;
+      border-top: 2px solid #00FFFF;
+      border-bottom: 2px solid #00FFFF;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 2px 0;
+    }
+    .navbar a {
+      color: #FFFF00;
+      text-decoration: none;
+      font-family: "Comic Sans MS", cursive;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 5px 14px;
+      border-right: 2px solid #00FFFF;
+      transition: background 0.1s, color 0.1s;
+    }
+    .navbar a:first-child { border-left: 2px solid #00FFFF; }
+    .navbar a:hover {
+      background: #FF00FF;
+      color: #000;
+    }
+    /* ===== LAYOUT ===== */
+    .page-body {
+      display: flex;
+      gap: 0;
+      max-width: 1000px;
+      margin: 12px auto;
+      padding: 0 8px;
+    }
+
+    /* ===== LEFT SIDEBAR ===== */
+    .sidebar-left {
+      width: 200px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-box {
+      border: 2px solid #00FF00;
+      background: #001100;
+      padding: 10px 8px;
+    }
+    .sidebar-box.cyan-border { border-color: #00FFFF; }
+    .sidebar-box.magenta-border { border-color: #FF00FF; }
+    .sidebar-box.yellow-border { border-color: #FFFF00; }
+
+    .sidebar-box h3 {
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      color: #FFFF00;
+      text-align: center;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed #00FF00;
+      margin-bottom: 8px;
+    }
+
+    /* Profile picture area */
+    .profile-pic-wrap {
+      text-align: center;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 8px;
+      position: relative;
+      border: 3px solid #00FFFF;
+      box-shadow: 0 0 12px #00FFFF, 0 0 24px #00FF00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #001a2e;
+      overflow: hidden;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }    .profile-name {
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+      color: #00FFFF;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .online-indicator {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #00FF00;
+      border-radius: 50%;
+      animation: pulse 1s ease-in-out infinite;
+      vertical-align: middle;
+      margin-right: 4px;
+      box-shadow: 0 0 6px #00FF00;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .status-text {
+      font-size: 10px;
+      color: #00FF00;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* Skills progress bars */
+    .skill-item {
+      margin-bottom: 8px;
+    }
+    .skill-name {
+      font-size: 9px;
+      color: #00FFFF;
+      margin-bottom: 2px;
+    }
+    .skill-bar-bg {
+      background: #003300;
+      border: 1px solid #00FF00;
+      height: 10px;
+      width: 100%;
+    }
+    .skill-bar-fill {
+      background: linear-gradient(90deg, #00FF00, #00FFFF);
+      height: 100%;
+      animation: loadBar 2s ease-out forwards;
+      width: 0%;
+    }
+    @keyframes loadBar {
+      to { width: var(--pct); }
+    }
+
+    /* Weather / status widget */
+    .blink {
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink {
+      50% { visibility: hidden; }
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      flex: 1;
+      padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    /* Welcome box */
+    .welcome-box {
+      border: 3px double #00FFFF;
+      background: #000d1a;
+      padding: 14px;
+    }
+    .welcome-box h2 {
+      font-family: "Press Start 2P", monospace;
+      font-size: 11px;
+      color: #FFFF00;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #FFFF00;
+    }
+    .welcome-box p {
+      font-size: 12px;
+      color: #C0C0C0;
+      line-height: 1.9;
+      margin-bottom: 8px;
+      font-family: "Comic Sans MS", cursive;
+    }
+    .welcome-box p .highlight { color: #00FFFF; font-weight: bold; }
+    .welcome-box p .neon { color: #FF00FF; font-weight: bold; }
+
+    /* About me section */
+    .section-block {
+      border: 2px solid #00FF00;
+      background: #000a00;
+    }
+    .section-header {
+      background: #003300;
+      padding: 7px 12px;
+      border-bottom: 2px solid #00FF00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-header h2 {
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      color: #00FF00;
+    }
+    .section-content {
+      padding: 12px;
+    }
+    .section-content p {
+      font-size: 12px;
+      color: #C0C0C0;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    /* Info table */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin: 8px 0;
+    }
+    .info-table td {
+      padding: 5px 8px;
+      border: 1px solid #003300;
+    }
+    .info-table td:first-child {
+      color: #00FFFF;
+      width: 120px;
+      background: #001100;
+      font-weight: bold;
+    }
+    .info-table td:last-child {
+      color: #C0C0C0;
+    }
+    .info-table tr:hover td { background: #001a00; }
+    .project-link {
+      color: #FF00FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .project-link:hover {
+      color: #FFFF00;
+    }
+
+    /* Certificates + Awards */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .cert-card {
+      border: 2px solid #FFFF00;
+      background: #111100;
+      padding: 9px;
+      min-height: 96px;
+    }
+    .cert-card:nth-child(2n) {
+      border-color: #00FFFF;
+      background: #001515;
+    }
+    .cert-card:nth-child(3n) {
+      border-color: #FF00FF;
+      background: #1a001a;
+    }
+    .cert-title {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+      margin-bottom: 5px;
+    }
+    .cert-card:nth-child(2n) .cert-title { color: #00FFFF; }
+    .cert-card:nth-child(3n) .cert-title { color: #FF00FF; }
+    .cert-issuer,
+    .cert-date,
+    .cert-note {
+      color: #C0C0C0;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+    .cert-date { color: #888; }
+    .cert-action {
+      display: inline-block;
+      margin-top: 6px;
+      border: 1px solid currentColor;
+      color: #00FF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+      padding: 3px 5px;
+      text-decoration: none;
+    }
+    .cert-action:hover {
+      background: #00FF00;
+      color: #000;
+    }
+    /* Terminal block */
+    .terminal-box {
+      background: #000;
+      border: 2px solid #00FF00;
+      padding: 12px;
+      font-family: "Share Tech Mono", "Courier New", monospace;
+      font-size: 11px;
+      color: #00FF00;
+    }
+    .terminal-box .prompt { color: #00FFFF; }
+    .terminal-box .cmd { color: #FFFF00; }
+    .terminal-box .output { color: #00FF00; }
+    .terminal-box .comment { color: #555; }
+    .terminal-cursor {
+      display: inline-block;
+      width: 8px;
+      background: #00FF00;
+      animation: blink 0.8s step-end infinite;
+      vertical-align: middle;
+      height: 12px;
+    }
+    .terminal-line { margin-bottom: 3px; }
+
+    /* ===== RIGHT SIDEBAR ===== */
+    .sidebar-right {
+      width: 180px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Social links */
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #00FFFF;
+      text-decoration: none;
+      font-size: 11px;
+      padding: 5px 6px;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .social-link:hover {
+      border-color: #00FFFF;
+      background: #001a2e;
+      color: #FFFF00;
+    }
+    .social-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* Latest activity */
+    .activity-item {
+      padding: 4px 0;
+      border-bottom: 1px dashed #003300;
+      font-size: 10px;
+      color: #888;
+      line-height: 1.5;
+    }
+    .activity-item .time {
+      color: #555;
+      font-size: 9px;
+    }
+    .activity-item .action {
+      color: #00FF00;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #000033;
+      border-top: 3px solid #00FFFF;
+      padding: 18px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .social-footer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .social-footer-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #00FFFF;
+      text-decoration: none;
+      font-family: "Comic Sans MS", cursive;
+      font-size: 11px;
+      padding: 8px 12px;
+      border: 2px solid #00FFFF;
+      background: #000020;
+      transition: all 0.2s;
+      min-width: 70px;
+    }
+    .social-footer-link:hover {
+      background: #00FFFF;
+      color: #000;
+      box-shadow: 0 0 12px #00FFFF;
+    }
+    .social-footer-link .icon { font-size: 20px; }
+
+    .footer-divider {
+      color: #FF00FF;
+      font-size: 13px;
+      margin: 10px 0;
+      letter-spacing: 3px;
+    }
+
+    .footer-text {
+      font-family: "Comic Sans MS", cursive;
+      font-size: 11px;
+      color: #555;
+      line-height: 1.9;
+    }
+    .footer-text a { color: #00FFFF; }
+    .footer-text .neon { color: #FF00FF; }
+
+    .best-viewed {
+      background: #000080;
+      display: inline-block;
+      border: 2px outset #8888FF;
+      padding: 6px 14px;
+      font-size: 10px;
+      color: #FFFFFF;
+      font-family: "Comic Sans MS", cursive;
+      margin-top: 10px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 10px; background: #000; }
+    ::-webkit-scrollbar-thumb { background: #00FF00; border: 1px solid #003300; }
+    ::-webkit-scrollbar-thumb:hover { background: #00FFFF; }
+
+    /* Rainbow text animation */
+    .rainbow {
+      background: linear-gradient(90deg, #FF0000, #FF8800, #FFFF00, #00FF00, #00FFFF, #FF00FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowShift 3s linear infinite;
+      background-size: 200%;
+    }
+    @keyframes rainbowShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+
+
+
+
+    /* ===== CONTACT PAGE ===== */
+    .contact-page {
+      max-width: 760px;
+      margin: 12px auto;
+      padding: 0 8px;
+    }
+
+    .contact-shell {
+      margin-bottom: 12px;
+    }
+
+    .contact-content {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-terminal {
+      font-size: 11px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-form label {
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 2px solid #00FF00;
+      background: #000;
+      color: #C0C0C0;
+      font-family: "Share Tech Mono", "Courier New", monospace;
+      font-size: 13px;
+      padding: 9px;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #00FFFF;
+      box-shadow: 0 0 10px #00FFFF;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 160px;
+    }
+
+    .contact-submit {
+      justify-self: start;
+      border: 2px solid #FF00FF;
+      background: #1a001a;
+      color: #FF00FF;
+      cursor: pointer;
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      padding: 9px 12px;
+    }
+
+    .contact-submit:hover,
+    .contact-submit:focus {
+      background: #FF00FF;
+      color: #000;
+      box-shadow: 0 0 12px #FF00FF;
+    }
+
+    .form-honeypot {
+      display: none;
+    }
+
+    /* ===== WRITEUPS PAGE ===== */
+    .writeups-page,
+    .post-page {
+      max-width: 1000px;
+      margin: 12px auto;
+      padding: 0 8px;
+    }
+
+    .writeups-intro {
+      margin-bottom: 12px;
+    }
+
+    .writeups-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+    }
+
+    .writeups-stats a {
+      border: 2px solid #00FFFF;
+      background: #001515;
+      color: #00FFFF;
+      text-decoration: none;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .writeups-stats a:nth-child(2n) {
+      border-color: #FF00FF;
+      color: #FF00FF;
+      background: #170017;
+    }
+
+    .writeups-stats span {
+      color: #FFFF00;
+      font-size: 11px;
+    }
+
+    .writeups-note {
+      color: #C0C0C0;
+      font-size: 11px;
+      line-height: 1.8;
+      margin-top: 10px;
+    }
+
+    .writeup-category {
+      border: 2px solid #00FF00;
+      background: #000a00;
+      margin-bottom: 12px;
+    }
+
+    .writeup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .writeup-card {
+      border: 2px solid #00FFFF;
+      background: #001015;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .writeup-card:nth-child(2n) {
+      border-color: #FF00FF;
+      background: #170017;
+    }
+
+    .writeup-card-image-link {
+      display: block;
+      background: #000;
+      border-bottom: 2px solid currentColor;
+      color: inherit;
+    }
+
+    .writeup-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .writeup-card-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .writeup-card-date {
+      color: #777;
+      font-size: 9px;
+    }
+
+    .writeup-card h3 {
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+    }
+
+    .writeup-card h3 a {
+      color: #FFFF00;
+      text-decoration: none;
+    }
+
+    .writeup-card h3 a:hover {
+      color: #00FFFF;
+    }
+
+    .writeup-card p {
+      color: #C0C0C0;
+      font-size: 11px;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .writeup-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .writeup-tags span {
+      border: 1px solid #003300;
+      color: #00FF00;
+      background: #001100;
+      font-size: 9px;
+      padding: 2px 4px;
+    }
+
+    .writeup-read-link {
+      color: #FF00FF;
+      border: 1px solid currentColor;
+      text-decoration: none;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      padding: 5px 6px;
+      align-self: flex-start;
+    }
+
+    .writeup-read-link:hover {
+      background: #FF00FF;
+      color: #000;
+    }
+
+    /* ===== POST LAYOUT ===== */
+    .post-shell {
+      border: 2px solid #00FF00;
+      background: #000a00;
+    }
+
+    .post-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) 1fr;
+      gap: 12px;
+      align-items: stretch;
+      border-bottom: 2px solid #00FF00;
+      background: #001100;
+      padding: 12px;
+    }
+
+    .post-hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 160px;
+      object-fit: cover;
+      border: 2px solid #00FFFF;
+      background: #000;
+    }
+
+    .post-hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .post-date {
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+    }
+
+    .post-hero h1 {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 16px;
+      line-height: 1.7;
+      text-shadow: 2px 2px 0 #FF00FF;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .post-tags span {
+      color: #FF00FF;
+      border: 1px solid currentColor;
+      font-size: 10px;
+      padding: 3px 5px;
+    }
+
+    .post-content {
+      padding: 16px;
+      color: #C0C0C0;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4 {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      line-height: 1.7;
+      margin: 22px 0 10px;
+    }
+
+    .post-content h2 { font-size: 13px; }
+    .post-content h3 { font-size: 11px; }
+    .post-content h4 { font-size: 10px; }
+
+    .post-content p,
+    .post-content ul,
+    .post-content ol,
+    .post-content blockquote,
+    .post-content pre,
+    .post-content table {
+      margin-bottom: 14px;
+    }
+
+    .post-content a {
+      color: #00FFFF;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #00FFFF !important;
+      border-radius: 0 !important;
+      background: #000;
+      display: block;
+      margin: 14px auto;
+    }
+
+    .post-content pre,
+    .post-content code {
+      font-family: "Share Tech Mono", "Courier New", monospace;
+    }
+
+    .post-content pre,
+    .post-content .code-block-container {
+      border: 2px solid #00FF00;
+      background: #000;
+      color: #00FF00;
+      overflow-x: auto;
+      padding: 12px;
+      border-radius: 0 !important;
+    }
+
+    .post-content blockquote {
+      border-left: 3px solid #FF00FF;
+      color: #C0C0C0;
+      background: #170017;
+      padding: 10px 12px;
+    }
+
+    .post-content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .post-content th,
+    .post-content td {
+      border: 1px solid #003300;
+      padding: 6px;
+    }
+
+    .post-content th {
+      color: #00FFFF;
+      background: #001100;
+    }
+
+    /* ===== PROJECTS PAGE ===== */
+    .projects-page {
+      max-width: 1000px;
+      margin: 12px auto;
+      padding: 0 8px;
+    }
+
+    .projects-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #003300;
+      padding-bottom: 10px;
+    }
+
+    .projects-count {
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      line-height: 1.7;
+    }
+
+    .projects-source {
+      color: #777;
+      font-size: 10px;
+      line-height: 1.6;
+      margin-top: 3px;
+    }
+
+    .projects-profile-link {
+      border: 1px solid currentColor;
+      padding: 5px 7px;
+      white-space: nowrap;
+      font-size: 10px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .project-loading {
+      border: 2px solid #00FFFF;
+      background: #001515;
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      padding: 12px;
+      line-height: 1.8;
+    }
+
+    .project-card {
+      border: 2px solid #00FF00;
+      background: #000a00;
+      padding: 10px;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-card:nth-child(2n) {
+      border-color: #00FFFF;
+      background: #001015;
+    }
+
+    .project-card:nth-child(3n) {
+      border-color: #FF00FF;
+      background: #170017;
+    }
+
+    .project-card-topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .project-card-title {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .project-card-title:hover {
+      color: #00FFFF;
+    }
+
+    .project-language {
+      color: #00FFFF;
+      border: 1px solid currentColor;
+      font-size: 9px;
+      padding: 2px 4px;
+      white-space: nowrap;
+    }
+
+    .project-card p {
+      color: #C0C0C0;
+      font-size: 11px;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: #777;
+      font-size: 9px;
+    }
+
+    .project-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .project-topics span {
+      border: 1px solid #003300;
+      background: #001100;
+      color: #00FF00;
+      font-size: 9px;
+      padding: 2px 4px;
+    }
+
+    .project-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .project-card-link {
+      color: #FF00FF;
+      border: 1px solid currentColor;
+      text-decoration: none;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      padding: 4px 6px;
+    }
+
+    .project-card-link:hover {
+      background: #FF00FF;
+      color: #000;
+    }
+
+    /* Utility classes moved out of inline HTML styles */
+    .profile-role { color: #FF00FF; }
+    .skill-linux { --pct: 90%; }
+    .skill-python { --pct: 78%; }
+    .skill-recon { --pct: 85%; }
+    .skill-web { --pct: 72%; }
+    .skill-ctf { --pct: 88%; }
+    .skill-social { --pct: 65%; }
+    .welcome-pointer {
+      color: #FF0000;
+      font-weight: bold;
+    }
+    .welcome-note { color: #FFFF00; }
+    .terminal-path { color: #00FF00; }
+    .projects-block { border-color: #FF00FF; }
+    .projects-header {
+      background: #1a0033;
+      border-color: #FF00FF;
+    }
+    .projects-title { color: #FF00FF; }
+    .quote-box { border-style: dashed; }
+    .quote-text {
+      font-size: 9px;
+      color: #888;
+      line-height: 1.8;
+      font-style: italic;
+      text-align: center;
+    }
+    .quote-highlight { color: #00FF00; }
+    .quote-author {
+      color: #555;
+      font-style: normal;
+    }
+    .footer-heading {
+      font-family: "Press Start 2P", monospace;
+      font-size: 9px;
+      color: #00FFFF;
+      margin-bottom: 14px;
+    }
+    .social-footer-handle {
+      font-size: 9px;
+      color: #555;
+    }
+    .footer-spaced { margin-top: 6px; }
+    .footer-disclaimer {
+      margin-top: 4px;
+      font-size: 9px;
+      color: #333;
+    }
+    .footer-load-note {
+      margin-top: 12px;
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+      color: #333;
+    }
+    @media (max-width: 700px) {
+      .post-hero { grid-template-columns: 1fr; }
+      .projects-toolbar { align-items: flex-start; flex-direction: column; }
+      .writeups-stats { grid-template-columns: 1fr; }
+      .page-body { flex-direction: column; }
+      .sidebar-left, .sidebar-right { width: 100%; }
+    }
