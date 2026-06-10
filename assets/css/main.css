@@ -149,6 +149,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      min-width: 0;
     }
 
     .sidebar-box {
@@ -263,6 +264,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      min-width: 0;
     }
     /* Welcome box */
     .welcome-box {
@@ -427,6 +429,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      min-width: 0;
     }
 
     /* Social links */
@@ -1139,10 +1142,192 @@
       font-size: 7px;
       color: #333;
     }
+    /* Mobile layout: show the homepage content first, then stack sidebar panels. */
     @media (max-width: 700px) {
+      body { min-width: 0; }
+
+      .marquee-top {
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      .site-header {
+        padding: 12px 8px 6px;
+      }
+
+      .site-title {
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 1.7;
+      }
+
+      .site-subtitle {
+        font-size: 11px;
+        letter-spacing: 0;
+        line-height: 1.7;
+      }
+
+      .stars-row {
+        font-size: 13px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .navbar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: stretch;
+        padding: 3px;
+        gap: 3px;
+      }
+
+      .navbar a {
+        width: 100%;
+        flex: none;
+        border: 1px solid #00FFFF;
+        padding: 6px 4px;
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .navbar a:first-child {
+        border-left: 1px solid #00FFFF;
+      }
+
+      .page-body {
+        flex-direction: column;
+        max-width: 100%;
+        margin: 10px auto;
+        padding: 0 10px;
+        gap: 12px;
+      }
+
+      .main-content {
+        order: 3;
+        width: 100%;
+        padding: 0;
+      }
+
+      .sidebar-left {
+        order: 1;
+        width: 100%;
+      }
+
+      .sidebar-right {
+        order: 2;
+        width: 100%;
+      }
+
+      .sidebar-box,
+      .section-block,
+      .welcome-box,
+      .terminal-box {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .section-header {
+        align-items: flex-start;
+      }
+
+      .section-header h2,
+      .welcome-box h2 {
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+      }
+
+      .welcome-box p,
+      .section-content p {
+        font-size: 12px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+      }
+
+      .terminal-line,
+      .social-link,
+      .project-card p {
+        overflow-wrap: anywhere;
+      }
+
+      .info-table,
+      .info-table tbody,
+      .info-table tr,
+      .info-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .info-table tr {
+        border: 1px solid #003300;
+        margin-bottom: 8px;
+      }
+
+      .info-table td {
+        border: 0;
+        border-bottom: 1px solid #003300;
+        overflow-wrap: anywhere;
+      }
+
+      .info-table td:first-child {
+        width: 100%;
+      }
+
+      .cert-list,
+      .projects-grid,
+      .writeup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card-topline {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .social-footer {
+        gap: 8px;
+      }
+
+      .social-footer-link {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+      }
+
+      .footer-divider {
+        overflow: hidden;
+        white-space: nowrap;
+        letter-spacing: 0;
+        font-size: 10px;
+      }
+
+      .footer-text {
+        overflow-wrap: anywhere;
+      }
+
+      .footer-load-note {
+        line-height: 1.8;
+      }
+
       .post-hero { grid-template-columns: 1fr; }
       .projects-toolbar { align-items: flex-start; flex-direction: column; }
       .writeups-stats { grid-template-columns: 1fr; }
-      .page-body { flex-direction: column; }
-      .sidebar-left, .sidebar-right { width: 100%; }
+
+      .contact-page,
+      .projects-page,
+      .writeups-page,
+      .post-page {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+
+      .contact-submit {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .site-title { font-size: 14px; }
+      .site-subtitle { font-size: 10px; }
+      .navbar { grid-template-columns: 1fr; }
+      .social-footer-link { flex-basis: 100%; }
     }
