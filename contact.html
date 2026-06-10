@@ -41,36 +41,54 @@ permalink: /contact.html
 </nav>
 
 <main class="contact-page">
-  <section class="section-block projects-block contact-shell">
-    <div class="section-header projects-header">
-      <span>✉</span>
-      <h2 class="projects-title">CONTACT FORM</h2>
-    </div>
-    <div class="section-content contact-content">
-      <div class="terminal-box contact-terminal">
-        <div class="terminal-line"><span class="prompt">visitor@portfolio</span>:<span class="terminal-path">~</span>$ <span class="cmd">send_message --to TobiasGuta</span></div>
-        <div class="terminal-line"><span class="output">Status: Formspree relay online</span></div>
-        <div class="terminal-line"><span class="output">Use this form for project questions, security topics, or collaboration.</span></div>
+  <section class="outlook-window">
+    <div class="outlook-title-bar">
+      <div class="outlook-title">
+        <span>&#x2709;</span> [ New Message - Outlook Express 98 ]
       </div>
+      <div class="outlook-controls">
+        <button type="button" id="outlook-min">[_]</button>
+        <button type="button" id="outlook-max">[□]</button>
+        <button type="button" id="outlook-close">[X]</button>
+      </div>
+    </div>
+    
+    <div class="outlook-body" id="outlook-body">
+      <div class="outlook-header-block">
+        <div class="outlook-header-row">
+          <span class="outlook-label">SEND TO:</span>
+          <span class="outlook-value" style="color: #00FFFF; font-weight: bold;">tobiasGuta@cyberspace</span>
+        </div>
+        <form class="outlook-form" id="contact-form" action="https://formspree.io/f/mvgbdevj" method="POST">
+          <div class="outlook-header-row">
+            <label for="name" class="outlook-label">NAME:</label>
+            <input id="name" name="name" type="text" class="outlook-input" autocomplete="name">
+          </div>
+          <div class="outlook-header-row">
+            <label for="email" class="outlook-label">EMAIL:</label>
+            <input id="email" name="email" type="email" class="outlook-input" autocomplete="email">
+          </div>
+          <div class="outlook-header-row">
+            <label for="subject" class="outlook-label">SUBJECT:</label>
+            <input id="subject" name="subject" type="text" class="outlook-input">
+          </div>
+          
+          <div class="outlook-textarea-container">
+            <textarea id="message" name="message" rows="12" class="outlook-textarea"></textarea>
+          </div>
 
-      <form class="contact-form" action="https://formspree.io/f/mvgbdevj" method="POST">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
-
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" type="text" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="8" required></textarea>
-
-        <input type="hidden" name="_subject" value="New portfolio contact message">
-        <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
-
-        <button type="submit" class="contact-submit">Send Message</button>
-      </form>
+          <div class="outlook-footer">
+            <div id="form-error-terminal" class="terminal-box hidden">
+              <!-- JS Errors will go here -->
+            </div>
+            
+            <input type="hidden" name="_subject" value="New portfolio contact message">
+            <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+            
+            <button type="submit" class="outlook-submit">Send Message</button>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 </main>
