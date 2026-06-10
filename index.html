@@ -129,15 +129,13 @@
     </div>
 
     <!-- Terminal bio -->
-    <div class="terminal-box">
-      <div class="terminal-line"><span class="prompt">root@cyberzone</span>:<span class="terminal-path">~</span>$ <span class="cmd">cat about_me.txt</span></div>
-      <div class="terminal-line"><span class="output"></span></div>
-      <div class="terminal-line"><span class="output">NAME    : TobiasGuta</span></div>
-      <div class="terminal-line"><span class="output">SCHOOL  : [REDACTED] University — BSc Cybersecurity</span></div>
-      <div class="terminal-line"><span class="output">FOCUS   : Penetration Testing | Web App Security | OSINT</span></div>
-      <div class="terminal-line"><span class="output">HOBBIES : CTF competitions, Reverse Engineering, Soldering</span></div>
-      <div class="terminal-line"><span class="output"></span></div>
-      <div class="terminal-line"><span class="prompt">root@cyberzone</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor"></span></div>
+    <div class="terminal-box" id="interactive-terminal" onclick="document.getElementById('terminal-input').focus()">
+      <div id="terminal-history">
+        <div class="terminal-line"><span class="output">Welcome to the interactive terminal. Type 'help' to see available commands.</span></div>
+      </div>
+      <div class="terminal-input-line">
+        <span class="prompt">root@cyberzone</span>:<span class="terminal-path">~</span>$ <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
+      </div>
     </div>
 
     <!-- Certifications / Awards -->
@@ -235,25 +233,24 @@
       <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
     </div>
 
+    <!-- GitHub Stats -->
+    <div class="sidebar-box magenta-border" id="github-stats-widget">
+      <h3>[ GIT STATS ]</h3>
+      <div class="activity-item">
+        <div class="action" style="color:#C0C0C0">REPOS: <span id="git-repos-count" style="color:#00FF00">...</span></div>
+      </div>
+      <div class="activity-item">
+        <div class="action" style="color:#C0C0C0">STARS: <span id="git-stars-count" style="color:#00FF00">...</span></div>
+      </div>
+      <div class="activity-item">
+        <div class="action" style="color:#C0C0C0">LANG: <span id="git-top-lang" style="color:#00FF00">...</span></div>
+      </div>
+    </div>
+
     <!-- Activity log -->
-    <div class="sidebar-box">
+    <div class="sidebar-box" id="ctf-activity-feed">
       <h3>[ ACTIVITY ]</h3>
-      <div class="activity-item">
-        <div class="action">✓ NO FA</div>
-        <div class="time">picoCTF • Web Exploitation</div>
-      </div>
-      <div class="activity-item">
-        <div class="action">✓ Secret Box</div>
-        <div class="time">picoCTF • Web Exploitation</div>
-      </div>
-      <div class="activity-item">
-        <div class="action">✓ Fool the Lockout</div>
-        <div class="time">picoCTF • Web Exploitation</div>
-      </div>
-      <div class="activity-item">
-        <div class="action">✓ SQL Map 1</div>
-        <div class="time">picoCTF • Web Exploitation</div>
-      </div>
+      <div class="project-loading" style="font-size: 11px; color: #777;">Loading CTF solves...</div>
     </div>
     <!-- Quote -->
     <div class="sidebar-box quote-box">

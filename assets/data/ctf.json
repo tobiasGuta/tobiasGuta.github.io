@@ -1,0 +1,22 @@
+[
+  {
+    "challenge": "NO FA",
+    "platform": "picoCTF",
+    "category": "Web Exploitation"
+  },
+  {
+    "challenge": "Secret Box",
+    "platform": "picoCTF",
+    "category": "Web Exploitation"
+  },
+  {
+    "challenge": "Fool the Lockout",
+    "platform": "picoCTF",
+    "category": "Web Exploitation"
+  },
+  {
+    "challenge": "SQL Map 1",
+    "platform": "picoCTF",
+    "category": "Web Exploitation"
+  }
+]

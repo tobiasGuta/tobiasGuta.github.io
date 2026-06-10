@@ -20,6 +20,9 @@
       font-family: "Courier New", Courier, monospace;
       cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext y='16' font-size='16'%3E💀%3C/text%3E%3C/svg%3E"), auto;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     /* ===== SCANLINE OVERLAY ===== */
@@ -408,6 +411,11 @@
       font-size: 11px;
       color: #00FF00;
     }
+    #interactive-terminal {
+      height: 250px;
+      overflow-y: auto;
+      cursor: text;
+    }
     .terminal-box .prompt { color: #00FFFF; }
     .terminal-box .cmd { color: #FFFF00; }
     .terminal-box .output { color: #00FF00; }
@@ -421,6 +429,27 @@
       height: 12px;
     }
     .terminal-line { margin-bottom: 3px; }
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 3px;
+    }
+    #terminal-input {
+      background: transparent;
+      border: none;
+      color: #FFFF00;
+      font-family: "Share Tech Mono", "Courier New", monospace;
+      font-size: 16px; /* Prevent iOS auto-zoom */
+      flex: 1;
+      outline: none;
+      min-width: 0;
+    }
+    @media (min-width: 768px) {
+      #terminal-input {
+        font-size: 11px;
+      }
+    }
 
     /* ===== RIGHT SIDEBAR ===== */
     .sidebar-right {
@@ -477,7 +506,7 @@
       border-top: 3px solid #00FFFF;
       padding: 18px;
       text-align: center;
-      margin-top: 16px;
+      margin-top: auto;
     }
 
     .social-footer {
@@ -559,63 +588,149 @@
 
 
 
-    /* ===== CONTACT PAGE ===== */
+    /* ===== CONTACT PAGE (OUTLOOK 98) ===== */
     .contact-page {
       max-width: 760px;
       margin: 12px auto;
       padding: 0 8px;
     }
-
-    .contact-shell {
-      margin-bottom: 12px;
+    
+    .outlook-window {
+      border: 3px solid #00FFFF;
+      background: #000000;
+      box-shadow: 0 0 10px #00FFFF;
+      display: flex;
+      flex-direction: column;
     }
 
-    .contact-content {
-      display: grid;
-      gap: 12px;
+    .outlook-title-bar {
+      background: linear-gradient(90deg, #000080, #0088FF);
+      color: #FFFFFF;
+      padding: 6px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00FFFF;
     }
 
-    .contact-terminal {
-      font-size: 11px;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 8px;
-    }
-
-    .contact-form label {
-      color: #00FFFF;
+    .outlook-title {
       font-family: "Press Start 2P", monospace;
       font-size: 8px;
-      line-height: 1.7;
+      text-shadow: 1px 1px #000;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      border: 2px solid #00FF00;
-      background: #000;
-      color: #C0C0C0;
+    .outlook-controls {
+      display: flex;
+      gap: 4px;
+    }
+
+    .outlook-controls button {
+      background: #000080;
+      border: 1px solid #00FFFF;
+      color: #00FFFF;
+      cursor: pointer;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      padding: 2px;
+      box-shadow: inset 1px 1px #0088FF;
+    }
+
+    .outlook-controls button:hover {
+      background: #00FFFF;
+      color: #000080;
+    }
+
+    .outlook-body {
+      padding: 12px;
+      background: #000000;
+      overflow: hidden;
+      display: block; /* For collapsing */
+    }
+
+    .outlook-header-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .outlook-header-row {
+      display: flex;
+      align-items: center;
+      background: #050505;
+      border-bottom: 1px dashed #003300;
+      padding-bottom: 4px;
+    }
+
+    .outlook-label {
+      width: 120px;
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      flex-shrink: 0;
+    }
+
+    .outlook-value {
+      color: #00FFFF;
       font-family: "Share Tech Mono", "Courier New", monospace;
       font-size: 13px;
-      padding: 9px;
+    }
+
+    .outlook-input {
+      flex: 1;
+      background: #0a0a0a;
+      border: 1px solid #003300;
+      color: #C0C0C0;
+      font-family: "Share Tech Mono", "Courier New", monospace;
+      font-size: 16px; /* prevent iOS zoom */
+      padding: 4px 6px;
+      outline: none;
+      min-width: 0;
+    }
+
+    .outlook-input:focus {
+      border-color: #00FFFF;
+      background: #111111;
+    }
+
+    .outlook-textarea-container {
+      margin-top: 10px;
+    }
+
+    .outlook-textarea {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #003300;
+      color: #C0C0C0;
+      font-family: "Share Tech Mono", "Courier New", monospace;
+      font-size: 16px; /* prevent iOS zoom */
+      padding: 8px;
+      resize: vertical;
       outline: none;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
+    .outlook-textarea:focus {
       border-color: #00FFFF;
-      box-shadow: 0 0 10px #00FFFF;
+      background: #111111;
     }
 
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 160px;
+    @media (min-width: 768px) {
+      .outlook-input, .outlook-textarea {
+        font-size: 13px;
+      }
     }
 
-    .contact-submit {
-      justify-self: start;
+    .outlook-footer {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .outlook-submit {
+      align-self: flex-start;
       border: 2px solid #FF00FF;
       background: #1a001a;
       color: #FF00FF;
@@ -623,13 +738,24 @@
       font-family: "Press Start 2P", monospace;
       font-size: 9px;
       padding: 9px 12px;
+      text-transform: uppercase;
+      box-shadow: 2px 2px #550055;
     }
 
-    .contact-submit:hover,
-    .contact-submit:focus {
+    .outlook-submit:hover,
+    .outlook-submit:focus {
       background: #FF00FF;
       color: #000;
       box-shadow: 0 0 12px #FF00FF;
+    }
+
+    #form-error-terminal {
+      color: #FF0000;
+      border-color: #FF0000;
+    }
+    
+    #form-error-terminal.hidden {
+      display: none;
     }
 
     .form-honeypot {
@@ -1049,7 +1175,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      color: #777;
+      color: #AAAAAA;
       font-size: 9px;
     }
 
