@@ -17,6 +17,140 @@
     window.addEventListener('resize', updateReadingProgress);
   }
 
+  // Writeup archive search
+  const writeupSearchInput = document.getElementById('writeup-search-input');
+  const writeupCards = Array.from(document.querySelectorAll('[data-writeup-card]'));
+  const writeupEmpty = document.getElementById('writeup-search-empty');
+
+  if (writeupSearchInput && writeupCards.length) {
+    const categories = Array.from(document.querySelectorAll('.writeup-category'));
+
+    const updateWriteupSearch = () => {
+      const query = writeupSearchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      writeupCards.forEach(card => {
+        const matches = !query || card.textContent.toLowerCase().includes(query);
+        card.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      categories.forEach(category => {
+        const hasVisibleCard = Array.from(category.querySelectorAll('[data-writeup-card]')).some(card => !card.hidden);
+        category.hidden = !hasVisibleCard && Boolean(query);
+      });
+
+      if (writeupEmpty) {
+        writeupEmpty.classList.toggle('visible', visibleCount === 0);
+      }
+    };
+
+    writeupSearchInput.addEventListener('input', updateWriteupSearch);
+    updateWriteupSearch();
+  }
+
+  // Copy current post link
+  const copyPostLink = document.getElementById('copy-post-link');
+  if (copyPostLink) {
+    const originalText = copyPostLink.textContent;
+
+    const showCopyStatus = text => {
+      copyPostLink.textContent = text;
+      setTimeout(() => {
+        copyPostLink.textContent = originalText;
+      }, 1400);
+    };
+
+    copyPostLink.addEventListener('click', async () => {
+      const url = window.location.href;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(url);
+        } else {
+          const tempInput = document.createElement('input');
+          tempInput.value = url;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          tempInput.remove();
+        }
+        showCopyStatus('COPIED');
+      } catch (error) {
+        showCopyStatus('FAILED');
+      }
+    });
+  }
+
+  // 404 lost packet mini-game
+  const packetGame = document.getElementById('packet-game');
+  if (packetGame) {
+    const startButton = document.getElementById('packet-game-start');
+    const target = document.getElementById('packet-target');
+    const field = document.getElementById('packet-game-field');
+    const scoreEl = document.getElementById('packet-game-score');
+    const timeEl = document.getElementById('packet-game-time');
+    const statusEl = document.getElementById('packet-game-status');
+    let score = 0;
+    let timeLeft = 20;
+    let timerId = null;
+
+    const movePacket = () => {
+      const fieldRect = field.getBoundingClientRect();
+      const targetSize = target.offsetWidth || 42;
+      const maxX = Math.max(fieldRect.width - targetSize, 0);
+      const maxY = Math.max(fieldRect.height - targetSize, 0);
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      target.style.left = `${x}px`;
+      target.style.top = `${y}px`;
+    };
+
+    const endGame = () => {
+      clearInterval(timerId);
+      timerId = null;
+      target.classList.remove('visible');
+      startButton.disabled = false;
+      startButton.textContent = 'RETRACE';
+      statusEl.textContent = score >= 10 ? 'ROUTE RESTORED' : 'TRACE LOST';
+    };
+
+    const startGame = () => {
+      score = 0;
+      timeLeft = 20;
+      scoreEl.textContent = score;
+      timeEl.textContent = timeLeft;
+      statusEl.textContent = 'TRACING';
+      startButton.disabled = true;
+      startButton.textContent = 'RUNNING';
+      target.classList.add('visible');
+      movePacket();
+
+      clearInterval(timerId);
+      timerId = setInterval(() => {
+        timeLeft -= 1;
+        timeEl.textContent = timeLeft;
+        if (timeLeft <= 0) endGame();
+      }, 1000);
+    };
+
+    startButton.addEventListener('click', startGame);
+
+    target.addEventListener('click', () => {
+      if (!timerId) return;
+      score += 1;
+      scoreEl.textContent = score;
+      statusEl.textContent = 'PACKET CAUGHT';
+      target.classList.remove('caught');
+      void target.offsetWidth;
+      target.classList.add('caught');
+      movePacket();
+    });
+  }
+
 // Random glitch effect on title
   const title = document.querySelector('.site-title');
   setInterval(() => {

@@ -54,6 +54,22 @@ permalink: /404.html
       <a href="{{ '/writeups.html' | relative_url }}">WRITEUPS</a>
       <a href="{{ '/contact.html' | relative_url }}">CONTACT</a>
     </div>
+    <section class="packet-game" id="packet-game" aria-label="Lost packet mini game">
+      <div class="packet-game-head">
+        <div>
+          <h2>LOST PACKET</h2>
+          <div class="packet-game-status" id="packet-game-status">READY</div>
+        </div>
+        <button id="packet-game-start" type="button">START TRACE</button>
+      </div>
+      <div class="packet-game-stats">
+        <span>PACKETS: <strong id="packet-game-score">0</strong></span>
+        <span>TIME: <strong id="packet-game-time">20</strong></span>
+      </div>
+      <div class="packet-game-field" id="packet-game-field">
+        <button class="packet-target" id="packet-target" type="button" aria-label="Catch packet">◆</button>
+      </div>
+    </section>
   </section>
 </main>
 
