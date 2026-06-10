@@ -13,6 +13,13 @@ tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 
 window.ytPlayer = null;
+
+function setMuteButtonState(muteBtn, isMuted) {
+  if (!muteBtn) return;
+  muteBtn.innerText = isMuted ? '🔇' : '🔊';
+  muteBtn.setAttribute('aria-label', isMuted ? 'Unmute music' : 'Mute music');
+}
+
 window.onYouTubeIframeAPIReady = function() {
   const savedTime = parseFloat(sessionStorage.getItem('yt-time') || '0');
   let isMuted = sessionStorage.getItem('yt-muted') === 'true';
@@ -40,29 +47,19 @@ window.onYouTubeIframeAPIReady = function() {
         if (isMuted) {
           e.target.mute();
           e.target.playVideo(); // plays silently - autoplay allowed when muted
-          muteBtn.innerText = '🔇 CLICK FOR AUDIO';
-          muteBtn.style.animation = 'blink 0.8s step-end infinite';
-          muteBtn.style.color = '#FFFF00';
-          muteBtn.style.borderColor = '#FFFF00';
+          setMuteButtonState(muteBtn, true);
         } else {
           e.target.unMute();
-          muteBtn.innerText = '🔊 MUTE';
-          muteBtn.style.animation = 'none';
-          muteBtn.style.color = '#00FFFF';
-          muteBtn.style.borderColor = '#00FFFF';
+          setMuteButtonState(muteBtn, false);
         }
         
-        if (savedState === '2') {
-          document.getElementById('yt-playpause').innerText = '▶';
-        } else {
-          document.getElementById('yt-playpause').innerText = '⏸';
-        }
+        document.getElementById('yt-playpause').innerText = '+';
       },
       onStateChange: (e) => {
         if (e.data === YT.PlayerState.PLAYING) {
-          document.getElementById('yt-playpause').innerText = '⏸';
+          document.getElementById('yt-playpause').innerText = '+';
         } else if (e.data === YT.PlayerState.PAUSED) {
-          document.getElementById('yt-playpause').innerText = '▶';
+          document.getElementById('yt-playpause').innerText = '+';
         }
       }
     }
@@ -92,14 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         window.ytPlayer.unMute();
         window.ytPlayer.setVolume(40);
         window.ytPlayer.playVideo(); // Make absolutely sure it's playing
-        muteBtn.innerText = '🔊 MUTE';
-        muteBtn.style.animation = 'none';
-        muteBtn.style.color = '#00FFFF';
-        muteBtn.style.borderColor = '#00FFFF';
+        setMuteButtonState(muteBtn, false);
         sessionStorage.setItem('yt-muted', 'false');
       } else {
         window.ytPlayer.mute();
-        muteBtn.innerText = '🔇 UNMUTE';
+        setMuteButtonState(muteBtn, true);
         sessionStorage.setItem('yt-muted', 'true');
       }
     });
