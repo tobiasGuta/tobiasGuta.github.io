@@ -20,6 +20,12 @@ function setMuteButtonState(muteBtn, isMuted) {
   muteBtn.setAttribute('aria-label', isMuted ? 'Unmute music' : 'Mute music');
 }
 
+function setPlayButtonState(playBtn, isPlaying) {
+  if (!playBtn) return;
+  playBtn.innerText = isPlaying ? '⏸' : '▶';
+  playBtn.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
+}
+
 window.onYouTubeIframeAPIReady = function() {
   const savedTime = parseFloat(sessionStorage.getItem('yt-time') || '0');
   let isMuted = sessionStorage.getItem('yt-muted') === 'true';
@@ -53,13 +59,13 @@ window.onYouTubeIframeAPIReady = function() {
           setMuteButtonState(muteBtn, false);
         }
         
-        document.getElementById('yt-playpause').innerText = '+';
+        setPlayButtonState(document.getElementById('yt-playpause'), savedState !== '2');
       },
       onStateChange: (e) => {
         if (e.data === YT.PlayerState.PLAYING) {
-          document.getElementById('yt-playpause').innerText = '+';
+          setPlayButtonState(document.getElementById('yt-playpause'), true);
         } else if (e.data === YT.PlayerState.PAUSED) {
-          document.getElementById('yt-playpause').innerText = '+';
+          setPlayButtonState(document.getElementById('yt-playpause'), false);
         }
       }
     }
@@ -78,8 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const state = window.ytPlayer.getPlayerState();
       if (state === YT.PlayerState.PLAYING) {
         window.ytPlayer.pauseVideo();
+        setPlayButtonState(playBtn, false);
       } else {
         window.ytPlayer.playVideo();
+        setPlayButtonState(playBtn, true);
       }
     });
 
