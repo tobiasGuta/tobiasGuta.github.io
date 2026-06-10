@@ -1,5 +1,100 @@
 [
   {
+    "challenge": "Critical IDOR in NYC.gov NYCID Appointment Scheduling",
+    "platform": "Bug Bounty",
+    "category": "IDOR"
+  },
+  {
+    "challenge": "Digital Forensics Case B4DM755",
+    "platform": "TryHackMe",
+    "category": "Digital Forensics"
+  },
+  {
+    "challenge": "Splunk Investigation Lab",
+    "platform": "TryHackMe",
+    "category": "SOC / Log Analysis"
+  },
+  {
+    "challenge": "Hardening",
+    "platform": "Home Lab",
+    "category": "Linux Security"
+  },
+  {
+    "challenge": "Simulating a Banking Security Infrastructure Part 2",
+    "platform": "Home Lab",
+    "category": "PKI"
+  },
+  {
+    "challenge": "Simulating a Banking Security Infrastructure Part 1",
+    "platform": "Home Lab",
+    "category": "PKI"
+  },
+  {
+    "challenge": "Msfvenom Is Not Dead",
+    "platform": "Pentesting Lab",
+    "category": "AV Evasion"
+  },
+  {
+    "challenge": "Windows Forensics",
+    "platform": "Research Lab",
+    "category": "Digital Forensics"
+  },
+  {
+    "challenge": "The Exfiltration Handbook",
+    "platform": "Pentesting Lab",
+    "category": "Data Exfiltration"
+  },
+  {
+    "challenge": "byp4ss3d PicoCTF",
+    "platform": "picoCTF",
+    "category": "File Upload"
+  },
+  {
+    "challenge": "When Input Becomes Injection",
+    "platform": "Research",
+    "category": "SQL Injection"
+  },
+  {
+    "challenge": "Weak JWT Secrets",
+    "platform": "Research",
+    "category": "JWT"
+  },
+  {
+    "challenge": "WebSockFish PicoCTF",
+    "platform": "picoCTF",
+    "category": "Web Exploitation"
+  },
+  {
+    "challenge": "SSTI2 PicoCTF",
+    "platform": "picoCTF",
+    "category": "Server-Side Template Injection"
+  },
+  {
+    "challenge": "JaWT Scratchpad PicoCTF",
+    "platform": "picoCTF",
+    "category": "JWT"
+  },
+  {
+    "challenge": "SSTI1 PicoCTF",
+    "platform": "picoCTF",
+    "category": "Server-Side Template Injection"
+  },
+  {
+    "challenge": "TryHackMe BookStore",
+    "platform": "TryHackMe",
+    "category": "API / Reverse Engineering"
+  },
+  {
+    "challenge": "Null-Byte File Upload Bypass",
+    "platform": "Bug Bounty",
+    "category": "File Upload"
+  },
+  {
+    "challenge": "TryHackMe Injectics",
+    "platform": "TryHackMe",
+    "category": "SQL Injection / SSTI"
+  },
+  {
     "challenge": "NO FA",
     "platform": "picoCTF",
     "category": "Web Exploitation"
