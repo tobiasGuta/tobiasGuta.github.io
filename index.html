@@ -1,3 +1,7 @@
+---
+layout: null
+title: Home
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,6 +116,35 @@
         <span class="blink welcome-pointer">☞</span>
         <span class="welcome-note"> This site works best with JavaScript enabled and a 56k modem. Dial-up welcome.</span>
       </p>
+    </div>
+
+    <!-- Latest Activity -->
+    <div class="section-block latest-activity-block">
+      <div class="section-header">
+        <span>▣</span>
+        <h2>LATEST ACTIVITY</h2>
+      </div>
+      <div class="section-content">
+        <div class="latest-activity-grid">
+          {% for post in site.posts limit: 3 %}
+            <a class="latest-activity-item" href="{{ post.url | relative_url }}">
+              <span class="latest-activity-type">WRITEUP</span>
+              <strong>{{ post.title }}</strong>
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            </a>
+          {% endfor %}
+          <a class="latest-activity-item project-activity" href="https://github.com/tobiasGuta/DirFuzz-Mcp-Monitor">
+            <span class="latest-activity-type">PROJECT</span>
+            <strong>DirFuzz-Mcp-Monitor</strong>
+            <span>Web security testing engine</span>
+          </a>
+          <a class="latest-activity-item project-activity" href="https://github.com/tobiasGuta/sub-enum">
+            <span class="latest-activity-type">PROJECT</span>
+            <strong>sub-enum</strong>
+            <span>Subdomain recon toolkit</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- About Me -->
