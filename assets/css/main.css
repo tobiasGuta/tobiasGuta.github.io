@@ -1144,6 +1144,16 @@
       margin-bottom: 14px;
     }
 
+    .post-content ul,
+    .post-content ol {
+      margin-left: 0;
+      padding-left: 24px;
+    }
+
+    .post-content li {
+      padding-left: 4px;
+    }
+
     .post-content a {
       color: #00FFFF;
       text-decoration: underline;
@@ -1667,6 +1677,11 @@
       .post-hero { grid-template-columns: 1fr; }
       .projects-toolbar { align-items: flex-start; flex-direction: column; }
       .writeups-stats { grid-template-columns: 1fr; }
+
+      .post-content ul,
+      .post-content ol {
+        padding-left: 20px;
+      }
 
       .contact-page,
       .projects-page,
