@@ -4,7 +4,11 @@ window.addEventListener('beforeunload', () => {
     sessionStorage.setItem('yt-time', window.ytPlayer.getCurrentTime());
     sessionStorage.setItem('yt-muted', window.ytPlayer.isMuted());
     const state = window.ytPlayer.getPlayerState();
-    sessionStorage.setItem('yt-state', state);
+    if (sessionStorage.getItem('yt-state') === '2' && state !== 1) {
+      sessionStorage.setItem('yt-state', '2');
+    } else {
+      sessionStorage.setItem('yt-state', state);
+    }
   }
 });
 
@@ -26,6 +30,10 @@ function setPlayButtonState(playBtn, isPlaying) {
   playBtn.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
 }
 
+function savePlayerState(state) {
+  sessionStorage.setItem('yt-state', String(state));
+}
+
 window.onYouTubeIframeAPIReady = function() {
   const savedTime = parseFloat(sessionStorage.getItem('yt-time') || '0');
   let isMuted = sessionStorage.getItem('yt-muted') === 'true';
@@ -33,6 +41,7 @@ window.onYouTubeIframeAPIReady = function() {
     isMuted = true; // start muted by default to allow autoplay
   }
   const savedState = sessionStorage.getItem('yt-state');
+  const shouldPlay = savedState !== '2';
   
   window.ytPlayer = new YT.Player('yt-player', {
     height: '1', 
@@ -40,7 +49,7 @@ window.onYouTubeIframeAPIReady = function() {
     videoId: 'I_izvAbhExY', // Orbital - Halcyon On and On (Hackers OST)
     host: 'https://www.youtube.com',
     playerVars: { 
-      autoplay: (savedState === '2') ? 0 : 1, // 2 is paused
+      autoplay: shouldPlay ? 1 : 0,
       start: Math.floor(savedTime),
       enablejsapi: 1,
       origin: window.location.origin
@@ -52,19 +61,23 @@ window.onYouTubeIframeAPIReady = function() {
         
         if (isMuted) {
           e.target.mute();
-          e.target.playVideo(); // plays silently - autoplay allowed when muted
+          if (shouldPlay) {
+            e.target.playVideo(); // plays silently - autoplay allowed when muted
+          }
           setMuteButtonState(muteBtn, true);
         } else {
           e.target.unMute();
           setMuteButtonState(muteBtn, false);
         }
         
-        setPlayButtonState(document.getElementById('yt-playpause'), savedState !== '2');
+        setPlayButtonState(document.getElementById('yt-playpause'), shouldPlay);
       },
       onStateChange: (e) => {
         if (e.data === YT.PlayerState.PLAYING) {
+          savePlayerState(e.data);
           setPlayButtonState(document.getElementById('yt-playpause'), true);
         } else if (e.data === YT.PlayerState.PAUSED) {
+          savePlayerState(e.data);
           setPlayButtonState(document.getElementById('yt-playpause'), false);
         }
       }
@@ -79,14 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.getElementById('yt-player-wrap');
 
   if (playBtn && muteBtn && closeBtn && wrap) {
+    setPlayButtonState(playBtn, sessionStorage.getItem('yt-state') !== '2');
+
     playBtn.addEventListener('click', () => {
       if (!window.ytPlayer || typeof window.ytPlayer.getPlayerState !== 'function') return;
       const state = window.ytPlayer.getPlayerState();
       if (state === YT.PlayerState.PLAYING) {
         window.ytPlayer.pauseVideo();
+        savePlayerState(YT.PlayerState.PAUSED);
         setPlayButtonState(playBtn, false);
       } else {
         window.ytPlayer.playVideo();
+        savePlayerState(YT.PlayerState.PLAYING);
         setPlayButtonState(playBtn, true);
       }
     });
@@ -96,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.ytPlayer.isMuted()) {
         window.ytPlayer.unMute();
         window.ytPlayer.setVolume(40);
-        window.ytPlayer.playVideo(); // Make absolutely sure it's playing
         setMuteButtonState(muteBtn, false);
         sessionStorage.setItem('yt-muted', 'false');
       } else {
@@ -111,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.ytPlayer.pauseVideo();
       }
       wrap.style.display = 'none';
-      sessionStorage.setItem('yt-state', '2'); // save paused state
+      savePlayerState('2');
     });
   }
 });
