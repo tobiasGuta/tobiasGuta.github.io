@@ -9,6 +9,8 @@ permalink: /contact.html
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>~*~ Contact ~*~ Tobias Guta</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
   <!-- Shared visual design. Edit contact styling in assets/css/main.css under CONTACT PAGE. -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
@@ -100,6 +102,20 @@ permalink: /contact.html
 </footer>
 
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<!-- YouTube Persistent Player -->
+<div id="yt-player-wrap">
+  <div id="yt-player-bar">
+    <span id="yt-title">♫ HACKERS OST</span>
+    <div id="yt-controls">
+      <button id="yt-playpause">⏸</button>
+      <button id="yt-mute">🔇 UNMUTE</button>
+      <button id="yt-close">✕</button>
+    </div>
+  </div>
+  <div id="yt-player"></div>
+</div>
+<script src="{{ '/assets/js/player.js' | relative_url }}"></script>
 
 </body>
 </html>
