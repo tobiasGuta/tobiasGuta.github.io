@@ -876,6 +876,24 @@
       margin-top: 10px;
     }
 
+    .writeups-feed-link {
+      border: 1px solid #FFFF00;
+      color: #FFFF00;
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 7px;
+      line-height: 1.6;
+      padding: 4px 6px;
+      text-decoration: none;
+    }
+
+    .writeups-feed-link:hover,
+    .writeups-feed-link:focus {
+      background: #FFFF00;
+      color: #000;
+    }
+
     .writeup-search {
       border: 2px solid #00FFFF;
       background: #000;
@@ -883,6 +901,13 @@
       gap: 7px;
       margin-top: 12px;
       padding: 10px;
+    }
+
+    .writeup-search-topline {
+      align-items: center;
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
     }
 
     .writeup-search label {
@@ -1911,6 +1936,11 @@
 
       .writeup-search {
         padding: 8px;
+      }
+
+      .writeup-search-topline {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .post-pager {

@@ -11,6 +11,7 @@ permalink: /writeups.html
   <title>~*~ Writeups ~*~ Tobias Guta</title>
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
   <!-- Shared visual design. Edit archive styling in assets/css/main.css under WRITEUPS PAGE. -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
@@ -65,7 +66,10 @@ permalink: /writeups.html
         Posts are loaded from the Jekyll <span class="neon">_posts</span> folder and styled with this site's retro terminal theme.
       </p>
       <div class="writeup-search">
-        <label for="writeup-search-input">SEARCH WRITEUPS</label>
+        <div class="writeup-search-topline">
+          <label for="writeup-search-input">SEARCH WRITEUPS</label>
+          <a class="writeups-feed-link" href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
+        </div>
         <input id="writeup-search-input" type="search" placeholder="type title, tag, or keyword..." autocomplete="off" spellcheck="false">
       </div>
       <div class="writeup-search-empty" id="writeup-search-empty">No matching writeups found.</div>
