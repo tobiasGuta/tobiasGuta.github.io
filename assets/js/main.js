@@ -2,6 +2,21 @@
   Homepage interactions for the portfolio.
   Keep small visual effects here so index.html stays focused on content.
 */
+  // Reading progress bar for writeups
+  const readingProgressFill = document.getElementById('reading-progress-fill');
+  if (readingProgressFill) {
+    const updateReadingProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+      readingProgressFill.style.width = `${progress}%`;
+    };
+
+    updateReadingProgress();
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress);
+  }
+
 // Random glitch effect on title
   const title = document.querySelector('.site-title');
   setInterval(() => {

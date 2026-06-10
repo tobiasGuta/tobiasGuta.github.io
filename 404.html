@@ -1,40 +1,36 @@
+---
+layout: null
+title: 404
+permalink: /404.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: "Writeup" }} | Tobias Guta</title>
-  <!-- Favicon -->
+  <title>404 | Tobias Guta</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
-  <!-- Shared site styling. Edit post visuals in assets/css/main.css under POST LAYOUT. -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
 
-<div class="reading-progress" aria-hidden="true">
-  <div class="reading-progress-fill" id="reading-progress-fill"></div>
-</div>
-
-<!-- TOP MARQUEE -->
 <div class="marquee-top">
   <span>
-    ★ WRITEUP MODE ★ &nbsp;&nbsp;|&nbsp;&nbsp;
-    BUG BOUNTY | CTF | PENTESTING | RESEARCH &nbsp;&nbsp;|&nbsp;&nbsp;
-    NOTES FROM THE FIELD &nbsp;&nbsp;|&nbsp;&nbsp;
+    ★ ROUTE NOT FOUND ★ &nbsp;&nbsp;|&nbsp;&nbsp;
+    BAD LINK | LOST PACKET | DEAD END &nbsp;&nbsp;|&nbsp;&nbsp;
+    RETURN TO BASE &nbsp;&nbsp;|&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
 </div>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="grid-container"><div class="grid-plane"></div></div>
   <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <h1 class="site-title">~*~ WRITEUP ~*~</h1>
-  <p class="site-subtitle">&gt;&gt;&gt; {{ page.title }} &lt;&lt;&lt;</p>
+  <h1 class="site-title">~*~ 404 ~*~</h1>
+  <p class="site-subtitle">&gt;&gt;&gt; ROUTE NOT FOUND &lt;&lt;&lt;</p>
   <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 </header>
 
-<!-- NAV -->
 <nav class="navbar">
   <a href="{{ '/index.html' | relative_url }}">[ HOME ]</a>
   <a href="{{ '/projects.html' | relative_url }}">[ PROJECTS ]</a>
@@ -42,37 +38,28 @@
   <a href="{{ '/contact.html' | relative_url }}">[ CONTACT ]</a>
 </nav>
 
-<main class="post-page">
-  <article class="post-shell">
-    <header class="post-hero">
-      {% if page.image %}
-        <img class="post-hero-image" src="{{ page.image }}" alt="{{ page.title }} cover image">
-      {% endif %}
-      <div class="post-hero-copy">
-        <div class="post-date">{{ page.date | date: "%B %-d, %Y" }}</div>
-        <h1>{{ page.title }}</h1>
-        {% if page.categories %}
-          <div class="post-tags">
-            {% for category in page.categories %}
-              <span>{{ category }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-    </header>
-
-    <div class="post-content">
-      {{ content }}
+<main class="error-page">
+  <section class="error-terminal">
+    <div class="terminal-line"><span class="prompt">root@cyberzone</span>:<span class="terminal-path">~</span>$ trace route</div>
+    <div class="error-code">404</div>
+    <h1>ERROR: PAGE NOT FOUND</h1>
+    <p>
+      The page you requested fell out of the packet stream. It may have moved,
+      been renamed, or never existed on this node.
+    </p>
+    <p class="terminal-line">&gt; Suggested recovery: choose a known route below.</p>
+    <div class="error-actions">
+      <a href="{{ '/index.html' | relative_url }}">HOME</a>
+      <a href="{{ '/projects.html' | relative_url }}">PROJECTS</a>
+      <a href="{{ '/writeups.html' | relative_url }}">WRITEUPS</a>
+      <a href="{{ '/contact.html' | relative_url }}">CONTACT</a>
     </div>
-  </article>
+  </section>
 </main>
 
 <footer class="site-footer">
   <div class="footer-divider">●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○</div>
-  <p class="footer-heading">~*~ END OF WRITEUP ~*~</p>
-  <div class="footer-text">
-    <p><a href="{{ '/writeups.html' | relative_url }}">Back to all writeups</a></p>
-  </div>
+  <p class="footer-heading">~*~ CONNECTION CLOSED ~*~</p>
 </footer>
 
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>

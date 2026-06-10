@@ -961,7 +961,81 @@
       color: #000;
     }
 
+    /* ===== LATEST ACTIVITY ===== */
+    .latest-activity-block {
+      border-color: #00FFFF;
+    }
+
+    .latest-activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 8px;
+    }
+
+    .latest-activity-item {
+      border: 2px solid #00FFFF;
+      background: #001515;
+      color: #C0C0C0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-height: 105px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .latest-activity-item:nth-child(2n) {
+      border-color: #FF00FF;
+      background: #170017;
+    }
+
+    .latest-activity-item:hover {
+      background: #002020;
+      box-shadow: 0 0 12px currentColor;
+    }
+
+    .latest-activity-item strong {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.7;
+    }
+
+    .latest-activity-item span {
+      color: #C0C0C0;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .latest-activity-type {
+      color: #00FF00 !important;
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px !important;
+    }
+
+    .project-activity .latest-activity-type {
+      color: #FF00FF !important;
+    }
+
     /* ===== POST LAYOUT ===== */
+    .reading-progress {
+      background: #001100;
+      border-bottom: 1px solid #00FF00;
+      height: 5px;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 10000;
+    }
+
+    .reading-progress-fill {
+      background: linear-gradient(90deg, #00FF00, #00FFFF, #FFFF00);
+      box-shadow: 0 0 10px #00FFFF;
+      height: 100%;
+      width: 0;
+    }
+
     .post-shell {
       border: 2px solid #00FF00;
       background: #000a00;
@@ -1104,6 +1178,66 @@
     .post-content th {
       color: #00FFFF;
       background: #001100;
+    }
+
+    /* ===== 404 PAGE ===== */
+    .error-page {
+      max-width: 900px;
+      margin: 18px auto;
+      padding: 0 8px;
+    }
+
+    .error-terminal {
+      border: 2px solid #FF00FF;
+      background: #080008;
+      box-shadow: 0 0 18px #FF00FF;
+      color: #00FF00;
+      padding: 18px;
+    }
+
+    .error-code {
+      color: #FFFF00;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(34px, 10vw, 76px);
+      line-height: 1.2;
+      text-shadow: 3px 3px 0 #FF00FF;
+    }
+
+    .error-terminal h1 {
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 15px;
+      line-height: 1.8;
+      margin: 14px 0;
+    }
+
+    .error-terminal p {
+      color: #C0C0C0;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .error-actions a {
+      border: 2px solid #00FFFF;
+      color: #00FFFF;
+      font-family: "Press Start 2P", monospace;
+      font-size: 8px;
+      line-height: 1.6;
+      padding: 8px 10px;
+      text-decoration: none;
+    }
+
+    .error-actions a:hover {
+      background: #00FFFF;
+      color: #000;
     }
 
     /* ===== PROJECTS PAGE ===== */
