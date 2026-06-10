@@ -6,3 +6,7 @@ baseurl: ""
 markdown: kramdown
 future: false
 permalink: /blog/:title/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
