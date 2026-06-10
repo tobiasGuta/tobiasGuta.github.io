@@ -229,3 +229,49 @@
   }
 
   loadCTFActivity();
+
+  // Rotating Movie Quotes
+  const hackersQuotes = [
+    { text: "Mess with the best, die like the rest.", author: "Crash Override" },
+    { text: "Hack the planet!", author: "Zero Cool" },
+    { text: "There is no right and wrong, only fun and boring.", author: "The Plague" },
+    { text: "Never send a boy to do a woman's job.", author: "Acid Burn" },
+    { text: "RISC architecture is gonna change everything.", author: "Eugene" },
+    { text: "Spandex: it's a privilege, not a right.", author: "Cereal Killer" },
+    { text: "You are in the butter zone now, baby.", author: "Cereal Killer" },
+    { text: "I don't play well with others.", author: "Acid Burn" },
+    { text: "Surfing the 'Net? Oughta be on a board, dude.", author: "Cereal Killer" },
+    { text: "Type 'cookie' you idiot!", author: "Acid Burn" },
+    { text: "It's in that place where I put that thing that time.", author: "Razor" },
+    { text: "We have just discovered something extraordinary.", author: "Crash Override" },
+    { text: "Phantasmic!", author: "Cereal Killer" },
+    { text: "Zero Cool? Crashed fifteen hundred and seven systems in one day.", author: "The Plague" },
+    { text: "God gave men brains larger than dogs so they wouldn't hump women's legs at cocktail parties.", author: "Razor" },
+    { text: "I'm a thousand percent positive.", author: "Nikon" },
+    { text: "You wanted to know who I am, Zero Cool? I'm the plague, Doc.", author: "The Plague" },
+    { text: "Gill net fishing. It's been banned in twelve countries.", author: "Cereal Killer" },
+    { text: "Hack the planet! Hack the planet!", author: "Crowd" },
+    { text: "We're in.", author: "Crash Override" },
+    { text: "Some people can read 'War and Peace' and come away thinking it's a simple adventure story. Others can read the ingredients on a chewing gum wrapper and unlock the secrets of the universe.", author: "Lex Luthor" }
+  ];
+
+  const quoteEl = document.getElementById('dynamic-quote');
+  if (quoteEl) {
+    let currentQuote = 0;
+    setInterval(() => {
+      // Fade out effect
+      quoteEl.style.opacity = 0;
+      setTimeout(() => {
+        const q = hackersQuotes[currentQuote];
+        // The last few words can be highlighted by splitting the string if needed, 
+        // but for safety and simplicity we just insert it cleanly.
+        quoteEl.innerHTML = `"${q.text}"<br><span class="quote-author">— ${q.author}</span>`;
+        quoteEl.style.opacity = 1;
+        
+        currentQuote = (currentQuote + 1) % hackersQuotes.length;
+      }, 500); // Wait for fade out to complete before swapping
+    }, 8000); // Change every 8 seconds
+
+    // Add CSS transition for opacity smoothly via JS (or can rely on CSS if we add it)
+    quoteEl.style.transition = 'opacity 0.5s ease-in-out';
+  }
