@@ -64,12 +64,56 @@
 
     /* ===== HEADER ===== */
     .site-header {
-      background: linear-gradient(180deg, #000080 0%, #000000 100%);
+      background: #000000;
       border-bottom: 3px solid #FF00FF;
       border-top: 3px solid #00FFFF;
       padding: 16px 0 8px;
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+
+    .site-header > *:not(.grid-container) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 3D Wireframe Grid */
+    .grid-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      perspective: 400px;
+      z-index: 1;
+    }
+
+    /* Horizon Fade Overlay */
+    .grid-container::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, #000000 0%, transparent 40%, transparent 80%, #000000 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .grid-plane {
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.25) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.25) 2px, transparent 2px);
+      background-size: 50px 50px;
+      transform: rotateX(80deg);
+      animation: gridMove 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes gridMove {
+      from { transform: rotateX(80deg) translateY(0); }
+      to { transform: rotateX(80deg) translateY(50px); }
     }
 
     .site-title {
