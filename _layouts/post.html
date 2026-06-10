@@ -58,12 +58,38 @@
             {% endfor %}
           </div>
         {% endif %}
+        <button class="post-copy-link" id="copy-post-link" type="button">COPY LINK</button>
       </div>
     </header>
 
     <div class="post-content">
       {{ content }}
     </div>
+
+    <nav class="post-pager" aria-label="Writeup navigation">
+      {% if page.previous %}
+        <a class="post-pager-link" href="{{ page.previous.url | relative_url }}">
+          <span>PREVIOUS</span>
+          <strong>{{ page.previous.title }}</strong>
+        </a>
+      {% else %}
+        <span class="post-pager-link post-pager-empty">
+          <span>PREVIOUS</span>
+          <strong>Start of archive</strong>
+        </span>
+      {% endif %}
+      {% if page.next %}
+        <a class="post-pager-link post-pager-next" href="{{ page.next.url | relative_url }}">
+          <span>NEXT</span>
+          <strong>{{ page.next.title }}</strong>
+        </a>
+      {% else %}
+        <span class="post-pager-link post-pager-empty">
+          <span>NEXT</span>
+          <strong>End of archive</strong>
+        </span>
+      {% endif %}
+    </nav>
   </article>
 </main>
 
