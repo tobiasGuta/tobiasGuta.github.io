@@ -1,17 +1,30 @@
 {
   "owner": "tobiasGuta",
-  "source": "local_github_api",
+  "source": "github_api",
   "projects": [
     {
-      "name": "Burp-Theme-Lab",
-      "description": "Burp Theme Lab is a clean, simple, and robust Burp Suite extension that allows you to change Burp Suite's Look and Feel directly from inside a custom \"Theme Lab\" tab using standard Java Swing APIs and FlatLaf themes.",
-      "html_url": "https://github.com/tobiasGuta/Burp-Theme-Lab",
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
       "homepage": null,
-      "language": "Java",
+      "language": "CSS",
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-06T21:55:31Z",
+      "updated_at": "2026-06-13T11:08:59Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "recon-mcp",
+      "description": "recon-mcp is a local Python MCP server for safe, human-led bug bounty recon. It provides lightweight helpers for scope checks, headers, robots.txt, sitemap.xml, JavaScript URL collection, endpoint extraction, URL deduplication, evidence notes, and manual test planning.",
+      "html_url": "https://github.com/tobiasGuta/recon-mcp",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-12T22:17:45Z",
       "fork": false,
       "archived": false
     },
@@ -24,7 +37,33 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-06T20:11:18Z",
+      "updated_at": "2026-06-12T21:20:34Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "CTF-Challenges",
+      "description": "This repo contains only code used to solve different challenges in CTF competitions.",
+      "html_url": "https://github.com/tobiasGuta/CTF-Challenges",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-11T12:52:40Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Burp-Theme-Lab",
+      "description": "Burp Theme Lab is a clean, simple, and robust Burp Suite extension that allows you to change Burp Suite's Look and Feel directly from inside a custom \"Theme Lab\" tab using standard Java Swing APIs and FlatLaf themes.",
+      "html_url": "https://github.com/tobiasGuta/Burp-Theme-Lab",
+      "homepage": null,
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-06T21:55:31Z",
       "fork": false,
       "archived": false
     },
@@ -211,19 +250,6 @@
       "archived": false
     },
     {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-21T01:08:16Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Blueprint-App-AI",
       "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
       "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
@@ -286,7 +312,7 @@
     },
     {
       "name": "shodan-mcp",
-      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots — identical gate to `nuclei-mcp`.",
+      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
       "html_url": "https://github.com/tobiasGuta/shodan-mcp",
       "homepage": null,
       "language": "Python",
@@ -615,7 +641,7 @@
     },
     {
       "name": "favicon-hasher",
-      "description": "A Python tool that calculates the Shodan-compatible MMH3 hash of a website’s favicon.",
+      "description": "A Python tool that calculates the Shodan-compatible MMH3 hash of a website\u2019s favicon.",
       "html_url": "https://github.com/tobiasGuta/favicon-hasher",
       "homepage": "",
       "language": "Python",
@@ -787,7 +813,7 @@
     },
     {
       "name": "GeminiTerminal",
-      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google’s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
+      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google\u2019s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
       "html_url": "https://github.com/tobiasGuta/GeminiTerminal",
       "homepage": null,
       "language": "Python",
