@@ -1335,6 +1335,48 @@
       background: #001100;
     }
 
+    .post-comments {
+      border-top: 2px solid #00FF00;
+      background: #000600;
+      padding: 14px;
+    }
+
+    .post-comments-header {
+      border: 2px solid #FF00FF;
+      background: #160016;
+      color: #C0C0C0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding: 9px 10px;
+    }
+
+    .post-comments-header span,
+    .post-comments-header strong {
+      font-family: var(--font-display);
+      line-height: 1.7;
+    }
+
+    .post-comments-header span {
+      color: #00FF00;
+      font-size: 8px;
+    }
+
+    .post-comments-header strong {
+      color: #FFFF00;
+      font-size: 9px;
+      overflow-wrap: anywhere;
+    }
+
+    .post-comments-noscript {
+      color: #FFFF00;
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
     .post-pager {
       border-top: 2px solid #00FF00;
       display: grid;
