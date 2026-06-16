@@ -1,17 +1,30 @@
 {
   "owner": "tobiasGuta",
-  "source": "local_github_api",
+  "source": "github_api",
   "projects": [
     {
-      "name": "Burp-Theme-Lab",
-      "description": "Burp Theme Lab is a clean, simple, and robust Burp Suite extension that allows you to change Burp Suite's Look and Feel directly from inside a custom \"Theme Lab\" tab using standard Java Swing APIs and FlatLaf themes.",
-      "html_url": "https://github.com/tobiasGuta/Burp-Theme-Lab",
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
       "homepage": null,
-      "language": "Java",
+      "language": "CSS",
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-06T21:55:31Z",
+      "updated_at": "2026-06-16T10:45:10Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "SMB-Samba-Compliance-Audit-Tool",
+      "description": "A high performance SMB compliance and audit script using the impacket library for native protocol interaction. Supports share enumeration, permission auditing, password policy retrieval, user/group enumeration, and backup file discovery.",
+      "html_url": "https://github.com/tobiasGuta/SMB-Samba-Compliance-Audit-Tool",
+      "homepage": "",
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "updated_at": "2026-06-16T03:09:59Z",
       "fork": false,
       "archived": false
     },
@@ -24,7 +37,59 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-06T20:11:18Z",
+      "updated_at": "2026-06-15T23:14:30Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "BugMap-Studio",
+      "description": "BugMap Studio is a React based, interactive mind map visualization tool designed specifically for bug bounty hunters and penetration testers. It allows users to visually organize and track their reconnaissance data, including targets, subdomains, endpoints, vulnerabilities, credentials, and custom notes.",
+      "html_url": "https://github.com/tobiasGuta/BugMap-Studio",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-14T18:25:40Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "recon-mcp",
+      "description": "recon-mcp is a local Python MCP server for safe, human-led bug bounty recon. It provides lightweight helpers for scope checks, headers, robots.txt, sitemap.xml, JavaScript URL collection, endpoint extraction, URL deduplication, evidence notes, and manual test planning.",
+      "html_url": "https://github.com/tobiasGuta/recon-mcp",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-14T18:19:52Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "CTF-Challenges",
+      "description": "This repo contains only code used to solve different challenges in CTF competitions.",
+      "html_url": "https://github.com/tobiasGuta/CTF-Challenges",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-11T12:52:40Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Burp-Theme-Lab",
+      "description": "Burp Theme Lab is a clean, simple, and robust Burp Suite extension that allows you to change Burp Suite's Look and Feel directly from inside a custom \"Theme Lab\" tab using standard Java Swing APIs and FlatLaf themes.",
+      "html_url": "https://github.com/tobiasGuta/Burp-Theme-Lab",
+      "homepage": null,
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-06T21:55:31Z",
       "fork": false,
       "archived": false
     },
@@ -81,19 +146,6 @@
       "archived": false
     },
     {
-      "name": "BugMap-Studio",
-      "description": "BugMap Studio is a React based, interactive mind map visualization tool designed specifically for bug bounty hunters and penetration testers. It allows users to visually organize and track their reconnaissance data, including targets, subdomains, endpoints, vulnerabilities, credentials, and custom notes.",
-      "html_url": "https://github.com/tobiasGuta/BugMap-Studio",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-06-01T16:05:41Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "TraceMap",
       "description": "TraceMap is a local-first reverse engineering helper for Linux binaries. It traces beginner-relevant libc and system-facing behavior with Frida, saves the execution as structured JSON, and turns that run into reports, graphs, compare output, and gdb hints.",
       "html_url": "https://github.com/tobiasGuta/TraceMap",
@@ -103,19 +155,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-05-31T16:37:52Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Bug-Hunter-Copilot",
-      "description": "A local-first bug bounty assistant to help you analyze Burp Suite HTTP history exports and HAR files to find high-value testing areas like IDOR/BOLA, broken access control, and business logic flaws.",
-      "html_url": "https://github.com/tobiasGuta/Bug-Hunter-Copilot",
-      "homepage": null,
-      "language": "TypeScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-30T05:10:03Z",
       "fork": false,
       "archived": false
     },
@@ -211,19 +250,6 @@
       "archived": false
     },
     {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-21T01:08:16Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Blueprint-App-AI",
       "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
       "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
@@ -286,7 +312,7 @@
     },
     {
       "name": "shodan-mcp",
-      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots — identical gate to `nuclei-mcp`.",
+      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
       "html_url": "https://github.com/tobiasGuta/shodan-mcp",
       "homepage": null,
       "language": "Python",
@@ -402,19 +428,6 @@
       "archived": false
     },
     {
-      "name": "SMB-Samba-Compliance-Audit-Tool",
-      "description": "A high performance SMB compliance and audit script using the impacket library for native protocol interaction. Supports share enumeration, permission auditing, password policy retrieval, user/group enumeration, and backup file discovery.",
-      "html_url": "https://github.com/tobiasGuta/SMB-Samba-Compliance-Audit-Tool",
-      "homepage": "",
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-04-02T23:01:58Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "WebSocket-Smuggler-Modular",
       "description": "The WebSocket Smuggler (Modular) is a specialized Burp Suite extension designed to automate the detection and exploitation of HTTP Request Smuggling vulnerabilities that arise from faulty WebSocket connection handling by reverse proxies.",
       "html_url": "https://github.com/tobiasGuta/WebSocket-Smuggler-Modular",
@@ -467,19 +480,6 @@
       "stargazers_count": 3,
       "forks_count": 1,
       "updated_at": "2026-03-27T17:17:23Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Cache-Poisoning-Param-Miner-Burp-Suite-Extension",
-      "description": "An Automated Tool for Discovering Web Cache Poisoning Vulnerabilities",
-      "html_url": "https://github.com/tobiasGuta/Cache-Poisoning-Param-Miner-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-11T21:23:56Z",
       "fork": false,
       "archived": false
     },
@@ -549,58 +549,6 @@
       "archived": false
     },
     {
-      "name": "My_Own_Pentesting_Tools",
-      "description": "This is my own penetration testing tool. You are welcome to use and modify it, but only use it with proper authorization. Do not use this tool on systems you do not have explicit permission to test. Unauthorized use may be illegal and is your responsibility.",
-      "html_url": "https://github.com/tobiasGuta/My_Own_Pentesting_Tools",
-      "homepage": "",
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-08T21:18:20Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Python-Port-Scanner",
-      "description": "A lightweight, fast, and clean TCP/UDP port scanner written in Python.",
-      "html_url": "https://github.com/tobiasGuta/Python-Port-Scanner",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-08T20:51:47Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "My_Own_Shell",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/My_Own_Shell",
-      "homepage": null,
-      "language": "PHP",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-07T18:46:15Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Local-NVR-AI",
-      "description": "locally-hosted object recognition system for home security. ",
-      "html_url": "https://github.com/tobiasGuta/Local-NVR-AI",
-      "homepage": "",
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-02-23T21:03:08Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "BashReconKit",
       "description": "This tool is a command-line based network reconnaissance tool with various functionalities useful for information gathering and vulnerability assessment in the context of cybersecurity.",
       "html_url": "https://github.com/tobiasGuta/BashReconKit",
@@ -615,7 +563,7 @@
     },
     {
       "name": "favicon-hasher",
-      "description": "A Python tool that calculates the Shodan-compatible MMH3 hash of a website’s favicon.",
+      "description": "A Python tool that calculates the Shodan-compatible MMH3 hash of a website\u2019s favicon.",
       "html_url": "https://github.com/tobiasGuta/favicon-hasher",
       "homepage": "",
       "language": "Python",
@@ -679,45 +627,6 @@
       "archived": false
     },
     {
-      "name": "kiterunner-modernized",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/kiterunner-modernized",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 1,
-      "updated_at": "2026-01-08T02:18:50Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Arjun-X",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/Arjun-X",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-01-07T16:59:40Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Endpoint-Tracker-Pro-Burp-Suite-Extension",
-      "description": "A powerful, purpose-built Burp Suite extension designed for penetration testers and bug hunters to streamline reconnaissance, triage, and reporting workflows. This extension automatically logs in-scope traffic and provides advanced features for analysis and status tracking that go beyond Burp's default functionality.",
-      "html_url": "https://github.com/tobiasGuta/Endpoint-Tracker-Pro-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-01-05T23:31:09Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "FTPHunter",
       "description": "FTPHunter is a powerful and efficient tool designed for FTP server enumeration and vulnerability assessment. It allows security professionals and penetration testers to quickly discover key information about FTP servers, such as anonymous login capabilities, file access permissions, server banners, and more.",
       "html_url": "https://github.com/tobiasGuta/FTPHunter",
@@ -730,19 +639,6 @@
       "stargazers_count": 6,
       "forks_count": 0,
       "updated_at": "2026-01-03T11:52:00Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Local-LLM-Assistant-for-Burp-Suite",
-      "description": "Bug Hunter's Copilot is a privacy-focused Burp Suite extension that uses a local AI (via Ollama) to analyze HTTP traffic. Instead of trying to \"hack\" the target for you, it helps you understand the target faster. It acts as a sidecar analyst: explaining complex request logic, identifying theoretical risks, and drafting professional vulnerability",
-      "html_url": "https://github.com/tobiasGuta/Local-LLM-Assistant-for-Burp-Suite",
-      "homepage": "",
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2025-12-21T14:49:17Z",
       "fork": false,
       "archived": false
     },
@@ -787,7 +683,7 @@
     },
     {
       "name": "GeminiTerminal",
-      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google’s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
+      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google\u2019s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
       "html_url": "https://github.com/tobiasGuta/GeminiTerminal",
       "homepage": null,
       "language": "Python",
