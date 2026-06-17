@@ -11,7 +11,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-16T10:45:10Z",
+      "updated_at": "2026-06-16T13:05:12Z",
       "fork": false,
       "archived": false
     },
@@ -536,19 +536,6 @@
       "archived": false
     },
     {
-      "name": "Report-Generator",
-      "description": "Report Generator is a Burp Suite extension built with the Montoya API that streamlines bug bounty report creation. Right-click on any request to add it as a finding, fill in the vulnerability details, and generate a professionally formatted Markdown report with a single click.",
-      "html_url": "https://github.com/tobiasGuta/Report-Generator",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-10T00:40:40Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "BashReconKit",
       "description": "This tool is a command-line based network reconnaissance tool with various functionalities useful for information gathering and vulnerability assessment in the context of cybersecurity.",
       "html_url": "https://github.com/tobiasGuta/BashReconKit",
@@ -665,19 +652,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2025-12-01T02:47:17Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "mantra-improved",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/mantra-improved",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2025-11-23T05:31:35Z",
       "fork": false,
       "archived": false
     },
