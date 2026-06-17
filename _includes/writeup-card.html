@@ -1,19 +1,31 @@
 {% assign post = include.post %}
-<article class="writeup-card" data-writeup-card>
+<article class="writeup-card{% if post.locked %} writeup-card-locked{% endif %}" data-writeup-card>
   {% if post.image %}
-    <a href="{{ post.url | relative_url }}" class="writeup-card-image-link">
+    <a href="{{ post.url | relative_url }}" class="writeup-card-image-link{% if post.locked %} writeup-card-image-locked{% endif %}">
       <img class="writeup-card-image" src="{{ post.image }}" alt="{{ post.title }} cover image">
+      {% if post.locked %}
+        <span class="writeup-image-lock-badge">[ LOCKED ]</span>
+      {% endif %}
     </a>
+  {% elsif post.locked %}
+    <div class="writeup-lock-plate" aria-hidden="true">
+      <span class="writeup-lock-icon">[ LOCKED ]</span>
+    </div>
   {% endif %}
   <div class="writeup-card-body">
-    <div class="writeup-card-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 150 }}</p>
-    <div class="writeup-tags">
-      {% for category in post.categories limit: 4 %}
-        <span>{{ category }}</span>
-      {% endfor %}
-    </div>
-    <a class="writeup-read-link" href="{{ post.url | relative_url }}">Read Writeup</a>
+    {% if post.locked %}
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <a class="writeup-read-link writeup-locked-link" href="{{ post.url | relative_url }}">Locked</a>
+    {% else %}
+      <div class="writeup-card-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 150 }}</p>
+      <div class="writeup-tags">
+        {% for category in post.categories limit: 4 %}
+          <span>{{ category }}</span>
+        {% endfor %}
+      </div>
+      <a class="writeup-read-link" href="{{ post.url | relative_url }}">Read Writeup</a>
+    {% endif %}
   </div>
 </article>

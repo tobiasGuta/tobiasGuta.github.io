@@ -47,7 +47,16 @@
   <article class="post-shell">
     <header class="post-hero">
       {% if page.image %}
-        <img class="post-hero-image" src="{{ page.image }}" alt="{{ page.title }} cover image">
+        <div class="{% if page.locked %}post-hero-image-lock-wrap{% endif %}">
+          <img class="post-hero-image" src="{{ page.image }}" alt="{{ page.title }} cover image">
+          {% if page.locked %}
+            <span class="post-hero-image-badge">[ ACCESS LOCKED ]</span>
+          {% endif %}
+        </div>
+      {% elsif page.locked %}
+        <div class="post-lock-plate" aria-hidden="true">
+          <span>[ ACCESS LOCKED ]</span>
+        </div>
       {% endif %}
       <div class="post-hero-copy">
         <div class="post-date">{{ page.date | date: "%B %-d, %Y" }}</div>
@@ -63,9 +72,19 @@
       </div>
     </header>
 
-    <div class="post-content">
-      {{ content }}
-    </div>
+    {% if page.locked %}
+      <div class="post-content post-content-locked">
+        <section class="locked-post-panel" aria-label="Locked writeup">
+          <div class="locked-post-sigil">LOCKED</div>
+          <h2>Private writeup stored offline</h2>
+          <p>This post is intentionally locked. Only the title is published on the GitHub Pages site; the full writeup stays in a local private folder that is ignored by Git and excluded from Jekyll builds.</p>
+        </section>
+      </div>
+    {% else %}
+      <div class="post-content">
+        {{ content }}
+      </div>
+    {% endif %}
 
     {% if site.giscus.enabled and page.comments != false %}
       <section class="post-comments" aria-label="Comments">

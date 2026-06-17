@@ -1015,6 +1015,7 @@
       background: #000;
       border-bottom: 2px solid currentColor;
       color: inherit;
+      position: relative;
     }
 
     .writeup-card-image {
@@ -1022,6 +1023,42 @@
       aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
+    }
+
+    .writeup-card-image-locked {
+      border-bottom-color: #00FFFF;
+      overflow: hidden;
+    }
+
+    .writeup-card-image-locked .writeup-card-image {
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .writeup-card-image-locked::after {
+      background:
+        linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
+      background-size: 18px 18px;
+      content: '';
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .writeup-image-lock-badge {
+      background: rgba(0, 4, 10, 0.86);
+      border: 1px solid #FF9F1C;
+      bottom: 8px;
+      box-shadow: 0 0 12px rgba(255, 159, 28, 0.6), 0 0 18px rgba(0, 255, 255, 0.4);
+      color: #FF9F1C;
+      font-family: var(--font-display);
+      font-size: 7px;
+      left: 8px;
+      line-height: 1.7;
+      padding: 5px 7px;
+      position: absolute;
+      text-shadow: 0 0 8px #FF9F1C;
+      z-index: 1;
     }
 
     .writeup-card-body {
@@ -1085,6 +1122,79 @@
 
     .writeup-read-link:hover {
       background: #FF00FF;
+      color: #000;
+    }
+
+    .writeup-card-locked {
+      background:
+        linear-gradient(135deg, rgba(0, 255, 255, 0.14), transparent 45%),
+        linear-gradient(rgba(0, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.12) 1px, transparent 1px),
+        #020711;
+      background-size: auto, 18px 18px, 18px 18px, auto;
+      border-color: #00FFFF;
+      box-shadow: 0 0 16px rgba(0, 255, 255, 0.35), inset 0 0 22px rgba(0, 120, 255, 0.24);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .writeup-card-locked::after {
+      background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.75), transparent);
+      content: '';
+      height: 1px;
+      left: -20%;
+      position: absolute;
+      right: -20%;
+      top: 0;
+    }
+
+    .writeup-lock-plate {
+      align-items: center;
+      background:
+        linear-gradient(rgba(0, 255, 255, 0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.22) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(0, 255, 255, 0.18), transparent 58%),
+        #00040a;
+      background-size: 16px 16px, 16px 16px, auto, auto;
+      border-bottom: 2px solid #00FFFF;
+      color: #FF9F1C;
+      display: flex;
+      justify-content: center;
+      min-height: 82px;
+      text-shadow: 0 0 10px #FF9F1C, 0 0 18px #00FFFF;
+    }
+
+    .writeup-lock-icon {
+      border: 1px solid currentColor;
+      box-shadow: 0 0 12px rgba(255, 159, 28, 0.6), inset 0 0 12px rgba(255, 159, 28, 0.22);
+      font-family: var(--font-display);
+      font-size: 8px;
+      line-height: 1.7;
+      padding: 7px 9px;
+    }
+
+    .writeup-card-locked .writeup-card-body {
+      justify-content: space-between;
+      min-height: 138px;
+    }
+
+    .writeup-card-locked h3 a {
+      color: #E9FBFF;
+      text-shadow: 0 0 10px #00FFFF;
+    }
+
+    .writeup-card-locked h3 a:hover {
+      color: #FF9F1C;
+    }
+
+    .writeup-locked-link {
+      border-color: #FF9F1C;
+      color: #FF9F1C;
+      text-transform: uppercase;
+    }
+
+    .writeup-locked-link:hover {
+      background: #FF9F1C;
       color: #000;
     }
 
@@ -1185,6 +1295,46 @@
       object-fit: cover;
       border: 2px solid #00FFFF;
       background: #000;
+    }
+
+    .post-hero-image-lock-wrap {
+      border: 2px solid #00FFFF;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.4), inset 0 0 22px rgba(0, 120, 255, 0.2);
+      min-height: 160px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .post-hero-image-lock-wrap .post-hero-image {
+      border: 0;
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .post-hero-image-lock-wrap::after {
+      background:
+        linear-gradient(rgba(0, 255, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.16) 1px, transparent 1px);
+      background-size: 20px 20px;
+      content: '';
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .post-hero-image-badge {
+      background: rgba(0, 4, 10, 0.88);
+      border: 1px solid #FF9F1C;
+      bottom: 10px;
+      box-shadow: 0 0 12px rgba(255, 159, 28, 0.62), 0 0 18px rgba(0, 255, 255, 0.45);
+      color: #FF9F1C;
+      font-family: var(--font-display);
+      font-size: 7px;
+      left: 10px;
+      line-height: 1.7;
+      padding: 6px 8px;
+      position: absolute;
+      text-shadow: 0 0 8px #FF9F1C;
+      z-index: 1;
     }
 
     .post-hero-copy {
@@ -1333,6 +1483,61 @@
     .post-content th {
       color: #00FFFF;
       background: #001100;
+    }
+
+    .post-lock-plate {
+      align-items: center;
+      background:
+        linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0, 23, 44, 0), rgba(0, 255, 255, 0.16)),
+        #00040a;
+      background-size: 18px 18px, 18px 18px, auto, auto;
+      border: 2px solid #00FFFF;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.45), inset 0 0 28px rgba(0, 120, 255, 0.28);
+      color: #FF9F1C;
+      display: flex;
+      font-family: var(--font-display);
+      font-size: 8px;
+      justify-content: center;
+      line-height: 1.7;
+      min-height: 160px;
+      padding: 12px;
+      text-align: center;
+      text-shadow: 0 0 12px #FF9F1C;
+    }
+
+    .locked-post-panel {
+      background:
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        #00040a;
+      background-size: 22px 22px, 22px 22px, auto;
+      border: 2px solid #00FFFF;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.35), inset 0 0 24px rgba(0, 120, 255, 0.22);
+      margin: 0;
+      padding: 16px;
+    }
+
+    .locked-post-sigil {
+      color: #FF9F1C;
+      font-family: var(--font-display);
+      font-size: 8px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px #FF9F1C;
+    }
+
+    .locked-post-panel h2 {
+      color: #E9FBFF;
+      font-size: 12px;
+      margin: 0 0 10px;
+      text-shadow: 0 0 12px #00FFFF;
+    }
+
+    .locked-post-panel p {
+      color: #9EDFFF;
+      margin: 0;
     }
 
     .post-comments {

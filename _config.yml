@@ -7,6 +7,9 @@ markdown: kramdown
 future: false
 permalink: /blog/:title/
 
+exclude:
+  - private_posts/
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag

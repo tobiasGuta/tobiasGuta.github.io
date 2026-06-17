@@ -4,3 +4,5 @@ _site/
 .jekyll-metadata
 .bundle/
 vendor/
+private_posts/
+jekyll-serve.log
