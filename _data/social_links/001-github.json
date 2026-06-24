@@ -1,0 +1,9 @@
+{
+  "order": 1,
+  "label": "GitHub",
+  "icon": "🐙",
+  "url": "https://github.com/tobiasGuta",
+  "handle": "tobiasGuta",
+  "show_in_sidebar": true,
+  "show_in_footer": true
+}

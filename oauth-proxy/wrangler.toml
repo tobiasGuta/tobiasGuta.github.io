@@ -1,0 +1,6 @@
+name = "decap-oauth-proxy"
+main = "index.js"
+compatibility_date = "2023-01-01"
+
+[vars]
+# You will set CLIENT_ID and CLIENT_SECRET securely using `wrangler secret put`

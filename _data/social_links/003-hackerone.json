@@ -1,0 +1,9 @@
+{
+  "order": 3,
+  "label": "HackerOne",
+  "icon": "⚑",
+  "url": "https://hackerone.com/tobiasare",
+  "handle": "tobiasare",
+  "show_in_sidebar": true,
+  "show_in_footer": true
+}

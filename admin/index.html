@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>~*~ TobiasGuta CMS ~*~</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cms-bg: #000;
+        --cms-panel: #000a00;
+        --cms-panel-2: #001515;
+        --cms-line: #00ff00;
+        --cms-cyan: #00ffff;
+        --cms-magenta: #ff00ff;
+        --cms-yellow: #ffff00;
+        --cms-muted: #c0c0c0;
+        --cms-dim: #707070;
+        --cms-display: "Press Start 2P", "Share Tech Mono", monospace;
+        --cms-body: "Share Tech Mono", "Courier New", Courier, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body,
+      #nc-root {
+        min-height: 100%;
+      }
+
+      html,
+      body {
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 0, 0.035) 2px,
+            rgba(0, 255, 0, 0.035) 4px
+          ),
+          #000 !important;
+        color: var(--cms-line) !important;
+        font-family: var(--cms-body) !important;
+        margin: 0;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 3px,
+          rgba(0, 0, 0, 0.18) 3px,
+          rgba(0, 0, 0, 0.18) 4px
+        );
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 72%);
+      }
+
+      .cms-marquee {
+        background: var(--cms-magenta);
+        color: #000;
+        font-size: 13px;
+        font-weight: 700;
+        overflow: hidden;
+        padding: 4px 0;
+        white-space: nowrap;
+      }
+
+      .cms-marquee span {
+        display: inline-block;
+        animation: cms-marquee 18s linear infinite;
+      }
+
+      @keyframes cms-marquee {
+        from { transform: translateX(100vw); }
+        to { transform: translateX(-100%); }
+      }
+
+      .cms-site-header {
+        background: #000;
+        border-bottom: 3px solid var(--cms-magenta);
+        border-top: 3px solid var(--cms-cyan);
+        overflow: hidden;
+        padding: 16px 12px 11px;
+        position: relative;
+        text-align: center;
+      }
+
+      .cms-site-header::before {
+        content: "";
+        position: absolute;
+        inset: -70% -20% auto;
+        height: 190px;
+        background-image:
+          linear-gradient(rgba(0, 255, 255, 0.24) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(0, 255, 255, 0.24) 2px, transparent 2px);
+        background-size: 48px 48px;
+        transform: perspective(360px) rotateX(68deg);
+        animation: cms-grid 4s linear infinite;
+      }
+
+      @keyframes cms-grid {
+        from { background-position: 0 0; }
+        to { background-position: 0 48px; }
+      }
+
+      .cms-site-title,
+      .cms-site-subtitle {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cms-site-title {
+        color: var(--cms-yellow);
+        font-family: var(--cms-display);
+        font-size: clamp(14px, 2.5vw, 24px);
+        letter-spacing: 2px;
+        line-height: 1.7;
+        margin: 0;
+        text-shadow:
+          3px 3px 0 var(--cms-magenta),
+          -1px -1px 0 var(--cms-cyan),
+          0 0 16px var(--cms-yellow);
+      }
+
+      .cms-site-subtitle {
+        color: var(--cms-cyan);
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin: 4px 0 0;
+      }
+
+      .cms-nav {
+        align-items: stretch;
+        background: #000080;
+        border-bottom: 2px solid var(--cms-cyan);
+        border-top: 2px solid var(--cms-cyan);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2px;
+      }
+
+      .cms-nav a {
+        border-left: 1px solid var(--cms-cyan);
+        border-right: 1px solid var(--cms-cyan);
+        color: var(--cms-yellow);
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 14px;
+        text-decoration: none;
+      }
+
+      .cms-nav a:hover,
+      .cms-nav a:focus {
+        background: var(--cms-magenta);
+        color: #000;
+      }
+
+      body.cms-editing .cms-marquee,
+      body.cms-editing .cms-site-header,
+      body.cms-editing .cms-nav {
+        display: none;
+      }
+
+      #nc-root,
+      #nc-root * {
+        border-radius: 0 !important;
+        font-family: var(--cms-body) !important;
+      }
+
+      #nc-root {
+        background: transparent !important;
+        color: var(--cms-line) !important;
+      }
+
+      #nc-root [class*="AppHeader"],
+      #nc-root [class*="TopBar"],
+      #nc-root header {
+        background: #001100 !important;
+        border-bottom: 2px solid var(--cms-magenta) !important;
+        box-shadow: 0 0 18px rgba(255, 0, 255, 0.35) !important;
+      }
+
+      #nc-root [class*="AppMainContainer"],
+      #nc-root [class*="Page"],
+      #nc-root main {
+        background: transparent !important;
+      }
+
+      #nc-root aside,
+      #nc-root [class*="Sidebar"] {
+        background: var(--cms-panel) !important;
+        border: 2px solid var(--cms-line) !important;
+        box-shadow: 0 0 18px rgba(0, 255, 0, 0.18) !important;
+      }
+
+      #nc-root h1,
+      #nc-root h2,
+      #nc-root h3,
+      #nc-root h4,
+      #nc-root [class*="Heading"] {
+        color: var(--cms-yellow) !important;
+        font-family: var(--cms-display) !important;
+        letter-spacing: 0 !important;
+        line-height: 1.8 !important;
+      }
+
+      #nc-root aside h1,
+      #nc-root aside h2,
+      #nc-root aside h3,
+      #nc-root aside [class*="Heading"] {
+        display: block !important;
+        font-size: clamp(13px, 1vw, 17px) !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        padding-right: 8px !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+        word-break: normal !important;
+      }
+
+      #nc-root p,
+      #nc-root span,
+      #nc-root label,
+      #nc-root div {
+        color: inherit;
+      }
+
+      #nc-root button,
+      #nc-root [role="button"],
+      #nc-root a[href*="/new"] {
+        background: #000 !important;
+        border: 2px solid var(--cms-cyan) !important;
+        box-shadow: 2px 2px 0 #003333 !important;
+        color: var(--cms-cyan) !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+      }
+
+      #nc-root button:hover,
+      #nc-root button:focus,
+      #nc-root [role="button"]:hover,
+      #nc-root a[href*="/new"]:hover {
+        background: var(--cms-cyan) !important;
+        color: #000 !important;
+        box-shadow: 0 0 14px var(--cms-cyan) !important;
+      }
+
+      #nc-root input,
+      #nc-root textarea,
+      #nc-root select {
+        background: #050505 !important;
+        border: 1px solid #005500 !important;
+        box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.08) !important;
+        color: var(--cms-line) !important;
+      }
+
+      #nc-root input:focus,
+      #nc-root textarea:focus,
+      #nc-root select:focus {
+        border-color: var(--cms-cyan) !important;
+        outline: none !important;
+      }
+
+      #nc-root label,
+      #nc-root [class*="FieldLabel"],
+      #nc-root [class*="Field"] label,
+      #nc-root [class*="ControlLabel"] {
+        background: #000 !important;
+        color: var(--cms-cyan) !important;
+        display: inline-block !important;
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+        padding: 0 6px !important;
+        text-transform: uppercase !important;
+      }
+
+      #nc-root [class*="Widget"],
+      #nc-root [class*="Control"],
+      #nc-root [class*="Field"] {
+        background-color: transparent !important;
+        color: var(--cms-line) !important;
+      }
+
+      #nc-root [class*="DateTimeControl"],
+      #nc-root [class*="BooleanControl"],
+      #nc-root [class*="ListControl"],
+      #nc-root [class*="MarkdownControl"] {
+        background: #000 !important;
+      }
+
+      #nc-root [class*="DateTimeControl"] *,
+      #nc-root [class*="BooleanControl"] *,
+      #nc-root [class*="ListControl"] *,
+      #nc-root [class*="MarkdownControl"] *,
+      #nc-root [class*="EditorContainer"] *,
+      #nc-root [class*="ControlPane"] * {
+        border-color: var(--cms-line) !important;
+      }
+
+      #nc-root [class*="DateTimeControl"],
+      #nc-root [class*="DateTimeControl"] > div,
+      #nc-root [class*="BooleanControl"],
+      #nc-root [class*="BooleanControl"] > div {
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 0, 0.025) 2px,
+            rgba(0, 255, 0, 0.025) 4px
+          ),
+          #000 !important;
+        border: 1px solid var(--cms-line) !important;
+      }
+
+      #nc-root [class*="BooleanControl"],
+      #nc-root [class*="BooleanControl"] *,
+      #nc-root input[type="checkbox"],
+      #nc-root input[type="checkbox"] + *,
+      #nc-root input[type="checkbox"] ~ * {
+        background-color: #000 !important;
+        background-image: none !important;
+      }
+
+      #nc-root [class*="BooleanControl"] {
+        min-height: 48px !important;
+        padding: 12px 16px !important;
+      }
+
+      #nc-root [class*="BooleanControl"] [role="checkbox"],
+      #nc-root [class*="BooleanControl"] [role="switch"],
+      #nc-root input[type="checkbox"] {
+        border: 2px solid var(--cms-cyan) !important;
+        box-shadow: 2px 2px 0 #003333, 0 0 10px rgba(0, 255, 255, 0.22) !important;
+        color: var(--cms-cyan) !important;
+      }
+
+      body.cms-editing #nc-root form > div,
+      body.cms-editing #nc-root form > div > div,
+      body.cms-editing #nc-root form section,
+      body.cms-editing #nc-root form fieldset {
+        background-color: #000 !important;
+      }
+
+      #nc-root [class*="BooleanControl"] input,
+      #nc-root input[type="checkbox"] {
+        accent-color: var(--cms-cyan) !important;
+      }
+
+      #nc-root [class*="DateTimeControl"] button,
+      #nc-root [class*="BooleanControl"] button,
+      #nc-root [class*="MarkdownControl"] button {
+        background: #001515 !important;
+        border: 1px solid var(--cms-cyan) !important;
+        box-shadow: 2px 2px 0 #003333 !important;
+        color: var(--cms-cyan) !important;
+      }
+
+      #nc-root [class*="DateTimeControl"] button:hover,
+      #nc-root [class*="BooleanControl"] button:hover,
+      #nc-root [class*="MarkdownControl"] button:hover {
+        background: var(--cms-cyan) !important;
+        color: #000 !important;
+      }
+
+      #nc-root [contenteditable="true"],
+      #nc-root [data-slate-editor="true"],
+      #nc-root [class*="RichText"],
+      #nc-root [class*="MarkdownControl"] textarea,
+      #nc-root [class*="MarkdownControl"] [role="textbox"] {
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 0, 0.025) 2px,
+            rgba(0, 255, 0, 0.025) 4px
+          ),
+          #000 !important;
+        color: var(--cms-line) !important;
+        caret-color: var(--cms-yellow) !important;
+        font-family: var(--cms-body) !important;
+      }
+
+      #nc-root [class*="MarkdownControl"] [contenteditable="true"] *,
+      #nc-root [class*="MarkdownControl"] [data-slate-editor="true"] * {
+        background: transparent !important;
+        color: inherit !important;
+      }
+
+      #nc-root a {
+        color: var(--cms-cyan) !important;
+      }
+
+      #nc-root a[href*="/collections/"] {
+        background:
+          linear-gradient(90deg, rgba(0, 255, 0, 0.08), transparent),
+          var(--cms-panel) !important;
+        border: 2px solid var(--cms-line) !important;
+        box-shadow: 0 3px 0 #c0c0c0, 0 0 10px rgba(0, 255, 0, 0.28) !important;
+        color: var(--cms-cyan) !important;
+        margin-bottom: 10px !important;
+        min-height: 58px !important;
+      }
+
+      #nc-root a[href*="/collections/"] * {
+        background: transparent !important;
+        color: inherit !important;
+      }
+
+      #nc-root a[href*="/collections/"]:hover,
+      #nc-root a[href*="/collections/"]:focus {
+        background:
+          linear-gradient(90deg, rgba(0, 255, 255, 0.16), transparent),
+          var(--cms-panel-2) !important;
+        border-color: var(--cms-cyan) !important;
+        color: var(--cms-yellow) !important;
+      }
+
+      #nc-root [class*="SidebarNavLink"],
+      #nc-root aside a {
+        color: var(--cms-line) !important;
+      }
+
+      #nc-root [class*="SidebarNavLinkActive"],
+      #nc-root aside a[aria-current="page"],
+      #nc-root aside a[aria-selected="true"] {
+        background: #000 !important;
+        border-left: 4px solid var(--cms-magenta) !important;
+        color: var(--cms-magenta) !important;
+      }
+
+      #nc-root [class*="ControlPane"],
+      #nc-root [class*="EditorContainer"],
+      #nc-root [class*="ToolbarContainer"],
+      #nc-root [class*="EditorControlBar"],
+      #nc-root [class*="CollectionTop"],
+      #nc-root [class*="CollectionControls"],
+      #nc-root [class*="ListCard"],
+      #nc-root [class*="Card"] {
+        background: #000 !important;
+        border-color: var(--cms-line) !important;
+        color: var(--cms-muted) !important;
+      }
+
+      #nc-root [class*="ToolbarContainer"],
+      #nc-root [class*="EditorControlBar"] {
+        background: #001100 !important;
+        border-bottom: 2px solid var(--cms-cyan) !important;
+      }
+
+      #nc-root [class*="EditorPreviewPane"],
+      #nc-root iframe {
+        background: #000 !important;
+        color: var(--cms-muted) !important;
+      }
+
+      #nc-root [class*="PreviewPane"],
+      #nc-root [class*="EditorPreviewPane"] {
+        border-left: 2px solid var(--cms-cyan) !important;
+      }
+
+      #nc-root [class*="EditorControlBar"] button,
+      #nc-root [class*="ToolbarContainer"] button {
+        min-width: 34px !important;
+      }
+
+      #nc-root > div,
+      #nc-root > div > div,
+      #nc-root > div > div > div {
+        background-color: transparent !important;
+      }
+
+      @media (max-width: 700px) {
+        .cms-site-title {
+          font-size: 15px;
+          letter-spacing: 0;
+        }
+
+        .cms-site-subtitle,
+        .cms-nav a {
+          font-size: 11px;
+          letter-spacing: 0;
+        }
+
+        .cms-nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cms-nav a {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cms-marquee">
+      <span>★ CONTENT UPLINK ACTIVE ★ WRITEUPS CMS ★ KEEP THE SIGNAL CLEAN ★ HACK THE PLANET ★&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <header class="cms-site-header">
+      <h1 class="cms-site-title">~*~ TobiasGuta CMS ~*~</h1>
+      <p class="cms-site-subtitle">&gt;&gt;&gt; WRITEUP CONTROL PANEL &lt;&lt;&lt;</p>
+    </header>
+    <nav class="cms-nav" aria-label="Site navigation">
+      <a href="/">[ HOME ]</a>
+      <a href="/projects.html">[ PROJECTS ]</a>
+      <a href="/writeups.html">[ WRITEUPS ]</a>
+      <a href="/contact.html">[ CONTACT ]</a>
+    </nav>
+
+    <!-- 1. The main Decap CMS script MUST load first, inside the body -->
+    <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+
+    <!-- 2. Your custom preview script goes AFTER the main script -->
+    <script>
+      function syncCmsRouteClass() {
+        document.body.classList.toggle('cms-editing', window.location.hash.includes('/entries/'));
+      }
+
+      window.addEventListener('hashchange', syncCmsRouteClass);
+      window.addEventListener('load', syncCmsRouteClass);
+      syncCmsRouteClass();
+
+      CMS.registerPreviewStyle(`
+        body {
+          background: #000 !important;
+          color: #c0c0c0 !important;
+          font-family: "Share Tech Mono", "Courier New", monospace !important;
+          margin: 0 !important;
+          padding: 18px !important;
+        }
+
+        body::before,
+        body::after {
+          display: none !important;
+        }
+
+        .markdown-body {
+          background: #000 !important;
+          color: #c0c0c0 !important;
+          font-family: "Share Tech Mono", "Courier New", monospace !important;
+          font-size: 14px !important;
+          line-height: 1.8 !important;
+        }
+
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3 {
+          color: #ffff00 !important;
+          font-family: "Press Start 2P", "Share Tech Mono", monospace !important;
+          line-height: 1.7 !important;
+        }
+
+        .markdown-body h1 { font-size: 18px !important; }
+        .markdown-body h2 { font-size: 14px !important; }
+        .markdown-body h3 { font-size: 12px !important; }
+
+        .markdown-body a {
+          color: #00ffff !important;
+        }
+
+        .markdown-body img {
+          background: #001515 !important;
+          border: 2px solid #00ffff !important;
+          display: block !important;
+          height: auto !important;
+          margin: 14px auto !important;
+          max-height: 340px !important;
+          max-width: min(100%, 620px) !important;
+          object-fit: contain !important;
+        }
+
+        .markdown-body pre,
+        .markdown-body code {
+          background: #000a00 !important;
+          border-color: #00ff00 !important;
+          color: #00ff00 !important;
+          font-family: "Share Tech Mono", "Courier New", monospace !important;
+        }
+
+        .markdown-body blockquote {
+          background: #170017 !important;
+          border-left: 3px solid #ff00ff !important;
+          color: #c0c0c0 !important;
+        }
+
+        .cms-post-preview {
+          background: #000 !important;
+          color: #c0c0c0 !important;
+          font-family: "Share Tech Mono", "Courier New", monospace !important;
+          font-size: 14px !important;
+          line-height: 1.8 !important;
+          padding: 18px !important;
+        }
+
+        .cms-post-preview h1,
+        .cms-post-preview h2,
+        .cms-post-preview h3 {
+          color: #ffff00 !important;
+          font-family: "Press Start 2P", "Share Tech Mono", monospace !important;
+          line-height: 1.7 !important;
+          margin: 18px 0 10px !important;
+        }
+
+        .cms-post-preview h1 { font-size: 18px !important; }
+        .cms-post-preview h2 { font-size: 14px !important; }
+        .cms-post-preview h3 { font-size: 12px !important; }
+
+        .cms-post-preview p {
+          margin: 0 0 14px !important;
+        }
+
+        .cms-post-preview a {
+          color: #00ffff !important;
+        }
+
+        .cms-post-preview img {
+          background: #001515 !important;
+          border: 2px solid #00ffff !important;
+          border-radius: 0 !important;
+          cursor: default !important;
+          display: block !important;
+          height: auto !important;
+          margin: 14px auto !important;
+          max-height: 320px !important;
+          max-width: min(100%, 620px) !important;
+          object-fit: contain !important;
+        }
+
+        .cms-post-preview pre {
+          background: #000a00 !important;
+          border: 2px solid #00ff00 !important;
+          color: #00ff00 !important;
+          overflow-x: auto !important;
+          padding: 12px !important;
+          white-space: pre-wrap !important;
+        }
+
+        .cms-post-preview code {
+          color: #00ff00 !important;
+          font-family: "Share Tech Mono", "Courier New", monospace !important;
+        }
+
+        .cms-post-preview .code-lang-tag {
+          border: 1px solid #00ffff !important;
+          color: #00ffff !important;
+          display: inline-block !important;
+          font-size: 11px !important;
+          margin-bottom: 6px !important;
+          padding: 2px 5px !important;
+        }
+
+        .cms-post-preview .copy-btn {
+          display: none !important;
+        }
+      `, { raw: true });
+
+      function escapeHtml(value) {
+        return String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function renderInlineMarkdown(value) {
+        return escapeHtml(value)
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+      }
+
+      function renderPostBody(source) {
+        var html = String(source || '')
+          .replace(/{%\s*raw\s*%}/g, '')
+          .replace(/{%\s*endraw\s*%}/g, '')
+          .replace(/<button[\s\S]*?<\/button>/gi, '')
+          .replace(/<svg[\s\S]*?<\/svg>/gi, '')
+          .replace(/\sclass="zoomable-img"/gi, '')
+          .replace(/\sstyle="[^"]*"/gi, '');
+
+        html = html.replace(/<div class="code-block-container">([\s\S]*?)<\/div>/gi, function (_, block) {
+          var label = (block.match(/<span class="code-lang-tag">([\s\S]*?)<\/span>/i) || [])[1] || 'Terminal';
+          var code = (block.match(/<pre><code[^>]*>([\s\S]*?)<\/code><\/pre>/i) || [])[1] || block;
+          return '<div class="code-block-container"><span class="code-lang-tag">' + escapeHtml(label.trim()) + '</span><pre><code>' + escapeHtml(code.trim()) + '</code></pre></div>';
+        });
+
+        var chunks = html.split(/\n{2,}/);
+        return chunks.map(function (chunk) {
+          var text = chunk.trim();
+          if (!text) return '';
+          if (/^<(img|div|pre|h\d|ul|ol|blockquote|table)\b/i.test(text)) return text;
+          if (/^###\s+/.test(text)) return '<h3>' + renderInlineMarkdown(text.replace(/^###\s+/, '')) + '</h3>';
+          if (/^##\s+/.test(text)) return '<h2>' + renderInlineMarkdown(text.replace(/^##\s+/, '')) + '</h2>';
+          if (/^#\s+/.test(text)) return '<h1>' + renderInlineMarkdown(text.replace(/^#\s+/, '')) + '</h1>';
+          return '<p>' + renderInlineMarkdown(text).replace(/\n/g, '<br>') + '</p>';
+        }).join('\n');
+      }
+
+      var PostPreview = createClass({
+        render: function () {
+          var entry = this.props.entry;
+          var title = entry.getIn(['data', 'title']) || 'Untitled post';
+          var date = entry.getIn(['data', 'date']) || '';
+          var permalink = entry.getIn(['data', 'permalink']) || '';
+          var body = entry.getIn(['data', 'body']) || '';
+          var previewHtml =
+            '<article class="cms-post-preview">' +
+              '<h1>' + escapeHtml(title) + '</h1>' +
+              (date ? '<p><code>' + escapeHtml(date) + '</code></p>' : '') +
+              (permalink ? '<p><code>Permalink: ' + escapeHtml(permalink) + '</code></p>' : '') +
+              renderPostBody(body) +
+            '</article>';
+
+          return h('div', {
+            dangerouslySetInnerHTML: { __html: previewHtml }
+          });
+        }
+      });
+
+      CMS.registerPreviewTemplate('posts', PostPreview);
+    </script>
+  </body>
+</html>

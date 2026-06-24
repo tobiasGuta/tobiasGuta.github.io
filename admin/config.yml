@@ -1,0 +1,94 @@
+backend:
+  name: github
+  repo: tobiasGuta/tobiasGuta.github.io
+  branch: main
+  base_url: https://decap-oauth-proxy.tobiasguta.workers.dev # TODO: Update this after deploying Cloudflare worker
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "string", default: "post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Categories", name: "categories", widget: "list"}
+      - {label: "Image URL", name: "image", widget: "string", required: false}
+      - {label: "Permalink", name: "permalink", widget: "string", required: false}
+      - {label: "Locked", name: "locked", widget: "boolean", default: false, required: false}
+      - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "site_data"
+    label: "Site Data"
+    files:
+      - name: "profile"
+        label: "Profile / About Info"
+        file: "_data/profile.json"
+        format: "json"
+        fields:
+          - {label: "Handle", name: "handle", widget: "string"}
+          - {label: "Display Name", name: "display_name", widget: "string"}
+          - {label: "Role", name: "role", widget: "string"}
+          - {label: "Profile Photo Path", name: "photo", widget: "string"}
+          - {label: "Profile Photo Alt Text", name: "photo_alt", widget: "string"}
+          - {label: "Status Text", name: "status_text", widget: "string"}
+          - {label: "Location", name: "location", widget: "string"}
+          - {label: "Status", name: "status", widget: "string"}
+          - {label: "OS of Choice", name: "os_of_choice", widget: "string"}
+          - {label: "Current Mission", name: "current_mission", widget: "string"}
+
+      - name: "activity_feed"
+        label: "Activity Feed"
+        file: "assets/data/ctf.json"
+        format: "json"
+        fields:
+          - label: "Activity Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.challenge}} — {{fields.platform}}"
+            fields:
+              - {label: "Activity Title", name: "challenge", widget: "string"}
+              - {label: "Platform", name: "platform", widget: "string", required: false}
+              - {label: "Category", name: "category", widget: "string", required: false}
+              - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
+
+  - name: "certificates"
+    label: "Certificates & Awards"
+    folder: "_data/certificates"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{fields.order}}-{{slug}}"
+    summary: "{{title}} — {{issuer}}"
+    fields:
+      - {label: "Order", name: "order", widget: "number", value_type: "int", default: 99}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Issuer", name: "issuer", widget: "string", required: false}
+      - {label: "Issued Date", name: "date", widget: "string", required: false}
+      - {label: "Note", name: "note", widget: "text", required: false}
+      - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Link Label", name: "link_label", widget: "string", default: "View Certificate", required: false}
+
+  - name: "social_links"
+    label: "Social Links"
+    folder: "_data/social_links"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{fields.order}}-{{slug}}"
+    summary: "{{label}} — {{handle}}"
+    fields:
+      - {label: "Order", name: "order", widget: "number", value_type: "int", default: 99}
+      - {label: "Label", name: "label", widget: "string"}
+      - {label: "Icon", name: "icon", widget: "string"}
+      - {label: "URL", name: "url", widget: "string"}
+      - {label: "Handle / Subtitle", name: "handle", widget: "string", required: false}
+      - {label: "Show in Sidebar", name: "show_in_sidebar", widget: "boolean", default: true}
+      - {label: "Show in Footer", name: "show_in_footer", widget: "boolean", default: true}

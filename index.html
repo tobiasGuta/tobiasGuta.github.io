@@ -57,14 +57,14 @@ title: Home
       <h3>[ IDENTIFY ]</h3>
       <div class="profile-pic-wrap">
         <div class="profile-pic">
-          <img class="profile-photo" src="Pictures/profile.png" alt="Profile photo of TobiasGuta">
+          <img class="profile-photo" src="{{ site.data.profile.photo | relative_url }}" alt="{{ site.data.profile.photo_alt | escape }}">
         </div>
         <div class="profile-name">
-          TobiasGuta<br>
-          <span class="profile-role">Sec Student</span>
+          {{ site.data.profile.display_name }}<br>
+          <span class="profile-role">{{ site.data.profile.role }}</span>
         </div>
         <div class="status-text">
-          <span class="online-indicator"></span>ONLINE NOW
+          <span class="online-indicator"></span>{{ site.data.profile.status_text }}
         </div>
       </div>
     </div>
@@ -168,15 +168,15 @@ title: Home
     <div class="section-block">
       <div class="section-header">
         <span>💀</span>
-        <h2>ABOUT.EXE — WHO IS TobiasGuta ?</h2>
+        <h2>ABOUT.EXE — WHO IS {{ site.data.profile.handle }} ?</h2>
       </div>
       <div class="section-content">
         <table class="info-table">
-          <tr><td>HANDLE</td><td>TobiasGuta</td></tr>
-          <tr><td>LOCATION</td><td>New York</td></tr>
-          <tr><td>STATUS</td><td>🎓 BSc Cybersecurity — Year 2 of 3</td></tr>
-          <tr><td>OS OF CHOICE</td><td>Windows</td></tr>
-          <tr><td>CURRENT MISSION</td><td>CEH &amp; CompTIA Security+</td></tr>
+          <tr><td>HANDLE</td><td>{{ site.data.profile.handle }}</td></tr>
+          <tr><td>LOCATION</td><td>{{ site.data.profile.location }}</td></tr>
+          <tr><td>STATUS</td><td>{{ site.data.profile.status }}</td></tr>
+          <tr><td>OS OF CHOICE</td><td>{{ site.data.profile.os_of_choice }}</td></tr>
+          <tr><td>CURRENT MISSION</td><td>{{ site.data.profile.current_mission }}</td></tr>
         </table>
       </div>
     </div>
@@ -199,51 +199,17 @@ title: Home
       </div>
       <div class="section-content">
         <div class="cert-list">
-          <div class="cert-card">
-            <div class="cert-title">Global Information Assurance Certification (GIAC)</div>
-            <div class="cert-issuer">SANS</div>
-            <div class="cert-date">Issued: February 29, 2024</div>
-            <a class="cert-action" href="https://www.credly.com/badges/d7400ee1-230d-42f5-9bbd-d66be8dfe55a/linked_in_profile">View Certificate</a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">DOF</div>
-            <div class="cert-note">Recognized by the U.S. Department of Education</div>
-            <div class="cert-issuer">Department of Education</div>
-            <div class="cert-date">Issued: October 2024</div>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">NYC</div>
-            <div class="cert-note">Recognized by The City of New York</div>
-            <div class="cert-issuer">New York</div>
-            <div class="cert-date">Issued: October 2024</div>
-            <a class="cert-action" href="https://nyc.responsibledisclosure.com/hc/en-us/articles/20413464091155-Acknowledgements">View Certificate</a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">CodePath Intro to Cybersecurity</div>
-            <div class="cert-issuer">CodePath</div>
-            <div class="cert-date">Issued: Fall 2023</div>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">National Cyber Scholarship</div>
-            <div class="cert-issuer">NCS</div>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">Mastercard Cyber Job Simulation</div>
-            <div class="cert-issuer">NCS</div>
-            <div class="cert-date">Issued: July 13, 2024</div>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">Diploma</div>
-            <div class="cert-issuer">CUNY Guttman Community College</div>
-            <div class="cert-date">Issued: August 25, 2025</div>
-            <a class="cert-action" href="https://www.parchment.com/lp/award/17ed4596-a2b8-4f81-b00e-84f9e9cde8b9">View Certificate</a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-title">Implement and Manage Active Directory Certificate Services</div>
-            <div class="cert-issuer">Microsoft</div>
-            <div class="cert-date">Issued: February 06, 2026</div>
-            <a class="cert-action" href="https://learn.microsoft.com/en-us/users/tobiasare-1489/achievements/nmt3tccf?ref=https%3A%2F%2Fwww.linkedin.com%2F">View Lab</a>
-          </div>
+          {% assign certificates = site.data.certificates | sort %}
+          {% for cert_entry in certificates %}
+            {% assign cert = cert_entry[1] %}
+            <div class="cert-card">
+              <div class="cert-title">{{ cert.title }}</div>
+              {% if cert.note %}<div class="cert-note">{{ cert.note }}</div>{% endif %}
+              {% if cert.issuer %}<div class="cert-issuer">{{ cert.issuer }}</div>{% endif %}
+              {% if cert.date %}<div class="cert-date">Issued: {{ cert.date }}</div>{% endif %}
+              {% if cert.link %}<a class="cert-action" href="{{ cert.link }}">{{ cert.link_label | default: "View Certificate" }}</a>{% endif %}
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -280,10 +246,13 @@ title: Home
     <!-- Social links -->
     <div class="sidebar-box cyan-border">
       <h3>[ F1ND ME ]</h3>
-      <a href="https://github.com/tobiasGuta" class="social-link"><span class="social-icon">🐙</span>GitHub</a>
-      <a href="https://x.com/TobiasGuta" class="social-link"><span class="social-icon">𝕏</span>X</a>
-      <a href="https://hackerone.com/tobiasare" class="social-link"><span class="social-icon">⚑</span>HackerOne</a>
-      <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
+      {% assign social_links = site.data.social_links | sort %}
+      {% for social_entry in social_links %}
+        {% assign social = social_entry[1] %}
+        {% if social.show_in_sidebar %}
+          <a href="{{ social.url }}" class="social-link"><span class="social-icon">{{ social.icon }}</span>{{ social.label }}</a>
+        {% endif %}
+      {% endfor %}
     </div>
 
     <!-- GitHub Stats -->
@@ -331,31 +300,17 @@ title: Home
 
   <!-- Social Footer Icons -->
   <div class="social-footer">
-    <a href="https://github.com/tobiasGuta" class="social-footer-link">
-      <span class="icon">🐙</span>
-      <span>GitHub</span>
-      <span class="social-footer-handle">tobiasGuta</span>
-    </a>
-    <a href="https://x.com/TobiasGuta" class="social-footer-link">
-      <span class="icon">𝕏</span>
-      <span>X</span>
-      <span class="social-footer-handle">@TobiasGuta</span>
-    </a>
-    <a href="https://hackerone.com/tobiasare" class="social-footer-link">
-      <span class="icon">⚑</span>
-      <span>HackerOne</span>
-      <span class="social-footer-handle">tobiasare</span>
-    </a>
-    <a href="https://www.linkedin.com/in/tobias-arevalo-3a620627b/" class="social-footer-link">
-      <span class="icon">💼</span>
-      <span>LinkedIn</span>
-      <span class="social-footer-handle">Tobias Arevalo</span>
-    </a>
-    <a href="{{ '/feed.xml' | relative_url }}" class="social-footer-link">
-      <span class="icon">RSS</span>
-      <span>Feed</span>
-      <span class="social-footer-handle">New writeups</span>
-    </a>
+    {% assign social_links = site.data.social_links | sort %}
+    {% for social_entry in social_links %}
+      {% assign social = social_entry[1] %}
+      {% if social.show_in_footer %}
+        <a href="{% if social.url contains '://' %}{{ social.url }}{% else %}{{ social.url | relative_url }}{% endif %}" class="social-footer-link">
+          <span class="icon">{{ social.icon }}</span>
+          <span>{{ social.label }}</span>
+          <span class="social-footer-handle">{{ social.handle }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
   </div>
   <div class="footer-divider">
     ●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○●○

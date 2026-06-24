@@ -6,3 +6,5 @@ _site/
 vendor/
 private_posts/
 jekyll-serve.log
+.wrangler/
+**/.wrangler/

@@ -1,0 +1,9 @@
+{
+  "order": 5,
+  "label": "Feed",
+  "icon": "RSS",
+  "url": "/feed.xml",
+  "handle": "New writeups",
+  "show_in_sidebar": false,
+  "show_in_footer": true
+}

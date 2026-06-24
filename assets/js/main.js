@@ -359,14 +359,28 @@
       // For GitHub pages / relative paths
       const res = await fetch('assets/data/ctf.json');
       if (!res.ok) throw new Error('Failed to load CTF data');
-      const data = await res.json();
+      const activityData = await res.json();
+      const data = Array.isArray(activityData) ? activityData : activityData.items || [];
+      const escapeActivityText = value => String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
       
       let html = '<h3>[ ACTIVITY ]</h3>';
       data.forEach(item => {
+        const title = escapeActivityText(item.challenge || item.title || 'Untitled activity');
+        const meta = [item.platform, item.category, item.date].filter(Boolean).map(escapeActivityText).join(' • ');
+        const link = escapeActivityText(item.link);
+        const action = item.link
+          ? `<a class="action" href="${link}">&#x2713; ${title}</a>`
+          : `<div class="action">&#x2713; ${title}</div>`;
+
         html += `
           <div class="activity-item">
-            <div class="action">&#x2713; ${item.challenge}</div>
-            <div class="time">${item.platform} • ${item.category}</div>
+            ${action}
+            <div class="time">${meta}</div>
           </div>
         `;
       });
