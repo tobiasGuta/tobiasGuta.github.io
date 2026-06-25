@@ -533,6 +533,15 @@
 
     <!-- 1. The main Decap CMS script MUST load first, inside the body -->
     <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
+    <script>
+      // Prevent UMD/AMD conflicts with Decap CMS's bundler
+      var __define = window.define;
+      window.define = undefined;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+    <script>
+      window.define = __define;
+    </script>
 
     <!-- 2. Your custom preview script goes AFTER the main script -->
     <script>
@@ -676,6 +685,25 @@
         .cms-post-preview .copy-btn {
           display: none !important;
         }
+
+        .cms-post-preview blockquote {
+          background: #170017 !important;
+          border-left: 3px solid #ff00ff !important;
+          color: #c0c0c0 !important;
+          margin: 0 0 14px !important;
+          padding: 8px 14px !important;
+        }
+
+        .cms-post-preview ul,
+        .cms-post-preview ol {
+          color: #c0c0c0 !important;
+          margin: 0 0 14px !important;
+          padding-left: 24px !important;
+        }
+
+        .cms-post-preview li {
+          margin-bottom: 4px !important;
+        }
       `, { raw: true });
 
       function escapeHtml(value) {
@@ -687,13 +715,11 @@
           .replace(/'/g, '&#39;');
       }
 
-      function renderInlineMarkdown(value) {
-        return escapeHtml(value)
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-      }
+      var md = window.markdownit({
+        html: true,
+        breaks: true,
+        linkify: true
+      });
 
       function renderPostBody(source) {
         var html = String(source || '')
@@ -710,16 +736,7 @@
           return '<div class="code-block-container"><span class="code-lang-tag">' + escapeHtml(label.trim()) + '</span><pre><code>' + escapeHtml(code.trim()) + '</code></pre></div>';
         });
 
-        var chunks = html.split(/\n{2,}/);
-        return chunks.map(function (chunk) {
-          var text = chunk.trim();
-          if (!text) return '';
-          if (/^<(img|div|pre|h\d|ul|ol|blockquote|table)\b/i.test(text)) return text;
-          if (/^###\s+/.test(text)) return '<h3>' + renderInlineMarkdown(text.replace(/^###\s+/, '')) + '</h3>';
-          if (/^##\s+/.test(text)) return '<h2>' + renderInlineMarkdown(text.replace(/^##\s+/, '')) + '</h2>';
-          if (/^#\s+/.test(text)) return '<h1>' + renderInlineMarkdown(text.replace(/^#\s+/, '')) + '</h1>';
-          return '<p>' + renderInlineMarkdown(text).replace(/\n/g, '<br>') + '</p>';
-        }).join('\n');
+        return md.render(html);
       }
 
       var PostPreview = createClass({
