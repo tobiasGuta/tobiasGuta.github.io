@@ -727,8 +727,8 @@
           .replace(/{%\s*endraw\s*%}/g, '')
           .replace(/<button[\s\S]*?<\/button>/gi, '')
           .replace(/<svg[\s\S]*?<\/svg>/gi, '')
-          .replace(/\sclass="zoomable-img"/gi, '')
-          .replace(/\sstyle="[^"]*"/gi, '');
+          .replace(/\s*class="zoomable-img"/gi, '')
+          .replace(/\s*style="[^"]*"/gi, '');
 
         html = html.replace(/<div class="code-block-container">([\s\S]*?)<\/div>/gi, function (_, block) {
           var label = (block.match(/<span class="code-lang-tag">([\s\S]*?)<\/span>/i) || [])[1] || 'Terminal';
