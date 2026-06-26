@@ -2310,3 +2310,79 @@
   position: absolute;
   width: 1px;
 }
+
+/* Overhead Light Animation */
+.overhead-light {
+  position: fixed;
+  top: -50vh;
+  left: 0;
+  width: 100vw;
+  height: 200vh;
+  background: radial-gradient(ellipse at 50% 25%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%);
+  z-index: 99; /* Just behind the xenomorph */
+  opacity: 0;
+  pointer-events: none;
+  animation: light-flash 12s infinite;
+}
+
+@keyframes light-flash {
+  0%   { opacity: 0; }
+  10%  { opacity: 0; }
+  11%  { opacity: 0.8; }
+  12%  { opacity: 0; }
+  
+  35%  { opacity: 0; }
+  36%  { opacity: 1; }
+  37%  { opacity: 0; }
+  38%  { opacity: 1; }
+  39%  { opacity: 0; }
+
+  65%  { opacity: 0; }
+  66%  { opacity: 1; }
+  67%  { opacity: 0; }
+
+  85%  { opacity: 0; }
+  86%  { opacity: 1; }
+  90%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Xenomorph 404 Animation */
+.xeno-scare {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../xenomorphxx121.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: xeno-approach 12s infinite;
+}
+
+@keyframes xeno-approach {
+  0%   { opacity: 0; transform: scale(0.5); }
+  10%  { opacity: 0; transform: scale(0.5); }
+  11%  { opacity: 0.3; transform: scale(0.5); }
+  12%  { opacity: 0; transform: scale(0.5); }
+  
+  35%  { opacity: 0; transform: scale(1); }
+  36%  { opacity: 0.6; transform: scale(1); }
+  37%  { opacity: 0; transform: scale(1); }
+  38%  { opacity: 0.8; transform: scale(1.1); }
+  39%  { opacity: 0; transform: scale(1.1); }
+
+  65%  { opacity: 0; transform: scale(2); }
+  66%  { opacity: 1; transform: scale(2); }
+  67%  { opacity: 0; transform: scale(2); }
+
+  85%  { opacity: 0; transform: scale(3.5); }
+  86%  { opacity: 1; transform: scale(3.5); }
+  90%  { opacity: 0; transform: scale(3.5); }
+  100% { opacity: 0; }
+}
