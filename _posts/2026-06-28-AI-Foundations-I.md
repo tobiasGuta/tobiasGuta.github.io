@@ -115,3 +115,75 @@ That last mistake really stuck with me. When an AI gets 95% of the facts right, 
 The AI told me at the end: *"I genuinely don't know when I'm wrong. You have to be the one who finds out."* 
 
 Moving forward, whether I'm using AI to debug my code or research a topic, I'm treating it like a brilliant but slightly careless intern. It can help me work faster, but I *must* be the final editor and fact-checker. Trust, but verify!
+
+***
+
+# Stepping Up to Classification: Building a 1D Perceptron 🚧
+
+Hey everyone! The Cylab Security Academy just flipped the script on me. In the previous challenges, I was playing detective—trying to find the hidden decision boundary of a "black box" AI. But in the **Perceptron Play 1D!** challenge, I finally got to play engineer. 
+
+Instead of guessing the rules, my job was to look at a dataset and *build* the rule to classify the data correctly.
+
+## The Setup
+The challenge gave me a number line with points labeled as either Category 0 (stay quiet) or Category 1 (fire). 
+The starting parameters were a weight of $w = 1$ and a bias of $b = 0$. 
+
+When I checked the initial state, there was exactly one point being misclassified: the point at $x = 0$. The data required it to be a 0, but my perceptron was predicting a 1. 
+
+## The Math and the "Fence"
+You can think of a perceptron's decision boundary like a physical fence on the number line. Everything on or to the right of the fence fires (1). Everything to the left stays quiet (0).
+
+With $w = 1$ and $b = 0$, the equation was:
+$$ 1x + 0 \geq 0 $$
+For $x = 0$, the total was exactly 0. Since 0 is greater than or equal to 0, the perceptron fired. I needed to move that fence slightly to the right so $0$ would be left behind in the "quiet" zone, but $2$ (the next data point) would still stay in the "fire" zone.
+
+## The Fix
+To slide the fence to the right, I needed to lower the total by dipping into negative numbers with my bias ($b$). 
+
+I changed the bias to **-1**. Let's look at why that worked:
+* For $x = 0$: $0 + (-1) = -1$. Since -1 is less than 0, it stays quiet (0). Fixed!
+* For $x = 2$: $2 + (-1) = 1$. Since 1 is greater than 0, it still fires (1). Perfect!
+
+Here is what it looked like in the challenge terminal when I typed `SET 1 -1` and hit `CHECK`:
+
+```text
+Number line (predictions):
+    -4-3-2-1+0+1+2+3+4
+     0 . 0 . x . 1 1 1
+             ^
+
+Current parameters -> w: 1, b: 0
+
+  x    label  perceptron  activation
+  --   -----  ----------  ----------
+  -4      0        0        -4
+  -2      0        0        -2
+  +0      0        1        0
+  +2      1        1        2
+  +3      1        1        3
+  +4      1        1        4
+
+> SET 1 -1
+Number line (predictions):
+    -4-3-2-1+0+1+2+3+4
+     0 . 0 . 0 . 1 1 1
+               ^
+
+Current parameters -> w: 1, b: -1
+
+  x    label  perceptron  activation
+  --   -----  ----------  ----------
+  -4      0        0        -5
+  -2      0        0        -3
+  +0      0        0        -1
+  +2      1        1        1
+  +3      1        1        2
+  +4      1        1        3
+
+> CHECK
+Perfect! All points are classified correctly.
+```
+
+All points classified perfectly, and I grabbed the flag! 
+
+It's really cool to see how tweaking a single number (the bias) just physically slides the AI's decision-making threshold back and forth. Next up: 2D classification!
