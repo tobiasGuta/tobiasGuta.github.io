@@ -53,3 +53,44 @@ I needed a bias ($b$) that would pull a total of 2 below zero, but keep a total 
 I submitted the final parameters: `TEST 1 0 -3` and got the perfect match and the flag! 
 
 It was awesome to see how a simple linear equation acts as a brain for a basic AI system. It really demystified the idea of "decision boundaries" for me. On to the next challenge!
+
+***
+
+# Dropping a Dimension: Cracking the 1D Perceptron in Cylab Security Academy
+
+Welcome back! After successfully reverse-engineering a 2D perceptron in the Cylab Security Academy (picoCTF), I immediately jumped into the next challenge: **Neuron Express 0!** This time, the challenge stepped things down a dimension. Instead of a 2D grid with `x` and `y` coordinates, I was dealing with a 1D number line ranging from -10 to 10. 
+
+## The Muscle Memory Trap
+When I first booted up the challenge, I kept getting an error: `Not an integer. Try again.` 
+
+I was typing `10 10`, `1 1`, and `0 0`. It took me a minute to realize my mistake: my muscle memory from the 2D challenge was tricking me into entering *two* coordinates instead of one! Since the 1D perceptron rule is just $wx + b \geq 0$, it only needs a single `x` value. 
+
+Once I figured that out, it was time to hunt for the decision boundary.
+
+## The Strategy: Binary Search on a Number Line
+In the 2D challenge, I was hunting for an invisible line. In 1D, I was just hunting for a single invisible *point* on the number line where the AI's output flips from 0 (quiet) to 1 (fires).
+
+I started probing the number line and found the exact transition point:
+* Input $1$ -> Perceptron stays quiet (0)
+* Input $2$ -> Perceptron fires! (1)
+
+Because the perceptron turned "on" as the numbers got bigger, I knew the weight ($w$) had to be a positive number. 
+
+## Doing the Math
+I assumed the simplest positive integer for the weight: **$w = 1$**.
+This simplified my rule to:
+$$ x + b \geq 0 $$
+
+I needed to find a bias ($b$) that made the formula true for my test results:
+* For $x = 2$, it needed to fire: $2 + b \geq 0$
+* For $x = 1$, it needed to stay quiet: $1 + b < 0$
+
+I needed a number that pulled 2 down to exactly 0, but pulled 1 down into the negatives. A bias of **-2** was the perfect fit!
+* $2 + (-2) = 0$ (Fires! 🔥)
+* $1 + (-2) = -1$ (Stays quiet 🤫)
+
+## The Solution
+I submitted my final parameters: `TEST 1 -2`. 
+Perfect match! 
+
+It is amazing how stepping down a dimension actually makes the math much clearer. By removing the `y` variable, you can really see how the bias ($b$) just acts as a slider, shifting the "on/off" point left and right across the number line.
