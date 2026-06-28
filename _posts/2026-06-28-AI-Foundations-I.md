@@ -94,3 +94,24 @@ I submitted my final parameters: `TEST 1 -2`.
 Perfect match! 
 
 It is amazing how stepping down a dimension actually makes the math much clearer. By removing the `y` variable, you can really see how the bias ($b$) just acts as a slider, shifting the "on/off" point left and right across the number line.
+
+***
+
+# AI Ethics: Why "Trust But Verify" is My New Coding Motto 🕵️♂️
+
+Hey everyone! Back with another update from my Cylab Security Academy journey. I just finished a module that took a break from the heavy math of perceptrons and put me in an interactive fiction scenario called **Trust But Verify**. It honestly completely changed how I look at generative AI.
+
+## The Scenario 📖
+The game puts you in the year 2031, using an advanced AI assistant named ARIA to write a science fair proposal. Sounds easy, right? But ARIA ended up teaching me a harsh lesson about "automation bias"—that dangerous habit we have of trusting AI just because it sounds incredibly confident.
+
+During the project, ARIA made three distinct types of mistakes:
+*   **The Hallucination 👻:** It completely fabricated a 2022 UNEP report and a statistic about ocean plastic. If I hadn't asked for the source link, I would have put fake data in my project.
+*   **The Logic Error 🐛:** It wrote a Python script to calculate averages but snuck a random `+ 1` into the math. The code ran perfectly, but the output was mathematically wrong.
+*   **The Subtle Inaccuracy 📉:** This was the scariest one. ARIA cited a *real* study by a *real* researcher at a *real* university... but got the year wrong and claimed the results were "confirmed" instead of "preliminary."
+
+## My Biggest Takeaway 🧠
+That last mistake really stuck with me. When an AI gets 95% of the facts right, it builds a false sense of security, making it incredibly easy to let the 5% that is wrong slip right past you. 
+
+The AI told me at the end: *"I genuinely don't know when I'm wrong. You have to be the one who finds out."* 
+
+Moving forward, whether I'm using AI to debug my code or research a topic, I'm treating it like a brilliant but slightly careless intern. It can help me work faster, but I *must* be the final editor and fact-checker. Trust, but verify!
