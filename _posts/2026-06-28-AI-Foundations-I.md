@@ -187,3 +187,182 @@ Perfect! All points are classified correctly.
 All points classified perfectly, and I grabbed the flag! 
 
 It's really cool to see how tweaking a single number (the bias) just physically slides the AI's decision-making threshold back and forth. Next up: 2D classification!
+
+***
+
+# Leveling Up: Cracking 2D Classification with Perceptrons 🚀
+
+Hey everyone! I'm back with another update from the Cylab Security Academy. After mastering the 1D perceptron, it was time to step things up to a full 2D grid. Instead of just sliding a single point back and forth on a number line, my goal was to draw a literal line in the sand—a decision boundary—to separate two clusters of data.
+
+## The Setup
+In this challenge, I was given an ASCII graph with points labeled as either Category 0 (stay quiet) or Category 1 (fire). The perceptron now had two weights ($w_1$ for the x-axis, $w_2$ for the y-axis) and a bias ($b$). 
+
+The starting parameters were $w_1 = 1$, $w_2 = -1$, and $b = 0$. This made my starting rule: 
+$$ 1x - 1y + 0 \geq 0 $$
+
+## The Bug in the Math 🐛
+When I looked at my dataset, two points were failing:
+* **$(-1, -1)$** was supposed to be a `0`, but the math ($-1 - (-1) = 0$) made the perceptron fire. 
+* **$(+1, +3)$** was supposed to be a `1`, but the math ($1 - 3 = -2$) kept the perceptron quiet. 
+
+The issue was that pesky negative weight for $w_2$. Because it was subtracting the y-value, it was dragging the total down way below zero for my Class 1 points (which were all in the top right, meaning they had positive y-values). 
+
+## The Fix 🛠️
+I needed to stop subtracting that y-value and start adding it so it would help push my Class 1 points above zero. I changed the weight of $w_2$ to $1$. 
+
+My new, simplified rule became: 
+$$ x + y \geq 0 $$
+
+Let's look at how that fixed my failing points:
+* For **$(-1, -1)$**: $-1 + (-1) = -2$. Since -2 is less than 0, it stays quiet (0). Fixed!
+* For **$(+1, +3)$**: $1 + 3 = 4$. Since 4 is greater than 0, it fires (1). Fixed!
+
+## The Result
+That single change perfectly drew a diagonal line straight through the middle of the grid. Every point in the bottom-left naturally had a negative sum (Class 0), and every point in the top-right had a positive sum (Class 1). 
+
+Here is what it looked like in the challenge terminal when I entered `SET 1 1 0` and hit `CHECK`:
+
+```text
++4         |       /
++3         | x   /
++2         |   1
++1         | /   1
++0 - - - - / - - - -
+-1       x |
+-2 0 0 /   |
+-3   /     |
+-4 /       |
+   -4-3-2-1+0+1+2+3+4
+
+Current weights -> w1: 1, w2: -1, b: 0
+
+  point    label  perceptron  activation
+  ------   -----  ----------  ----------
+  (-3,-2)     0        0        -1
+  (-1,-1)     0        1        0
+  (-4,-2)     0        0        -2
+  (+3,+1)     1        1        2
+  (+2,+2)     1        1        0
+  (+1,+3)     1        0        -2
+
+> SET 1 1 0
++4 /       |
++3   /     | 1
++2     /   |   1
++1       / |     1
++0 - - - - / - - - -
+-1       0 | /
+-2 0 0     |   /
+-3         |     /
+-4         |       /
+   -4-3-2-1+0+1+2+3+4
+
+Current weights -> w1: 1, w2: 1, b: 0
+
+  point    label  perceptron  activation
+  ------   -----  ----------  ----------
+  (-3,-2)     0        0        -5
+  (-1,-1)     0        0        -2
+  (-4,-2)     0        0        -6
+  (+3,+1)     1        1        4
+  (+2,+2)     1        1        4
+  (+1,+3)     1        1        4
+
+> CHECK
+Perfect! All points are classified correctly.
+```
+
+The system verified all points, and I secured my next flag! It is incredibly satisfying to see how just flipping a single weight from negative to positive completely changes the AI's "worldview" and how it draws its boundaries. 
+
+On to the next challenge!
+
+***
+
+# Thinking Outside the Axis: Drawing a Horizontal Boundary 🏢
+
+Welcome back! The Cylab Security Academy just threw a brilliant curveball at me in the **Perceptron Play Naught** challenge. It really hammered home why we need to build intuition instead of just memorizing math.
+
+## The Setup
+I was given a 2D grid with a new dataset. The goal was the same: find the weights ($w_1$, $w_2$) and the bias ($b$) to separate Class 0 (stay quiet) from Class 1 (fire). 
+
+The starting parameters were $w_1 = 1$, $w_2 = -1$, and $b = 0$.
+
+## The Problem: A Messy X-Axis
+When I looked at the data, the $x$-values (left/right positions) were a complete mess. Class 0 points and Class 1 points were completely overlapping on the $x$-axis. Trying to draw a vertical or even a diagonal line was going to be impossible because the points were too mixed up left-to-right.
+
+## The "Building" Epiphany 💡
+Instead of looking at the $x$-axis, I focused entirely on the $y$-axis (up/down). 
+
+I imagined the grid as a tall building:
+* All the Class 1 points lived "upstairs" on floors +1 and +2.
+* All the Class 0 points lived "downstairs" on floors -1 and -2. 
+
+It didn't matter what room (x-value) they were in; the only thing that mattered was their floor (y-value). I needed a perfectly flat, horizontal floor right between them.
+
+## The Fix
+To draw a perfectly horizontal line, I needed my perceptron to completely ignore the $x$-values. How do you make a number disappear in math? Multiply it by zero!
+
+I set my first weight ($w_1$) to **0**. 
+Then, I set my second weight ($w_2$) to **1** so the positive "upstairs" numbers would stay positive, and the negative "downstairs" numbers would stay negative. I left the bias at **0**.
+
+My new perceptron rule was beautifully simple: 
+$$ y \geq 0 $$
+
+* For a point upstairs (e.g., $y = +2$): $2 \geq 0$. It fires! (Class 1)
+* For a point downstairs (e.g., $y = -1$): $-1 \geq 0$. It stays quiet! (Class 0)
+
+Here is what it looked like in the challenge terminal when I entered `SET 0 1 0` and hit `CHECK`:
+
+```text
++4         |       /
++3         |     /
++2       x x   /   1
++1         | /   1
++0 - - - - / - - - -
+-1 0     / x   x
+-2     /   |
+-3   /     |
+-4 /       |
+   -4-3-2-1+0+1+2+3+4
+
+Current weights -> w1: 1, w2: -1, b: 0
+
+  point    label  perceptron  activation
+  ------   -----  ----------  ----------
+  (-4,-1)     0        0        -3
+  (-1,+2)     1        0        -3
+  (+0,-1)     0        1        1
+  (+0,+2)     1        0        -2
+  (+2,-1)     0        1        3
+  (+3,+1)     1        1        2
+  (+4,+2)     1        1        2
+
+> SET 0 1 0
++4         |
++3         |
++2       1 1       1
++1         |     1
++0 / / / / / / / / /
+-1 0       0   0
+-2         |
+-3         |
+-4         |
+   -4-3-2-1+0+1+2+3+4
+
+Current weights -> w1: 0, w2: 1, b: 0
+
+  point    label  perceptron  activation
+  ------   -----  ----------  ----------
+  (-4,-1)     0        0        -1
+  (-1,+2)     1        1        2
+  (+0,-1)     0        0        -1
+  (+0,+2)     1        1        2
+  (+2,-1)     0        0        -1
+  (+3,+1)     1        1        1
+  (+4,+2)     1        1        2
+
+> CHECK
+Perfect! All points are classified correctly.
+```
+
+The system verified all points, and I grabbed my next flag! It was a great lesson in how zeroing out a weight allows an AI to completely ignore irrelevant data.
