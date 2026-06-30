@@ -1,0 +1,11 @@
+{
+  "welcome_text": "YO! Welcome to my corner of <span class=\"highlight\">cyberspace</span> !! If you found this page then you are one of the <span class=\"neon\">1337 few</span> who know where to look. This is my personal portfolio &amp; digital log documenting my journey into the world of <span class=\"highlight\">cyber security</span>.\n\nI'm a <span class=\"neon\">computer science &amp; security student</span> currently cracking CTF challenges, studying for certs, and trying not to fall asleep in my network architecture class. By day I learn. By night I solve challenges on <span class=\"highlight\">picoCTF</span>.\n\n<span class=\"blink welcome-pointer\">☞</span> <span class=\"welcome-note\"> This site works best with JavaScript enabled and a 56k modem. Dial-up welcome.</span>",
+  "quote_text": "\"Hacking is not a crime. It's a<br>\n<span class=\"quote-highlight\">state of mind.</span>\"",
+  "quote_author": "anonymous",
+  "marquees": {
+    "home": "★ WELCOME TO MY H4CK3R ZONE ★ &nbsp;&nbsp;|&nbsp;&nbsp; 🔒 CTF PLAYER | PENTEST STUDENT | INFOSEC NERD 🔒 &nbsp;&nbsp;|&nbsp;&nbsp; ⚠️ THIS PAGE IS BEST VIEWED WITH NETSCAPE NAVIGATOR 4.0 ⚠️ &nbsp;&nbsp;|&nbsp;&nbsp; 💀 HACK THE PLANET 💀 &nbsp;&nbsp;|&nbsp;&nbsp; 🌐 EST. 1997 • RUNNING ON PURE CAFFEINE &amp; PACKET CAPTURES 🌐 &nbsp;&nbsp;|&nbsp;&nbsp; ✨ FREE TIBET | FREE SOFTWARE | FREE PIZZA ✨ &nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    "projects": "★ PROJECT ARCHIVE ★ &nbsp;&nbsp;|&nbsp;&nbsp; PUBLIC GITHUB REPOSITORIES LOADED AUTOMATICALLY &nbsp;&nbsp;|&nbsp;&nbsp; SECURITY TOOLS | CTF WORK | RECON PROJECTS &nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    "writeups": "★ WRITEUP ARCHIVE ★ &nbsp;&nbsp;|&nbsp;&nbsp; BUG BOUNTY | CTF | PENTESTING | MY RESEARCH &nbsp;&nbsp;|&nbsp;&nbsp; FIELD NOTES, REPORTS, AND SECURITY LESSONS &nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+    "contact": "★ CONTACT TERMINAL ★ &nbsp;&nbsp;|&nbsp;&nbsp; SECURITY QUESTIONS | PROJECTS | COLLABS | RESPONSIBLE DISCLOSURE &nbsp;&nbsp;|&nbsp;&nbsp; FORM POWERED BY FORMSPREE &nbsp;&nbsp;|&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  }
+}

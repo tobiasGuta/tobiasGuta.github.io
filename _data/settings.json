@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "title": "Tobias Guta Portfolio",
+    "description": "Cybersecurity portfolio, projects, writeups, bug bounty notes, CTF walkthroughs, pentesting labs, and research."
+  },
+  "giscus": {
+    "enabled": true,
+    "repo": "tobiasGuta/tobiasGuta.github.io",
+    "repo_id": "R_kgDOOxswYQ",
+    "category": "General",
+    "category_id": "DIC_kwDOOxswYc4CrEhp",
+    "mapping": "pathname",
+    "strict": "0",
+    "reactions_enabled": "1",
+    "emit_metadata": "0",
+    "input_position": "bottom",
+    "theme": "transparent_dark",
+    "lang": "en"
+  },
+  "footer": {
+    "copyright": "&copy; 1997\u20132024 <span class=\"neon\">TobiasGuta</span>",
+    "disclaimer": "* we absolutely use cookies. and also JavaScript. and also your soul."
+  },
+  "contact": {
+    "formspree_endpoint": "https://formspree.io/f/mvgbdevj"
+  }
+}

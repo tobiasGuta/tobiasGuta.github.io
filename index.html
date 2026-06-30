@@ -10,7 +10,7 @@ title: Home
   <title>~*~ H4CK3R_Z0N3 ~*~ xX_CyberSec_Portfolio_Xx ~*~</title>
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.data.settings.seo.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
   <!-- Styles for the portfolio homepage. Edit visual design in assets/css/main.css. -->
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -19,13 +19,7 @@ title: Home
 <!-- TOP MARQUEE -->
 <div class="marquee-top">
   <span>
-    ★ WELCOME TO MY H4CK3R ZONE ★ &nbsp;&nbsp;|&nbsp;&nbsp;
-    🔒 CTF PLAYER | PENTEST STUDENT | INFOSEC NERD 🔒 &nbsp;&nbsp;|&nbsp;&nbsp;
-    ⚠️ THIS PAGE IS BEST VIEWED WITH NETSCAPE NAVIGATOR 4.0 ⚠️ &nbsp;&nbsp;|&nbsp;&nbsp;
-    💀 HACK THE PLANET 💀 &nbsp;&nbsp;|&nbsp;&nbsp;
-    🌐 EST. 1997 • RUNNING ON PURE CAFFEINE &amp; PACKET CAPTURES 🌐 &nbsp;&nbsp;|&nbsp;&nbsp;
-    ✨ FREE TIBET | FREE SOFTWARE | FREE PIZZA ✨ &nbsp;&nbsp;|&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ site.data.homepage.marquees.home }}
   </span>
 </div>
 
@@ -75,44 +69,20 @@ title: Home
       <h3>[ SKILLZ ]</h3>
       <div class="skill-section-label">[ TECH STACK ]</div>
       <div class="skill-icon-groups" aria-label="Technical skills">
+        {% for group in site.data.skills.tech_stack %}
         <div class="skill-icon-group">
-          <div class="skill-icon-heading">Languages</div>
-          <img src="https://skillicons.dev/icons?i=py,bash,js,php,mysql,html,css&perline=7" alt="Python, Bash, JavaScript, PHP, MySQL, HTML, and CSS">
+          <div class="skill-icon-heading">{{ group.group_name }}</div>
+          <img src="https://skillicons.dev/icons?{{ group.icons_query }}" alt="{{ group.alt_text }}">
         </div>
-        <div class="skill-icon-group">
-          <div class="skill-icon-heading">Security / OS</div>
-          <img src="https://skillicons.dev/icons?i=linux,kali,docker,powershell&perline=4" alt="Linux, Kali Linux, Docker, and PowerShell">
-        </div>
-        <div class="skill-icon-group">
-          <div class="skill-icon-heading">Tools</div>
-          <img src="https://skillicons.dev/icons?i=git,github,postman,androidstudio&perline=4" alt="Git, GitHub, Postman, and Android Studio">
-        </div>
+        {% endfor %}
       </div>
       <div class="skill-section-label skill-focus-label">[ FOCUS ]</div>
+      {% for focus in site.data.skills.focus_bars %}
       <div class="skill-item">
-        <div class="skill-name">LINUX</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-linux"></div></div>
+        <div class="skill-name">{{ focus.name }}</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct: {{ focus.percentage }}%;"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-name">PYTHON</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-python"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">NMAP / RECON</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-recon"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">WEB EXPLOITS</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-web"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">CTF / OSINT</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-ctf"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">SOCIAL ENG.</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill skill-social"></div></div>
-      </div>
+      {% endfor %}
     </div>
 
   </aside>
@@ -123,16 +93,7 @@ title: Home
     <!-- Welcome -->
     <div class="welcome-box">
       <h2>// WELCOME.TXT</h2>
-      <p>
-        YO! Welcome to my corner of <span class="highlight">cyberspace</span> !! If you found this page then you are one of the <span class="neon">1337 few</span> who know where to look. This is my personal portfolio &amp; digital log documenting my journey into the world of <span class="highlight">cyber security</span>.
-      </p>
-      <p>
-        I'm a <span class="neon">computer science &amp; security student</span> currently cracking CTF challenges, studying for certs, and trying not to fall asleep in my network architecture class. By day I learn. By night I solve challenges on <span class="highlight">picoCTF</span>. 
-      </p>
-      <p>
-        <span class="blink welcome-pointer">☞</span>
-        <span class="welcome-note"> This site works best with JavaScript enabled and a 56k modem. Dial-up welcome.</span>
-      </p>
+      {{ site.data.homepage.welcome_text | markdownify }}
     </div>
 
     <!-- Latest Activity -->
@@ -278,9 +239,8 @@ title: Home
     <div class="sidebar-box quote-box">
       <h3>[ QUOTE ]</h3>
       <p class="quote-text" id="dynamic-quote">
-        "Hacking is not a crime. It's a<br>
-        <span class="quote-highlight">state of mind.</span>"<br>
-        <span class="quote-author">— anonymous</span>
+        {{ site.data.homepage.quote_text }}<br>
+        <span class="quote-author">— {{ site.data.homepage.quote_author }}</span>
       </p>
     </div>
 
@@ -318,7 +278,7 @@ title: Home
 
   <div class="footer-text">
     <p>
-      &copy; 1997–2024 <span class="neon">TobiasGuta</span> &nbsp;|&nbsp;
+      {{ site.data.settings.footer.copyright }} &nbsp;|&nbsp;
       All rights reserved (but sharing is caring) &nbsp;|&nbsp;
       <a href="#">Privacy Policy (lol)</a>
     </p>
@@ -327,7 +287,7 @@ title: Home
       <span class="neon">NO COOKIES WERE HARMED IN THE MAKING OF THIS PAGE*</span>
     </p>
     <p class="footer-disclaimer">
-      * we absolutely use cookies. and also JavaScript. and also your soul.
+      {{ site.data.settings.footer.disclaimer }}
     </p>
   </div>
 

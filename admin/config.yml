@@ -59,6 +59,103 @@ collections:
               - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false}
               - {label: "Link", name: "link", widget: "string", required: false}
 
+      - name: "homepage"
+        label: "Homepage & UI Texts"
+        file: "_data/homepage.json"
+        format: "json"
+        fields:
+          - {label: "Welcome Paragraph (Markdown/HTML)", name: "welcome_text", widget: "markdown"}
+          - {label: "Quote Text (HTML)", name: "quote_text", widget: "text"}
+          - {label: "Quote Author", name: "quote_author", widget: "string"}
+          - label: "Marquee Texts"
+            name: "marquees"
+            widget: "object"
+            fields:
+              - {label: "Home Marquee", name: "home", widget: "string"}
+              - {label: "Projects Marquee", name: "projects", widget: "string"}
+              - {label: "Writeups Marquee", name: "writeups", widget: "string"}
+              - {label: "Contact Marquee", name: "contact", widget: "string"}
+
+      - name: "skills"
+        label: "Skills & Tech Stack"
+        file: "_data/skills.json"
+        format: "json"
+        fields:
+          - label: "Tech Stack Groups"
+            name: "tech_stack"
+            widget: "list"
+            fields:
+              - {label: "Group Name", name: "group_name", widget: "string"}
+              - {label: "Skillicons Query", name: "icons_query", widget: "string", hint: "e.g. i=py,bash,js&perline=7"}
+              - {label: "Alt Text", name: "alt_text", widget: "string"}
+          - label: "Skill Focus Bars"
+            name: "focus_bars"
+            widget: "list"
+            fields:
+              - {label: "Skill Name", name: "name", widget: "string"}
+              - {label: "Percentage", name: "percentage", widget: "number", value_type: "int", min: 0, max: 100}
+
+      - name: "projects_data"
+        label: "Manual Projects"
+        file: "assets/data/projects.json"
+        format: "json"
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text", required: false}
+              - {label: "Repo URL", name: "html_url", widget: "string"}
+              - {label: "Homepage URL", name: "homepage", widget: "string", required: false}
+              - {label: "Language", name: "language", widget: "string", required: false}
+              - {label: "Topics", name: "topics", widget: "list", required: false, field: {label: "Topic", name: "topic", widget: "string"}}
+              - {label: "Stars", name: "stargazers_count", widget: "number", value_type: "int", default: 0, required: false}
+              - {label: "Forks", name: "forks_count", widget: "number", value_type: "int", default: 0, required: false}
+              - {label: "Last Updated", name: "updated_at", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss[Z]", date_format: "YYYY-MM-DD", time_format: "HH:mm:ss"}
+              - {label: "Is Fork", name: "fork", widget: "boolean", default: false, required: false}
+              - {label: "Is Archived", name: "archived", widget: "boolean", default: false, required: false}
+
+      - name: "settings"
+        label: "Global Site Settings"
+        file: "_data/settings.json"
+        format: "json"
+        fields:
+          - label: "SEO Data"
+            name: "seo"
+            widget: "object"
+            fields:
+              - {label: "Site Title", name: "title", widget: "string"}
+              - {label: "Site Description", name: "description", widget: "text"}
+          - label: "Giscus Comments Config"
+            name: "giscus"
+            widget: "object"
+            fields:
+              - {label: "Enabled", name: "enabled", widget: "boolean"}
+              - {label: "Repo", name: "repo", widget: "string"}
+              - {label: "Repo ID", name: "repo_id", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Category ID", name: "category_id", widget: "string"}
+              - {label: "Mapping", name: "mapping", widget: "string"}
+              - {label: "Strict", name: "strict", widget: "string"}
+              - {label: "Reactions Enabled", name: "reactions_enabled", widget: "string"}
+              - {label: "Emit Metadata", name: "emit_metadata", widget: "string"}
+              - {label: "Input Position", name: "input_position", widget: "string"}
+              - {label: "Theme", name: "theme", widget: "string"}
+              - {label: "Language", name: "lang", widget: "string"}
+          - label: "Footer Text"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Copyright Line", name: "copyright", widget: "string"}
+              - {label: "Disclaimer", name: "disclaimer", widget: "string"}
+          - label: "Contact Form"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Formspree Endpoint URL", name: "formspree_endpoint", widget: "string"}
+
   - name: "certificates"
     label: "Certificates & Awards"
     folder: "_data/certificates"

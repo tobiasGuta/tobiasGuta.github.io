@@ -6,7 +6,7 @@
   <title>{{ page.title | default: "Writeup" }} | Tobias Guta</title>
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.data.settings.seo.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
   <!-- Shared site styling. Edit post visuals in assets/css/main.css under POST LAYOUT. -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <!-- MathJax Support for LaTeX equations -->
@@ -98,24 +98,24 @@
       </div>
     {% endif %}
 
-    {% if site.giscus.enabled and page.comments != false %}
+    {% if site.data.settings.giscus.enabled and page.comments != false %}
       <section class="post-comments" aria-label="Comments">
         <div class="post-comments-header">
           <span>COMMENTS</span>
           <strong>Join the discussion</strong>
         </div>
         <script src="https://giscus.app/client.js"
-          data-repo="{{ site.giscus.repo }}"
-          data-repo-id="{{ site.giscus.repo_id }}"
-          data-category="{{ site.giscus.category }}"
-          data-category-id="{{ site.giscus.category_id }}"
-          data-mapping="{{ site.giscus.mapping }}"
-          data-strict="{{ site.giscus.strict }}"
-          data-reactions-enabled="{{ site.giscus.reactions_enabled }}"
-          data-emit-metadata="{{ site.giscus.emit_metadata }}"
-          data-input-position="{{ site.giscus.input_position }}"
-          data-theme="{{ site.giscus.theme }}"
-          data-lang="{{ site.giscus.lang }}"
+          data-repo="{{ site.data.settings.giscus.repo }}"
+          data-repo-id="{{ site.data.settings.giscus.repo_id }}"
+          data-category="{{ site.data.settings.giscus.category }}"
+          data-category-id="{{ site.data.settings.giscus.category_id }}"
+          data-mapping="{{ site.data.settings.giscus.mapping }}"
+          data-strict="{{ site.data.settings.giscus.strict }}"
+          data-reactions-enabled="{{ site.data.settings.giscus.reactions_enabled }}"
+          data-emit-metadata="{{ site.data.settings.giscus.emit_metadata }}"
+          data-input-position="{{ site.data.settings.giscus.input_position }}"
+          data-theme="{{ site.data.settings.giscus.theme }}"
+          data-lang="{{ site.data.settings.giscus.lang }}"
           crossorigin="anonymous"
           async>
         </script>

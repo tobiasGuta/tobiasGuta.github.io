@@ -1,0 +1,45 @@
+{
+  "tech_stack": [
+    {
+      "group_name": "Languages",
+      "icons_query": "i=py,bash,js,php,mysql,html,css&perline=7",
+      "alt_text": "Python, Bash, JavaScript, PHP, MySQL, HTML, and CSS"
+    },
+    {
+      "group_name": "Security / OS",
+      "icons_query": "i=linux,kali,docker,powershell&perline=4",
+      "alt_text": "Linux, Kali Linux, Docker, and PowerShell"
+    },
+    {
+      "group_name": "Tools",
+      "icons_query": "i=git,github,postman,androidstudio&perline=4",
+      "alt_text": "Git, GitHub, Postman, and Android Studio"
+    }
+  ],
+  "focus_bars": [
+    {
+      "name": "LINUX",
+      "percentage": 90
+    },
+    {
+      "name": "PYTHON",
+      "percentage": 78
+    },
+    {
+      "name": "NMAP / RECON",
+      "percentage": 85
+    },
+    {
+      "name": "WEB EXPLOITS",
+      "percentage": 72
+    },
+    {
+      "name": "CTF / OSINT",
+      "percentage": 88
+    },
+    {
+      "name": "SOCIAL ENG.",
+      "percentage": 65
+    }
+  ]
+}
