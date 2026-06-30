@@ -459,10 +459,31 @@
       #nc-root [class*="CollectionTop"],
       #nc-root [class*="CollectionControls"],
       #nc-root [class*="ListCard"],
-      #nc-root [class*="Card"] {
+      #nc-root [class*="Card"],
+      #nc-root [class*="StyledListItem"],
+      #nc-root [class*="StyledListItemTopBar"],
+      #nc-root [class*="ObjectWidgetTopBar"],
+      #nc-root [class*="NestedObjectLabel"],
+      #nc-root [class*="ObjectControl"],
+      #nc-root [class*="ListControl"] > div,
+      #nc-root [class*="ListControl"] > div > div,
+      #nc-root [class*="Field"],
+      #nc-root [class*="Menu"],
+      #nc-root [class*="MenuItem"],
+      #nc-root [class*="Dropdown"],
+      #nc-root [class*="Popup"],
+      #nc-root [class*="Modal"],
+      #nc-root [class*="Dialog"],
+      div[role="dialog"],
+      div[role="dialog"] * {
         background: #000 !important;
         border-color: var(--cms-line) !important;
         color: var(--cms-muted) !important;
+      }
+
+      #nc-root [class*="StyledListItemTopBar"],
+      #nc-root [class*="ObjectWidgetTopBar"] {
+        border-bottom: 2px solid var(--cms-cyan) !important;
       }
 
       #nc-root [class*="ToolbarContainer"],
