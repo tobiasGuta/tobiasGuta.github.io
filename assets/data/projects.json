@@ -3,19 +3,6 @@
   "source": "github_api",
   "projects": [
     {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-06-30T01:34:50Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Dirfuzz",
       "description": "DirFuzz has evolved from a high-performance web security fuzzer into a deterministic **Bug Bounty Intelligence Operating System**. It is built around an immutable Event Ledger, capable of projecting complex attack surface graphs, continuous regression tracking, playbook intelligence, and deterministic Analyst workflows.",
       "html_url": "https://github.com/tobiasGuta/Dirfuzz",
@@ -24,7 +11,33 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-06-29T21:40:53Z",
+      "updated_at": "2026-07-01T11:07:31Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "H1-Scope-Watcher",
+      "description": "ever miss a new in-scope target again. H1 Scope Watcher polls the HackerOne API on a schedule, diffs scope entries against the last known state, and fires a rich notification the moment something changes new domains added, targets removed, bounty eligibility updated, severity ceiling changed.",
+      "html_url": "https://github.com/tobiasGuta/H1-Scope-Watcher",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-30T22:16:08Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-06-30T11:21:12Z",
       "fork": false,
       "archived": false
     },
@@ -320,19 +333,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-05-01T02:09:09Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "H1-Scope-Watcher",
-      "description": "ever miss a new in-scope target again. H1 Scope Watcher polls the HackerOne API on a schedule, diffs scope entries against the last known state, and fires a rich notification the moment something changes new domains added, targets removed, bounty eligibility updated, severity ceiling changed.",
-      "html_url": "https://github.com/tobiasGuta/H1-Scope-Watcher",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-01T00:52:28Z",
       "fork": false,
       "archived": false
     },
