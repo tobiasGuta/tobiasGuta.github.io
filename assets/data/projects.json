@@ -3,6 +3,19 @@
   "source": "github_api",
   "projects": [
     {
+      "name": "Self-Hosted-Interactsh-for-Bug-Bounty-Web-App-Pentesting",
+      "description": "This repo contains everything needed to run your own Interactsh OOB (out-of-band) interaction server, use it from the Interactsh Collaborator Burp extension, and keep proof-of-concept evidence organized per target/engagement even across reboots and closed Burp sessions.",
+      "html_url": "https://github.com/tobiasGuta/Self-Hosted-Interactsh-for-Bug-Bounty-Web-App-Pentesting",
+      "homepage": null,
+      "language": "Shell",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-12T16:26:08Z",
+      "fork": false,
+      "archived": false
+    },
+    {
       "name": "tobiasGuta.github.io",
       "description": null,
       "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
@@ -11,7 +24,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-07-11T09:47:55Z",
+      "updated_at": "2026-07-12T10:00:49Z",
       "fork": false,
       "archived": false
     },
@@ -81,32 +94,6 @@
       "archived": false
     },
     {
-      "name": "BugMap-Studio",
-      "description": "BugMap Studio is a React based, interactive mind map visualization tool designed specifically for bug bounty hunters and penetration testers. It allows users to visually organize and track their reconnaissance data, including targets, subdomains, endpoints, vulnerabilities, credentials, and custom notes.",
-      "html_url": "https://github.com/tobiasGuta/BugMap-Studio",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-06-19T01:03:46Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "recon-mcp",
-      "description": "recon-mcp is a local Python MCP server for safe, human-led bug bounty recon. It provides lightweight helpers for scope checks, headers, robots.txt, sitemap.xml, JavaScript URL collection, endpoint extraction, URL deduplication, evidence notes, and manual test planning.",
-      "html_url": "https://github.com/tobiasGuta/recon-mcp",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-06-18T11:52:31Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "SMB-Samba-Compliance-Audit-Tool",
       "description": "A high performance SMB compliance and audit script using the impacket library for native protocol interaction. Supports share enumeration, permission auditing, password policy retrieval, user/group enumeration, and backup file discovery.",
       "html_url": "https://github.com/tobiasGuta/SMB-Samba-Compliance-Audit-Tool",
@@ -116,19 +103,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-06-16T03:09:59Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "CTF-Challenges",
-      "description": "This repo contains only code used to solve different challenges in CTF competitions.",
-      "html_url": "https://github.com/tobiasGuta/CTF-Challenges",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-06-11T12:52:40Z",
       "fork": false,
       "archived": false
     },
@@ -155,19 +129,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-06-05T21:41:10Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Canvas-Fingerprint-Blocker-Modified",
-      "description": "This extension prevents HTML canvas element from generating a unique identification key to protect user's privacy. It works by adding slight noise to the canvas data, making the fingerprint inconsistent and unique for each session.",
-      "html_url": "https://github.com/tobiasGuta/Canvas-Fingerprint-Blocker-Modified",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 1,
-      "forks_count": 0,
-      "updated_at": "2026-06-03T22:02:53Z",
       "fork": false,
       "archived": false
     },
@@ -337,19 +298,6 @@
       "archived": false
     },
     {
-      "name": "shodan-mcp",
-      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
-      "html_url": "https://github.com/tobiasGuta/shodan-mcp",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-01T02:09:09Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "vulnx-MCP-Server",
       "description": "A fully self-contained MCP server that wraps ProjectDiscovery vulnx all inside Docker, nothing installed on your host.",
       "html_url": "https://github.com/tobiasGuta/vulnx-MCP-Server",
@@ -359,19 +307,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-04-30T22:30:19Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Sniper-MCP",
-      "description": "Simple microservice for Sniper MCP.",
-      "html_url": "https://github.com/tobiasGuta/Sniper-MCP",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-04-30T01:34:56Z",
       "fork": false,
       "archived": false
     },
@@ -411,19 +346,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-04-29T22:07:04Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "nuclei-mcp",
-      "description": "A scoped Nuclei MCP server that **refuses to scan anything not found in your HackerOne scope snapshots**.  Works as a companion to `h1-scope-watcher`.",
-      "html_url": "https://github.com/tobiasGuta/nuclei-mcp",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-04-28T00:47:54Z",
       "fork": false,
       "archived": false
     },
