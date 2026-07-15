@@ -3,6 +3,58 @@
   "source": "github_api",
   "projects": [
     {
+      "name": "shodan-mcp",
+      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
+      "html_url": "https://github.com/tobiasGuta/shodan-mcp",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-15T09:36:11Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Code-Sandbox-MCP",
+      "description": "Code Sandbox MCP provides short-lived, offline JavaScript workspaces to stdio MCP clients such as Codex. A client can create a sandbox, write and enumerate several files, read or delete files, run a JavaScript entrypoint, and destroy the session.",
+      "html_url": "https://github.com/tobiasGuta/Code-Sandbox-MCP",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-15T06:27:53Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "H1Vault",
+      "description": "H1Vault is a local, read-only command-line archive for reports that a HackerOne security researcher personally submitted and can access.",
+      "html_url": "https://github.com/tobiasGuta/H1Vault",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-15T04:04:55Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-15T02:53:52Z",
+      "fork": false,
+      "archived": false
+    },
+    {
       "name": "ScopeNest",
       "description": "Isolated browser contexts for testing, research, and development.",
       "html_url": "https://github.com/tobiasGuta/ScopeNest",
@@ -11,7 +63,20 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-07-14T00:07:37Z",
+      "updated_at": "2026-07-15T02:11:54Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-14T10:08:58Z",
       "fork": false,
       "archived": false
     },
@@ -55,19 +120,6 @@
       "archived": false
     },
     {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-13T11:27:56Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Self-Hosted-Interactsh-for-Bug-Bounty-Web-App-Pentesting",
       "description": "This repo contains everything needed to run your own Interactsh OOB (out-of-band) interaction server, use it from the Interactsh Collaborator Burp extension, and keep proof-of-concept evidence organized per target/engagement even across reboots and closed Burp sessions.",
       "html_url": "https://github.com/tobiasGuta/Self-Hosted-Interactsh-for-Bug-Bounty-Web-App-Pentesting",
@@ -103,19 +155,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-04T21:34:15Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta",
-      "homepage": null,
-      "language": null,
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-04T20:53:59Z",
       "fork": false,
       "archived": false
     },
