@@ -3,6 +3,19 @@
   "source": "github_api",
   "projects": [
     {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-15T10:15:02Z",
+      "fork": false,
+      "archived": false
+    },
+    {
       "name": "shodan-mcp",
       "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
       "html_url": "https://github.com/tobiasGuta/shodan-mcp",
@@ -64,19 +77,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-15T02:11:54Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-14T10:08:58Z",
       "fork": false,
       "archived": false
     },
