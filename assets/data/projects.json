@@ -3,6 +3,35 @@
   "source": "github_api",
   "projects": [
     {
+      "name": "JS-Miner-Pro-Burp-Suite-Extension",
+      "description": "JS Miner Pro is a powerful, customizable Burp Suite extension designed to find hard-coded secrets, API endpoints, and hidden paths inside JavaScript and JSON files.",
+      "html_url": "https://github.com/tobiasGuta/JS-Miner-Pro-Burp-Suite-Extension",
+      "homepage": "",
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 3,
+      "forks_count": 0,
+      "updated_at": "2026-07-16T20:31:52Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Blueprint-App-AI",
+      "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
+      "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [
+        "collaborate",
+        "student-vscode"
+      ],
+      "stargazers_count": 12,
+      "forks_count": 2,
+      "updated_at": "2026-07-16T17:52:35Z",
+      "fork": false,
+      "archived": false
+    },
+    {
       "name": "tobiasGuta.github.io",
       "description": null,
       "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
@@ -11,20 +40,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-07-15T10:15:02Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "shodan-mcp",
-      "description": "Passive reconnaissance MCP server powered by Shodan. Scope-gated against your HackerOne snapshots \u2014 identical gate to `nuclei-mcp`.",
-      "html_url": "https://github.com/tobiasGuta/shodan-mcp",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-15T09:36:11Z",
+      "updated_at": "2026-07-16T10:20:31Z",
       "fork": false,
       "archived": false
     },
@@ -250,19 +266,6 @@
       "archived": false
     },
     {
-      "name": "JS-Miner-Pro-Burp-Suite-Extension",
-      "description": "JS Miner Pro is a lightweight, customizable Burp Suite extension designed to find hard-coded secrets, API endpoints, and hidden paths inside JavaScript, JSON, and HTML files.",
-      "html_url": "https://github.com/tobiasGuta/JS-Miner-Pro-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 3,
-      "forks_count": 0,
-      "updated_at": "2026-05-29T02:39:23Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Nuclei-Matcher-Burp-Suite-Extension",
       "description": "Nuclei Matcher watches your Burp Suite traffic in real-time and automatically identifies technologies, misconfigurations, and potential vulnerabilities then suggests the exact Nuclei templates to run against each target.",
       "html_url": "https://github.com/tobiasGuta/Nuclei-Matcher-Burp-Suite-Extension",
@@ -324,22 +327,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-05-22T00:18:51Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Blueprint-App-AI",
-      "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
-      "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [
-        "collaborate",
-        "student-vscode"
-      ],
-      "stargazers_count": 11,
-      "forks_count": 2,
-      "updated_at": "2026-05-19T13:32:06Z",
       "fork": false,
       "archived": false
     },
