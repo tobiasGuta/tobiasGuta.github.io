@@ -25,7 +25,7 @@ export default {
         status: 302,
         headers: {
           "Location": redirectUrl.href,
-          "Set-Cookie": `oauth_state=${state}; HttpOnly; Secure; SameSite=Strict; Path=/`
+          "Set-Cookie": `oauth_state=${state}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=600`
         }
       });
     }
@@ -87,8 +87,11 @@ export default {
           const ALLOWED_ORIGINS = ${JSON.stringify(ALLOWED_ORIGINS)};
           
           const receiveMessage = (message) => {
-            // Drop any messages that don't originate from our CMS environments
-            if (!ALLOWED_ORIGINS.includes(message.origin)) {
+            // Accept the handshake only from the CMS window that opened this popup
+            if (
+              message.source !== window.opener ||
+              !ALLOWED_ORIGINS.includes(message.origin)
+            ) {
               console.warn("Rejected unauthorized message origin:", message.origin);
               return;
             }
@@ -122,7 +125,7 @@ export default {
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "DENY",
           "Referrer-Policy": "no-referrer",
-          "Set-Cookie": "oauth_state=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0"
+          "Set-Cookie": "oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0"
         },
       });
     }

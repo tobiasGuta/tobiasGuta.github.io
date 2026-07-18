@@ -88,7 +88,10 @@ function renderProjects(projects, sourceText) {
   }
 
   grid.innerHTML = visibleProjects.map((repo) => {
-    const topics = repo.topics.slice(0, 5).map((topic) => `<span>${topic}</span>`).join('');
+    const topics = repo.topics
+      .slice(0, 5)
+      .map((topic) => `<span>${escapeHtml(topic)}</span>`)
+      .join('');
     const repoUrl = repo.html_url ? safeExternalUrl(repo.html_url) : '';
     const homepageUrl = repo.homepage ? safeExternalUrl(repo.homepage) : '';
     const title = repoUrl
