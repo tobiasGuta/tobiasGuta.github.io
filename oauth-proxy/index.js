@@ -18,7 +18,7 @@ export default {
       const state = crypto.randomUUID();
       const redirectUrl = new URL("https://github.com/login/oauth/authorize");
       redirectUrl.searchParams.set("client_id", OAUTH_CLIENT_ID);
-      redirectUrl.searchParams.set("scope", "repo");
+      redirectUrl.searchParams.set("scope", "public_repo");
       redirectUrl.searchParams.set("state", state);
       
       return new Response(null, {
@@ -61,14 +61,24 @@ export default {
         }),
       });
 
+      if (!tokenResponse.ok) {
+        console.error("GitHub OAuth token exchange failed:", tokenResponse.status);
+        return new Response("Authorization failed", { status: 502 });
+      }
+
       const data = await tokenResponse.json();
 
       if (data.error) {
-        console.error("GitHub OAuth Error:", data);
+        console.error("GitHub OAuth error:", data.error);
         return new Response("Authorization failed", { status: 400 });
       }
 
       const token = data.access_token;
+      if (typeof token !== "string" || !token) {
+        console.error("GitHub OAuth response did not include an access token");
+        return new Response("Authorization failed", { status: 502 });
+      }
+
       const provider = "github";
 
       // Secure payload execution via strict origin verification
@@ -111,7 +121,8 @@ export default {
           "Content-Security-Policy": "default-src 'none'; script-src 'unsafe-inline'",
           "X-Content-Type-Options": "nosniff",
           "X-Frame-Options": "DENY",
-          "Referrer-Policy": "no-referrer"
+          "Referrer-Policy": "no-referrer",
+          "Set-Cookie": "oauth_state=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0"
         },
       });
     }

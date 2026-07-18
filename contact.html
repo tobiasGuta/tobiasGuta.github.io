@@ -8,7 +8,7 @@ permalink: /contact.html
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>~*~ Contact ~*~ Tobias Guta</title>
+  {% seo %}
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
   <link rel="alternate" type="application/atom+xml" title="{{ site.data.settings.seo.title }} Feed" href="{{ '/feed.xml' | absolute_url }}">
@@ -63,19 +63,19 @@ permalink: /contact.html
         <form class="outlook-form" id="contact-form" action="{{ site.data.settings.contact.formspree_endpoint }}" method="POST">
           <div class="outlook-header-row">
             <label for="name" class="outlook-label">NAME:</label>
-            <input id="name" name="name" type="text" class="outlook-input" autocomplete="name">
+            <input id="name" name="name" type="text" class="outlook-input" autocomplete="name" required maxlength="100">
           </div>
           <div class="outlook-header-row">
             <label for="email" class="outlook-label">EMAIL:</label>
-            <input id="email" name="email" type="email" class="outlook-input" autocomplete="email">
+            <input id="email" name="email" type="email" class="outlook-input" autocomplete="email" required maxlength="254">
           </div>
           <div class="outlook-header-row">
             <label for="subject" class="outlook-label">SUBJECT:</label>
-            <input id="subject" name="subject" type="text" class="outlook-input">
+            <input id="subject" name="subject" type="text" class="outlook-input" required maxlength="150">
           </div>
           
           <div class="outlook-textarea-container">
-            <textarea id="message" name="message" rows="12" class="outlook-textarea"></textarea>
+            <textarea id="message" name="message" rows="12" class="outlook-textarea" required minlength="10" maxlength="5000"></textarea>
           </div>
 
           <div class="outlook-footer">
@@ -105,8 +105,8 @@ permalink: /contact.html
 <div id="yt-player-wrap">
   <div id="yt-player-bar">
     <div id="yt-controls">
-      <button id="yt-playpause" aria-label="Pause music">⏸</button>
-      <button id="yt-mute" aria-label="Unmute music">🔇</button>
+      <button id="yt-playpause" data-player-state="idle" aria-label="Play soundtrack">[ PLAY SOUNDTRACK ]</button>
+      <button id="yt-mute" aria-label="Unmute music" disabled>🔇</button>
       <button id="yt-close" aria-label="Close music player">x</button>
     </div>
   </div>

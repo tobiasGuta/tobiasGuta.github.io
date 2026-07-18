@@ -1,9 +1,15 @@
+---
+layout: null
+title: Projects
+permalink: /projects.html
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>~*~ Projects ~*~ Tobias Guta</title>
+  {% seo %}
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>">
   <link rel="alternate" type="application/atom+xml" title="Tobias Guta Portfolio Feed" href="https://whoistob1as.me/feed.xml">
@@ -78,8 +84,8 @@
 <div id="yt-player-wrap">
   <div id="yt-player-bar">
     <div id="yt-controls">
-      <button id="yt-playpause" aria-label="Pause music">⏸</button>
-      <button id="yt-mute" aria-label="Unmute music">🔇</button>
+      <button id="yt-playpause" data-player-state="idle" aria-label="Play soundtrack">[ PLAY SOUNDTRACK ]</button>
+      <button id="yt-mute" aria-label="Unmute music" disabled>🔇</button>
       <button id="yt-close" aria-label="Close music player">x</button>
     </div>
   </div>

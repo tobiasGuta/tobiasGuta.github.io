@@ -12,11 +12,32 @@ window.addEventListener('beforeunload', () => {
   }
 });
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.head.appendChild(tag);
-
 window.ytPlayer = null;
+let youtubeApiPromise = null;
+let playerCreationPromise = null;
+
+function loadYouTubeApi() {
+  if (window.YT && typeof window.YT.Player === 'function') {
+    return Promise.resolve();
+  }
+
+  if (youtubeApiPromise) return youtubeApiPromise;
+
+  youtubeApiPromise = new Promise((resolve, reject) => {
+    window.onYouTubeIframeAPIReady = resolve;
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.async = true;
+    tag.onerror = () => {
+      youtubeApiPromise = null;
+      reject(new Error('Unable to load the YouTube player API.'));
+    };
+    document.head.appendChild(tag);
+  });
+
+  return youtubeApiPromise;
+}
 
 function setMuteButtonState(muteBtn, isMuted) {
   if (!muteBtn) return;
@@ -26,6 +47,8 @@ function setMuteButtonState(muteBtn, isMuted) {
 
 function setPlayButtonState(playBtn, isPlaying) {
   if (!playBtn) return;
+  playBtn.removeAttribute('data-player-state');
+  playBtn.disabled = false;
   playBtn.innerText = isPlaying ? '⏸' : '▶';
   playBtn.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
 }
@@ -34,56 +57,63 @@ function savePlayerState(state) {
   sessionStorage.setItem('yt-state', String(state));
 }
 
-window.onYouTubeIframeAPIReady = function() {
-  const savedTime = parseFloat(sessionStorage.getItem('yt-time') || '0');
-  let isMuted = sessionStorage.getItem('yt-muted') === 'true';
-  if (sessionStorage.getItem('yt-muted') === null) {
-    isMuted = true; // start muted by default to allow autoplay
-  }
-  const savedState = sessionStorage.getItem('yt-state');
-  const shouldPlay = savedState !== '2';
-  
-  window.ytPlayer = new YT.Player('yt-player', {
-    height: '1', 
-    width: '1',
-    videoId: 'I_izvAbhExY', // Orbital - Halcyon On and On (Hackers OST)
-    host: 'https://www.youtube.com',
-    playerVars: { 
-      autoplay: shouldPlay ? 1 : 0,
-      start: Math.floor(savedTime),
-      enablejsapi: 1,
-      origin: window.location.origin
-    },
-    events: { 
-      onReady: (e) => {
-        e.target.setVolume(40);
-        const muteBtn = document.getElementById('yt-mute');
-        
-        if (isMuted) {
-          e.target.mute();
-          if (shouldPlay) {
-            e.target.playVideo(); // plays silently - autoplay allowed when muted
-          }
-          setMuteButtonState(muteBtn, true);
-        } else {
-          e.target.unMute();
-          setMuteButtonState(muteBtn, false);
-        }
-        
-        setPlayButtonState(document.getElementById('yt-playpause'), shouldPlay);
+function createYouTubePlayer() {
+  if (playerCreationPromise) return playerCreationPromise;
+
+  playerCreationPromise = loadYouTubeApi().then(() => new Promise((resolve, reject) => {
+    const savedTime = parseFloat(sessionStorage.getItem('yt-time') || '0');
+    let isMuted = sessionStorage.getItem('yt-muted') === 'true';
+    if (sessionStorage.getItem('yt-muted') === null) {
+      isMuted = true;
+    }
+
+    window.ytPlayer = new YT.Player('yt-player', {
+      height: '1',
+      width: '1',
+      videoId: 'I_izvAbhExY', // Orbital - Halcyon On and On (Hackers OST)
+      host: 'https://www.youtube.com',
+      playerVars: {
+        autoplay: 1,
+        start: Math.floor(savedTime),
+        enablejsapi: 1,
+        origin: window.location.origin
       },
-      onStateChange: (e) => {
-        if (e.data === YT.PlayerState.PLAYING) {
-          savePlayerState(e.data);
+      events: {
+        onReady: (e) => {
+          e.target.setVolume(40);
+          const muteBtn = document.getElementById('yt-mute');
+
+          if (isMuted) {
+            e.target.mute();
+            setMuteButtonState(muteBtn, true);
+          } else {
+            e.target.unMute();
+            setMuteButtonState(muteBtn, false);
+          }
+
+          muteBtn.disabled = false;
+          e.target.playVideo();
           setPlayButtonState(document.getElementById('yt-playpause'), true);
-        } else if (e.data === YT.PlayerState.PAUSED) {
-          savePlayerState(e.data);
-          setPlayButtonState(document.getElementById('yt-playpause'), false);
+          resolve(window.ytPlayer);
+        },
+        onStateChange: (e) => {
+          if (e.data === YT.PlayerState.PLAYING) {
+            savePlayerState(e.data);
+            setPlayButtonState(document.getElementById('yt-playpause'), true);
+          } else if (e.data === YT.PlayerState.PAUSED) {
+            savePlayerState(e.data);
+            setPlayButtonState(document.getElementById('yt-playpause'), false);
+          }
+        },
+        onError: () => {
+          reject(new Error('Unable to initialize the YouTube player.'));
         }
       }
-    }
-  });
-};
+    });
+  }));
+
+  return playerCreationPromise;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const playBtn = document.getElementById('yt-playpause');
@@ -92,10 +122,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.getElementById('yt-player-wrap');
 
   if (playBtn && muteBtn && closeBtn && wrap) {
-    setPlayButtonState(playBtn, sessionStorage.getItem('yt-state') !== '2');
+    muteBtn.disabled = true;
 
-    playBtn.addEventListener('click', () => {
-      if (!window.ytPlayer || typeof window.ytPlayer.getPlayerState !== 'function') return;
+    playBtn.addEventListener('click', async () => {
+      if (!window.ytPlayer || typeof window.ytPlayer.getPlayerState !== 'function') {
+        playBtn.disabled = true;
+        playBtn.dataset.playerState = 'loading';
+        playBtn.innerText = '[ LOADING SOUNDTRACK ]';
+
+        try {
+          await createYouTubePlayer();
+        } catch (error) {
+          playerCreationPromise = null;
+          playBtn.disabled = false;
+          playBtn.dataset.playerState = 'idle';
+          playBtn.innerText = '[ RETRY SOUNDTRACK ]';
+          playBtn.setAttribute('aria-label', 'Retry loading soundtrack');
+          console.error(error.message);
+        }
+        return;
+      }
+
       const state = window.ytPlayer.getPlayerState();
       if (state === YT.PlayerState.PLAYING) {
         window.ytPlayer.pauseVideo();

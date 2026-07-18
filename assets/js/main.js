@@ -151,14 +151,26 @@
     });
   }
 
-// Random glitch effect on title
+  // Random glitch effect on title
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
   const title = document.querySelector('.site-title');
-  setInterval(() => {
-    if (Math.random() < 0.07) {
-      title.style.transform = `skewX(${(Math.random()-0.5)*6}deg) translateX(${(Math.random()-0.5)*4}px)`;
-      setTimeout(() => title.style.transform = '', 80);
-    }
-  }, 400);
+
+  if (title && !reduceMotion) {
+    setInterval(() => {
+      if (Math.random() < 0.07) {
+        title.style.transform =
+          `skewX(${(Math.random() - 0.5) * 6}deg) ` +
+          `translateX(${(Math.random() - 0.5) * 4}px)`;
+
+        setTimeout(() => {
+          title.style.transform = '';
+        }, 80);
+      }
+    }, 400);
+  }
 
   // Skill bars trigger on scroll / load
   const observer = new IntersectionObserver(entries => {
@@ -351,6 +363,20 @@
   }
 
   // CTF Activity Feed
+  function safeExternalUrl(value) {
+    try {
+      const url = new URL(String(value || ''), window.location.origin);
+
+      if (!['http:', 'https:'].includes(url.protocol)) {
+        return '';
+      }
+
+      return url.href;
+    } catch {
+      return '';
+    }
+  }
+
   async function loadCTFActivity() {
     const feedEl = document.getElementById('ctf-activity-feed');
     if (!feedEl) return;
@@ -372,9 +398,9 @@
       data.forEach(item => {
         const title = escapeActivityText(item.challenge || item.title || 'Untitled activity');
         const meta = [item.platform, item.category, item.date].filter(Boolean).map(escapeActivityText).join(' • ');
-        const link = escapeActivityText(item.link);
-        const action = item.link
-          ? `<a class="action" href="${link}">&#x2713; ${title}</a>`
+        const link = item.link ? safeExternalUrl(item.link) : '';
+        const action = link
+          ? `<a class="action" href="${escapeActivityText(link)}">&#x2713; ${title}</a>`
           : `<div class="action">&#x2713; ${title}</div>`;
 
         html += `

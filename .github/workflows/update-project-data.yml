@@ -32,6 +32,7 @@ jobs:
           import json
           import os
           import urllib.request
+          from datetime import datetime, timezone
 
           owner = os.environ["GITHUB_OWNER"]
           token = os.environ.get("GITHUB_TOKEN", "")
@@ -78,6 +79,7 @@ jobs:
           output = {
               "owner": owner,
               "source": "github_api",
+              "generated_at": datetime.now(timezone.utc).isoformat(),
               "projects": projects,
           }
 

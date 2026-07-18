@@ -2,7 +2,7 @@ backend:
   name: github
   repo: tobiasGuta/tobiasGuta.github.io
   branch: main
-  base_url: https://decap-oauth-proxy.tobiasguta.workers.dev # TODO: Update this after deploying Cloudflare worker
+  base_url: https://decap-oauth-proxy.tobiasguta.workers.dev
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -21,6 +21,7 @@ collections:
       - {label: "Image URL", name: "image", widget: "string", required: false}
       - {label: "Permalink", name: "permalink", widget: "string", required: false}
       - {label: "Locked", name: "locked", widget: "boolean", default: false, required: false}
+      - {label: "MathJax", name: "math", widget: "boolean", default: false, required: false}
       - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
       - {label: "Body", name: "body", widget: "markdown"}
 

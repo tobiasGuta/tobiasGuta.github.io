@@ -53,6 +53,20 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ''), window.location.origin);
+
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      return '';
+    }
+
+    return url.href;
+  } catch {
+    return '';
+  }
+}
+
 function formatDate(value) {
   if (!value) return 'unknown';
   return new Intl.DateTimeFormat('en', {
@@ -75,14 +89,22 @@ function renderProjects(projects, sourceText) {
 
   grid.innerHTML = visibleProjects.map((repo) => {
     const topics = repo.topics.slice(0, 5).map((topic) => `<span>${topic}</span>`).join('');
-    const homepageLink = repo.homepage
-      ? `<a href="${escapeHtml(repo.homepage)}" class="project-card-link">Live</a>`
+    const repoUrl = repo.html_url ? safeExternalUrl(repo.html_url) : '';
+    const homepageUrl = repo.homepage ? safeExternalUrl(repo.homepage) : '';
+    const title = repoUrl
+      ? `<a href="${escapeHtml(repoUrl)}" class="project-card-title">${escapeHtml(repo.name)}</a>`
+      : `<span class="project-card-title">${escapeHtml(repo.name)}</span>`;
+    const repoLink = repoUrl
+      ? `<a href="${escapeHtml(repoUrl)}" class="project-card-link">Repo</a>`
+      : '';
+    const homepageLink = homepageUrl
+      ? `<a href="${escapeHtml(homepageUrl)}" class="project-card-link">Live</a>`
       : '';
 
     return `
       <article class="project-card">
         <div class="project-card-topline">
-          <a href="${escapeHtml(repo.html_url)}" class="project-card-title">${escapeHtml(repo.name)}</a>
+          ${title}
           <span class="project-language">${escapeHtml(repo.language)}</span>
         </div>
         <p>${escapeHtml(repo.description)}</p>
@@ -93,7 +115,7 @@ function renderProjects(projects, sourceText) {
         </div>
         ${topics ? `<div class="project-topics">${topics}</div>` : ''}
         <div class="project-card-actions">
-          <a href="${escapeHtml(repo.html_url)}" class="project-card-link">Repo</a>
+          ${repoLink}
           ${homepageLink}
         </div>
       </article>

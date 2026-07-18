@@ -514,6 +514,17 @@
         background-color: transparent !important;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
       @media (max-width: 700px) {
         .cms-site-title {
           font-size: 15px;
@@ -560,6 +571,7 @@
       window.define = undefined;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
     <script>
       window.define = __define;
     </script>
@@ -757,7 +769,9 @@
           return '<div class="code-block-container"><span class="code-lang-tag">' + escapeHtml(label.trim()) + '</span><pre><code>' + escapeHtml(code.trim()) + '</code></pre></div>';
         });
 
-        return md.render(html);
+        return DOMPurify.sanitize(md.render(html), {
+          USE_PROFILES: { html: true }
+        });
       }
 
       var PostPreview = createClass({

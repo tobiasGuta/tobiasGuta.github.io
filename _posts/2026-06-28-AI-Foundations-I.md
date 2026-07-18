@@ -6,6 +6,7 @@ categories: [ai, machine-learning, writeups, ctf]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TvcsPYrQIIJ5zq0MSEzNVA.jpeg
 permalink: /blog/AI-Foundations-I
 locked: false
+math: true
 ---
 
 # Cracking the 2D Perceptron: My "Aha!" Moment in Cylab Security Academy
