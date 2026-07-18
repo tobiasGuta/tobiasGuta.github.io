@@ -3,6 +3,19 @@
   "source": "github_api",
   "projects": [
     {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-17T10:11:13Z",
+      "fork": false,
+      "archived": false
+    },
+    {
       "name": "JS-Miner-Pro-Burp-Suite-Extension",
       "description": "JS Miner Pro is a powerful, customizable Burp Suite extension designed to find hard-coded secrets, API endpoints, and hidden paths inside JavaScript and JSON files.",
       "html_url": "https://github.com/tobiasGuta/JS-Miner-Pro-Burp-Suite-Extension",
@@ -28,19 +41,6 @@
       "stargazers_count": 12,
       "forks_count": 2,
       "updated_at": "2026-07-16T17:52:35Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-16T10:20:31Z",
       "fork": false,
       "archived": false
     },
