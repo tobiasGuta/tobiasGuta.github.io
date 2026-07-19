@@ -1,7 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
+  "generated_at": "2026-07-19T10:01:58.958494+00:00",
   "projects": [
+    {
+      "name": "ScopeNest",
+      "description": "Isolated browser contexts for testing, research, and development.",
+      "html_url": "https://github.com/tobiasGuta/ScopeNest",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-19T09:59:08Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -11,7 +25,33 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-07-17T10:11:13Z",
+      "updated_at": "2026-07-18T17:36:08Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "StateLens",
+      "description": "StateLens is a local-first Chrome DevTools extension for authorized bug bounty hunters and penetration testers. It records completed requests from a deliberately scoped workflow, preserves sanitized evidence, and helps a human understand how an application behaves across accounts and actions.",
+      "html_url": "https://github.com/tobiasGuta/StateLens",
+      "homepage": null,
+      "language": "TypeScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-18T15:51:38Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Vulnerability-Research-Lab",
+      "description": "A structured repository for documenting, reproducing, detecting, and studying publicly disclosed vulnerabilities in isolated and authorized environments.",
+      "html_url": "https://github.com/tobiasGuta/Vulnerability-Research-Lab",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-18T11:48:19Z",
       "fork": false,
       "archived": false
     },
@@ -80,19 +120,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-15T02:53:52Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "ScopeNest",
-      "description": "Isolated browser contexts for testing, research, and development.",
-      "html_url": "https://github.com/tobiasGuta/ScopeNest",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-15T02:11:54Z",
       "fork": false,
       "archived": false
     },
