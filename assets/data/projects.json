@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-07-23T10:34:13.342548+00:00",
+  "generated_at": "2026-07-24T10:27:32.000713+00:00",
   "projects": [
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-07-23T10:49:53Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "Security-Intelligence-Platform",
       "description": "A self-hosted cybersecurity vulnerability intelligence platform.",
@@ -39,19 +52,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-22T14:30:25Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-22T10:34:02Z",
       "fork": false,
       "archived": false
     },
@@ -293,45 +293,6 @@
       "archived": false
     },
     {
-      "name": "Nuclei-Matcher-Burp-Suite-Extension",
-      "description": "Nuclei Matcher watches your Burp Suite traffic in real-time and automatically identifies technologies, misconfigurations, and potential vulnerabilities then suggests the exact Nuclei templates to run against each target.",
-      "html_url": "https://github.com/tobiasGuta/Nuclei-Matcher-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 2,
-      "forks_count": 1,
-      "updated_at": "2026-05-24T12:13:26Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "CVE-Matcher",
-      "description": "CVE Matcher is a passive Burp Suite extension built with the Montoya API. It silently analyzes HTTP response headers (like `Server`, `X-Powered-By`, etc.) to extract software banners and automatically queries the NIST National Vulnerability Database (NVD) to surface known Common Vulnerabilities and Exposures (CVEs) in real-time.",
-      "html_url": "https://github.com/tobiasGuta/CVE-Matcher",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 2,
-      "forks_count": 0,
-      "updated_at": "2026-05-24T12:12:50Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Shodan-Correlator",
-      "description": "Shodan Correlator is a passive Burp Suite extension built with the Montoya API. It automatically enriches the hosts you browse by querying the Shodan API. It correlates HTTP response hostnames to their IP addresses and fetches valuable infrastructure and vulnerability intelligence in real-time.",
-      "html_url": "https://github.com/tobiasGuta/Shodan-Correlator",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 2,
-      "forks_count": 0,
-      "updated_at": "2026-05-24T12:12:41Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
       "description": "A lightweight, high-speed Burp Suite extension designed to detect exposed Spring Boot Actuator endpoints. It automatically fuzzes target applications for sensitive administrative paths that can leak environment variables, API mappings, and routing configurations.",
       "html_url": "https://github.com/tobiasGuta/Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
@@ -481,45 +442,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-03-10T19:57:05Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "GitDiscovery",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/GitDiscovery",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-10T18:02:18Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "shodan-extention",
-      "description": "Simple Firefox/Chrome extension (Manifest V3) that shows Shodan information for the current tab's hostname.",
-      "html_url": "https://github.com/tobiasGuta/shodan-extention",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-10T17:55:45Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "S3bucketList",
-      "description": "A Firefox extension (Manifest V3) that passively scans web traffic for S3-style hostnames and probes them for public access permissions.",
-      "html_url": "https://github.com/tobiasGuta/S3bucketList",
-      "homepage": "",
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-03-10T17:14:39Z",
       "fork": false,
       "archived": false
     },
