@@ -41,10 +41,7 @@ permalink: /writeups.html
   <a href="{{ '/contact.html' | relative_url }}">[ CONTACT ]</a>
 </nav>
 
-{% assign bug_bounty_posts = site.categories['bug-bounty'] | default: empty %}
-{% assign ctf_posts = site.categories['ctf'] | default: empty %}
-{% assign pentesting_posts = site.categories['pentesting'] | default: empty %}
-{% assign research_posts = site.categories['my-research'] | default: empty %}
+
 
 <main class="writeups-page">
   <section class="writeups-intro section-block projects-block">
@@ -54,10 +51,9 @@ permalink: /writeups.html
     </div>
     <div class="section-content">
       <div class="writeups-stats">
-        <a href="#bug-bounty">Bug Bounty <span>{{ bug_bounty_posts | size }}</span></a>
-        <a href="#ctf">CTF <span>{{ ctf_posts | size }}</span></a>
-        <a href="#pentesting">Pentesting <span>{{ pentesting_posts | size }}</span></a>
-        <a href="#research">My Research <span>{{ research_posts | size }}</span></a>
+        {% for category in site.categories %}
+          <a href="#{{ category[0] | slugify }}" style="text-transform: capitalize;">{{ category[0] | replace: '-', ' ' }} <span>{{ category[1] | size }}</span></a>
+        {% endfor %}
       </div>
       <p class="writeups-note">
         Posts are loaded from the Jekyll <span class="neon">_posts</span> folder and styled with this site's retro terminal theme.
@@ -73,61 +69,21 @@ permalink: /writeups.html
     </div>
   </section>
 
-  <section class="writeup-category" id="bug-bounty">
+  {% for category in site.categories %}
+  <section class="writeup-category" id="{{ category[0] | slugify }}">
     <div class="section-header projects-header">
       <span>◆</span>
-      <h2 class="projects-title">BUG BOUNTY</h2>
+      <h2 class="projects-title" style="text-transform: uppercase;">{{ category[0] | replace: '-', ' ' }}</h2>
     </div>
     <div class="writeup-grid">
-      {% for post in bug_bounty_posts %}
+      {% for post in category[1] %}
         {% include writeup-card.html post=post %}
       {% else %}
-        <div class="project-loading">No bug bounty posts yet.</div>
+        <div class="project-loading">No posts in this category yet.</div>
       {% endfor %}
     </div>
   </section>
-
-  <section class="writeup-category" id="ctf">
-    <div class="section-header">
-      <span>▣</span>
-      <h2>CTF</h2>
-    </div>
-    <div class="writeup-grid">
-      {% for post in ctf_posts %}
-        {% include writeup-card.html post=post %}
-      {% else %}
-        <div class="project-loading">No CTF posts yet.</div>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section class="writeup-category" id="pentesting">
-    <div class="section-header projects-header">
-      <span>⚡</span>
-      <h2 class="projects-title">PENTESTING</h2>
-    </div>
-    <div class="writeup-grid">
-      {% for post in pentesting_posts %}
-        {% include writeup-card.html post=post %}
-      {% else %}
-        <div class="project-loading">No pentesting posts yet.</div>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section class="writeup-category" id="research">
-    <div class="section-header">
-      <span>◇</span>
-      <h2>MY RESEARCH</h2>
-    </div>
-    <div class="writeup-grid">
-      {% for post in research_posts %}
-        {% include writeup-card.html post=post %}
-      {% else %}
-        <div class="project-loading">No research posts yet.</div>
-      {% endfor %}
-    </div>
-  </section>
+  {% endfor %}
 
 </main>
 

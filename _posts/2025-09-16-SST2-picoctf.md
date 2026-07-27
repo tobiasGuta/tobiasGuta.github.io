@@ -1,16 +1,17 @@
----
+﻿---
 layout: post
-title: "SSTI2 PicoCTF"
+title: "PicoCTF SSTI2 Walkthrough: Bypassing Input Sanitization in Template Injection"
+description: "A detailed walkthrough and notes on PicoCTF SSTI2 Walkthrough: Bypassing Input Sanitization in Template Injection."
 date: 2025-09-16
 categories: [ctf, picoctf, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*d2R1OXU4u4xLDzO7teA1eA.png
-permalink: /blog/SSTI2PicoCTF
+permalink: /blog/ssti2-picoctf/
 locked: false
 ---
 
 I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)
 
-This is going to be challenging, but we’ve got this because, based on the description…
+This is going to be challenging, but weâ€™ve got this because, based on the descriptionâ€¦
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/0*pH3T71KSqmj2LUip"
@@ -21,9 +22,9 @@ This is going to be challenging, but we’ve got this because, based on the desc
 
 Using this image, we can test the site to see which templates we are working on.
 
-from {% raw %}`${7 * 7}`{% endraw %} didn’t work, {% raw %}`{{7 * 7}}`{% endraw %} works -> {% raw %}`{{7*’7'}}`{% endraw %} works —> jinja2 or twig
+from {% raw %}`${7 * 7}`{% endraw %} didnâ€™t work, {% raw %}`{{7 * 7}}`{% endraw %} works -> {% raw %}`{{7*â€™7'}}`{% endraw %} works â€”> jinja2 or twig
 
-Based on this post, we have different payloads to be able to bypass this with Jinja2 <https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/>
+Based on this post, we have different payloads to be able to bypass this with Jinja2Â <https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/>
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
@@ -46,3 +47,5 @@ Based on this post, we have different payloads to be able to bypass this with Ji
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+

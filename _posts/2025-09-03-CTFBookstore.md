@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "Tryhackme BookStore Walkthrough - API & Reverse Engineering"
+title: "TryHackMe BookStore Walkthrough: API Exploitation & Reverse Engineering"
+description: "A detailed walkthrough and notes on TryHackMe BookStore Walkthrough: API Exploitation & Reverse Engineering."
 date: 2025-09-03
 categories: [ctf, tryhackme, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*mZunNj45WXui4CSwhm-Buw.jpeg
-permalink: /blog/BookStore-Tryhackme
+permalink: /blog/tryhackme-bookstore-walkthrough-api-reverse-engineering/
 locked: false
 ---
 
@@ -16,7 +17,7 @@ locked: false
   <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; justify-content: center;">
     <h3 style="margin: 0; color: #f1f5f9;">Bookstore</h3>
     <div style="display: flex; align-items: center; gap: 5px;">
-      <span style="color: #ff8c00; font-weight: bold;">▁▃▅</span>
+      <span style="color: #ff8c00; font-weight: bold;">â–â–ƒâ–…</span>
       <span style="background: #ff8c00; color: white; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold;">MEDIUM</span>
     </div>
   </div>
@@ -27,7 +28,7 @@ locked: false
   
   <div style="display: flex; gap: 20px; margin-top: 15px;">
     <span style="color: white; padding: 8px 16px; font-weight: bold;">Web Exploitation</span>
-    <a href="https://tryhackme.com/room/bookstoreoc" target="_blank" style="background: #dc2626; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">🔗 Start Challenge →</a>
+    <a href="https://tryhackme.com/room/bookstoreoc" target="_blank" style="background: #dc2626; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">ðŸ”— Start Challenge â†’</a>
   </div>
 </div>
 
@@ -44,7 +45,7 @@ I accessed the website using its IP address without specifying any port. Once we
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-I interacted with every possible endpoint on this site. There were different interaction points, such as home.html and books.html, but login.html didn’t do anything.
+I interacted with every possible endpoint on this site. There were different interaction points, such as home.html and books.html, but login.html didnâ€™t do anything.
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*RL1nSp0JsykNSXR2OVc45w.png"
@@ -60,7 +61,7 @@ I interacted with every possible endpoint on this site. There were different int
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-Once I’ve run through every request, I fire up Postman to check what’s really going on under the hood
+Once Iâ€™ve run through every request, I fire up Postman to check whatâ€™s really going on under the hood
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ZSQjBSilIAyhEHP3tw1imw.png"
@@ -103,7 +104,7 @@ We can send a request like this:
 
 But based on api.js, the most important part is this specific comment. `//the previous version of the api had a paramter which lead to local file inclusion vulnerability, glad we now have the new version which is secure.`
 
-Let’s change `/api/v2/resources/books?id=1` to `/api/v1/resources/books?id=1`
+Letâ€™s change `/api/v2/resources/books?id=1` to `/api/v1/resources/books?id=1`
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*UQ6kmLhYWDTsYiYdGxGq-A.png"
@@ -112,7 +113,7 @@ Let’s change `/api/v2/resources/books?id=1` to `/api/v1/resources/books?id=1`
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-We didn’t get any errors, which means the previous version of this API is still present, and we can access its vulnerability.
+We didnâ€™t get any errors, which means the previous version of this API is still present, and we can access its vulnerability.
 
 Based on the response from `/api/v2/resources/books/random4`, I tried using different parameters, but none of them returned `/etc/passwd` , `author, id, published ,show`
 
@@ -177,7 +178,7 @@ sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-From the `/etc/passwd` response, we found a user sid, which could allow us to read the flag. Based on the challenge question, let’s use `/home/sid/user.txt`
+From the `/etc/passwd` response, we found a user sid, which could allow us to read the flag. Based on the challenge question, letâ€™s use `/home/sid/user.txt`
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*ci6allc3uiPmwu41l8iXSw.png"
@@ -206,7 +207,7 @@ Then I made a request to `.bash_history`, and it returned some juicy data:
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-It returned a debug pin belonging to the Flask localhost console. Let’s make a request to this:
+It returned a debug pin belonging to the Flask localhost console. Letâ€™s make a request to this:
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*GRnY0Eg9h8UQDGISAJjFgA.png"
@@ -215,7 +216,7 @@ It returned a debug pin belonging to the Flask localhost console. Let’s make a
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-Using the pin from `.bash_history`, we accessed the Flask debug console. Since it allows Python execution, we leveraged it to spawn a reverse shell. [Understanding Reverse Shells – Invicti](https://www.invicti.com/blog/web-security/understanding-reverse-shells/)
+Using the pin from `.bash_history`, we accessed the Flask debug console. Since it allows Python execution, we leveraged it to spawn a reverse shell. [Understanding Reverse Shells â€“ Invicti](https://www.invicti.com/blog/web-security/understanding-reverse-shells/)
 
 <div class="code-block-container">
   <span class="code-lang-tag">Python Debug</span>
@@ -357,3 +358,5 @@ XOR is its own inverse, so this neatly recovers the original user_input.
 />
 
 This gave us a root shell
+
+

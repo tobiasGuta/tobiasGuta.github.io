@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "byp4ss3d PicoCTF"
+title: "PicoCTF byp4ss3d Walkthrough: Bypassing Image Upload Filters for RCE"
+description: "A detailed walkthrough and notes on PicoCTF byp4ss3d Walkthrough: Bypassing Image Upload Filters for RCE."
 date: 2025-11-19
 categories: [ctf, picoctf, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*DJEtBw2KoP102M_U7q9MWQ.png
-permalink: /blog/byp4ss3d_PicoCTF
+permalink: /blog/byp4ss3d-picoctf/
 locked: false
 ---
 
@@ -200,3 +201,5 @@ WHOAMI
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+

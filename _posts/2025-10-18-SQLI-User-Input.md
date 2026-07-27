@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "When Input Becomes Injection"
+title: "When Input Becomes SQL Injection: Node.js MySQL Security Mistakes"
+description: "A detailed walkthrough and notes on When Input Becomes SQL Injection: Node.js MySQL Security Mistakes."
 date: 2025-10-18
 categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*dU101LJckdGykTOw0K0q6w.jpeg
-permalink: /blog/Input-sql-Injection
+permalink: /blog/when-input-becomes-injection/
 locked: false
 ---
 
@@ -12,7 +13,7 @@ Developers should never trust user input. Even when you think you've sanitized e
 
 A few essential points:
 - ? placeholders protect values, not SQL structure. They safely substitute data values, but they do not and cannot be used for identifiers, SQL keywords, or fragments you build by string concatenation. If you concatenate table names, column names, ORDER BY clauses, or entire SQL snippets with user input, a placeholder won't help.
-- Misusing escaping, trusting client-side validation, or doing shallow sanitization (like stripping a few characters) can be bypassed. There are second‑order injections (stored malicious input executed later), encoding tricks, and edge cases with JSON and binary data.
+- Misusing escaping, trusting client-side validation, or doing shallow sanitization (like stripping a few characters) can be bypassed. There are secondâ€‘order injections (stored malicious input executed later), encoding tricks, and edge cases with JSON and binary data.
 - The typical Node.js + MySQL pitfalls: building queries with template strings, using unvalidated inputs for identifiers, relying on naive input filters, or assuming middleware has already made the input safe.
 
 # Endpoints
@@ -192,3 +193,5 @@ Built users query: SELECT * FROM users WHERE name OR 1=? Data: [ '1' ]
 - Apply least privilege for database accounts and avoid exposing powerful permissions to the application user.
 - Log unexpected input and monitor query patterns to detect abuse or probing.
 - Defense in depth: input validation, prepared statements, minimal DB permissions, and runtime monitoring.
+
+

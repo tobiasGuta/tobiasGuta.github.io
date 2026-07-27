@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "SSTI1 PicoCTF"
+title: "PicoCTF SSTI1 Walkthrough: Server-Side Template Injection Explained"
+description: "A detailed walkthrough and notes on PicoCTF SSTI1 Walkthrough: Server-Side Template Injection Explained."
 date: 2025-09-16
 categories: [ctf, picoctf, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*DSmBoEWa8L36cCY8PEBX4g.png
-permalink: /blog/SSTI1PicoCTF
+permalink: /blog/ssti1-picoctf/
 locked: false
 ---
 
@@ -37,7 +38,7 @@ let's try some template injection, in this case we are going to use this {% raw 
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-This time, we got 49 because 7 × 7 = 49. That means our injection works. Now, let's try some more advanced injections.
+This time, we got 49 because 7 Ã— 7 = 49. That means our injection works. Now, let's try some more advanced injections.
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
@@ -87,3 +88,5 @@ This time, we got 49 because 7 × 7 = 49. That means our injection works. Now, l
 />
 
 now we can read the flag.
+
+

@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "Windows Forensics"
+title: "Windows Forensics: Investigating Unauthorized Desktop Access"
+description: "A detailed walkthrough and notes on Windows Forensics: Investigating Unauthorized Desktop Access."
 date: 2026-01-26
 categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*8vIZ7xENqLJqI9C9ZLBKvA.png
-permalink: /blog/Windows-Forensics
+permalink: /blog/windows-forensics/
 locked: false
 ---
 
@@ -59,3 +60,5 @@ Registry Explorer shows this information in a nice and easy-to-understand way.
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+

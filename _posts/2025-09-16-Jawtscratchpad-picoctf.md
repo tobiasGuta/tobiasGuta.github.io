@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "JaWT Scratchpad PicoCTF"
+title: "PicoCTF JaWT Scratchpad Walkthrough: JWT Authentication Bypass"
+description: "A detailed walkthrough and notes on PicoCTF JaWT Scratchpad Walkthrough: JWT Authentication Bypass."
 date: 2025-09-16
 categories: [ctf, picoctf, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*fcvxcEANcxQlqK--App_4A.png
-permalink: /blog/JawtPicoCtf
+permalink: /blog/jawt-scratchpad-picoctf/
 locked: false
 ---
 
@@ -35,7 +36,7 @@ Now, let's use Burp Suite for this.
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-At the end of the website, it shows something like this : "You can use your name as a log in, because that's quick and easy to remember! If you don't like your name, use a short and cool one like [John](https://github.com/magnumripper/JohnTheRipper)!"
+At the end of the website, it shows something like this : "You can use your name as a log in, because that's quick and easy to remember! If you don't like your name, use a short and cool one likeÂ [John](https://github.com/magnumripper/JohnTheRipper)!"
 
 As we know, John the Ripper is used to brute force, so that gives the idea that this should be a brute force challenge. In my case, I decided to use Hashcat.
 
@@ -90,3 +91,5 @@ After that, we send the request.
 />
 
 Hello admin!
+
+

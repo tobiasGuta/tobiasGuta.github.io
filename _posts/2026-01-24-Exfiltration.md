@@ -1,14 +1,15 @@
----
+﻿---
 layout: post
-title: "The Exfiltration Handbook"
+title: "The Exfiltration Handbook: Living Off The Land with Tunnels and DNS"
+description: "A detailed walkthrough and notes on The Exfiltration Handbook: Living Off The Land with Tunnels and DNS."
 date: 2026-01-24
 categories: [pentesting]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*nOvrIc-KReNi6cpEpPTOEQ.png
-permalink: /blog/Data-Exfiltration
+permalink: /blog/the-exfiltration-handbook/
 locked: false
 ---
 
-In this guide, I’m breaking down how to "live off the land." We’re talking about taking standard commands and turning them into tunnels. Whether it’s a quick TCP pipe or a slow-burn DNS play, it’s all about being creative with what’s available.
+In this guide, Iâ€™m breaking down how to "live off the land." Weâ€™re talking about taking standard commands and turning them into tunnels. Whether itâ€™s a quick TCP pipe or a slow-burn DNS play, itâ€™s all about being creative with whatâ€™s available.
 
 ### 1. The UDP Socket
 
@@ -35,7 +36,7 @@ This is almost identical to the method in your text, but it uses **UDP** instead
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
-    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -58,7 +59,7 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
@@ -116,7 +117,7 @@ HTTPServer(("0.0.0.0", 80), P).serve_forever()
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
-    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -139,7 +140,7 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
@@ -152,7 +153,7 @@ Communication over TCP requires two machines, one victim and one attacker machin
 
 What is happening here is a pipeline:
 
-`Directory → Compressed archive → Text encoding → Obfuscated encoding → Network transfer`
+`Directory â†’ Compressed archive â†’ Text encoding â†’ Obfuscated encoding â†’ Network transfer`
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
@@ -255,7 +256,7 @@ Each command receives data, transforms it, and passes it along to the next step.
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
-    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -278,7 +279,7 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
@@ -370,7 +371,7 @@ You don't always need to install new software; the tools already on the system a
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
-    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -393,7 +394,7 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
@@ -449,7 +450,7 @@ if (isset($_POST['file'])) {
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #ff5555; text-align: left; transition: all 0.3s;">
-    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker (Listener) <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -472,13 +473,13 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
 </script>
 
-> `NOTE`: If you don’t want data to be transmitted in cleartext, you can set up HTTPS using SSL keys stored on a server.
+> `NOTE`: If you donâ€™t want data to be transmitted in cleartext, you can set up HTTPS using SSL keys stored on a server.
 
 ### ICMP Data Exfiltration
 
@@ -520,7 +521,7 @@ the ICMP packet's structure contains a Data section that can include strings or 
        style="width: 100%; display: none;">
 
   <div class="perspective-label" style="padding: 10px; background: #282a36; font-weight: bold; color: #50fa7b; text-align: left; transition: all 0.3s;">
-    Attacker <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>
+    Attacker <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>
   </div>
 
 </div>
@@ -543,7 +544,7 @@ function togglePerspective(e, container) {
   var next = (current + 1) % images.length;
   images[next].style.display = 'block';
 
-  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(↻ Click to switch)</span>';
+  label.innerHTML = images[next].getAttribute('data-label') + ' <span style="font-size: 0.8em; opacity: 0.7;">(â†» Click to switch)</span>';
   label.style.color = images[next].getAttribute('data-color');
   label.style.textAlign = images[next].getAttribute('data-align');
 }
@@ -552,3 +553,5 @@ function togglePerspective(e, container) {
 ### DNS Exfiltration
 
 To perform exfiltration via the DNS protocol, you need to control a domain name and set up DNS records, including NS, A, or TXT.
+
+

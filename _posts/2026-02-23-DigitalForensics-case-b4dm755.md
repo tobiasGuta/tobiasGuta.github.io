@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "Digital Forensics Case B4DM755"
+title: "Digital Forensics Case B4DM755: Analyzing Crime Scene Artifacts"
+description: "A detailed walkthrough and notes on Digital Forensics Case B4DM755: Analyzing Crime Scene Artifacts."
 date: 2026-02-21
 categories: [my-research, walkthrough, tryhackme]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*0Ve6kSni0lba9WNzq6tPyg.png
-permalink: /blog/Case-B4DM755
+permalink: /blog/digital-forensics-case-b4dm755/
 locked: false
 ---
 
@@ -111,3 +112,6 @@ Get-ChildItem -LiteralPath $targetDir -File -Recurse | ForEach-Object {
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+
+

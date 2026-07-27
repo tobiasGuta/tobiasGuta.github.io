@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "WebSockFish PicoCTF"
+title: "PicoCTF WebSockFish Walkthrough: Exploiting WebSocket Vulnerabilities"
+description: "A detailed walkthrough and notes on PicoCTF WebSockFish Walkthrough: Exploiting WebSocket Vulnerabilities."
 date: 2025-09-16
 categories: [ctf, picoctf, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*uKuKNFiZss4ahdQvweK_Jw.jpeg
-permalink: /blog/WebSockFishPicoCtf
+permalink: /blog/websockfish-picoctf/
 locked: false
 ---
 
@@ -103,3 +104,5 @@ By adding another 9 to `eval -9999`, we got the flag.
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+

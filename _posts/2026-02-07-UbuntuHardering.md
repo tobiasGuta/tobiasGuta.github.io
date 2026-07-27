@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "Hardening"
+title: "Ubuntu Server Hardening: Disabling Root Access and Enhancing Security"
+description: "A detailed walkthrough and notes on Ubuntu Server Hardening: Disabling Root Access and Enhancing Security."
 date: 2026-02-07
 categories: [my-research, walkthrough]
 image: https://miro.medium.com/v2/resize:fit:20000/format:webp/1*5pNCkdKAsZj7KLpM-snTOQ.png
-permalink: /blog/UbuntuHardering
+permalink: /blog/hardening/
 locked: false
 ---
 
@@ -15,7 +16,7 @@ We will explore the different ways to protect an Ubuntu Server.
 You can do this through several methods:
 
 1.  Disabling the root login shell
-2.  Disabling root SSH login
+2.  Disabling rootÂ SSHÂ login
 3.  Disabling root using PAM (Password Authentication Module)
 
 > Before you continue with `/etc/passwd` i would recommmend to set a password for the root user. 
@@ -46,7 +47,7 @@ setting it to `/usr/sbin/nologin` will  reject the root login.
 
 If you try to log in as root, it would immediately kick you out.
 
-> If you don’t want any user even users in the sudo group to be able to execute `sudo -s`, before doing this make sure you have another user that can log in as root.
+> If you donâ€™t want any user even users in the sudo group to be able to execute `sudo -s`, before doing this make sure you have another user that can log in as root.
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
   <button class="copy-btn" onclick="copyCode(this)" title="Copy code">
@@ -149,7 +150,7 @@ chmod 700 /home/username
 
 #### Meet pwquality,
 
-Technically, it’s a PAM (Pluggable Authentication Module) plugin. Humanly, it’s a quality control inspector.
+Technically, itâ€™s a PAM (Pluggable Authentication Module) plugin. Humanly, itâ€™s a quality control inspector.
 
 In the old days, systems just checked simple boxes, Is it 8 characters? Yes/No. pwquality is smarter. It assigns every proposed password a score based on complexity, dictionary words, and patterns. If the score isn't high enough, the password gets rejected.
 
@@ -159,13 +160,13 @@ The configuration file is located at `/etc/security/pwquality.conf`.
 
 When you open it, you will see settings like dcredit, ucredit, lcredit, and ocredit. These control requirements for Digits, Uppercase, Lowercase, and Other symbols.
 
-The math here is weird, so let’s simplify it. The values can be positive or negative, and they mean totally different things
+The math here is weird, so letâ€™s simplify it. The values can be positive or negative, and they mean totally different things
 
 -   **Negative Numbers = Mandatory Rules.** If you set `dcredit = -1`, it means: "You owe me at least 1 digit." If the user doesn't type a number, they can't save the password. This is what most admins want.
 
     -   **Positive Numbers = Bonus Points.** If you set `dcredit = 1`, it means: "If you use a digit, I will give you +1 credit toward your total score, potentially letting you use a shorter password."
 
-> My advice? Stick to negative numbers. It’s easier to explain to your users: "You must have a number" is a clear rule.
+> My advice? Stick to negative numbers. Itâ€™s easier to explain to your users: "You must have a number" is a clear rule.
 
 You want a setup that stops "password123" but allows "Correct-Horse-Battery-Staple".
 
@@ -209,11 +210,11 @@ usercheck = 1
 
 #### The Lifecycle of a Password
 
-If a password stays valid forever, the chance of it being compromised increases every single day. But if you force users to change them too often, they’ll hate you. :)
+If a password stays valid forever, the chance of it being compromised increases every single day. But if you force users to change them too often, theyâ€™ll hate you. :)
 
 1) Password Expiration
 
-By default, Ubuntu sets passwords to last for 99,999 days. That is roughly 273 years, that’s not great for security.
+By default, Ubuntu sets passwords to last for 99,999 days. That is roughly 273 years, thatâ€™s not great for security.
 
 We control this in `/etc/login.defs`.
 
@@ -309,4 +310,7 @@ groups
 ubuntuserver adm cdrom sudo dip plugdev lxd
 </code></pre>
 </div>
+
+
+
 

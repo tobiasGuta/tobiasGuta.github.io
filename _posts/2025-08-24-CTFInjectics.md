@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "TryHackMe Injectics Walkthrough - SQL Injection & SSTI Exploitation"
+title: "TryHackMe Injectics Walkthrough: Mastering SQL Injection & SSTI"
+description: "A detailed walkthrough and notes on TryHackMe Injectics Walkthrough: Mastering SQL Injection & SSTI."
 date: 2025-08-24
 categories: [ctf, tryhackme, walkthrough]
 image: https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/62a7685ca6e7ce005d3f3afe-1721743931067.png
-permalink: /blog/InjecticsTHM
+permalink: /blog/tryhackme-injectics-walkthrough-sql-injection-ssti-exploitation/
 locked: false
 ---
 
@@ -16,7 +17,7 @@ locked: false
   <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; justify-content: center;">
     <h3 style="margin: 0; color: #f1f5f9;">Injectics</h3>
     <div style="display: flex; align-items: center; gap: 5px;">
-      <span style="color: #ff8c00; font-weight: bold;">▁▃▅</span>
+      <span style="color: #ff8c00; font-weight: bold;">â–â–ƒâ–…</span>
       <span style="background: #ff8c00; color: white; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold;">MEDIUM</span>
     </div>
   </div>
@@ -27,7 +28,7 @@ locked: false
   
   <div style="display: flex; gap: 20px; margin-top: 15px;">
     <span style="color: white; padding: 8px 16px; font-weight: bold;">Web Exploitation</span>
-    <a href="https://tryhackme.com/room/injectics" target="_blank" style="background: #dc2626; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">🔗 Start Challenge →</a>
+    <a href="https://tryhackme.com/room/injectics" target="_blank" style="background: #dc2626; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">ðŸ”— Start Challenge â†’</a>
   </div>
 </div>
 
@@ -1045,5 +1046,8 @@ This challenge demonstrated a comprehensive exploitation methodology involving:
 10. **File System Access** - Using command execution to locate and read hidden flags
 
 Both flags have been successfully captured through systematic exploitation of multiple vulnerabilities, demonstrating the importance of comprehensive security testing and proper input validation across all application components.
+
+
+
 
 

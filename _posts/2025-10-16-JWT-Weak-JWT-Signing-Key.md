@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "Weak JWT Secrets: How ‘secret’ Breaks Your Auth"
+title: "Weak JWT Secrets: How Weak Signing Keys Break Node.js Authentication"
+description: "A detailed walkthrough and notes on Weak JWT Secrets: How Weak Signing Keys Break Node.js Authentication."
 date: 2025-10-16
 categories: [my-research]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*xmO_zJP7qmtGWLiHtdeRIQ.png
-permalink: /blog/Weak-JWT-Secret
+permalink: /blog/weak-jwt-secrets-how-secret-breaks-your-auth/
 locked: false
 ---
 
@@ -127,3 +128,5 @@ Let's use hashcat to brute-force the JWT
   class="zoomable-img"
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
+
+

@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
-title: "AI Foundations I"
+title: "How a 2D Perceptron Works: picoCTF Neuron Express Walkthrough"
+description: "A detailed walkthrough and notes on How a 2D Perceptron Works: picoCTF Neuron Express Walkthrough."
 date: 2026-06-28
 categories: [ai, machine-learning, writeups, ctf]
 image: https://miro.medium.com/v2/resize:fit:2000/format:webp/1*TvcsPYrQIIJ5zq0MSEzNVA.jpeg
-permalink: /blog/AI-Foundations-I
+permalink: /blog/ai-foundations-i/
 locked: false
 math: true
 ---
@@ -29,7 +30,7 @@ Here is a quick breakdown of what each part of that equation actually does geome
 ## The Strategy
 I started by probing different coordinates to see what would happen. I noticed that testing `1 10` kept the perceptron quiet, but `10 10` made it fire! This was a huge clue because it meant the invisible "decision boundary" (the line where the output flips from 0 to 1) was somewhere between x=1 and x=10 on that top row.
 
-I used a binary search strategy—chopping the area in half. I tested `5 10` (fire!), then stepped down: `4 10` (fire!), `3 10` (fire!), and finally `2 10` (quiet!). So, the boundary line crossed exactly between x=2 and x=3.
+I used a binary search strategyâ€”chopping the area in half. I tested `5 10` (fire!), then stepped down: `4 10` (fire!), `3 10` (fire!), and finally `2 10` (quiet!). So, the boundary line crossed exactly between x=2 and x=3.
 
 ## The Plot Twist
 I repeated the exact same process on the bottom row (where y=0) and found the exact same flip between x=2 and x=3. 
@@ -47,8 +48,8 @@ $$ x + b \geq 0 $$
 I knew from my tests that the perceptron fired at $x=3$ and stayed quiet at $x=2$. 
 
 I needed a bias ($b$) that would pull a total of 2 below zero, but keep a total of 3 at exactly zero or above. A bias of **-3** fit perfectly:
-* For $x=3$: $3 + (-3) = 0$ (Fires! 🔥)
-* For $x=2$: $2 + (-3) = -1$ (Stays quiet 🤫)
+* For $x=3$: $3 + (-3) = 0$ (Fires! ðŸ”¥)
+* For $x=2$: $2 + (-3) = -1$ (Stays quiet ðŸ¤«)
 
 ## The Solution
 I submitted the final parameters: `TEST 1 0 -3` and got the perfect match and the flag! 
@@ -87,8 +88,8 @@ I needed to find a bias ($b$) that made the formula true for my test results:
 * For $x = 1$, it needed to stay quiet: $1 + b < 0$
 
 I needed a number that pulled 2 down to exactly 0, but pulled 1 down into the negatives. A bias of **-2** was the perfect fit!
-* $2 + (-2) = 0$ (Fires! 🔥)
-* $1 + (-2) = -1$ (Stays quiet 🤫)
+* $2 + (-2) = 0$ (Fires! ðŸ”¥)
+* $1 + (-2) = -1$ (Stays quiet ðŸ¤«)
 
 ## The Solution
 I submitted my final parameters: `TEST 1 -2`. 
@@ -98,19 +99,19 @@ It is amazing how stepping down a dimension actually makes the math much clearer
 
 ***
 
-# AI Ethics: Why "Trust But Verify" is My New Coding Motto 🕵️♂️
+# AI Ethics: Why "Trust But Verify" is My New Coding Motto ðŸ•µï¸â™‚ï¸
 
 Hey everyone! Back with another update from my Cylab Security Academy journey. I just finished a module that took a break from the heavy math of perceptrons and put me in an interactive fiction scenario called **Trust But Verify**. It honestly completely changed how I look at generative AI.
 
-## The Scenario 📖
-The game puts you in the year 2031, using an advanced AI assistant named ARIA to write a science fair proposal. Sounds easy, right? But ARIA ended up teaching me a harsh lesson about "automation bias"—that dangerous habit we have of trusting AI just because it sounds incredibly confident.
+## The Scenario ðŸ“–
+The game puts you in the year 2031, using an advanced AI assistant named ARIA to write a science fair proposal. Sounds easy, right? But ARIA ended up teaching me a harsh lesson about "automation bias"â€”that dangerous habit we have of trusting AI just because it sounds incredibly confident.
 
 During the project, ARIA made three distinct types of mistakes:
-*   **The Hallucination 👻:** It completely fabricated a 2022 UNEP report and a statistic about ocean plastic. If I hadn't asked for the source link, I would have put fake data in my project.
-*   **The Logic Error 🐛:** It wrote a Python script to calculate averages but snuck a random `+ 1` into the math. The code ran perfectly, but the output was mathematically wrong.
-*   **The Subtle Inaccuracy 📉:** This was the scariest one. ARIA cited a *real* study by a *real* researcher at a *real* university... but got the year wrong and claimed the results were "confirmed" instead of "preliminary."
+*   **The Hallucination ðŸ‘»:** It completely fabricated a 2022 UNEP report and a statistic about ocean plastic. If I hadn't asked for the source link, I would have put fake data in my project.
+*   **The Logic Error ðŸ›:** It wrote a Python script to calculate averages but snuck a random `+ 1` into the math. The code ran perfectly, but the output was mathematically wrong.
+*   **The Subtle Inaccuracy ðŸ“‰:** This was the scariest one. ARIA cited a *real* study by a *real* researcher at a *real* university... but got the year wrong and claimed the results were "confirmed" instead of "preliminary."
 
-## My Biggest Takeaway 🧠
+## My Biggest Takeaway ðŸ§ 
 That last mistake really stuck with me. When an AI gets 95% of the facts right, it builds a false sense of security, making it incredibly easy to let the 5% that is wrong slip right past you. 
 
 The AI told me at the end: *"I genuinely don't know when I'm wrong. You have to be the one who finds out."* 
@@ -119,9 +120,9 @@ Moving forward, whether I'm using AI to debug my code or research a topic, I'm t
 
 ***
 
-# Stepping Up to Classification: Building a 1D Perceptron 🚧
+# Stepping Up to Classification: Building a 1D Perceptron ðŸš§
 
-Hey everyone! The Cylab Security Academy just flipped the script on me. In the previous challenges, I was playing detective—trying to find the hidden decision boundary of a "black box" AI. But in the **Perceptron Play 1D!** challenge, I finally got to play engineer. 
+Hey everyone! The Cylab Security Academy just flipped the script on me. In the previous challenges, I was playing detectiveâ€”trying to find the hidden decision boundary of a "black box" AI. But in the **Perceptron Play 1D!** challenge, I finally got to play engineer. 
 
 Instead of guessing the rules, my job was to look at a dataset and *build* the rule to classify the data correctly.
 
@@ -191,9 +192,9 @@ It's really cool to see how tweaking a single number (the bias) just physically 
 
 ***
 
-# Leveling Up: Cracking 2D Classification with Perceptrons 🚀
+# Leveling Up: Cracking 2D Classification with Perceptrons ðŸš€
 
-Hey everyone! I'm back with another update from the Cylab Security Academy. After mastering the 1D perceptron, it was time to step things up to a full 2D grid. Instead of just sliding a single point back and forth on a number line, my goal was to draw a literal line in the sand—a decision boundary—to separate two clusters of data.
+Hey everyone! I'm back with another update from the Cylab Security Academy. After mastering the 1D perceptron, it was time to step things up to a full 2D grid. Instead of just sliding a single point back and forth on a number line, my goal was to draw a literal line in the sandâ€”a decision boundaryâ€”to separate two clusters of data.
 
 ## The Setup
 In this challenge, I was given an ASCII graph with points labeled as either Category 0 (stay quiet) or Category 1 (fire). The perceptron now had two weights ($w_1$ for the x-axis, $w_2$ for the y-axis) and a bias ($b$). 
@@ -201,14 +202,14 @@ In this challenge, I was given an ASCII graph with points labeled as either Cate
 The starting parameters were $w_1 = 1$, $w_2 = -1$, and $b = 0$. This made my starting rule: 
 $$ 1x - 1y + 0 \geq 0 $$
 
-## The Bug in the Math 🐛
+## The Bug in the Math ðŸ›
 When I looked at my dataset, two points were failing:
 * **$(-1, -1)$** was supposed to be a `0`, but the math ($-1 - (-1) = 0$) made the perceptron fire. 
 * **$(+1, +3)$** was supposed to be a `1`, but the math ($1 - 3 = -2$) kept the perceptron quiet. 
 
 The issue was that pesky negative weight for $w_2$. Because it was subtracting the y-value, it was dragging the total down way below zero for my Class 1 points (which were all in the top right, meaning they had positive y-values). 
 
-## The Fix 🛠️
+## The Fix ðŸ› ï¸
 I needed to stop subtracting that y-value and start adding it so it would help push my Class 1 points above zero. I changed the weight of $w_2$ to $1$. 
 
 My new, simplified rule became: 
@@ -279,7 +280,7 @@ On to the next challenge!
 
 ***
 
-# Thinking Outside the Axis: Drawing a Horizontal Boundary 🏢
+# Thinking Outside the Axis: Drawing a Horizontal Boundary ðŸ¢
 
 Welcome back! The Cylab Security Academy just threw a brilliant curveball at me in the **Perceptron Play Naught** challenge. It really hammered home why we need to build intuition instead of just memorizing math.
 
@@ -291,7 +292,7 @@ The starting parameters were $w_1 = 1$, $w_2 = -1$, and $b = 0$.
 ## The Problem: A Messy X-Axis
 When I looked at the data, the $x$-values (left/right positions) were a complete mess. Class 0 points and Class 1 points were completely overlapping on the $x$-axis. Trying to draw a vertical or even a diagonal line was going to be impossible because the points were too mixed up left-to-right.
 
-## The "Building" Epiphany 💡
+## The "Building" Epiphany ðŸ’¡
 Instead of looking at the $x$-axis, I focused entirely on the $y$-axis (up/down). 
 
 I imagined the grid as a tall building:
@@ -367,3 +368,6 @@ Perfect! All points are classified correctly.
 ```
 
 The system verified all points, and I grabbed my next flag! It was a great lesson in how zeroing out a weight allows an AI to completely ignore irrelevant data.
+
+
+
