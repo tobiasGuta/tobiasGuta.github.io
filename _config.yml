@@ -3,6 +3,9 @@ description: Cybersecurity portfolio, projects, writeups, bug bounty notes, CTF 
 url: "https://whoistob1as.me"
 baseurl: ""
 
+author:
+  name: "Tobias Guta"
+
 markdown: kramdown
 future: false
 permalink: /blog/:title/

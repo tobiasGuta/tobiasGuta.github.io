@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "TryHackMe Injectics Walkthrough: Mastering SQL Injection & SSTI"
 description: "A detailed walkthrough and notes on TryHackMe Injectics Walkthrough: Mastering SQL Injection & SSTI."
@@ -166,7 +166,7 @@ This blacklist is easily bypassed because:
 - **Alternative operators**: `||` instead of `or`, `&&` instead of `and`
 
 #### 3. **Password Field Unprotected**
-Notice that the filtering only applies to the `username` field, the `password` field has no validation whatsoever, making it a prime target for SQL injection.
+Notice that the filtering only applies to the `username` field, the `password` field has no validation whatsoever, making it a prime target for [SQL injection](/blog/when-input-becomes-injection/).
 
 #### 4. **Weak String Matching**
 The `includes()` method can be bypassed using:
