@@ -144,7 +144,7 @@ One local-environment detail mattered: our bot image did not initially have `/ro
 
 ## Exploit script
 
-The finished script is in [`download_exploit.py`](D:/labs/msfroggenerator2/download_exploit.py). To use it against an equivalent instance, change only `BASE`:
+The finished script is in [`download_exploit.py`](/poc/download_exploit.py). To use it against an equivalent instance, change only `BASE`:
 
 ```python
 BASE = "http://TARGET_HOST:PORT"
