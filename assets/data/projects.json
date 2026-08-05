@@ -1,8 +1,34 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-04T10:49:18.153061+00:00",
+  "generated_at": "2026-08-05T10:45:18.750320+00:00",
   "projects": [
+    {
+      "name": "MarkerTrail",
+      "description": "MarkerTrail is a browser-native propagation tracker for authorized web security testing. It creates unique inert markers, remembers where they were introduced, then detects those markers later in live DOM content, SPA updates, request bodies, and response bodies.",
+      "html_url": "https://github.com/tobiasGuta/MarkerTrail",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-04T20:35:35Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Reconductor",
+      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
+      "html_url": "https://github.com/tobiasGuta/Reconductor",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-04T15:31:01Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -12,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-03T22:47:57Z",
+      "updated_at": "2026-08-04T10:49:55Z",
       "fork": false,
       "archived": false
     },
@@ -39,19 +65,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-08-02T21:31:46Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Reconductor",
-      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
-      "html_url": "https://github.com/tobiasGuta/Reconductor",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-01T23:36:18Z",
       "fork": false,
       "archived": false
     },
