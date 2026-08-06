@@ -1,8 +1,47 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-05T10:45:18.750320+00:00",
+  "generated_at": "2026-08-06T10:48:21.909603+00:00",
   "projects": [
+    {
+      "name": "Content-Type-Mapper",
+      "description": "Burp Suite extension for discovering alternate request parsers, content-type confusion, validation inconsistencies, and possible WAF/backend differentials.",
+      "html_url": "https://github.com/tobiasGuta/Content-Type-Mapper",
+      "homepage": null,
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-05T19:26:55Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Method-Mapper-Burp-Suite-Montoya-Extension",
+      "description": "Method Mapper watches Burp traffic, sends a safe OPTIONS probe once per unique endpoint, and displays responses that disclose supported methods through:",
+      "html_url": "https://github.com/tobiasGuta/Method-Mapper-Burp-Suite-Montoya-Extension",
+      "homepage": null,
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-05T18:35:33Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-05T10:45:31Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "MarkerTrail",
       "description": "MarkerTrail is a browser-native propagation tracker for authorized web security testing. It creates unique inert markers, remembers where they were introduced, then detects those markers later in live DOM content, SPA updates, request bodies, and response bodies.",
@@ -26,19 +65,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-08-04T15:31:01Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-04T10:49:55Z",
       "fork": false,
       "archived": false
     },
