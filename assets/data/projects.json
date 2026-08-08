@@ -1,8 +1,34 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-07T09:14:13.475885+00:00",
+  "generated_at": "2026-08-08T08:58:34.899361+00:00",
   "projects": [
+    {
+      "name": "Reconductor",
+      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
+      "html_url": "https://github.com/tobiasGuta/Reconductor",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-08T07:47:14Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Dirfuzz",
+      "description": "DirFuzz has evolved from a high-performance web security fuzzer into a deterministic **Bug Bounty Intelligence Operating System**. It is built around an immutable Event Ledger, capable of projecting complex attack surface graphs, continuous regression tracking, playbook intelligence, and deterministic Analyst workflows.",
+      "html_url": "https://github.com/tobiasGuta/Dirfuzz",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-07T19:42:48Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -12,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-06T10:50:44Z",
+      "updated_at": "2026-08-07T09:16:14Z",
       "fork": false,
       "archived": false
     },
@@ -52,19 +78,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-08-04T20:35:35Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Reconductor",
-      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
-      "html_url": "https://github.com/tobiasGuta/Reconductor",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-04T15:31:01Z",
       "fork": false,
       "archived": false
     },
@@ -156,19 +169,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-28T17:17:54Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Dirfuzz",
-      "description": "DirFuzz has evolved from a high-performance web security fuzzer into a deterministic **Bug Bounty Intelligence Operating System**. It is built around an immutable Event Ledger, capable of projecting complex attack surface graphs, continuous regression tracking, playbook intelligence, and deterministic Analyst workflows.",
-      "html_url": "https://github.com/tobiasGuta/Dirfuzz",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-27T14:51:22Z",
       "fork": false,
       "archived": false
     },
