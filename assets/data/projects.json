@@ -1,7 +1,7 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-09T09:01:01.033010+00:00",
+  "generated_at": "2026-08-10T09:46:39.556689+00:00",
   "projects": [
     {
       "name": "Reconductor",
@@ -12,7 +12,20 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-09T01:30:17Z",
+      "updated_at": "2026-08-10T04:56:57Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "VS-Code-Codex-Approval-Notifier-for-Windows",
+      "description": "Native Windows notifications for Codex approval requests in the VS Code extension.",
+      "html_url": "https://github.com/tobiasGuta/VS-Code-Codex-Approval-Notifier-for-Windows",
+      "homepage": null,
+      "language": "PowerShell",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-09T16:07:50Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-08T08:58:55Z",
+      "updated_at": "2026-08-09T09:01:34Z",
       "fork": false,
       "archived": false
     },
