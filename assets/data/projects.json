@@ -1,18 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-11T09:12:06.453186+00:00",
+  "generated_at": "2026-08-12T09:30:51.082095+00:00",
   "projects": [
     {
-      "name": "JS-Miner-Pro-Burp-Suite-Extension",
-      "description": "JS Miner Pro is a powerful, customizable Burp Suite extension designed to find hard-coded secrets, API endpoints, and hidden paths inside JavaScript and JSON files.",
-      "html_url": "https://github.com/tobiasGuta/JS-Miner-Pro-Burp-Suite-Extension",
-      "homepage": "",
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 4,
-      "forks_count": 0,
-      "updated_at": "2026-08-10T12:45:13Z",
+      "name": "Blueprint-App-AI",
+      "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
+      "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [
+        "collaborate",
+        "student-vscode"
+      ],
+      "stargazers_count": 13,
+      "forks_count": 2,
+      "updated_at": "2026-08-12T06:28:36Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +28,20 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-10T09:47:09Z",
+      "updated_at": "2026-08-11T09:12:27Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "JS-Miner-Pro-Burp-Suite-Extension",
+      "description": "JS Miner Pro is a powerful, customizable Burp Suite extension designed to find hard-coded secrets, API endpoints, and hidden paths inside JavaScript and JSON files.",
+      "html_url": "https://github.com/tobiasGuta/JS-Miner-Pro-Burp-Suite-Extension",
+      "homepage": "",
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 4,
+      "forks_count": 0,
+      "updated_at": "2026-08-10T12:45:13Z",
       "fork": false,
       "archived": false
     },
@@ -273,22 +289,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-18T11:48:19Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Blueprint-App-AI",
-      "description": "Blueprint App is an AI-assisted electronics design tool for turning a plain-English hardware idea into a structured electronics blueprint.",
-      "html_url": "https://github.com/tobiasGuta/Blueprint-App-AI",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [
-        "collaborate",
-        "student-vscode"
-      ],
-      "stargazers_count": 12,
-      "forks_count": 2,
-      "updated_at": "2026-07-16T17:52:35Z",
       "fork": false,
       "archived": false
     },
