@@ -1,2 +1,4 @@
-document.getElementById("result").textContent =
-  "JavaScript EXECUTED successfully";
+document.body.insertAdjacentHTML(
+  "beforeend",
+  "<h2>EXTERNAL JAVASCRIPT EXECUTED</h2>"
+);

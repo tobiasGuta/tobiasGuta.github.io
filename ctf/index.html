@@ -2,12 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="noindex,nofollow">
-  <title>JS test</title>
+  <title>JS diagnostic</title>
 </head>
 <body>
 
-<h1 id="result">JavaScript did NOT execute</h1>
+<h1 id="result">SCRIPT DID NOT EXECUTE</h1>
+
+<noscript>
+  <h2>NOSCRIPT ACTIVE — JAVASCRIPT IS DISABLED</h2>
+</noscript>
+
+<script>
+  document.getElementById("result").textContent =
+    "INLINE JAVASCRIPT EXECUTED";
+</script>
 
 <script src="./helper.js"></script>
 
