@@ -409,6 +409,11 @@ app.get(['/contact', '/contact.html'], async (req, res, next) => {
   }
 });
 
+// Hidden CTF Vault page
+app.get(['/ctf', '/ctf/', '/ctf/index.html'], (req, res) => {
+  res.sendFile(path.join(ROOT_DIR, 'ctf', 'index.html'));
+});
+
 // Single blog post router
 app.get(['/blog/:slug', '/blog/:slug/', '/posts/:slug', '/posts/:slug/'], async (req, res, next) => {
   try {
