@@ -334,7 +334,6 @@ app.use('/assets', express.static(path.join(ROOT_DIR, 'assets')));
 app.use('/Pictures', express.static(path.join(ROOT_DIR, 'Pictures')));
 app.use('/poc', express.static(path.join(ROOT_DIR, 'poc')));
 app.use('/admin', express.static(path.join(ROOT_DIR, 'admin')));
-app.use('/ctf', express.static(path.join(ROOT_DIR, 'ctf')));
 
 // Serve robots.txt and CNAME if requested
 app.get('/robots.txt', (req, res) => {
@@ -408,11 +407,6 @@ app.get(['/contact', '/contact.html'], async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
-
-// Hidden CTF Vault page
-app.get(['/ctf', '/ctf/', '/ctf/index.html'], (req, res) => {
-  res.sendFile(path.join(ROOT_DIR, 'ctf', 'index.html'));
 });
 
 // Single blog post router
