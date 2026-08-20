@@ -1,9 +1,23 @@
 <!doctype html>
 <html>
-<head>
-<meta
-  http-equiv="refresh"
-  content="0;url=view-source:http://localhost/reports/id/94630">
-</head>
-<body></body>
+<body>
+<p id="status">JavaScript has not run yet.</p>
+
+<script>
+const status = document.getElementById("status");
+
+status.textContent = "JavaScript running. Attempting navigation...";
+
+try {
+    location.href = "view-source:http://localhost/reports/id/94630";
+} catch (e) {
+    status.textContent = "Navigation threw: " + e;
+}
+
+setTimeout(() => {
+    status.textContent =
+        "Still on wrapper page.\nCurrent URL: " + location.href;
+}, 2000);
+</script>
+</body>
 </html>
