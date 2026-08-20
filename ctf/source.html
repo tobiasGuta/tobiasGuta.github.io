@@ -1,22 +1,18 @@
 <!doctype html>
 <html>
 <body>
-<p id="status">JavaScript has not run yet.</p>
+<a
+  id="go"
+  href="view-source:http://localhost/reports/id/94630">
+  Open source
+</a>
 
 <script>
-const status = document.getElementById("status");
-
-status.textContent = "JavaScript running. Attempting navigation...";
-
-try {
-    location.href = "view-source:http://localhost/reports/id/94630";
-} catch (e) {
-    status.textContent = "Navigation threw: " + e;
-}
+document.getElementById("go").click();
 
 setTimeout(() => {
-    status.textContent =
-        "Still on wrapper page.\nCurrent URL: " + location.href;
+    document.body.innerText =
+      "Anchor navigation failed: " + location.href;
 }, 2000);
 </script>
 </body>
