@@ -1,8 +1,34 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-21T08:56:38.323795+00:00",
+  "generated_at": "2026-08-22T08:46:12.566033+00:00",
   "projects": [
+    {
+      "name": "S3-Hunter",
+      "description": "S3 Hunter is a Chrome/Chromium Manifest V3 side-panel extension for authorized bug-bounty, CTF, and security testing. It discovers AWS S3 references from the active page, validates exposure with bounded read-only requests, provides a manual bucket explorer, and now adds a bug-bounty-focused security analysis and report export.",
+      "html_url": "https://github.com/tobiasGuta/S3-Hunter",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-21T15:56:48Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "WebSocket-Smuggler-Modular",
+      "description": "The WebSocket Smuggler (Modular) is a specialized Burp Suite extension designed to automate the detection and exploitation of HTTP Request Smuggling vulnerabilities that arise from faulty WebSocket connection handling by reverse proxies.",
+      "html_url": "https://github.com/tobiasGuta/WebSocket-Smuggler-Modular",
+      "homepage": null,
+      "language": "Java",
+      "topics": [],
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "updated_at": "2026-08-21T14:30:18Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -12,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-20T20:33:01Z",
+      "updated_at": "2026-08-21T08:56:48Z",
       "fork": false,
       "archived": false
     },
@@ -211,19 +237,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-28T20:28:13Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "WebSocket-Smuggler-Modular",
-      "description": "The WebSocket Smuggler (Modular) is a specialized Burp Suite extension designed to automate the detection and exploitation of HTTP Request Smuggling vulnerabilities that arise from faulty WebSocket connection handling by reverse proxies.",
-      "html_url": "https://github.com/tobiasGuta/WebSocket-Smuggler-Modular",
-      "homepage": null,
-      "language": "Java",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-28T17:17:54Z",
       "fork": false,
       "archived": false
     },
