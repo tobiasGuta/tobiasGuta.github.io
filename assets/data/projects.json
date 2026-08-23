@@ -1,8 +1,47 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-22T08:46:12.566033+00:00",
+  "generated_at": "2026-08-23T08:46:59.531358+00:00",
   "projects": [
+    {
+      "name": "Reconductor",
+      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
+      "html_url": "https://github.com/tobiasGuta/Reconductor",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-23T02:00:20Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "VS-Code-Codex-Approval-Notifier-for-Windows",
+      "description": "Codex Approval Notifier for Windows is an open-source project for safer human supervision of Codex in Visual Studio Code.",
+      "html_url": "https://github.com/tobiasGuta/VS-Code-Codex-Approval-Notifier-for-Windows",
+      "homepage": "",
+      "language": "PowerShell",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-22T23:02:58Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-22T08:47:01Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "S3-Hunter",
       "description": "S3 Hunter is a Chrome/Chromium Manifest V3 side-panel extension for authorized bug-bounty, CTF, and security testing. It discovers AWS S3 references from the active page, validates exposure with bounded read-only requests, provides a manual bucket explorer, and now adds a bug-bounty-focused security analysis and report export.",
@@ -30,19 +69,6 @@
       "archived": false
     },
     {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-21T08:56:48Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "ScopeNest",
       "description": "Isolated browser contexts for testing, research, and development.",
       "html_url": "https://github.com/tobiasGuta/ScopeNest",
@@ -52,19 +78,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-08-19T17:16:05Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Reconductor",
-      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
-      "html_url": "https://github.com/tobiasGuta/Reconductor",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-15T22:34:30Z",
       "fork": false,
       "archived": false
     },
@@ -94,19 +107,6 @@
       "stargazers_count": 4,
       "forks_count": 0,
       "updated_at": "2026-08-10T12:45:13Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "VS-Code-Codex-Approval-Notifier-for-Windows",
-      "description": "Native Windows notifications for Codex approval requests in the VS Code extension.",
-      "html_url": "https://github.com/tobiasGuta/VS-Code-Codex-Approval-Notifier-for-Windows",
-      "homepage": null,
-      "language": "PowerShell",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-09T16:07:50Z",
       "fork": false,
       "archived": false
     },
