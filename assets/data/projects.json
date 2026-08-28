@@ -1,18 +1,18 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-27T19:03:38.350793+00:00",
+  "generated_at": "2026-08-28T20:11:28.475300+00:00",
   "projects": [
     {
-      "name": "Reconductor",
-      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
-      "html_url": "https://github.com/tobiasGuta/Reconductor",
+      "name": "ParamIntel",
+      "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
+      "html_url": "https://github.com/tobiasGuta/ParamIntel",
       "homepage": null,
       "language": "Go",
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-26T22:52:07Z",
+      "updated_at": "2026-08-28T19:18:49Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +25,20 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-26T09:04:31Z",
+      "updated_at": "2026-08-27T19:03:57Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "Reconductor",
+      "description": "An automated, distributed security scanning and asset discovery pipeline. The platform chains subdomain discovery, port scanning, HTTP validation, and web crawling with a multi-consumer worker pool running vulnerability scans, aggregating the findings into a centralized database with a real-time TUI dashboard.",
+      "html_url": "https://github.com/tobiasGuta/Reconductor",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-26T22:52:07Z",
       "fork": false,
       "archived": false
     },
