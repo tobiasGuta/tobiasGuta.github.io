@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-28T20:11:28.475300+00:00",
+  "generated_at": "2026-08-29T13:49:38.370770+00:00",
   "projects": [
+    {
+      "name": "Dirfuzz",
+      "description": "DirFuzz has evolved from a high-performance web security fuzzer into a deterministic **Bug Bounty Intelligence Operating System**. It is built around an immutable Event Ledger, capable of projecting complex attack surface graphs, continuous regression tracking, playbook intelligence, and deterministic Analyst workflows.",
+      "html_url": "https://github.com/tobiasGuta/Dirfuzz",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-29T12:42:47Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "ParamIntel",
       "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
@@ -12,7 +25,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-28T19:18:49Z",
+      "updated_at": "2026-08-28T20:50:51Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-08-27T19:03:57Z",
+      "updated_at": "2026-08-28T20:12:01Z",
       "fork": false,
       "archived": false
     },
@@ -120,19 +133,6 @@
       "stargazers_count": 4,
       "forks_count": 0,
       "updated_at": "2026-08-10T12:45:13Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Dirfuzz",
-      "description": "DirFuzz has evolved from a high-performance web security fuzzer into a deterministic **Bug Bounty Intelligence Operating System**. It is built around an immutable Event Ledger, capable of projecting complex attack surface graphs, continuous regression tracking, playbook intelligence, and deterministic Analyst workflows.",
-      "html_url": "https://github.com/tobiasGuta/Dirfuzz",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-07T19:42:48Z",
       "fork": false,
       "archived": false
     },
