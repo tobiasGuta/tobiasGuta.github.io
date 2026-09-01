@@ -1,8 +1,37 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-08-31T16:08:54.856930+00:00",
+  "generated_at": "2026-09-01T13:28:58.742545+00:00",
   "projects": [
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-08-31T16:16:41Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "GeminiTerminal",
+      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google\u2019s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
+      "html_url": "https://github.com/tobiasGuta/GeminiTerminal",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "collaborate",
+        "microsoftvisualstudio"
+      ],
+      "stargazers_count": 9,
+      "forks_count": 2,
+      "updated_at": "2026-08-31T16:11:05Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "Brightspace-Companion",
       "description": "Brightspace Companion now refreshes its Brightspace course/deadline cache automatically when a Brightspace page loads",
@@ -26,19 +55,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-08-30T15:56:05Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-30T13:48:10Z",
       "fork": false,
       "archived": false
     },
@@ -692,22 +708,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2025-12-01T02:47:17Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "GeminiTerminal",
-      "description": "GeminiTerminal: A command-line interface (CLI) tool for seamless interaction with Google\u2019s Gemini AI. Easily chat, troubleshoot, and receive helpful responses directly from your terminal. Powered by generative AI, GeminiTerminal offers a simple and effective way to engage with advanced AI models",
-      "html_url": "https://github.com/tobiasGuta/GeminiTerminal",
-      "homepage": null,
-      "language": "Python",
-      "topics": [
-        "collaborate",
-        "microsoftvisualstudio"
-      ],
-      "stargazers_count": 8,
-      "forks_count": 2,
-      "updated_at": "2025-10-14T21:17:56Z",
       "fork": false,
       "archived": false
     },
