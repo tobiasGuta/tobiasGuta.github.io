@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-09-04T12:42:31.242403+00:00",
+  "generated_at": "2026-09-05T11:49:35.275272+00:00",
   "projects": [
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-09-04T12:43:09Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "Brightspace-Companion",
       "description": "Brightspace Companion now refreshes its Brightspace course/deadline cache automatically when a Brightspace page loads",
@@ -13,19 +26,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-09-03T23:52:19Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-09-03T12:49:22Z",
       "fork": false,
       "archived": false
     },
