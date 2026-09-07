@@ -98,7 +98,7 @@ function renderProjects(projects, sourceText) {
       ? `<a href="${escapeHtml(repoUrl)}" class="project-card-title">${escapeHtml(repo.name)}</a>`
       : `<span class="project-card-title">${escapeHtml(repo.name)}</span>`;
     const repoLink = repoUrl
-      ? `<a href="${escapeHtml(repoUrl)}" class="project-card-link">Repo</a>`
+      ? `<a href="${escapeHtml(repoUrl)}" class="project-card-link project-access">ACCESS PROJECT <span aria-hidden="true">→</span></a>`
       : '';
     const homepageLink = homepageUrl
       ? `<a href="${escapeHtml(homepageUrl)}" class="project-card-link">Live</a>`

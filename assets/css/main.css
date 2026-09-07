@@ -2503,6 +2503,86 @@
   .site-subtitle { letter-spacing: 2px; }
 }
 
+/* Illuminated panel frames. Angled backgrounds keep keyboard outlines unclipped. */
+:is(.sidebar-box, .section-block, .welcome-box, .cert-card, .project-card, .writeup-card) {
+  border: 1px solid #286071;
+  background: linear-gradient(135deg, #438b9c 0 7px, #06121b 7px) top left / 100% 100% no-repeat;
+  box-shadow: inset 0 0 18px #30c9ec08;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+:is(.sidebar-box, .section-block, .welcome-box, .cert-card, .project-card, .writeup-card):is(:hover, :focus-within) {
+  border-color: #6cdeef;
+  box-shadow: inset 0 0 18px #30c9ec0c, 0 0 14px #30c9ec26;
+}
+.section-header {
+  background: linear-gradient(90deg, #0c2935, #07151e);
+  border-bottom: 1px solid #286071;
+}
+.project-card:nth-child(n) {
+  background: linear-gradient(135deg, #438b9c 0 7px, #06121b 7px);
+  border-color: #286071;
+}
+.project-card:nth-child(n):is(:hover, :focus-within) {
+  border-color: #87edff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 22px #36cbea26, inset 0 1px #a8f5ff;
+}
+.project-access { color: #a4eaf5; letter-spacing: 1px; }
+.project-access span { display: inline-block; transition: transform .2s; }
+.project-card:is(:hover, :focus-within) .project-access { color: #ffc383; }
+.project-card:is(:hover, :focus-within) .project-access span { transform: translateX(4px); }
+.project-card a:focus-visible { outline: 2px solid #b0f5ff; outline-offset: 3px; }
+.terminal-boot {
+  border-left: 2px solid #ffad51;
+  padding: 6px 10px;
+  margin: 8px 0 12px;
+  color: #83eaff;
+  text-shadow: 0 0 8px #54dfff40;
+}
+.terminal-boot > div { animation: boot-line .35s ease both; animation-delay: calc(var(--boot-step) * .18s); }
+@keyframes boot-line { from { opacity: 0; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
+.light-cycle-arena {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 112px;
+  margin: 0 auto 22px;
+  overflow: hidden;
+  background: #030b12;
+  border-top: 1px solid #286071;
+  border-bottom: 1px solid #286071;
+}
+.light-cycle-arena canvas { display: block; width: 100%; height: 112px; }
+.light-cycle-control {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  min-height: 32px;
+  padding: 4px 9px;
+  border: 1px solid #286071;
+  background: #030b12e8;
+  color: #a4eaf5;
+  font-size: 11px;
+  cursor: pointer;
+}
+.light-cycle-control:is(:hover, :focus-visible) { border-color: #ffad51; color: #ffc383; }
+.light-cycle-control:focus-visible { outline: 2px solid #b0f5ff; outline-offset: -3px; }
+/* Temporary terminal Easter egg: no saved setting or navigation interception. */
+body.grid-mode {
+  background-color: #02080e;
+  background-image: linear-gradient(#40cef00b 1px, transparent 1px), linear-gradient(90deg, #40cef00b 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: #9defff;
+  cursor: crosshair;
+}
+.grid-mode .marquee-top { background: #082532; color: #a7f1ff; border-bottom: 1px solid #4ac6df; }
+.grid-mode :is(.section-header h2, .sidebar-box h3, .welcome-box h2, .terminal-box .output, .skill-section-label, .skill-name, .cert-title, .project-card-title) { color: #91eaff; }
+.grid-mode :is(.sidebar-box, .section-block, .welcome-box, .cert-card, .terminal-box) { border-color: #40b9d1; background-color: #05111d; box-shadow: 0 0 20px #27ceff18; }
+.grid-mode :is(.skill-bar-fill, .online-indicator) { background: #65e8ff; box-shadow: 0 0 10px #65e8ff80; }
+.grid-mode :is(.terminal-box .cmd, .status-text, .neon, .profile-role) { color: #ffc383; }
+.grid-mode .site-title { text-shadow: 0 0 10px #61dfff, 0 0 45px #25bddb99; }
+.grid-mode .info-table td { border-color: #163b4a; }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2511,5 +2591,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    animation-delay: 0ms !important;
   }
 }

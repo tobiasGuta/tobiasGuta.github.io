@@ -2,6 +2,138 @@
   Homepage interactions for the portfolio.
   Keep small visual effects here so index.html stays focused on content.
 */
+// Original light-cycle artwork, drawn locally with no image or library downloads.
+(() => {
+  const footer = document.querySelector('.site-footer');
+  if (!footer) return;
+  const arena = document.createElement('div');
+  arena.className = 'light-cycle-arena';
+  const canvas = document.createElement('canvas');
+  canvas.setAttribute('aria-hidden', 'true');
+  const control = document.createElement('button');
+  control.type = 'button';
+  control.className = 'light-cycle-control';
+  arena.append(canvas, control);
+  footer.prepend(arena);
+  const context = canvas.getContext('2d');
+  if (!context) { arena.remove(); return; }
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = motion.matches;
+  let visible = false;
+  let frame = 0;
+  let previous = 0;
+  let elapsed = 3;
+  let width = 0;
+  const height = 112;
+  const routes = [
+    [[-.12, .7], [.28, .7], [.28, .32], [.67, .32], [.67, .7], [1.12, .7]],
+    [[-.12, .27], [.43, .27], [.43, .78], [.81, .78], [.81, .38], [1.12, .38]],
+  ];
+
+  function locate(route, progress) {
+    const points = route.map(([x, y]) => [x * width, y * height]);
+    const lengths = points.slice(1).map((p, i) => Math.hypot(p[0] - points[i][0], p[1] - points[i][1]));
+    let distance = Math.max(0, Math.min(1, progress)) * lengths.reduce((a, b) => a + b, 0);
+    for (let i = 0; i < lengths.length; i++) {
+      if (distance <= lengths[i] || i === lengths.length - 1) {
+        const ratio = lengths[i] ? distance / lengths[i] : 0;
+        return {
+          x: points[i][0] + (points[i + 1][0] - points[i][0]) * ratio,
+          y: points[i][1] + (points[i + 1][1] - points[i][1]) * ratio,
+          angle: Math.atan2(points[i + 1][1] - points[i][1], points[i + 1][0] - points[i][0]),
+        };
+      }
+      distance -= lengths[i];
+    }
+  }
+
+  function drawCycle(route, progress, color) {
+    if (progress < 0 || progress > 1) return;
+    context.strokeStyle = color;
+    context.shadowColor = color;
+    context.shadowBlur = 8;
+    context.lineWidth = 2;
+    // Small segments fade toward the end of the trail and preserve right-angle turns.
+    for (let i = 0; i < 100; i++) {
+      const start = progress - .23 + i * .0023;
+      if (start < 0) continue;
+      const a = locate(route, start);
+      const b = locate(route, Math.min(progress, start + .0023));
+      context.globalAlpha = i / 100;
+      context.beginPath();
+      context.moveTo(a.x, a.y);
+      context.lineTo(b.x, b.y);
+      context.stroke();
+    }
+    const head = locate(route, progress);
+    context.globalAlpha = 1;
+    context.save();
+    context.translate(head.x, head.y);
+    context.rotate(head.angle);
+    context.fillStyle = '#06121b';
+    // Two luminous wheels and an angular chassis form the tiny bike silhouette.
+    [-7, 7].forEach(x => {
+      context.beginPath();
+      context.arc(x, 2, 4, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
+    });
+    context.beginPath();
+    context.moveTo(-9, -2);
+    context.lineTo(-3, -5);
+    context.lineTo(6, -4);
+    context.lineTo(11, 0);
+    context.lineTo(-9, 0);
+    context.closePath();
+    context.fill();
+    context.stroke();
+    context.restore();
+  }
+
+  function draw() {
+    context.clearRect(0, 0, width, height);
+    context.shadowBlur = 0;
+    context.globalAlpha = 1;
+    context.strokeStyle = '#143340';
+    context.lineWidth = 1;
+    context.beginPath();
+    for (let x = 0; x < width; x += 32) { context.moveTo(x, 0); context.lineTo(x, height); }
+    for (let y = 16; y < height; y += 24) { context.moveTo(0, y); context.lineTo(width, y); }
+    context.stroke();
+    const phase = elapsed % 16;
+    drawCycle(routes[0], phase / 12, '#72edff');
+    drawCycle(routes[1], (phase - 2) / 12, '#ffad51');
+  }
+
+  function tick(now) {
+    elapsed += previous ? Math.min((now - previous) / 1000, .05) : 0;
+    previous = now;
+    draw();
+    frame = requestAnimationFrame(tick);
+  }
+  function sync() {
+    cancelAnimationFrame(frame);
+    previous = 0;
+    control.textContent = paused ? 'PLAY LIGHT CYCLES' : 'PAUSE LIGHT CYCLES';
+    control.setAttribute('aria-label', paused ? 'Play light-cycle animation' : 'Pause light-cycle animation');
+    if (visible && !paused && !document.hidden) frame = requestAnimationFrame(tick);
+    else draw();
+  }
+  control.addEventListener('click', () => { paused = !paused; sync(); });
+  motion.addEventListener('change', () => { paused = motion.matches; sync(); });
+  document.addEventListener('visibilitychange', sync);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(arena);
+  new ResizeObserver(() => {
+    width = arena.clientWidth;
+    const scale = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * scale);
+    canvas.height = height * scale;
+    context.setTransform(scale, 0, 0, scale, 0, 0);
+    draw();
+  }).observe(arena);
+  sync();
+})();
+
   // Reading progress bar for writeups
   const readingProgressFill = document.getElementById('reading-progress-fill');
   if (readingProgressFill) {
@@ -190,6 +322,24 @@
   const termContainer = document.getElementById('interactive-terminal');
 
   if (termInput && termHistory && termContainer) {
+    // Start on first interaction; input remains usable throughout the sequence.
+    termInput.addEventListener('focus', () => {
+      const boot = document.createElement('div');
+      boot.className = 'terminal-boot';
+      ['GRID CONNECTION ESTABLISHED', 'IDENTITY DISC SYNCHRONIZED', 'PROGRAM: TOBIASGUTA', 'SYSTEM READY — type help to explore'].forEach((text, index) => {
+        const line = document.createElement('div');
+        line.textContent = '> ' + text;
+        line.style.setProperty('--boot-step', index);
+        boot.appendChild(line);
+      });
+      termHistory.appendChild(boot);
+      termContainer.scrollTop = termContainer.scrollHeight;
+    }, { once: true });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') document.body.classList.remove('grid-mode');
+    });
+
     termInput.addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
         const cmd = this.value.trim();
@@ -228,6 +378,12 @@
     function processCommand(cmd) {
       const lowerCmd = cmd.toLowerCase();
       switch (lowerCmd) {
+        case 'grid': {
+          const active = document.body.classList.toggle('grid-mode');
+          return active
+            ? 'WELCOME TO THE GRID.<br>Theme engaged. Type grid again or press Escape to return.'
+            : 'GRID SESSION CLOSED. Original theme restored.';
+        }
         case 'whoami':
           return 'NAME: TobiasGuta<br>SCHOOL: [REDACTED] University — BSc Cybersecurity<br>FOCUS: Penetration Testing | Web App Security | OSINT<br>HOBBIES: CTF competitions, Reverse Engineering, Soldering';
         case 'ls certs/':
@@ -239,7 +395,7 @@
         case 'nmap':
           return 'Starting Nmap 7.94 ( https://nmap.org )<br>Nmap scan report for whoistob1as.me (127.0.0.1)<br>PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATE SERVICE<br>22/tcp&nbsp;&nbsp;&nbsp;open&nbsp;&nbsp;LINUX<br>80/tcp&nbsp;&nbsp;&nbsp;open&nbsp;&nbsp;PYTHON<br>443/tcp&nbsp;&nbsp;open&nbsp;&nbsp;WEB EXPLOITS<br>1337/tcp open&nbsp;&nbsp;CTF / OSINT<br>8080/tcp open&nbsp;&nbsp;SOCIAL ENG.<br>Nmap done: 1 IP address (1 host up) scanned in 1.33 seconds';
         case 'help':
-          return 'Available commands:<br>&nbsp;&nbsp;whoami<br>&nbsp;&nbsp;ls certs/<br>&nbsp;&nbsp;cat projects.txt<br>&nbsp;&nbsp;nmap whoistob1as.me<br>&nbsp;&nbsp;help<br>&nbsp;&nbsp;clear';
+          return 'Available commands:<br>&nbsp;&nbsp;whoami<br>&nbsp;&nbsp;ls certs/<br>&nbsp;&nbsp;cat projects.txt<br>&nbsp;&nbsp;nmap whoistob1as.me<br>&nbsp;&nbsp;grid — enter / leave the Grid<br>&nbsp;&nbsp;help<br>&nbsp;&nbsp;clear';
         case 'clear':
           setTimeout(() => { termHistory.innerHTML = ''; }, 10);
           return null;
