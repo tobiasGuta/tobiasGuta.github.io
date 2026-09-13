@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-09-12T12:09:18.190666+00:00",
+  "generated_at": "2026-09-13T13:18:06.504632+00:00",
   "projects": [
+    {
+      "name": "ParamIntel",
+      "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
+      "html_url": "https://github.com/tobiasGuta/ParamIntel",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-09-13T01:43:46Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -12,7 +25,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-09-11T12:48:37Z",
+      "updated_at": "2026-09-12T12:09:22Z",
       "fork": false,
       "archived": false
     },
@@ -26,19 +39,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-09-10T23:16:04Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "ParamIntel",
-      "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
-      "html_url": "https://github.com/tobiasGuta/ParamIntel",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-09-09T15:31:34Z",
       "fork": false,
       "archived": false
     },
