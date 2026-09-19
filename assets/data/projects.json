@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-09-18T12:57:18.518098+00:00",
+  "generated_at": "2026-09-19T12:28:54.408046+00:00",
   "projects": [
+    {
+      "name": "Windows-11-Privacy-Debloat-Scripts",
+      "description": "A small PowerShell toolkit for reducing Windows 11 bloat and improving privacy without switching to Linux or breaking core Windows security features.",
+      "html_url": "https://github.com/tobiasGuta/Windows-11-Privacy-Debloat-Scripts",
+      "homepage": null,
+      "language": "PowerShell",
+      "topics": [],
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "updated_at": "2026-09-18T13:54:51Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "tobiasGuta.github.io",
       "description": null,
@@ -12,7 +25,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-09-17T13:25:45Z",
+      "updated_at": "2026-09-18T12:57:23Z",
       "fork": false,
       "archived": false
     },
@@ -448,19 +461,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-13T12:48:37Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Windows-11-Privacy-Debloat-Scripts",
-      "description": "A small PowerShell toolkit for reducing Windows 11 bloat and improving privacy without switching to Linux or breaking core Windows security features.",
-      "html_url": "https://github.com/tobiasGuta/Windows-11-Privacy-Debloat-Scripts",
-      "homepage": null,
-      "language": "PowerShell",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-04T21:34:15Z",
       "fork": false,
       "archived": false
     },
