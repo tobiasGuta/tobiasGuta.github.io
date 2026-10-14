@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-10-13T15:56:14.364554+00:00",
+  "generated_at": "2026-10-14T13:42:00.623883+00:00",
   "projects": [
+    {
+      "name": "Next.js-RSC-RCE-Scanner-Burp-Suite-Extension",
+      "description": "Burp Suite extension to detect the Next.js / React Server Components (RSC) Remote Code Execution vulnerability (CVE-2025-55182 & CVE-2025-66478).",
+      "html_url": "https://github.com/tobiasGuta/Next.js-RSC-RCE-Scanner-Burp-Suite-Extension",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 24,
+      "forks_count": 2,
+      "updated_at": "2026-10-13T19:09:14Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "veyra-workspace",
       "description": null,
@@ -12,7 +25,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-13T03:08:51Z",
+      "updated_at": "2026-10-13T18:59:33Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +38,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-12T17:52:42Z",
+      "updated_at": "2026-10-13T15:56:20Z",
       "fork": false,
       "archived": false
     },
@@ -117,19 +130,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-09-18T13:54:51Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Next.js-RSC-RCE-Scanner-Burp-Suite-Extension",
-      "description": "Burp Suite extension to detect the Next.js / React Server Components (RSC) Remote Code Execution vulnerability (CVE-2025-55182 & CVE-2025-66478).",
-      "html_url": "https://github.com/tobiasGuta/Next.js-RSC-RCE-Scanner-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 23,
-      "forks_count": 2,
-      "updated_at": "2026-09-17T03:00:41Z",
       "fork": false,
       "archived": false
     },
