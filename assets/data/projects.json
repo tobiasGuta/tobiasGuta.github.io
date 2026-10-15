@@ -1,8 +1,34 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-10-14T13:42:00.623883+00:00",
+  "generated_at": "2026-10-15T13:23:46.488918+00:00",
   "projects": [
+    {
+      "name": "PrecisionPDF-MCP",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/PrecisionPDF-MCP",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-10-15T00:46:31Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-10-14T13:42:12Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "Next.js-RSC-RCE-Scanner-Burp-Suite-Extension",
       "description": "Burp Suite extension to detect the Next.js / React Server Components (RSC) Remote Code Execution vulnerability (CVE-2025-55182 & CVE-2025-66478).",
@@ -26,19 +52,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-10-13T18:59:33Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-10-13T15:56:20Z",
       "fork": false,
       "archived": false
     },
