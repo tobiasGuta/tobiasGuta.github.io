@@ -1,18 +1,18 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-10-15T13:23:46.488918+00:00",
+  "generated_at": "2026-10-16T13:13:50.165312+00:00",
   "projects": [
     {
       "name": "PrecisionPDF-MCP",
-      "description": null,
+      "description": "A local PDF toolkit combining a PrecisionPDF MCP server for reviewable PDF annotations with an optional VS Code Learning Mode for interactive reading, exact document search, and Copilot-assisted explanations.",
       "html_url": "https://github.com/tobiasGuta/PrecisionPDF-MCP",
-      "homepage": null,
-      "language": "Python",
+      "homepage": "",
+      "language": "JavaScript",
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-15T00:46:31Z",
+      "updated_at": "2026-10-16T00:02:29Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +25,7 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-14T13:42:12Z",
+      "updated_at": "2026-10-15T13:23:51Z",
       "fork": false,
       "archived": false
     },
@@ -95,19 +95,6 @@
       "archived": false
     },
     {
-      "name": "FRIDAY",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/FRIDAY",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-09-25T20:09:53Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Burp-Shadow-API-Visualizer",
       "description": "Shadow API Visualizer is a Burp Suite extension designed to help bug hunters and penetration testers discover hidden, unused, or \"shadow\" API endpoints by statically analyzing client-side code in real-time.",
       "html_url": "https://github.com/tobiasGuta/Burp-Shadow-API-Visualizer",
@@ -169,19 +156,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-09-06T01:33:39Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Brightspace-Companion",
-      "description": "Brightspace Companion now refreshes its Brightspace course/deadline cache automatically when a Brightspace page loads",
-      "html_url": "https://github.com/tobiasGuta/Brightspace-Companion",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-09-03T23:52:19Z",
       "fork": false,
       "archived": false
     },
