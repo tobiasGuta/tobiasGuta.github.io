@@ -1,18 +1,18 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-10-16T13:13:50.165312+00:00",
+  "generated_at": "2026-10-17T12:10:04.173749+00:00",
   "projects": [
     {
-      "name": "PrecisionPDF-MCP",
-      "description": "A local PDF toolkit combining a PrecisionPDF MCP server for reviewable PDF annotations with an optional VS Code Learning Mode for interactive reading, exact document search, and Copilot-assisted explanations.",
-      "html_url": "https://github.com/tobiasGuta/PrecisionPDF-MCP",
-      "homepage": "",
-      "language": "JavaScript",
+      "name": "Docktop",
+      "description": "A lightweight, btop-inspired terminal UI for managing Docker containers, images, networks, volumes, and MCP servers on Linux.",
+      "html_url": "https://github.com/tobiasGuta/Docktop",
+      "homepage": null,
+      "language": "Go",
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-16T00:02:29Z",
+      "updated_at": "2026-10-17T00:47:36Z",
       "fork": false,
       "archived": false
     },
@@ -25,7 +25,20 @@
       "topics": [],
       "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-10-15T13:23:51Z",
+      "updated_at": "2026-10-16T13:13:55Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "PrecisionPDF-MCP",
+      "description": "A local PDF toolkit combining a PrecisionPDF MCP server for reviewable PDF annotations with an optional VS Code Learning Mode for interactive reading, exact document search, and Copilot-assisted explanations.",
+      "html_url": "https://github.com/tobiasGuta/PrecisionPDF-MCP",
+      "homepage": "",
+      "language": "JavaScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-10-16T00:02:29Z",
       "fork": false,
       "archived": false
     },
