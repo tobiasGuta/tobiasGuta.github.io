@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-10-19T15:34:26.046406+00:00",
+  "generated_at": "2026-10-20T13:32:25.582627+00:00",
   "projects": [
+    {
+      "name": "tobiasGuta.github.io",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-10-19T15:34:32Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "PrecisionPDF-MCP",
       "description": "A local PDF toolkit combining a PrecisionPDF MCP server for reviewable PDF annotations with an optional VS Code Learning Mode for interactive reading, exact document search, and Copilot-assisted explanations.",
@@ -13,19 +26,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-10-18T23:57:44Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "tobiasGuta.github.io",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/tobiasGuta.github.io",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-10-18T12:35:45Z",
       "fork": false,
       "archived": false
     },
