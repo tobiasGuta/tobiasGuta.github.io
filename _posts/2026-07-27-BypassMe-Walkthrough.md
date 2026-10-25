@@ -9,7 +9,7 @@ permalink: /blog/bypass-me-reverse-engineering-walkthrough/
 locked: false
 ---
 
-> picoCTF 2026 Â· Reverse Engineering Â· Medium  
+> picoCTF 2026 · Reverse Engineering · Medium  
 > Educational walkthrough documenting the analysis process used on `bypassme.bin`.
 
 ## Objective
@@ -108,10 +108,10 @@ This gave us an initial program map:
 
 ```text
 main
-â”œâ”€â”€ decode_password
-â”œâ”€â”€ sanitize
-â”œâ”€â”€ password comparison
-â””â”€â”€ auth_sequence
+├── decode_password
+├── sanitize
+├── password comparison
+└── auth_sequence
 ```
 
 ---
@@ -447,17 +447,17 @@ This performs a bitwise test without changing `EAX`. Its purpose here is to upda
 ### Zero Flag behavior
 
 ```text
-EAX = 0       â†’ ZF = 1
-EAX != 0      â†’ ZF = 0
+EAX = 0       → ZF = 1
+EAX != 0      → ZF = 0
 ```
 
 ### `jne`
 
-`jne` means â€œjump if not equal,â€ which in this context means jump when the Zero Flag is clear:
+`jne` means “jump if not equal,” which in this context means jump when the Zero Flag is clear:
 
 ```text
-ZF = 0 â†’ jump to failure
-ZF = 1 â†’ continue to success
+ZF = 0 → jump to failure
+ZF = 1 → continue to success
 ```
 
 With the real failed comparison result:
@@ -529,13 +529,13 @@ landed at the success path instead of the failure path.
 
 ```text
 Real strcmp result: nonzero
-            â†“
+            ↓
 LLDB changes EAX to 0
-            â†“
+            ↓
 test eax, eax sets ZF = 1
-            â†“
+            ↓
 jne failure is not taken
-            â†“
+            ↓
 Program enters success path
 ```
 
@@ -750,11 +750,11 @@ The program created a sanitized buffer, but the raw buffer was passed to `strcmp
 
 The correct question was not merely:
 
-> â€œDoes sanitization exist?â€
+> “Does sanitization exist?”
 
 It was:
 
-> â€œIs the sanitized value actually used by the security decision?â€
+> “Is the sanitized value actually used by the security decision?”
 
 ### Runtime memory can expose decoded secrets
 
@@ -766,10 +766,10 @@ Understanding this sequence is essential:
 
 ```text
 strcmp
-â†’ EAX
-â†’ test
-â†’ Zero Flag
-â†’ conditional jump
+→ EAX
+→ test
+→ Zero Flag
+→ conditional jump
 ```
 
 ### Debuggers can alter program state
@@ -874,19 +874,19 @@ It was about tracing the real authentication data flow:
 
 ```text
 Encoded bytes
-    â†“ XOR 0xAA
+    ↓ XOR 0xAA
 Decoded expected password
-    â†“
+    ↓
 strcmp(raw input, decoded password)
-    â†“
+    ↓
 EAX return value
-    â†“
+    ↓
 test instruction
-    â†“
+    ↓
 Zero Flag
-    â†“
+    ↓
 conditional branch
-    â†“
+    ↓
 success or failure
 ```
 

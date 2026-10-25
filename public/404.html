@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Curiosity Atlas — Redirecting</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // Redirects deep links to index.html with query parameter
+    var pathSegmentsToKeep = 0;
+    var l = window.location;
+    var path = l.pathname.slice(1);
+    var query = l.search ? '&' + l.search.slice(1) : '';
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      '/?p=/' + encodeURIComponent(path) + query + l.hash
+    );
+  </script>
+</head>
+<body>
+  <p>Redirecting to destination...</p>
+</body>
+</html>

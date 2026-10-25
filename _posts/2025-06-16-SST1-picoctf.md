@@ -38,7 +38,7 @@ let's try some template injection, in this case we are going to use this {% raw 
   style="border: 2px solid #ccc; border-radius: 10px; cursor: zoom-in;"
 />
 
-This time, we got 49 because 7 Ã— 7 = 49. That means our injection works. Now, let's try some more advanced injections.
+This time, we got 49 because 7 × 7 = 49. That means our injection works. Now, let's try some more advanced injections.
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>

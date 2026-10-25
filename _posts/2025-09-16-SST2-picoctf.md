@@ -11,7 +11,7 @@ locked: false
 
 I made a cool website where you can announce whatever you want! I read about input sanitization, so now I remove any kind of characters that could be a problem :)
 
-This is going to be challenging, but weâ€™ve got this because, based on the descriptionâ€¦
+This is going to be challenging, but we’ve got this because, based on the description…
 
 <img 
   src="https://miro.medium.com/v2/resize:fit:2000/format:webp/0*pH3T71KSqmj2LUip"
@@ -22,9 +22,9 @@ This is going to be challenging, but weâ€™ve got this because, based on the
 
 Using this image, we can test the site to see which templates we are working on.
 
-from {% raw %}`${7 * 7}`{% endraw %} didnâ€™t work, {% raw %}`{{7 * 7}}`{% endraw %} works -> {% raw %}`{{7*â€™7'}}`{% endraw %} works â€”> jinja2 or twig
+from {% raw %}`${7 * 7}`{% endraw %} didn’t work, {% raw %}`{{7 * 7}}`{% endraw %} works -> {% raw %}`{{7*’7'}}`{% endraw %} works —> jinja2 or twig
 
-Based on this post, we have different payloads to be able to bypass this with Jinja2Â <https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/>
+Based on this post, we have different payloads to be able to bypass this with Jinja2 <https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/>
 
 <div class="code-block-container">
   <span class="code-lang-tag">Terminal</span>
