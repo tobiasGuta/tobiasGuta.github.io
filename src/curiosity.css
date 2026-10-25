@@ -18,6 +18,13 @@
   --color-border-subtle: #D8D4C8;
   --color-forest: #273A30;
   --color-forest-dark: #1E2B23;
+
+  /* Da Vinci Codex Drafting System */
+  --color-codex-line: rgba(50, 68, 56, 0.08);
+  --color-codex-subtle: rgba(50, 68, 56, 0.04);
+  --color-codex-accent: rgba(183, 92, 62, 0.12);
+  --color-codex-text: rgba(60, 75, 65, 0.32);
+  --color-codex-glow: rgba(183, 92, 62, 0.03);
   
   --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -42,6 +49,13 @@
   --color-border-subtle: #212D25;
   --color-forest: #395242;
   --color-forest-dark: #223227;
+
+  /* Da Vinci Codex Drafting System (Dark Blueprint) */
+  --color-codex-line: rgba(165, 198, 178, 0.09);
+  --color-codex-subtle: rgba(165, 198, 178, 0.04);
+  --color-codex-accent: rgba(228, 124, 90, 0.14);
+  --color-codex-text: rgba(185, 210, 195, 0.32);
+  --color-codex-glow: rgba(228, 124, 90, 0.04);
 }
 
 * {
@@ -134,7 +148,7 @@ body {
   background-color: var(--color-bg);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -285,12 +299,14 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg) !important;
   border-bottom: 2px solid var(--color-border);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
   padding: 0.85rem 1.25rem 1.25rem;
   animation: mobileDrawerSlide 0.18s ease-out;
-  z-index: 101;
+  z-index: 1002;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes mobileDrawerSlide {
@@ -1452,4 +1468,39 @@ body {
   }
 }
 
+/* Da Vinci Codex Background Stacking & Responsiveness */
+.codex-background-wrapper {
+  transition: opacity 0.3s ease;
+}
 
+.atlas-main-content,
+.atlas-footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile backdrop behind drawer (dims content, no blur) */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+@media (max-width: 900px) {
+  /* Hide marginal coordinate marks & edge rulers on mobile/tablet to eliminate clutter */
+  .codex-marginal-marks,
+  .codex-left-ruler,
+  .codex-right-ruler {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .codex-dial-primary {
+    transform: translate(340px, 140px) scale(0.65);
+  }
+  .codex-dial-secondary {
+    transform: translate(40px, 600px) scale(0.55);
+  }
+}

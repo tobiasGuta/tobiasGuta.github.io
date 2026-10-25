@@ -8,6 +8,7 @@ import { LibrarySection } from './components/LibrarySection';
 import { CommonplaceSection } from './components/CommonplaceSection';
 import { ConnectSection } from './components/ConnectSection';
 import { ArticleView } from './components/ArticleView';
+import { CodexBackground } from './components/CodexBackground';
 import { postsData, PostItem } from './data/postsData';
 import { Theme, getInitialTheme, applyThemeToDocument } from './utils/theme';
 
@@ -149,6 +150,7 @@ export const App: React.FC = () => {
 
   return (
     <>
+      <CodexBackground isArticleOpen={Boolean(selectedPost)} />
       <AtlasHeader
         currentSection={selectedPost ? 'library' : currentSection}
         onNavigate={handleNavigate}

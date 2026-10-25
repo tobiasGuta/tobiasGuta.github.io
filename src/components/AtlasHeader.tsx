@@ -49,6 +49,13 @@ export const AtlasHeader: React.FC<AtlasHeaderProps> = ({
   return (
     <>
       <div className="top-forest-accent" aria-hidden="true" />
+      {isMobileMenuOpen && (
+        <div
+          className="mobile-menu-backdrop"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
       <header className="atlas-header">
         <div className="atlas-header-inner">
           <a
