@@ -55,7 +55,7 @@ export const AtlasHeader: React.FC<AtlasHeaderProps> = ({
             href="/"
             className="atlas-brand"
             onClick={(e) => handleNav(e, 'home')}
-            aria-label="The Curiosity Atlas — Tobias Guta Home"
+            aria-label="Tobias Portfolio — Home"
           >
             tobias<span className="brand-dot">.</span>
           </a>

@@ -244,7 +244,7 @@ export const InterestAtlas: React.FC<InterestAtlasProps> = ({ onSelectField }) =
             strokeWidth="1.5"
             tabIndex={0}
             role="button"
-            aria-label="Center hub: Tobias Guta Curiosity Atlas. Click to view all fields."
+            aria-label="Center hub: Tobias Portfolio. Click to view all fields."
             onClick={() => setActiveFieldId('security')}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -395,7 +395,7 @@ export const InterestAtlas: React.FC<InterestAtlasProps> = ({ onSelectField }) =
             type="button"
             className="drawer-action-btn"
             onClick={() => handleFieldActivate(currentField.id)}
-            aria-label={`${currentField.actionLabel} in Curiosity Atlas`}
+            aria-label={`${currentField.actionLabel} in Tobias Portfolio`}
           >
             {currentField.actionLabel}
           </button>

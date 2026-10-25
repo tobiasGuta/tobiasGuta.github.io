@@ -18,7 +18,7 @@ export const siteData = {
     "photo_alt": "Profile photo of TobiasGuta",
     "status_text": "ONLINE NOW",
     "location": "New York",
-    "status": "🎓 BSc Cybersecurity — Year 2 of 3",
+    "status": "🎓 BSc Cybersecurity — Semester 1",
     "os_of_choice": "Windows",
     "current_mission": "CEH & CompTIA Security+"
   },

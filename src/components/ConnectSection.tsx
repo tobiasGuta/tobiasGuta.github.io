@@ -56,7 +56,7 @@ export const ConnectSection: React.FC = () => {
           email,
           subject,
           message,
-          _subject: `[Curiosity Atlas] ${subject}`,
+          _subject: `[Tobias Portfolio] ${subject}`,
         }),
       });
 

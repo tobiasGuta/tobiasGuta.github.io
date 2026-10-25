@@ -21,8 +21,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           <h1 className="hero-headline editorial-title">
-            A life of<br />
-            <span className="editorial-italic">many pursuits.</span>
+            In pursuit of<br />
+            <span className="editorial-italic">how things work.</span>
           </h1>
 
           <p className="hero-intro-text">

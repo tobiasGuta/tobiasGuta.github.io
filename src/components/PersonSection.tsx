@@ -9,7 +9,7 @@ export const PersonSection: React.FC = () => {
     <section id="person" className="atlas-section" aria-label="The Person">
       <div className="section-head">
         <div className="section-kicker">01 // THE PERSON</div>
-        <h2 className="section-title">The Mind, The Method &amp; The Path</h2>
+        <h2 className="section-title">My Mind, My Method &amp; My Path</h2>
         <p className="section-subtitle">
           An introduction to my background, intellectual commitments, and polymathic approach to technology.
         </p>
@@ -17,9 +17,7 @@ export const PersonSection: React.FC = () => {
 
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '3rem',
+          maxWidth: '820px',
           marginBottom: '3.5rem',
         }}
       >
@@ -40,53 +38,10 @@ export const PersonSection: React.FC = () => {
               fontSize: '1rem',
               lineHeight: 1.7,
               color: 'var(--color-ink-secondary)',
-              marginBottom: '1rem',
             }}
           >
-            I am an independent researcher in the making based in New York City, pursuing a Bachelor of Science in Cybersecurity (currently in Year 2). My focus spans penetration testing, web application exploitation, digital forensics, and autonomous AI tooling.
+            I am an independent researcher in the making based in New York City, pursuing a Bachelor of Science in Cybersecurity (currently in my first semester). My focus spans penetration testing, web application exploitation, and autonomous AI tooling.
           </p>
-          <p
-            style={{
-              fontSize: '1rem',
-              lineHeight: 1.7,
-              color: 'var(--color-ink-secondary)',
-            }}
-          >
-            To me, security is not a series of compliance checkboxes; it is an empirical study of the divergence between human intention and mechanical execution. When engineers build systems, they make unstated assumptions. Security research is the practice of methodically identifying where those assumptions fail.
-          </p>
-        </div>
-
-        <div>
-          <h3
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '1.5rem',
-              color: 'var(--color-ink)',
-              marginBottom: '1rem',
-              fontWeight: 500,
-            }}
-          >
-            First Principles of Inquiry
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ borderLeft: '2px solid var(--color-terracotta)', paddingLeft: '1rem' }}>
-              <strong style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--color-ink)', display: 'block', marginBottom: '0.2rem' }}>
-                Tools as Cognitive Scaffolding
-              </strong>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-secondary)', lineHeight: 1.55 }}>
-                Building custom engines (recon orchestrators, fuzzers, parsers) forces me to understand protocol RFCs and kernel primitives deeper than any textbook can convey.
-              </p>
-            </div>
-
-            <div style={{ borderLeft: '2px solid var(--color-terracotta)', paddingLeft: '1rem' }}>
-              <strong style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--color-ink)', display: 'block', marginBottom: '0.2rem' }}>
-                Interdisciplinary Synthesis
-              </strong>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-secondary)', lineHeight: 1.55 }}>
-                Software security connects directly with epistemology, game theory, systems ecology, and cognitive philosophy. Breadth of curiosity feeds depth of engineering.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
