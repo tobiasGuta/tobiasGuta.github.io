@@ -6,6 +6,7 @@ import { PersonSection } from './components/PersonSection';
 import { WorkSection } from './components/WorkSection';
 import { LibrarySection } from './components/LibrarySection';
 import { CommonplaceSection } from './components/CommonplaceSection';
+import { PolymathSection } from './components/PolymathSection';
 import { ConnectSection } from './components/ConnectSection';
 import { ArticleView } from './components/ArticleView';
 import { CodexBackground } from './components/CodexBackground';
@@ -80,6 +81,12 @@ export const App: React.FC = () => {
         setCurrentSection('library');
         setTimeout(() => {
           const el = document.getElementById('library');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      } else if (target === 'polymath' || target === 'resources' || target === 'learning') {
+        setCurrentSection('polymath');
+        setTimeout(() => {
+          const el = document.getElementById('polymath');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 50);
       } else if (target === 'commonplace' || target === 'notes' || target === 'marginalia') {
@@ -191,6 +198,7 @@ export const App: React.FC = () => {
               onSelectCategory={setWorkCategoryFilter}
             />
             <LibrarySection onSelectPost={handleSelectPost} />
+            <PolymathSection />
             <CommonplaceSection />
             <ConnectSection />
           </>

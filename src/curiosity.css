@@ -675,8 +675,107 @@ body {
 #work,
 #library,
 #commonplace,
+#polymath,
 #connect {
   scroll-margin-top: 5rem;
+}
+
+.polymath-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  max-width: 1120px;
+}
+
+.polymath-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  min-height: 310px;
+}
+
+.polymath-card:hover {
+  border-color: var(--color-terracotta);
+}
+
+.polymath-card-meta,
+.polymath-note-label,
+.polymath-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.polymath-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-terracotta);
+}
+
+.polymath-card-meta span:last-child {
+  color: var(--color-ink-muted);
+  text-align: right;
+}
+
+.polymath-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.polymath-card-description,
+.polymath-note p {
+  color: var(--color-ink-secondary);
+  line-height: 1.55;
+}
+
+.polymath-note {
+  margin-top: auto;
+  padding: 0.9rem 1rem;
+  background-color: var(--color-bg-subtle);
+  border-left: 2px solid var(--color-terracotta);
+}
+
+.polymath-note-label {
+  color: var(--color-ink-muted);
+}
+
+.polymath-note p {
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.polymath-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.25rem;
+}
+
+.polymath-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.polymath-link {
+  align-self: flex-start;
+  color: var(--color-terracotta);
+  text-decoration: none;
+}
+
+.polymath-link:hover {
+  color: var(--color-ink);
 }
 
 .section-head {

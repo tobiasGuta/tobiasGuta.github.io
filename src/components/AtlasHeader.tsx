@@ -42,8 +42,9 @@ export const AtlasHeader: React.FC<AtlasHeaderProps> = ({
     { id: 'person', label: 'THE PERSON', num: '01' },
     { id: 'work', label: 'THE WORK', num: '02' },
     { id: 'library', label: 'THE LIBRARY', num: '03' },
-    { id: 'commonplace', label: 'COMMONPLACE', num: '04' },
-    { id: 'connect', label: 'CONNECT ↗', num: '05' },
+    { id: 'polymath', label: 'POLYMATH', num: '04' },
+    { id: 'commonplace', label: 'COMMONPLACE', num: '05' },
+    { id: 'connect', label: 'CONNECT ↗', num: '06' },
   ];
 
   return (
