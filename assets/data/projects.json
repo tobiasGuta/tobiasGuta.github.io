@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-14T15:02:07.343495+00:00",
+  "generated_at": "2026-11-15T15:38:28.469029+00:00",
   "projects": [
+    {
+      "name": "Nova-Launcher",
+      "description": "A floating app grid that opens over your Fedora desktop, with translucent styling, rounded corners, search, and categories",
+      "html_url": "https://github.com/tobiasGuta/Nova-Launcher",
+      "homepage": null,
+      "language": "JavaScript",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-15T14:00:33Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "ServiceForge",
       "description": "A modern, advanced systemd service management and diagnostics application for Fedora Linux.",
@@ -224,19 +237,6 @@
       "stargazers_count": 26,
       "forks_count": 2,
       "updated_at": "2026-11-06T17:49:01Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Veilpaper",
-      "description": "Independent login and lock screen wallpapers for GNOME",
-      "html_url": "https://github.com/tobiasGuta/Veilpaper",
-      "homepage": null,
-      "language": null,
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-10-31T19:12:37Z",
       "fork": false,
       "archived": false
     },
