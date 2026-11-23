@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-22T16:14:44.587425+00:00",
+  "generated_at": "2026-11-23T20:11:43.767753+00:00",
   "projects": [
+    {
+      "name": "PlugWard",
+      "description": "A modern, security-focused GNOME desktop application for managing USBGuard devices, authorization policies, and USB security events on Linux.",
+      "html_url": "https://github.com/tobiasGuta/PlugWard",
+      "homepage": null,
+      "language": "Rust",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-22T18:46:21Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "veyl",
       "description": "A terminal, behind the glass.",
