@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-23T20:11:43.767753+00:00",
+  "generated_at": "2026-11-24T19:29:18.174123+00:00",
   "projects": [
+    {
+      "name": "ServiceForge",
+      "description": "A modern, advanced systemd service management and diagnostics application for Fedora Linux.",
+      "html_url": "https://github.com/tobiasGuta/ServiceForge",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "updated_at": "2026-11-23T23:54:09Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "PlugWard",
       "description": "A modern, security-focused GNOME desktop application for managing USBGuard devices, authorization policies, and USB security events on Linux.",
@@ -52,19 +65,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-11-15T14:00:33Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "ServiceForge",
-      "description": "A modern, advanced systemd service management and diagnostics application for Fedora Linux.",
-      "html_url": "https://github.com/tobiasGuta/ServiceForge",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 2,
-      "forks_count": 0,
-      "updated_at": "2026-11-14T02:07:35Z",
       "fork": false,
       "archived": false
     },
