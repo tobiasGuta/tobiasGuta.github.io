@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-24T19:29:18.174123+00:00",
+  "generated_at": "2026-11-25T18:38:11.224136+00:00",
   "projects": [
+    {
+      "name": "SocketForge",
+      "description": "A Linux network socket explorer and connection analysis tool.",
+      "html_url": "https://github.com/tobiasGuta/SocketForge",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-25T10:13:24Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "ServiceForge",
       "description": "A modern, advanced systemd service management and diagnostics application for Fedora Linux.",
@@ -10,9 +23,22 @@
       "homepage": null,
       "language": "Python",
       "topics": [],
-      "stargazers_count": 1,
+      "stargazers_count": 0,
       "forks_count": 0,
-      "updated_at": "2026-11-23T23:54:09Z",
+      "updated_at": "2026-11-25T10:12:08Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "ParamIntel",
+      "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
+      "html_url": "https://github.com/tobiasGuta/ParamIntel",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-25T09:47:18Z",
       "fork": false,
       "archived": false
     },
@@ -69,32 +95,6 @@
       "archived": false
     },
     {
-      "name": "SocketForge",
-      "description": "A Linux network socket explorer and connection analysis tool.",
-      "html_url": "https://github.com/tobiasGuta/SocketForge",
-      "homepage": null,
-      "language": "Python",
-      "topics": [],
-      "stargazers_count": 1,
-      "forks_count": 0,
-      "updated_at": "2026-11-14T02:07:33Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "ParamIntel",
-      "description": "High-confidence HTTP parameter discovery and behavioral analysis for security research and bug bounty testing.",
-      "html_url": "https://github.com/tobiasGuta/ParamIntel",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 1,
-      "forks_count": 0,
-      "updated_at": "2026-11-14T02:07:32Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Nitro-Control",
       "description": null,
       "html_url": "https://github.com/tobiasGuta/Nitro-Control",
@@ -104,19 +104,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-11-14T01:51:37Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "N-va",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/N-va",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-11-12T14:04:32Z",
       "fork": false,
       "archived": false
     },
@@ -143,19 +130,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-11-11T17:08:16Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "HookLoom",
-      "description": "Capture requests. Shape responses. Control every endpoint.",
-      "html_url": "https://github.com/tobiasGuta/HookLoom",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-11-10T02:18:20Z",
       "fork": false,
       "archived": false
     },
@@ -341,45 +315,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-10-18T01:47:29Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "firmware-researcher",
-      "description": "AI-assisted firmware vulnerability research with evidence-driven static analysis and human oversight.",
-      "html_url": "https://github.com/tobiasGuta/firmware-researcher",
-      "homepage": null,
-      "language": "Go",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-10-17T20:19:23Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "reverse-engineering-assistant",
-      "description": null,
-      "html_url": "https://github.com/tobiasGuta/reverse-engineering-assistant",
-      "homepage": null,
-      "language": null,
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-10-03T17:36:36Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "docklight",
-      "description": "A lightweight, read-only Docker dashboard for Visual Studio Code.",
-      "html_url": "https://github.com/tobiasGuta/docklight",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-09-27T02:41:40Z",
       "fork": false,
       "archived": false
     },
@@ -572,32 +507,6 @@
       "archived": false
     },
     {
-      "name": "MarkerTrail",
-      "description": "MarkerTrail is a browser-native propagation tracker for authorized web security testing. It creates unique inert markers, remembers where they were introduced, then detects those markers later in live DOM content, SPA updates, request bodies, and response bodies.",
-      "html_url": "https://github.com/tobiasGuta/MarkerTrail",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-04T20:35:35Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Hidden-Surface-Inspector",
-      "description": "A permission-minimal Chrome DevTools extension for discovering web application surfaces that are commented out, hidden, disabled, role-marked, dynamically removed, or generated after the initial HTML response.",
-      "html_url": "https://github.com/tobiasGuta/Hidden-Surface-Inspector",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-03T00:23:52Z",
-      "fork": false,
-      "archived": false
-    },
-    {
       "name": "Race-Condition-Gate",
       "description": "A Synchronization Tool for testing Time-of-Check to Time-of-Use (TOCTOU) Vulnerabilities",
       "html_url": "https://github.com/tobiasGuta/Race-Condition-Gate",
@@ -607,32 +516,6 @@
       "stargazers_count": 1,
       "forks_count": 0,
       "updated_at": "2026-08-02T21:31:46Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "OriginGraph",
-      "description": "OriginGraph is a privacy-first Chrome DevTools extension for authorized bug-bounty testing and local browser-security research. It records browser communication events and correlates them with security-sensitive consequences such as network requests, HTML sinks, navigation, and worker messaging.",
-      "html_url": "https://github.com/tobiasGuta/OriginGraph",
-      "homepage": null,
-      "language": "TypeScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-08-01T01:17:38Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "ReplayScope",
-      "description": "is a local-first, scope-aware request repeater built as a Chrome DevTools extension for manual web security testing and authorized bug-bounty work.",
-      "html_url": "https://github.com/tobiasGuta/ReplayScope",
-      "homepage": null,
-      "language": "JavaScript",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-31T20:56:36Z",
       "fork": false,
       "archived": false
     },
@@ -672,19 +555,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-07-24T13:25:06Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Vulnerability-Research-Lab",
-      "description": "A structured repository for documenting, reproducing, detecting, and studying publicly disclosed vulnerabilities in isolated and authorized environments.",
-      "html_url": "https://github.com/tobiasGuta/Vulnerability-Research-Lab",
-      "homepage": null,
-      "language": null,
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-07-18T11:48:19Z",
       "fork": false,
       "archived": false
     },
@@ -789,19 +659,6 @@
       "stargazers_count": 2,
       "forks_count": 0,
       "updated_at": "2026-05-24T12:12:33Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Lean-Windows-CTF-Toolkit-Automated-Setup",
-      "description": "This repository contains a PowerShell script that automatically downloads and sets up essential reverse engineering tools for CTF competitions on Windows.",
-      "html_url": "https://github.com/tobiasGuta/Lean-Windows-CTF-Toolkit-Automated-Setup",
-      "homepage": null,
-      "language": "PowerShell",
-      "topics": [],
-      "stargazers_count": 0,
-      "forks_count": 0,
-      "updated_at": "2026-05-22T00:18:51Z",
       "fork": false,
       "archived": false
     },
