@@ -1,8 +1,21 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-25T18:38:11.224136+00:00",
+  "generated_at": "2026-11-26T18:23:52.002822+00:00",
   "projects": [
+    {
+      "name": "Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
+      "description": "A lightweight, high-speed Burp Suite extension designed to detect exposed Spring Boot Actuator endpoints. It automatically fuzzes target applications for sensitive administrative paths that can leak environment variables, API mappings, and routing configurations.",
+      "html_url": "https://github.com/tobiasGuta/Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "stargazers_count": 3,
+      "forks_count": 0,
+      "updated_at": "2026-11-26T09:50:28Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "SocketForge",
       "description": "A Linux network socket explorer and connection analysis tool.",
@@ -134,11 +147,11 @@
       "archived": false
     },
     {
-      "name": "GQLens",
-      "description": "GraphQL Attack Surface Explorer for Burp Suite Community",
-      "html_url": "https://github.com/tobiasGuta/GQLens",
+      "name": "h2csmuggler-mod",
+      "description": "HTTP Request Smuggling over HTTP/2 Cleartext (h2c) mod",
+      "html_url": "https://github.com/tobiasGuta/h2csmuggler-mod",
       "homepage": null,
-      "language": "Kotlin",
+      "language": "Python",
       "topics": [],
       "stargazers_count": 1,
       "forks_count": 0,
@@ -147,11 +160,11 @@
       "archived": false
     },
     {
-      "name": "h2csmuggler-mod",
-      "description": "HTTP Request Smuggling over HTTP/2 Cleartext (h2c) mod",
-      "html_url": "https://github.com/tobiasGuta/h2csmuggler-mod",
+      "name": "GQLens",
+      "description": "GraphQL Attack Surface Explorer for Burp Suite Community",
+      "html_url": "https://github.com/tobiasGuta/GQLens",
       "homepage": null,
-      "language": "Python",
+      "language": "Kotlin",
       "topics": [],
       "stargazers_count": 1,
       "forks_count": 0,
@@ -646,19 +659,6 @@
       "stargazers_count": 0,
       "forks_count": 0,
       "updated_at": "2026-06-05T21:41:10Z",
-      "fork": false,
-      "archived": false
-    },
-    {
-      "name": "Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
-      "description": "A lightweight, high-speed Burp Suite extension designed to detect exposed Spring Boot Actuator endpoints. It automatically fuzzes target applications for sensitive administrative paths that can leak environment variables, API mappings, and routing configurations.",
-      "html_url": "https://github.com/tobiasGuta/Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
-      "homepage": null,
-      "language": "HTML",
-      "topics": [],
-      "stargazers_count": 2,
-      "forks_count": 0,
-      "updated_at": "2026-05-24T12:12:33Z",
       "fork": false,
       "archived": false
     },
