@@ -1,8 +1,47 @@
 {
   "owner": "tobiasGuta",
   "source": "github_api",
-  "generated_at": "2026-11-26T18:23:52.002822+00:00",
+  "generated_at": "2026-11-27T18:09:46.875961+00:00",
   "projects": [
+    {
+      "name": "dorkintel-mcp",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/dorkintel-mcp",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-27T04:04:04Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "firmware-researcher",
+      "description": "AI-assisted firmware vulnerability research with evidence-driven static analysis and human oversight.",
+      "html_url": "https://github.com/tobiasGuta/firmware-researcher",
+      "homepage": null,
+      "language": "Go",
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-27T03:46:50Z",
+      "fork": false,
+      "archived": false
+    },
+    {
+      "name": "reverse-engineering-assistant",
+      "description": null,
+      "html_url": "https://github.com/tobiasGuta/reverse-engineering-assistant",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "updated_at": "2026-11-27T03:46:14Z",
+      "fork": false,
+      "archived": false
+    },
     {
       "name": "Spring-Boot-Actuator-Hunter-Burp-Suite-Extension",
       "description": "A lightweight, high-speed Burp Suite extension designed to detect exposed Spring Boot Actuator endpoints. It automatically fuzzes target applications for sensitive administrative paths that can leak environment variables, API mappings, and routing configurations.",
